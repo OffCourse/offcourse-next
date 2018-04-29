@@ -1,6 +1,6 @@
 # Code of Conduct Offcourse
 
-This Code of Conduct applies to the contribution to the Offcourse project as well as the use of the Offcourse platform (https://app.offcourse.io)
+This Code of Conduct applies to the contribution to the Offcourse project as well as to the use of the Offcourse platform (https://app.offcourse.io)
 
 ## Our Pledge
 
