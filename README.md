@@ -42,7 +42,7 @@ If you have a question about the Offcourse platform, your account, bugs or featu
 
 ## Contributing
 
-Offcourse is a not-for-profit organization. The learning platform we build is continuously under development. You can help us **build** the Offcourse platform and its community further.
+Offcourse is a not-for-profit organization. The learning platform we build is continuously under development. You can help us expand *the Offcourse platform and its community.**
 
 On our GitHub repository you will find both a **Bug Database** and our **Product Roadmap soon**. If there’s a feature you’d like to work on to grow your coding skills, please do so. It doesn’t matter if you are new to programming or advanced, we welcome all levels and backgrounds to our community. Before you start, please read our Contributing Guidelines (in progress) to make sure we can work together smoothly and pleasant.
 
