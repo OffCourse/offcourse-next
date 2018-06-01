@@ -2,7 +2,7 @@
 
 👍🎉 First off, thanks for taking the time to contribute! 🎉👍
 
-The following is a set of guidelines for contributing to the further development of the Offcourse platform, which is hosted on the “Offcourse-Next” repository on GitHub.
+The following is a set of guidelines for contributing to the further development of the Offcourse platform, which is hosted on the [Offcourse-Next GitHub repo](https://github.com/OffCourse/offcourse-next).
 
 ## Table Of Contents
 
@@ -29,7 +29,7 @@ If you are interested in contributing to our open source project, you can make a
 
 - Reporting Bugs
 - Suggesting Enhancements
-- Contributing changes (Bug fixes and Pull Requests)
+- Contributing changes (Bug fixes, Code Contribtion and Pull Requests)
 
 ## Reporting Bugs
 
@@ -57,7 +57,7 @@ Feature requests and Design Change Requests (DCRs) are an important part of the 
 
 ## Contributing changes
 
-This constitutes bug fixing as well as the contribution to a new feature and code contribution in general. You will find our bug database and roadmap soon to see what contributions can be made here. The following are guidelines for working on such changes.
+This constitutes bug fixing as well as the contribution to a new feature from our roadmap and code contribution in general. You will find our bug database and roadmap soon to see what contributions can be made here. The following are guidelines for working on such changes.
 
 Before you start working on a feature or substantial code contribution that is not in our bug database or on our roadmap, please discuss it with the team and ensure it is an appropriate addition to the core product. You can do this by sending an email to contact@offcourse.io.
 
