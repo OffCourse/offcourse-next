@@ -3,13 +3,23 @@ import * as atoms from "atoms";
 import { Catalog, pageLoader } from "catalog";
 import { offcourse } from "./themes";
 
+const baseUrl = `https://github.com/OffCourse/offcourse-next/tree/master/packages/atoms/src/`;
+
 const createPages = ({ name: collectionName, blocks, helpers }) => {
   const pageNames = Object.keys(blocks);
   return pageNames.map(blockName => ({
-    imports: { ...blocks, ...helpers },
+    imports: {
+      ...blocks,
+      ...helpers,
+      meta: {
+        blockName,
+        collectionName,
+        url: baseUrl + blockName
+      }
+    },
     path: `/${collectionName}/${blockName}`,
     title: `${blockName}`,
-    content: pageLoader(`${collectionName}/${blockName}.md`)
+    content: pageLoader(`/${collectionName}/${blockName}.md`)
   }));
 };
 
