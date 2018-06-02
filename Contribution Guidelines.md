@@ -2,16 +2,16 @@
 
 👍🎉 First off, thanks for taking the time to contribute! 🎉👍
 
-The following is a set of guidelines for contributing to the further development of the Offcourse platform, which is hosted on the “Offcourse-Next” repository on GitHub.
+The following is a set of guidelines for contributing to the further development of the Offcourse platform, which is hosted on the [Offcourse-Next GitHub repo](https://github.com/OffCourse/offcourse-next).
 
 ## Table Of Contents
 
-- Code of Conduct
-- What should I know before I get started?
-- How Can I Contribute?
-  - Reporting Bugs
-  - Suggesting Enhancements
-  - Contributing changes (Bug fixes, Code Contribution and Pull Requests)
+* Code of Conduct
+* What should I know before I get started?
+* How Can I Contribute?
+  * Reporting Bugs
+  * Suggesting Enhancements
+  * Contributing changes (Bug fixes, Code Contribution and Pull Requests)
 
 ## Code of Conduct
 
@@ -27,9 +27,9 @@ JavaScript, on the other hand, has moved in the opposite direction. There is an 
 
 If you are interested in contributing to our open source project, you can make a contribution by one of the following:
 
-- Reporting Bugs
-- Suggesting Enhancements
-- Contributing changes (Bug fixes and Pull Requests)
+* Reporting Bugs
+* Suggesting Enhancements
+* Contributing changes (Bug fixes, Code Contributions and Pull Requests)
 
 ## Reporting Bugs
 
@@ -39,35 +39,35 @@ The Offcourse platform is under continuous development. Bugs are a natural part 
 
 Make sure your report gets the attention it deserves: bug reports with missing information may be ignored or punted back to you, delaying a fix. The below constitutes a bare minimum; more info is almost always better:
 
-- **A detailed description of the bug**. Describe how the bug occurred, what action you took when it happened. Also, include print screens.
-- **What version of the core programming language interpreter/compiler you are using.**
-- **What operating system you are on.** Windows? (Vista? 7? 32-bit? 64-bit?) Mac OS X? (10.7.4? 10.9.0?) Linux? (Which distro? Which version of that distro? 32 or 64 bits?) Again, more detail is better.
-- **Which version or versions of the software you are using.** Ideally, you followed the advice above and have ruled out (or verified that the problem exists in) a few different versions.
+* **A detailed description of the bug**. Describe how the bug occurred, what action you took when it happened. Also, include print screens.
+* **What version of the core programming language interpreter/compiler you are using.**
+* **What operating system you are on.** Windows? (Vista? 7? 32-bit? 64-bit?) Mac OS X? (10.7.4? 10.9.0?) Linux? (Which distro? Which version of that distro? 32 or 64 bits?) Again, more detail is better.
+* **Which version or versions of the software you are using.** Ideally, you followed the advice above and have ruled out (or verified that the problem exists in) a few different versions.
 
 ## Suggesting enhancements
 
 Feature requests and Design Change Requests (DCRs) are an important part of the lifecycle of any software project. Please log these as Issues in the GitHub repository. Again, please provide us with the necessary information so we, and other community members, understand the value of the request. This includes:
 
-- Detailed scenarios enabled by the feature or DCR.
-- Information about your use case or additional value  you / your business will see from the feature.
-- Any design tips or estimation ideas you may have considered already.
-- Make note of whether you are opening an issue you would like the Offcourse team or another community member to work on *or* if you are looking to design & develop the feature yourself.
-- Any potential caveats or concerns you may have already thought about.
-- A miniature test plan or list of test scenarios is always helpful.
+* Detailed scenarios enabled by the feature or DCR.
+* Information about your use case or additional value you / your business will see from the feature.
+* Any design tips or estimation ideas you may have considered already.
+* Make note of whether you are opening an issue you would like the Offcourse team or another community member to work on *or* if you are looking to design & develop the feature yourself.
+* Any potential caveats or concerns you may have already thought about.
+* A miniature test plan or list of test scenarios is always helpful.
 
 ## Contributing changes
 
-This constitutes bug fixing as well as the contribution to a new feature and code contribution in general. You will find our bug database and roadmap soon to see what contributions can be made here. The following are guidelines for working on such changes.
+This constitutes bug fixing as well as the contribution to a new feature from our roadmap and code contribution in general. You will find our bug database and roadmap soon to see what contributions can be made here. The following are guidelines for working on such changes.
 
 Before you start working on a feature or substantial code contribution that is not in our bug database or on our roadmap, please discuss it with the team and ensure it is an appropriate addition to the core product. You can do this by sending an email to contact@offcourse.io.
 
 ## **Version control branching**
 
-- Always **make a new branch** for your work, no matter how small. This makes it easy for others to take just that one set of changes from your repository, in case you have multiple unrelated changes floating around.
+* Always **make a new branch** for your work, no matter how small. This makes it easy for others to take just that one set of changes from your repository, in case you have multiple unrelated changes floating around.
 
   > A corollary: don’t submit unrelated changes in the same branch/pull request! The maintainer shouldn’t have to reject your awesome bugfix because the feature you put in with it needs more review.
 
-- **Base your new branch off of the appropriate branch** on the main repository:
+* **Base your new branch off of the appropriate branch** on the main repository:
 
   Bug fixes should be based on the branch named after the oldest supported release line the bug affects.
 
@@ -75,8 +75,8 @@ Before you start working on a feature or substantial code contribution that is n
 
   **Code formatting**
 
-Follow the style you see used in the primary repository**! Consistency with the rest of the project always trumps other considerations. It doesn’t matter if you have your own style or if the rest of the code breaks with the greater community - just follow along.
- 
+Follow the style you see used in the primary repository\*\*! Consistency with the rest of the project always trumps other considerations. It doesn’t matter if you have your own style or if the rest of the code breaks with the greater community - just follow along.
+
 ## Test!
 
 Any bugfix that doesn’t include a test proving the existence of the bug being fixed, may be suspect. Ditto for new features that can’t prove they actually work.
