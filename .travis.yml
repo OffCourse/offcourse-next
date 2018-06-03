@@ -2,10 +2,14 @@ language: node_js
 
 node_js:
   - 8
+build:
+  provider: script
+  skip_cleanup: true
+  script:
+    - yarn build
 
 deploy:
   provider: script
   skip_cleanup: true
   script:
-    - yarn build
     - yarn semantic-release
