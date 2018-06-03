@@ -13,10 +13,13 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "semantic-release": "echo TEST"
   },
   "devDependencies": {
     "react-app-rewire-yarn-workspaces": "^1.0.3",
-    "react-app-rewired": "^1.5.2"
+    "react-app-rewired": "^1.5.2",
+    "semantic-release": "^15.5.0",
+    "semantic-release-monorepo": "^6.0.3"
   }
 }

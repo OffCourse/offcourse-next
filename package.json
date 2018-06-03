@@ -7,7 +7,8 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "echo TEST"
+    "test": "echo TEST",
+    "semantic-release": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo"
   },
   "version": "0.0.0-development",
   "repository": {
