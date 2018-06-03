@@ -13,9 +13,7 @@
     "test:watch": "react-scripts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
-    "prepare": "yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build"
+    "semantic-release": "npx semantic-release -e semantic-release-monorepo"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.4",
@@ -54,11 +52,13 @@
     "rollup": "^0.54.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-json": "^3.0.0",
     "rollup-plugin-node-resolve": "^3.0.2",
     "rollup-plugin-peer-deps-external": "^2.0.0",
-    "rollup-plugin-json": "^3.0.0",
     "rollup-plugin-postcss": "^1.1.0",
-    "rollup-plugin-url": "^1.3.0"
+    "rollup-plugin-url": "^1.3.0",
+    "semantic-release": "^15.5.0",
+    "semantic-release-monorepo": "^6.0.3"
   },
   "files": [
     "dist"
