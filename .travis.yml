@@ -7,5 +7,4 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-    - cd packages/atoms
     - yarn semantic-release
