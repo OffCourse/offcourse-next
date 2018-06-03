@@ -7,4 +7,5 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
+    - yarn build
     - yarn semantic-release

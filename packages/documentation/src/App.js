@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as atoms from "atoms";
+import * as atoms from "@offcourse/atoms";
 import { Catalog, pageLoader } from "catalog";
 import { offcourse } from "./themes";
 
