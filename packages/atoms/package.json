@@ -1,7 +1,7 @@
 {
   "name": "@offcourse/atoms",
   "version": "0.0.0-semantically-released",
-  "description": "Atomic building blocks for the Offcourse Project",
+  "description": "Atomic Building Blocks for the Offcourse Project",
   "author": "yeehaa123",
   "license": "MIT",
   "repository": "offcourse/offcourse-next",
@@ -12,8 +12,7 @@
     "test": "echo TEST",
     "test:watch": "react-scripts test --env=jsdom",
     "build": "rollup -c",
-    "start": "rollup -c -w",
-    "semantic-release": "npx semantic-release -e semantic-release-monorepo"
+    "start": "rollup -c -w"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.4",
@@ -63,5 +62,10 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
