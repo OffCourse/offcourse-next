@@ -6,6 +6,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "test": "echo TEST"
+  },
   "version": "0.0.0-development",
   "repository": {
     "type": "git",
