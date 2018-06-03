@@ -1,6 +1,7 @@
 {
   "private": true,
   "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0",
     "lerna": "^2.11.0"
   },
   "workspaces": [
@@ -14,5 +15,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/OffCourse/offcourse-next.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
