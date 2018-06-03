@@ -2,7 +2,7 @@
   "name": "@offcourse/atoms",
   "version": "0.0.0-semantically-released",
   "description": "Atomic Building Blocks for the Offcourse Project",
-  "author": "yeehaa123",
+  "author": "Jan Hein Hoogstad",
   "license": "MIT",
   "repository": "offcourse/offcourse-next",
   "main": "dist/index.js",
