@@ -7,21 +7,19 @@
 ## Install
 
 ```bash
-npm install --save atoms
+npm install --save @offcourse/atoms
 ```
 
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import MyComponent from 'atoms'
+import MyComponent from "atoms";
 
 class Example extends Component {
-  render () {
-    return (
-      <MyComponent />
-    )
+  render() {
+    return <MyComponent />;
   }
 }
 ```
