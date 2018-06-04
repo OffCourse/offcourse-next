@@ -42,8 +42,8 @@ class App extends Component {
         pages={[
           {
             path: "/",
-            title: "Introduction",
-            content: pageLoader("introduction.md")
+            title: "General Introduction",
+            content: pageLoader("General Introduction.md")
           },
           {
             title: "Base Styles",
