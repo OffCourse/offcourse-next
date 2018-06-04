@@ -46,13 +46,13 @@ class App extends Component {
             content: pageLoader("./general-introduction.md")
           },
           {
-            path: "/brand-identity",
-            title: "Brand Identity",
+            path: "/visual-identity",
+            title: "Visual Identity",
             imports: {
               ...offcourse.colors,
               grayScale: offcourse.namedGrayScale
             },
-            content: pageLoader("./brand-identity.md")
+            content: pageLoader("./visual-identity.md")
           },
           {
             title: "Atoms",
