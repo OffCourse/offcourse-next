@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo TEST",
     "build": "lerna run build",
-    "semantic-release": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo"
+    "semantic-release": "lerna exec --scope @offcourse/* --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo"
   },
   "version": "0.0.0-development",
   "repository": {
