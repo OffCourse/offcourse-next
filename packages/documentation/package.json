@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@offcourse/atoms": "^1.0.2",
+    "@offcourse/molecules": "^0.0.0-semantically-released",
+    "atoms": "^0.2.0",
     "catalog": "^3.5.3",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",

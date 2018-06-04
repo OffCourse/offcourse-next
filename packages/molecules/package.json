@@ -1,7 +1,7 @@
 {
-  "name": "@offcourse/atoms",
+  "name": "@offcourse/molecules",
   "version": "0.0.0-semantically-released",
-  "description": "Atomic Building Blocks for the Offcourse Project",
+  "description": "Molecular Building Blocks for the Offcourse Project",
   "author": "Jan Hein Hoogstad",
   "license": "MIT",
   "repository": "offcourse/offcourse-next",
@@ -15,13 +15,12 @@
     "start": "rollup -c -w"
   },
   "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.4",
-    "@fortawesome/fontawesome-free-brands": "^5.0.8",
-    "@fortawesome/fontawesome-free-solid": "^5.0.8",
-    "@fortawesome/react-fontawesome": "^0.0.18",
+    "@offcourse/atoms": "^0.0.0-semantically-released",
     "atoms": "^0.2.0",
     "ramda": "^0.25.0",
-    "react-masonry-infinite": "^1.2.2",
+    "react-copy-to-clipboard": "^5.0.1",
+    "react-sidebar": "^2.3.2",
+    "react-sortable-hoc": "^0.8.3",
     "voca": "^1.4.0"
   },
   "peerDependencies": {

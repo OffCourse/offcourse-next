@@ -161,6 +161,18 @@
     node-fetch "^2.1.1"
     url-template "^2.0.8"
 
+"@offcourse/atoms@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@offcourse/atoms/-/atoms-1.0.2.tgz#5d300e80dcd39a66c4bc26e7e9be8e9eab90f9a4"
+  dependencies:
+    "@fortawesome/fontawesome" "^1.1.4"
+    "@fortawesome/fontawesome-free-brands" "^5.0.8"
+    "@fortawesome/fontawesome-free-solid" "^5.0.8"
+    "@fortawesome/react-fontawesome" "^0.0.18"
+    ramda "^0.25.0"
+    react-masonry-infinite "^1.2.2"
+    voca "^1.4.0"
+
 "@semantic-release/commit-analyzer@^5.0.0":
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@semantic-release/commit-analyzer/-/commit-analyzer-5.0.3.tgz#f2b674d30207b49b77d905ad5850d7aefd8838dd"
@@ -600,6 +612,10 @@ asynckit@^0.4.0:
 atob@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
+
+atoms@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/atoms/-/atoms-0.2.0.tgz#4db930969a04efdcf39836a959baeb93cda095f0"
 
 autoprefixer@7.1.6:
   version "7.1.6"
@@ -1477,7 +1493,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@6.26.0, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
+babel-runtime@6.26.0, babel-runtime@^6.11.6, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -2563,6 +2579,12 @@ cookie@0.3.1:
 copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
+
+copy-to-clipboard@^3:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.0.8.tgz#f4e82f4a8830dce4666b7eb8ded0c9bcc313aba9"
+  dependencies:
+    toggle-selection "^1.0.3"
 
 core-js@^1.0.0:
   version "1.2.7"
@@ -7435,7 +7457,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
   dependencies:
@@ -7597,6 +7619,13 @@ react-app-rewired@^1.5.2:
     cross-spawn "^5.1.0"
     dotenv "^4.0.0"
 
+react-copy-to-clipboard@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.1.tgz#8eae107bb400be73132ed3b6a7b4fb156090208e"
+  dependencies:
+    copy-to-clipboard "^3"
+    prop-types "^15.5.8"
+
 react-dev-utils@^4.0.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-4.2.1.tgz#9f2763e7bafa1a1b9c52254d2a479deec280f111"
@@ -7756,6 +7785,18 @@ react-side-effect@^1.0.2:
   dependencies:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
+
+react-sidebar@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/react-sidebar/-/react-sidebar-2.3.2.tgz#ec140bea8a6f5fa3d8ea7a56479665b44cf4f9cf"
+
+react-sortable-hoc@^0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/react-sortable-hoc/-/react-sortable-hoc-0.8.3.tgz#8537e8ab8d6bad6829885755a0f847817ed78648"
+  dependencies:
+    babel-runtime "^6.11.6"
+    invariant "^2.2.1"
+    prop-types "^15.5.7"
 
 react@>=16.0.0, react@^16.2.0, react@^16.4.0:
   version "16.4.0"
@@ -9136,6 +9177,10 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
+
+toggle-selection@^1.0.3:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
 
 toposort@^1.0.0:
   version "1.0.7"
