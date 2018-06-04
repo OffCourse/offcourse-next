@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as atoms from "@offcourse/atoms";
+import * as molecules from "@offcourse/molecules";
 import { Catalog, pageLoader } from "catalog";
 import { offcourse } from "./themes";
 
@@ -59,6 +60,13 @@ class App extends Component {
             pages: createPages({
               name: "atoms",
               blocks: atoms
+            })
+          },
+          {
+            title: "Molecules",
+            pages: createPages({
+              name: "molecules",
+              blocks: molecules
             })
           }
         ]}

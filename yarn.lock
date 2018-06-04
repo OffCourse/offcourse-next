@@ -161,16 +161,29 @@
     node-fetch "^2.1.1"
     url-template "^2.0.8"
 
-"@offcourse/atoms@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@offcourse/atoms/-/atoms-1.0.2.tgz#5d300e80dcd39a66c4bc26e7e9be8e9eab90f9a4"
+"@offcourse/atoms@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@offcourse/atoms/-/atoms-1.1.0.tgz#7c85fcf9286fc81901beba6e522a1cf4d5e30106"
   dependencies:
     "@fortawesome/fontawesome" "^1.1.4"
     "@fortawesome/fontawesome-free-brands" "^5.0.8"
     "@fortawesome/fontawesome-free-solid" "^5.0.8"
     "@fortawesome/react-fontawesome" "^0.0.18"
+    atoms "^0.2.0"
     ramda "^0.25.0"
     react-masonry-infinite "^1.2.2"
+    voca "^1.4.0"
+
+"@offcourse/molecules@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@offcourse/molecules/-/molecules-1.0.0.tgz#5b499461dbbc2933b3758408126e50fa4dabbe14"
+  dependencies:
+    "@offcourse/atoms" "^0.0.0-semantically-released"
+    atoms "^0.2.0"
+    ramda "^0.25.0"
+    react-copy-to-clipboard "^5.0.1"
+    react-sidebar "^2.3.2"
+    react-sortable-hoc "^0.8.3"
     voca "^1.4.0"
 
 "@semantic-release/commit-analyzer@^5.0.0":
