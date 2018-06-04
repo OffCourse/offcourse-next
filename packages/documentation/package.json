@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@offcourse/atoms": "^1.1.0",
-    "@offcourse/molecules": "^1.0.0",
+    "@offcourse/atoms": "^0.0.0-semantically-released",
+    "@offcourse/molecules": "^0.0.0-semantically-released",
+    "@offcourse/organisms": "^0.0.0-semantically-released",
     "catalog": "^3.5.3",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
