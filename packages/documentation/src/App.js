@@ -43,26 +43,16 @@ class App extends Component {
           {
             path: "/",
             title: "General Introduction",
-            content: pageLoader("General Introduction.md")
+            content: pageLoader("./general-introduction.md")
           },
           {
-            title: "Base Styles",
-            pages: [
-              {
-                imports: {
-                  ...offcourse.colors,
-                  grayScale: offcourse.namedGrayScale
-                },
-                path: "base_styles/colors",
-                title: "Colors",
-                content: pageLoader("/basics/colors.md")
-              },
-              {
-                path: "/base_styles/typography",
-                title: "Typography",
-                content: pageLoader("/basics/typography.md")
-              }
-            ]
+            path: "/brand-identity",
+            title: "Brand Identity",
+            imports: {
+              ...offcourse.colors,
+              grayScale: offcourse.namedGrayScale
+            },
+            content: pageLoader("./brand-identity.md")
           },
           {
             title: "Atoms",
