@@ -2,7 +2,7 @@ import system from "system-components";
 
 const CardWrapper = system({
   display: "block",
-  width: ["100%", "18rem", "18rem"],
+  width: ["18rem", "18rem", "18rem"],
   bg: "grayScale.0"
 }).extend`
   section:last-child {
