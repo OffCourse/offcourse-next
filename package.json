@@ -2,7 +2,7 @@
   "private": true,
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
-    "lerna": "^2.11.0"
+    "lerna": "^3.0.0"
   },
   "workspaces": [
     "packages/*"
@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo TEST",
     "build": "lerna run --scope @offcourse/* build",
-    "publish": "lerna publish --conventional-commits --changelog-preset angular-bitbucket --cd-version --yes"
+    "publish": "lerna publish --conventional-commits --changelog-preset angular-bitbucket --yes"
   },
   "version": "0.0.0-development",
   "repository": {
