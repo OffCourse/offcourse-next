@@ -4,15 +4,13 @@
     "cz-conventional-changelog": "^2.1.0",
     "lerna": "^2.11.0"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "test": "echo TEST",
+    "bootstrap": "lerna bootstrap",
     "build": "lerna run --scope @offcourse/* build",
-    "publish": "lerna --scope @offcourse/* publish --conventional-commits --changelog-preset angular-bitbucket"
+    "publish": "lerna publish --canary --conventional-commits --yes"
   },
-  "version": "0.0.0-development",
+  "version": "0.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/OffCourse/offcourse-next.git"

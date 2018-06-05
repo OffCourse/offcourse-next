@@ -8,6 +8,9 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo TEST123",
     "test:watch": "react-scripts test --env=jsdom",
@@ -15,8 +18,8 @@
     "start": "rollup -c -w"
   },
   "dependencies": {
-    "@offcourse/atoms": "^0.0.0-semantically-released",
-    "@offcourse/molecules": "^0.0.0-semantically-released",
+    "@offcourse/atoms": "0.0.0-semantically-released",
+    "@offcourse/molecules": "0.0.0-semantically-released",
     "formik": "^0.11.11",
     "ramda": "^0.25.0",
     "voca": "^1.4.0",
@@ -45,9 +48,9 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "gh-pages": "^1.1.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "^1.1.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-scripts": "^1.1.4",
     "rollup": "^0.54.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.2.1",

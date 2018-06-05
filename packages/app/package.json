@@ -1,7 +1,7 @@
 {
   "name": "app",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.0-semantically-released",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -27,15 +27,15 @@
     ]
   },
   "dependencies": {
-    "@offcourse/atoms": "^0.0.0-semantically-released",
-    "@offcourse/molecules": "^0.0.0-semantically-released",
-    "@offcourse/organisms": "^0.0.0-semantically-released",
+    "@offcourse/atoms": "0.0.0-semantically-released",
+    "@offcourse/molecules": "0.0.0-semantically-released",
+    "@offcourse/organisms": "0.0.0-semantically-released",
     "babel-plugin-styled-components": "^1.1.5",
     "next": "6.0.2",
     "next-progressbar": "0.0.2",
     "ramda": "^0.25.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
     "system-components": "^2.0.3"
   }
 }
