@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo TEST",
     "build": "lerna run build",
-    "semantic-release": "lerna exec --scope @offcourse/* --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo"
+    "publish": "lerna publish --conventional-commits --changelog-preset angular-bitbucket"
   },
   "version": "0.0.0-development",
   "repository": {

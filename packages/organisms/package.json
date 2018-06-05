@@ -15,8 +15,8 @@
     "start": "rollup -c -w"
   },
   "dependencies": {
-    "@offcourse/atoms": "^1.1.0",
-    "@offcourse/molecules": "^1.0.1",
+    "@offcourse/atoms": "^0.0.0-semantically-released",
+    "@offcourse/molecules": "^0.0.0-semantically-released",
     "formik": "^0.11.11",
     "ramda": "^0.25.0",
     "voca": "^1.4.0",

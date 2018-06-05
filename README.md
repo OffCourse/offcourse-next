@@ -1,14 +1,13 @@
 ## Table of Contents
 
-* What is it
-* Purpose
-* Features
-* How to use Offcourse
-* Asking questions
-* Contributing
-* Authors/maintainers
-* Open Source License
-
+- What is it
+- Purpose
+- Features
+- How to use Offcourse
+- Asking questions
+- Contributing
+- Authors/maintainers
+- Open Source License
 
 ## What is Offcourse
 
@@ -16,7 +15,7 @@ Offcourse is an open source platform for crowdsourced learning and knowledge sha
 
 ## Purpose
 
-Our aim is to help people grow as professionals. Offcourse focuses on 21st Century Skills, such as design, entrepreneurship and programming. We don't believe in 6 year curricula, long, boring lectures, and one-size-fits-all courses. Instead you assemble your skills bit by bit. 
+Our aim is to help people grow as professionals. Offcourse focuses on 21st Century Skills, such as design, entrepreneurship and programming. We don't believe in 6 year curricula, long, boring lectures, and one-size-fits-all courses. Instead you assemble your skills bit by bit.
 
 ## Features
 
@@ -38,11 +37,11 @@ Voila, this is how it works. Have fun!
 
 ## Asking questions
 
-If you have a question about the Offcourse platform, your account, bugs or feature requests, please check our FAQ first to find an answer. For questions not listed on our FAQ and that are other than technical issues or feature requests, don't create an issue on our GitHub repo, but contact us at contact@offcourse.io. 
+If you have a question about the Offcourse platform, your account, bugs or feature requests, please check our FAQ first to find an answer. For questions not listed on our FAQ and that are other than technical issues or feature requests, don't create an issue on our GitHub repo, but contact us at contact@offcourse.io.
 
 ## Contributing
 
-Offcourse is a not-for-profit organization. The learning platform we build is continuously under development. You can help us expand *the Offcourse platform and its community.**
+Offcourse is a not-for-profit organization. The learning platform we build is continuously under development. You can help us expand \*the Offcourse platform and its community.\*\*
 
 On our GitHub repository you will find both a **Bug Database** and our **Product Roadmap soon**. If there’s a feature you’d like to work on to grow your coding skills, please do so. It doesn’t matter if you are new to programming or advanced, we welcome all levels and backgrounds to our community. Before you start, please read our Contributing Guidelines (in progress) to make sure we can work together smoothly and pleasant.
 
