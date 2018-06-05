@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo TEST",
     "build": "lerna run --scope @offcourse/* build",
-    "publish": "lerna publish --canary --conventional-commits --yes"
+    "publish": "lerna publish --canary --skip-git --conventional-commits --yes"
   },
   "version": "0.0.0",
   "repository": {
