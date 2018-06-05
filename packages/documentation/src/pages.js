@@ -95,7 +95,7 @@ const pages = [
   {
     path: "/contact",
     title: "Contact",
-    content: pageLoader("./contact")
+    content: pageLoader("./contact.md")
   }
 ];
 

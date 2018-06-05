@@ -1,5 +1,5 @@
 {
-  "name": "offcourse-app",
+  "name": "app",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -26,11 +26,12 @@
     ]
   },
   "dependencies": {
-    "@offcourse/atoms": "^1.1.0",
-    "@offcourse/organisms": "^1.0.0",
+    "@offcourse/atoms": "^0.0.0-semantically-released",
+    "@offcourse/organisms": "^1.0.1",
     "babel-plugin-styled-components": "^1.1.5",
     "next": "6.0.2",
     "next-progressbar": "0.0.2",
+    "ramda": "^0.25.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "system-components": "^2.0.3"

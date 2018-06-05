@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { times, identity } from "ramda";
 import { ThemeProvider, injectGlobal } from "styled-components";
 import { offcourse as theme } from "../themes";
 import { Card, Heading, Group, Button, Masonry, Text } from "@offcourse/atoms";
@@ -33,14 +34,16 @@ class Content extends React.Component {
   state = { items: fragments };
 
   render() {
-    const sizes = [
-      { columns: 1, gutter: 16 },
-      { mq: "650px", columns: 2, gutter: 16 },
-      { mq: "975px", columns: 3, gutter: 16 },
-      { mq: "1300px", columns: 4, gutter: 16 },
-      { mq: "1625px", columns: 5, gutter: 16 },
-      { mq: "1950px", columns: 6, gutter: 16 }
-    ];
+    const gutter = 16;
+    const sizes = times(identity, 100).map(columns => {
+      const mq = `${columns * 288 + (columns - 1) * 16}px`;
+      console.log(mq);
+      return {
+        columns,
+        mq,
+        gutter
+      };
+    });
 
     const { items } = this.state;
 
