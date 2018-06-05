@@ -1,0 +1,1 @@
+If you have any questions about Offcourse, have look at the [FAQ](https://www.offcourse.io/faq) on our company website, or contact the maintainers of this website via [contact@offcourse.io](contact@offcourse.io).
