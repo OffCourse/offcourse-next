@@ -1,6 +1,6 @@
-# Colors
+## Colors
 
-## Primary Color
+### Primary Color
 
 ```color
 value: !import primary
@@ -8,7 +8,7 @@ name: Primary
 span: 6
 ```
 
-## Colors with Meaning
+### Colors with Meaning
 
 ```color
 value: !import positive
@@ -40,13 +40,13 @@ name: Info
 span: 2
 ```
 
-## Grayscale
+### Grayscale
 
 ```color-palette
 colors: !import grayScale
 ```
 
-# Typography
+## Typography
 
 ```type
 {
