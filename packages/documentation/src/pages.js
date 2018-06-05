@@ -56,13 +56,18 @@ const pages = [
     content: pageLoader("./visual-identity.md")
   },
   {
-    path: "/principles",
-    title: "Principles",
+    path: "/guidelines",
+    title: "Guidelines",
     pages: [
       {
-        path: "/principles/design",
-        title: "Design Principles",
-        content: pageLoader("/atomic-design-methodology.md")
+        path: "./guidelines/design-guidelines",
+        title: "Design",
+        content: pageLoader("./design-guidelines.md")
+      },
+      {
+        path: "./guidelines/community-guidelines",
+        title: "Community",
+        content: pageLoader("./community-guidelines.md")
       }
     ]
   },
