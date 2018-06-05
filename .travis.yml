@@ -7,4 +7,4 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-    - yarn build && git checkout master && yarn run publish --non-interactive
+    - yarn build && git checkout master && yarn run publish
