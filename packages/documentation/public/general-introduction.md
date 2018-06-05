@@ -37,7 +37,7 @@ The authors and maintainers of this website are
 
 ## Contributing
 
-Offcourse is a not-for-profit organization. The learning platform we build is continuously under development. You can help us **build** the Offcourse platform and its community further through **code and design contribution**. If there’s a feature you’d like to work on to grow your coding skills, please do so. It doesn’t matter if you are new to programming or advanced, we welcome all levels and backgrounds to our community. The same goes for design work. The features and design elements that are up for development can be found on the [Product Roadmap](). We manage the Bug Database from our [GitHub Repo ](https://github.com/OffCourse/offcourse-next).
+Offcourse is a not-for-profit organization. The learning platform we build is continuously under development. You can help us **build** the Offcourse platform and its community further through **code and design contribution**. If there’s a feature you’d like to work on to grow your coding skills, please do so. It doesn’t matter if you are new to programming or advanced, we welcome all levels and backgrounds to our community. The same goes for design work. The features and design elements that are up for development can be found on the [Feature Roadmap](https://github.com/OffCourse/offcourse-next/tree/master/packages/documentation/public/feature-roadmap). We manage the Bug Database from our [GitHub Repo ](https://github.com/OffCourse/offcourse-next).
 
 
-Before you start, please read our [Contributing Guidelines ](https://github.com/OffCourse/offcourse-next/blob/master/packages/documentation/public/Contributing%20Guidelines.md) to make sure we can work together smoothly and pleasant. 
+Before you start, please read the 'Contribute' section containing our guidelines to work together smoothly and pleasant. 
