@@ -91,6 +91,11 @@ const pages = [
       name: "organisms",
       blocks: organisms
     })
+  },
+  {
+    path: "/contact",
+    title: "Contact",
+    content: pageLoader("./contact")
   }
 ];
 
