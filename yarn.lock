@@ -789,12 +789,35 @@
     react-sortable-hoc "^0.8.3"
     voca "^1.4.0"
 
+"@offcourse/molecules@^1.0.1":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@offcourse/molecules/-/molecules-1.0.2.tgz#22b8011323b4dd5ab56ca218564f2c04e55964e9"
+  dependencies:
+    "@offcourse/atoms" "^1.1.0"
+    atoms "^0.2.0"
+    ramda "^0.25.0"
+    react-copy-to-clipboard "^5.0.1"
+    react-sidebar "^2.3.2"
+    react-sortable-hoc "^0.8.3"
+    voca "^1.4.0"
+
 "@offcourse/organisms@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@offcourse/organisms/-/organisms-1.0.0.tgz#3bdd3e03726a3d635fd4ebcffb7d5d23b989ac22"
   dependencies:
     "@offcourse/atoms" "^0.0.0-semantically-released"
     "@offcourse/molecules" "^0.0.0-semantically-released"
+    formik "^0.11.11"
+    ramda "^0.25.0"
+    voca "^1.4.0"
+    yup "^0.25.1"
+
+"@offcourse/organisms@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@offcourse/organisms/-/organisms-1.0.1.tgz#c1ea8ddd054425cdcc240f403f39560e9d896306"
+  dependencies:
+    "@offcourse/atoms" "^1.1.0"
+    "@offcourse/molecules" "^1.0.1"
     formik "^0.11.11"
     ramda "^0.25.0"
     voca "^1.4.0"
@@ -7538,10 +7561,6 @@ normalize-url@^1.4.0:
 normalize-url@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.0.1.tgz#2cff7f20468c75e0e968552b7caac77a51ebcae6"
-
-now@^11.2.1:
-  version "11.2.1"
-  resolved "https://registry.yarnpkg.com/now/-/now-11.2.1.tgz#33fea6a78a464e554780e4a6134d1a98b7e9f49e"
 
 npm-bundled@^1.0.1:
   version "1.0.3"

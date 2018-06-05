@@ -60,9 +60,9 @@ class Button extends Component {
     const disabled = this.props.disabled || this.props.loading;
 
     const widths = {
-      small: "6.25rem",
-      medium: "9.375rem",
-      large: "18.75rem"
+      small: "5.33333rem",
+      medium: "8rem",
+      large: "16rem"
     };
 
     const text = formatTitle(children);
