@@ -31,13 +31,10 @@ const createFragment = () => {
 const fragments = [text2, text4, text1, text3];
 
 class Content extends React.Component {
-  state = { items: fragments };
-
   render() {
     const gutter = 16;
     const sizes = times(identity, 100).map(columns => {
       const mq = `${columns * 288 + (columns - 1) * 16}px`;
-      console.log(mq);
       return {
         columns,
         mq,
@@ -45,10 +42,16 @@ class Content extends React.Component {
       };
     });
 
-    const { items } = this.state;
+    const { items } = this.props;
 
     return (
-      <div style={{ padding: "16px" }}>
+      <div
+        style={{
+          paddingTop: "1rem",
+          display: "flex",
+          alignSelf: "center"
+        }}
+      >
         <Masonry sizes={sizes}>
           {({ forcePack }) =>
             items.map((fragment, index) => (
@@ -59,18 +62,6 @@ class Content extends React.Component {
                 <Group section="body">
                   <Text size="small">{fragment}</Text>
                 </Group>
-                <Button
-                  size="large"
-                  variant="warning"
-                  onClick={() => {
-                    const newItems = [...items];
-                    newItems.push(createFragment());
-                    this.setState({ items: newItems });
-                    forcePack();
-                  }}
-                >
-                  Add Item
-                </Button>
               </Card>
             ))
           }
@@ -79,21 +70,33 @@ class Content extends React.Component {
     );
   }
 }
+
 class App extends React.Component {
   state = {
-    isOpen: false
+    isOpen: false,
+    items: fragments
+  };
+
+  addItem = () => {
+    const newItems = [...this.state.items];
+    newItems.push(createFragment());
+    this.setState({ items: newItems });
   };
 
   render() {
     const toggle = () => this.setState({ isOpen: !this.state.isOpen });
     const links = [
       {
+        onClick: this.addItem,
+        title: "Add Item",
+        level: 1
+      },
+      {
         href: "https://condescending-wing-149611.netlify.com/",
         title: "Contribute",
         level: 3
       }
     ];
-
     return (
       <ThemeProvider theme={theme}>
         <AppShell
@@ -109,7 +112,7 @@ class App extends React.Component {
               content="width=device-width, initial-scale=1"
             />
           </Head>
-          <Content />
+          <Content items={this.state.items} />
         </AppShell>
       </ThemeProvider>
     );
