@@ -1,6 +1,6 @@
 {
   "name": "@offcourse/molecules",
-  "version": "0.0.0-semantically-released",
+  "version": "1.3.0",
   "description": "Molecular Building Blocks for the Offcourse Project",
   "author": "Jan Hein Hoogstad",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "start": "rollup -c -w"
   },
   "dependencies": {
-    "@offcourse/atoms": "^0.0.0-semantically-released",
+    "@offcourse/atoms": "^1.3.0",
     "atoms": "^0.2.0",
     "ramda": "^0.25.0",
     "react-copy-to-clipboard": "^5.0.1",
