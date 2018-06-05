@@ -7,4 +7,4 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-    - yarn build && yarn publish
+    - yarn build && yarn run publish
