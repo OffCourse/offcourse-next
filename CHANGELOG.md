@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/OffCourse/offcourse-next/compare/v1.3.0...v1.3.1) (2018-06-05)
+
+
+### Bug Fixes
+
+* **atoms:** change width on buttons ([23cae41](https://github.com/OffCourse/offcourse-next/commit/23cae41))
+* **atoms:** fix button width ([ca89ea1](https://github.com/OffCourse/offcourse-next/commit/ca89ea1))
+* **general:** add cd-version to publish step ([9b9ca1c](https://github.com/OffCourse/offcourse-next/commit/9b9ca1c))
+* **general:** attempt to fix travis ([e95ddb9](https://github.com/OffCourse/offcourse-next/commit/e95ddb9))
+* **general:** fix travis file ([43fb993](https://github.com/OffCourse/offcourse-next/commit/43fb993))
+* **general:** remove changelog for now ([83d0858](https://github.com/OffCourse/offcourse-next/commit/83d0858))
+* **general:** trigger build ([888340d](https://github.com/OffCourse/offcourse-next/commit/888340d))
+* **general:** try lerna 3.0.0-beta ([cc74f25](https://github.com/OffCourse/offcourse-next/commit/cc74f25))
+* **general:** try to fix ci again... ([f889952](https://github.com/OffCourse/offcourse-next/commit/f889952))
+
+
+
+
+
 <a name="1.3.0"></a>
 ## 1.3.0 (2018-06-05)
 

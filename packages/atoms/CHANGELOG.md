@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/offcourse/offcourse-next/compare/v1.3.0...v1.3.1) (2018-06-05)
+
+
+### Bug Fixes
+
+* **atoms:** change width on buttons ([23cae41](https://github.com/offcourse/offcourse-next/commit/23cae41))
+* **atoms:** fix button width ([ca89ea1](https://github.com/offcourse/offcourse-next/commit/ca89ea1))
+
+
+
+
+
 <a name="1.3.0"></a>
 ## 1.3.0 (2018-06-05)
 
