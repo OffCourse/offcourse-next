@@ -57,7 +57,7 @@ class Content extends React.Component {
             items.map((fragment, index) => (
               <Card key={index}>
                 <Heading size="small" section="title">
-                  {`Masonry Example ${index + 1}`}
+                  {`Card Example ${index + 1}`}
                 </Heading>
                 <Group section="body">
                   <Text size="small">{fragment}</Text>
@@ -88,7 +88,7 @@ class App extends React.Component {
     const links = [
       {
         onClick: this.addItem,
-        title: "Add Item",
+        title: "Add Card",
         level: 1
       },
       {

@@ -1,5 +1,6 @@
 {
   "name": "app",
+  "private": true,
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -27,7 +28,8 @@
   },
   "dependencies": {
     "@offcourse/atoms": "^0.0.0-semantically-released",
-    "@offcourse/organisms": "^1.0.1",
+    "@offcourse/molecules": "^0.0.0-semantically-released",
+    "@offcourse/organisms": "^0.0.0-semantically-released",
     "babel-plugin-styled-components": "^1.1.5",
     "next": "6.0.2",
     "next-progressbar": "0.0.2",
