@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo TEST",
     "build": "lerna run --scope @offcourse/* build",
-    "publish": "lerna --scope @offcourse/* publish --conventional-commits --changelog-preset angular-bitbucket"
+    "publish": "lerna publish --conventional-commits --changelog-preset angular-bitbucket --yes"
   },
   "version": "0.0.0-development",
   "repository": {
