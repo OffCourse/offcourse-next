@@ -31,22 +31,6 @@ const pages = [
     content: pageLoader("./general-introduction.md")
   },
   {
-    path: "/how-to-contribute",
-    title: "How To Contribute",
-    pages: [
-      {
-        path: "/how-to-contribute/about",
-        title: "About",
-        content: pageLoader("/how-to-contribute/about.md")
-      },
-      {
-        path: "/how-to-contribute/contributing-guidelines",
-        title: "Contributing Guidelines",
-        content: pageLoader("/how-to-contribute/contributing-guidelines.md")
-      }
-    ]
-  },
-  {
     path: "/feature-roadmap",
     title: "Feature Roadmap",
     pages: [
@@ -58,6 +42,11 @@ const pages = [
     ]
   },
   {
+    path: "/how-to-contribute",
+    title: "How To Contribute",
+    content: pageLoader("./how-to-contribute.md")
+  },
+  {
     path: "/visual-identity",
     title: "Visual Identity",
     imports: {
@@ -65,6 +54,17 @@ const pages = [
       grayScale: offcourse.namedGrayScale
     },
     content: pageLoader("./visual-identity.md")
+  },
+  {
+    path: "/principles",
+    title: "Principles",
+    pages: [
+      {
+        path: "/principles/design",
+        title: "Design Principles",
+        content: pageLoader("/atomic-design-methodology.md")
+      }
+    ]
   },
   {
     title: "Atoms",
