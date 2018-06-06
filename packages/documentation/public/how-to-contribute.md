@@ -57,7 +57,17 @@ Feature requests and Design Change Requests (DCRs) are an important part of the 
 
 This constitutes bug fixing as well as the contribution to a new feature from our roadmap and code contribution in general. You will find our bug database and roadmap soon to see what contributions can be made here. The following are guidelines for working on such changes.
 
-Before you start working on a feature or substantial code contribution that is not in our bug database or on our roadmap, please discuss it with the team and ensure it is an appropriate addition to the core product. You can do this by sending an email to [contact@offcourse.io](contact@offcourse.io)
+Before you start working on a feature or substantial code contribution that is not in our bug database or on our roadmap, please discuss it with the team and ensure it is an appropriate addition to the core product. You can do this by sending an email to [contact@offcourse.io](contact@offcourse.io).
+
+## How to use the feature roadmap
+
+Curious to know what features you can help us develop?
+
+You will see on our feature roadmap that there are a lot of opportunities to expand the functionalities of the platform, both the functionality of the course cards as well as navigation on the platform for example.
+We continuously update our roadmap with new features.
+
+We are also open to discuss features you would like to work on that are not on our roadmap. You can get in touch via [email](mailto:contact@offcourse.io) to discuss the possibilities.
+
 
 ## **Version control branching**
 
