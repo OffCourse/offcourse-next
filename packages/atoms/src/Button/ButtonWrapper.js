@@ -48,7 +48,7 @@ const ButtonWrapper = system(
     border: 0,
     fontSize: 1,
     lineHeight: 1,
-    minWidth: "5.3333333rem",
+    minWidth: "5.333333rem",
     maxWidth: "16rem",
     px: 6,
     py: 4,
