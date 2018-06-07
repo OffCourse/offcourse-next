@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <Catalog
-        title="Elements"
+        title="Blocks"
         theme={catalogTheme}
         useBrowserHistory={true}
         pages={pages}

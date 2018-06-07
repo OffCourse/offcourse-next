@@ -7,6 +7,7 @@
     "@offcourse/molecules": "^1.4.0",
     "@offcourse/organisms": "^1.4.0",
     "catalog": "^3.5.3",
+    "netlify-cli": "^1.2.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "^1.1.4",
@@ -18,10 +19,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish": "netlify deploy --access-token $NETLIFY_TOKEN"
   },
   "devDependencies": {
-    "react-app-rewire-yarn-workspaces": "^1.0.3",
     "react-app-rewired": "^1.5.2",
     "semantic-release": "^15.5.0",
     "semantic-release-monorepo": "^6.0.3"

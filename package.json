@@ -8,7 +8,8 @@
     "test": "echo TEST",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run --scope @offcourse/* build",
-    "publish": "lerna publish --conventional-commits --yes"
+    "publish": "lerna publish --conventional-commits --yes",
+    "postpublish": "cd packages/documentation && npm run build && npm run publish"
   },
   "version": "0.0.0",
   "repository": {
