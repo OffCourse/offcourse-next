@@ -100,7 +100,7 @@ class App extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <AppShell
-          position="absolute"
+          position="fixed"
           onLogoClick={toggle}
           toggleSidebar={toggle}
           isSidebarOpen={this.state.isOpen}
