@@ -9,8 +9,8 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna run --scope @offcourse/* build",
     "publish": "lerna publish --conventional-commits --yes",
-    "release:docs": "cd packages/documentation && npm run publish",
-    "release:app": "now --token $NOW_TOKEN -p",
+    "release:docs": "lerna run release --scope @offcourse/documentation",
+    "release:app": "lerna run release --scope @offcourse/app",
     "release": "npm run release:docs && npm run release:app",
     "postpublish": "npm run release"
   },

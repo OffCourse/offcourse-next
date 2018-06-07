@@ -8,7 +8,8 @@
     "dev": "next",
     "now-build": "echo 'Built on Travis CI'",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "release": "now --token $NOW_TOKEN -p"
   },
   "author": "",
   "license": "ISC",
@@ -34,6 +35,7 @@
     "babel-plugin-styled-components": "^1.1.5",
     "next": "6.0.2",
     "next-progressbar": "0.0.2",
+    "now": "^11.2.2",
     "ramda": "^0.25.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",

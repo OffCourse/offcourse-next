@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "publish": "netlify deploy --access-token $NETLIFY_TOKEN"
+    "release": "netlify deploy --access-token $NETLIFY_TOKEN"
   },
   "devDependencies": {
     "react-app-rewired": "^1.5.2",
