@@ -1,11 +1,11 @@
 {
   "name": "documentation",
-  "version": "0.0.0-semantically-released",
+  "version": "1.4.0",
   "private": true,
   "dependencies": {
-    "@offcourse/atoms": "0.0.0-semantically-released",
-    "@offcourse/molecules": "0.0.0-semantically-released",
-    "@offcourse/organisms": "0.0.0-semantically-released",
+    "@offcourse/atoms": "^1.4.0",
+    "@offcourse/molecules": "^1.4.0",
+    "@offcourse/organisms": "^1.4.0",
     "catalog": "^3.5.3",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -15,9 +15,9 @@
     "system-components": "^2.0.3"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {

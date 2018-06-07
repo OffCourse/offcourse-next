@@ -1,7 +1,7 @@
 {
   "name": "app",
   "private": true,
-  "version": "0.0.0-semantically-released",
+  "version": "1.4.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -27,9 +27,9 @@
     ]
   },
   "dependencies": {
-    "@offcourse/atoms": "0.0.0-semantically-released",
-    "@offcourse/molecules": "0.0.0-semantically-released",
-    "@offcourse/organisms": "0.0.0-semantically-released",
+    "@offcourse/atoms": "^1.4.0",
+    "@offcourse/molecules": "^1.4.0",
+    "@offcourse/organisms": "^1.4.0",
     "babel-plugin-styled-components": "^1.1.5",
     "next": "6.0.2",
     "next-progressbar": "0.0.2",
