@@ -10,7 +10,9 @@
     "build": "lerna run --scope @offcourse/* build",
     "publish": "lerna publish --conventional-commits --yes",
     "release:docs": "cd packages/documentation && npm run publish",
-    "postpublish": "npm run release:docs"
+    "release:app": "now --token $NOW_TOKEN -p",
+    "release": "npm run release:docs && npm run release:app",
+    "postpublish": "npm run release"
   },
   "version": "0.0.0",
   "repository": {
