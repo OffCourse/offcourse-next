@@ -1,1 +1,1 @@
-export { default as offcourse } from './default'
+export { default as offcourse } from "./default";
