@@ -6,6 +6,7 @@
     "@offcourse/atoms": "^1.4.0",
     "@offcourse/molecules": "^1.4.0",
     "@offcourse/organisms": "^1.4.0",
+    "@offcourse/themes": "^1.4.0",
     "catalog": "^3.5.3",
     "netlify-cli": "^1.2.2",
     "react": "^16.4.0",

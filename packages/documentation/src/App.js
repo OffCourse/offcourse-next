@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import pages from "./pages";
 import { Catalog } from "catalog";
-import { offcourse } from "./themes";
+import { offcourse } from "@offcourse/themes";
+import pages from "./pages";
 
 const { fonts, grayScale } = offcourse;
 

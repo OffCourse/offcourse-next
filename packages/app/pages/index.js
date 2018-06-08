@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { times, identity } from "ramda";
 import { ThemeProvider, injectGlobal } from "styled-components";
-import { offcourse as theme } from "../themes";
+import { offcourse as theme } from "@offcourse/themes";
 import { Card, Heading, Group, Button, Masonry, Text } from "@offcourse/atoms";
 import { AppShell } from "@offcourse/organisms";
 

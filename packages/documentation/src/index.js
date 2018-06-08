@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import { ThemeProvider } from "styled-components";
-import { offcourse } from "./themes";
+import { offcourse as theme } from "@offcourse/themes";
+import App from "./App";
 
 ReactDOM.render(
-  <ThemeProvider theme={offcourse}>
+  <ThemeProvider theme={theme}>
     <App />
   </ThemeProvider>,
   document.getElementById("root")

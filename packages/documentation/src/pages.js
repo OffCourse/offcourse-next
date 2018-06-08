@@ -1,8 +1,8 @@
 import { pageLoader } from "catalog";
+import { offcourse } from "@offcourse/themes";
 import * as atoms from "@offcourse/atoms";
 import * as molecules from "@offcourse/molecules";
 import * as organisms from "@offcourse/organisms";
-import { offcourse } from "./themes";
 
 const baseUrl = `https://github.com/OffCourse/offcourse-next/tree/master/packages/atoms/src/`;
 
