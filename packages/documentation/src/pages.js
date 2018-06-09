@@ -1,8 +1,13 @@
+import React from "react";
 import { pageLoader } from "catalog";
 import { offcourse } from "@offcourse/themes";
 import * as atoms from "@offcourse/atoms";
 import * as molecules from "@offcourse/molecules";
 import * as organisms from "@offcourse/organisms";
+import RoadmapPage from "./roadmapPage";
+
+import widget1 from "./features/embeddable-widget.yaml";
+import widget2 from "./features/themeable-card.yaml";
 
 const baseUrl = `https://github.com/OffCourse/offcourse-next/tree/master/packages/atoms/src/`;
 
@@ -33,13 +38,7 @@ const pages = [
   {
     path: "/feature-roadmap",
     title: "Feature Roadmap",
-    pages: [
-      {
-        path: "/feature-roadmap/about",
-        title: "About",
-        content: pageLoader("/feature-roadmap/about.md")
-      }
-    ]
+    content: () => <RoadmapPage items={[widget1, widget2]} />
   },
   {
     path: "/how-to-contribute",
@@ -56,13 +55,18 @@ const pages = [
     content: pageLoader("./visual-identity.md")
   },
   {
-    path: "/principles",
-    title: "Principles",
+    path: "/guidelines",
+    title: "Guidelines",
     pages: [
       {
-        path: "/principles/design",
-        title: "Design Principles",
-        content: pageLoader("/atomic-design-methodology.md")
+        path: "/guidelines/design",
+        title: "Design Guidelines",
+        content: pageLoader("./design-guidelines.md")
+      },
+      {
+        path: "/guidelines/community",
+        title: "Community Guidelines",
+        content: pageLoader("./community-guidelines.md")
       }
     ]
   },

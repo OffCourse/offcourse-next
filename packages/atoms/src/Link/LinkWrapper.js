@@ -10,6 +10,7 @@ const LinkWrapper = system(
     lineHeight: 0,
     borderBottom: 2,
     pb: 0,
+    color: "black",
     fontSize: 1,
     m: 0,
     mr: 0,
@@ -18,10 +19,8 @@ const LinkWrapper = system(
       outline: "none"
     }
   },
+
   props => ({
-    color: props.disabled
-      ? t("colors.disabled")(props)
-      : t("colors.black")(props),
     borderColor: props.disabled
       ? t("colors.disabled")(props)
       : t("colors.black")(props),

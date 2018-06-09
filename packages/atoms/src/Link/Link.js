@@ -8,10 +8,21 @@ import LinkWrapper from "./LinkWrapper";
  */
 
 class Link extends Component {
+  color() {
+    const { active, disabled } = this.props;
+    if (disabled) {
+      return "disabled";
+    }
+    if (active) {
+      return "primary";
+    }
+    return "black";
+  }
   render() {
-    const { basic, href, children, onClick, disabled } = this.props;
+    const { active, basic, href, children, onClick, disabled } = this.props;
     return (
       <LinkWrapper
+        color={this.color()}
         borderBottom={basic ? 0 : 2}
         onClick={!disabled ? onClick : () => {}}
         href={!disabled ? href : undefined}
@@ -24,6 +35,10 @@ class Link extends Component {
 }
 
 Link.propTypes = {
+  /** determines if the link should only have basic styling*/
+  basic: PropTypes.bool,
+  /** determines if the link is in an active state*/
+  active: PropTypes.bool,
   /** determines if the link should be disabled */
   disabled: PropTypes.bool,
   /** the text that is displayed on the link */

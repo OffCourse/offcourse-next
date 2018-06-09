@@ -35,11 +35,19 @@ export default class Menu extends Component {
   }
 
   render() {
-    const { display, direction, px, justifyContent, alignItems } = this.props;
+    const {
+      display,
+      direction,
+      px,
+      pb,
+      justifyContent,
+      alignItems
+    } = this.props;
     return direction === "horizontal" ? (
       <LinkGroup
         display={display}
         px={px}
+        pb={pb}
         justifyContent={justifyContent}
         alignItems="center"
         links={this.filteredLinks()}

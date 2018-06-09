@@ -25,7 +25,7 @@ Or it can pass the link data as a prop
 const onClick = () => alert("click");
 const links = [
   { onClick, title: "Create Course" },
-  { href: "/bla", title: "Profile" },
+  { href: "/bla", active: true, title: "Profile" },
   { onClick, title: "Sign Out" }
 ];
 <LinkGroup links={links} />;

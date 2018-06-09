@@ -23,6 +23,18 @@ const facebook = (text, url) => {
 };
 
 class Share extends Component {
+  static propTypes = {
+    providers: PropTypes.arrayOf(
+      PropTypes.oneOf(["facebook", "twitter", "url"])
+    ).isRequired,
+    url: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+  };
+
+  static defaultProps = {
+    providers: []
+  };
+
   handlers = {
     facebook,
     twitter
@@ -64,12 +76,5 @@ class Share extends Component {
     );
   }
 }
-
-Share.propTypes = {
-  providers: PropTypes.arrayOf(PropTypes.oneOf(["facebook", "twitter", "url"]))
-    .isRequired,
-  url: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
-};
 
 export default Share;

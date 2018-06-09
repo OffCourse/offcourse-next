@@ -4,16 +4,22 @@ import fontawesome from "@fortawesome/fontawesome";
 import FA from "@fortawesome/react-fontawesome";
 import faAsterisk from "@fortawesome/fontawesome-free-solid/faAsterisk";
 import faBars from "@fortawesome/fontawesome-free-solid/faBars";
+import faCheck from "@fortawesome/fontawesome-free-solid/faCheck";
 import faTimes from "@fortawesome/fontawesome-free-solid/faTimes";
 import faPlus from "@fortawesome/fontawesome-free-solid/faPlus";
 import faSort from "@fortawesome/fontawesome-free-solid/faSort";
 import faEye from "@fortawesome/fontawesome-free-solid/faEye";
+import faClock from "@fortawesome/fontawesome-free-solid/faClock";
+import faCalendarAlt from "@fortawesome/fontawesome-free-solid/faCalendarAlt";
 import faFacebook from "@fortawesome/fontawesome-free-brands/faFacebook";
 import faTwitter from "@fortawesome/fontawesome-free-brands/faTwitter";
 import IconWrapper from "./IconWrapper";
 
 const icons = {
   facebook: faFacebook,
+  calendar: faCalendarAlt,
+  checkmark: faCheck,
+  clock: faClock,
   twitter: faTwitter,
   asterisk: faAsterisk,
   remove: faTimes,

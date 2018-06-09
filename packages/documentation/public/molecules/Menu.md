@@ -22,3 +22,15 @@ const links = [
 
 <Menu maxLevel={0} links={links} direction="horizontal"/>
 ```
+
+```react
+const onClick = () => alert("click");
+
+const links = [
+  { onClick, title: "Create Course", active: true, level: 0},
+  { href: "/bla", title: "Profile", level: 2 },
+  { onClick, title: "Sign Out", level: 1}
+];
+
+<Menu maxLevel={2} links={links} direction="horizontal"/>
+```

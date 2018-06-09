@@ -1,0 +1,21 @@
+name: Embeddable Card
+what: 
+  description: Functionality to make the course cards embeddable on external platforms
+  requirements:
+    mustHaves:
+      - General website embeddability
+    niceToHaves:
+      - Socials embeddability
+planning:
+  due: July
+  completed: false
+  started: false
+  duration: 40
+who: An enthusiast with advanced JavaScript knowledge
+skills: 
+  - JavaScript
+  - React
+  - HTML
+  - CSS
+why: Ability to communicate knowledge through any desired online platform
+how: To be discussed
