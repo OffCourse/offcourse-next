@@ -11,7 +11,8 @@ const SectionWrapper = system(
   "alignItems",
   "justifyContent",
   "flexDirection",
-  "display"
+  "display",
+  "color"
 );
 
 export default SectionWrapper;

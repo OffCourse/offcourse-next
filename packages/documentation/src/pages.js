@@ -6,8 +6,9 @@ import * as molecules from "@offcourse/molecules";
 import * as organisms from "@offcourse/organisms";
 import RoadmapPage from "./roadmapPage";
 
-import widget1 from "./features/embeddable-widget.yaml";
-import widget2 from "./features/themeable-card.yaml";
+import widget from "./features/embeddable-widget.yaml";
+import themeCard from "./features/themeable-card.yaml";
+import search from "./features/courses-search.yaml";
 
 const baseUrl = `https://github.com/OffCourse/offcourse-next/tree/master/packages/atoms/src/`;
 
@@ -38,7 +39,7 @@ const pages = [
   {
     path: "/feature-roadmap",
     title: "Feature Roadmap",
-    content: () => <RoadmapPage items={[widget1, widget2]} />
+    content: () => <RoadmapPage items={[widget, themeCard, search]} />
   },
   {
     path: "/how-to-contribute",

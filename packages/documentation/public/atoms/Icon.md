@@ -9,6 +9,18 @@ All Icons that we use...
 ```
 
 ```react|span-2
+  <Icon name="checkmark" />
+```
+
+```react|span-2
+  <Icon name="clock" />
+```
+
+```react|span-2
+  <Icon name="calendar" />
+```
+
+```react|span-2
   <Icon name="eye" />
 ```
 

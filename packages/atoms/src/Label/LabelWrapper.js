@@ -4,6 +4,7 @@ const LabelWrapper = system(
   {
     is: "div",
     p: 0,
+    color: "black",
     m: 0
   },
   props => ({

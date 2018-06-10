@@ -3,19 +3,19 @@ what:
   description: The course card's functionality to change its styling corresponding to the external platform's style guide, make the cards "themable"
   requirements:
     mustHaves:
-      - General website embeddability
+      - Ability to adapt styling to external platform's style guide
     niceToHaves:
-      - Socials embeddability
+      - Premium option to hide Offcourse logo
 planning:
-  due: July
-  duration: 10
-  completed: true
+  duration: 10 hours
+  due: July 30
+  completed: false
   started: true
-who: An enthusiast with basic React (JavaScript library) knowledge
+who: 
+  description: An enthusiast with basic React (JavaScript library) knowledge
+  skills: 
+    - JavaScript
+    - React
+    - HTML
+    - CSS
 why: Ability to communicate knowledge through any desired online platform
-how: To be discussed
-skills: 
-  - JavaScript
-  - React
-  - HTML
-  - CSS

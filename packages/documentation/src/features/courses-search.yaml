@@ -1,0 +1,21 @@
+name: Courses Search
+what:
+  description: Functionality that allows users to navigate through available content
+  requirements:
+    mustHaves:
+      - Ability to search through content
+    niceToHaves:
+      - Possible auto-complete / suggestions functionalities
+planning:
+  due: Aug 15
+  completed: false
+  started: false
+  duration: 40 hours
+who: 
+  description: An enthusiast with advanced JavaScript knowledge
+  skills: 
+    - JavaScript
+    - React
+    - HTML
+    - CSS
+why: It increases the usability of the platform's "growing content" offer

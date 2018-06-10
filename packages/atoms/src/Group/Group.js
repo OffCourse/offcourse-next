@@ -12,6 +12,7 @@ export default system(
     pb: 0,
     pt: 0
   },
-  "height"
+  "height",
+  "color"
 ).extend`
 `;

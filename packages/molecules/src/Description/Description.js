@@ -8,16 +8,16 @@ class Description extends Component {
   static Text = Text;
 
   render() {
-    const { children, label } = this.props;
+    const { pb, children, label } = this.props;
     if (label) {
       return (
-        <DescriptionWrapper>
+        <DescriptionWrapper pb={pb}>
           <Label>{label}</Label>
           <Text>{children}</Text>
         </DescriptionWrapper>
       );
     }
-    return <DescriptionWrapper>{children} </DescriptionWrapper>;
+    return <DescriptionWrapper pb={pb}>{children} </DescriptionWrapper>;
   }
 }
 

@@ -26,9 +26,9 @@ export default class TagGroup extends Component {
   };
 
   render() {
-    const { tags, children } = this.props;
+    const { tags, pt, pb, children } = this.props;
     return (
-      <TagGroupWrapper>
+      <TagGroupWrapper pb={pb} pt={pt}>
         {isEmpty(tags) ? children : this.renderTags()}
       </TagGroupWrapper>
     );

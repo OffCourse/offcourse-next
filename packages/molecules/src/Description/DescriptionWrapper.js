@@ -1,4 +1,6 @@
-import styled from "styled-components";
-const DescriptionWrapper = styled.div``;
+import system from "system-components";
 
-export default DescriptionWrapper;
+export default system({
+  pb: 0
+}).extend`
+`;

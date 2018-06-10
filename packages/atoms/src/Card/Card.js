@@ -8,7 +8,8 @@ export default class Card extends Component {
   renderSections() {
     const { children } = this.props;
     return Children.map(children, (child, index) => {
-      return <Section>{child}</Section>;
+      const { inverse } = child.props;
+      return <Section bg={inverse ? "grayScale.3" : "white"}>{child}</Section>;
     });
   }
   render() {

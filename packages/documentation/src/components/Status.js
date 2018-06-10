@@ -1,35 +1,26 @@
 import React, { Component } from "react";
-import { Group, Icon, Text } from "@offcourse/atoms";
+import { Group } from "@offcourse/atoms";
+import Stat from "./Stat";
+
+const COMPLETE = "COMPLETE";
+const AVAILABLE = "AVAILABLE";
+const IN_PROGRESS = "IN PROGRESS";
+
+const statusIcons = {
+  [IN_PROGRESS]: "rocket",
+  [COMPLETE]: "checkmark",
+  [AVAILABLE]: "add"
+};
 
 export default class Status extends Component {
   render() {
-    const { due, duration, completed, status } = this.props;
+    const { inverse, due, duration, status } = this.props;
+    const statusIcon = statusIcons[status];
     return (
       <Group flexDirection="row" section="time">
-        <Group
-          alignItems="center"
-          justifyContent="center"
-          flexDirection="column"
-        >
-          <Icon color={completed ? "primary" : "lightGray"} name="checkmark" />
-          <Text>{status}</Text>
-        </Group>
-        <Group
-          alignItems="center"
-          justifyContent="center"
-          flexDirection="column"
-        >
-          <Icon name="clock" />
-          <Text>{duration}h</Text>
-        </Group>
-        <Group
-          alignItems="center"
-          justifyContent="center"
-          flexDirection="column"
-        >
-          <Icon name="calendar" />
-          <Text>{due}</Text>
-        </Group>
+        <Stat inverse={inverse} iconName={statusIcon} label={status} />
+        <Stat inverse={inverse} iconName="calendar" label={due} />
+        <Stat inverse={inverse} iconName="clock" label={duration} />
       </Group>
     );
   }
