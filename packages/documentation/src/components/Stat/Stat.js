@@ -19,7 +19,7 @@ export default class Stat extends Component {
         justifyContent="center"
         flexDirection="column"
       >
-        <Icon color={iconColor} name={iconName} />
+        <Icon size="large" color={iconColor} name={iconName} />
         <Label color={labelColor} pt={4}>{`${label}`}</Label>
       </StatWrapper>
     );

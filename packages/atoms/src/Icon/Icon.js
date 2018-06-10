@@ -31,7 +31,7 @@ class Icon extends Component {
   static sizes = {
     small: "xs",
     medium: "lg",
-    large: "4x"
+    large: "2x"
   };
 
   icon() {

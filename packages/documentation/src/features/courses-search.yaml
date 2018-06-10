@@ -15,7 +15,8 @@ who:
   description: An enthusiast with advanced JavaScript knowledge
   skills: 
     - JavaScript
-    - React
-    - HTML
+    - GraphQL
+    - Apollo Client
     - CSS
+    - React
 why: It increases the usability of the platform's "growing content" offer

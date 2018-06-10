@@ -31,6 +31,8 @@ export default class FeatureCard extends Component {
       <Card>
         <Heading section="header">{name}</Heading>
 
+        <Status {...planning} />
+
         <Group alignItems="stretch" section="what">
           <Description pb={6} label="what does this feature do?">
             {what.description}
@@ -52,8 +54,11 @@ export default class FeatureCard extends Component {
           </Description>
           <TagGroup pt={6} section="tags" tags={who.skills} />
         </Group>
-        <Status inverse {...planning} />
-        <Share url="aa" text="aaa" providers={["twitter", "facebook", "url"]} />
+        <Share
+          url="aa"
+          text="aaa"
+          providers={["twitter", "facebook", "contact"]}
+        />
       </Card>
     );
   }

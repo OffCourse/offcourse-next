@@ -25,7 +25,7 @@ const facebook = (text, url) => {
 class Share extends Component {
   static propTypes = {
     providers: PropTypes.arrayOf(
-      PropTypes.oneOf(["facebook", "twitter", "url"])
+      PropTypes.oneOf(["facebook", "twitter", "contact", "url"])
     ).isRequired,
     url: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired
@@ -42,7 +42,7 @@ class Share extends Component {
 
   renderIcons() {
     const { providers, url, text } = this.props;
-    const isProvider = provider => provider !== "url";
+    const isProvider = provider => provider !== "url" && provider !== "contact";
     const socialProviders = filter(isProvider, providers);
     return map(
       name => (
@@ -66,12 +66,22 @@ class Share extends Component {
     );
   }
 
+  renderContact() {
+    const { url } = this.props;
+    return (
+      <CopyToClipboard text={url}>
+        <Link>Contact Us</Link>
+      </CopyToClipboard>
+    );
+  }
+
   render() {
     const { url, providers } = this.props;
     return (
       <ShareWrapper>
         <IconGroup>{this.renderIcons()}</IconGroup>
         {contains("url", providers) && this.renderGetUrl()}
+        {contains("contact", providers) && this.renderContact()}
       </ShareWrapper>
     );
   }
