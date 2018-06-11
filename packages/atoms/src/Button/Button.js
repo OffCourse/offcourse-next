@@ -52,6 +52,7 @@ class Button extends Component {
       onClick,
       tabindex,
       variant,
+      mt,
       size,
       ...rest
     } = this.props;
@@ -69,6 +70,7 @@ class Button extends Component {
 
     return (
       <ButtonWrapper
+        mt={mt}
         type={buttonType}
         variant={disabled ? "disabled" : variant}
         disabled={disabled}

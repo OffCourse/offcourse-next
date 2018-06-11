@@ -2,14 +2,12 @@ name: Themeable Card
 what: 
   description: The course card's functionality to change its styling corresponding to the external platform's style guide, make the cards "themable"
   requirements:
-    mustHaves:
-      - Ability to adapt styling to external platform's style guide
-    niceToHaves:
-      - Premium option to hide Offcourse logo
+    - Ability to adapt styling to external platform's style guide
+    - Premium option to hide Offcourse logo
 planning:
   duration: 10 hours
   due: July 30
-  completed: false
+  completed: true
   started: true
 who: 
   description: An enthusiast with basic React (JavaScript library) knowledge
@@ -18,4 +16,6 @@ who:
     - React
     - HTML
     - CSS
+  team:
+    - Jan Hein Hoogstad
 why: Ability to communicate knowledge through any desired online platform

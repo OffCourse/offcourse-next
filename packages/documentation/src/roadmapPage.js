@@ -37,7 +37,7 @@ export default class RoadmapPage extends Component {
 
   render() {
     return (
-      <Page>
+      <div>
         <Group
           alignItems="stretch"
           justifyContent="space-between"
@@ -54,7 +54,7 @@ export default class RoadmapPage extends Component {
             {({ filtered }) => <Roadmap items={filtered} />}
           </Filter>
         </Group>
-      </Page>
+      </div>
     );
   }
 }

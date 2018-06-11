@@ -45,6 +45,7 @@ const ButtonWrapper = system(
     height: "2.813rem",
     justifyContent: "center",
     m: 0,
+    mt: 0,
     border: 0,
     fontSize: 1,
     lineHeight: 1,

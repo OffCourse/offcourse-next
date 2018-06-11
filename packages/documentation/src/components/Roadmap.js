@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { times, map, identity } from "ramda";
 import { Masonry } from "@offcourse/atoms";
 import FeatureCard from "./FeatureCard";
 
@@ -9,17 +10,22 @@ export default class Roadmap extends Component {
   };
 
   render() {
-    const sizes = [
-      { columns: 1, gutter: 0 },
-      { mq: "600px", columns: 2, gutter: 16 },
-      { mq: "1200px", columns: 3, gutter: 16 }
-    ];
+    const gutter = 16;
+    const sizes = times(identity, 100).map(columns => {
+      const mq = `${(columns > 2 ? columns + 1 : columns) * 288 +
+        (columns - 1) * 16}px`;
+      return {
+        columns,
+        mq,
+        gutter
+      };
+    });
     const { items } = this.props;
 
     return (
       <Masonry sizes={sizes}>
         {({ forcePack }) =>
-          items.map(item => <FeatureCard key={item.name} {...item} />)
+          map(item => <FeatureCard key={item.name} {...item} />, items)
         }
       </Masonry>
     );

@@ -2,10 +2,8 @@ name: Embeddable Card
 what: 
   description: Functionality to make the course cards embeddable on external platforms
   requirements:
-    mustHaves:
-      - General website embeddability
-    niceToHaves:
-      - Socials embeddability
+    - General website embeddability
+    - Socials embeddability
 planning:
   due: July 15
   completed: false
@@ -18,4 +16,6 @@ who:
     - React
     - HTML
     - CSS
+  team:
+    - Jan Hein Hoogstad
 why: Ability to communicate knowledge through any desired online platform

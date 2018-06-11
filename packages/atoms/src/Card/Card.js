@@ -9,7 +9,7 @@ export default class Card extends Component {
     const { children } = this.props;
     return Children.map(children, (child, index) => {
       const { inverse } = child.props;
-      return <Section bg={inverse ? "grayScale.1" : "white"}>{child}</Section>;
+      return <Section bg={inverse ? "grayScale.3" : "white"}>{child}</Section>;
     });
   }
   render() {
