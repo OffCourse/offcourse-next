@@ -10,16 +10,20 @@ export default class Stat extends Component {
   };
 
   render() {
-    const { inverse, iconName, label } = this.props;
+    const { direction, inverse, iconName, label } = this.props;
     const color = inverse ? "white" : "black";
     return (
       <StatWrapper
         alignItems="center"
         justifyContent="center"
-        flexDirection="column"
+        flexDirection={direction === "horizontal" ? "row" : "column"}
       >
         <Icon color={color} name={iconName} />
-        <Label color={color} pt={2}>{`${label}`}</Label>
+        <Label
+          color={color}
+          pt={direction === "horizontal" ? 0 : 2}
+          px={direction === "horizontal" ? 4 : 0}
+        >{`${label}`}</Label>
       </StatWrapper>
     );
   }

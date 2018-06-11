@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { map } from "ramda";
 import { Button, Label, Group, Card, Heading, Text } from "@offcourse/atoms";
-import { List, Share, Description, TagGroup } from "@offcourse/molecules";
-import StatGroup from "./StatGroup";
+import {
+  Description,
+  List,
+  Share,
+  StatGroup,
+  TagGroup
+} from "@offcourse/molecules";
 
 const COMPLETE = "COMPLETE";
 
