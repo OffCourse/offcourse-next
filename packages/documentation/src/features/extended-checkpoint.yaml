@@ -1,0 +1,19 @@
+name: Extended Checkpoint
+what:
+  description: Functionality that gives users more details about the content of individual course checkpoints
+  requirements:
+    mustHaves:
+      - General website embeddability
+    niceToHaves:
+      - Socials embeddability
+planning:
+  due: July 15
+  completed: false
+  started: false
+  duration: 20 hours
+who:
+  description: An enthusiast with basic HTML/CSS knowledge and experience in UX / UI / graphic design
+  skils:
+    - HTML
+    - CSS
+why: Through a more direct overview on the checkpoint it increases the usability 

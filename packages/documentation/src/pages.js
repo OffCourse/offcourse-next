@@ -9,6 +9,7 @@ import RoadmapPage from "./roadmapPage";
 import widget from "./features/embeddable-widget.yaml";
 import themeCard from "./features/themeable-card.yaml";
 import search from "./features/courses-search.yaml";
+import checkpoint from "./features/extended-checkpoint.yaml";
 
 const baseUrl = `https://github.com/OffCourse/offcourse-next/tree/master/packages/atoms/src/`;
 
@@ -39,7 +40,9 @@ const pages = [
   {
     path: "/feature-roadmap",
     title: "Feature Roadmap",
-    content: () => <RoadmapPage items={[widget, themeCard, search]} />
+    content: () => (
+      <RoadmapPage items={[widget, themeCard, search, checkpoint]} />
+    )
   },
   {
     path: "/how-to-contribute",

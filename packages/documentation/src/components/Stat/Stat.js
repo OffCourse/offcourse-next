@@ -11,16 +11,16 @@ export default class Stat extends Component {
 
   render() {
     const { inverse, iconName, label } = this.props;
-    const iconColor = inverse ? "white" : "black";
-    const labelColor = inverse ? "white" : "black";
+    const iconColor = inverse ? "black" : "black";
+    const labelColor = inverse ? "black" : "black";
     return (
       <StatWrapper
         alignItems="center"
         justifyContent="center"
         flexDirection="column"
       >
-        <Icon size="large" color={iconColor} name={iconName} />
-        <Label color={labelColor} pt={4}>{`${label}`}</Label>
+        <Icon color={iconColor} name={iconName} />
+        <Label color={labelColor} pt={2}>{`${label}`}</Label>
       </StatWrapper>
     );
   }
