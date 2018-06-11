@@ -11,6 +11,7 @@ planning:
   started: true
 who: 
   description: An enthusiast with basic React (JavaScript library) knowledge
+  level: advanced
   skills: 
     - JavaScript
     - React

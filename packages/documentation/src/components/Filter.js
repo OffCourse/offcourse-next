@@ -49,7 +49,7 @@ export default class Filter extends Component {
         <Menu
           direction="horizontal"
           justifyContent="flex-end"
-          pb={8}
+          pb={6}
           links={links}
         />
         {children({ filtered: this.selectedItems() })}

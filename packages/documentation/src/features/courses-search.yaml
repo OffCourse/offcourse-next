@@ -11,6 +11,7 @@ planning:
   duration: 40 hours
 who: 
   description: An enthusiast with advanced JavaScript knowledge
+  level: advanced
   skills: 
     - JavaScript
     - GraphQL

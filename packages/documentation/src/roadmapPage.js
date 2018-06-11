@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Page } from "catalog";
 import { Group } from "@offcourse/atoms";
 import { map, pathEq } from "ramda";
 import Roadmap from "./components/Roadmap";

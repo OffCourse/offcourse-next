@@ -11,6 +11,7 @@ what:
     - Socials embeddability
 who:
   description: An enthusiast with basic HTML/CSS knowledge and experience in UX / UI / graphic design
+  level: beginner
   skills:
     - HTML
     - CSS

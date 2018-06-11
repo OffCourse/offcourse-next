@@ -13,6 +13,15 @@ export {
   default as rocket
 } from "@fortawesome/fontawesome-free-solid/faRocket";
 export {
+  default as beginner
+} from "@fortawesome/fontawesome-free-solid/faThermometerEmpty";
+export {
+  default as advanced
+} from "@fortawesome/fontawesome-free-solid/faThermometerHalf";
+export {
+  default as expert
+} from "@fortawesome/fontawesome-free-solid/faThermometerFull";
+export {
   default as calendar
 } from "@fortawesome/fontawesome-free-solid/faCalendarAlt";
 export {
