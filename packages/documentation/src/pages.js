@@ -49,9 +49,14 @@ const pages = [
     title: "Guidelines",
     pages: [
       {
-        path: "/guidelines/contribution",
-        title: "Contribution Guidelines",
-        content: pageLoader("./contribution-guidelines.md")
+        path: "/guidelines/general",
+        title: "General Guidelines",
+        content: pageLoader("./general-guidelines.md")
+      },
+      {
+        path: "/guidelines/community",
+        title: "Community Guidelines",
+        content: pageLoader("./community-guidelines.md")
       },
       {
         path: "/guidelines/design",
@@ -59,9 +64,9 @@ const pages = [
         content: pageLoader("./design-guidelines.md")
       },
       {
-        path: "/guidelines/community",
-        title: "Community Guidelines",
-        content: pageLoader("./community-guidelines.md")
+        path: "/guidelines/contribution",
+        title: "Contribution Guidelines",
+        content: pageLoader("./contribution-guidelines.md")
       }
     ]
   },
