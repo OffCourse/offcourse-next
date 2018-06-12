@@ -8,12 +8,18 @@ export default class StatGroup extends Component {
   static Stat = Stat;
   static propTypes = {
     inverse: PropTypes.bool,
+    direction: PropTypes.oneOf(["horizontal", "vertical"]),
     stats: PropTypes.arrayOf(
       PropTypes.shape({
         iconName: PropTypes.string.isRequired,
         label: PropTypes.string.isRequired
       })
     )
+  };
+
+  static defaultProps = {
+    inverse: false,
+    direction: "vertical"
   };
 
   renderStats() {

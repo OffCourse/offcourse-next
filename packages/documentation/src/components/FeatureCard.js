@@ -74,16 +74,16 @@ export default class FeatureCard extends Component {
 
         <TagGroup pt={6} section="tags" tags={who.skills} />
 
-        <Group pt={5}>
+        <Group pt={6}>
           <Label>Feature Team</Label>
           {map(member => <Text key={member}>{member}</Text>, who.team)}
           <Button
             variant={status !== COMPLETE ? "default" : "disabled"}
-            mt={5}
+            mt={6}
             size="large"
           >
             {status !== COMPLETE
-              ? "Help Us Build This"
+              ? "Build This With Us"
               : "We Already Finished This"}
           </Button>
         </Group>

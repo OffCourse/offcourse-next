@@ -45,23 +45,14 @@ const pages = [
     )
   },
   {
-    path: "/how-to-contribute",
-    title: "How To Contribute",
-    content: pageLoader("./how-to-contribute.md")
-  },
-  {
-    path: "/visual-identity",
-    title: "Visual Identity",
-    imports: {
-      ...offcourse.colors,
-      grayScale: offcourse.namedGrayScale
-    },
-    content: pageLoader("./visual-identity.md")
-  },
-  {
     path: "/guidelines",
     title: "Guidelines",
     pages: [
+      {
+        path: "/guidelines/contribution",
+        title: "Contribution Guidelines",
+        content: pageLoader("./contribution-guidelines.md")
+      },
       {
         path: "/guidelines/design",
         title: "Design Guidelines",
@@ -73,6 +64,15 @@ const pages = [
         content: pageLoader("./community-guidelines.md")
       }
     ]
+  },
+  {
+    path: "/visual-identity",
+    title: "Visual Identity",
+    imports: {
+      ...offcourse.colors,
+      grayScale: offcourse.namedGrayScale
+    },
+    content: pageLoader("./visual-identity.md")
   },
   {
     title: "Atoms",
