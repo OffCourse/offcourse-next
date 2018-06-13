@@ -13,6 +13,8 @@ const filterTags = oldTags => {
   return Array.from(tags);
 };
 
+injectGlobal([theme.globals]);
+
 const baseUrl = "http://dfjdfsla.io";
 
 class App extends React.Component {
