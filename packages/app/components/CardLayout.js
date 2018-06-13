@@ -22,6 +22,7 @@ export default class CardLayout extends Component {
       <div
         style={{
           paddingTop: "1rem",
+          paddingBottom: "1rem",
           display: "flex",
           alignSelf: "center"
         }}
