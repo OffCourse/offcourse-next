@@ -5,24 +5,24 @@ I just want your extra time and your...
 Kiss
 --[Prince](https://genius.com/Prince-and-the-revolution-kiss-lyrics)
 
-The acronym K.I.S.S. arguably stands for [Keep It Simple Stupid](https://nl.wikipedia.org/wiki/KISS-principe), and is the leading principle for our entire project. Keeping things simple is not as easy as its sounds, and, to be quite honest, I am still figuring it out.
+The acronym K.I.S.S. arguably stands for [Keep It Simple Stupid](https://nl.wikipedia.org/wiki/KISS-principe), and is the leading principle for this entire project. Keeping things simple is not as easy as its sounds, and, to be quite honest, I am still figuring it out.
 
-My constant failure to make things simple did lead me to stumble on some good principles along the way, though. They are taken from the various domains that Offcourse combines: education, software development, graphic design, philosophy, and entrepreneurship. These guidelines are a first attempt to make them explicit.
+My constant failure to make things simple did lead me to stumble on some good principles along the way. They are taken from the various domains that I have been involved with: education, software development, graphic design, philosophy, and entrepreneurship. These guidelines are an attempt to make them explicit.
+
+Putting these guidelines on paper, however, is also an attempt to disown myself. As it stands, the Offcourse community still considers me the single source of truth. This is undesirable, because I scale badly. This document is not a set of rules or laws, but an attempt to start a discussion and a collaboration about what binds us: an _ethos_.
 
 ## 2. Break It Down
 
-Too many people consider programming as something magical. Coders are masters of a dark art that write incomprehensible spells.\* This could not be further from the truth. I believe that the true benefit of 'computational thinking' lies in the fact that it teaches people to break complex problems up into tiny, solvable ones. Looking backwards on my mistakes, I believe that every failed attempt to solve a problem - any problem! - was caused by one and the same thing. I didn't follow the process of breaking things down rigorously enough.
+Too many people consider programming as something magical. Coders are masters of a dark art that write incomprehensible spells.\* This could not be further from the truth. I believe that the true benefit of 'computational thinking' lies in the fact that it teaches people to break complex problems up into tiny, solvable ones. Looking backwards on my personal mistakes, I believe that every failed attempt to solve a problem - any problem! - was caused by one and the same thing. I didn't follow the process of breaking things down rigorously enough.
 
 Most problems are complex by nature. This is especially true form those that involve a lot of people and their tastes, opinions, and interests: reaching world peace, solving global warming, being productive in a tiny office space. The fact that problems are complex, however, does not release us from the responsibility to find the most simple and elegant solution possible.
 
-As we found out the hard way, learning is a really complex problem, but we are stubbornly dedicated to find the simplest solution.
+Software development use the so-called 'Single Responsibility Principle'. This principle states that every single unit of abstraction should do one thing, and one thing only. In his 'Atomic Design' methodology, Bratt Frost uses a similar approach by breaking every UI component down into small modular elements. For us, our 'Course' serves as a similar atomic unit for learning.
 
 ## 3. Assemble Big Dreams
 
 A dream you dream alone is only a dream. A dream you dream together is reality.
 -- [Joko Ono](https://en.wikiquote.org/wiki/Yoko_Ono)
-
---- COMPOSITION ---
 
 This idea of composability can and were applied to many other domains. Bratt Frost, for instance, uses the same approach in his 'atomic design', that greatly inspired our way of thinking about
 
@@ -37,6 +37,11 @@ And - as the dozens of relicts in our Github, Gitlab, Google Drive, Slack, Notio
 An important aspect of being part of a community, however, is allowing other to repeat mistakes that you already made. This doesn't mean that you cannot share your past experiences or warn them for the pitfalls along the way.
 
 ## 5. Stay Humble
+
+I don't fabricate it, ay, most of y'all be fakin', ay
+I stay modest 'bout it, ay, she elaborate it, ay
+
+-- [Kendrick Lamar](https://genius.com/Kendrick-lamar-humble-lyrics)
 
 "[Laziness, Impatience, and Hubris] are virtues of passion. They are not, however, virtues of community.
 The virtues of community sound like their opposites: diligence, patience, and humility."
