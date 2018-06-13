@@ -8,7 +8,7 @@
     "dev": "next",
     "now-build": "echo 'Built on Travis CI'",
     "build": "next build",
-    "start": "next start",
+    "start": "npm install && next start",
     "release": "now --token $NOW_TOKEN -p"
   },
   "author": "",
