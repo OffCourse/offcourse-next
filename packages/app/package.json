@@ -38,7 +38,7 @@
     "isomorphic-unfetch": "2.0.0",
     "react-apollo": "2.1.0",
     "babel-plugin-styled-components": "^1.1.5",
-    "next": "6.0.2",
+    "next": "6.0.3",
     "next-progressbar": "0.0.2",
     "now": "^11.2.2",
     "ramda": "^0.25.0",
