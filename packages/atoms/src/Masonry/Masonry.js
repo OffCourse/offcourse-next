@@ -30,15 +30,16 @@ export default class Masonry extends Component {
 
   render() {
     this.masonryRef = React.createRef();
-    const { sizes, children, loadMore } = this.props;
+    const { sizes, children, hasMore, loadMore } = this.props;
     return (
       <MasonryInfinite
         className="masonry"
+        initialLoad={false}
         ref={this.masonryRef}
-        hasMore={true}
+        hasMore={hasMore}
         pack={true}
         sizes={sizes}
-        useWindow={false}
+        useWindow={true}
         loadMore={loadMore}
       >
         {children({ forcePack: this.state.forcePack })}

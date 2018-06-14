@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { pick, uniq, map, mergeDeepWithKey } from "ramda";
+import { assoc, pick, uniq, map, mergeDeepWithKey } from "ramda";
 import { ThemeProvider, injectGlobal } from "styled-components";
 import { offcourse as theme } from "@offcourse/themes";
 import { Loading } from "@offcourse/atoms";
@@ -97,41 +97,36 @@ class App extends React.Component {
               if (loading) return <Loading size="large" />;
               if (error) return <div>HI</div>;
 
-              const items = mapCourses(data.courses.edges);
+              const { edges, pageInfo } = data.courses;
+              const items = mapCourses(edges);
 
               return (
                 <CardLayout
+                  hasMore={pageInfo.hasNextPage}
                   loadMore={() => {
                     fetchMore({
                       query: GET_COURSES,
                       variables: { after: data.courses.pageInfo.endCursor },
                       updateQuery: (previousResult, { fetchMoreResult }) => {
+                        const ml = map(pick(["node", "cursor"]));
                         const updateList = (l, r) => {
-                          const oldList = map(
-                            i => pick(["node", "cursor"], i),
-                            l
-                          );
-                          const newList = map(
-                            i => pick(["node", "cursor"], i),
-                            r
-                          );
                           return uniq(
-                            map(
-                              i => {
-                                return { ...i, __typename: "CourseEdge" };
-                              },
-                              [...oldList, ...newList]
-                            )
+                            map(assoc("__typename", "CourseEdge"), [
+                              ...ml(l),
+                              ...ml(r)
+                            ])
                           );
                         };
                         let concatValues = (k, l, r) => {
-                          return k == "edges" ? updateList(l, r) : l;
+                          return k == "edges" ? updateList(l, r) : r;
                         };
+
                         const newResult = mergeDeepWithKey(
                           concatValues,
                           previousResult,
                           fetchMoreResult
                         );
+
                         return newResult;
                       }
                     });

@@ -16,23 +16,27 @@ export default class CardLayout extends Component {
       };
     });
 
-    const { items, loadMore } = this.props;
+    const { items, loadMore, hasMore } = this.props;
     return (
       <div
         style={{
           paddingTop: "1rem",
+          flexDirection: "column",
+          overflow: "auto",
           paddingBottom: "1rem",
           display: "flex",
           alignSelf: "center"
         }}
       >
-        <Masonry loadMore={loadMore} sizes={sizes}>
-          {({ forcePack }) =>
-            items.map((course, index) => (
+        <Masonry hasMore={hasMore} loadMore={loadMore} sizes={sizes}>
+          {({ forcePack, ...rest }) => {
+            console.log(rest);
+            return items.map((course, index) => (
               <CourseCard key={course.courseId} course={course} />
-            ))
-          }
+            ));
+          }}
         </Masonry>
+        <button onClick={loadMore}>loadMore</button>
       </div>
     );
   }
