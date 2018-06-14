@@ -16,8 +16,7 @@ export default class CardLayout extends Component {
       };
     });
 
-    const { items } = this.props;
-
+    const { items, loadMore } = this.props;
     return (
       <div
         style={{
@@ -27,7 +26,7 @@ export default class CardLayout extends Component {
           alignSelf: "center"
         }}
       >
-        <Masonry sizes={sizes}>
+        <Masonry loadMore={loadMore} sizes={sizes}>
           {({ forcePack }) =>
             items.map((course, index) => (
               <CourseCard key={course.courseId} course={course} />

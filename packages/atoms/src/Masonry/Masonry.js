@@ -33,9 +33,12 @@ export default class Masonry extends Component {
     const { sizes, children, loadMore } = this.props;
     return (
       <MasonryInfinite
+        className="masonry"
         ref={this.masonryRef}
+        hasMore={true}
         pack={true}
         sizes={sizes}
+        useWindow={false}
         loadMore={loadMore}
       >
         {children({ forcePack: this.state.forcePack })}
