@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { times, map, identity } from "ramda";
-import { Masonry } from "@offcourse/atoms";
+import { Masonry, Loading } from "@offcourse/atoms";
+import Sensor from "react-visibility-sensor";
 import { CourseCard } from "@offcourse/organisms";
 import PropTypes from "prop-types";
 
@@ -37,7 +38,11 @@ export default class CardLayout extends Component {
             <CourseCard key={course.courseId} course={course} />
           ))}
         </Masonry>
-        <button onClick={loadMore}>loadMore</button>
+        <Sensor onChange={loadMore}>
+          {({ isVisible }) => {
+            return <div />;
+          }}
+        </Sensor>
       </div>
     );
   }

@@ -94,8 +94,8 @@ class App extends React.Component {
           </Head>
           <Query query={GET_COURSES}>
             {({ loading, error, data, fetchMore }) => {
-              if (loading) return <Loading size="large" />;
-              if (error) return <div>HI</div>;
+              if (loading) return null;
+              if (error) return null;
 
               const { edges, pageInfo } = data.courses;
               const items = mapCourses(edges);
