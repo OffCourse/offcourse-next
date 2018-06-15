@@ -38,7 +38,7 @@ export default class CardLayout extends Component {
             <CourseCard key={course.courseId} course={course} />
           ))}
         </Masonry>
-        <Sensor onChange={loadMore}>
+        <Sensor onChange={isVisible => isVisible && loadMore()}>
           {({ isVisible }) => {
             return <div>{hasMore && <Loading size="large" />}</div>;
           }}
