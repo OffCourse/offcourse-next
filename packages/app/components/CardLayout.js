@@ -26,6 +26,7 @@ export default class CardLayout extends Component {
       <div
         style={{
           padding: "1rem",
+          paddingRight: 0,
           width: "100%",
           flexDirection: "column",
           overflow: "auto",

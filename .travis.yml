@@ -16,5 +16,5 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-    - npm run publish -- --canary
+    - npm run publish -- --canary --tag alpha
 
