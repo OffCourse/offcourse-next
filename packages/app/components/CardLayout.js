@@ -20,7 +20,7 @@ export default class CardLayout extends Component {
       };
     });
 
-    const { items, loadMore } = this.props;
+    const { items, hasMore, loadMore } = this.props;
     const breakpoints = map(({ mq }) => mq, sizes);
     return (
       <div
@@ -40,7 +40,7 @@ export default class CardLayout extends Component {
         </Masonry>
         <Sensor onChange={loadMore}>
           {({ isVisible }) => {
-            return <div />;
+            return <div>{hasMore && <Loading size="large" />}</div>;
           }}
         </Sensor>
       </div>
