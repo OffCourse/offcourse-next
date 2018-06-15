@@ -23,7 +23,7 @@ const sizes = [
 ];
 
 <Masonry sizes={sizes}>
-{ ({ forcePack }) => ( fragments.map((fragment, index) => (
+{ fragments.map((fragment, index) => (
   <Card key={index}>
     <Heading size="small" section="title">
       {`Masonry Example ${index + 1}`}
@@ -36,10 +36,9 @@ const sizes = [
         const items = [...state.items];
         items.push(1);
         setState({items});
-        forcePack();
       }
       }>Add Item</Button>
   </Card>
-  ))) }
+)) }
 </Masonry>
 ```

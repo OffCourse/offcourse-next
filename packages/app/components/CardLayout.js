@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { times, identity } from "ramda";
+import { times, map, identity } from "ramda";
 import { Masonry } from "@offcourse/atoms";
 import { CourseCard } from "@offcourse/organisms";
 import PropTypes from "prop-types";
@@ -8,7 +8,10 @@ export default class CardLayout extends Component {
   render() {
     const gutter = 16;
     const sizes = times(identity, 100).map(columns => {
-      const mq = `${columns * 288 + (columns - 1) * 16}px`;
+      const offset = 304;
+      const colSpace = (columns + 1) * 288;
+      const gutterSpace = columns * 16;
+      const mq = colSpace + offset + gutterSpace;
       return {
         columns,
         mq,
@@ -16,25 +19,23 @@ export default class CardLayout extends Component {
       };
     });
 
-    const { items, loadMore, hasMore } = this.props;
+    const { items, loadMore } = this.props;
+    const breakpoints = map(({ mq }) => mq, sizes);
     return (
       <div
         style={{
-          paddingTop: "1rem",
+          padding: "1rem",
+          width: "100%",
           flexDirection: "column",
           overflow: "auto",
-          paddingBottom: "1rem",
           display: "flex",
-          alignSelf: "center"
+          boxSizing: "border-box"
         }}
       >
-        <Masonry hasMore={hasMore} loadMore={loadMore} sizes={sizes}>
-          {({ forcePack, ...rest }) => {
-            console.log(rest);
-            return items.map((course, index) => (
-              <CourseCard key={course.courseId} course={course} />
-            ));
-          }}
+        <Masonry breakpoints={breakpoints}>
+          {items.map(course => (
+            <CourseCard key={course.courseId} course={course} />
+          ))}
         </Masonry>
         <button onClick={loadMore}>loadMore</button>
       </div>
