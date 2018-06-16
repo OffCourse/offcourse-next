@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { times, map, identity } from "ramda";
-import { Masonry, Loading } from "@offcourse/atoms";
+import { Masonry, Group, Loading } from "@offcourse/atoms";
 import Sensor from "react-visibility-sensor";
 import { CourseCard } from "..";
 import CourseCardLayoutWrapper from "./CourseCardLayoutWrapper";
@@ -42,12 +42,17 @@ export default class CourseCardLayout extends Component {
     return (
       <CourseCardLayoutWrapper>
         <Masonry breakpoints={this.calculateBreakpoints()}>
-          {courses.map(course => (
-            <CourseCard key={course.courseId} course={course} />
-          ))}
+          {map(
+            course => <CourseCard key={course.courseId} course={course} />,
+            courses
+          )}
         </Masonry>
         <Sensor onChange={isVisible => isVisible && loadMore()}>
-          {() => <div>{hasMore && <Loading size="large" />}</div>}
+          {() => (
+            <Group alignItems="center">
+              {hasMore && <Loading size="large" />}
+            </Group>
+          )}
         </Sensor>
       </CourseCardLayoutWrapper>
     );
