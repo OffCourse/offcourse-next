@@ -1,3 +1,3 @@
-const withProgressBar = require("next-progressbar");
+const withGraphql = require("next-plugin-graphql");
 
-module.exports = withProgressBar({});
+module.exports = withGraphql();
