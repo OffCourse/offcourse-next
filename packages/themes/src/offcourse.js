@@ -55,7 +55,7 @@ const fonts = {
 
 const breakpoints = ["30rem", "48rem", "64rem"];
 
-const baseUnit = "16px";
+const baseUnit = 16;
 
 const fontSizes = ["0.75rem", "1rem", "1.375rem", "1.75rem"];
 

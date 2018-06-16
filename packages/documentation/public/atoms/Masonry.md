@@ -17,12 +17,9 @@ const createFragment = () => {
 
 const fragments = state.items.map(createFragment);
 
-const sizes = [
-  { columns: 1, gutter: 20 },
-  { mq: "650px", columns: 2, gutter: 20 }
-];
+const breakpoints = [624, 928];
 
-<Masonry sizes={sizes}>
+<Masonry breakpoints={breakpoints}>
 { fragments.map((fragment, index) => (
   <Card key={index}>
     <Heading size="small" section="title">

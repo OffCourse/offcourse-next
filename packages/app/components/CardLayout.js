@@ -40,9 +40,7 @@ export default class CardLayout extends Component {
           ))}
         </Masonry>
         <Sensor onChange={isVisible => isVisible && loadMore()}>
-          {({ isVisible }) => {
-            return <div>{hasMore && <Loading size="large" />}</div>;
-          }}
+          {() => <div>{hasMore && <Loading size="large" />}</div>}
         </Sensor>
       </div>
     );

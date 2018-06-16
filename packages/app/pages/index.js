@@ -2,7 +2,6 @@ import Head from "next/head";
 import { assoc, pick, uniq, map, mergeDeepWithKey } from "ramda";
 import { ThemeProvider, injectGlobal } from "styled-components";
 import { offcourse as theme } from "@offcourse/themes";
-import { Loading } from "@offcourse/atoms";
 import { AppShell } from "@offcourse/organisms";
 import { Query, graphql } from "react-apollo";
 import gql from "graphql-tag";
