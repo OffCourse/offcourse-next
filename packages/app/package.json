@@ -45,6 +45,6 @@
     "react-apollo": "2.1.0",
     "react-dom": "^16.4.0",
     "react-visibility-sensor": "^3.11.0",
-    "system-components": "^2.0.3"
+    "styled-components": "^2.1.0"
   }
 }
