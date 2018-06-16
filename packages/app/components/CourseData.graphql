@@ -1,0 +1,14 @@
+fragment CourseData on Course {
+  goal
+  curator
+  timestamp
+  courseId
+  description
+  revision
+  tags
+  checkpoints {
+    task
+    checkpointId
+    resourceUrl
+  }
+}

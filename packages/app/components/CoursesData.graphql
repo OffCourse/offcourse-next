@@ -1,0 +1,15 @@
+#import "./CourseData.graphql"
+
+fragment CoursesData on CourseConnection {
+  pageInfo {
+    startCursor
+    endCursor
+    hasNextPage
+  }
+  edges {
+    cursor
+    node {
+      ...CourseData
+    }
+  }
+}

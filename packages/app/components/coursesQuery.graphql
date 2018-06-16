@@ -1,26 +1,7 @@
+#import "./CoursesData.graphql"
+
 query courses($first: Int, $after: String) {
   courses(first: $first, after: $after) {
-    pageInfo {
-      startCursor
-      endCursor
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        goal
-        curator
-        timestamp
-        courseId
-        description
-        revision
-        tags
-        checkpoints {
-          task
-          checkpointId
-          resourceUrl
-        }
-      }
-    }
+    ...CoursesData
   }
 }
