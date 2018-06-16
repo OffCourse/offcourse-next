@@ -47,7 +47,6 @@ class CourseCard extends Component {
   renderCard = course => {
     const { onCheckpointToggle, shareMessage } = this.props;
     const {
-      courseId,
       goal,
       curator,
       courseUrl,
@@ -72,7 +71,7 @@ class CourseCard extends Component {
           </Description>
         )}
         <CheckpointList
-          section="checkpoints"
+          section="heckpoints"
           onToggle={onCheckpointToggle && this.handleCheckpointToggle}
           checkpoints={checkpoints}
         />
@@ -90,7 +89,7 @@ class CourseCard extends Component {
   };
 
   render() {
-    const { course, goal, curator, courseId } = this.props;
+    const { course } = this.props;
     return this.renderCard(course);
   }
 }
