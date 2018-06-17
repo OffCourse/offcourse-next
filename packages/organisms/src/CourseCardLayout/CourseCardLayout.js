@@ -38,12 +38,19 @@ export default class CourseCardLayout extends Component {
   }
 
   render() {
-    const { courses, hasMore, loadMore } = this.props;
+    const { courses, goToCollection, hasMore, loadMore } = this.props;
     return (
       <CourseCardLayoutWrapper>
         <Masonry breakpoints={this.calculateBreakpoints()}>
           {map(
-            course => <CourseCard key={course.courseId} course={course} />,
+            course => (
+              <CourseCard
+                onCuratorClick={goToCollection}
+                onTagClick={goToCollection}
+                key={course.courseId}
+                course={course}
+              />
+            ),
             courses
           )}
         </Masonry>

@@ -13,13 +13,24 @@ class Tag extends Component {
     /** the text that is displayed on the tag */
     children: PropTypes.string.isRequired,
     /** a url that the tag links to */
-    href: PropTypes.string
+    href: PropTypes.string,
+    /** a on click callback handler */
+    onClick: PropTypes.func
+  };
+
+  handleClick = event => {
+    const { onClick, children, href } = this.props;
+    if (onClick) {
+      event.preventDefault();
+      onClick({ tag: children });
+    }
   };
 
   render() {
+    const { children, href } = this.props;
     return (
-      <TagWrapper href={this.props.href}>
-        <Text size="small">{formatTitle(this.props.children)}</Text>
+      <TagWrapper onClick={this.handleClick} href={href}>
+        <Text size="small">{formatTitle(children)}</Text>
       </TagWrapper>
     );
   }

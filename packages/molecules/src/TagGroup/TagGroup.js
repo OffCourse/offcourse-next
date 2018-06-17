@@ -9,7 +9,10 @@ export default class TagGroup extends Component {
   static Tag = Tag;
 
   static propTypes = {
-    tags: PropTypes.arrayOf(PropTypes.string),
+    tags: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.string),
+      PropTypes.object
+    ]).isRequired,
     children: PropTypes.oneOfType([
       PropTypes.element,
       PropTypes.arrayOf(PropTypes.element)
@@ -21,8 +24,15 @@ export default class TagGroup extends Component {
   };
 
   renderTags = () => {
-    const { tags } = this.props;
-    return mapIndexed((text, index) => <Tag key={index}>{text}</Tag>, tags);
+    const { tags, onClick } = this.props;
+    return mapIndexed(
+      (text, index) => (
+        <Tag onClick={onClick} key={index}>
+          {text}
+        </Tag>
+      ),
+      tags
+    );
   };
 
   render() {

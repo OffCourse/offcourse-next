@@ -1,6 +1,7 @@
 import { Query } from "react-apollo";
 import { assoc, pick, uniq, map, mergeDeepWithKey } from "ramda";
 import coursesQuery from "./coursesQuery.graphql";
+import Router from "next/router";
 
 const filterTags = oldTags => {
   const tags = new Set(oldTags.filter(t => t && t));
@@ -11,6 +12,7 @@ const mapCourses = courses =>
   map(
     ({ node }) => ({
       ...node,
+      profileUrl: `/?curator=${node.curator}`,
       tags: filterTags(node.tags),
       courseUrl: "TEST"
     }),
@@ -19,9 +21,9 @@ const mapCourses = courses =>
 
 export default class CoursesQuery extends React.Component {
   render() {
-    const { children } = this.props;
+    const { children, variables } = this.props;
     return (
-      <Query query={coursesQuery}>
+      <Query query={coursesQuery} variables={variables}>
         {({ loading, error, data, fetchMore }) => {
           const { edges, pageInfo } = data.courses;
           const courses = mapCourses(edges);
@@ -29,7 +31,7 @@ export default class CoursesQuery extends React.Component {
           const loadMore = () => {
             fetchMore({
               query: coursesQuery,
-              variables: { after: pageInfo.endCursor },
+              variables: { ...variables, after: pageInfo.endCursor },
               updateQuery: (previousResult, { fetchMoreResult }) => {
                 const ml = map(pick(["node", "cursor"]));
                 const updateList = (l, r) => {

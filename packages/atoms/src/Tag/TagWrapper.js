@@ -11,6 +11,8 @@ const TagWrapper = system({
     color: "white"
   }
 }).extend`
+  cursor: pointer;
+  user-select: "none";
   box-sizing: border-box;
   font-family: ${({ theme }) => theme.fonts.bold};
   text-decoration: inherit;

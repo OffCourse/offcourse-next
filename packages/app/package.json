@@ -29,10 +29,10 @@
     ]
   },
   "dependencies": {
-    "@offcourse/atoms": "next",
-    "@offcourse/molecules": "next",
-    "@offcourse/organisms": "next",
-    "@offcourse/themes": "next",
+    "@offcourse/atoms": "^1.4.0",
+    "@offcourse/molecules": "^1.4.0",
+    "@offcourse/organisms": "^1.4.0",
+    "@offcourse/themes": "^1.4.0",
     "apollo-boost": "^0.1.9",
     "babel-plugin-styled-components": "^1.5.1",
     "graphql": "0.13.2",

@@ -1,8 +1,6 @@
 import system from "system-components";
 import { theme as t } from "styled-system";
 
-const disabledHover = { color: "disabled", borderColor: "disabled" };
-
 const LinkWrapper = system(
   {
     is: "a",

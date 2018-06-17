@@ -5,6 +5,7 @@ export default {
     left: 0,
     right: 0,
     bottom: 0,
+    backgroundColor: "#f4f6f4",
     overflow: "hidden"
   },
   sidebar: {

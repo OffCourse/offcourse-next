@@ -1,5 +1,11 @@
-Not much to say about this one...
+Tags can take a href
 
 ```react|dark,span-1
-<Tag>Spicy</Tag>
+<Tag href="./sfadkfd/">Spicy</Tag>
+```
+
+Or a onClickhandler
+
+```react|dark,span-1
+<Tag onClick={() => alert("something")}>Spicy</Tag>
 ```

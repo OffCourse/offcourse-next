@@ -21,11 +21,20 @@ class Heading extends Component {
     size: "regular"
   };
 
+  handleClick = event => {
+    const { onClick, href } = this.props;
+    if (onClick) {
+      event.preventDefault();
+      onClick({ href });
+    }
+  };
+
   render() {
     const { children, href, size } = this.props;
     return (
       <HeadingWrapper
         is={href ? "a" : "h1"}
+        onClick={this.handleClick}
         href={href}
         lineHeight={size === "small" ? 1 : 2}
         fontSize={size === "small" ? 2 : 3}

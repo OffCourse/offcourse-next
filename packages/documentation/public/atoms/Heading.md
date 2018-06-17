@@ -13,5 +13,11 @@ They can be small
 They can link to another reference
 
 ```react
-<Heading href="/">Regular Heading</Heading>
+<Heading href="/">Reference Heading</Heading>
+```
+
+Or they can have a custom click handler
+
+```react
+<Heading href="/" onClick={({href}) => alert(href)}>Click Heading</Heading>
 ```

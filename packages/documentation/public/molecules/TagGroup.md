@@ -31,3 +31,7 @@ const Tag = TagGroup.Tag;
 ```react
 <TagGroup tags={["Prosciutto", "Short Ribs", "Pork", "Spicy", "Jalapeno", "Tri-Tip", "Jowl"]} />
 ```
+
+```react
+<TagGroup onClick={({tag}) => alert(tag) } tags={["Prosciutto", "Short Ribs", "Pork", "Spicy", "Jalapeno", "Tri-Tip", "Jowl"]} />
+```

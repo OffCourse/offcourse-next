@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { isEmpty, isNil } from "ramda";
+import { partial, isEmpty, isNil } from "ramda";
 import { Card, Heading } from "@offcourse/atoms";
 import {
   Description,
@@ -45,7 +45,12 @@ class CourseCard extends Component {
   };
 
   renderCard = course => {
-    const { onCheckpointToggle, shareMessage } = this.props;
+    const {
+      onCheckpointToggle,
+      onTagClick,
+      onCuratorClick,
+      shareMessage
+    } = this.props;
     const {
       goal,
       curator,
@@ -61,7 +66,8 @@ class CourseCard extends Component {
         <Heading section="header">{goal}</Heading>
         <Curator
           section="meta"
-          name={curator}
+          curator={curator}
+          onClick={onCuratorClick}
           profileUrl={profileUrl}
           avatarUrl={avatarUrl}
         />
@@ -76,7 +82,13 @@ class CourseCard extends Component {
           checkpoints={checkpoints}
         />
         {this.hasTags(tags) && (
-          <TagGroup flex={1} direction="both" section="tags" tags={tags} />
+          <TagGroup
+            onClick={onTagClick}
+            flex={1}
+            direction="both"
+            section="tags"
+            tags={tags}
+          />
         )}
         <Share
           section="social"

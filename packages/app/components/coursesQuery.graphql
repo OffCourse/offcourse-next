@@ -1,7 +1,7 @@
 #import "./CoursesData.graphql"
 
-query courses($first: Int, $after: String) {
-  courses(first: $first, after: $after) {
+query courses($first: Int, $curator: String, $tag: String, $after: String) {
+  courses(first: $first, curator: $curator, tag: $tag, after: $after) {
     ...CoursesData
   }
 }

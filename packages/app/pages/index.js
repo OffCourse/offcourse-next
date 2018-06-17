@@ -3,6 +3,7 @@ import { ThemeProvider, injectGlobal } from "styled-components";
 import { offcourse as theme } from "@offcourse/themes";
 import { AppShell, CourseCardLayout } from "@offcourse/organisms";
 import CoursesQuery from "../components/CoursesQuery";
+import Router from "next/router";
 
 injectGlobal(theme);
 
@@ -11,7 +12,19 @@ class App extends React.Component {
     isOpen: false
   };
 
+  static getInitialProps = async ({ pathname, asPath, query }) => {
+    return { pathname, asPath, query };
+  };
+
+  goToCollection = query => {
+    Router.push({
+      pathname: "/",
+      query
+    });
+  };
+
   render() {
+    const { curator, tag } = this.props.query;
     const toggle = () => this.setState({ isOpen: !this.state.isOpen });
     const links = [
       {
@@ -24,7 +37,7 @@ class App extends React.Component {
       <ThemeProvider theme={theme}>
         <AppShell
           position="fixed"
-          onLogoClick={toggle}
+          onLogoClick={() => Router.push("/")}
           toggleSidebar={toggle}
           isSidebarOpen={this.state.isOpen}
           links={links}
@@ -35,13 +48,14 @@ class App extends React.Component {
               content="width=device-width, initial-scale=1"
             />
           </Head>
-          <CoursesQuery>
+          <CoursesQuery variables={{ curator, tag }}>
             {({ loading, error, hasMore, loadMore, courses }) => {
               if (loading) return null;
               if (error) return null;
 
               return (
                 <CourseCardLayout
+                  goToCollection={this.goToCollection}
                   hasMore={hasMore}
                   courses={courses}
                   loadMore={loadMore}

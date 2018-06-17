@@ -1,7 +1,8 @@
 import system from "system-components";
 
 const CuratorWrapper = system({
-  display: "grid"
+  display: "grid",
+  color: "black"
 }).extend`
   grid-template-columns: 4rem 1fr;
   p {

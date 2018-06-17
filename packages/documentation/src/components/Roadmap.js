@@ -9,24 +9,22 @@ export default class Roadmap extends Component {
     items: PropTypes.array
   };
 
-  render() {
-    const gutter = 16;
-    const sizes = times(identity, 100).map(columns => {
-      const mq = `${(columns > 2 ? columns + 1 : columns) * 288 +
-        (columns - 1) * 16}px`;
-      return {
-        columns,
-        mq,
-        gutter
-      };
+  calculateBreakpoints() {
+    return times(identity, 100).map(columns => {
+      const gutter = 16;
+      const columnWidth = 288;
+      const offset = columnWidth + gutter;
+      const colSpace = (columns + 1) * columnWidth;
+      const gutterSpace = columns * gutter;
+      return colSpace + offset + gutterSpace;
     });
-    const { items } = this.props;
+  }
 
+  render() {
+    const { items } = this.props;
     return (
-      <Masonry sizes={sizes}>
-        {({ forcePack }) =>
-          map(item => <FeatureCard key={item.name} {...item} />, items)
-        }
+      <Masonry breakpoints={this.calculateBreakpoints()}>
+        {map(item => <FeatureCard key={item.name} {...item} />, items)}
       </Masonry>
     );
   }
