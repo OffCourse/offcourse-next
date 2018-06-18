@@ -26,6 +26,7 @@ class Curator extends Component {
 
   render() {
     const { curator, avatarUrl } = this.props;
+    console.log(avatarUrl);
     return (
       <CuratorWrapper>
         <Avatar url={avatarUrl} name={curator} />

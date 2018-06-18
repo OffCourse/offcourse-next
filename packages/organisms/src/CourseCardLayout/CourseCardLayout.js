@@ -54,7 +54,11 @@ export default class CourseCardLayout extends Component {
             courses
           )}
         </Masonry>
-        <Sensor onChange={isVisible => isVisible && loadMore()}>
+        <Sensor
+          onChange={isVisible => {
+            return isVisible && loadMore();
+          }}
+        >
           {() => (
             <Group alignItems="center">
               {hasMore && <Loading size="large" />}
