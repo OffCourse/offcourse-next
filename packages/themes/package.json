@@ -17,7 +17,9 @@
     "build": "rollup -c",
     "start": "rollup -c -w"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@svgr/rollup": "^2.0.0"
+  },
   "peerDependencies": {
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",

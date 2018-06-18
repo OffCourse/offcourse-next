@@ -22,9 +22,9 @@
     "@fortawesome/fontawesome-free-brands": "^5.0.8",
     "@fortawesome/fontawesome-free-solid": "^5.0.8",
     "@fortawesome/react-fontawesome": "^0.0.18",
-    "atoms": "^0.2.0",
     "ramda": "^0.25.0",
-    "react-masonry-infinite": "^1.2.2",
+    "react-inlinesvg": "^0.8.1",
+    "styled-system": "^2.3.1",
     "voca": "^1.4.0"
   },
   "peerDependencies": {

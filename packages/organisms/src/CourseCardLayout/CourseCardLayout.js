@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { times, map, identity } from "ramda";
 import { Masonry, Group, Loading } from "@offcourse/atoms";
-import Sensor from "react-visibility-sensor";
 import { CourseCard } from "..";
 import CourseCardLayoutWrapper from "./CourseCardLayoutWrapper";
 import PropTypes from "prop-types";
+import Waypoint from "react-waypoint";
 
 export default class CourseCardLayout extends Component {
   static propTypes = {
@@ -37,6 +37,11 @@ export default class CourseCardLayout extends Component {
     });
   }
 
+  handlePositionChange = ({ currentPosition, ...rest }) => {
+    const { loadMore } = this.props;
+    currentPosition === "inside" ? loadMore() : null;
+  };
+
   render() {
     const { courses, goToCollection, hasMore, loadMore } = this.props;
     return (
@@ -54,17 +59,15 @@ export default class CourseCardLayout extends Component {
             courses
           )}
         </Masonry>
-        <Sensor
-          onChange={isVisible => {
-            return isVisible && loadMore();
-          }}
+        <Waypoint
+          key={courses.length}
+          onPositionChange={this.handlePositionChange}
+          onEnter={this.handlePositionChange}
         >
-          {() => (
-            <Group alignItems="center">
-              {hasMore && <Loading size="large" />}
-            </Group>
-          )}
-        </Sensor>
+          <Group alignItems="center">
+            {hasMore && <Loading size="large" />}
+          </Group>
+        </Waypoint>
       </CourseCardLayoutWrapper>
     );
   }

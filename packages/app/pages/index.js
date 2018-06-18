@@ -1,15 +1,14 @@
 import Head from "next/head";
 import { ThemeProvider, injectGlobal } from "styled-components";
-import { offcourse as theme } from "@offcourse/themes";
+import { oswald, offcourse } from "@offcourse/themes";
 import { AppShell, CourseCardLayout } from "@offcourse/organisms";
 import CoursesQuery from "../components/CoursesQuery";
 import Router from "next/router";
 
-injectGlobal(theme);
-
 class App extends React.Component {
   state = {
-    isOpen: false
+    isOpen: false,
+    currentTheme: "oswald"
   };
 
   static getInitialProps = async ({ pathname, asPath, query }) => {
@@ -25,8 +24,19 @@ class App extends React.Component {
 
   render() {
     const { curator, tag } = this.props.query;
+    const { currentTheme } = this.state;
+    const theme = currentTheme === "oswald" ? oswald : offcourse;
+    injectGlobal(theme);
     const toggle = () => this.setState({ isOpen: !this.state.isOpen });
     const links = [
+      {
+        onClick: () =>
+          this.setState({
+            currentTheme: currentTheme === "oswald" ? "offcourse" : "oswald"
+          }),
+        title: "Switch Theme",
+        level: 1
+      },
       {
         href: "https://condescending-wing-149611.netlify.com/",
         title: "Contribute",

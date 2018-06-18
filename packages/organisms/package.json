@@ -22,7 +22,7 @@
     "@offcourse/molecules": "^1.4.0",
     "formik": "^0.11.11",
     "ramda": "^0.25.0",
-    "react-visibility-sensor": "^3.11.0",
+    "react-waypoint": "^8.0.1",
     "voca": "^1.4.0",
     "yup": "^0.25.1"
   },

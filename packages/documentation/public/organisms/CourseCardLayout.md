@@ -1,5 +1,5 @@
 ```react
-state: {items: [1,2,3,4]}
+state: {items: [1,2]}
 ---
 
 const text = `

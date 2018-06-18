@@ -1,15 +1,14 @@
-import logoSvg from "./offcourse-logo.svg";
-
+import logoSvg from "./waag-logo.svg";
 /**
  * @name Offcourse Theme
  * @description default styles for the Offcourse project
  */
+
 const logo = {
   svg: logoSvg,
-  dimensions: { height: 1, width: 4.66666 },
-  background: "black"
+  dimensions: { height: 1, width: 2.8 },
+  background: "white"
 };
-
 const baseColors = {
   black: "#000000",
   white: "#FFFFFF",
@@ -55,9 +54,9 @@ const colors = {
 };
 
 const fonts = {
-  base: "Nitti Grotesk",
-  bold: "Nitti Grotesk Bold",
-  accent: "Nitti Bold"
+  base: "Oswald",
+  bold: "Oswald",
+  accent: "Oswald"
 };
 
 const breakpoints = ["30rem", "48rem", "64rem"];
@@ -66,7 +65,7 @@ const baseUnit = 16;
 
 const fontSizes = ["0.75rem", "1rem", "1.375rem", "1.75rem"];
 
-const lineHeights = ["1rem", "1.25rem", "1.375rem", "1.75rem", "1.875rem"];
+const lineHeights = ["1.25rem", "1.375rem", "1.75rem", "1.875rem", "2rem"];
 
 const space = [
   0,
@@ -108,20 +107,8 @@ const globals = `
     overflow-x: hidden;
   }
 
-  @font-face {
-    font-family: 'Nitti Grotesk';
-    src: url('https://app.offcourse.io/fonts/NGN.woff') format('woff');
-  }
+  @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
 
-  @font-face {
-    font-family: 'Nitti Grotesk Bold';
-    src: url('https://app.offcourse.io/fonts/NGB.woff') format('woff');
-  }
-
-  @font-face {
-    font-family: 'Nitti Bold'; 
-    src: url('https://app.offcourse.io/fonts/NB.woff') format('woff');
-  }
 
   * {
     -webkit-font-smoothing: antialiased;
@@ -140,9 +127,9 @@ const theme = {
   breakpoints,
   fontSizes,
   lineHeights,
-  logo,
   space,
   colors,
+  logo,
   borders,
   units,
   fonts,

@@ -5,6 +5,7 @@ import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
 import url from "rollup-plugin-url";
 import json from "rollup-plugin-json";
+import svgr from "@svgr/rollup";
 
 import pkg from "./package.json";
 
@@ -26,6 +27,7 @@ export default {
     postcss({
       modules: true
     }),
+    svgr(),
     url(),
     json(),
     babel({
