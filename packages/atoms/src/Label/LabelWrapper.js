@@ -9,6 +9,7 @@ const LabelWrapper = system(
   },
   props => ({
     fontFamily: props.theme.fonts.bold,
+    fontWeight: 700,
     display: props.is === "span" ? "inline-block" : "block",
     userSelect: "none"
   })

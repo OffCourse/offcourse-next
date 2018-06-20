@@ -12,7 +12,7 @@ const mapCourses = courses =>
   map(
     ({ node }) => ({
       ...node,
-      avatarUrl: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://app.offcourse.io/?curator=${
+      avatarUrl: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&bgcolor=000&color=fff&data=http://app.offcourse.io/?curator=${
         node.curator
       }`,
       profileUrl: `/?curator=${node.curator}`,

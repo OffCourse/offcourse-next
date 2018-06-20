@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Logo, Group } from "@offcourse/atoms";
+import { Group } from "@offcourse/atoms";
 import { NavBar, Menu, Sidebar as Layout } from "@offcourse/molecules";
-
-const MenuButton = NavBar.MenuButton;
 
 export default class AppShell extends Component {
   static propTypes = {

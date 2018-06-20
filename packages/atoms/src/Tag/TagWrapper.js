@@ -12,7 +12,7 @@ const TagWrapper = system({
   }
 }).extend`
   cursor: pointer;
-  user-select: "none";
+  user-select: none;
   box-sizing: border-box;
   font-family: ${({ theme }) => theme.fonts.bold};
   text-decoration: inherit;

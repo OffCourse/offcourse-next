@@ -88,8 +88,8 @@ class Auth extends Component {
   };
 
   render() {
-    const { status, userName, mode } = this.state;
-    const { needsConfirmation, onCancel, errors } = this.props;
+    const { userName, mode } = this.state;
+    const { needsConfirmation, errors } = this.props;
     const FormComponent = formComponents[mode];
 
     return (

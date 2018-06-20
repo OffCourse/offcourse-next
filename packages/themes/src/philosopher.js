@@ -54,9 +54,9 @@ const colors = {
 };
 
 const fonts = {
-  base: "Oswald",
-  bold: "Oswald",
-  accent: "Oswald"
+  base: "Philosopher",
+  bold: "Philosopher",
+  accent: "Philosopher"
 };
 
 const breakpoints = ["30rem", "48rem", "64rem"];
@@ -107,7 +107,7 @@ const globals = `
     overflow-x: hidden;
   }
 
-  @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+  @import url('https://fonts.googleapis.com/css?family=Philosopher');
 
 
   * {
@@ -116,7 +116,7 @@ const globals = `
   }
 
   body {
-    font-family: Oswald;
+    font-family: Philosopher;
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;

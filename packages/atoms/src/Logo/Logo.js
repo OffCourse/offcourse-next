@@ -17,8 +17,8 @@ class Logo extends Component {
   };
 
   render() {
-    const { size } = this.props;
-    return <LogoWrapper multiply={sizes[size]} />;
+    const { size, onClick } = this.props;
+    return <LogoWrapper onClick={onClick} multiply={sizes[size]} />;
   }
 }
 

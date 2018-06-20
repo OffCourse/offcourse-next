@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { PasswordInput } from "@offcourse/molecules";
 import { Form } from "..";
@@ -28,14 +28,7 @@ class SignInForm extends Component {
   };
 
   render() {
-    const {
-      onSubmit,
-      links,
-      errors,
-      messages,
-      userName,
-      onCancel
-    } = this.props;
+    const { onSubmit, links, errors, userName, onCancel } = this.props;
     return (
       <Form
         Model={Model}

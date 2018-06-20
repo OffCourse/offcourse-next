@@ -33,6 +33,7 @@ const LinkWrapper = system(
     }
   })
 ).extend`
+  user-select: none;
   font-family: ${({ theme }) => theme.fonts.bold};
   box-sizing: border-box;
   text-decoration: inherit;

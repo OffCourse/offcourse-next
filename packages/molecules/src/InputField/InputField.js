@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { map, isEmpty } from "ramda";
+import { isEmpty } from "ramda";
 import { compact } from "../helpers";
-import { Section, Label, Input } from "@offcourse/atoms";
-import { MessageGroup, IconGroup } from "..";
+import { Label, Input } from "@offcourse/atoms";
+import { MessageGroup } from "..";
 import InputFieldWrapper from "./InputFieldWrapper";
 
 export default class InputField extends Component {
@@ -27,7 +27,7 @@ export default class InputField extends Component {
   };
 
   renderLabel() {
-    const { title } = this.props;
+    const { title, name } = this.props;
     return title ? (
       <Label pb={4} px={6} htmlFor={name}>
         {title}
