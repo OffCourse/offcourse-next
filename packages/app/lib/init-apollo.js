@@ -1,8 +1,10 @@
 import { ApolloClient } from "apollo-boost";
 import { HttpLink } from "apollo-boost";
-import { ApolloLink, concat } from "apollo-link";
+import { ApolloLink } from "apollo-link";
+import { withClientState } from "apollo-link-state";
 import { InMemoryCache } from "apollo-boost";
 import fetch from "isomorphic-unfetch";
+import gql from "graphql-tag";
 
 let apolloClient = null;
 
@@ -17,7 +19,6 @@ const authMiddleware = new ApolloLink((operation, forward) => {
       authorization: "GUEST"
     }
   });
-
   return forward(operation);
 });
 
@@ -26,12 +27,53 @@ if (!process.browser) {
   global.fetch = fetch;
 }
 
+const defaults = {
+  sidebar: {
+    __typename: "SidebarStatus",
+    isOpen: false
+  }
+};
+
+const resolvers = {
+  Mutation: {
+    toggleSidebar: (_, variables, { cache, getCacheKey }) => {
+      const query = gql`
+        {
+          sidebar @client {
+            isOpen
+          }
+        }
+      `;
+      const previous = cache.readQuery({ query });
+      const { __typename, isOpen } = previous.sidebar;
+      const data = { sidebar: { __typename, isOpen: !isOpen } };
+      cache.writeData({ data });
+      return null;
+    }
+  }
+};
+const typeDefs = `
+  type SidebarStatus {
+    isOpen: Boolean!
+  }
+
+  type Mutation {
+    toggleSidebar: SidebarStatus
+  }
+
+  type Query {
+    sidebar: SidebarStatus
+  }
+`;
+
 function create(initialState) {
+  const cache = new InMemoryCache().restore(initialState || {});
+  const stateLink = withClientState({ cache, defaults, resolvers, typeDefs });
   return new ApolloClient({
     connectToDevTools: process.browser,
-    link: concat(authMiddleware, httpLink),
-    ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
-    cache: new InMemoryCache().restore(initialState || {})
+    link: ApolloLink.from([authMiddleware, stateLink, httpLink]),
+    ssrMode: !process.browser,
+    cache: cache
   });
 }
 

@@ -1,7 +1,6 @@
 import { Query } from "react-apollo";
 import { assoc, pick, uniq, map, mergeDeepWithKey } from "ramda";
 import coursesQuery from "./coursesQuery.graphql";
-import Router from "next/router";
 
 const filterTags = oldTags => {
   const tags = new Set(oldTags.filter(t => t && t));

@@ -1,14 +1,14 @@
-import Head from "next/head";
 import { ThemeProvider, injectGlobal } from "styled-components";
-import { oswald, offcourse } from "@offcourse/themes";
-import { Modal } from "@offcourse/molecules";
-import { Auth, AppShell, CourseCardLayout } from "@offcourse/organisms";
-import CoursesQuery from "../components/CoursesQuery";
-import Router from "next/router";
+import { philosopher, offcourse } from "@offcourse/themes";
+import {
+  AppShellContainer,
+  HeadContainer,
+  OverlayContainer,
+  MainContainer
+} from "../containers";
 
 class App extends React.Component {
   state = {
-    isSidebarOpen: false,
     isModalOpen: false,
     currentTheme: "offcourse"
   };
@@ -17,23 +17,14 @@ class App extends React.Component {
     return { pathname, asPath, query };
   };
 
-  goToCollection = query => {
-    Router.push({
-      pathname: "/",
-      query
-    });
-  };
-
   render() {
-    const { curator, tag } = this.props.query;
-    const { currentTheme, isModalOpen, isSidebarOpen } = this.state;
-    const theme = currentTheme === "oswald" ? oswald : offcourse;
+    const theme = currentTheme === "philosopher" ? philosopher : offcourse;
     injectGlobal(theme);
-    const toggleSidebar = () =>
-      this.setState({ isSidebarOpen: !isSidebarOpen });
+    const { query } = this.props;
+    const { currentTheme, isModalOpen } = this.state;
+
     const toggleModal = () => this.setState({ isModalOpen: !isModalOpen });
     const closeModal = () => this.setState({ isModalOpen: false });
-    const handler = message => alert(JSON.stringify(message, null, 2));
 
     const links = [
       {
@@ -44,7 +35,8 @@ class App extends React.Component {
       {
         onClick: () =>
           this.setState({
-            currentTheme: currentTheme === "oswald" ? "offcourse" : "oswald"
+            currentTheme:
+              currentTheme === "philosopher" ? "offcourse" : "philosopher"
           }),
         title: "Switch Theme",
         level: 3
@@ -55,47 +47,14 @@ class App extends React.Component {
         level: 3
       }
     ];
+
     return (
       <ThemeProvider theme={theme}>
-        <AppShell
-          position="fixed"
-          onLogoClick={() => Router.push("/")}
-          toggleSidebar={toggleSidebar}
-          isSidebarOpen={isSidebarOpen}
-          links={links}
-        >
-          <Head>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1"
-            />
-          </Head>
-
-          <Modal close={closeModal} isOpen={isModalOpen}>
-            <Auth
-              signIn={handler}
-              initialUserName="yeehaa"
-              onCancel={closeModal}
-              signUp={handler}
-              resetPassword={handler}
-            />
-          </Modal>
-          <CoursesQuery variables={{ curator, tag }}>
-            {({ loading, error, hasMore, loadMore, courses }) => {
-              if (loading) return null;
-              if (error) return null;
-
-              return (
-                <CourseCardLayout
-                  goToCollection={this.goToCollection}
-                  hasMore={hasMore}
-                  courses={courses}
-                  loadMore={loadMore}
-                />
-              );
-            }}
-          </CoursesQuery>
-        </AppShell>
+        <AppShellContainer links={links}>
+          <HeadContainer />
+          <OverlayContainer closeModal={closeModal} isModalOpen={isModalOpen} />
+          <MainContainer query={query} />
+        </AppShellContainer>
       </ThemeProvider>
     );
   }
