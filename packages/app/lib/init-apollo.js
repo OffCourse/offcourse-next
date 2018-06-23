@@ -4,7 +4,7 @@ import { ApolloLink } from "apollo-link";
 import { withClientState } from "apollo-link-state";
 import { InMemoryCache } from "apollo-boost";
 import fetch from "isomorphic-unfetch";
-import gql from "graphql-tag";
+import * as initData from "../graphql";
 
 let apolloClient = null;
 
@@ -27,48 +27,9 @@ if (!process.browser) {
   global.fetch = fetch;
 }
 
-const defaults = {
-  sidebar: {
-    __typename: "SidebarStatus",
-    isOpen: false
-  }
-};
-
-const resolvers = {
-  Mutation: {
-    toggleSidebar: (_, variables, { cache, getCacheKey }) => {
-      const query = gql`
-        {
-          sidebar @client {
-            isOpen
-          }
-        }
-      `;
-      const previous = cache.readQuery({ query });
-      const { __typename, isOpen } = previous.sidebar;
-      const data = { sidebar: { __typename, isOpen: !isOpen } };
-      cache.writeData({ data });
-      return null;
-    }
-  }
-};
-const typeDefs = `
-  type SidebarStatus {
-    isOpen: Boolean!
-  }
-
-  type Mutation {
-    toggleSidebar: SidebarStatus
-  }
-
-  type Query {
-    sidebar: SidebarStatus
-  }
-`;
-
 function create(initialState) {
   const cache = new InMemoryCache().restore(initialState || {});
-  const stateLink = withClientState({ cache, defaults, resolvers, typeDefs });
+  const stateLink = withClientState({ cache, ...initData });
   return new ApolloClient({
     connectToDevTools: process.browser,
     link: ApolloLink.from([authMiddleware, stateLink, httpLink]),

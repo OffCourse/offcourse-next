@@ -4,9 +4,6 @@ import { CourseCardLayout } from "@offcourse/organisms";
 import Router from "next/router";
 
 export default class MainContainer extends Component {
-  static getInitialProps = async ({ pathname, asPath, query }) => {
-    return { pathname, asPath, query };
-  };
 
   goToCollection = query => {
     Router.push({
@@ -14,6 +11,7 @@ export default class MainContainer extends Component {
       query
     });
   };
+
   render() {
     const { curator, tag } = this.props.query;
     return (

@@ -1,6 +1,6 @@
 import { Query } from "react-apollo";
 import { assoc, pick, uniq, map, mergeDeepWithKey } from "ramda";
-import coursesQuery from "./coursesQuery.graphql";
+import { queries } from "../graphql";
 
 const filterTags = oldTags => {
   const tags = new Set(oldTags.filter(t => t && t));
@@ -25,14 +25,14 @@ export default class CoursesQuery extends React.Component {
   render() {
     const { children, variables } = this.props;
     return (
-      <Query query={coursesQuery} variables={variables}>
+      <Query query={queries.courses} variables={variables}>
         {({ loading, error, data, fetchMore }) => {
           const { edges, pageInfo } = data.courses;
           const courses = mapCourses(edges);
           const hasMore = pageInfo.hasNextPage;
           const loadMore = () => {
             fetchMore({
-              query: coursesQuery,
+              query: queries.courses,
               variables: { ...variables, after: pageInfo.endCursor },
               updateQuery: (previousResult, { fetchMoreResult }) => {
                 const ml = map(pick(["node", "cursor"]));

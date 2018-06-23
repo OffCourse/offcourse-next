@@ -1,0 +1,8 @@
+{
+  sidebar @client {
+    isOpen
+  }
+  theme @client {
+    current
+  }
+}

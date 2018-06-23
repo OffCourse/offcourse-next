@@ -1,4 +1,4 @@
-#import "./CourseData.graphql"
+#import "./Course.graphql"
 
 fragment CoursesData on CourseConnection {
   pageInfo {
