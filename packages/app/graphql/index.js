@@ -10,7 +10,8 @@ const defaults = {
   },
   overlay: {
     __typename: "Overlay",
-    isOpen: false
+    isOpen: false,
+    mode: null
   },
   theme: {
     __typename: "Theme",
@@ -26,6 +27,7 @@ const typeDefs = `
 
   type Overlay {
     isOpen: Boolean!
+    mode: String
   }
 
   type Theme {
@@ -36,8 +38,9 @@ const typeDefs = `
   type Mutation {
     toggleSidebar: Sidebar
     closeOverlay: Overlay
-    openOverlay: Overlay
+    openOverlay(mode: String!): Overlay
     switchTheme: Theme
+    selectTheme(themeName: String!): Theme
   }
 
   type Query {

@@ -14,11 +14,13 @@ class App extends React.Component {
   render() {
     const { query } = this.props;
     return (
-      <AppShellContainer>
-        <HeadContainer />
-        <OverlayContainer />
-        <MainContainer query={query} />
-      </AppShellContainer>
+      <ThemeContainer>
+        <AppShellContainer>
+          <HeadContainer />
+          <OverlayContainer />
+          <MainContainer query={query} />
+        </AppShellContainer>
+      </ThemeContainer>
     );
   }
 }

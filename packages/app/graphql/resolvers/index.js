@@ -1,12 +1,13 @@
-import toggleSidebar from "./toggleSidebar";
+import { toggleSidebar } from "./sidebar";
 import { openOverlay, closeOverlay } from "./overlay";
-import { switchTheme } from "./theme";
+import { selectTheme, switchTheme } from "./theme";
 
 export default {
   Mutation: {
     toggleSidebar,
     openOverlay,
     closeOverlay,
-    switchTheme
+    switchTheme,
+    selectTheme
   }
 };

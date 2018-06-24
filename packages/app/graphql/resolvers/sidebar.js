@@ -8,4 +8,4 @@ const toggleSidebar = (_, variables, { cache, getCacheKey }) => {
   return null;
 };
 
-export default toggleSidebar;
+export { toggleSidebar };

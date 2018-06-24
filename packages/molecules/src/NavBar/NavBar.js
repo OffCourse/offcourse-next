@@ -36,9 +36,9 @@ export default class NavBar extends Component {
         <Logo onClick={onLogoClick} />
         <Menu
           display={["none", "flex", "flex"]}
-          jusprimarytifyContent="flex-end"
+          justifyContent="flex-end"
           px={6}
-          maxLevel={2}
+          maxLevel={0}
           direction="horizontal"
           links={links}
         />

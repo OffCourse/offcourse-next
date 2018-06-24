@@ -2,10 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { mapIndexed, move } from "../helpers";
 import { Input } from "@offcourse/atoms";
-import { SortableList, IconGroup, ButtonGroup } from "..";
-
-const Button = ButtonGroup.Button;
-const Icon = IconGroup.Icon;
+import { SortableList, IconGroup, LinkGroup } from "..";
 
 export default class InputList extends Component {
   static Input = Input;
@@ -100,13 +97,16 @@ export default class InputList extends Component {
     }, items);
   }
 
-  renderButtons() {
+  renderLinks() {
     const { arrangeable, title, add } = this.props;
     return (
       arrangeable && (
-        <ButtonGroup pt={6} justifyContent="flex-end">
-          <Button onClick={add}>{`Add ${title.slice(0, -1)}`}</Button>
-        </ButtonGroup>
+        <LinkGroup pt={6} justifyContent="flex-end">
+          <LinkGroup.Link onClick={add}>{`Add ${title.slice(
+            0,
+            -1
+          )}`}</LinkGroup.Link>
+        </LinkGroup>
       )
     );
   }
@@ -116,7 +116,7 @@ export default class InputList extends Component {
     return (
       <Fragment>
         <SortableList onSort={move}>{this.renderFields()}</SortableList>
-        {this.renderButtons()}
+        {this.renderLinks()}
       </Fragment>
     );
   }

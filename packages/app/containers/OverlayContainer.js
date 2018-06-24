@@ -1,32 +1,55 @@
 import React, { Component } from "react";
-import { Modal } from "@offcourse/molecules";
 import { Query, Mutation } from "react-apollo";
+import { identity } from "ramda";
 import Composer from "react-composer";
+import { Group, Loading } from "@offcourse/atoms";
+import { Modal } from "@offcourse/molecules";
 import { queries, mutations } from "../graphql";
-import { Auth } from "@offcourse/organisms";
+import { overlayModes } from "../constants";
+import { AuthContainer, CourseFormContainer } from ".";
+
+const {
+  SIGNING_IN,
+  SIGNING_UP,
+  RETRIEVING_PASSWORD,
+  CREATE_COURSE,
+  EDIT_COURSE
+} = overlayModes;
 
 export default class OverlayContainer extends Component {
+  selectMode(mode) {
+    switch (mode) {
+      case RETRIEVING_PASSWORD:
+      case SIGNING_UP:
+      case SIGNING_IN:
+        return <AuthContainer />;
+      case CREATE_COURSE:
+      case EDIT_COURSE:
+        return <CourseFormContainer />;
+      default:
+        return (
+          <Group height="400px" justifyContent="center" alignItems="center">
+            <Modal.Section>
+              <Loading size="large" />
+            </Modal.Section>
+          </Group>
+        );
+    }
+  }
+
   render() {
-    const handler = message => alert(JSON.stringify(message, null, 2));
-    const nullHandler = () => null;
     return (
       <Composer
         components={[
-          <Query query={queries.overlay} children={nullHandler} />,
-          <Mutation mutation={mutations.closeOverlay} children={nullHandler} />
+          <Query query={queries.overlay} children={identity} />,
+          <Mutation mutation={mutations.closeOverlay} children={identity} />
         ]}
       >
         {([queryResult, closeOverlay]) => {
           const { overlay } = queryResult.data;
           return (
             <Modal close={closeOverlay} isOpen={overlay.isOpen}>
-              <Auth
-                signIn={handler}
-                initialUserName="yeehaa"
-                onCancel={closeOverlay}
-                signUp={handler}
-                resetPassword={handler}
-              />
+              {this.selectMode(overlay.mode, closeOverlay)}
             </Modal>
           );
         }}

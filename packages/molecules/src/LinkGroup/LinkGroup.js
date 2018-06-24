@@ -32,8 +32,14 @@ export default class LinkGroup extends Component {
   renderLinks = () => {
     const { links } = this.props;
     return mapIndexed(
-      ({ title, active, href, onClick }, index) => (
-        <Link active={active} key={index} href={href} onClick={onClick}>
+      ({ title, disabled, active, href, onClick }, index) => (
+        <Link
+          active={active}
+          disabled={disabled}
+          key={index}
+          href={href}
+          onClick={onClick}
+        >
           {title}
         </Link>
       ),

@@ -1,23 +1,19 @@
 import { ThemeProvider, injectGlobal } from "styled-components";
+import { Query } from "react-apollo";
+import { queries } from "../graphql";
 import * as themes from "@offcourse/themes";
 
 export default class ThemeContainer extends React.Component {
-  state = {
-    currentTheme: "philosopher"
-  };
-
   render() {
     const { children } = this.props;
-    const { currentTheme } = this.state;
-    const theme = themes[currentTheme];
-    injectGlobal(theme);
-
-    const switchTheme = () =>
-      this.setState({
-        currentTheme:
-          currentTheme === "philosopher" ? "offcourse" : "philosopher"
-      });
-
-    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+    return (
+      <Query query={queries.theme}>
+        {({ data }) => {
+          const theme = themes[data.theme.current];
+          injectGlobal(theme);
+          return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+        }}
+      </Query>
+    );
   }
 }
