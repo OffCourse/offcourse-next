@@ -10,7 +10,6 @@ export default class ThemeContainer extends React.Component {
     const { children } = this.props;
     const { currentTheme } = this.state;
     const theme = themes[currentTheme];
-    console.log(Object.keys(themes));
     injectGlobal(theme);
 
     const switchTheme = () =>

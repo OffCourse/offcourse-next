@@ -107,8 +107,13 @@ const globals = `
     overflow-x: hidden;
   }
 
-  @import url('https://fonts.googleapis.com/css?family=Philosopher');
-
+  @font-face {  
+    font-family: 'Philosopher';  
+    font-style: normal;  
+    font-weight: 400;  
+    src: local('Philosopher Regular'), local('Philosopher-Regular'), 
+    url(https://fonts.gstatic.com/s/philosopher/v9/vEFV2_5QCwIS4_Dhez5jcWBuT0g.ttf) format('truetype');
+  }
 
   * {
     -webkit-font-smoothing: antialiased;
@@ -116,7 +121,6 @@ const globals = `
   }
 
   body {
-    font-family: Philosopher;
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;

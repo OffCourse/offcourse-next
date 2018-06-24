@@ -98,4 +98,5 @@ const onCuratorClick = ({name, profileUrl}) => alert(`curator is ${name}, url is
 
 const onTagClick = ({tag, href}) => alert(`curator is ${tag}, url is ${href}`);
   <CourseCard onCuratorClick={onCuratorClick} onTagClick={onTagClick} onCheckpointToggle={console.log} course={course} />
+
 ```

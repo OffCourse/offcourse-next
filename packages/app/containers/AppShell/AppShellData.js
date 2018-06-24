@@ -14,17 +14,15 @@ export default class AppShellData extends Component {
           <Query query={queries.appState} children={nullHandler} />,
           <Mutation mutation={toggleSidebar} children={nullHandler} />,
           <Mutation mutation={openOverlay} children={nullHandler} />,
-          <Mutation
-            mutation={switchTheme}
-            refetchQueries={[{ query: queries.appState }]}
-            children={nullHandler}
-          />
+          <Mutation mutation={switchTheme} children={nullHandler} />
         ]}
       >
         {([results, toggleSidebar, openOverlay, switchTheme]) => {
           const { sidebar, theme } = results.data;
+          console.log(theme);
           return children({
             sidebar,
+            theme,
             switchTheme: switchTheme,
             toggleSidebar,
             openOverlay

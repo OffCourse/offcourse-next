@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { ThemeProvider, injectGlobal } from "styled-components";
+import * as themes from "@offcourse/themes";
 import { AppShell } from "@offcourse/organisms";
 import Router from "next/router";
 import AppShellData from "./AppShellData";
@@ -12,7 +14,9 @@ export default class AppShellContainer extends Component {
     const { children, switchTheme } = this.props;
     return (
       <AppShellData>
-        {({ sidebar, toggleSidebar, openOverlay }) => {
+        {({ sidebar, toggleSidebar, switchTheme, openOverlay, theme: t }) => {
+          const theme = themes[t.current];
+          injectGlobal(theme);
           const links = [
             {
               onClick: openOverlay,
@@ -31,15 +35,17 @@ export default class AppShellContainer extends Component {
             }
           ];
           return (
-            <AppShell
-              position="fixed"
-              onLogoClick={this.goToHome}
-              toggleSidebar={toggleSidebar}
-              isSidebarOpen={sidebar.isOpen}
-              links={links}
-            >
-              {children}
-            </AppShell>
+            <ThemeProvider theme={theme}>
+              <AppShell
+                position="fixed"
+                onLogoClick={this.goToHome}
+                toggleSidebar={toggleSidebar}
+                isSidebarOpen={sidebar.isOpen}
+                links={links}
+              >
+                {children}
+              </AppShell>
+            </ThemeProvider>
           );
         }}
       </AppShellData>

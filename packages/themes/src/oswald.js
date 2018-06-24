@@ -107,8 +107,20 @@ const globals = `
     overflow-x: hidden;
   }
 
-  @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
 
+  @font-face {  
+    font-family: 'Oswald';  
+    font-style: normal;  
+    font-weight: 400;  
+    src: local('Oswald Regular'), local('Oswald-Regular'), url(https://fonts.gstatic.com/s/oswald/v16/TK3iWkUHHAIjg752GT8D.ttf) format('truetype');
+  }
+    
+  @font-face {  
+    font-family: 'Oswald';  
+    font-style: normal;  
+    font-weight: 700;  
+    src: local('Oswald Bold'), local('Oswald-Bold'), url(https://fonts.gstatic.com/s/oswald/v16/TK3hWkUHHAIjg75-ohoTus9H.ttf) format('truetype');
+  }
 
   * {
     -webkit-font-smoothing: antialiased;

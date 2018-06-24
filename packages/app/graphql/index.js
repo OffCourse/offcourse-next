@@ -1,5 +1,6 @@
 import * as queries from "./queries";
 import * as mutations from "./mutations";
+import * as themes from "@offcourse/themes";
 import resolvers from "./resolvers";
 
 const defaults = {
@@ -13,6 +14,7 @@ const defaults = {
   },
   theme: {
     __typename: "Theme",
+    all: Object.keys(themes),
     current: "offcourse"
   }
 };
@@ -27,7 +29,8 @@ const typeDefs = `
   }
 
   type Theme {
-    current: string!
+    all: [String!]
+    current: String!
   }
 
   type Mutation {

@@ -3,6 +3,7 @@
     isOpen
   }
   theme @client {
+    all
     current
   }
 }

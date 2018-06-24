@@ -13,17 +13,12 @@ class App extends React.Component {
 
   render() {
     const { query } = this.props;
-
-    const switchTheme = () => console.log("HI");
-
     return (
-      <ThemeContainer>
-        <AppShellContainer switchTheme={switchTheme}>
-          <HeadContainer />
-          <OverlayContainer />
-          <MainContainer query={query} />
-        </AppShellContainer>
-      </ThemeContainer>
+      <AppShellContainer>
+        <HeadContainer />
+        <OverlayContainer />
+        <MainContainer query={query} />
+      </AppShellContainer>
     );
   }
 }
