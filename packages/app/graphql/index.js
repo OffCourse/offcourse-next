@@ -44,12 +44,13 @@ const typeDefs = `
   }
 
   type Mutation {
+    selectTheme(themeName: String!): Theme
     toggleSidebar: Sidebar
     closeOverlay: Overlay
     openOverlay(mode: String!): Overlay
     switchTheme: Theme
     signIn: Auth
-    selectTheme(themeName: String!): Theme
+    signOut: Auth
   }
 
   type Query {

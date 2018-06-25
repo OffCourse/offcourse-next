@@ -27,14 +27,11 @@ export default class AppShellContainer extends Component {
     }, themeNames);
   }
 
-  createLinks({ userName, openOverlay }) {
-    const auth = userName
-      ? { mode: SIGNING_OUT, title: "SIGN OUT" }
-      : { mode: SIGNING_IN, title: "SIGN IN" };
+  createUserLinks({ openOverlay }) {
     return [
       {
-        onClick: () => openOverlay({ variables: { mode: auth.mode } }),
-        title: auth.title,
+        onClick: () => openOverlay({ variables: { mode: SIGNING_OUT } }),
+        title: "Sign Out",
         level: 0
       },
       {
@@ -50,8 +47,29 @@ export default class AppShellContainer extends Component {
     ];
   }
 
+  createGuestLinks({ openOverlay }) {
+    return [
+      {
+        onClick: () => openOverlay({ variables: { mode: SIGNING_IN } }),
+        title: "Sign IN",
+        level: 0
+      },
+      {
+        href: "https://condescending-wing-149611.netlify.com/",
+        title: "Contribute",
+        level: 1
+      }
+    ];
+  }
+
+  createLinks({ userName, openOverlay }) {
+    return userName
+      ? this.createUserLinks({ openOverlay })
+      : this.createGuestLinks({ openOverlay });
+  }
+
   render() {
-    const { children, selectTheme, switchTheme } = this.props;
+    const { children } = this.props;
     return (
       <Composer
         components={[

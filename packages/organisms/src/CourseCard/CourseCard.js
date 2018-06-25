@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { partial, isEmpty, isNil } from "ramda";
+import { identity, isEmpty, isNil } from "ramda";
 import { Card, Heading } from "@offcourse/atoms";
 import {
   Description,
@@ -14,9 +14,12 @@ import {
  * The course card component for the Offcourse project
  */
 
-class CourseCard extends Component {
+export default class CourseCard extends Component {
   static propTypes = {
     onCheckpointToggle: PropTypes.func,
+    onCuratorClick: PropTypes.func,
+    onGoalClick: PropTypes.func,
+    onTagClick: PropTypes.func,
     shareMessage: PropTypes.string,
     course: PropTypes.shape({
       courseId: PropTypes.string.isRequired,
@@ -28,7 +31,10 @@ class CourseCard extends Component {
   };
 
   static defaultProps = {
-    shareMessage: "Checkout This Course"
+    shareMessage: "Checkout This Course",
+    onCuratorClick: identity,
+    onGoalClick: identity,
+    onTagClick: identity
   };
 
   handleCheckpointToggle = ({ checkpointId, checked }) => {
@@ -44,14 +50,17 @@ class CourseCard extends Component {
     return !isEmpty(tags) && !isNil(tags);
   };
 
-  renderCard = course => {
+  render() {
     const {
+      course,
       onCheckpointToggle,
+      onGoalClick,
       onTagClick,
       onCuratorClick,
       shareMessage
     } = this.props;
     const {
+      courseId,
       goal,
       curator,
       courseUrl,
@@ -63,7 +72,12 @@ class CourseCard extends Component {
     } = course;
     return (
       <Card>
-        <Heading section="header">{goal}</Heading>
+        <Heading
+          onClick={() => onGoalClick({ goal, curator, courseId })}
+          section="header"
+        >
+          {goal}
+        </Heading>
         <Curator
           section="meta"
           curator={curator}
@@ -98,12 +112,5 @@ class CourseCard extends Component {
         />
       </Card>
     );
-  };
-
-  render() {
-    const { course } = this.props;
-    return this.renderCard(course);
   }
 }
-
-export default CourseCard;

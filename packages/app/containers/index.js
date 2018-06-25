@@ -1,6 +1,7 @@
 export { default as HeadContainer } from "./HeadContainer";
 export { default as OverlayContainer } from "./OverlayContainer";
-export { default as MainContainer } from "./MainContainer";
+export { default as CoursesContainer } from "./CoursesContainer";
+export { default as CourseContainer } from "./CourseContainer";
 export { default as AppShellContainer } from "./AppShellContainer";
 export { default as ThemeContainer } from "./ThemeContainer";
 export { default as AuthContainer } from "./AuthContainer";

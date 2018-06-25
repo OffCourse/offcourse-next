@@ -35,9 +35,8 @@ export default class OverlayContainer extends Component {
       case RETRIEVING_PASSWORD:
       case SIGNING_UP:
       case SIGNING_IN:
-        return <AuthContainer />;
       case SIGNING_OUT:
-        return <LoadingModal />;
+        return <AuthContainer />;
       case CREATE_COURSE:
       case EDIT_COURSE:
         return <CourseFormContainer />;

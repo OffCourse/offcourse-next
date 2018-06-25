@@ -1,28 +1,12 @@
-import {
-  ThemeContainer,
-  AppShellContainer,
-  HeadContainer,
-  OverlayContainer,
-  MainContainer
-} from "../containers";
+import Layout from "../components/Layout";
+import { CoursesContainer } from "../containers";
 
-class App extends React.Component {
-  static getInitialProps = async ({ pathname, asPath, query }) => {
-    return { pathname, asPath, query };
-  };
-
+export default class IndexPage extends React.Component {
   render() {
-    const { query } = this.props;
     return (
-      <ThemeContainer>
-        <AppShellContainer>
-          <HeadContainer />
-          <OverlayContainer />
-          <MainContainer query={query} />
-        </AppShellContainer>
-      </ThemeContainer>
+      <Layout>
+        <CoursesContainer />
+      </Layout>
     );
   }
 }
-
-export default App;

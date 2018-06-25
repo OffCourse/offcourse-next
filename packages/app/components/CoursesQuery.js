@@ -1,4 +1,5 @@
 import { Query } from "react-apollo";
+import { Loading } from "@offcourse/atoms";
 import { assoc, pick, uniq, map, mergeDeepWithKey } from "ramda";
 import { queries } from "../graphql";
 
@@ -27,6 +28,8 @@ export default class CoursesQuery extends React.Component {
     return (
       <Query query={queries.courses} variables={variables}>
         {({ loading, error, data, fetchMore }) => {
+          if (loading) return <Loading size="large" />;
+          if (error) return <Loading size="large" />;
           const { edges, pageInfo } = data.courses;
           const courses = mapCourses(edges);
           const hasMore = pageInfo.hasNextPage;

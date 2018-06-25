@@ -1,19 +1,28 @@
 import React, { Component } from "react";
+import { withRouter } from "next/router";
 import CoursesQuery from "../components/CoursesQuery";
 import { CourseCardLayout } from "@offcourse/organisms";
 import Router from "next/router";
 
-export default class MainContainer extends Component {
-
+class CoursesContainer extends Component {
   goToCollection = query => {
-    Router.push({
+    const { router } = this.props;
+    router.push({
       pathname: "/",
       query
     });
   };
 
+  goToCourse = query => {
+    const { router } = this.props;
+    router.push({
+      pathname: "/course",
+      query
+    });
+  };
+
   render() {
-    const { curator, tag } = this.props.query;
+    const { curator, tag } = this.props.router.query;
     return (
       <CoursesQuery variables={{ curator, tag }}>
         {({ loading, error, hasMore, loadMore, courses }) => {
@@ -23,6 +32,7 @@ export default class MainContainer extends Component {
           return (
             <CourseCardLayout
               goToCollection={this.goToCollection}
+              goToCourse={this.goToCourse}
               hasMore={hasMore}
               courses={courses}
               loadMore={loadMore}
@@ -33,3 +43,5 @@ export default class MainContainer extends Component {
     );
   }
 }
+
+export default withRouter(CoursesContainer);
