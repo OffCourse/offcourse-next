@@ -9,7 +9,7 @@ import { Query, Mutation } from "react-apollo";
 import { queries, mutations } from "../graphql";
 import { overlayModes } from "../constants";
 
-const { SIGNING_IN, CREATE_COURSE } = overlayModes;
+const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = overlayModes;
 
 export default class AppShellContainer extends Component {
   goToHome = () => {
@@ -27,11 +27,14 @@ export default class AppShellContainer extends Component {
     }, themeNames);
   }
 
-  createLinks({ openOverlay }) {
+  createLinks({ userName, openOverlay }) {
+    const auth = userName
+      ? { mode: SIGNING_OUT, title: "SIGN OUT" }
+      : { mode: SIGNING_IN, title: "SIGN IN" };
     return [
       {
-        onClick: () => openOverlay({ variables: { mode: SIGNING_IN } }),
-        title: "Sign In",
+        onClick: () => openOverlay({ variables: { mode: auth.mode } }),
+        title: auth.title,
         level: 0
       },
       {
@@ -59,6 +62,7 @@ export default class AppShellContainer extends Component {
         ]}
       >
         {([{ data }, toggleSidebar, openOverlay, selectTheme]) => {
+          const { userName } = data.auth;
           return (
             <AppShell
               position="fixed"
@@ -67,7 +71,8 @@ export default class AppShellContainer extends Component {
               isSidebarOpen={data.sidebar.isOpen}
               links={[
                 ...this.createLinks({
-                  openOverlay
+                  openOverlay,
+                  userName
                 }),
                 ...this.createThemeLinks({
                   themeNames: data.theme.all,

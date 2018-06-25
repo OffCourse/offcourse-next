@@ -11,10 +11,23 @@ import { AuthContainer, CourseFormContainer } from ".";
 const {
   SIGNING_IN,
   SIGNING_UP,
+  SIGNING_OUT,
   RETRIEVING_PASSWORD,
   CREATE_COURSE,
   EDIT_COURSE
 } = overlayModes;
+
+class LoadingModal extends Component {
+  render() {
+    return (
+      <Group height="400px" justifyContent="center" alignItems="center">
+        <Modal.Section>
+          <Loading size="large" />
+        </Modal.Section>
+      </Group>
+    );
+  }
+}
 
 export default class OverlayContainer extends Component {
   selectMode(mode) {
@@ -23,17 +36,13 @@ export default class OverlayContainer extends Component {
       case SIGNING_UP:
       case SIGNING_IN:
         return <AuthContainer />;
+      case SIGNING_OUT:
+        return <LoadingModal />;
       case CREATE_COURSE:
       case EDIT_COURSE:
         return <CourseFormContainer />;
       default:
-        return (
-          <Group height="400px" justifyContent="center" alignItems="center">
-            <Modal.Section>
-              <Loading size="large" />
-            </Modal.Section>
-          </Group>
-        );
+        return <LoadingModal />;
     }
   }
 

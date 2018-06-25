@@ -6,4 +6,7 @@
     all
     current
   }
+  auth @client {
+    userName
+  }
 }

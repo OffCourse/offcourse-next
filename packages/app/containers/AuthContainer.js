@@ -14,13 +14,14 @@ export default class AuthContainer extends Component {
       <Composer
         components={[
           <Query query={queries.overlay} children={identity} />,
-          <Mutation mutation={mutations.closeOverlay} children={identity} />
+          <Mutation mutation={mutations.closeOverlay} children={identity} />,
+          <Mutation mutation={mutations.signIn} children={identity} />
         ]}
       >
-        {([queryResult, closeOverlay]) => {
+        {([queryResult, closeOverlay, signIn]) => {
           return (
             <Auth
-              signIn={identity}
+              signIn={async () => (await signIn()) && closeOverlay()}
               defaultMode={queryResult.data.overlay.mode}
               onCancel={closeOverlay}
               signUp={identity}

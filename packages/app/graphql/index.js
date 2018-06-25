@@ -17,6 +17,10 @@ const defaults = {
     __typename: "Theme",
     all: Object.keys(themes),
     current: "offcourse"
+  },
+  auth: {
+    __typename: "Auth",
+    userName: null
   }
 };
 
@@ -35,11 +39,16 @@ const typeDefs = `
     current: String!
   }
 
+  type Auth {
+    userName: String!
+  }
+
   type Mutation {
     toggleSidebar: Sidebar
     closeOverlay: Overlay
     openOverlay(mode: String!): Overlay
     switchTheme: Theme
+    signIn: Auth
     selectTheme(themeName: String!): Theme
   }
 
