@@ -1,3 +1,3 @@
-mutation signIn {
-  signIn @client
+mutation signIn($userName: String!) {
+  signIn(userName: $userName) @client
 }

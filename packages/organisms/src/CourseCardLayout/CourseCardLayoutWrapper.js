@@ -1,7 +1,7 @@
 import system from "system-components";
 
 export default system({
-  p: 6,
+  p: 8,
   pr: 0,
   bg: "grayScale.1",
   width: "100%",

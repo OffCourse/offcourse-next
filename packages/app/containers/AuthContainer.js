@@ -29,9 +29,11 @@ export default class AuthContainer extends Component {
             case SIGNING_IN:
               return (
                 <Auth
-                  signIn={async ({ userName }) =>
-                    (await signIn({ userName })) && closeOverlay()
-                  }
+                  signIn={async ({ userName }) => {
+                    console.log(userName);
+                    await signIn({ variables: { userName } });
+                    closeOverlay();
+                  }}
                   defaultMode={queryResult.data.overlay.mode}
                   onCancel={closeOverlay}
                   signUp={identity}
@@ -41,7 +43,10 @@ export default class AuthContainer extends Component {
             case SIGNING_OUT:
               return (
                 <SignOutDialog
-                  onConfirm={async () => (await signOut()) && closeOverlay()}
+                  onConfirm={async () => {
+                    await signOut();
+                    closeOverlay();
+                  }}
                   onCancel={closeOverlay}
                 />
               );

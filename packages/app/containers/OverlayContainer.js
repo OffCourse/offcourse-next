@@ -32,13 +32,13 @@ class LoadingModal extends Component {
 export default class OverlayContainer extends Component {
   selectMode(mode) {
     switch (mode) {
-      case RETRIEVING_PASSWORD:
       case SIGNING_UP:
       case SIGNING_IN:
       case SIGNING_OUT:
+      case RETRIEVING_PASSWORD:
         return <AuthContainer />;
-      case CREATE_COURSE:
       case EDIT_COURSE:
+      case CREATE_COURSE:
         return <CourseFormContainer />;
       default:
         return <LoadingModal />;

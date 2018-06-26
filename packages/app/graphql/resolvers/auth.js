@@ -1,12 +1,12 @@
 const __typename = "Auth";
 
-const signIn = async (_, { userName }, { cache, getCacheKey }) => {
+const signIn = async (_, { userName }, { cache }) => {
   const auth = { __typename, userName };
   await cache.writeData({ data: { auth } });
   return auth;
 };
 
-const signOut = async (_, variables, { cache, getCacheKey }) => {
+const signOut = async (_, __, { cache }) => {
   const userName = null;
   const auth = { __typename, userName };
   await cache.writeData({ data: { auth } });
