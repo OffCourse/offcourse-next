@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { withRouter } from "next/router";
-import CoursesQuery from "../components/CoursesQuery";
+import { Query } from "../components";
+import { queries } from "../graphql";
 import { CourseCardLayout } from "@offcourse/organisms";
-import Router from "next/router";
+import { prepEdges, updateQuery } from "../tempUtils";
 
 class CoursesContainer extends Component {
   goToCollection = query => {
@@ -23,12 +24,20 @@ class CoursesContainer extends Component {
 
   render() {
     const { curator, tag } = this.props.router.query;
+    const variables = { curator, tag };
     return (
-      <CoursesQuery variables={{ curator, tag }}>
-        {({ loading, error, hasMore, loadMore, courses }) => {
-          if (loading) return null;
-          if (error) return null;
-
+      <Query query={queries.courses} variables={variables}>
+        {({ data, fetchMore }) => {
+          const { edges, pageInfo } = data.courses;
+          const courses = prepEdges(edges);
+          const hasMore = pageInfo.hasNextPage;
+          const loadMore = () => {
+            fetchMore({
+              query: queries.courses,
+              variables: { ...variables, after: pageInfo.endCursor },
+              updateQuery
+            });
+          };
           return (
             <CourseCardLayout
               goToCollection={this.goToCollection}
@@ -39,7 +48,7 @@ class CoursesContainer extends Component {
             />
           );
         }}
-      </CoursesQuery>
+      </Query>
     );
   }
 }

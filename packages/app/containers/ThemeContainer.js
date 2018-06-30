@@ -1,5 +1,5 @@
 import { ThemeProvider, injectGlobal } from "styled-components";
-import { Query } from "react-apollo";
+import { Query } from "../components";
 import { queries } from "../graphql";
 import * as themes from "@offcourse/themes";
 

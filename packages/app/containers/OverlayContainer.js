@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Query, Mutation } from "react-apollo";
-import { identity } from "ramda";
+import { Query, Mutation } from "../components";
 import Composer from "react-composer";
 import { Group, Loading } from "@offcourse/atoms";
 import { Modal } from "@offcourse/molecules";
@@ -49,8 +48,8 @@ export default class OverlayContainer extends Component {
     return (
       <Composer
         components={[
-          <Query query={queries.overlay} children={identity} />,
-          <Mutation mutation={mutations.closeOverlay} children={identity} />
+          <Query query={queries.overlay} />,
+          <Mutation mutation={mutations.closeOverlay} />
         ]}
       >
         {([queryResult, closeOverlay]) => {

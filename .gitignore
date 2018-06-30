@@ -23,3 +23,5 @@ yarn-error.log*
 lerna-debug.log
 
 /packages/app/.next
+themes
+atoms

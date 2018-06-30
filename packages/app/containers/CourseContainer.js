@@ -1,24 +1,53 @@
 import React, { Component } from "react";
-import { isEmpty } from "ramda";
-import { Query } from "react-apollo";
-import { Loading } from "@offcourse/atoms";
+import Composer from "react-composer";
+import { isEmpty, identity } from "ramda";
+import { Query } from "../components";
+import { prepCourse } from "../tempUtils";
 import { CourseCard } from "@offcourse/organisms";
 import { queries } from "../graphql";
 import { withRouter } from "next/router";
 
 class CourseContainer extends Component {
+  goToCollection = query => {
+    const { router } = this.props;
+    router.push({
+      pathname: "/",
+      query
+    });
+  };
+
+  goToCourse = query => {
+    const { router } = this.props;
+    router.push({
+      pathname: "/course",
+      query
+    });
+  };
+
   render() {
     const { courseId, ...courseQuery } = this.props.router.query;
+
+    if (isEmpty(courseQuery)) return null;
+
     return (
-      !isEmpty(courseQuery) && (
-        <Query query={queries.course} variables={{ courseQuery }}>
-          {({ data, loading, error }) => {
-            if (loading) return <Loading size="large" />;
-            if (error) return <Loading size="large" />;
-            return <CourseCard course={data.course} />;
-          }}
-        </Query>
-      )
+      <Composer
+        components={[
+          <Query query={queries.course} variables={{ courseQuery }} />,
+          <Query query={queries.appState} />
+        ]}
+      >
+        {([courseResponse, authResponse]) => {
+          const { userName } = authResponse.data.auth;
+          return (
+            <CourseCard
+              onCuratorClick={this.goToCollection}
+              onCheckpointToggle={userName && identity}
+              onTagClick={this.goToCollection}
+              course={prepCourse(courseResponse.data.course)}
+            />
+          );
+        }}
+      </Composer>
     );
   }
 }

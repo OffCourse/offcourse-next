@@ -2,7 +2,8 @@
   "private": true,
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
-    "lerna": "^2.11.0"
+    "lerna": "^2.11.0",
+    "meta-npm": "0.0.28"
   },
   "scripts": {
     "test": "echo TEST",
@@ -11,7 +12,7 @@
     "publish": "lerna publish --conventional-commits --yes",
     "release:docs": "lerna run release --scope @offcourse/documentation",
     "release:app": "lerna run release --scope @offcourse/app",
-    "release": "npm run release:docs && npm run release:app",
+    "release": "npm run release:docs",
     "postpublish": "npm run release"
   },
   "version": "0.0.0",

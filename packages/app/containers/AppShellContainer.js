@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { ThemeProvider, injectGlobal } from "styled-components";
-import { map, identity } from "ramda";
+import { map } from "ramda";
 import Router from "next/router";
 import Composer from "react-composer";
-import * as themes from "@offcourse/themes";
 import { AppShell } from "@offcourse/organisms";
-import { Query, Mutation } from "react-apollo";
+import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 import { overlayModes } from "../constants";
 
@@ -73,10 +71,10 @@ export default class AppShellContainer extends Component {
     return (
       <Composer
         components={[
-          <Query query={queries.appState} children={identity} />,
-          <Mutation mutation={mutations.toggleSidebar} children={identity} />,
-          <Mutation mutation={mutations.openOverlay} children={identity} />,
-          <Mutation mutation={mutations.selectTheme} children={identity} />
+          <Query query={queries.appState} />,
+          <Mutation mutation={mutations.toggleSidebar} />,
+          <Mutation mutation={mutations.openOverlay} />,
+          <Mutation mutation={mutations.selectTheme} />
         ]}
       >
         {([{ data }, toggleSidebar, openOverlay, selectTheme]) => {

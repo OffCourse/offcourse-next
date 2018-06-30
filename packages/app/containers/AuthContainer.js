@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Composer from "react-composer";
 import { queries, mutations } from "../graphql";
 import { identity } from "ramda";
-import { Query, Mutation } from "react-apollo";
+import { Query, Mutation } from "../components";
 import { Auth, SignOutDialog } from "@offcourse/organisms";
 import { overlayModes } from "../constants";
 
@@ -16,10 +15,10 @@ export default class AuthContainer extends Component {
     return (
       <Composer
         components={[
-          <Query query={queries.overlay} children={identity} />,
-          <Mutation mutation={mutations.closeOverlay} children={identity} />,
-          <Mutation mutation={mutations.signIn} children={identity} />,
-          <Mutation mutation={mutations.signOut} children={identity} />
+          <Query query={queries.overlay} />,
+          <Mutation mutation={mutations.closeOverlay} />,
+          <Mutation mutation={mutations.signIn} />,
+          <Mutation mutation={mutations.signOut} />
         ]}
       >
         {([queryResult, closeOverlay, signIn, signOut]) => {
@@ -30,7 +29,6 @@ export default class AuthContainer extends Component {
               return (
                 <Auth
                   signIn={async ({ userName }) => {
-                    console.log(userName);
                     await signIn({ variables: { userName } });
                     closeOverlay();
                   }}

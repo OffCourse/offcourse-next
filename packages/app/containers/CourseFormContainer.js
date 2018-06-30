@@ -2,17 +2,13 @@ import React, { Component } from "react";
 import { identity } from "ramda";
 import Composer from "react-composer";
 import { CourseForm } from "@offcourse/organisms";
-import { Query, Mutation } from "react-apollo";
+import { Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 
 export default class CourseFormContainer extends Component {
   render() {
     return (
-      <Composer
-        components={[
-          <Mutation mutation={mutations.closeOverlay} children={identity} />
-        ]}
-      >
+      <Composer components={[<Mutation mutation={mutations.closeOverlay} />]}>
         {([closeOverlay]) => (
           <CourseForm onSubmit={identity} onCancel={closeOverlay} />
         )}

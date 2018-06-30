@@ -15,16 +15,14 @@ const MasterDetail = system({
 const Master = system({
   p: 8,
   maxWidth: "22rem",
-  display: "flex",
-  boxSizing: "border-box"
+  display: "flex"
 });
 
 const Detail = system({
   p: 8,
   flex: 3,
   minWidth: "22rem",
-  maxWidth: "55rem",
-  boxSizing: "border-box"
+  maxWidth: "55rem"
 });
 
 const UnderConstruction = system({
