@@ -6,14 +6,11 @@ import { AppShell } from "@offcourse/organisms";
 import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 import { overlayModes } from "../constants";
+import { goHome } from "../tempUtils";
 
 const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = overlayModes;
 
 export default class AppShellContainer extends Component {
-  goToHome = () => {
-    Router.push("/");
-  };
-
   createThemeLinks({ themeNames, currentTheme, selectTheme }) {
     return map(themeName => {
       return {
@@ -82,7 +79,7 @@ export default class AppShellContainer extends Component {
           return (
             <AppShell
               position="fixed"
-              onLogoClick={this.goToHome}
+              onLogoClick={goHome}
               toggleSidebar={toggleSidebar}
               isSidebarOpen={data.sidebar.isOpen}
               links={[

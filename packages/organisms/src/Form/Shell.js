@@ -79,8 +79,9 @@ class Shell extends Component {
 
   renderErrors() {
     const { errors } = this.props;
-    const messages =
-      errors.general && formatMessages([errors.general], { px: 8 });
+    const messages = errors.general
+      ? formatMessages([errors.general], { px: 8 })
+      : [];
     return <MessageGroup messages={messages} />;
   }
 

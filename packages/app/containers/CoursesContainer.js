@@ -3,25 +3,14 @@ import { withRouter } from "next/router";
 import { Query } from "../components";
 import { queries } from "../graphql";
 import { CourseCardLayout } from "@offcourse/organisms";
-import { prepEdges, updateQuery } from "../tempUtils";
+import {
+  prepEdges,
+  updateQuery,
+  goToCollection,
+  goToCourse
+} from "../tempUtils";
 
 class CoursesContainer extends Component {
-  goToCollection = query => {
-    const { router } = this.props;
-    router.push({
-      pathname: "/",
-      query
-    });
-  };
-
-  goToCourse = query => {
-    const { router } = this.props;
-    router.push({
-      pathname: "/course",
-      query
-    });
-  };
-
   render() {
     const { curator, tag } = this.props.router.query;
     const variables = { curator, tag };
@@ -40,8 +29,8 @@ class CoursesContainer extends Component {
           };
           return (
             <CourseCardLayout
-              goToCollection={this.goToCollection}
-              goToCourse={this.goToCourse}
+              goToCollection={goToCollection}
+              goToCourse={goToCourse}
               hasMore={hasMore}
               courses={courses}
               loadMore={loadMore}

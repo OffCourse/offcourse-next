@@ -1,28 +1,7 @@
 import * as queries from "./queries";
 import * as mutations from "./mutations";
-import * as themes from "@offcourse/themes";
+import * as defaults from "./defaults";
 import resolvers from "./resolvers";
-
-const defaults = {
-  sidebar: {
-    __typename: "Sidebar",
-    isOpen: false
-  },
-  overlay: {
-    __typename: "Overlay",
-    isOpen: false,
-    mode: null
-  },
-  theme: {
-    __typename: "Theme",
-    all: Object.keys(themes),
-    current: "offcourse"
-  },
-  auth: {
-    __typename: "Auth",
-    userName: null
-  }
-};
 
 const typeDefs = `
   type Sidebar {
@@ -39,7 +18,18 @@ const typeDefs = `
     current: String!
   }
 
+  type AuthErrors {
+    userName: String
+    general: String
+    confirmationCode: String
+  }
+
   type Auth {
+    authStatus: String!
+    accessToken: String
+    refreshToken: String
+    needsConfirmation: Boolean,
+    errors: AuthErrors,
     userName: String!
   }
 

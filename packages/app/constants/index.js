@@ -1,2 +1,3 @@
 import * as overlayModes from "./overlayModes";
-export { overlayModes };
+import * as authModes from "./authModes";
+export { authModes, overlayModes };
