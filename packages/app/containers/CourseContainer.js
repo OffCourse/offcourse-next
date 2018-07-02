@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Composer from "react-composer";
 import { isEmpty, identity } from "ramda";
-import { Query } from "../components";
-import { prepCourse, goToCollection, goToCourse } from "../tempUtils";
+import { Query, Mutation } from "../components";
+import { prepCourse, goToCollection } from "../tempUtils";
+import { Group, Button } from "@offcourse/atoms";
 import { CourseCard } from "@offcourse/organisms";
-import { queries } from "../graphql";
+import { queries, mutations } from "../graphql";
 import { withRouter } from "next/router";
 
 class CourseContainer extends Component {
@@ -15,24 +16,49 @@ class CourseContainer extends Component {
     if (isEmpty(courseQuery)) return null;
 
     return (
-      <Composer
-        components={[
-          <Query query={queries.course} variables={{ courseQuery }} />,
-          <Query query={queries.auth} />
-        ]}
-      >
-        {([courseResponse, authResponse]) => {
+      <Query query={queries.auth}>
+        {authResponse => {
           const { userName } = authResponse.data.auth;
+          const query = userName ? queries.courseWithStatus : queries.course;
           return (
-            <CourseCard
-              onCuratorClick={goToCollection}
-              onCheckpointToggle={userName && identity}
-              onTagClick={goToCollection}
-              course={prepCourse(courseResponse.data.course)}
-            />
+            <Composer
+              components={[
+                <Query query={query} variables={{ courseQuery }} />,
+                <Mutation mutation={mutations.openOverlay} />
+              ]}
+            >
+              {([courseResponse, openOverlay]) => {
+                const { course } = courseResponse.data;
+                const userIsCurator = course.curator === userName;
+                return (
+                  <Group alignItems="stretch">
+                    <CourseCard
+                      onCuratorClick={goToCollection}
+                      onCheckpointToggle={userName && console.log}
+                      onTagClick={goToCollection}
+                      course={prepCourse(course)}
+                    />
+                    {userIsCurator ? (
+                      <Group justifyContent="center" alignItems="center" mt={6}>
+                        <Button
+                          onClick={() =>
+                            openOverlay({
+                              variables: { mode: "EDIT_COURSE" }
+                            })
+                          }
+                          size="large"
+                        >
+                          Edit Course
+                        </Button>
+                      </Group>
+                    ) : null}
+                  </Group>
+                );
+              }}
+            </Composer>
           );
         }}
-      </Composer>
+      </Query>
     );
   }
 }

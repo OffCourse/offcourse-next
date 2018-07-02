@@ -1,0 +1,17 @@
+query course($courseQuery: CourseQuery!) {
+  course(courseQuery: $courseQuery) {
+    goal
+    curator
+    timestamp
+    courseId
+    description
+    revision
+    tags
+    checkpoints {
+      task
+      checkpointId
+      resourceUrl
+      completed
+    }
+  }
+}

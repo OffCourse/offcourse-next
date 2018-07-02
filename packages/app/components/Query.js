@@ -9,7 +9,10 @@ export default class Query extends React.Component {
       <ApolloQuery query={query} variables={variables}>
         {({ loading, error, ...rest }) => {
           if (loading) return <Loading size="large" />;
-          if (error) return <Loading size="large" />;
+          if (error) {
+            console.log(error);
+            return <Loading size="large" />;
+          }
           return children({ ...rest });
         }}
       </ApolloQuery>

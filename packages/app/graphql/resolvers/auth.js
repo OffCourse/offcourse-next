@@ -7,14 +7,18 @@ const { SIGNED_IN, SIGNED_OUT } = authModes;
 
 const signIn = async (_, variables, { cache }) => {
   try {
+    const { userName, accessToken, refreshToken } = await cognito.signIn(
+      variables
+    );
+    localStorage && localStorage.setItem("accessToken", accessToken);
     const auth = {
       ...defaults,
       authStatus: SIGNED_IN,
-      ...(await cognito.signIn(variables))
+      userName,
+      accessToken,
+      refreshToken
     };
-    const response = cache.writeData({
-      data: { auth }
-    });
+    cache.writeData({ data: { auth } });
     return auth;
   } catch (error) {
     const auth = {
@@ -28,6 +32,7 @@ const signIn = async (_, variables, { cache }) => {
 
 const signOut = async (_, __, { cache }) => {
   const auth = defaults;
+  localStorage && localStorage.removeItem("accessToken");
   await cache.writeData({ data: { auth } });
   return auth;
 };

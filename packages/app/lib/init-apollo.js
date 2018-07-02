@@ -13,10 +13,11 @@ const httpLink = new HttpLink({
 });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
+  const accessToken = localStorage && localStorage.getItem("accessToken");
   // add the authorization to the headers
   operation.setContext({
     headers: {
-      authorization: "GUEST"
+      authorization: accessToken ? `Bearer ${accessToken}` : "GUEST"
     }
   });
   return forward(operation);
