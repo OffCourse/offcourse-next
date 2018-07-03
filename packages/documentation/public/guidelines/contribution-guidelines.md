@@ -1,15 +1,6 @@
 👍🎉 First off, thanks for taking the time to contribute! 🎉👍
 
-The following is a set of guidelines for contributing to the further development of the Offcourse platform, which is hosted on the [Offcourse-Next GitHub repo](https://github.com/OffCourse/offcourse-next). All fundamentals for design, coding and the work ethos of the Offcourse community can be found seperately at ...
-
-## Table Of Contents
-
-- Code of Conduct
-- What should I know before I get started?
-- How Can I Contribute?
-  - Reporting Bugs
-  - Suggesting Enhancements
-  - Contributing changes (Bug fixes, Code Contribution and Pull Requests)
+The following is a set of guidelines for contributing to the further development of the Offcourse platform, which is hosted on the [Offcourse-Next GitHub repo](https://github.com/OffCourse/offcourse-next).
 
 ## Code of Conduct
 
