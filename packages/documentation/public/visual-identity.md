@@ -1,3 +1,5 @@
+The visual identity is the visual aspect of our branding that we use together to communicate the Offcourse brand. This includes logo design, fonts and colors.
+
 ## Colors
 
 ### Primary Color
