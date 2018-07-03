@@ -1,3 +1,5 @@
+Please find below some guidelines that are meant as starting point for contributing to the Offcourse platform. 
+
 ## 1. K.I.S.S.
 
 Ain't no particular sign I'm more compatible with
