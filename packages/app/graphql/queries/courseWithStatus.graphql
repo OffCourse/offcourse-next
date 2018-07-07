@@ -1,7 +1,12 @@
 query course($courseQuery: CourseQuery!) {
   course(courseQuery: $courseQuery) {
     goal
+    avatarUrl
     curator
+    fork {
+      curator
+      goal
+    }
     timestamp
     courseId
     description

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { map, prop } from "ramda";
 import { withRouter } from "next/router";
 import { Query } from "../components";
 import { queries } from "../graphql";
@@ -18,7 +19,7 @@ class CoursesContainer extends Component {
       <Query query={queries.courses} variables={variables}>
         {({ data, fetchMore }) => {
           const { edges, pageInfo } = data.courses;
-          const courses = prepEdges(edges);
+          const courses = map(prop("node"), edges);
           const hasMore = pageInfo.hasNextPage;
           const loadMore = () => {
             fetchMore({

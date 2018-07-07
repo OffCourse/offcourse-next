@@ -1,5 +1,6 @@
 fragment CourseData on Course {
   goal
+  avatarUrl
   curator
   timestamp
   courseId

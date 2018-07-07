@@ -30,8 +30,6 @@ export const auth = {
   __typename: "Auth",
   userName: null,
   authStatus: SIGNED_OUT,
-  accessToken: "",
-  refreshToken: "",
   needsConfirmation: false,
   errors: authErrors
 };

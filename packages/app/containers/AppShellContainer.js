@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { map } from "ramda";
-import Router from "next/router";
 import Composer from "react-composer";
 import { AppShell } from "@offcourse/organisms";
 import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 import { overlayModes } from "../constants";
+import cognito from "../Cognito";
 import { goHome } from "../tempUtils";
 
 const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = overlayModes;

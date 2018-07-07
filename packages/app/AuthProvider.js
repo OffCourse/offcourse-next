@@ -30,9 +30,7 @@ class AuthProvider extends Component {
       );
       this.setState({
         authStatus: SIGNED_IN,
-        userName,
-        accessToken,
-        refreshToken
+        userName
       });
       this.props.onSignIn({
         ...this.state
@@ -91,7 +89,8 @@ class AuthProvider extends Component {
   };
 
   signOut = async () => {
-    await cognito.signOut;
+    console.log("HI");
+    await cognito.signOut();
     this.setState({ ...defaultState });
     const { authStatus } = this.state;
     this.props.onSignOut({ authStatus });

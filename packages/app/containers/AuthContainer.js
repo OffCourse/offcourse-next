@@ -44,6 +44,7 @@ export default class AuthContainer extends Component {
                   errors={errors}
                   onCancel={async () => {
                     const { data } = await signOut();
+                    console.log(data);
                     data.signOut.authStatus === SIGNED_OUT && closeOverlay();
                   }}
                   signUp={identity}

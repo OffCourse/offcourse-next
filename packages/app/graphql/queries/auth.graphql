@@ -2,7 +2,6 @@
   auth @client {
     userName
     authStatus
-    accessToken
     errors @client {
       userName
       general

@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import Composer from "react-composer";
-import { isEmpty, identity } from "ramda";
+import { isEmpty, find, propEq } from "ramda";
 import { Query, Mutation } from "../components";
-import { prepCourse, goToCollection } from "../tempUtils";
-import { Group, Button } from "@offcourse/atoms";
+import { goToCourse, goToCollection } from "../tempUtils";
+import CourseAction from "../components/CourseAction";
+import { Group } from "@offcourse/atoms";
 import { CourseCard } from "@offcourse/organisms";
 import { queries, mutations } from "../graphql";
 import { withRouter } from "next/router";
+import { EDIT_COURSE } from "../constants/editModes";
 
 class CourseContainer extends Component {
   render() {
@@ -30,28 +32,40 @@ class CourseContainer extends Component {
               {([courseResponse, openOverlay]) => {
                 const { course } = courseResponse.data;
                 const userIsCurator = course.curator === userName;
+                const actions = [
+                  {
+                    condition: userIsCurator,
+                    onClick: () =>
+                      openOverlay({ variables: { mode: EDIT_COURSE } }),
+                    label: "Edit Course"
+                  },
+                  {
+                    condition: !!course.fork && !userIsCurator,
+                    onClick: () =>
+                      goToCourse({ ...courseQuery, curator: userName }),
+                    label: "Go To Fork"
+                  },
+                  {
+                    condition: !course.fork && !userIsCurator,
+                    onClick: () => alert("working on it"),
+                    label: "Fork Course"
+                  }
+                ];
+
+                const { onClick, label } = find(
+                  propEq("condition", true),
+                  actions
+                );
+
                 return (
                   <Group alignItems="stretch">
                     <CourseCard
                       onCuratorClick={goToCollection}
                       onCheckpointToggle={userName && console.log}
                       onTagClick={goToCollection}
-                      course={prepCourse(course)}
+                      course={course}
                     />
-                    {userIsCurator ? (
-                      <Group justifyContent="center" alignItems="center" mt={6}>
-                        <Button
-                          onClick={() =>
-                            openOverlay({
-                              variables: { mode: "EDIT_COURSE" }
-                            })
-                          }
-                          size="large"
-                        >
-                          Edit Course
-                        </Button>
-                      </Group>
-                    ) : null}
+                    <CourseAction onClick={onClick} label={label} />;
                   </Group>
                 );
               }}

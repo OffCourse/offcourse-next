@@ -14,8 +14,47 @@ class Cognito {
   }
 
   signOut = async () => {
-    console.log(cognitoUser);
-    await cognitoUser.signOut();
+    const cognitoUser = this.userPool.getCurrentUser();
+    cognitoUser && (await cognitoUser.signOut());
+  };
+
+  currentUser = async () => {
+    const cognitoUser = this.userPool.getCurrentUser();
+    const noUserData = { userName: "" };
+    if (cognitoUser != null) {
+      const userName = cognitoUser.getUsername() || "";
+      return new Promise(resolve => {
+        cognitoUser.getSession((err, session) => {
+          if (err) {
+            console.log("ERR:", err);
+            return resolve(noUserData);
+          }
+
+          if (session.isValid()) {
+            return resolve({
+              userName,
+              accessToken: session.getAccessToken().getJwtToken()
+            });
+          }
+
+          cognitoUser.refreshSession(
+            session.getRefreshToken,
+            (err, { accessToken }) => {
+              if (err) {
+                console.log("ERR:", err);
+                return resolve(noUserData);
+              } else {
+                return resolve({
+                  userName,
+                  accessToken: accessToken.getJwtToken()
+                });
+              }
+            }
+          );
+        });
+      });
+    }
+    return noUserData;
   };
 
   resetPassword = async ({ userName }) => {

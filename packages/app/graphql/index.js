@@ -26,8 +26,6 @@ const typeDefs = `
 
   type Auth {
     authStatus: String!
-    accessToken: String
-    refreshToken: String
     needsConfirmation: Boolean,
     errors: AuthErrors,
     userName: String!
@@ -39,11 +37,13 @@ const typeDefs = `
     closeOverlay: Overlay
     openOverlay(mode: String!): Overlay
     switchTheme: Theme
+    initAuth: Auth
     signIn: Auth
     signOut: Auth
   }
 
   type Query {
+    auth: Auth
     sidebar: Sidebar
     overlay: Overlay
     theme: Theme
