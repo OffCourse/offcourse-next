@@ -36,7 +36,12 @@ class CourseContainer extends Component {
                   {
                     condition: userIsCurator,
                     onClick: () =>
-                      openOverlay({ variables: { mode: EDIT_COURSE } }),
+                      openOverlay({
+                        variables: {
+                          mode: EDIT_COURSE,
+                          courseId: course.courseId
+                        }
+                      }),
                     label: "Edit Course"
                   },
                   {
@@ -65,7 +70,7 @@ class CourseContainer extends Component {
                       onTagClick={goToCollection}
                       course={course}
                     />
-                    <CourseAction onClick={onClick} label={label} />;
+                    <CourseAction onClick={onClick} label={label} />
                   </Group>
                 );
               }}

@@ -29,7 +29,8 @@ class LoadingModal extends Component {
 }
 
 export default class OverlayContainer extends Component {
-  selectMode(mode) {
+  selectMode(overlay) {
+    const { mode, courseId, close } = overlay;
     switch (mode) {
       case SIGNING_UP:
       case SIGNING_IN:
@@ -38,7 +39,7 @@ export default class OverlayContainer extends Component {
         return <AuthContainer />;
       case EDIT_COURSE:
       case CREATE_COURSE:
-        return <CourseFormContainer />;
+        return <CourseFormContainer closeOverlay={close} courseId={courseId} />;
       default:
         return <LoadingModal />;
     }
@@ -56,7 +57,7 @@ export default class OverlayContainer extends Component {
           const { overlay } = queryResult.data;
           return (
             <Modal close={closeOverlay} isOpen={overlay.isOpen}>
-              {this.selectMode(overlay.mode, closeOverlay)}
+              {this.selectMode({ ...overlay, close: closeOverlay })}
             </Modal>
           );
         }}

@@ -10,6 +10,7 @@ const typeDefs = `
 
   type Overlay {
     isOpen: Boolean!
+    courseId: String
     mode: String
   }
 

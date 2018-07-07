@@ -1,7 +1,7 @@
 const __typename = "Overlay";
 
-const openOverlay = (_, { mode }, { cache, getCacheKey }) => {
-  const overlay = { __typename, mode, isOpen: true };
+const openOverlay = (_, { mode, courseId }, { cache, getCacheKey }) => {
+  const overlay = { __typename, mode, courseId, isOpen: true };
   cache.writeData({ data: { overlay } });
   return overlay;
 };
