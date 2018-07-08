@@ -18,7 +18,7 @@ export default class PasswordInput extends Component {
   render() {
     const { inputType } = this.state;
     return (
-      <Input type={inputType} {...this.props}>
+      <Input unformatted type={inputType} {...this.props}>
         <Icon onClick={this.toggleInputType} color="grayScale.2" name="eye" />
       </Input>
     );

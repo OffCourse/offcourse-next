@@ -46,7 +46,7 @@ class Input extends Component {
             type={type}
             value={value && unformatted ? value : formatTitle(value)}
             placeholder={formatTitle(placeholder)}
-            onChange={onChange && this.handleChange}
+            onChange={onChange && !unformatted ? this.handleChange : onChange}
             onBlur={onBlur}
             fontSize={variant === "small" ? 1 : 3}
             lineHeight={variant === "small" ? 1 : 3}
