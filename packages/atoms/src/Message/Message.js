@@ -23,14 +23,19 @@ const textColor = {
 class Message extends Component {
   render() {
     const { children, px, basic, variant } = this.props;
+    const color = basic ? background[variant] : textColor[variant];
     return (
       <MessageWrapper
         px={basic ? 0 : px}
         py={basic ? 0 : 4}
         bg={basic ? null : background[variant]}
-        color={basic ? background[variant] : textColor[variant]}
+        color={color}
       >
-        {variant !== "default" && <Label is="span">{variant}</Label>}
+        {variant !== "default" && (
+          <Label color={color} is="span">
+            {variant}
+          </Label>
+        )}
         {formatTitle(children)}
       </MessageWrapper>
     );

@@ -1,6 +1,5 @@
-\* This component may render strange in the catalogue due to the way catalog updates its pages. Please click reformat**Add Item** if this occurs.
-
 ```react|span-6
+responsive: true
 state: {items: [1,2,3,4]}
 ---
 const text = `

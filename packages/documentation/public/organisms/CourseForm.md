@@ -37,22 +37,22 @@ const submitHandler = (values, actions) => {
 
 const course = {
   courseId: "abc",
-  goal: "Learn This",
+  goal: "learn this",
   checkpoints: [
     {
       checkpointId: "a",
-      task: "Do This",
+      task: "do this",
       resourceUrl: "https://github.com/jaredpalmer/formik"
     },
     {
       checkpointId: "b",
-      task: "Do That",
+      task: "do that",
       resourceUrl: "https://github.com/jquense/yup"
     },
     {
       checkpointId: "c",
       completed: true,
-      task: "Do More",
+      task: "do more",
       resourceUrl: "https://semantic-ui.com/collections/form.html"
     }
   ],

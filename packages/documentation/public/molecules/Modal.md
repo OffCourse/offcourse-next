@@ -15,6 +15,252 @@ const Section = Modal.Section;
     <Heading>
       Modal
     </Heading>
+
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
+    <Section>
+    <ButtonGroup justifyContent="flex-end">
+      <Button onClick={close}>
+        Close Modal
+      </Button>
+    </ButtonGroup>
+    </Section>
     <Section>
     <ButtonGroup justifyContent="flex-end">
       <Button onClick={close}>

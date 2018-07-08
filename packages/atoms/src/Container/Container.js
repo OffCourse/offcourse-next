@@ -9,6 +9,7 @@ const Container = system({
   fontSize: 1,
   minWidth: "18rem",
   maxWidth: "40rem",
+  maxHeight: "95vh",
   width: "40rem",
   flex: 1,
   px: 0,
@@ -17,6 +18,7 @@ const Container = system({
   my: 6,
   opactity: 1
 }).extend`
+  overflow-y: scroll;
 `;
 
 export default Container;

@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { formatTitle } from "../helpers";
+import { formatTitle, lowerCase } from "../helpers";
 import { Group } from "..";
 import { InputWrapper, OuterWrapper, TextAreaWrapper } from "./wrappers";
 
 class Input extends Component {
+  handleChange = e => {
+    const { onChange } = this.props;
+    const value = lowerCase(e.target.value);
+    e.target.value = value;
+    onChange(e);
+  };
   render() {
     const {
       mb,
@@ -16,8 +22,8 @@ class Input extends Component {
       name,
       value,
       placeholder,
-      onChange,
       type,
+      onChange,
       onBlur
     } = this.props;
 
@@ -37,9 +43,9 @@ class Input extends Component {
           <InputWrapper
             name={name}
             type={type}
-            value={value}
+            value={value && formatTitle(value)}
             placeholder={formatTitle(placeholder)}
-            onChange={onChange}
+            onChange={onChange && this.handleChange}
             onBlur={onBlur}
             fontSize={variant === "small" ? 1 : 3}
             lineHeight={variant === "small" ? 1 : 3}
