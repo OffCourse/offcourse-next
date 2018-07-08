@@ -32,6 +32,7 @@ export default class CheckpointInput extends Component {
           <Input
             onChange={onChange}
             onBlur={onBlur}
+            unformatted
             pt={0}
             mt={0}
             name={`${name}.resourceUrl`}

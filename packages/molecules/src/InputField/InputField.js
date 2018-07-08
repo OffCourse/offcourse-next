@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { isEmpty } from "ramda";
-import { compact } from "../helpers";
+import { compact, formatTitle } from "../helpers";
 import { Label, Input } from "@offcourse/atoms";
 import { MessageGroup } from "..";
 import InputFieldWrapper from "./InputFieldWrapper";

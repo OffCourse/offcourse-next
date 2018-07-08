@@ -22,6 +22,7 @@ class Input extends Component {
       name,
       value,
       placeholder,
+      unformatted,
       type,
       onChange,
       onBlur
@@ -43,7 +44,7 @@ class Input extends Component {
           <InputWrapper
             name={name}
             type={type}
-            value={value && formatTitle(value)}
+            value={value && unformatted ? value : formatTitle(value)}
             placeholder={formatTitle(placeholder)}
             onChange={onChange && this.handleChange}
             onBlur={onBlur}

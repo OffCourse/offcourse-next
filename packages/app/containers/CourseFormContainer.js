@@ -8,24 +8,35 @@ import { queries, mutations } from "../graphql";
 export default class CourseFormContainer extends Component {
   render() {
     const { courseId, closeOverlay } = this.props;
-    return (
-      <Composer
-        components={[
-          courseId && <Query query={queries.course} variables={{ courseId }} />
-        ]}
-      >
-        {([queryResult]) => {
-          const { course } = queryResult.data;
-          return (
-            <CourseForm
-              mode={courseId ? "edit" : "create"}
-              course={course}
-              onSubmit={identity}
-              onCancel={closeOverlay}
-            />
-          );
-        }}
-      </Composer>
-    );
+    if (courseId) {
+      return (
+        <Composer
+          components={[
+            courseId && (
+              <Query query={queries.course} variables={{ courseId }} />
+            )
+          ]}
+        >
+          {([queryResult]) => {
+            let course = null;
+            if (queryResult) {
+              course = queryResult.data.course;
+            }
+            return (
+              <CourseForm
+                mode="edit"
+                course={course}
+                onSubmit={identity}
+                onCancel={closeOverlay}
+              />
+            );
+          }}
+        </Composer>
+      );
+    } else {
+      return (
+        <CourseForm mode="create" onSubmit={identity} onCancel={closeOverlay} />
+      );
+    }
   }
 }
