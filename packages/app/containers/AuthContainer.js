@@ -66,7 +66,6 @@ export default class AuthContainer extends Component {
                     } else {
                       const { data } = await resetPassword({ variables });
                       console.log(data.resetPassword.authStatus);
-                      switchOverlayMode({ variables });
                     }
                   }}
                   onCancel={async () => {
