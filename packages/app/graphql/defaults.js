@@ -1,5 +1,5 @@
 import * as themes from "@offcourse/themes";
-import { authModes } from "../constants";
+import { authModes } from "@offcourse/constants";
 
 const { SIGNED_OUT } = authModes;
 
@@ -11,6 +11,7 @@ export const sidebar = {
 export const overlay = {
   __typename: "Overlay",
   isOpen: false,
+  userName: null,
   courseId: null,
   mode: null
 };

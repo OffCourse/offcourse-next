@@ -29,7 +29,7 @@
     ]
   },
   "dependencies": {
-    "@offcourse/atoms": "next",
+    "@offcourse/constants": "next",
     "@offcourse/molecules": "next",
     "@offcourse/organisms": "next",
     "@offcourse/themes": "next",

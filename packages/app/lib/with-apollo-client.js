@@ -2,9 +2,6 @@ import initApollo from "./init-apollo";
 import Head from "next/head";
 import { getDataFromTree } from "react-apollo";
 import { mutations } from "../graphql";
-import { authModes } from "../constants";
-
-const { SIGNED_IN, SIGNED_OUT } = authModes;
 
 export default App => {
   return class Apollo extends React.Component {

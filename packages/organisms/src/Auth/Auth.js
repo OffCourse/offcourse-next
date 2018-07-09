@@ -4,22 +4,23 @@ import { curry } from "ramda";
 import SignInForm from "../SignInForm";
 import PasswordRetrievalForm from "../PasswordRetrievalForm";
 import SignUpForm from "../SignUpForm";
+import { authModes } from "@offcourse/constants";
 
-const SIGNING_IN = "SIGNING_IN";
-const SIGNING_UP = "SIGNING_UP";
-const RETRIEVING_PASSWORD = "RETRIEVING_PASSWORD";
+const { RESETTING_PASSWORD, SIGNING_IN, SIGNING_UP } = authModes;
 
 const formComponents = {
-  RETRIEVING_PASSWORD: PasswordRetrievalForm,
+  RESETTING_PASSWORD: PasswordRetrievalForm,
   SIGNING_IN: SignInForm,
   SIGNING_UP: SignUpForm
 };
 
 class Auth extends Component {
   static propTypes = {
-    defaultMode: PropTypes.oneOf([SIGNING_IN, SIGNING_UP, RETRIEVING_PASSWORD]),
+    defaultMode: PropTypes.oneOf([SIGNING_IN, SIGNING_UP, RESETTING_PASSWORD]),
     needsConfirmation: PropTypes.bool,
     errors: PropTypes.object,
+    onModeSwitch: PropTypes.func,
+    onCancel: PropTypes.func,
     signUp: PropTypes.func.isRequired,
     signIn: PropTypes.func.isRequired,
     resetPassword: PropTypes.func.isRequired
@@ -27,20 +28,18 @@ class Auth extends Component {
 
   static defaultProps = {
     defaultMode: SIGNING_IN,
+    onModeSwitch: () => null,
     needsConfirmation: false,
     onCancel: () => null
   };
 
   state = {
-    mode: this.props.defaultMode,
-    userName: ""
+    mode: this.props.defaultMode
   };
 
-  switchTo = (newMode, { userName }) => {
-    this.setState({
-      mode: newMode,
-      userName: newMode === SIGNING_IN ? "" : userName
-    });
+  switchTo = (mode, { userName }) => {
+    const { onModeSwitch } = this.props;
+    this.setState({ mode }, () => onModeSwitch({ mode, userName }));
   };
 
   reset = () => {
@@ -62,14 +61,14 @@ class Auth extends Component {
       title: "Sign Up"
     };
     const RetrievePassword = {
-      onClick: switchTo(RETRIEVING_PASSWORD),
+      onClick: switchTo(RESETTING_PASSWORD),
       title: "Password Lost"
     };
 
     const modes = {
       SIGNING_IN: [SignUp, RetrievePassword],
       SIGNING_UP: [SignIn],
-      RETRIEVING_PASSWORD: [SignIn]
+      RESETTING_PASSWORD: [SignIn]
     };
 
     return modes[mode];
@@ -81,15 +80,15 @@ class Auth extends Component {
     const modes = {
       SIGNING_IN: signIn,
       SIGNING_UP: signUp,
-      RETRIEVING_PASSWORD: resetPassword
+      RESETTING_PASSWORD: resetPassword
     };
 
     return modes[mode];
   };
 
   render() {
-    const { userName, mode } = this.state;
-    const { needsConfirmation, errors } = this.props;
+    const { mode } = this.state;
+    const { userName, needsConfirmation, errors } = this.props;
     const FormComponent = formComponents[mode];
 
     return (

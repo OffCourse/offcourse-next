@@ -1,6 +1,6 @@
 import { toggleSidebar } from "./sidebar";
-import { initAuth, signIn, signOut } from "./auth";
-import { openOverlay, closeOverlay } from "./overlay";
+import { initAuth, signIn, signOut, resetPassword } from "./auth";
+import { openOverlay, closeOverlay, switchOverlayMode } from "./overlay";
 import { selectTheme, switchTheme } from "./theme";
 
 export default {
@@ -8,9 +8,11 @@ export default {
     initAuth,
     signIn,
     signOut,
+    resetPassword,
     toggleSidebar,
     openOverlay,
     closeOverlay,
+    switchOverlayMode,
     switchTheme,
     selectTheme
   }

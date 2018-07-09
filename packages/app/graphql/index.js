@@ -11,6 +11,7 @@ const typeDefs = `
   type Overlay {
     isOpen: Boolean!
     courseId: String
+    userName: String
     mode: String
   }
 
@@ -37,8 +38,10 @@ const typeDefs = `
     toggleSidebar: Sidebar
     closeOverlay: Overlay
     openOverlay(mode: String!): Overlay
+    switchOverlayMode(mode: String!): Overlay
     switchTheme: Theme
     initAuth: Auth
+    resetPassword: Auth
     signIn: Auth
     signOut: Auth
   }

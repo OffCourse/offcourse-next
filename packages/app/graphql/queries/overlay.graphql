@@ -3,5 +3,6 @@
     isOpen
     mode
     courseId
+    userName
   }
 }

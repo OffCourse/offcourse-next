@@ -2,6 +2,7 @@
   auth @client {
     userName
     authStatus
+    needsConfirmation
     errors @client {
       userName
       general

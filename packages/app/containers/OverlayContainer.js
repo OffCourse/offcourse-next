@@ -4,14 +4,14 @@ import Composer from "react-composer";
 import { Group, Loading } from "@offcourse/atoms";
 import { Modal } from "@offcourse/molecules";
 import { queries, mutations } from "../graphql";
-import { overlayModes } from "../constants";
+import { overlayModes } from "@offcourse/constants";
 import { AuthContainer, CourseFormContainer } from ".";
 
 const {
   SIGNING_IN,
   SIGNING_UP,
   SIGNING_OUT,
-  RETRIEVING_PASSWORD,
+  RESETTING_PASSWORD,
   CREATE_COURSE,
   EDIT_COURSE
 } = overlayModes;
@@ -35,7 +35,7 @@ export default class OverlayContainer extends Component {
       case SIGNING_UP:
       case SIGNING_IN:
       case SIGNING_OUT:
-      case RETRIEVING_PASSWORD:
+      case RESETTING_PASSWORD:
         return <AuthContainer />;
       case EDIT_COURSE:
       case CREATE_COURSE:

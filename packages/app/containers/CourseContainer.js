@@ -8,7 +8,9 @@ import { Group } from "@offcourse/atoms";
 import { CourseCard } from "@offcourse/organisms";
 import { queries, mutations } from "../graphql";
 import { withRouter } from "next/router";
-import { EDIT_COURSE } from "../constants/editModes";
+import { overlayModes } from "@offcourse/constants";
+
+const { EDIT_COURSE } = overlayModes;
 
 class CourseContainer extends Component {
   render() {

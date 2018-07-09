@@ -1,7 +1,7 @@
 {
-  "name": "@offcourse/organisms",
+  "name": "@offcourse/constants",
   "version": "1.4.0",
-  "description": "Organic Building Blocks for the Offcourse Project",
+  "description": "Shared Constants for the Offcourse Project",
   "author": "Jan Hein Hoogstad",
   "license": "MIT",
   "repository": "offcourse/offcourse-next",
@@ -18,21 +18,9 @@
     "start": "rollup -c -w"
   },
   "dependencies": {
-    "@offcourse/atoms": "^1.4.0",
-    "@offcourse/constants": "^1.4.0",
-    "@offcourse/molecules": "^1.4.0",
-    "formik": "^0.11.11",
-    "ramda": "^0.25.0",
-    "react-waypoint": "^8.0.1",
-    "voca": "^1.4.0",
-    "yup": "^0.25.1"
+    "@svgr/rollup": "^2.0.0"
   },
-  "peerDependencies": {
-    "prop-types": "^15.5.4",
-    "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0",
-    "system-components": "^2.0.3"
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
@@ -50,9 +38,6 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "gh-pages": "^1.1.0",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-scripts": "^1.1.4",
     "rollup": "^0.54.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.2.1",

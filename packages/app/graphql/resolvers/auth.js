@@ -1,9 +1,9 @@
 import cognito from "../../Cognito";
 import { auth as defaults } from "../defaults";
 
-import { authModes } from "../../constants";
+import { authModes } from "@offcourse/constants";
 
-const { SIGNED_IN, SIGNED_OUT } = authModes;
+const { RESETTING_PASSWORD, SIGNED_IN, SIGNED_OUT } = authModes;
 
 const initAuth = async (_, __, { cache }) => {
   try {
@@ -12,6 +12,26 @@ const initAuth = async (_, __, { cache }) => {
       ...defaults,
       authStatus: userName ? SIGNED_IN : SIGNED_OUT,
       userName
+    };
+    cache.writeData({ data: { auth } });
+    return auth;
+  } catch (error) {
+    const auth = {
+      ...defaults,
+      errors: { ...defaults.errors, ...error }
+    };
+    cache.writeData({ data: { auth } });
+    return auth;
+  }
+};
+
+const resetPassword = async (_, variables, { cache }) => {
+  try {
+    await cognito.resetPassword(variables);
+    const auth = {
+      ...defaults,
+      authStatus: RESETTING_PASSWORD,
+      needsConfirmation: true
     };
     cache.writeData({ data: { auth } });
     return auth;
@@ -52,4 +72,4 @@ const signOut = async (_, __, { cache }) => {
   return auth;
 };
 
-export { initAuth, signIn, signOut };
+export { initAuth, signIn, signOut, resetPassword };
