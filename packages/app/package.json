@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@offcourse/constants": "^1.4.0",
+    "@offcourse/atoms": "^1.4.0",
     "@offcourse/molecules": "^1.4.0",
     "@offcourse/organisms": "^1.4.0",
     "@offcourse/themes": "^1.4.0",

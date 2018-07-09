@@ -38,6 +38,7 @@ const resetPassword = async (_, variables, { cache }) => {
   } catch (error) {
     const auth = {
       ...defaults,
+      authStatus: RESETTING_PASSWORD,
       errors: { ...defaults.errors, ...error }
     };
     cache.writeData({ data: { auth } });
