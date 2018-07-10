@@ -11,7 +11,6 @@ const typeDefs = `
   type Overlay {
     isOpen: Boolean!
     courseId: String
-    userName: String
     mode: String
   }
 
@@ -29,6 +28,8 @@ const typeDefs = `
   type Auth {
     authStatus: String!
     needsConfirmation: Boolean,
+    password: String!
+    email: String!
     errors: AuthErrors,
     userName: String!
   }
@@ -37,12 +38,15 @@ const typeDefs = `
     selectTheme(themeName: String!): Theme
     toggleSidebar: Sidebar
     closeOverlay: Overlay
-    openOverlay(mode: String!): Overlay
-    switchOverlayMode(mode: String!): Overlay
+    openOverlay(mode: String!, courseId: String!): Overlay
+    switchOverlayMode(mode: String!, userName: String): Overlay
     switchTheme: Theme
     initAuth: Auth
-    resetPassword: Auth
-    signIn: Auth
+    signUp(userName: String!, email: String!, password: String!): Auth
+    confirmSignup(userName: String!, password: String!, confirmationCode: Int!): Auth
+    resetPassword(userName: String!): Auth
+    confirmNewPassword(userName: String!, password: String!, confirmationCode: Int!): Auth
+    signIn(userName: String!, password: String!): Auth
     signOut: Auth
   }
 

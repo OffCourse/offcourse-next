@@ -7,8 +7,8 @@ const openOverlay = (_, { mode, courseId = null }, { cache, getCacheKey }) => {
   return overlay;
 };
 
-const switchOverlayMode = (_, { mode, userName }, { cache, getCacheKey }) => {
-  const overlay = { ...defaults, mode, userName, isOpen: true };
+const switchOverlayMode = (_, { mode }, { cache, getCacheKey }) => {
+  const overlay = { ...defaults, mode, isOpen: true };
   cache.writeData({ data: { overlay } });
   return overlay;
 };

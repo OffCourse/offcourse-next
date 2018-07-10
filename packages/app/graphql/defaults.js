@@ -11,10 +11,10 @@ export const sidebar = {
 export const overlay = {
   __typename: "Overlay",
   isOpen: false,
-  userName: null,
   courseId: null,
   mode: null
 };
+
 export const theme = {
   __typename: "Theme",
   all: Object.keys(themes),
@@ -31,6 +31,8 @@ export const authErrors = {
 export const auth = {
   __typename: "Auth",
   userName: null,
+  email: null,
+  password: null,
   authStatus: SIGNED_OUT,
   needsConfirmation: false,
   errors: authErrors

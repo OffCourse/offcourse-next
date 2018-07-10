@@ -91,8 +91,7 @@ class Cognito {
       cognitoUser.confirmPassword(confirmationCode, password, {
         onSuccess: resolve,
         onFailure: error => {
-          console.log(error);
-          reject({ confirmationCode: "invalid confirmation code" });
+          reject({ general: "invalid confirmation code" });
         }
       });
     });

@@ -19,7 +19,6 @@ export default class AuthContainer extends Component {
   static propTypes = {};
 
   render() {
-    console.log(mutations.resetPassword);
     return (
       <Composer
         components={[
@@ -29,7 +28,10 @@ export default class AuthContainer extends Component {
           <Mutation mutation={mutations.switchOverlayMode} />,
           <Mutation mutation={mutations.signIn} />,
           <Mutation mutation={mutations.signOut} />,
-          <Mutation mutation={mutations.resetPassword} />
+          <Mutation mutation={mutations.signUp} />,
+          <Mutation mutation={mutations.confirmSignUp} />,
+          <Mutation mutation={mutations.resetPassword} />,
+          <Mutation mutation={mutations.confirmNewPassword} />
         ]}
       >
         {([
@@ -39,11 +41,14 @@ export default class AuthContainer extends Component {
           switchOverlayMode,
           signIn,
           signOut,
-          resetPassword
+          signUp,
+          confirmSignUp,
+          resetPassword,
+          confirmNewPassword
         ]) => {
-          console.log(queryResult);
-          const { userName, mode } = queryResult.data.overlay;
-          const { needsConfirmation, errors } = authResult.data.auth;
+          const { mode } = queryResult.data.overlay;
+          const { needsConfirmation, userName, errors } = authResult.data.auth;
+          console.log(authResult.data.auth);
           switch (mode) {
             case SIGNING_UP:
             case SIGNING_IN:
@@ -60,19 +65,36 @@ export default class AuthContainer extends Component {
                     data.signIn.authStatus === SIGNED_IN && closeOverlay();
                   }}
                   resetPassword={async variables => {
-                    const { userName } = variables;
-                    if (needsConfirmation) {
-                      console.log(variables);
-                    } else {
+                    if (!needsConfirmation) {
                       const { data } = await resetPassword({ variables });
-                      console.log(data.resetPassword.authStatus);
+                      const { authStatus } = data.resetPassword;
+                      await switchOverlayMode({
+                        variables: { mode: authStatus }
+                      });
+                    } else {
+                      const { data } = await confirmNewPassword({ variables });
+                      data.confirmNewPassword.authStatus === SIGNED_IN &&
+                        closeOverlay();
+                    }
+                  }}
+                  signUp={async variables => {
+                    if (!needsConfirmation) {
+                      const { data } = await signUp({ variables });
+                      const { authStatus } = data.signUp;
+                      await switchOverlayMode({
+                        variables: { mode: authStatus }
+                      });
+                    } else {
+                      const { data } = await confirmSignUp({ variables });
+                      console.log(data);
+                      data.confirmSignUp.authStatus === SIGNED_IN &&
+                        closeOverlay();
                     }
                   }}
                   onCancel={async () => {
                     const { data } = await signOut();
                     data.signOut.authStatus === SIGNED_OUT && closeOverlay();
                   }}
-                  signUp={identity}
                 />
               );
             case SIGNING_OUT:

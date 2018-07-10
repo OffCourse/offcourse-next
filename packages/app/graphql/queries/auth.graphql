@@ -1,6 +1,8 @@
 {
   auth @client {
     userName
+    email
+    password
     authStatus
     needsConfirmation
     errors @client {
