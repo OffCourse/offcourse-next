@@ -107,7 +107,7 @@ class Cognito {
 
     const errorResponses = {
       UsernameExistsException: {
-        userName: "user name is taken"
+        general: "user name is taken"
       }
     };
 

@@ -17,6 +17,7 @@ class Input extends Component {
       pt,
       pb,
       variant,
+      disabled,
       children,
       hasErrors,
       name,
@@ -35,6 +36,7 @@ class Input extends Component {
             is="textarea"
             rows="4"
             name={name}
+            disabled={disabled}
             value={value}
             placeholder={placeholder}
             onChange={onChange}
@@ -44,6 +46,8 @@ class Input extends Component {
           <InputWrapper
             name={name}
             type={type}
+            disabled={disabled}
+            value={value}
             value={value && unformatted ? value : formatTitle(value)}
             placeholder={formatTitle(placeholder)}
             onChange={onChange && !unformatted ? this.handleChange : onChange}

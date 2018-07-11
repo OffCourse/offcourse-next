@@ -28,7 +28,7 @@ const initAuth = async (_, __, { cache }) => {
 
 const signUp = async (_, { userName, password, email }, { cache }) => {
   try {
-    // await cognito.signUp(variables);
+    await cognito.signUp({ userName, password, email });
     const auth = {
       ...defaults,
       userName,
@@ -54,8 +54,8 @@ const confirmSignUp = async (_, variables, { cache }) => {
   const previous = cache.readQuery({ query: queries.auth });
   const { userName, email, password } = previous.auth;
   try {
-    // await cognito.confirmSignUp(variables);
-    await cognito.signIn({ userName: "XXX", password });
+    await cognito.confirmSignUp(variables);
+    await cognito.signIn({ userName, password });
     const auth = {
       ...defaults,
       authStatus: SIGNED_IN,
@@ -90,6 +90,7 @@ const resetPassword = async (_, { userName }, { cache }) => {
     cache.writeData({ data: { auth } });
     return auth;
   } catch (error) {
+    console.log(error);
     const auth = {
       ...defaults,
       authStatus: RESETTING_PASSWORD,

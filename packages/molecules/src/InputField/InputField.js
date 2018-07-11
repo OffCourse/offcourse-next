@@ -27,9 +27,14 @@ export default class InputField extends Component {
   };
 
   renderLabel() {
-    const { title, name } = this.props;
+    const { title, disabled, name } = this.props;
     return title ? (
-      <Label pb={4} px={6} htmlFor={name}>
+      <Label
+        color={disabled ? "grayScale.2" : "black"}
+        pb={4}
+        px={6}
+        htmlFor={name}
+      >
         {title}
       </Label>
     ) : null;
@@ -37,7 +42,7 @@ export default class InputField extends Component {
 
   hasErrors() {
     const { errors } = this.props;
-    return !isEmpty(compact(errors));
+    return errors && !isEmpty(compact(errors));
   }
 
   renderErrors() {
@@ -57,11 +62,13 @@ export default class InputField extends Component {
     const {
       name,
       placeholder,
+      disabled,
       value,
       onChange,
       onBlur,
       children,
       FieldComponent,
+      unformatted,
       variant
     } = this.props;
 
@@ -71,9 +78,11 @@ export default class InputField extends Component {
       <FieldComponent
         name={name}
         value={value}
+        disabled={disabled}
         placeholder={placeholder}
         onChange={onChange}
         onBlur={onBlur}
+        unformatted={unformatted}
         mb={3}
         hasErrors={this.hasErrors()}
         variant={variant}

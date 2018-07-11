@@ -17,11 +17,12 @@ const BaseWrapper = system(
   },
   props => ({
     fontFamily: props.theme.fonts.bold,
-    boxSizing: "border-box"
+    boxSizing: "border-box",
+    color: `${props.disabled ? props.theme.colors.grayScale[2] : "black"}`
   })
 ).extend`
   ::placeholder {
-    color: ${({ theme }) => theme.colors.mediumGray};
+    color: ${({ theme }) => theme.colors.grayScale[0]};
   }
 
   ::selection {

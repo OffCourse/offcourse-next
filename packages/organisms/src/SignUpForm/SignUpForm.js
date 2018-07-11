@@ -37,7 +37,6 @@ class SignUpForm extends Component {
       <Form
         Model={Model}
         values={new Model({ userName })}
-        links={links}
         mode={mode}
         errors={errors}
         title="Sign Up"
@@ -45,22 +44,37 @@ class SignUpForm extends Component {
         onCancel={onCancel}
         setSubmitting={mode !== "confirm"}
       >
-        <Form.Field title="User Name" name="userName" placeholder="User Name" />
         <Form.Field
-          title="Email"
-          type="email"
-          name="email"
-          placeholder="Email Address"
+          unformatted
+          title="User Name"
+          disabled={mode === "confirm"}
+          name="userName"
+          placeholder="User Name"
         />
-        <Form.Field
-          title="Password"
-          FieldComponent={PasswordInput}
-          name="password"
-          placeholder="Password"
-        />
+
+        {mode !== "confirm" && (
+          <Form.Field
+            unformatted
+            title="Email"
+            type="email"
+            name="email"
+            placeholder="Email Address"
+          />
+        )}
+
+        {mode !== "confirm" && (
+          <Form.Field
+            unformatted
+            title="Password"
+            FieldComponent={PasswordInput}
+            name="password"
+            placeholder="Password"
+          />
+        )}
 
         {mode === "confirm" && (
           <Form.Field
+            unformatted
             title="Confirmation Code"
             name="confirmationCode"
             placeholder="Confirmation Code"

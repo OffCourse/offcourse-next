@@ -29,9 +29,7 @@ const confirmationCode = yup
   .required();
 
 const normal = yup.object().shape({ userName, email, password });
-const confirm = yup
-  .object()
-  .shape({ userName, email, password, confirmationCode });
+const confirm = yup.object().shape({ userName, confirmationCode });
 
 export default {
   normal,

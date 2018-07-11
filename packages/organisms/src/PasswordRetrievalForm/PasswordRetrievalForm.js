@@ -42,15 +42,23 @@ class PasswordRetrievalForm extends Component {
         onCancel={onCancel}
         title="Retrieve Password"
       >
-        <Form.Field title="User Name" name="userName" placeholder="User Name" />
+        <Form.Field
+          title="User Name"
+          disabled={mode === "confirm"}
+          unformatted
+          name="userName"
+          placeholder="User Name"
+        />
         {mode === "confirm" && (
           <Fragment>
             <Form.Field
+              unformatted
               title="Confirmation Code"
               name="confirmationCode"
               placeholder="Confirmation Code"
             />
             <Form.Field
+              unformatted
               title="New Password"
               type="password"
               FieldComponent={PasswordInput}

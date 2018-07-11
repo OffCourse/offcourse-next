@@ -8,11 +8,20 @@ class FormField extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    placeholder: PropTypes.string.isRequired
+    placeholder: PropTypes.string.isRequired,
+    unformatted: PropTypes.bool
   };
 
   render() {
-    const { name, FieldComponent, variant, title, placeholder } = this.props;
+    const {
+      name,
+      FieldComponent,
+      unformatted,
+      disabled,
+      variant,
+      title,
+      placeholder
+    } = this.props;
     return (
       <Section>
         <Field
@@ -22,6 +31,8 @@ class FormField extends Component {
             return (
               <InputField
                 {...field}
+                unformatted={unformatted}
+                disabled={disabled}
                 FieldComponent={FieldComponent}
                 variant={variant}
                 title={title}

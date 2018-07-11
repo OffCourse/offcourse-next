@@ -66,7 +66,7 @@ class AuthProvider extends Component {
 
   resetPassword = async authData => {
     try {
-      const response = await cognito.resetPassword(authData);
+      await cognito.resetPassword(authData);
       const { userName } = authData;
       this.setState({
         needsConfirmation: true,
@@ -80,7 +80,7 @@ class AuthProvider extends Component {
   confirmNewPassword = async authData => {
     try {
       const { userName } = this.state;
-      const response = await cognito.resetPassword({ userName, ...authData });
+      await cognito.resetPassword({ userName, ...authData });
       const { password } = authData;
       this.signIn({ userName, password });
     } catch (error) {
@@ -89,7 +89,6 @@ class AuthProvider extends Component {
   };
 
   signOut = async () => {
-    console.log("HI");
     await cognito.signOut();
     this.setState({ ...defaultState });
     const { authStatus } = this.state;

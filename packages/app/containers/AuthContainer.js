@@ -48,7 +48,6 @@ export default class AuthContainer extends Component {
         ]) => {
           const { mode } = queryResult.data.overlay;
           const { needsConfirmation, userName, errors } = authResult.data.auth;
-          console.log(authResult.data.auth);
           switch (mode) {
             case SIGNING_UP:
             case SIGNING_IN:

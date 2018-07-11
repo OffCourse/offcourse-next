@@ -15,7 +15,7 @@ const handler = () => alert("Done!");
 ```react|span-4
 const confirmMode = true;
 const errors = {};
-const userName = "";
+const userName = "Someone";
 const handler = () => alert("Done!");
 
 <PasswordRetrievalForm
