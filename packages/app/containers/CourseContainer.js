@@ -28,10 +28,11 @@ class CourseContainer extends Component {
             <Composer
               components={[
                 <Query query={query} variables={{ courseQuery }} />,
+                <Mutation mutation={mutations.updateStatus} />,
                 <Mutation mutation={mutations.openOverlay} />
               ]}
             >
-              {([courseResponse, openOverlay]) => {
+              {([courseResponse, updateStatus, openOverlay]) => {
                 const { course } = courseResponse.data;
                 const userIsCurator = course.curator === userName;
                 const actions = [
@@ -68,7 +69,15 @@ class CourseContainer extends Component {
                   <Group alignItems="stretch">
                     <CourseCard
                       onCuratorClick={goToCollection}
-                      onCheckpointToggle={userName && console.log}
+                      onCheckpointToggle={
+                        userName &&
+                        (({ courseId, checkpointId }) =>
+                          updateStatus({
+                            variables: {
+                              statusUpdate: { courseId, checkpointId }
+                            }
+                          }))
+                      }
                       onTagClick={goToCollection}
                       course={course}
                     />

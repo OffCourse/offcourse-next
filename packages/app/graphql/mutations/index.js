@@ -11,3 +11,4 @@ export { default as signUp } from "./signUp.graphql";
 export { default as confirmSignUp } from "./confirmSignUp.graphql";
 export { default as resetPassword } from "./resetPassword.graphql";
 export { default as confirmNewPassword } from "./confirmNewPassword.graphql";
+export { default as updateStatus } from "./updateStatus.graphql";

@@ -8,7 +8,7 @@ const { RESETTING_PASSWORD, SIGNING_UP, SIGNED_IN, SIGNED_OUT } = authModes;
 
 const initAuth = async (_, __, { cache }) => {
   try {
-    // const { userName } = await cognito.currentUser();
+    const { userName } = await cognito.currentUser();
     const auth = {
       ...defaults,
       authStatus: userName ? SIGNED_IN : SIGNED_OUT,
@@ -90,7 +90,6 @@ const resetPassword = async (_, { userName }, { cache }) => {
     cache.writeData({ data: { auth } });
     return auth;
   } catch (error) {
-    console.log(error);
     const auth = {
       ...defaults,
       authStatus: RESETTING_PASSWORD,
