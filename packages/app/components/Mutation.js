@@ -4,9 +4,9 @@ import { Loading } from "@offcourse/atoms";
 
 export default class Mutation extends React.Component {
   render() {
-    const { children = identity, mutation, variables } = this.props;
+    const { children = identity, ...rest } = this.props;
     return (
-      <ApolloMutation mutation={mutation} variables={variables}>
+      <ApolloMutation {...rest}>
         {(fn, { loading, error, ...rest }) => {
           if (loading) return <Loading size="large" />;
           if (error) return <Loading size="large" />;

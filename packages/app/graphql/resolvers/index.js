@@ -12,6 +12,7 @@ import { openOverlay, closeOverlay, switchOverlayMode } from "./overlay";
 import { selectTheme, switchTheme } from "./theme";
 
 export default {
+  Query: {},
   Mutation: {
     initAuth,
     signIn,

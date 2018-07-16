@@ -3,7 +3,7 @@ import { HttpLink } from "apollo-boost";
 import { from } from "apollo-link";
 import { setContext } from "apollo-link-context";
 import { withClientState } from "apollo-link-state";
-import { InMemoryCache } from "apollo-boost";
+import { InMemoryCache, defaultDataIdFromObject } from "apollo-boost";
 import fetch from "isomorphic-unfetch";
 import cognito from "../Cognito";
 import * as initData from "../graphql";
@@ -34,7 +34,16 @@ if (!process.browser) {
 }
 
 const create = initialState => {
-  const cache = new InMemoryCache().restore(initialState || {});
+  const cache = new InMemoryCache({
+    dataIdFromObject: object => {
+      switch (object.__typename) {
+        case "Course":
+          return object.courseId;
+        default:
+          return defaultDataIdFromObject(object); // fall back to default handling
+      }
+    }
+  }).restore(initialState || {});
   const stateLink = withClientState({ cache, ...initData });
   return new ApolloClient({
     connectToDevTools: process.browser,

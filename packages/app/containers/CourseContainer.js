@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Composer from "react-composer";
-import { isEmpty, find, propEq } from "ramda";
+import CheckpointsFragment from "../graphql/fragments/Checkpoints.graphql";
+import { isEmpty, map, find, propEq } from "ramda";
 import { Query, Mutation } from "../components";
 import { goToCourse, goToCollection } from "../tempUtils";
 import CourseAction from "../components/CourseAction";
@@ -28,7 +29,7 @@ class CourseContainer extends Component {
             <Composer
               components={[
                 <Query query={query} variables={{ courseQuery }} />,
-                <Mutation mutation={mutations.updateStatus} />,
+                <Mutation mutation={mutations.updateStatus} ignoreResults />,
                 <Mutation mutation={mutations.openOverlay} />
               ]}
             >
@@ -71,10 +72,41 @@ class CourseContainer extends Component {
                       onCuratorClick={goToCollection}
                       onCheckpointToggle={
                         userName &&
-                        (({ courseId, checkpointId }) =>
+                        (({ courseId, checkpointId, checked }) =>
                           updateStatus({
                             variables: {
                               statusUpdate: { courseId, checkpointId }
+                            },
+                            optimisticResponse: {
+                              __typename: "Mutation",
+                              updateStatus: {
+                                courseId,
+                                __typename: "Course"
+                              }
+                            },
+                            update: (cache, _) => {
+                              const { checkpoints } = cache.readFragment({
+                                id: courseId,
+                                fragment: CheckpointsFragment
+                              });
+
+                              cache.writeFragment({
+                                id: courseId,
+                                fragment: CheckpointsFragment,
+                                data: {
+                                  __typename: "Course",
+                                  checkpoints: map(
+                                    checkpoint => ({
+                                      ...checkpoint,
+                                      completed:
+                                        checkpoint.checkpointId === checkpointId
+                                          ? checked
+                                          : checkpoint.completed
+                                    }),
+                                    checkpoints
+                                  )
+                                }
+                              });
                             }
                           }))
                       }

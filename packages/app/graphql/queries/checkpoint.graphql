@@ -1,0 +1,5 @@
+query checkpoint($courseId: String, $checkpointId: String) {
+  checkpoint(courseQuery: $courseQuery, checkpointId: $checkpointId) {
+    completed
+  }
+}
