@@ -29,7 +29,8 @@ export default {
     url(),
     json(),
     babel({
-      exclude: ["node_modules/**", "../../node_modules/**"]
+      exclude: ["node_modules/**", "../../node_modules/**"],
+      plugins: ['external-helpers'],
     }),
     resolve(),
     commonjs({
