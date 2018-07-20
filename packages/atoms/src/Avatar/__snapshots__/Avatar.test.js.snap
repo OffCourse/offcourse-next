@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar matches the snapshot 1`] = `
+<Styled(div)
+  alt="avatar of offcourse"
+  is="img"
+  size="3em"
+  src="http://offcourse.io"
+/>
+`;
