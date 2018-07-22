@@ -1,3 +1,5 @@
+Welcome! In this contributor's guide you learn what Offcourse is about and how you can contribute. The contributor's community is there for developers, designers and writers around the world who are looking to contribute to an open source project in order to grow their skills.
+
 ## What is Offcourse
 
 Offcourse is an open source platform for crowdsourced learning and knowledge sharing. We believe that if we share what we know, and collect that knowledge in one place, we all learn from each other and we can grow our skills in the area we want. That is why we support open source and open knowledge.
