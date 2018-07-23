@@ -20,7 +20,9 @@
   "dependencies": {
     "@offcourse/atoms": "^1.4.0",
     "@offcourse/constants": "^1.4.0",
+    "@offcourse/documentation": "^1.4.0",
     "@offcourse/molecules": "^1.4.0",
+    "@offcourse/themes": "^1.4.0",
     "formik": "^0.11.11",
     "ramda": "^0.25.0",
     "react-waypoint": "^8.0.1",

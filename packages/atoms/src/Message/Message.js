@@ -22,11 +22,11 @@ const textColor = {
 
 class Message extends Component {
   render() {
-    const { children, px, basic, variant } = this.props;
+    const { children, basic, variant } = this.props;
     const color = basic ? background[variant] : textColor[variant];
     return (
       <MessageWrapper
-        px={basic ? 0 : px}
+        px={basic ? 0 : 5}
         py={basic ? 0 : 4}
         bg={basic ? null : background[variant]}
         color={color}
@@ -49,7 +49,6 @@ Message.propTypes = {
 };
 
 Message.defaultProps = {
-  px: 6,
   variant: "default"
 };
 

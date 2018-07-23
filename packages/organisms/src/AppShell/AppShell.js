@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Group } from "@offcourse/atoms";
-import { NavBar, Menu, Sidebar as Layout } from "@offcourse/molecules";
+import { isEmpty } from "ramda";
+import { Group, Bar } from "@offcourse/atoms";
+import {
+  NavBar,
+  MessageGroup,
+  Menu,
+  Sidebar as Layout
+} from "@offcourse/molecules";
 
 export default class AppShell extends Component {
   static propTypes = {
@@ -12,6 +18,19 @@ export default class AppShell extends Component {
         level: PropTypes.number.isRequired,
         onClick: PropTypes.func,
         href: PropTypes.string
+      })
+    ),
+    /** array of objects that the messages in the bar */
+    messages: PropTypes.arrayOf(
+      PropTypes.shape({
+        message: PropTypes.string.isRequired,
+        variant: PropTypes.oneOf([
+          "default",
+          "error",
+          "info",
+          "success",
+          "warning"
+        ])
       })
     ),
     /** function that triggers the sidebar to open or close */
@@ -27,10 +46,17 @@ export default class AppShell extends Component {
   };
 
   renderNavBar = () => {
-    const { links, onLogoClick, toggleSidebar, position } = this.props;
+    const {
+      links,
+      onLogoClick,
+      messages,
+      toggleSidebar,
+      position
+    } = this.props;
     return (
       <NavBar
         onLogoClick={onLogoClick}
+        messages={messages}
         onMenuButtonClick={toggleSidebar}
         links={links}
         position={position}
@@ -44,12 +70,19 @@ export default class AppShell extends Component {
   };
 
   renderMain = () => {
-    const { children } = this.props;
-    return <Group mt={8}>{children}</Group>;
+    const { children, messages } = this.props;
+    const hasMessages = messages && !isEmpty(messages);
+    console.log(hasMessages);
+    return (
+      <Group mt={hasMessages ? `${messages.length * 2 + 2}rem` : 8}>
+        {children}
+      </Group>
+    );
   };
 
   render() {
-    const { isSidebarOpen, toggleSidebar } = this.props;
+    const { isSidebarOpen, messages, toggleSidebar } = this.props;
+
     return (
       <Layout
         content={this.renderSidebar()}

@@ -29,7 +29,6 @@ export default {
     right: 0,
     bottom: 0,
     overflowY: "scroll",
-    WebkitOverflowScrolling: "touch",
     transition: "left .3s ease-out, right .3s ease-out"
   },
   overlay: {

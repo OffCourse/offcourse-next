@@ -4,7 +4,6 @@ import { theme as t } from "styled-system";
 const LinkWrapper = system(
   {
     is: "a",
-    alignSelf: "flex-start",
     lineHeight: 0,
     borderBottom: 2,
     pb: 0,

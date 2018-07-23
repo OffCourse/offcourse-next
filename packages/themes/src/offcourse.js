@@ -108,6 +108,11 @@ const globals = `
     overflow-x: hidden;
   }
 
+  ::-webkit-scrollbar {
+      width: 0px;  /* remove scrollbar space */
+      background: transparent;  /* optional: just make scrollbar invisible */
+  }
+
   @font-face {
     font-family: 'Nitti Grotesk';
     src: url('https://app.offcourse.io/fonts/NGN.woff') format('woff');

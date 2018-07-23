@@ -75,9 +75,15 @@ export default class AppShellContainer extends Component {
       >
         {([{ data }, toggleSidebar, openOverlay, selectTheme]) => {
           const { userName } = data.auth;
+
+          const messages = [
+            { variant: "success", message: "You are now logged in" }
+          ];
+
           return (
             <AppShell
               position="fixed"
+              messages={messages}
               onLogoClick={goHome}
               toggleSidebar={toggleSidebar}
               isSidebarOpen={data.sidebar.isOpen}

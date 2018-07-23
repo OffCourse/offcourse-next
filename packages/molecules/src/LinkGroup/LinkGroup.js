@@ -26,7 +26,7 @@ export default class LinkGroup extends Component {
   static defaultProps = {
     links: [],
     direction: "horizontal",
-    alignItems: "flex-start"
+    alignItems: "center"
   };
 
   renderLinks = () => {
