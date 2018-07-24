@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import fontawesome from "@fortawesome/fontawesome";
-import FA from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as icons from "./icons";
 import IconWrapper from "./IconWrapper";
 
@@ -49,7 +48,7 @@ class Icon extends Component {
         tabIndex={tabIndex}
         onClick={onClick}
       >
-        <FA icon={this.icon()} size={Icon.sizes[size]} spin={spin} />
+        <FontAwesomeIcon icon={this.icon()} size={Icon.sizes[size]} spin={spin} />
       </IconWrapper>
     );
   }
