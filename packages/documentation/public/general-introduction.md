@@ -28,7 +28,7 @@ Voila, this is how it works. Have fun!
 
 ## Asking questions
 
-If you have a question about the Offcourse platform, your account, bugs or feature requests, please check our FAQ first to find an answer. For questions not listed on our FAQ and that are other than technical issues or feature requests, don't create an issue on our GitHub repo, but [contact](contact@offcourse.io) us.
+If you have a question about the Offcourse platform, your account, bugs or feature requests, please check our FAQ first to find an answer. For questions not listed on our FAQ and that are other than technical issues or feature requests, don't create an issue on our GitHub repo, but [contact](mailto:contact@offcourse.io) us.
 
 ## Authors / Maintainers
 
