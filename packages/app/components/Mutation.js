@@ -8,8 +8,6 @@ export default class Mutation extends React.Component {
     return (
       <ApolloMutation {...rest}>
         {(fn, { loading, error, ...rest }) => {
-          if (loading) return <Loading size="large" />;
-          if (error) return <Loading size="large" />;
           return children(fn, { ...rest });
         }}
       </ApolloMutation>

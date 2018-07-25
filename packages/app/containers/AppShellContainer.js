@@ -74,11 +74,8 @@ export default class AppShellContainer extends Component {
         ]}
       >
         {([{ data }, toggleSidebar, openOverlay, selectTheme]) => {
-          const { userName } = data.auth;
-
-          const messages = [
-            { variant: "success", message: "You are now logged in" }
-          ];
+          const { auth, messages } = data;
+          const { userName } = auth;
 
           return (
             <AppShell

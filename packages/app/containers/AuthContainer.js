@@ -6,13 +6,12 @@ import { Query, Mutation } from "../components";
 import { Auth, SignOutDialog } from "@offcourse/organisms";
 import { authModes } from "@offcourse/constants";
 
+
 const {
   SIGNING_IN,
   SIGNING_UP,
   SIGNING_OUT,
   RESETTING_PASSWORD,
-  SIGNED_OUT,
-  SIGNED_IN
 } = authModes;
 
 export default class AuthContainer extends Component {
@@ -24,6 +23,7 @@ export default class AuthContainer extends Component {
         components={[
           <Query query={queries.overlay} />,
           <Query query={queries.auth} />,
+          <Mutation mutation={mutations.addMessage} />,
           <Mutation mutation={mutations.closeOverlay} />,
           <Mutation mutation={mutations.switchOverlayMode} />,
           <Mutation mutation={mutations.signIn} />,
@@ -31,12 +31,13 @@ export default class AuthContainer extends Component {
           <Mutation mutation={mutations.signUp} />,
           <Mutation mutation={mutations.confirmSignUp} />,
           <Mutation mutation={mutations.resetPassword} />,
-          <Mutation mutation={mutations.confirmNewPassword} />
+          <Mutation mutation={mutations.confirmNewPassword} />,
         ]}
       >
         {([
           queryResult,
           authResult,
+          addMessage,
           closeOverlay,
           switchOverlayMode,
           signIn,
@@ -59,40 +60,46 @@ export default class AuthContainer extends Component {
                   defaultMode={queryResult.data.overlay.mode}
                   needsConfirmation={needsConfirmation}
                   errors={errors}
-                  signIn={async variables => {
+                  signIn={async (variables) => {
                     const { data } = await signIn({ variables });
-                    data.signIn.authStatus === SIGNED_IN && closeOverlay();
-                  }}
-                  resetPassword={async variables => {
-                    if (!needsConfirmation) {
-                      const { data } = await resetPassword({ variables });
-                      const { authStatus } = data.resetPassword;
-                      await switchOverlayMode({
-                        variables: { mode: authStatus }
-                      });
-                    } else {
-                      const { data } = await confirmNewPassword({ variables });
-                      data.confirmNewPassword.authStatus === SIGNED_IN &&
-                        closeOverlay();
+                    const { authStatus } = data.signIn;
+                    if (authStatus === "SIGNED_IN") {
+                      await addMessage({ variables: { variant: "success", message: "you are now signed in" } });
+                      await closeOverlay();
                     }
                   }}
-                  signUp={async variables => {
-                    if (!needsConfirmation) {
-                      const { data } = await signUp({ variables });
-                      const { authStatus } = data.signUp;
-                      await switchOverlayMode({
-                        variables: { mode: authStatus }
-                      });
-                    } else {
-                      const { data } = await confirmSignUp({ variables });
-                      console.log(data);
-                      data.confirmSignUp.authStatus === SIGNED_IN &&
-                        closeOverlay();
+                  resetPassword={
+                    async variables => {
+                      if (!needsConfirmation) {
+                        await resetPassword({ variables });
+                      } else {
+                        const { data } = await confirmNewPassword({ variables })
+                        const { authStatus } = data.confirmNewPassword;
+                        if (authStatus === "SIGNED_IN") {
+                          await addMessage({ variables: { variant: "success", message: "you are password is reset" } });
+                          await closeOverlay();
+                        }
+                      }
                     }
-                  }}
+                  }
+                  signUp={
+                    async variables => {
+                      if (!needsConfirmation) {
+                        await signUp({ variables });
+                      } else {
+                        const { data } = await confirmSignUp({ variables })
+                        const { authStatus } = data.confirmSignUp;
+                        if (authStatus === "SIGNED_IN") {
+                          await addMessage({ variables: { variant: "success", message: "you are now signed up" } });
+                          await closeOverlay();
+                        }
+                      }
+                    }
+                  }
                   onCancel={async () => {
-                    const { data } = await signOut();
-                    data.signOut.authStatus === SIGNED_OUT && closeOverlay();
+                    await signOut();
+                    await addMessage({ variables: { variant: "warning", message: "you are now signed out" } });
+                    await closeOverlay();
                   }}
                 />
               );
@@ -101,7 +108,8 @@ export default class AuthContainer extends Component {
                 <SignOutDialog
                   onConfirm={async () => {
                     await signOut();
-                    closeOverlay();
+                    await addMessage({ variables: { variant: "warning", message: "you are now signed out" } });
+                    await closeOverlay();
                   }}
                   onCancel={closeOverlay}
                 />
@@ -110,7 +118,7 @@ export default class AuthContainer extends Component {
               return null;
           }
         }}
-      </Composer>
+      </Composer >
     );
   }
 }

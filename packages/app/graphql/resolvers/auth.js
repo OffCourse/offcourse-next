@@ -1,10 +1,11 @@
 import cognito from "../../Cognito";
-import { queries, mutations } from "..";
+import { queries } from "..";
 import { auth as defaults } from "../defaults";
 
 import { authModes } from "@offcourse/constants";
 
 const { RESETTING_PASSWORD, SIGNING_UP, SIGNED_IN, SIGNED_OUT } = authModes;
+
 
 const initAuth = async (_, __, { cache }) => {
   try {
@@ -61,6 +62,7 @@ const confirmSignUp = async (_, variables, { cache }) => {
       authStatus: SIGNED_IN,
       userName
     };
+
     cache.writeData({ data: { auth } });
     return auth;
   } catch (error) {
@@ -80,6 +82,7 @@ const confirmSignUp = async (_, variables, { cache }) => {
 
 const resetPassword = async (_, { userName }, { cache }) => {
   try {
+    console.log(userName)
     await cognito.resetPassword({ userName });
     const auth = {
       ...defaults,
@@ -104,12 +107,16 @@ const confirmNewPassword = async (_, variables, { cache }) => {
   try {
     await cognito.confirmNewPassword(variables);
     const { userName } = await cognito.signIn(variables);
+
     const auth = {
       ...defaults,
       userName,
       authStatus: SIGNED_IN
     };
-    cache.writeData({ data: { auth } });
+
+    const overlay = { __typename: "Overlay", mode: null, isOpen: false };
+    cache.writeData({ data: { auth, overlay } });
+
     return auth;
   } catch (error) {
     const auth = {
@@ -132,6 +139,7 @@ const signIn = async (_, variables, { cache }) => {
       authStatus: SIGNED_IN,
       userName
     };
+
     cache.writeData({ data: { auth } });
     return auth;
   } catch (error) {
@@ -143,6 +151,7 @@ const signIn = async (_, variables, { cache }) => {
     return auth;
   }
 };
+
 
 const signOut = async (_, __, { cache }) => {
   const auth = defaults;

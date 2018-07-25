@@ -72,7 +72,6 @@ export default class AppShell extends Component {
   renderMain = () => {
     const { children, messages } = this.props;
     const hasMessages = messages && !isEmpty(messages);
-    console.log(hasMessages);
     return (
       <Group mt={hasMessages ? `${messages.length * 2 + 2}rem` : 8}>
         {children}
@@ -81,7 +80,7 @@ export default class AppShell extends Component {
   };
 
   render() {
-    const { isSidebarOpen, messages, toggleSidebar } = this.props;
+    const { isSidebarOpen, toggleSidebar } = this.props;
 
     return (
       <Layout

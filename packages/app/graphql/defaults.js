@@ -8,6 +8,8 @@ export const sidebar = {
   isOpen: false
 };
 
+export const messages = [];
+
 export const overlay = {
   __typename: "Overlay",
   isOpen: false,

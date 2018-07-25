@@ -33,6 +33,10 @@ const typeDefs = `
     errors: AuthErrors,
     userName: String!
   }
+  type Message {
+    variant: String!
+    message: String!
+  }
 
   type Mutation {
     selectTheme(themeName: String!): Theme
@@ -53,6 +57,7 @@ const typeDefs = `
   type Query {
     auth: Auth
     sidebar: Sidebar
+    messages: [Message]
     overlay: Overlay
     theme: Theme
   }

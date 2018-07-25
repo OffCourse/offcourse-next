@@ -9,4 +9,8 @@
   auth @client {
     userName
   }
+  messages @client {
+    variant
+    message
+  }
 }

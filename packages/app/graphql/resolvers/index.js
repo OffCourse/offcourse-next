@@ -1,4 +1,5 @@
 import { toggleSidebar } from "./sidebar";
+import { addMessage, removeMessage } from "./messages";
 import {
   initAuth,
   signIn,
@@ -14,6 +15,8 @@ import { selectTheme, switchTheme } from "./theme";
 export default {
   Query: {},
   Mutation: {
+    addMessage,
+    removeMessage,
     initAuth,
     signIn,
     signOut,
