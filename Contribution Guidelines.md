@@ -1,6 +1,6 @@
 # Contributing to Offcourse
 
-👍🎉 First off, thanks for taking the time to contribute! 🎉👍
+First off, thanks for taking the time to contribute! 
 
 The following is a set of guidelines for contributing to the further development of the Offcourse platform, which is hosted on the [Offcourse-Next GitHub repo](https://github.com/OffCourse/offcourse-next).
 
@@ -85,4 +85,4 @@ We’ve found that test-first development really helps make features better arch
 
 After testing you can commit your changes and create a pull request. In the description field of your pull request, write down the issue number (if submitting code fixing an existing issue) or describe the issue + your fix (if submitting a wholly new bugfix). Hit ‘submit’! And please be patient - the maintainers will get to you when they can.
 
-👍We wish you fun and a great learning experience in contributing to the Offcourse open source project!👍
+We wish you fun and a great learning experience in contributing to the Offcourse open source project!
