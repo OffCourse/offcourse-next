@@ -82,7 +82,6 @@ const confirmSignUp = async (_, variables, { cache }) => {
 
 const resetPassword = async (_, { userName }, { cache }) => {
   try {
-    console.log(userName)
     await cognito.resetPassword({ userName });
     const auth = {
       ...defaults,

@@ -24,6 +24,7 @@ export default class AuthContainer extends Component {
           <Query query={queries.overlay} />,
           <Query query={queries.auth} />,
           <Mutation mutation={mutations.addMessage} />,
+          <Mutation mutation={mutations.removeMessage} />,
           <Mutation mutation={mutations.closeOverlay} />,
           <Mutation mutation={mutations.switchOverlayMode} />,
           <Mutation mutation={mutations.signIn} />,
@@ -38,6 +39,7 @@ export default class AuthContainer extends Component {
           queryResult,
           authResult,
           addMessage,
+          removeMessage,
           closeOverlay,
           switchOverlayMode,
           signIn,
@@ -65,7 +67,7 @@ export default class AuthContainer extends Component {
                     const { authStatus } = data.signIn;
                     if (authStatus === "SIGNED_IN") {
                       await addMessage({ variables: { variant: "success", message: "you are now signed in" } });
-                      await closeOverlay();
+                      removeMessage() && await closeOverlay();
                     }
                   }}
                   resetPassword={
@@ -77,7 +79,7 @@ export default class AuthContainer extends Component {
                         const { authStatus } = data.confirmNewPassword;
                         if (authStatus === "SIGNED_IN") {
                           await addMessage({ variables: { variant: "success", message: "you are password is reset" } });
-                          await closeOverlay();
+                          removeMessage() && await closeOverlay();
                         }
                       }
                     }
@@ -91,7 +93,7 @@ export default class AuthContainer extends Component {
                         const { authStatus } = data.confirmSignUp;
                         if (authStatus === "SIGNED_IN") {
                           await addMessage({ variables: { variant: "success", message: "you are now signed up" } });
-                          await closeOverlay();
+                          removeMessage() && await closeOverlay();
                         }
                       }
                     }
@@ -99,7 +101,7 @@ export default class AuthContainer extends Component {
                   onCancel={async () => {
                     await signOut();
                     await addMessage({ variables: { variant: "warning", message: "you are now signed out" } });
-                    await closeOverlay();
+                    removeMessage() && await closeOverlay();
                   }}
                 />
               );
@@ -109,7 +111,7 @@ export default class AuthContainer extends Component {
                   onConfirm={async () => {
                     await signOut();
                     await addMessage({ variables: { variant: "warning", message: "you are now signed out" } });
-                    await closeOverlay();
+                    removeMessage() && await closeOverlay();
                   }}
                   onCancel={closeOverlay}
                 />

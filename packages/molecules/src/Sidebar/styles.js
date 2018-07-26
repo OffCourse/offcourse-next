@@ -16,7 +16,7 @@ export default {
     bottom: 0,
     backgroundColor: "white",
     opacity: 1,
-    width: "15rem",
+    width: "12rem",
     transition: "transform .3s ease-out",
     WebkitTransition: "-webkit-transform .3s ease-out",
     willChange: "transform",

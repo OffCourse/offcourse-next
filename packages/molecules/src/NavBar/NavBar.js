@@ -38,8 +38,8 @@ export default class NavBar extends Component {
   };
 
   static defaultProps = {
-    onLogoClick: () => {},
-    onMenuClick: () => {}
+    onLogoClick: () => { },
+    onMenuClick: () => { }
   };
 
   render() {
@@ -51,11 +51,12 @@ export default class NavBar extends Component {
       position
     } = this.props;
     return (
+
       <Bar position={position}>
         <Group
           flexDirection="row"
-          alignItems="space-between"
-          justifyContent="center"
+          alignItems="center"
+          justifyContent="space-between"
           pr={4}
           height="2rem"
         >
