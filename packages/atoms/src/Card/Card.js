@@ -3,6 +3,7 @@ import { Section } from "..";
 import CardWrapper from "./CardWrapper";
 
 export default class Card extends Component {
+
   renderSections() {
     const { children } = this.props;
     return Children.map(children, (child, index) => {
@@ -10,7 +11,10 @@ export default class Card extends Component {
         return null;
       }
       const { inverse } = child.props;
-      return <Section bg={inverse ? "grayScale.3" : "white"}>{child}</Section>;
+      return (
+        <Section bg={inverse ? "grayScale.3" : "white"}>
+          {child}
+        </Section>);
     });
   }
 

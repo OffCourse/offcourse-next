@@ -5,15 +5,20 @@ const CardWrapper = system({
   width: ["18rem", "18rem", "18rem"],
   bg: "grayScale.0"
 }).extend`
-  section:last-child {
-    border-bottom: ${({ theme }) => theme.borders[2]};
-    border-color: ${({ theme }) => theme.colors.grayScale[2]};
 
-    &:hover {
-        border-color: ${({ theme }) => theme.colors.primary};
-      }
+  &:hover {
+    section:last-child {
+      border-color: ${({ theme }) => theme.colors.primary};
     }
   }
+
+  section {
+    &:last-child {
+      border-bottom: ${({ theme }) => theme.borders[2]};
+      border-color: ${({ theme }) => theme.colors.grayScale[2]};
+    }
+  }
+}
 `;
 
 export default CardWrapper;

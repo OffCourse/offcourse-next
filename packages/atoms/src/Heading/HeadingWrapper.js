@@ -14,7 +14,7 @@ const HeadingWrapper = system(
     textDecoration: "inherit",
     cursor: props.href ? "pointer" : "cursor",
     "&:hover": {
-      color: props.href
+      color: (props.href || props.onClick)
         ? theme("colors.primary")(props)
         : theme("colors.black")(props)
     }

@@ -1,9 +1,11 @@
-import { 
+import {
   faAsterisk as asterisk,
-  faBars as hamburger, 
-  faCheck as checkmark, 
-  faTimes as remove, 
-  faPlus as add, 
+  faCaretDown as arrowDown,
+  faCaretUp as arrowUp,
+  faBars as hamburger,
+  faCheck as checkmark,
+  faTimes as remove,
+  faPlus as add,
   faSort as sort,
   faEye as eye,
   faClock as clock,
@@ -14,12 +16,14 @@ import {
   faCalendarAlt as calendar,
 } from '@fortawesome/free-solid-svg-icons'
 
-import { 
+import {
   faFacebook as facebook,
   faTwitter as twitter
 } from '@fortawesome/free-brands-svg-icons'
 
 export {
+  arrowDown,
+  arrowUp,
   hamburger,
   checkmark,
   remove,
