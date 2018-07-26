@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity, isEmpty, isNil } from "ramda";
-import { Card, Heading } from "@offcourse/atoms";
+import { Heading } from "@offcourse/atoms";
 import {
+  ExpandableCard as Card,
   Description,
   TagGroup,
   Share,
@@ -27,14 +28,21 @@ export default class CourseCard extends Component {
       curator: PropTypes.string.isRequired,
       avatarUrl: PropTypes.string,
       courseUrl: PropTypes.string
-    })
+    }),
+    layout: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
   };
 
   static defaultProps = {
     shareMessage: "Checkout This Course",
     onCuratorClick: identity,
     onGoalClick: identity,
-    onTagClick: identity
+    onTagClick: identity,
+    layout: [
+      ["header"],
+      ["header", "meta"],
+      ["header", "meta", "description", "social"],
+      ["header", "meta", "description", "checkpoints", "tags", "social"]
+    ]
   };
 
   handleCheckpointToggle = ({ checkpointId, checked }) => {
@@ -57,7 +65,8 @@ export default class CourseCard extends Component {
       onGoalClick,
       onTagClick,
       onCuratorClick,
-      shareMessage
+      shareMessage,
+      layout
     } = this.props;
     const {
       courseId,
@@ -70,8 +79,10 @@ export default class CourseCard extends Component {
       description,
       tags
     } = course;
+
+
     return (
-      <Card>
+      <Card layout={layout}>
         <Heading
           onClick={() => onGoalClick({ goal, curator, courseId })}
           section="header"
@@ -91,7 +102,7 @@ export default class CourseCard extends Component {
           </Description>
         )}
         <CheckpointList
-          section="heckpoints"
+          section="checkpoints"
           onToggle={onCheckpointToggle && this.handleCheckpointToggle}
           checkpoints={checkpoints}
         />
