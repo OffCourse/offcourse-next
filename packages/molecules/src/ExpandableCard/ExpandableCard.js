@@ -38,6 +38,8 @@ export default class ExpendableCard extends Component {
     const iconName = level === layout.length - 1 ? "arrowUp" : "arrowDown";
 
     return Children.map(children, (child, index) => {
+      if (!child) return null;
+
       const { section } = child.props;
       const isVisible = contains(section, layout[level]);
 
