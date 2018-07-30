@@ -24,6 +24,10 @@ const ItemWrapper = system(
     fontFamily: props.theme.fonts.bold,
     userSelect: "none"
   })
-);
+).extend`
+  &:hover > a {
+    color: white;
+  }
+`
 
 export default ItemWrapper;

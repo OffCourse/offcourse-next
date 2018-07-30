@@ -1,5 +1,6 @@
 export { default as courses } from "./courses.graphql";
 export { default as course } from "./course.graphql";
+export { default as courseCard } from "./courseCard.graphql";
 export { default as checkpoint } from "./checkpoint.graphql";
 export { default as courseWithStatus } from "./courseWithStatus.graphql";
 export { default as sidebar } from "./sidebar.graphql";

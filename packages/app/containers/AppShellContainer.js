@@ -21,8 +21,13 @@ export default class AppShellContainer extends Component {
     }, themeNames);
   }
 
-  createUserLinks({ openOverlay }) {
+  createUserLinks({ openOverlay, changeCardSize }) {
     return [
+      {
+        onClick: changeCardSize,
+        title: "Change Card Size",
+        level: 0
+      },
       {
         onClick: () => openOverlay({ variables: { mode: SIGNING_OUT } }),
         title: "Sign Out",
@@ -41,11 +46,16 @@ export default class AppShellContainer extends Component {
     ];
   }
 
-  createGuestLinks({ openOverlay }) {
+  createGuestLinks({ openOverlay, changeCardSize }) {
     return [
       {
+        onClick: changeCardSize,
+        title: "Change Course Size",
+        level: 0
+      },
+      {
         onClick: () => openOverlay({ variables: { mode: SIGNING_IN } }),
-        title: "Sign IN",
+        title: "Sign In",
         level: 0
       },
       {
@@ -56,10 +66,10 @@ export default class AppShellContainer extends Component {
     ];
   }
 
-  createLinks({ userName, openOverlay }) {
+  createLinks({ userName, openOverlay, changeCardSize }) {
     return userName
-      ? this.createUserLinks({ openOverlay })
-      : this.createGuestLinks({ openOverlay });
+      ? this.createUserLinks({ openOverlay, changeCardSize })
+      : this.createGuestLinks({ openOverlay, changeCardSize });
   }
 
   render() {
@@ -70,12 +80,12 @@ export default class AppShellContainer extends Component {
           <Query query={queries.appState} />,
           <Mutation mutation={mutations.toggleSidebar} />,
           <Mutation mutation={mutations.openOverlay} />,
-          <Mutation mutation={mutations.selectTheme} />
+          <Mutation mutation={mutations.selectTheme} />,
+          <Mutation mutation={mutations.changeCardSize} />
         ]}
       >
-        {([{ data }, toggleSidebar, openOverlay, selectTheme]) => {
-          const { auth, messages } = data;
-          const { userName } = auth;
+        {([{ data: appStateData }, toggleSidebar, openOverlay, selectTheme, changeCardSize]) => {
+          const { auth, theme, messages, sidebar } = appStateData;
 
           return (
             <AppShell
@@ -83,16 +93,17 @@ export default class AppShellContainer extends Component {
               messages={messages}
               onLogoClick={goHome}
               toggleSidebar={toggleSidebar}
-              isSidebarOpen={data.sidebar.isOpen}
+              isSidebarOpen={sidebar.isOpen}
               links={[
                 ...this.createLinks({
                   openOverlay,
-                  userName
+                  changeCardSize,
+                  userName: auth.userName
                 }),
                 ...this.createThemeLinks({
-                  themeNames: data.theme.all,
+                  themeNames: theme.all,
                   selectTheme,
-                  currentTheme: data.theme.current
+                  currentTheme: theme.current
                 })
               ]}
             >

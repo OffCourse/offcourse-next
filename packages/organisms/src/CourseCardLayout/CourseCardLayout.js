@@ -8,10 +8,12 @@ import Waypoint from "react-waypoint";
 
 export default class CourseCardLayout extends Component {
   static propTypes = {
+    initialCardLevel: PropTypes.number,
     goToCollection: PropTypes.func,
     goToCourse: PropTypes.func,
     hasMore: PropTypes.bool,
     loadMore: PropTypes.func,
+    layout: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
     courses: PropTypes.arrayOf(
       PropTypes.shape({
         courseId: PropTypes.string.isRequired,
@@ -25,9 +27,9 @@ export default class CourseCardLayout extends Component {
 
   static defaultProps = {
     hasMore: false,
-    goToCollection: () => {},
-    goToCourse: () => {},
-    loadMore: () => {}
+    goToCollection: () => { },
+    goToCourse: () => { },
+    loadMore: () => { }
   };
 
   calculateBreakpoints() {
@@ -47,17 +49,19 @@ export default class CourseCardLayout extends Component {
   };
 
   render() {
-    const { courses, goToCollection, goToCourse, hasMore } = this.props;
+    const { courses, layout, goToCollection, goToCourse, initialCardLevel, hasMore } = this.props;
     return (
       <CourseCardLayoutWrapper>
         <Masonry breakpoints={this.calculateBreakpoints()}>
           {map(
             course => (
               <CourseCard
+                initialLevel={initialCardLevel}
                 onCuratorClick={goToCollection}
                 onGoalClick={goToCourse}
                 onTagClick={goToCollection}
                 key={course.courseId}
+                layout={layout}
                 course={course}
               />
             ),

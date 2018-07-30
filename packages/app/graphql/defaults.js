@@ -17,6 +17,17 @@ export const overlay = {
   mode: null
 };
 
+export const courseCard = {
+  __typename: "CourseCard",
+  initialLevel: 0,
+  layout: [
+    ["header"],
+    ["header", "meta"],
+    ["header", "meta", "description", "social"],
+    ["header", "meta", "description", "checkpoints", "tags", "social"]
+  ]
+};
+
 export const theme = {
   __typename: "Theme",
   all: Object.keys(themes),

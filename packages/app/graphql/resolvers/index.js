@@ -1,4 +1,5 @@
 import { toggleSidebar } from "./sidebar";
+import { changeCardSize } from "./courseCard";
 import { addMessage, removeMessage } from "./messages";
 import {
   initAuth,
@@ -16,6 +17,7 @@ export default {
   Query: {},
   Mutation: {
     addMessage,
+    changeCardSize,
     removeMessage,
     initAuth,
     signIn,

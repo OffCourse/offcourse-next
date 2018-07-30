@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 export default class ExpendableCard extends Component {
   static propTypes = {
     onResize: PropTypes.func,
-    defaultLevel: PropTypes.number,
+    initialLevel: PropTypes.number,
     layout: PropTypes.array
   }
 
@@ -16,9 +16,9 @@ export default class ExpendableCard extends Component {
   }
 
   state = {
-    level: isNil(this.props.defaultLevel)
+    level: isNil(this.props.initialLevel)
       ? this.props.layout.length - 1
-      : this.props.defaultLevel
+      : this.props.initialLevel
   }
 
   handleResize = () => {
@@ -47,8 +47,10 @@ export default class ExpendableCard extends Component {
 
       return index === 0 ?
         (<Group flexDirection="row" justifyContent="space-between" alignItems="center">
-          {child}
-          <Icon onClick={this.handleResize} name={iconName} color="grayScale.2" size="medium" />
+          <Group flex={7}>{child}</Group>
+          <Group flex={1} flexDirection="row" justifyContent="flex-end">
+            <Icon onClick={this.handleResize} name={iconName} color="grayScale.2" size="medium" />
+          </Group>
         </Group>) :
         child;
     })

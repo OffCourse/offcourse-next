@@ -29,6 +29,7 @@ export default class CourseCard extends Component {
       avatarUrl: PropTypes.string,
       courseUrl: PropTypes.string
     }),
+    initialLevel: PropTypes.number,
     layout: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
   };
 
@@ -66,7 +67,8 @@ export default class CourseCard extends Component {
       onTagClick,
       onCuratorClick,
       shareMessage,
-      layout
+      layout,
+      initialLevel
     } = this.props;
     const {
       courseId,
@@ -82,7 +84,7 @@ export default class CourseCard extends Component {
 
 
     return (
-      <Card layout={layout}>
+      <Card initialLevel={initialLevel} layout={layout}>
         <Heading
           onClick={() => onGoalClick({ goal, curator, courseId })}
           section="header"

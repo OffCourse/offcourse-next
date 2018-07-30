@@ -41,7 +41,7 @@ const layout = [
 
 const logJSON = obj => console.log(JSON.stringify(obj, null, 2));
 
-<ExpandableCard defaultLevel={0} layout={layout} onResize={logJSON}>
+<ExpandableCard initialLevel={0} layout={layout} onResize={logJSON}>
   <div section="title">Hello</div>
   <div section="body">Hi</div>
   <div section="actions">Bye</div>

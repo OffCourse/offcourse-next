@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { map, prop } from "ramda";
+import Composer from "react-composer";
 import { withRouter } from "next/router";
 import { Query } from "../components";
 import { queries } from "../graphql";
 import { CourseCardLayout } from "@offcourse/organisms";
 import {
-  prepEdges,
   updateQuery,
   goToCollection,
   goToCourse
@@ -14,22 +14,31 @@ import {
 class CoursesContainer extends Component {
   render() {
     const { curator, tag } = this.props.router.query;
-    const variables = { curator, tag };
     return (
-      <Query query={queries.courses} variables={variables}>
-        {({ data, fetchMore }) => {
+
+      <Composer
+        components={[
+          <Query query={queries.courses} variables={{ curator, tag }} />,
+          <Query query={queries.courseCard} />
+        ]}
+      >
+        {([{ data, fetchMore }, courseCardQuery]) => {
+          const { initialLevel, layout } = courseCardQuery.data.courseCard;
           const { edges, pageInfo } = data.courses;
           const courses = map(prop("node"), edges);
           const hasMore = pageInfo.hasNextPage;
+
           const loadMore = () => {
             fetchMore({
               query: queries.courses,
-              variables: { ...variables, after: pageInfo.endCursor },
+              variables: { curator, tag, after: pageInfo.endCursor },
               updateQuery
             });
           };
           return (
             <CourseCardLayout
+              initialCardLevel={initialLevel}
+              layout={layout}
               goToCollection={goToCollection}
               goToCourse={goToCourse}
               hasMore={hasMore}
@@ -38,7 +47,7 @@ class CoursesContainer extends Component {
             />
           );
         }}
-      </Query>
+      </Composer>
     );
   }
 }

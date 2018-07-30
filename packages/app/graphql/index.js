@@ -14,6 +14,11 @@ const typeDefs = `
     mode: String
   }
 
+  type CourseCard {
+    initialLevel: Int!
+    layout: [String]
+  }
+
   type Theme {
     all: [String!]
     current: String!
@@ -33,6 +38,7 @@ const typeDefs = `
     errors: AuthErrors,
     userName: String!
   }
+
   type Message {
     variant: String!
     message: String!
@@ -40,6 +46,7 @@ const typeDefs = `
 
   type Mutation {
     selectTheme(themeName: String!): Theme
+    changeCardSize: CourseCard
     toggleSidebar: Sidebar
     closeOverlay: Overlay
     openOverlay(mode: String!, courseId: String!): Overlay
@@ -56,6 +63,7 @@ const typeDefs = `
 
   type Query {
     auth: Auth
+    courseCard: CourseCard
     sidebar: Sidebar
     messages: [Message]
     overlay: Overlay
