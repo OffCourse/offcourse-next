@@ -19,7 +19,7 @@ export const overlay = {
 
 export const courseCard = {
   __typename: "CourseCard",
-  initialLevel: 0,
+  initialLevel: 3,
   layout: [
     ["header"],
     ["header", "meta"],

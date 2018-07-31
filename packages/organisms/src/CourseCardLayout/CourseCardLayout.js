@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { times, map, identity } from "ramda";
+import Measure from 'react-measure'
 import { Masonry, Group, Loading } from "@offcourse/atoms";
 import { CourseCard } from "..";
 import CourseCardLayoutWrapper from "./CourseCardLayoutWrapper";
@@ -22,14 +23,16 @@ export default class CourseCardLayout extends Component {
         avatarUrl: PropTypes.string,
         courseUrl: PropTypes.string
       })
-    )
+    ),
+    onResize: PropTypes.func
   };
 
   static defaultProps = {
     hasMore: false,
-    goToCollection: () => { },
-    goToCourse: () => { },
-    loadMore: () => { }
+    onResize: identity,
+    goToCollection: identity,
+    goToCourse: identity,
+    loadMore: identity
   };
 
   calculateBreakpoints() {
@@ -49,10 +52,10 @@ export default class CourseCardLayout extends Component {
   };
 
   render() {
-    const { courses, layout, goToCollection, goToCourse, initialCardLevel, hasMore } = this.props;
+    const { courses, layout, goToCollection, goToCourse, initialCardLevel, onResize, hasMore } = this.props;
     return (
       <CourseCardLayoutWrapper>
-        <Masonry breakpoints={this.calculateBreakpoints()}>
+        <Masonry onResize={onResize} breakpoints={this.calculateBreakpoints()}>
           {map(
             course => (
               <CourseCard

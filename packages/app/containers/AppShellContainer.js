@@ -24,11 +24,6 @@ export default class AppShellContainer extends Component {
   createUserLinks({ openOverlay, changeCardSize }) {
     return [
       {
-        onClick: changeCardSize,
-        title: "Change Card Size",
-        level: 0
-      },
-      {
         onClick: () => openOverlay({ variables: { mode: SIGNING_OUT } }),
         title: "Sign Out",
         level: 0
@@ -48,11 +43,6 @@ export default class AppShellContainer extends Component {
 
   createGuestLinks({ openOverlay, changeCardSize }) {
     return [
-      {
-        onClick: changeCardSize,
-        title: "Change Course Size",
-        level: 0
-      },
       {
         onClick: () => openOverlay({ variables: { mode: SIGNING_IN } }),
         title: "Sign In",

@@ -25,7 +25,7 @@ const LinkWrapper = system(
     "&:hover": {
       color: props.disabled
         ? t("colors.disabled")(props)
-        : t("colors.white")(props),
+        : t("colors.black")(props),
       borderColor: props.disabled
         ? t("colors.disabled")(props)
         : t("colors.primary")(props)

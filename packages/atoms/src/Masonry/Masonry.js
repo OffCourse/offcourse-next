@@ -4,6 +4,7 @@ import {
   adjust,
   repeat,
   reduce,
+  identity,
   addIndex,
   reduceWhile,
   inc
@@ -15,18 +16,20 @@ const reduceIndexed = addIndex(reduce);
 
 export default class Masonry extends React.Component {
   static propTypes = {
-    breakpoints: PropTypes.arrayOf(PropTypes.number)
+    breakpoints: PropTypes.arrayOf(PropTypes.number),
+    onResize: PropTypes.func
   };
 
   static defaultProps = {
-    breakpoints: []
+    breakpoints: [],
+    onResize: identity
   };
 
   state = { numberOfColumns: 1 };
 
   componentDidMount() {
-    this.onResize();
-    window.addEventListener("resize", this.onResize);
+    this.handleResize();
+    window.addEventListener("resize", this.handleResize);
   }
 
   getColumns(containerWidth) {
@@ -39,11 +42,16 @@ export default class Masonry extends React.Component {
     );
   }
 
-  onResize = () => {
+  handleResize = () => {
+    if (!this.masonry) return null;
+    const { onResize } = this.props;
     const { numberOfColumns } = this.state;
-    const proposal = this.getColumns(this.masonry.offsetWidth);
+    const { offsetWidth } = this.masonry;
+    const proposal = this.getColumns(offsetWidth)
     if (proposal !== numberOfColumns) {
-      this.setState({ numberOfColumns: proposal });
+      this.setState(() => { return { numberOfColumns: proposal } }, () => {
+        return onResize({ width: offsetWidth, numberOfColumns: proposal })
+      });
     }
   };
 
