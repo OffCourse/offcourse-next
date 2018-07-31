@@ -3,7 +3,6 @@ import { map, prop } from "ramda";
 import Composer from "react-composer";
 import { withRouter } from "next/router";
 import { Query, Mutation } from "../components";
-import Measure from 'react-measure'
 import { queries, mutations } from "../graphql";
 import { Group } from "@offcourse/atoms";
 import { CourseCardLayout } from "@offcourse/organisms";

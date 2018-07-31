@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { times, map, identity } from "ramda";
-import Measure from 'react-measure'
 import { Masonry, Group, Loading } from "@offcourse/atoms";
 import { CourseCard } from "..";
 import CourseCardLayoutWrapper from "./CourseCardLayoutWrapper";
