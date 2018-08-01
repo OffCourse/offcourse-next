@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import system from "system-components";
 
 const MasonryWrapper = styled.div`
   display: flex;
@@ -15,9 +16,9 @@ const ColumnWrapper = styled.div`
   align-content: stretch;
 `;
 
-const ItemWrapper = styled.div`
-  margin-bottom: 1rem;
-  margin-right: 1rem;
-`;
+const ItemWrapper = system({
+  mb: 6,
+  mr: [0, 6, 6]
+});
 
 export { MasonryWrapper, ColumnWrapper, ItemWrapper };

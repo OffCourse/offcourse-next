@@ -13,8 +13,8 @@ const MasterDetail = system({
 });
 
 const Master = system({
-  p: 8,
-  maxWidth: "22rem",
+  p: 6,
+  flex: 1,
   display: "flex"
 });
 

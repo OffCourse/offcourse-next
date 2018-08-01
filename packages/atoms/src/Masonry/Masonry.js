@@ -48,11 +48,9 @@ export default class Masonry extends React.Component {
     const { numberOfColumns } = this.state;
     const { offsetWidth } = this.masonry;
     const proposal = this.getColumns(offsetWidth)
-    if (proposal !== numberOfColumns) {
-      this.setState(() => { return { numberOfColumns: proposal } }, () => {
-        return onResize({ width: offsetWidth, numberOfColumns: proposal })
-      });
-    }
+    this.setState(() => { return { numberOfColumns: proposal } }, () => {
+      return onResize({ width: offsetWidth, numberOfColumns: proposal })
+    });
   };
 
   prepareGrid() {
