@@ -1,11 +1,11 @@
 import { Group } from "@offcourse/atoms";
 
-export default Group.extend`
+export default Group.Wrapper.extend`
   > a {
     margin-right: ${({ theme, flexDirection, spacing }) =>
-      flexDirection === "row" ? theme.space[6] : 0};
+    flexDirection === "row" ? theme.space[6] : 0};
     margin-bottom: ${({ theme, flexDirection, spacing }) =>
-      flexDirection === "column" ? theme.space[6] : 0};
+    flexDirection === "column" ? theme.space[6] : 0};
 
     &:last-child {
       margin-right: 0;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Composer from "react-composer";
 import CheckpointsFragment from "../graphql/fragments/Checkpoints.graphql";
 import { isEmpty, map, find, propEq } from "ramda";
@@ -29,11 +29,13 @@ class CourseContainer extends Component {
             <Composer
               components={[
                 <Query query={query} variables={{ courseQuery }} />,
+                <Query query={queries.courseCard} />,
                 <Mutation mutation={mutations.updateStatus} ignoreResults />,
-                <Mutation mutation={mutations.openOverlay} />
+                <Mutation mutation={mutations.openOverlay} />,
               ]}
             >
-              {([courseResponse, updateStatus, openOverlay]) => {
+              {([courseResponse, courseCardResponse, updateStatus, openOverlay]) => {
+                const { initialLevel, layout } = courseCardResponse.data.courseCard;
                 const { course } = courseResponse.data;
                 const userIsCurator = course.curator === userName;
                 const actions = [
@@ -67,48 +69,51 @@ class CourseContainer extends Component {
                 );
 
                 return (
-                  <Group alignItems="stretch">
+                  <Group alignItems="center" flexDirection="column">
                     <CourseCard
+                      key={initialLevel}
+                      layout={layout}
+                      initialLevel={initialLevel}
                       onCuratorClick={goToCollection}
                       onCheckpointToggle={
-                        userName &&
-                        (({ courseId, checkpointId, checked }) =>
-                          updateStatus({
-                            variables: {
-                              statusUpdate: { courseId, checkpointId }
-                            },
-                            optimisticResponse: {
-                              __typename: "Mutation",
-                              updateStatus: {
-                                courseId,
-                                __typename: "Course"
-                              }
-                            },
-                            update: (cache, _) => {
-                              const { checkpoints } = cache.readFragment({
-                                id: courseId,
-                                fragment: CheckpointsFragment
-                              });
-
-                              cache.writeFragment({
-                                id: courseId,
-                                fragment: CheckpointsFragment,
-                                data: {
-                                  __typename: "Course",
-                                  checkpoints: map(
-                                    checkpoint => ({
-                                      ...checkpoint,
-                                      completed:
-                                        checkpoint.checkpointId === checkpointId
-                                          ? checked
-                                          : checkpoint.completed
-                                    }),
-                                    checkpoints
-                                  )
+                        userName ?
+                          (({ courseId, checkpointId, checked }) =>
+                            updateStatus({
+                              variables: {
+                                statusUpdate: { courseId, checkpointId }
+                              },
+                              optimisticResponse: {
+                                __typename: "Mutation",
+                                updateStatus: {
+                                  courseId,
+                                  __typename: "Course"
                                 }
-                              });
-                            }
-                          }))
+                              },
+                              update: (cache, _) => {
+                                const { checkpoints } = cache.readFragment({
+                                  id: courseId,
+                                  fragment: CheckpointsFragment
+                                });
+
+                                cache.writeFragment({
+                                  id: courseId,
+                                  fragment: CheckpointsFragment,
+                                  data: {
+                                    __typename: "Course",
+                                    checkpoints: map(
+                                      checkpoint => ({
+                                        ...checkpoint,
+                                        completed:
+                                          checkpoint.checkpointId === checkpointId
+                                            ? checked
+                                            : checkpoint.completed
+                                      }),
+                                      checkpoints
+                                    )
+                                  }
+                                });
+                              }
+                            })) : null
                       }
                       onTagClick={goToCollection}
                       course={course}

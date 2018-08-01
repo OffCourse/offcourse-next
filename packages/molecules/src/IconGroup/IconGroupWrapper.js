@@ -1,12 +1,12 @@
 import { Group } from "@offcourse/atoms";
 
-const IconGroupWrapper = Group.extend`
+const IconGroupWrapper = Group.Wrapper.extend`
   > a,
   button {
     margin-right: ${({ theme, flexDirection, spacing }) =>
-      flexDirection === "row" ? theme.space[4] : 0};
+    flexDirection === "row" ? theme.space[4] : 0};
     margin-bottom: ${({ theme, flexDirection, spacing }) =>
-      flexDirection === "column" ? theme.space[1] : 0};
+    flexDirection === "column" ? theme.space[1] : 0};
 
     &:last-child {
       margin-right: 0;

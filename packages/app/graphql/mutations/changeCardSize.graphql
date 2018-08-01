@@ -1,5 +1,6 @@
 mutation ChangeCardSize(
-  $numberOfColumns: Int!
+  $numberOfColumns: Int
+  $width: Int
 ){
-  changeCardSize(numberOfColumns: $numberOfColumns) @client
+  changeCardSize(numberOfColumns: $numberOfColumns, width: $width) @client
 }
