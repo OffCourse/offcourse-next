@@ -2,12 +2,21 @@ import React, { Component } from "react";
 import { map } from "ramda";
 import Composer from "react-composer";
 import { AppShell } from "@offcourse/organisms";
-import { Query, Mutation } from "../components";
-import { queries, mutations } from "../graphql";
-import { overlayModes } from "@offcourse/constants";
 import { goHome } from "../tempUtils";
 
-const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = overlayModes;
+import {
+  SidebarContext,
+  OverlayContext,
+  AuthContext,
+  FlashContext,
+  ThemeContext,
+} from "../contexts";
+
+const {
+  SIGNING_IN,
+  SIGNING_OUT,
+  CREATE_COURSE
+} = OverlayContext.constants;
 
 export default class AppShellContainer extends Component {
   createThemeLinks({ themeNames, currentTheme, selectTheme }) {
@@ -67,32 +76,30 @@ export default class AppShellContainer extends Component {
     return (
       <Composer
         components={[
-          <Query query={queries.appState} />,
-          <Mutation mutation={mutations.toggleSidebar} />,
-          <Mutation mutation={mutations.openOverlay} />,
-          <Mutation mutation={mutations.selectTheme} />,
-          <Mutation mutation={mutations.changeCardSize} />
+          <SidebarContext.Consumer />,
+          <AuthContext.Consumer />,
+          <OverlayContext.Consumer />,
+          <FlashContext.Consumer />,
+          <ThemeContext.Consumer />,
         ]}
       >
-        {([{ data: appStateData }, toggleSidebar, openOverlay, selectTheme, changeCardSize]) => {
-          const { auth, theme, messages, sidebar } = appStateData;
-
+        {(
+          [sidebar, auth, overlay, flash, theme]) => {
           return (
             <AppShell
               position="fixed"
-              messages={messages}
+              messages={flash.messages}
               onLogoClick={goHome}
-              toggleSidebar={toggleSidebar}
+              toggleSidebar={sidebar.toggle}
               isSidebarOpen={sidebar.isOpen}
               links={[
                 ...this.createLinks({
-                  openOverlay,
-                  changeCardSize,
+                  openOverlay: overlay.open,
                   userName: auth.userName
                 }),
                 ...this.createThemeLinks({
                   themeNames: theme.all,
-                  selectTheme,
+                  selectTheme: theme.switch,
                   currentTheme: theme.current
                 })
               ]}

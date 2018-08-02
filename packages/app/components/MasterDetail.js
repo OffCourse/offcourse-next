@@ -4,7 +4,7 @@ import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 import system from "system-components";
 
-const Master = system({
+const MasterWrapper = system({
     p: 6,
     flex: 1,
     display: "flex",
@@ -18,6 +18,17 @@ const Detail = system({
     minWidth: "20rem",
     maxWidth: "55rem"
 });
+
+class Master extends Component {
+    render() {
+        const { children } = this.props;
+        return <MasterWrapper>
+            <Group alignItems="center" flexDirection="column">
+                {children}
+            </Group>
+        </MasterWrapper>
+    }
+}
 
 export default class MasterDetail extends Component {
     static Master = Master;

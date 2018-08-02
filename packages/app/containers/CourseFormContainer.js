@@ -3,7 +3,7 @@ import { identity } from "ramda";
 import Composer from "react-composer";
 import { CourseForm } from "@offcourse/organisms";
 import { Query } from "../components";
-import { queries, mutations } from "../graphql";
+import { queries } from "../graphql";
 
 export default class CourseFormContainer extends Component {
   render() {
@@ -12,9 +12,7 @@ export default class CourseFormContainer extends Component {
       return (
         <Composer
           components={[
-            courseId && (
-              <Query query={queries.course} variables={{ courseId }} />
-            )
+            <Query query={queries.course} variables={{ courseId }} />
           ]}
         >
           {([queryResult]) => {

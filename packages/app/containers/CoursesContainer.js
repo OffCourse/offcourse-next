@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import { map, prop } from "ramda";
 import Composer from "react-composer";
 import { withRouter } from "next/router";
-import { Query, Mutation } from "../components";
-import { queries, mutations } from "../graphql";
-import { Group } from "@offcourse/atoms";
+import { CourseCardContext, CourseCollectionContext } from "../contexts";
 import { CourseCardLayout } from "@offcourse/organisms";
 import {
-  updateQuery,
   goToCollection,
   goToCourse
 } from "../tempUtils";
@@ -16,42 +12,28 @@ class CoursesContainer extends Component {
   render() {
     const { curator, tag } = this.props.router.query;
     return (
-
       <Composer
         components={[
-          <Query query={queries.courses} variables={{ curator, tag }} />,
-          <Query query={queries.courseCard} />,
-          <Mutation mutation={mutations.changeCardSize} />
+          <CourseCollectionContext.Consumer curator={curator} tag={tag} />,
+          <CourseCardContext.Consumer />
         ]}
       >
-        {([{ data, fetchMore }, courseCardQuery, changeCardSize]) => {
-          const { initialLevel, layout } = courseCardQuery.data.courseCard;
-          const { edges, pageInfo } = data.courses;
-          const courses = map(prop("node"), edges);
-          const hasMore = pageInfo.hasNextPage;
-
-          const loadMore = () => {
-            fetchMore({
-              query: queries.courses,
-              variables: { curator, tag, after: pageInfo.endCursor },
-              updateQuery
-            });
-          };
+        {([collection, card]) => {
           return (
             <CourseCardLayout
-              initialCardLevel={initialLevel}
-              onResize={({ numberOfColumns }) => changeCardSize({ variables: { numberOfColumns } })}
-              key={initialLevel}
-              layout={layout}
+              initialCardLevel={card.initialLevel}
+              onResize={card.changeLevel}
+              key={card.initialLevel}
+              layout={card.layout}
               goToCollection={goToCollection}
               goToCourse={goToCourse}
-              hasMore={hasMore}
-              courses={courses}
-              loadMore={loadMore}
+              hasMore={collection.hasMore}
+              courses={collection.courses}
+              loadMore={collection.loadMore}
             />
           );
         }}
-      </Composer>
+      </Composer >
     );
   }
 }

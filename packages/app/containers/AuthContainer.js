@@ -1,56 +1,31 @@
 import React, { Component } from "react";
 import Composer from "react-composer";
-import { queries, mutations } from "../graphql";
 import { identity } from "ramda";
-import { Query, Mutation } from "../components";
 import { Auth, SignOutDialog } from "@offcourse/organisms";
-import { authModes } from "@offcourse/constants";
-
+import { OverlayContext, AuthContext, FlashContext } from "../contexts";
 
 const {
   SIGNING_IN,
   SIGNING_UP,
   SIGNING_OUT,
   RESETTING_PASSWORD,
-} = authModes;
+} = AuthContext.constants;
 
 export default class AuthContainer extends Component {
-  static propTypes = {};
-
   render() {
     return (
       <Composer
         components={[
-          <Query query={queries.overlay} />,
-          <Query query={queries.auth} />,
-          <Mutation mutation={mutations.addMessage} />,
-          <Mutation mutation={mutations.removeMessage} />,
-          <Mutation mutation={mutations.closeOverlay} />,
-          <Mutation mutation={mutations.switchOverlayMode} />,
-          <Mutation mutation={mutations.signIn} />,
-          <Mutation mutation={mutations.signOut} />,
-          <Mutation mutation={mutations.signUp} />,
-          <Mutation mutation={mutations.confirmSignUp} />,
-          <Mutation mutation={mutations.resetPassword} />,
-          <Mutation mutation={mutations.confirmNewPassword} />,
+          <OverlayContext.Consumer />,
+          <AuthContext.Consumer />,
+          <FlashContext.Consumer />
         ]}
       >
         {([
-          queryResult,
-          authResult,
-          addMessage,
-          removeMessage,
-          closeOverlay,
-          switchOverlayMode,
-          signIn,
-          signOut,
-          signUp,
-          confirmSignUp,
-          resetPassword,
-          confirmNewPassword
+          { mode, close, switchMode },
+          { constants, needsConfirmation, userName, errors, signIn, signOut, signUp, confirmSignUp, confirmNewPassword, resetPassword },
+          { push }
         ]) => {
-          const { mode } = queryResult.data.overlay;
-          const { needsConfirmation, userName, errors } = authResult.data.auth;
           switch (mode) {
             case SIGNING_UP:
             case SIGNING_IN:
@@ -58,16 +33,16 @@ export default class AuthContainer extends Component {
               return (
                 <Auth
                   userName={userName}
-                  onModeSwitch={variables => switchOverlayMode({ variables })}
-                  defaultMode={queryResult.data.overlay.mode}
+                  onModeSwitch={variables => switchMode({ variables })}
+                  defaultMode={mode}
                   needsConfirmation={needsConfirmation}
                   errors={errors}
                   signIn={async (variables) => {
                     const { data } = await signIn({ variables });
                     const { authStatus } = data.signIn;
                     if (authStatus === "SIGNED_IN") {
-                      await addMessage({ variables: { variant: "success", message: "you are now signed in" } });
-                      removeMessage() && await closeOverlay();
+                      await push({ variables: { variant: "success", message: "you are now signed in" } });
+                      await close();
                     }
                   }}
                   resetPassword={
@@ -78,8 +53,8 @@ export default class AuthContainer extends Component {
                         const { data } = await confirmNewPassword({ variables })
                         const { authStatus } = data.confirmNewPassword;
                         if (authStatus === "SIGNED_IN") {
-                          await addMessage({ variables: { variant: "success", message: "you are password is reset" } });
-                          removeMessage() && await closeOverlay();
+                          await push({ variables: { variant: "success", message: "you are password is reset" } });
+                          await close();
                         }
                       }
                     }
@@ -92,16 +67,16 @@ export default class AuthContainer extends Component {
                         const { data } = await confirmSignUp({ variables })
                         const { authStatus } = data.confirmSignUp;
                         if (authStatus === "SIGNED_IN") {
-                          await addMessage({ variables: { variant: "success", message: "you are now signed up" } });
-                          removeMessage() && await closeOverlay();
+                          await push({ variables: { variant: "success", message: "you are now signed up" } });
+                          await close();
                         }
                       }
                     }
                   }
                   onCancel={async () => {
                     await signOut();
-                    await addMessage({ variables: { variant: "warning", message: "you are now signed out" } });
-                    removeMessage() && await closeOverlay();
+                    await push({ variables: { variant: "warning", message: "you are now signed out" } });
+                    await close();
                   }}
                 />
               );
@@ -110,10 +85,10 @@ export default class AuthContainer extends Component {
                 <SignOutDialog
                   onConfirm={async () => {
                     await signOut();
-                    await addMessage({ variables: { variant: "warning", message: "you are now signed out" } });
-                    removeMessage() && await closeOverlay();
+                    await push({ variables: { variant: "warning", message: "you are now signed out" } });
+                    await close();
                   }}
-                  onCancel={closeOverlay}
+                  onCancel={close}
                 />
               );
             default:

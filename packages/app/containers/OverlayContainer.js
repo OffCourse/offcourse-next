@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import { Query, Mutation } from "../components";
-import Composer from "react-composer";
-import { Group, Loading } from "@offcourse/atoms";
 import { Modal } from "@offcourse/molecules";
-import { queries, mutations } from "../graphql";
-import { overlayModes } from "@offcourse/constants";
 import { AuthContainer, CourseFormContainer } from ".";
+import { LoadingModal } from "../components";
+import { OverlayContext } from "../contexts";
 
 const {
   SIGNING_IN,
@@ -14,23 +11,9 @@ const {
   RESETTING_PASSWORD,
   CREATE_COURSE,
   EDIT_COURSE
-} = overlayModes;
-
-class LoadingModal extends Component {
-  render() {
-    return (
-      <Group height="400px" justifyContent="center" alignItems="center">
-        <Modal.Section>
-          <Loading size="large" />
-        </Modal.Section>
-      </Group>
-    );
-  }
-}
-
+} = OverlayContext.constants;
 export default class OverlayContainer extends Component {
-  selectMode(overlay) {
-    const { mode, courseId, close } = overlay;
+  selectMode({ mode, courseId, close }) {
     switch (mode) {
       case SIGNING_UP:
       case SIGNING_IN:
@@ -47,21 +30,15 @@ export default class OverlayContainer extends Component {
 
   render() {
     return (
-      <Composer
-        components={[
-          <Query query={queries.overlay} />,
-          <Mutation mutation={mutations.closeOverlay} />
-        ]}
-      >
-        {([queryResult, closeOverlay]) => {
-          const { overlay } = queryResult.data;
+      <OverlayContext.Consumer>
+        {(overlay) => {
           return (
-            <Modal close={closeOverlay} isOpen={overlay.isOpen}>
-              {this.selectMode({ ...overlay, close: closeOverlay })}
+            <Modal close={overlay.close} isOpen={overlay.isOpen}>
+              {this.selectMode(overlay)}
             </Modal>
           );
         }}
-      </Composer>
+      </OverlayContext.Consumer>
     );
   }
 }
