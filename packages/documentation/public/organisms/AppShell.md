@@ -5,7 +5,7 @@ state: { isOpen: false }
 ---
 const toggle = () => setState({isOpen: !state.isOpen });
 const links = [
-  { onClick: toggle, title: "Create Course", level: 1 },
+  { onClick: toggle, title: "Create Course", level: 0 },
   { href: "/bla", title: "Admin", level: 3 },
   { href: "/bla", title: "Profile", level: 2 },
   { onClick: toggle, title: "Sign Out", level: 2 }

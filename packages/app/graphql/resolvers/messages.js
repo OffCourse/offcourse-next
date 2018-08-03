@@ -14,7 +14,7 @@ const addMessage = (_, { variant, message }, { cache, getCacheKey }) => {
 };
 
 const removeMessage = async (_, __, { cache, getCacheKey }) => {
-  await timeout(1500);
+  await timeout(2500);
   const previous = cache.readQuery({ query: queries.messages });
   const messages = dropLast(1, previous.messages);
   cache.writeData({ data: { messages } });
