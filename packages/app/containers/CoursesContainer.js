@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Composer from "react-composer";
 import { withRouter } from "next/router";
-import { CourseCardContext, CourseCollectionContext } from "../contexts";
+import { CourseCardProvider, CoursesProvider } from "../providers";
 import { CourseCardLayout } from "@offcourse/organisms";
 import {
   goToCollection,
@@ -14,8 +14,8 @@ class CoursesContainer extends Component {
     return (
       <Composer
         components={[
-          <CourseCollectionContext.Consumer curator={curator} tag={tag} />,
-          <CourseCardContext.Consumer />
+          <CoursesProvider curator={curator} tag={tag} />,
+          <CourseCardProvider />
         ]}
       >
         {([collection, card]) => {

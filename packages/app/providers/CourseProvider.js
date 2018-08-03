@@ -3,18 +3,14 @@ import Composer from "react-composer";
 import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 import { isEmpty, map, find, propEq } from "ramda";
-import { AuthContext } from "."
+import { AuthProvider } from "."
 import CheckpointsFragment from "../graphql/fragments/Checkpoints.graphql";
-const { Provider, Consumer } = createContext();
 
-export default class CourseContext extends Component {
-    static Consumer = Consumer;
-    static Provider = Provider;
-
+export default class CourseProvider extends Component {
     render() {
         const { children, courseQuery } = this.props;
         return (
-            <AuthContext.Consumer>
+            <AuthProvider>
                 {({ userName }) => {
                     const query = userName ? queries.courseWithStatus : queries.course;
                     return (
@@ -70,16 +66,12 @@ export default class CourseContext extends Component {
                                     updateStatus: statusUpdater,
                                     userIsCurator
                                 };
-                                return (
-                                    <CourseContext.Provider value={value}>
-                                        {children}
-                                    </CourseContext.Provider>
-                                )
+                                return children(value);
                             }}
                         </Composer >
                     )
                 }}
-            </AuthContext.Consumer>
+            </AuthProvider>
         )
     }
 }

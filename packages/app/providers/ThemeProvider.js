@@ -1,14 +1,9 @@
-import React, { Component, createContext } from 'react'
+import React, { Component, createProvider } from 'react'
 import Composer from "react-composer";
 import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 
-const { Provider, Consumer } = createContext();
-
-export default class ThemeContext extends Component {
-    static Consumer = Consumer;
-    static Provider = Provider;
-
+export default class ThemeProvider extends Component {
     render() {
         const { children } = this.props;
         return (
@@ -26,11 +21,7 @@ export default class ThemeContext extends Component {
                         ...queryResult.data.theme,
                         switch: switchTheme
                     };
-                    return (
-                        <ThemeContext.Provider value={value}>
-                            {children}
-                        </ThemeContext.Provider>
-                    )
+                    return children(value)
                 }}
             </Composer>
         )

@@ -3,12 +3,8 @@ import Composer from "react-composer";
 import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 
-const { Provider, Consumer } = createContext();
 
-export default class CourseCardContext extends Component {
-    static Consumer = Consumer;
-    static Provider = Provider;
-
+export default class CourseCardProvider extends Component {
     render() {
         const { children } = this.props;
         return (
@@ -27,11 +23,7 @@ export default class CourseCardContext extends Component {
                         ...queryResult.data.courseCard,
                         changeLevel
                     };
-                    return (
-                        <CourseCardContext.Provider value={value}>
-                            {children}
-                        </CourseCardContext.Provider>
-                    )
+                    return children(value)
                 }}
             </Composer>
         )

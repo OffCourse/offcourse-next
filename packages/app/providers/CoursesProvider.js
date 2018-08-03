@@ -6,12 +6,8 @@ import {
     updateQuery,
 } from "../tempUtils";
 
-const { Provider, Consumer } = createContext();
 
-export default class CourseCollectionContext extends Component {
-    static Consumer = Consumer;
-    static Provider = Provider;
-
+export default class CoursesProvider extends Component {
     render() {
         const { children, curator, tag } = this.props;
         return (
@@ -34,11 +30,7 @@ export default class CourseCollectionContext extends Component {
                         hasMore,
                         loadMore
                     };
-                    return (
-                        <CourseCollectionContext.Provider value={value}>
-                            {children}
-                        </CourseCollectionContext.Provider>
-                    )
+                    return children(value);
                 }
                 }
             </Query>

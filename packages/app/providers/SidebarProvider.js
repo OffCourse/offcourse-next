@@ -3,11 +3,7 @@ import Composer from "react-composer";
 import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 
-const { Provider, Consumer } = createContext();
-
-export default class SidebarContext extends Component {
-    static Consumer = Consumer;
-    static Provider = Provider;
+export default class SidebarProvider extends Component {
 
     render() {
         const { children } = this.props;
@@ -26,11 +22,7 @@ export default class SidebarContext extends Component {
                         ...queryResult.data.sidebar,
                         toggle: toggleSidebar
                     };
-                    return (
-                        <SidebarContext.Provider value={value}>
-                            {children}
-                        </SidebarContext.Provider>
-                    )
+                    return children(value)
                 }}
             </Composer>
         )

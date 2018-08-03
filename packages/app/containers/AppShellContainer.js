@@ -5,18 +5,18 @@ import { AppShell } from "@offcourse/organisms";
 import { goHome } from "../tempUtils";
 
 import {
-  SidebarContext,
-  OverlayContext,
-  AuthContext,
-  FlashContext,
-  ThemeContext,
-} from "../contexts";
+  SidebarProvider,
+  OverlayProvider,
+  AuthProvider,
+  FlashProvider,
+  ThemeProvider,
+} from "../providers";
 
 const {
   SIGNING_IN,
   SIGNING_OUT,
   CREATE_COURSE
-} = OverlayContext.constants;
+} = OverlayProvider.constants;
 
 export default class AppShellContainer extends Component {
   createThemeLinks({ themeNames, currentTheme, selectTheme }) {
@@ -75,13 +75,8 @@ export default class AppShellContainer extends Component {
     const { children } = this.props;
     return (
       <Composer
-        components={[
-          <SidebarContext.Consumer />,
-          <AuthContext.Consumer />,
-          <OverlayContext.Consumer />,
-          <FlashContext.Consumer />,
-          <ThemeContext.Consumer />,
-        ]}
+        components={[<SidebarProvider />, <AuthProvider />,
+        <OverlayProvider />, <FlashProvider />, <ThemeProvider />]}
       >
         {(
           [sidebar, auth, overlay, flash, theme]) => {

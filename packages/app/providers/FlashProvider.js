@@ -3,11 +3,8 @@ import Composer from "react-composer";
 import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 
-const { Provider, Consumer } = createContext();
 
 export default class FlashContext extends Component {
-    static Consumer = Consumer;
-    static Provider = Provider;
 
     render() {
         const { children } = this.props;
@@ -34,11 +31,7 @@ export default class FlashContext extends Component {
                         messages,
                         push
                     };
-                    return (
-                        <FlashContext.Provider value={value}>
-                            {children}
-                        </FlashContext.Provider>
-                    )
+                    return children(value)
                 }}
             </Composer>
         )

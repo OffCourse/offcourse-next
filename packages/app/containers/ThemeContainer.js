@@ -1,20 +1,20 @@
-import { ThemeProvider, injectGlobal } from "styled-components";
+import { ThemeProvider as StyledThemeProvider, injectGlobal } from "styled-components";
 import * as themes from "@offcourse/themes";
 import {
-  ThemeContext,
-} from "../contexts";
+  ThemeProvider
+} from "../providers";
 
 export default class ThemeContainer extends React.Component {
   render() {
     const { children } = this.props;
     return (
-      <ThemeContext.Consumer>
+      <ThemeProvider>
         {({ current }) => {
           const theme = themes[current];
           injectGlobal(theme);
-          return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+          return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>;
         }}
-      </ThemeContext.Consumer>
+      </ThemeProvider>
     );
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Modal } from "@offcourse/molecules";
 import { AuthContainer, CourseFormContainer } from ".";
 import { LoadingModal } from "../components";
-import { OverlayContext } from "../contexts";
+import { OverlayProvider } from "../providers";
 
 const {
   SIGNING_IN,
@@ -11,7 +11,7 @@ const {
   RESETTING_PASSWORD,
   CREATE_COURSE,
   EDIT_COURSE
-} = OverlayContext.constants;
+} = OverlayProvider.constants;
 export default class OverlayContainer extends Component {
   selectMode({ mode, courseId, close }) {
     switch (mode) {
@@ -30,7 +30,7 @@ export default class OverlayContainer extends Component {
 
   render() {
     return (
-      <OverlayContext.Consumer>
+      <OverlayProvider>
         {(overlay) => {
           return (
             <Modal close={overlay.close} isOpen={overlay.isOpen}>
@@ -38,7 +38,7 @@ export default class OverlayContainer extends Component {
             </Modal>
           );
         }}
-      </OverlayContext.Consumer>
+      </OverlayProvider>
     );
   }
 }

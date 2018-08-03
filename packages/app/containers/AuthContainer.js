@@ -2,30 +2,25 @@ import React, { Component } from "react";
 import Composer from "react-composer";
 import { identity } from "ramda";
 import { Auth, SignOutDialog } from "@offcourse/organisms";
-import { OverlayContext, AuthContext, FlashContext } from "../contexts";
+import { OverlayProvider, AuthProvider, FlashProvider } from "../providers";
 
 const {
   SIGNING_IN,
   SIGNING_UP,
   SIGNING_OUT,
   RESETTING_PASSWORD,
-} = AuthContext.constants;
+} = AuthProvider.constants;
 
 export default class AuthContainer extends Component {
   render() {
     return (
       <Composer
-        components={[
-          <OverlayContext.Consumer />,
-          <AuthContext.Consumer />,
-          <FlashContext.Consumer />
-        ]}
+        components={[<OverlayProvider />, <AuthProvider />, <FlashProvider />]}
       >
-        {([
-          { mode, close, switchMode },
+        {([{ mode, close, switchMode },
           { constants, needsConfirmation, userName, errors, signIn, signOut, signUp, confirmSignUp, confirmNewPassword, resetPassword },
-          { push }
-        ]) => {
+          { push }]) => {
+
           switch (mode) {
             case SIGNING_UP:
             case SIGNING_IN:

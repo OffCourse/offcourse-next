@@ -5,12 +5,7 @@ import Layout from "../components/Layout";
 import MasterDetail from "../components/MasterDetail";
 import UnderConstruction from "../components/UnderConstruction";
 import { CourseContainer, CourseActionContainer } from "../containers";
-import CourseAction from "../components/CourseAction";
 
-import {
-  CourseContext,
-  CourseCardContext,
-} from "../contexts";
 
 const { Master, Detail } = MasterDetail;
 class CoursePage extends Component {
@@ -22,12 +17,8 @@ class CoursePage extends Component {
       <Layout>
         <MasterDetail>
           <Master>
-            <CourseContext courseQuery={courseQuery}>
-              <CourseCardContext>
-                <CourseContainer />
-                <CourseActionContainer />
-              </CourseCardContext>
-            </CourseContext>
+            <CourseContainer courseQuery={courseQuery} />
+            <CourseActionContainer courseQuery={courseQuery} />
           </Master>
           <Detail>
             <UnderConstruction />

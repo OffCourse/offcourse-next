@@ -7,9 +7,7 @@ import { authModes } from "@offcourse/constants";
 
 const { Provider, Consumer } = createContext();
 
-export default class AuthContext extends Component {
-    static Consumer = Consumer;
-    static Provider = Provider;
+export default class AuthProvider extends Component {
     static constants = authModes;
 
     render() {
@@ -35,13 +33,8 @@ export default class AuthContext extends Component {
                         resetPassword,
                         confirmNewPassword
                     }
-                    return (
-                        <AuthContext.Provider value={value}>
-                            {children}
-                        </AuthContext.Provider>
-                    )
-                }
-                }
+                    return children(value)
+                }}
             </Composer>
         )
     }

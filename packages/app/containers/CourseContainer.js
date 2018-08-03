@@ -2,16 +2,14 @@ import React, { Component, Fragment } from "react";
 import Composer from "react-composer";
 import { goToCourse, goToCollection } from "../tempUtils";
 import { CourseCard } from "@offcourse/organisms";
-import { CourseCardContext, CourseContext } from "../contexts";
+import { CourseCardProvider, CourseProvider } from "../providers";
 
 class CourseContainer extends Component {
   render() {
+    const { courseQuery } = this.props;
     return (
       <Composer
-        components={[
-          <CourseContext.Consumer />,
-          <CourseCardContext.Consumer />,
-        ]}
+        components={[<CourseProvider courseQuery={courseQuery} />, <CourseCardProvider />]}
       >
         {([{ userIsCurator, userName, course, updateStatus }, card]) => (
           <CourseCard
