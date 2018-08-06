@@ -8,6 +8,7 @@
     "@offcourse/organisms": "^1.4.0",
     "@offcourse/themes": "^1.4.0",
     "catalog": "^3.5.3",
+    "clean-webpack-plugin": "^0.1.19",
     "netlify-cli": "^1.2.2",
     "ramda": "^0.25.0",
     "react": "^16.4.0",

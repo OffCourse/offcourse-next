@@ -1,0 +1,7 @@
+#import "../fragments/Courses.graphql"
+
+query courses($first: Int, $curator: String, $tag: String, $after: String) {
+  courses(first: $first, curator: $curator, tag: $tag, after: $after) {
+    ...CoursesData
+  }
+}

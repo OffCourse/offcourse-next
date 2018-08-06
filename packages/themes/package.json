@@ -18,7 +18,8 @@
     "start": "rollup -c -w"
   },
   "dependencies": {
-    "@svgr/rollup": "^2.0.0"
+    "@svgr/rollup": "^2.0.0",
+    "clean-webpack-plugin": "^0.1.19"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",

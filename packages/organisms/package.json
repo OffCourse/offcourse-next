@@ -22,6 +22,7 @@
     "@offcourse/constants": "^1.4.0",
     "@offcourse/molecules": "^1.4.0",
     "@offcourse/themes": "^1.4.0",
+    "clean-webpack-plugin": "^0.1.19",
     "formik": "^0.11.11",
     "ramda": "^0.25.0",
     "react-waypoint": "^8.0.1",

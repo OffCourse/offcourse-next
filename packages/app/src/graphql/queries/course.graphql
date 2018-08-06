@@ -1,0 +1,7 @@
+#import "../fragments/Course.graphql"
+
+query course($courseQuery: CourseQuery, $courseId: String) {
+  course(courseQuery: $courseQuery, courseId: $courseId) {
+    ...CourseData
+  }
+}

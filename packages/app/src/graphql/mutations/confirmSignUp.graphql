@@ -1,0 +1,11 @@
+mutation confirmSignUp(
+  $userName: String!
+  $confirmationCode: Int!
+  $password: String!
+) {
+  confirmSignUp(
+    userName: $userName
+    confirmationCode: $confirmationCode
+    password: $password
+  ) @client
+}

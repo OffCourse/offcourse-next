@@ -1,0 +1,3 @@
+mutation switchTheme {
+  switchTheme @client
+}

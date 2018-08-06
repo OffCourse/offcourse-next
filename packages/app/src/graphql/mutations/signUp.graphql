@@ -1,0 +1,3 @@
+mutation signUp($userName: String!, $email: String!, $password: String!) {
+  signUp(userName: $userName, email: $email, password: $password) @client
+}

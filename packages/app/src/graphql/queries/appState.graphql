@@ -1,0 +1,16 @@
+{
+  sidebar @client {
+    isOpen
+  }
+  theme @client {
+    all
+    current
+  }
+  auth @client {
+    userName
+  }
+  messages @client {
+    variant
+    message
+  }
+}

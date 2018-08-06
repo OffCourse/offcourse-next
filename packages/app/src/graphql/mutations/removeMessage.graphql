@@ -1,0 +1,4 @@
+
+mutation removeMessage {
+  removeMessage @client
+}

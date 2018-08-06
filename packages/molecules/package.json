@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@offcourse/atoms": "^1.4.0",
+    "clean-webpack-plugin": "^0.1.19",
     "ramda": "^0.25.0",
     "react-copy-to-clipboard": "^5.0.1",
     "react-sidebar": "^2.3.2",
