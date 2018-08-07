@@ -1,3 +1,5 @@
+This organism allows a user to create a course card
+
 ```react|span-4
 state: { errors: { general: "you seem to have misspelled something..."} }
 ---
@@ -20,6 +22,8 @@ const handler = () => alert("Everyting is Erased!!!!");
   onCancel={handler}
 />
 ```
+
+Furthermore, a user can also edit an already created course card using the CourseForm organism
 
 ```react|span-4
 state: { errors: {} }
