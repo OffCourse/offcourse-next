@@ -28,7 +28,7 @@ Voila, this is how it works. Have fun!
 
 ## Asking questions
 
-If you have a question about the Offcourse platform, your account, bugs or feature requests, please check our FAQ first to find an answer. For questions not listed on our FAQ and that are other than technical issues or feature requests, don't create an issue on our GitHub repo, but [contact](mailto:contact@offcourse.io) us.
+If you have a question about the Offcourse platform, your account, bugs or feature requests, please check our FAQ first to find an answer. For questions not listed on our FAQ and that are other than technical issues or feature requests, don't create an issue on our GitHub repository, but [contact](mailto:contact@offcourse.io) us.
 
 ## Authors / Maintainers
 
@@ -39,7 +39,7 @@ The authors and maintainers of this website are
 
 ## Contributing
 
-Offcourse is a not-for-profit organization. The learning platform we build is continuously under development. You can help us **build** the Offcourse platform and its community through **code and design contribution**. If there’s a feature you’d like to work on to grow your coding skills, please do so. It doesn’t matter if you are new to programming or advanced, we welcome all levels and backgrounds to our community. The same goes for design work. The features and design elements that are up for development can be found at our online Contributor's Guide. We manage the Bug Database from our [GitHub Repo](https://github.com/OffCourse/offcourse-next).
+Offcourse is a not-for-profit organization. The learning platform we build is continuously under development. You can help us **build** the Offcourse platform and its community through **code and design contribution**. If there’s a feature you’d like to work on to grow your coding skills, please do so. It doesn’t matter if you are new to programming or advanced, we welcome all levels and backgrounds to our community. The same goes for design work. The features and design elements that are up for development can be found at our online Contributor's Guide. We manage the Bug Database from our [GitHub Repository](https://github.com/OffCourse/offcourse-next).
 
 
 Before you start, please read the 'Contribute' section containing our guidelines to work together smoothly and pleasant. 
