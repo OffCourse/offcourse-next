@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import {
-  ThemeContainer,
-  AppShellContainer,
-  OverlayContainer
+  AppShellContainer
 } from "../containers";
+import {
+  Route
+} from 'react-router-dom'
 
 export default class Layout extends Component {
   render() {
     const { children } = this.props;
     return (
-      <ThemeContainer>
-        <AppShellContainer>
-          <OverlayContainer />
+      <Route children={(props) => (
+        <AppShellContainer {...props}>
           {children}
         </AppShellContainer>
-      </ThemeContainer>
+      )} />
     );
   }
 }

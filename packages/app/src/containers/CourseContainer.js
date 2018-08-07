@@ -6,10 +6,13 @@ import { CourseCardProvider, CourseProvider } from "../providers";
 
 class CourseContainer extends Component {
   render() {
-    const { courseQuery } = this.props;
+    const { courseId, curator, goal } = this.props.match.params;
+    const courseQuery = { curator, goal };
+    console.log(courseId)
+
     return (
       <Composer
-        components={[<CourseProvider courseQuery={courseQuery} />, <CourseCardProvider />]}
+        components={[<CourseProvider courseId={courseId} courseQuery={courseQuery} />, <CourseCardProvider />]}
       >
         {([{ userIsCurator, userName, course, updateStatus }, card]) => (
           <CourseCard

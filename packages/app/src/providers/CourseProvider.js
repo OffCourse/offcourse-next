@@ -8,15 +8,16 @@ import CheckpointsFragment from "../graphql/fragments/Checkpoints.graphql";
 
 export default class CourseProvider extends Component {
     render() {
-        const { children, courseQuery } = this.props;
+        const { children, courseId, courseQuery } = this.props;
         return (
             <AuthProvider>
                 {({ userName }) => {
                     const query = userName ? queries.courseWithStatus : queries.course;
+                    const variables = courseId ? { courseId } : { courseQuery };
                     return (
                         <Composer
                             components={[
-                                <Query query={query} variables={{ courseQuery }} />,
+                                <Query query={query} variables={variables} />,
                                 <Mutation mutation={mutations.updateStatus} ignoreResults />]}>
                             {([courseResponse, updateStatus]) => {
                                 const { course } = courseResponse.data;

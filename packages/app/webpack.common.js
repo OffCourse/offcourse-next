@@ -36,6 +36,7 @@ module.exports = {
 
         new HtmlWebPackPlugin({
             title: "Offcourse",
+            baseHref: "/",
             filename: "index.html",
             inject: false,
             template: require('html-webpack-template'),

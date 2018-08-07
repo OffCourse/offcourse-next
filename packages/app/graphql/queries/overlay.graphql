@@ -1,7 +1,0 @@
-{
-  overlay @client {
-    isOpen
-    mode
-    courseId
-  }
-}

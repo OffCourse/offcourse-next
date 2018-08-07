@@ -1,5 +1,0 @@
-mutation updateStatus($statusUpdate: StatusInput!) {
-  updateStatus(statusUpdate: $statusUpdate) {
-    courseId
-  }
-}

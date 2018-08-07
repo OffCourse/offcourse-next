@@ -1,6 +1,0 @@
-fragment Checkpoints on Course {
-  checkpoints {
-    checkpointId
-    completed
-  }
-}

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Composer from "react-composer";
-// import { withRouter } from "next/router";
 import { CourseCardProvider, CoursesProvider } from "../providers";
 import { CourseCardLayout } from "@offcourse/organisms";
 import {
@@ -9,11 +8,10 @@ import {
 } from "../tempUtils";
 
 import { identity } from "ramda";
-const withRouter = identity;
 
 class CoursesContainer extends Component {
   render() {
-    const { curator, tag } = {};
+    const { curator, tag } = this.props.match.params;
     return (
       <Composer
         components={[
@@ -41,4 +39,4 @@ class CoursesContainer extends Component {
   }
 }
 
-export default withRouter(CoursesContainer);
+export default CoursesContainer;

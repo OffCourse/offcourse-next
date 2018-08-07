@@ -1,3 +1,0 @@
-mutation CloseOverlay {
-  closeOverlay @client
-}

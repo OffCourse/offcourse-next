@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { map } from "ramda";
 import Composer from "react-composer";
 import { AppShell } from "@offcourse/organisms";
-import { goHome } from "../tempUtils";
+import {
+  OverlayContainer
+} from "../containers";
 
 import {
   SidebarProvider,
@@ -72,7 +74,7 @@ export default class AppShellContainer extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, history } = this.props;
     return (
       <Composer
         components={[<SidebarProvider />, <AuthProvider />,
@@ -84,7 +86,7 @@ export default class AppShellContainer extends Component {
             <AppShell
               position="fixed"
               messages={flash.messages}
-              onLogoClick={goHome}
+              onLogoClick={() => history.push('/')}
               toggleSidebar={sidebar.toggle}
               isSidebarOpen={sidebar.isOpen}
               links={[
@@ -99,6 +101,7 @@ export default class AppShellContainer extends Component {
                 })
               ]}
             >
+              <OverlayContainer />
               {children}
             </AppShell>
           );

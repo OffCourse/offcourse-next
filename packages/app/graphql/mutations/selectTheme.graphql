@@ -1,3 +1,0 @@
-mutation selectTheme($themeName: String!) {
-  selectTheme(themeName: $themeName) @client
-}

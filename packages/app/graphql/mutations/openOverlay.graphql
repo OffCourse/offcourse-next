@@ -1,3 +1,0 @@
-mutation OpenOverlay($mode: String, $courseId: String) {
-  openOverlay(mode: $mode, courseId: $courseId) @client
-}

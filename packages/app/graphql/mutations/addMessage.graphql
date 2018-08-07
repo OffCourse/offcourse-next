@@ -1,9 +1,0 @@
-mutation addMessage(
-  $variant: String!
-  $message: String!
-) {
-  addMessage(
-    variant: $variant
-    message: $message
-  ) @client
-}

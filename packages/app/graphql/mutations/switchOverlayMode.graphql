@@ -1,3 +1,0 @@
-mutation switchOverlayMode($mode: String!) {
-  switchOverlayMode(mode: $mode) @client
-}
