@@ -1,8 +1,8 @@
 ```react|span-3
 state: {
   checkpoint: {
-    task: "Hello World",
-    resourceUrl: "/bla"
+    task: "Learn GraphQL basics",
+    resourceUrl: "/graphql-basics"
   },
   hasErrors: false
 }
