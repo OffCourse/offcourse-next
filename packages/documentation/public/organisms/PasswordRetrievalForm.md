@@ -1,3 +1,5 @@
+This organism can be used by a user to retrieve a lost password
+
 ```react|span-4
 const errors = {};
 const userName = "";
@@ -11,6 +13,8 @@ const handler = () => alert("Done!");
   onRequestSignIn={handler}
 />
 ```
+
+Potentially, the process of retrieving a lost password can make use of a confirmation code
 
 ```react|span-4
 const confirmMode = true;
