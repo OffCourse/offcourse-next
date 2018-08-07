@@ -1,3 +1,5 @@
+The SignInForm organism allows a user to sign in to the platform
+
 ```react|span-4
 const handler = () => alert("Done!");
 const errors = {};
