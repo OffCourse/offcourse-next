@@ -1,4 +1,4 @@
-With url button
+This molecule creates a section for direct sharing on social media or using a URL
 
 ```react
 const url = "https://app.offcourse.io/flags/all";
@@ -6,7 +6,7 @@ const text = "Something Profane";
 <Share url={url} text={text} providers={["twitter", "facebook", "url"]} />;
 ```
 
-Without url button
+Alternatively, the URL button can be left out of this section
 
 ```react
 const url = "https://app.offcourse.io/flags/all";
