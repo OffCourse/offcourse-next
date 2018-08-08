@@ -1,3 +1,5 @@
+This molecule combines the Offcourse logo with the menu button and onClick functionalities
+
 Without Messages
 
 ```react
