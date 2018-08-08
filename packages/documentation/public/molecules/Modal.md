@@ -1,3 +1,5 @@
+The Modal molecule creates a dialog box that is displayed on top of the current page
+
 ```react
 state: { isOpen: false }
 ---
