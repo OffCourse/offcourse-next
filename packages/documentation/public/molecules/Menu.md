@@ -1,3 +1,5 @@
+The Menu molecule creates a list of available, clickable options in a defined sequence
+
 ```react
 const onClick = () => alert("click");
 
@@ -10,6 +12,7 @@ const links = [
 
 <Menu links={links} />
 ```
+Furthermore, the molecule can be used to define a maximum amount of displayed options, in this case just one
 
 ```react
 const onClick = () => alert("click");
@@ -22,6 +25,7 @@ const links = [
 
 <Menu maxLevel={0} links={links} direction="horizontal"/>
 ```
+A menu can also be displayed horizontally
 
 ```react
 const onClick = () => alert("click");
