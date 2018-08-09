@@ -1,4 +1,4 @@
-This organism allows a user to sign-in or sign-up, in case the user never did before
+This organism permits a sign-in or sign-up dialogue, when a user is on the platform
 
 ```react
 const handler = message => alert(JSON.stringify(message, null, 2));
