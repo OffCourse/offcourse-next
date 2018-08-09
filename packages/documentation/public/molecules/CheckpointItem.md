@@ -1,4 +1,4 @@
-render a plain item when not trackable
+The CheckpointItem renders a regular item when not trackable
 
 ```react
 const checkpoint = {
@@ -11,7 +11,7 @@ const checkpoint = {
 <CheckpointItem {...checkpoint}/>
 ```
 
-render a checkitem when it gets an onToggle callback
+However, it renders a checkitem when it gets an onToggle callback
 
 ```react
 const onToggle =({ checkpointId, checked }) => {
