@@ -23,7 +23,7 @@ const handler = () => alert("Everyting is Erased!!!!");
 />
 ```
 
-Furthermore, a user can also edit an already created course card using the CourseForm organism
+Furthermore, a user can also edit an existing course card using the CourseForm organism
 
 ```react|span-4
 state: { errors: {} }
