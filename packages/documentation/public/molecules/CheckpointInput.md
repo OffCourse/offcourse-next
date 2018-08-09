@@ -1,3 +1,5 @@
+The CheckpointInput molecule adds buttons for specific user input, which in this case either removing or sorting the checkpoints 
+
 ```react|span-3
 state: {
   checkpoint: {
