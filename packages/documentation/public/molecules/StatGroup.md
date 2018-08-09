@@ -1,4 +1,4 @@
-StatGroup molecules combine multiple Stat components into a group
+The StatGroup molecules combine multiple Stat components into groups
 
 ```react|span-3
 <StatGroup section="planning">
