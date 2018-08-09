@@ -1,4 +1,4 @@
-ButtonGroup can explicity declare icons
+The ButtonGroup molecule can explicitly declare icons
 
 ```react
 const onClick = () => alert("click");
@@ -29,7 +29,7 @@ const buttons = [
 <ButtonGroup buttons={buttons} />;
 ```
 
-It can also change the size
+It can also change the button to a smaller size
 
 ```react
 const onClick = () => alert("click");
@@ -40,6 +40,8 @@ const buttons = [
 ];
 <ButtonGroup size="small" buttons={buttons} />;
 ```
+
+Or to a bigger size
 
 ```react
 const onClick = () => alert("click");
