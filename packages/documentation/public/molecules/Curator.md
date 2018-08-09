@@ -1,4 +1,4 @@
-with click handler
+This molecule combines the avatar with a click handler
 
 ```react
 const onClick = () => console.log("X");
@@ -7,7 +7,7 @@ const name = "Yeehaa";
 <Curator profileUrl={`/${name}`} onClick={onClick} section="meta" name={name} avatarUrl={url} />;
 ```
 
-with link
+An avatar can also be combined with a link
 
 ```react
 const url = "https://assets.offcourse.io/portraits/offcourse_1.jpg";
