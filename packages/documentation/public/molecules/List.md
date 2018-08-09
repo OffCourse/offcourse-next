@@ -10,7 +10,7 @@ const Item = List.Item;
 </List>
 ```
 
-or they can be horizontal
+Also, they can be horizontal
 
 ```react
 const Item = List.Item;
@@ -22,7 +22,7 @@ const Item = List.Item;
 </List>
 ```
 
-or they can consist of custom item components
+Futhermore, they can consist of custom item components
 
 ```react
 const onToggle =({ id, checked }) => {
