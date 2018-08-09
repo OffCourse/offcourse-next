@@ -1,4 +1,4 @@
-LinkGroup can explicity declare links
+The LinkGroup molecule can be used to explicitly declare links
 
 ```react
 const clickHandler = () => alert("ALERT");
