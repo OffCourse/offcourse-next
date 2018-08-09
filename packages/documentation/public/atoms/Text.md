@@ -1,4 +1,4 @@
-Normal Text
+Text can be displayed in the default size
 
 ```react
   <Text>
@@ -11,7 +11,7 @@ Normal Text
   </Text>
 ```
 
-Small Text
+Alternatively, text can be displayed in a smaller size
 
 ```react
   <Text size="small">
