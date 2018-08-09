@@ -1,3 +1,5 @@
+The overlay atom creates a new covering window when one clicks on a button
+
 ```react
 state: { isOpen: false }
 ---
