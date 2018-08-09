@@ -1,4 +1,4 @@
-IconGroup can explicity declare icons
+The IconGroup molecule can be used to explicitly declare icons
 
 ```react
 const handleClick = () => alert("clicked");
@@ -47,6 +47,8 @@ const icons = [
 
 <IconGroup size="medium" icons={icons}/>
 ```
+
+Lastly, icons can be vertically displayed as well
 
 ```react|span-6
 const handleClick = () => alert("clicked");
