@@ -1,4 +1,4 @@
-with a label prop...
+The Description molecule creates a designated section for a descriptive piece of text, in this case with a label prop
 
 ```react
 <Description label="Course Description">
@@ -8,7 +8,7 @@ with a label prop...
 </Description>
 ```
 
-...or simply a wrapper
+Alternatively, the molecule can just be a simple wrapper
 
 ```react
 const Label = Description.Label;
