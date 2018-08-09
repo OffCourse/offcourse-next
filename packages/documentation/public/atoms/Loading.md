@@ -1,4 +1,4 @@
-Loading indicator in different size
+The loading indicator can be used in different sizes
 
 ```react|span-2
   <Loading size="small" />
