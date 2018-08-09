@@ -1,4 +1,4 @@
-Default message (normal / basic)
+A default message can be displayed in two different ways, either normal or basic
 
 ```react|span-3
 <Message>This is a message</Message>
@@ -8,7 +8,7 @@ Default message (normal / basic)
 <Message basic>This is a message</Message>
 ```
 
-Success message
+This feature can be exported as feature on success messages
 
 ```react|span-3
 <Message variant="success">This is a success</Message>
@@ -18,7 +18,7 @@ Success message
 <Message basic variant="success">This is a success</Message>
 ```
 
-Error message
+Furthermore, error messages can also be displayed in these two ways
 
 ```react|span-3
 <Message variant="error">This is an error</Message>
@@ -28,7 +28,7 @@ Error message
 <Message basic variant="error">This is an error</Message>
 ```
 
-Info message
+Info messages can have the this same distinction in display
 
 ```react|span-3
 <Message variant="info">This is an info</Message>
@@ -38,7 +38,7 @@ Info message
 <Message basic variant="info">This is an info</Message>
 ```
 
-Warning message
+The same goes for warning messages
 
 ```react|span-3
 <Message variant="warning">This is a warning</Message>
