@@ -1,4 +1,4 @@
-Inputfield make handling with Inputs on Forms easier
+InputField molecules makes handling with Inputs on Forms easier
 
 ```react
 <InputField title="Goal of the Course" name="goal" placeholder="Goal" />
@@ -15,7 +15,7 @@ They can be small
 />
 ```
 
-Display a custom Input Component
+Also, they can display a custom Input Component
 
 ```react
 <InputField
@@ -37,7 +37,7 @@ They can contain multiple lines of text
 />
 ```
 
-They can display errors
+They can even display errors
 
 ```react
 <InputField
@@ -48,7 +48,7 @@ They can display errors
 />
 ```
 
-They can display children
+Lastly, they can display children
 
 ```react
 state: { items: ["", ""], errors: [null, null] }
