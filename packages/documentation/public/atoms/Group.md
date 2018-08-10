@@ -1,7 +1,7 @@
-Simple Wrapper Component use it instead of div.
+The group atom can be used instead of div as a simple wrapper component
 
 ```react
 <Group>This is a Group</Group>
 ```
 
-More features may be added later...
+Potentially, more features are added to this
