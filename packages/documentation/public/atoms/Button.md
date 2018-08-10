@@ -1,4 +1,4 @@
-Default and Disabled Button
+Buttons can be set into two modes: default or disabled
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
@@ -12,7 +12,7 @@ const clickHandler = () => alert("ALERT");
 </Button>
 ```
 
-Meaningful variants
+Moreover, the buttons can have meaningful variants
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
@@ -35,7 +35,7 @@ const clickHandler = () => alert("ALERT");
   </Button>
 ```
 
-3 different sizes
+Buttons can have three different sizes
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
