@@ -1,4 +1,4 @@
-Bars can be docked at the top...
+Bars can be docked at the top
 
 ```react
 <div>
@@ -15,7 +15,7 @@ Bars can be docked at the top...
 </div>
 ```
 
-...or the bottom of the window
+Bars can also be docked at the bottom of the window
 
 ```react
 <div>
@@ -32,4 +32,4 @@ Bars can be docked at the top...
 </div>
 ```
 
-they are fixed by default, but this behaviour can be overridden with the position 'prop'
+They are fixed by default, but this behaviour can be overridden with the position ‘prop’
