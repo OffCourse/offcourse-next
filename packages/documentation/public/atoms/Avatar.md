@@ -1,4 +1,4 @@
-Avatar with Custom and Custom Image
+Avatars can have a default or a custom image
 
 ```react|span-2
 ---
