@@ -1,4 +1,4 @@
-Checkbox can be checked or not
+The checkbox atom can be checked or not
 
 ```react|span-3,dark
 <Checkbox checked={true} />
@@ -7,8 +7,7 @@ Checkbox can be checked or not
 ```react|span-3,dark
 <Checkbox checked={false} />
 ```
-
-Checkbox can (probably should...) have a callback that's triggered on toggle
+Checkbox atoms can (and probably should…) have a callback that’s triggered on toggle
 
 ```react|dark
 const onToggle = ({ checked }) =>
