@@ -37,7 +37,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(["dist"]),
-
     new HtmlWebPackPlugin({
       title: "Offcourse",
       baseHref: "/",

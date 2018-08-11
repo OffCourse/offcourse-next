@@ -1,15 +1,13 @@
-import yup from "yup";
+import { string, object } from "yup";
 
-const userName = yup
-  .string()
+const userName = string()
   .min(4)
   .required();
 
-const password = yup
-  .string()
+const password = string()
   .min(4)
   .required();
 
-const normal = yup.object().shape({ userName, password });
+const normal = object().shape({ userName, password });
 
 export default { normal };

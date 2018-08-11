@@ -82,7 +82,6 @@ export default class CourseCard extends Component {
       tags
     } = course;
 
-
     return (
       <Card initialLevel={initialLevel} layout={layout}>
         <Heading

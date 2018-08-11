@@ -1,7 +1,6 @@
 {
   "name": "@offcourse/app",
   "private": true,
-  "sideEffects": false,
   "version": "1.4.0",
   "description": "",
   "main": "index.js",
@@ -25,7 +24,6 @@
         "react-hot-loader/babel",
         "babel-plugin-styled-components",
         {
-          "ssr": true,
           "displayName": true,
           "preprocess": false
         }

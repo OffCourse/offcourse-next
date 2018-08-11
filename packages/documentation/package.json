@@ -4,12 +4,12 @@
   "private": true,
   "dependencies": {
     "@offcourse/atoms": "^1.4.0",
+    "@offcourse/constants": "^1.4.0",
     "@offcourse/molecules": "^1.4.0",
     "@offcourse/organisms": "^1.4.0",
     "@offcourse/themes": "^1.4.0",
     "catalog": "^3.5.3",
-    "clean-webpack-plugin": "^0.1.19",
-    "netlify-cli": "^1.2.2",
+    "history": "3.0.0",
     "ramda": "^0.25.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -19,12 +19,13 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "echo 'hi'",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "release": "netlify deploy --access-token $NETLIFY_TOKEN"
   },
   "devDependencies": {
+    "netlify-cli": "^1.2.2",
     "react-app-rewire-yaml": "1.0.0",
     "react-app-rewired": "^1.5.2",
     "semantic-release": "^15.5.0",

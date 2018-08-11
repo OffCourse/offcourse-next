@@ -1,19 +1,16 @@
-import yup from "yup";
+import { string, object } from "yup";
 
-const userName = yup
-  .string()
+const userName = string()
   .min(4)
   .matches(/^[a-z]+$/, "user name cannot have spaces or special characters")
   .strict()
   .required();
 
-const email = yup
-  .string()
+const email = string()
   .email()
   .required();
 
-const password = yup
-  .string()
+const password = string()
   .min(8)
   .matches(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]/,
@@ -21,15 +18,14 @@ const password = yup
   )
   .required();
 
-const confirmationCode = yup
-  .string()
+const confirmationCode = string()
   .min(6)
   .max(12)
   .matches(/^\d+$/, "confirmation code can only contain numbers")
   .required();
 
-const normal = yup.object().shape({ userName, email, password });
-const confirm = yup.object().shape({ userName, confirmationCode });
+const normal = object().shape({ userName, email, password });
+const confirm = object().shape({ userName, confirmationCode });
 
 export default {
   normal,
