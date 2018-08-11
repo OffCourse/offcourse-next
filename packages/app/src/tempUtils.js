@@ -1,7 +1,4 @@
-import { prop, assoc, pick, uniq, identity, map, mergeDeepWithKey } from "ramda";
-// import Router from "next/router";
-
-const Router = { push: identity };
+import { prop, assoc, pick, uniq, map, mergeDeepWithKey } from "ramda";
 
 const updateQuery = (previousResult, { fetchMoreResult }) => {
   const ml = map(pick(["node", "cursor"]));
@@ -15,28 +12,4 @@ const updateQuery = (previousResult, { fetchMoreResult }) => {
   return mergeDeepWithKey(concatValues, previousResult, fetchMoreResult);
 };
 
-const goToCollection = query => {
-  const href = {
-    pathname: "/",
-    query
-  };
-  const { tag, curator } = query;
-  const as = tag ? `/tag/${tag}` : `/curator/${curator}`;
-  Router.push(href, as);
-};
-
-const goHome = () => {
-  Router.push("/");
-};
-
-const goToCourse = query => {
-  const { goal, curator } = query;
-  const href = {
-    pathname: "/course",
-    query
-  };
-  const as = `/curator/${curator}/${goal}`;
-  Router.push(href, as);
-};
-
-export { updateQuery, goHome, goToCollection, goToCourse };
+export { updateQuery };

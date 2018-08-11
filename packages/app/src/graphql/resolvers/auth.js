@@ -6,7 +6,6 @@ import { authModes } from "@offcourse/constants";
 
 const { RESETTING_PASSWORD, SIGNING_UP, SIGNED_IN, SIGNED_OUT } = authModes;
 
-
 const initAuth = async (_, __, { cache }) => {
   try {
     const { userName } = await cognito.currentUser();
@@ -150,7 +149,6 @@ const signIn = async (_, variables, { cache }) => {
     return auth;
   }
 };
-
 
 const signOut = async (_, __, { cache }) => {
   const auth = defaults;

@@ -20,7 +20,18 @@ export default {
       format: "es"
     }
   ],
-  external: ["stream", "styled-components"],
+  external: [
+    "stream",
+    "styled-components",
+    "@offcourse/atoms",
+    "@offcourse/molecules",
+    "@offcourse/constants",
+    "formik",
+    "ramda",
+    "react-waypoint",
+    "voca",
+    "yup"
+  ],
   plugins: [
     external(),
     postcss({

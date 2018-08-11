@@ -17,10 +17,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w"
   },
-  "dependencies": {
-    "@svgr/rollup": "^2.0.0",
-    "clean-webpack-plugin": "^0.1.19"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",

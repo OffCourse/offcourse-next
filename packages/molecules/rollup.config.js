@@ -20,7 +20,16 @@ export default {
       format: "es"
     }
   ],
-  external: ["stream", "styled-components"],
+  external: [
+    "stream",
+    "styled-components",
+    "@offcourse/atoms",
+    "ramda",
+    "react-copy-to-clipboard",
+    "react-sidebar",
+    "react-sortable-hoc",
+    "voca"
+  ],
   plugins: [
     external(),
     postcss({

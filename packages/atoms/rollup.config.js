@@ -20,7 +20,17 @@ export default {
       format: "es"
     }
   ],
-  external: ["stream", "styled-components"],
+  external: [
+    "stream",
+    "styled-components",
+    "ramda",
+    "styled-system",
+    "voca",
+    "@fortawesome/fontawesome-svg-core",
+    "@fortawesome/free-brands-svg-icons",
+    "@fortawesome/free-solid-svg-icons",
+    "@fortawesome/react-fontawesome"
+  ],
   plugins: [
     external(),
     postcss({

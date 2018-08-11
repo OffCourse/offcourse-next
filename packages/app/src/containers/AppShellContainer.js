@@ -2,23 +2,17 @@ import React, { Component } from "react";
 import { map } from "ramda";
 import Composer from "react-composer";
 import { AppShell } from "@offcourse/organisms";
-import {
-  OverlayContainer
-} from "../containers";
+import { OverlayContainer } from "../containers";
 
 import {
   SidebarProvider,
   OverlayProvider,
   AuthProvider,
   FlashProvider,
-  ThemeProvider,
+  ThemeProvider
 } from "../providers";
 
-const {
-  SIGNING_IN,
-  SIGNING_OUT,
-  CREATE_COURSE
-} = OverlayProvider.constants;
+const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = OverlayProvider.constants;
 
 export default class AppShellContainer extends Component {
   createThemeLinks({ themeNames, currentTheme, selectTheme }) {
@@ -75,18 +69,23 @@ export default class AppShellContainer extends Component {
 
   render() {
     const { children, history } = this.props;
+    const goHome = () => history.push("/");
     return (
       <Composer
-        components={[<SidebarProvider />, <AuthProvider />,
-        <OverlayProvider />, <FlashProvider />, <ThemeProvider />]}
+        components={[
+          <SidebarProvider />,
+          <AuthProvider />,
+          <OverlayProvider />,
+          <FlashProvider />,
+          <ThemeProvider />
+        ]}
       >
-        {(
-          [sidebar, auth, overlay, flash, theme]) => {
+        {([sidebar, auth, overlay, flash, theme]) => {
           return (
             <AppShell
               position="fixed"
               messages={flash.messages}
-              onLogoClick={() => history.push('/')}
+              onLogoClick={goHome}
               toggleSidebar={sidebar.toggle}
               isSidebarOpen={sidebar.isOpen}
               links={[

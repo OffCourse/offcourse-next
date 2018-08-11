@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { isEmpty } from "ramda";
-import { Group, Bar } from "@offcourse/atoms";
+import { Group } from "@offcourse/atoms";
 import {
   NavBar,
   MessageGroup,

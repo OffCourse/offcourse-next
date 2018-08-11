@@ -1,31 +1,35 @@
 import React, { Component, Fragment } from "react";
 import Composer from "react-composer";
-import { goToCourse, goToCollection } from "../tempUtils";
 import { CourseCard } from "@offcourse/organisms";
 import { CourseCardProvider, CourseProvider } from "../providers";
 
 class CourseContainer extends Component {
+  goToCollection = ({ curator, tag }) => {
+    const { history } = this.props;
+    history.push(tag ? `/tag/${tag}` : `/curator/${curator}`);
+  };
+
   render() {
     const { courseId, curator, goal } = this.props.match.params;
     const courseQuery = { curator, goal };
-    console.log(courseId)
-
     return (
       <Composer
-        components={[<CourseProvider courseId={courseId} courseQuery={courseQuery} />, <CourseCardProvider />]}
+        components={[
+          <CourseProvider courseId={courseId} courseQuery={courseQuery} />,
+          <CourseCardProvider />
+        ]}
       >
-        {([{ userIsCurator, userName, course, updateStatus }, card]) => (
+        {([{ userName, course, updateStatus }, card]) => (
           <CourseCard
             key={card.initialLevel}
             layout={card.layout}
             initialLevel={card.initialLevel}
-            onCuratorClick={goToCollection}
+            onCuratorClick={this.goToCollection}
             onCheckpointToggle={userName ? updateStatus : null}
-            onTagClick={goToCollection}
+            onTagClick={this.goToCollection}
             course={course}
           />
-        )
-        }
+        )}
       </Composer>
     );
   }

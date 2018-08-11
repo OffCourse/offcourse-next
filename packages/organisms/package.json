@@ -27,7 +27,7 @@
     "ramda": "^0.25.0",
     "react-waypoint": "^8.0.1",
     "voca": "^1.4.0",
-    "yup": "^0.25.1"
+    "yup": "^0.26.2"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
