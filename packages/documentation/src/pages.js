@@ -1,5 +1,4 @@
 import React from "react";
-import { pageLoader } from "catalog";
 import { offcourse } from "@offcourse/themes";
 import * as atoms from "@offcourse/atoms";
 import * as molecules from "@offcourse/molecules";
@@ -27,7 +26,7 @@ const createPages = ({ name: collectionName, blocks, helpers }) => {
     },
     path: `/${collectionName}/${blockName}`,
     title: `${blockName}`,
-    content: pageLoader(`/${collectionName}/${blockName}.md`)
+    content: require(`./content/${collectionName}/${blockName}.md`)
   }));
 };
 
@@ -35,7 +34,7 @@ const pages = [
   {
     path: "/",
     title: "General Introduction",
-    content: pageLoader("./general-introduction.md")
+    content: require("./content/general-introduction.md")
   },
   {
     path: "/feature-roadmap",
@@ -51,22 +50,22 @@ const pages = [
       {
         path: "/guidelines/general",
         title: "General Guidelines",
-        content: pageLoader("./general-guidelines.md")
+        content: require("./content/guidelines/general-guidelines.md")
       },
       {
         path: "/guidelines/community",
         title: "Community Guidelines",
-        content: pageLoader("./community-guidelines.md")
+        content: require("./content/guidelines/community-guidelines.md")
       },
       {
         path: "/guidelines/design",
         title: "Design Guidelines",
-        content: pageLoader("./design-guidelines.md")
+        content: require("./content/guidelines/design-guidelines.md")
       },
       {
         path: "/guidelines/contribution",
         title: "Contribution Guidelines",
-        content: pageLoader("./contribution-guidelines.md")
+        content: require("./content/guidelines/contribution-guidelines.md")
       }
     ]
   },
@@ -77,7 +76,7 @@ const pages = [
       ...offcourse.colors,
       grayScale: offcourse.namedGrayScale
     },
-    content: pageLoader("./visual-identity.md")
+    content: require("./content/visual-identity.md")
   },
   {
     title: "Atoms",
@@ -103,7 +102,7 @@ const pages = [
   {
     path: "/contact",
     title: "Contact",
-    content: pageLoader("./contact.md")
+    content: require("./content/contact.md")
   }
 ];
 

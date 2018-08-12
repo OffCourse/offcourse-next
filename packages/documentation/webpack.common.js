@@ -27,7 +27,11 @@ module.exports = {
       },
       {
         test: /\.yaml$/,
-        loader: "yaml"
+        loader: ["json-loader", "yaml-loader"]
+      },
+      {
+        test: /\.md$/,
+        use: ["catalog/loader", "raw-loader"]
       },
       {
         test: /\.html$/,
