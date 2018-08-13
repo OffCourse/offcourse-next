@@ -4,15 +4,19 @@
   "env": {
     "es6": true
   },
-  "plugins": ["react"],
+  "plugins": ["prettier", "react"],
   "parserOptions": {
     "sourceType": "module",
     "allowImportExportEverywhere": true
   },
   "rules": {
-    "quotes": "double",
+    "prettier/prettier": "error",
+    "quotes": ["error", "double"],
+    "jsx-quotes": ["error", "prefer-double"],
     "space-before-function-paren": 0,
     "react/jsx-boolean-value": 0,
-    "import/first": 0
+    "import/first": 0,
+    "semi": ["error", "always"],
+    "prefer-const": "error"
   }
 }

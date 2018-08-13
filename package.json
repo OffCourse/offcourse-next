@@ -2,8 +2,9 @@
   "private": true,
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
-    
     "lerna": "^2.11.0",
+    "husky": "^0.14.3",
+    "pretty-quick": "^1.6.0",
     "meta-npm": "0.0.28"
   },
   "scripts": {
@@ -13,6 +14,7 @@
     "publish": "lerna publish --conventional-commits --yes",
     "release:docs": "lerna run release --scope @offcourse/documentation",
     "release:app": "lerna run release --scope @offcourse/app",
+    "precommit": "pretty-quick --staged",
     "release": "npm run release:docs",
     "postpublish": "npm run release"
   },

@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import { ThemeProvider as StyledThemeProvider, injectGlobal } from "styled-components";
-import * as themes from "@offcourse/themes";
+import PropTypes from "prop-types";
 import {
-  ThemeProvider
-} from "../providers";
+  ThemeProvider as StyledThemeProvider,
+  injectGlobal
+} from "styled-components";
+import * as themes from "@offcourse/themes";
+import { ThemeProvider } from "../providers";
 
-export default class ThemeContainer extends React.Component {
+export default class ThemeContainer extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired
+  };
+
   render() {
     const { children } = this.props;
     return (
@@ -13,7 +19,9 @@ export default class ThemeContainer extends React.Component {
         {({ current }) => {
           const theme = themes[current];
           injectGlobal(theme);
-          return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>;
+          return (
+            <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
+          );
         }}
       </ThemeProvider>
     );

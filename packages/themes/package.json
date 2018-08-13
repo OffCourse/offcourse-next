@@ -18,7 +18,8 @@
     "start": "rollup -c -w"
   },
   "dependencies": {
-    "@svgr/rollup": "^2.0.0"
+    "@svgr/rollup": "^2.0.0",
+    "prettier": "^1.14.2"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
@@ -39,6 +40,7 @@
     "eslint-config-standard-react": "^6.0.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-standard": "^3.0.1",
