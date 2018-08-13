@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { hot } from "react-hot-loader";
 import { Layout } from "./components";
 import { GraphQLProvider } from "./providers";
-import { ThemeContainer, AuthContainer } from "./containers";
+import { ThemeContainer } from "./containers";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Loadable from "react-loadable";
 
