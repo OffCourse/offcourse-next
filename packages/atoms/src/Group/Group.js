@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { identity } from "ramda";
 import GroupWrapper from "./GroupWrapper";
 
@@ -8,9 +8,9 @@ export default class extends Component {
 
   static propTypes = {
     onResize: PropTypes.func
-  }
+  };
 
-  static defaultProps = {}
+  static defaultProps = {};
 
   componentDidMount() {
     const { onResize } = this.props;
@@ -28,15 +28,16 @@ export default class extends Component {
   };
 
   render() {
-    const { children, onResize, ...rest } = this.props;
+    let { children, onResize, ...rest } = this.props;
     return (
       <GroupWrapper
         innerRef={el => {
           this.group = el;
         }}
-        {...rest}>
+        {...rest}
+      >
         {children}
       </GroupWrapper>
-    )
+    );
   }
 }
