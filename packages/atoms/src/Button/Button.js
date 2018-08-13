@@ -28,7 +28,9 @@ class Button extends Component {
     /** only accept a type prop when type is submit */
     type: PropTypes.oneOf(["submit", "button"]),
     /** the size of the button */
-    size: PropTypes.oneOf(["small", "medium", "large"])
+    size: PropTypes.oneOf(["small", "medium", "large"]),
+    tabindex: PropTypes.number,
+    mt: this.propTypes.number
   };
 
   static defaultProps = {
@@ -53,12 +55,11 @@ class Button extends Component {
       tabindex,
       variant,
       mt,
-      size,
-      ...rest
+      disabled,
+      size
     } = this.props;
 
     const buttonType = type || "button";
-    const disabled = this.props.disabled || this.props.loading;
 
     const widths = {
       small: "5.33333rem",

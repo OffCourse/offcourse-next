@@ -8,11 +8,10 @@ import LinkWrapper from "./LinkWrapper";
  */
 
 class Link extends Component {
-
   static propTypes = {
-    /** determines if the link should only have basic styling*/
+    /** determines if the link should only have basic styling */
     basic: PropTypes.bool,
-    /** determines if the link is in an active state*/
+    /** determines if the link is in an active state */
     active: PropTypes.bool,
     /** determines if the link should be disabled */
     disabled: PropTypes.bool,
@@ -22,6 +21,7 @@ class Link extends Component {
     onClick: PropTypes.func,
     /** a url that the link should link to, automatically turns the link into the basic type */
     href: PropTypes.string,
+    color: PropTypes.string
   };
 
   static defaultProps = {
@@ -46,7 +46,7 @@ class Link extends Component {
       <LinkWrapper
         color={this.color()}
         borderBottom={basic ? 0 : 2}
-        onClick={!disabled ? onClick : () => { }}
+        onClick={!disabled ? onClick : () => {}}
         href={!disabled ? href : undefined}
         disabled={disabled}
       >
@@ -55,6 +55,5 @@ class Link extends Component {
     );
   }
 }
-
 
 export default Link;

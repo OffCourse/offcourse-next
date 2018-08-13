@@ -1,4 +1,4 @@
-import React, { Component, Children } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ItemWrapper from "./ItemWrapper";
 import { Link, Label } from "..";
@@ -11,7 +11,10 @@ export default class Item extends Component {
       PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.element])
       )
-    ]).isRequired
+    ]).isRequired,
+    is: PropTypes.string,
+    href: PropTypes.string,
+    gridTemplateColumns: PropTypes.array
   };
 
   static Link = ({ href, children }) => (
@@ -28,7 +31,7 @@ export default class Item extends Component {
   }
 
   render() {
-    const { children, is, href, gridTemplateColumns } = this.props;
+    const { is, gridTemplateColumns } = this.props;
     return (
       <ItemWrapper is={is} gridTemplateColumns={gridTemplateColumns}>
         {this.renderChildren()}

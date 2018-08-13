@@ -5,6 +5,33 @@ import { Group } from "..";
 import { InputWrapper, OuterWrapper, TextAreaWrapper } from "./wrappers";
 
 class Input extends Component {
+  static propTypes = {
+    /** name of the input */
+    name: PropTypes.string.isRequired,
+    /** value of the input, if you set this, onChange is required */
+    value: PropTypes.string,
+    /** callback that is triggered when the field changes its value */
+    onChange: PropTypes.func,
+    /** placeholder for absent value */
+    placeholder: PropTypes.string,
+    /** callback that is triggered when the field loses focus */
+    onBlur: PropTypes.func,
+    /** property that indicates if the field has erors */
+    hasErrors: PropTypes.bool,
+    /** property that changes the visual representation of the field */
+    variant: PropTypes.oneOf(["default", "textarea", "small"]),
+    mb: PropTypes.number,
+    pt: PropTypes.number,
+    pb: PropTypes.number,
+    disabled: PropTypes.bool,
+    children: PropTypes.node.alignItems,
+    unformatted: PropTypes.bool,
+    type: PropTypes.string
+  };
+
+  static defaultProps = {
+    variant: "default"
+  };
   handleChange = e => {
     const { onChange } = this.props;
     const value = lowerCase(e.target.value);
@@ -47,7 +74,6 @@ class Input extends Component {
             name={name}
             type={type}
             disabled={disabled}
-            value={value}
             value={value && unformatted ? value : formatTitle(value)}
             placeholder={formatTitle(placeholder)}
             onChange={onChange && !unformatted ? this.handleChange : onChange}
@@ -66,26 +92,5 @@ class Input extends Component {
     );
   }
 }
-
-Input.propTypes = {
-  /** name of the input */
-  name: PropTypes.string.isRequired,
-  /** value of the input, if you set this, onChange is required*/
-  value: PropTypes.string,
-  /** callback that is triggered when the field changes its value */
-  onChange: PropTypes.func,
-  /** placeholder for absent value */
-  placeholder: PropTypes.string,
-  /** callback that is triggered when the field loses focus */
-  onBlur: PropTypes.func,
-  /** property that indicates if the field has erors */
-  hasErrors: PropTypes.bool,
-  /** property that changes the visual representation of the field */
-  variant: PropTypes.oneOf(["default", "textarea", "small"])
-};
-
-Input.defaultProps = {
-  variant: "default"
-};
 
 export default Input;

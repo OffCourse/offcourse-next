@@ -21,7 +21,7 @@ class Avatar extends Component {
   };
 
   render() {
-    let { url, name } = this.props;
+    const { url, name } = this.props;
     return <AvatarWrapper src={url} alt={`avatar of ${lowerCase(name)}`} />;
   }
 }

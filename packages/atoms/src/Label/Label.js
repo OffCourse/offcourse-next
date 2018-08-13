@@ -4,6 +4,15 @@ import { formatTitle } from "../helpers";
 import LabelWrapper from "./LabelWrapper";
 
 class Label extends Component {
+  static propTypes = {
+    color: PropTypes.string,
+    children: PropTypes.node.isRequired,
+    px: PropTypes.number,
+    pt: PropTypes.number,
+    pb: PropTypes.number,
+    is: PropTypes.string
+  };
+
   render() {
     const { color, children, px, pt, pb, is } = this.props;
     const label = formatTitle(children);
