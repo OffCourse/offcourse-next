@@ -17,14 +17,14 @@ Putting these guidelines on paper, however, is also an attempt to disown myself.
 
 Too many people consider programming as something magical. Coders are masters of a dark art that write incomprehensible spells.\* This could not be further from the truth. I believe that the true benefit of 'computational thinking' lies in the fact that it teaches people to break complex problems up into tiny, solvable ones. Looking backwards on my personal mistakes, I believe that every failed attempt to solve a problem - any problem! - was caused by one and the same thing. I didn't follow the process of breaking things down rigorously enough.
 
-Most problems are complex by nature. This is especially true form those that involve a lot of people and their tastes, opinions, and interests: reaching world peace, solving global warming, being productive in a tiny office space. The fact that problems are complex, however, does not release us from the responsibility to find the most simple and elegant solution possible.
+Most problems are complex by nature. This is especially true for those that involve a lot of people and their tastes, opinions, and interests: reaching world peace, solving global warming, being productive in a tiny office space. The fact that problems are complex, however, does not release us from the responsibility to find the most simple and elegant solution possible.
 
 Software development use the so-called 'Single Responsibility Principle'. This principle states that every single unit of abstraction should do one thing, and one thing only. In his 'Atomic Design' methodology, Bratt Frost uses a similar approach by breaking every UI component down into small modular elements. For us, our 'Course' serves as a similar atomic unit for learning.
 
 ## 3. Assemble Big Dreams
 
 A dream you dream alone is only a dream. A dream you dream together is reality.
--- [Joko Ono](https://en.wikiquote.org/wiki/Yoko_Ono)
+-- [Yoko Ono](https://en.wikiquote.org/wiki/Yoko_Ono)
 
 This idea of composability can and were applied to many other domains. Bratt Frost, for instance, uses the same approach in his 'atomic design', that greatly inspired our way of thinking about
 
@@ -36,7 +36,7 @@ Who struggles can fail. Who doesn't struggle has already failed!
 One of the main problems of our education system is its focus on passing and success. We believe that every success is a failed opportunity to learn.
 And - as the dozens of relicts in our Github, Gitlab, Google Drive, Slack, Notion, etc. accounts prove - we have learned a lot.
 
-An important aspect of being part of a community, however, is allowing other to repeat mistakes that you already made. This doesn't mean that you cannot share your past experiences or warn them for the pitfalls along the way.
+An important aspect of being part of a community, however, is allowing others to repeat mistakes that you already made. This doesn't mean that you cannot share your past experiences or warn them for the pitfalls along the way.
 
 ## 5. Stay Humble
 
@@ -57,7 +57,7 @@ Here we follow the _Ruby_ Community that adopted the kind and humble attitude of
 
 There is no ideal way to organize a community. In fact, a community is nothing but the sum of the people that it consists off. That being said, I truly believe that a meritocracy comes closest to the way to the values of our community.
 
-Writing guidelines for a community project is hard. While these points are meant as starting points, they can be easily misunderstood as laws or absolute truths. Like anything that Offcourse does, this text is open, not only in theory but (hopefully) also in practice. Please fork it, edit it, change it, destroy it, etc. As long as we as a community can recognize ourselves in the most recent version
+Writing guidelines for a community project is hard. While these points are meant as starting points, they can be easily misunderstood as laws or absolute truths. Like anything that Offcourse does, this text is open, not only in theory but (hopefully) also in practice. Please fork it, edit it, change it, destroy it, etc. As long as we as a community can recognize ourselves in the most recent version.
 
 Jan Hein Hoogstad
 
