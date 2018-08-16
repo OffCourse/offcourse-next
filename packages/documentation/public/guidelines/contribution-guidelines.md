@@ -22,7 +22,7 @@ If you are interested in contributing to our open source project, you can make a
 
 ## Reporting Bugs
 
-The Offcourse platform is under continuous development. Bugs are a natural part of this process and so, when you spot one, please file a bug report (a GitHub issue) back to the community. If you know how to fix it yourself: great! We invite you to do so. Read the section 'contributing changes' below how it works. If not, we'd like you to give the needed info through the GitHub issue to us, so someone else can help fix it.
+The Offcourse platform is under continuous development. Bugs are a natural part of this process and so, when you spot one, please file a bug report (a GitHub issue) back to the community. If you know how to fix it yourself: great! We invite you to do so. Read the section 'contributing changes' below to see how it works. If not, we'd like you to give the needed info through the GitHub issue to us, so someone else can help fix it.
 
 ## **What to put in your bug report**
 
@@ -82,4 +82,4 @@ We’ve found that test-first development really helps make features better arch
 
 After testing you can commit your changes and create a pull request. In the description field of your pull request, write down the issue number (if submitting code fixing an existing issue) or describe the issue + your fix (if submitting a wholly new bugfix). Hit ‘submit’! And please be patient - the maintainers will get to you when they can.
 
-👍We wish you fun and a great learning experience in contributing to the Offcourse open source project!👍
+👍We wish you a fun and great learning experience in contributing to the Offcourse open source project!👍
