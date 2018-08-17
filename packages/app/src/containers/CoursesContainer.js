@@ -1,19 +1,28 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Composer from "react-composer";
 import { CourseCardProvider, CoursesProvider } from "../providers";
 import { CourseCardLayout } from "@offcourse/organisms";
-import { goToCollection } from "../tempUtils";
-
-import { identity } from "ramda";
 
 class CoursesContainer extends Component {
+  static propTypes = {
+    match: PropTypes.object,
+    history: PropTypes.object
+  };
+
   goToCourse = ({ curator, goal }) => {
     const { history } = this.props;
     history.push(`/curator/${curator}/goal/${goal}`);
   };
+
   goToCollection = ({ curator, tag }) => {
     const { history } = this.props;
     history.push(tag ? `/tag/${tag}` : `/curator/${curator}`);
+  };
+
+  goToCheckpoint = ({ curator, goal, task }) => {
+    const { history } = this.props;
+    history.push(`/curator/${curator}/goal/${goal}/task/${task}`);
   };
 
   render() {
@@ -35,6 +44,7 @@ class CoursesContainer extends Component {
               layout={card.layout}
               goToCollection={this.goToCollection}
               goToCourse={this.goToCourse}
+              goToCheckpoint={this.goToCheckpoint}
               hasMore={collection.hasMore}
               courses={collection.courses}
               loadMore={collection.loadMore}

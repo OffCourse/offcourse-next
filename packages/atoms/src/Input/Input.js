@@ -24,7 +24,7 @@ class Input extends Component {
     pt: PropTypes.number,
     pb: PropTypes.number,
     disabled: PropTypes.bool,
-    children: PropTypes.node.alignItems,
+    children: PropTypes.node,
     unformatted: PropTypes.bool,
     type: PropTypes.string
   };

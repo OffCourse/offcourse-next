@@ -30,7 +30,7 @@ class Button extends Component {
     /** the size of the button */
     size: PropTypes.oneOf(["small", "medium", "large"]),
     tabindex: PropTypes.number,
-    mt: this.propTypes.number
+    mt: PropTypes.number
   };
 
   static defaultProps = {

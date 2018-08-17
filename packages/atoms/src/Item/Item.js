@@ -14,11 +14,12 @@ export default class Item extends Component {
     ]).isRequired,
     is: PropTypes.string,
     href: PropTypes.string,
+    onClick: PropTypes.func,
     gridTemplateColumns: PropTypes.array
   };
 
-  static Link = ({ href, children }) => (
-    <Link basic href={href}>
+  static Link = ({ href, onClick, children }) => (
+    <Link basic onClick={onClick} href={href}>
       {children}
     </Link>
   );
@@ -26,8 +27,15 @@ export default class Item extends Component {
   static Content = ({ children }) => <Label>{children}</Label>;
 
   renderChildren() {
-    const { href, children } = this.props;
-    return href ? <Item.Link href={href}>{children}</Item.Link> : children;
+    const { href, onClick, children } = this.props;
+
+    return href || onClick ? (
+      <Item.Link onClick={onClick} href={href}>
+        {children}
+      </Item.Link>
+    ) : (
+      children
+    );
   }
 
   render() {

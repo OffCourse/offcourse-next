@@ -4,17 +4,23 @@ import { map } from "ramda";
 import { List, CheckpointItem } from "..";
 
 export default class CheckpointList extends Component {
-  static propTypes = {};
+  static propTypes = {
+    onToggle: PropTypes.func,
+    onClick: PropTypes.func,
+    checkpoints: PropTypes.array
+  };
+
   static defaultProps = {
     checkpoints: []
   };
 
   renderChildren() {
-    const { checkpoints, onToggle } = this.props;
+    const { checkpoints, onClick, onToggle } = this.props;
     return map(
       props => (
         <CheckpointItem
           onToggle={onToggle}
+          onClick={onClick}
           key={props.checkpointId}
           {...props}
         />
