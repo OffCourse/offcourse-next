@@ -11,27 +11,20 @@ class CourseContainer extends Component {
         courseId: PropTypes.string,
         curator: PropTypes.string,
         goal: PropTypes.string
-      })
-    }),
-    history: PropTypes.object
-  };
-
-  goToCollection = ({ curator, tag }) => {
-    const { history } = this.props;
-    history.push(tag ? `/tag/${tag}` : `/curator/${curator}`);
-  };
-  goToCourse = ({ curator, goal }) => {
-    const { history } = this.props;
-    history.push(`/curator/${curator}/goal/${goal}`);
-  };
-  goToCheckpoint = ({ curator, goal, task }) => {
-    const { history } = this.props;
-    history.push(`/curator/${curator}/goal/${goal}/task/${task}`);
+      }).isRequired
+    }).isRequired,
+    routeHandlers: PropTypes.shape({
+      goToCollection: PropTypes.func.isRequired,
+      goToCourse: PropTypes.func.isRequired,
+      goToCheckpoint: PropTypes.func.isRequired
+    }).isRequired
   };
 
   render() {
-    const { courseId, curator, goal } = this.props.match.params;
+    const { match, routeHandlers } = this.props;
+    const { courseId, curator, goal } = match.params;
     const courseQuery = { curator, goal };
+    const { goToCollection, goToCourse, goToCheckpoint } = routeHandlers;
     return (
       <Composer
         components={[
@@ -44,11 +37,11 @@ class CourseContainer extends Component {
             key={card.initialLevel}
             layout={card.layout}
             initialLevel={card.initialLevel}
-            onCuratorClick={this.goToCollection}
-            onGoalClick={this.goToCourse}
-            onCheckpointClick={this.goToCheckpoint}
+            onCuratorClick={goToCollection}
+            onGoalClick={goToCourse}
+            onCheckpointClick={goToCheckpoint}
             onCheckpointToggle={userName ? updateStatus : null}
-            onTagClick={this.goToCollection}
+            onTagClick={goToCollection}
             course={course}
           />
         )}

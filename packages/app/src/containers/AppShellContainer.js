@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { map } from "ramda";
+import PropTypes from "prop-types";
 import Composer from "react-composer";
 import { AppShell } from "@offcourse/organisms";
 import { OverlayContainer } from "../containers";
@@ -15,6 +16,15 @@ import {
 const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = OverlayProvider.constants;
 
 export default class AppShellContainer extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    routeHandlers: PropTypes.shape({
+      goToCollection: PropTypes.func.isRequired,
+      goToCourse: PropTypes.func.isRequired,
+      goToCheckpoint: PropTypes.func.isRequired
+    }).isRequired
+  };
+
   createThemeLinks({ themeNames, currentTheme, selectTheme }) {
     return map(themeName => {
       return {
@@ -68,8 +78,8 @@ export default class AppShellContainer extends Component {
   }
 
   render() {
-    const { children, history } = this.props;
-    const goHome = () => history.push("/");
+    const { children, routeHandlers } = this.props;
+    const { goHome } = routeHandlers;
     return (
       <Composer
         components={[

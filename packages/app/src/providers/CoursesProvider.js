@@ -1,39 +1,42 @@
-import React, { Component, createContext } from 'react'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { map, prop } from "ramda";
-import { Query, Mutation } from "../components";
-import { queries, mutations } from "../graphql";
-import {
-    updateQuery,
-} from "../tempUtils";
-
+import { Query } from "../components";
+import { queries } from "../graphql";
+import { updateQuery } from "../tempUtils";
 
 export default class CoursesProvider extends Component {
-    render() {
-        const { children, curator, tag } = this.props;
-        return (
-            <Query query={queries.courses} variables={{ curator, tag }}>
-                {({ data, fetchMore }) => {
-                    const { edges, pageInfo } = data.courses;
-                    const courses = map(prop("node"), edges);
-                    const hasMore = pageInfo.hasNextPage;
+  static propTypes = {
+    children: PropTypes.func,
+    curator: PropTypes.string,
+    tag: PropTypes.string
+  };
 
-                    const loadMore = () => {
-                        fetchMore({
-                            query: queries.courses,
-                            variables: { curator, tag, after: pageInfo.endCursor },
-                            updateQuery
-                        });
-                    };
+  render() {
+    const { children, curator, tag } = this.props;
+    return (
+      <Query query={queries.courses} variables={{ curator, tag }}>
+        {({ data, fetchMore }) => {
+          const { edges, pageInfo } = data.courses;
+          const courses = map(prop("node"), edges);
+          const hasMore = pageInfo.hasNextPage;
 
-                    const value = {
-                        courses,
-                        hasMore,
-                        loadMore
-                    };
-                    return children(value);
-                }
-                }
-            </Query>
-        )
-    }
+          const loadMore = () => {
+            fetchMore({
+              query: queries.courses,
+              variables: { curator, tag, after: pageInfo.endCursor },
+              updateQuery
+            });
+          };
+
+          const value = {
+            courses,
+            hasMore,
+            loadMore
+          };
+          return children(value);
+        }}
+      </Query>
+    );
+  }
 }

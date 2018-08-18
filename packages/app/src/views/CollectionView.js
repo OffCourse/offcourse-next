@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { CoursesContainer } from "../containers";
-import { Route } from "react-router-dom";
+import { Route } from "../components";
 
 export default class CollectionView extends Component {
   render() {

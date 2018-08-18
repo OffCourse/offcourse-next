@@ -1,15 +1,32 @@
 import React, { Component } from "react";
 import { ApolloProvider } from "react-apollo";
-import {
-  ApolloClient,
-  HttpLink,
-  InMemoryCache,
-  defaultDataIdFromObject
-} from "apollo-boost";
+import { defaultDataIdFromObject } from "apollo-boost";
 import { setContext } from "apollo-link-context";
 import { from } from "apollo-link";
 import { withClientState } from "apollo-link-state";
 import * as initData from "../graphql";
+import { ApolloClient } from "apollo-client";
+import {
+  IntrospectionFragmentMatcher,
+  InMemoryCache
+} from "apollo-cache-inmemory";
+import { HttpLink } from "apollo-link-http";
+import { onError } from "apollo-link-error";
+import introspectionQueryResultData from "../../fragmentTypes.json";
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors)
+    graphQLErrors.map(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+      )
+    );
+  if (networkError) console.log(`[Network error]: ${networkError}`);
+});
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData
+});
 
 // this should not be here...
 import cognito from "../Cognito";
@@ -34,6 +51,7 @@ const authMiddleware = setContext(async () => {
 });
 
 const cache = new InMemoryCache({
+  fragmentMatcher,
   dataIdFromObject: object => {
     switch (object.__typename) {
       case "Course":
@@ -48,7 +66,7 @@ const stateLink = withClientState({ cache, ...initData });
 
 const client = new ApolloClient({
   connectToDevTools: process.browser,
-  link: from([authMiddleware, stateLink, httpLink]),
+  link: from([errorLink, authMiddleware, stateLink, httpLink]),
   cache: cache
 });
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { MasterDetail, UnderConstruction } from "../components";
+import { Viewer, Route, MasterDetail, UnderConstruction } from "../components";
 import { CourseContainer } from "../containers";
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 
 export default class CourseView extends Component {
   render() {
@@ -23,9 +23,7 @@ export default class CourseView extends Component {
           <Switch>
             <Route
               path="/curator/:curator/goal/:goal/task/:task"
-              render={({ match }) => {
-                return <div>{JSON.stringify(match.params, null, 2)}</div>;
-              }}
+              component={Viewer}
             />
             <Route
               path="/curator/:curator/goal/:goal"

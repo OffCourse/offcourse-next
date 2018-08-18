@@ -1,0 +1,18 @@
+query resource($resourceUrl: String!) {
+  resource(resourceUrl: $resourceUrl) {
+    resourceType
+    resourceUrl
+    title
+    tags
+    description
+    content {
+      ... on HTML {
+        html
+      }
+      ... on Video {
+        videoId
+        videoProvider
+      }
+    }
+  }
+}

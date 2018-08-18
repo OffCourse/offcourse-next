@@ -6,28 +6,24 @@ import { CourseCardLayout } from "@offcourse/organisms";
 
 class CoursesContainer extends Component {
   static propTypes = {
-    match: PropTypes.object,
-    history: PropTypes.object
-  };
-
-  goToCourse = ({ curator, goal }) => {
-    const { history } = this.props;
-    history.push(`/curator/${curator}/goal/${goal}`);
-  };
-
-  goToCollection = ({ curator, tag }) => {
-    const { history } = this.props;
-    history.push(tag ? `/tag/${tag}` : `/curator/${curator}`);
-  };
-
-  goToCheckpoint = ({ curator, goal, task }) => {
-    const { history } = this.props;
-    history.push(`/curator/${curator}/goal/${goal}/task/${task}`);
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        courseId: PropTypes.string,
+        curator: PropTypes.string,
+        goal: PropTypes.string
+      }).isRequired
+    }).isRequired,
+    routeHandlers: PropTypes.shape({
+      goToCollection: PropTypes.func.isRequired,
+      goToCourse: PropTypes.func.isRequired,
+      goToCheckpoint: PropTypes.func.isRequired
+    }).isRequired
   };
 
   render() {
-    const { match } = this.props;
+    const { match, routeHandlers } = this.props;
     const { curator, tag } = match.params;
+    const { goToCollection, goToCourse, goToCheckpoint } = routeHandlers;
     return (
       <Composer
         components={[
@@ -42,9 +38,9 @@ class CoursesContainer extends Component {
               onResize={card.changeLevel}
               key={card.initialLevel}
               layout={card.layout}
-              goToCollection={this.goToCollection}
-              goToCourse={this.goToCourse}
-              goToCheckpoint={this.goToCheckpoint}
+              goToCollection={goToCollection}
+              goToCourse={goToCourse}
+              goToCheckpoint={goToCheckpoint}
               hasMore={collection.hasMore}
               courses={collection.courses}
               loadMore={collection.loadMore}
