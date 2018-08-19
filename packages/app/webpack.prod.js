@@ -3,6 +3,7 @@ const WorkboxPlugin = require("workbox-webpack-plugin");
 const common = require("./webpack.common.js");
 const webpack = require("webpack");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
@@ -17,6 +18,9 @@ module.exports = merge(common, {
     new WorkboxPlugin.GenerateSW({
       clientsClaim: true,
       skipWaiting: true
+    }),
+    new CompressionPlugin({
+      deleteOriginalAssets: true
     })
   ]
 });

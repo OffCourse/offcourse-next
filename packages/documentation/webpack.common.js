@@ -49,6 +49,7 @@ module.exports = {
       title: "Offcourse",
       baseHref: "/",
       filename: "index.html",
+      mobile: true,
       inject: false,
       template: require("html-webpack-template"),
       appMountId: "root"

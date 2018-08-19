@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const WebpackPwaManifest = require("webpack-pwa-manifest");
 
 module.exports = {
   entry: {
@@ -46,8 +47,26 @@ module.exports = {
       baseHref: "/",
       filename: "index.html",
       inject: false,
+      mobile: true,
       template: require("html-webpack-template"),
       appMountId: "root"
+    }),
+    new WebpackPwaManifest({
+      name: "Offcourse",
+      short_name: "Offcourse",
+      display: "fullscreen",
+      description: "Open Source Platform for Crowdlearning",
+      background_color: "#75C7B3",
+      icons: [
+        {
+          src: path.resolve("src/assets/logo.png"),
+          sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+        },
+        {
+          src: path.resolve("src/assets/logo.png"),
+          size: "1024x1024" // you can also use the specifications pattern
+        }
+      ]
     })
   ]
 };
