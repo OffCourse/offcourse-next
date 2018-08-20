@@ -13,7 +13,7 @@ export const changeCardSize = async (
   }
 
   if (width) {
-    nextLevel = width < 640 ? 1 : 3;
+    nextLevel = width < 640 ? 0 : 1;
   }
 
   const data = { courseCard: { __typename, initialLevel: nextLevel, layout } };

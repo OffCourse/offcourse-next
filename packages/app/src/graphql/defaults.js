@@ -22,8 +22,6 @@ export const courseCard = {
   initialLevel: 3,
   layout: [
     ["header"],
-    ["header", "meta", "social"],
-    ["header", "meta", "description", "social"],
     ["header", "meta", "description", "checkpoints", "tags", "social"]
   ]
 };
