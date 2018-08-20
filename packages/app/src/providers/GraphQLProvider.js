@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ApolloProvider } from "react-apollo";
+import PropTypes from "prop-types";
 import { defaultDataIdFromObject } from "apollo-boost";
 import { setContext } from "apollo-link-context";
 import { from } from "apollo-link";
@@ -15,12 +16,13 @@ import { onError } from "apollo-link-error";
 import introspectionQueryResultData from "../../fragmentTypes.json";
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors)
+  if (graphQLErrors) {
     graphQLErrors.map(({ message, locations, path }) =>
       console.log(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
       )
     );
+  }
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
@@ -71,6 +73,15 @@ const client = new ApolloClient({
 });
 
 export default class GraphQLProvider extends Component {
+  static propTypes = {
+    children: PropTypes.node
+  };
+
+  componentDidMount = async () => {
+    const { initAuth } = initData.mutations;
+    await client.mutate({ mutation: initAuth });
+  };
+
   render() {
     const { children } = this.props;
     return <ApolloProvider client={client}>{children}</ApolloProvider>;

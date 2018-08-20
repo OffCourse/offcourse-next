@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Composer from "react-composer";
-import { identity } from "ramda";
 import { Auth, SignOutDialog } from "@offcourse/organisms";
 import { OverlayProvider, AuthProvider, FlashProvider } from "../providers";
 
@@ -8,7 +7,7 @@ const {
   SIGNING_IN,
   SIGNING_UP,
   SIGNING_OUT,
-  RESETTING_PASSWORD,
+  RESETTING_PASSWORD
 } = AuthProvider.constants;
 
 export default class AuthContainer extends Component {
@@ -17,61 +16,56 @@ export default class AuthContainer extends Component {
       <Composer
         components={[<OverlayProvider />, <AuthProvider />, <FlashProvider />]}
       >
-        {([{ mode, close, switchMode },
-          { constants, needsConfirmation, userName, errors, signIn, signOut, signUp, confirmSignUp, confirmNewPassword, resetPassword },
-          { push }]) => {
-
-          switch (mode) {
+        {([overlay, auth, flash]) => {
+          switch (overlay.mode) {
             case SIGNING_UP:
             case SIGNING_IN:
             case RESETTING_PASSWORD:
               return (
                 <Auth
-                  userName={userName}
-                  onModeSwitch={variables => switchMode({ variables })}
-                  defaultMode={mode}
-                  needsConfirmation={needsConfirmation}
-                  errors={errors}
-                  signIn={async (variables) => {
-                    const { data } = await signIn({ variables });
+                  userName={auth.userName}
+                  onModeSwitch={variables => overlay.switchMode({ variables })}
+                  defaultMode={overlay.mode}
+                  needsConfirmation={auth.needsConfirmation}
+                  errors={auth.errors}
+                  signIn={async variables => {
+                    const { data } = await auth.signIn({ variables });
                     const { authStatus } = data.signIn;
                     if (authStatus === "SIGNED_IN") {
-                      await push({ variables: { variant: "success", message: "you are now signed in" } });
-                      await close();
+                      await flash.success("you are now signed in");
+                      await overlay.close();
                     }
                   }}
-                  resetPassword={
-                    async variables => {
-                      if (!needsConfirmation) {
-                        await resetPassword({ variables });
-                      } else {
-                        const { data } = await confirmNewPassword({ variables })
-                        const { authStatus } = data.confirmNewPassword;
-                        if (authStatus === "SIGNED_IN") {
-                          await push({ variables: { variant: "success", message: "you are password is reset" } });
-                          await close();
-                        }
+                  resetPassword={async variables => {
+                    if (!auth.needsConfirmation) {
+                      await auth.resetPassword({ variables });
+                    } else {
+                      const { data } = await auth.confirmNewPassword({
+                        variables
+                      });
+                      const { authStatus } = data.confirmNewPassword;
+                      if (authStatus === "SIGNED_IN") {
+                        await flash.success("you are password is reset");
+                        await overlay.close();
                       }
                     }
-                  }
-                  signUp={
-                    async variables => {
-                      if (!needsConfirmation) {
-                        await signUp({ variables });
-                      } else {
-                        const { data } = await confirmSignUp({ variables })
-                        const { authStatus } = data.confirmSignUp;
-                        if (authStatus === "SIGNED_IN") {
-                          await push({ variables: { variant: "success", message: "you are now signed up" } });
-                          await close();
-                        }
+                  }}
+                  signUp={async variables => {
+                    if (!auth.needsConfirmation) {
+                      await auth.signUp({ variables });
+                    } else {
+                      const { data } = await auth.confirmSignUp({ variables });
+                      const { authStatus } = data.confirmSignUp;
+                      if (authStatus === "SIGNED_IN") {
+                        await flash.success("you are now signed in");
+                        await overlay.close();
                       }
                     }
-                  }
+                  }}
                   onCancel={async () => {
-                    await signOut();
-                    await push({ variables: { variant: "warning", message: "you are now signed out" } });
-                    await close();
+                    await auth.signOut();
+                    await flash.info("you are now signed out");
+                    await overlay.close();
                   }}
                 />
               );
@@ -79,18 +73,18 @@ export default class AuthContainer extends Component {
               return (
                 <SignOutDialog
                   onConfirm={async () => {
-                    await signOut();
-                    await push({ variables: { variant: "warning", message: "you are now signed out" } });
-                    await close();
+                    await auth.signOut();
+                    await flash.info("you are now signed out");
+                    await overlay.close();
                   }}
-                  onCancel={close}
+                  onCancel={overlay.close}
                 />
               );
             default:
               return null;
           }
         }}
-      </Composer >
+      </Composer>
     );
   }
 }

@@ -48,11 +48,13 @@ export default class CourseCard extends Component {
     ]
   };
 
-  handleCheckpointToggle = ({ checkpointId, checked }) => {
+  handleCheckpointToggle = ({ checkpointId, task, checked }) => {
     const { course, onCheckpointToggle } = this.props;
     onCheckpointToggle({
       courseId: course.courseId,
       checkpointId,
+      goal: course.goal,
+      task,
       checked
     });
   };

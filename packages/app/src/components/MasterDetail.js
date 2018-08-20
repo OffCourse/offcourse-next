@@ -7,12 +7,7 @@ class Detail extends Component {
   render() {
     const { children } = this.props;
     return (
-      <Group
-        minWidth={["100%", "20rem", "20rem"]}
-        maxWidth={["100%", "55rem", "55rem"]}
-        flex="3"
-        p={6}
-      >
+      <Group maxWidth={["100%", "55rem", "55rem"]} flex="3" p={6}>
         {children}
       </Group>
     );

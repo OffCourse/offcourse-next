@@ -36,7 +36,7 @@ export default class CheckpointItem extends Component {
         onClick={this.handleClick}
         href={!onClick ? resourceUrl : null}
         checked={completed}
-        onToggle={({ checked }) => onToggle({ checkpointId, checked })}
+        onToggle={({ checked }) => onToggle({ checkpointId, task, checked })}
       >
         {task}
       </CheckItem>
