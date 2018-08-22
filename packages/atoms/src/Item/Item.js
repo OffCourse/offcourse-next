@@ -15,7 +15,7 @@ export default class Item extends Component {
     is: PropTypes.string,
     href: PropTypes.string,
     onClick: PropTypes.func,
-    gridTemplateColumns: PropTypes.array
+    gridTemplateColumns: PropTypes.string
   };
 
   static Link = ({ href, onClick, children }) => (

@@ -12,9 +12,11 @@ export default class CheckItem extends Component {
   };
 
   renderChildren() {
-    const { href, children } = this.props;
-    return href ? (
-      <Item.Link href={href}>{children}</Item.Link>
+    const { href, onClick, children } = this.props;
+    return href || onClick ? (
+      <Item.Link href={href} onClick={onClick}>
+        {children}
+      </Item.Link>
     ) : (
       <Item.Content>{children}</Item.Content>
     );

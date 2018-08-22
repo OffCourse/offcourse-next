@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Composer from "react-composer";
 import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
-import { map } from "ramda";
+import { identity, map } from "ramda";
 import { AuthProvider } from ".";
 import CheckpointsFragment from "../graphql/fragments/Checkpoints.graphql";
 
@@ -76,7 +76,8 @@ export default class CourseProvider extends Component {
                   courseQuery,
                   userName,
                   updateStatus: statusUpdater,
-                  userIsCurator
+                  userIsCurator,
+                  forkCourse: () => console.log(course)
                 };
                 return children(value);
               }}

@@ -18,7 +18,7 @@ class Master extends Component {
   render() {
     const { children } = this.props;
     return (
-      <Group width="100%" p={6}>
+      <Group alignItems="center" width="100%" p={6}>
         {children}
       </Group>
     );

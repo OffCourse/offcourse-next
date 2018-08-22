@@ -1,5 +1,5 @@
-query course($courseQuery: CourseQuery!) {
-  course(courseQuery: $courseQuery) {
+query course($courseQuery: CourseQuery, $courseId: String) {
+  course(courseQuery: $courseQuery, courseId: $courseId) {
     goal
     avatarUrl
     curator

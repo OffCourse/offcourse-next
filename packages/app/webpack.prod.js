@@ -18,9 +18,9 @@ module.exports = merge(common, {
     new WorkboxPlugin.GenerateSW({
       clientsClaim: true,
       skipWaiting: true
-    }),
-    new CompressionPlugin({
-      deleteOriginalAssets: true
     })
+    // new CompressionPlugin({
+    //   deleteOriginalAssets: true
+    // })
   ]
 });

@@ -10,7 +10,8 @@ const {
   SIGNING_OUT,
   RESETTING_PASSWORD,
   CREATE_COURSE,
-  EDIT_COURSE
+  EDIT_COURSE,
+  FORK_COURSE
 } = OverlayProvider.constants;
 export default class OverlayContainer extends Component {
   selectMode({ mode, courseId, close }) {
@@ -22,6 +23,7 @@ export default class OverlayContainer extends Component {
         return <AuthContainer />;
       case EDIT_COURSE:
       case CREATE_COURSE:
+      case FORK_COURSE:
         return <CourseFormContainer closeOverlay={close} courseId={courseId} />;
       default:
         return <LoadingModal />;
@@ -31,7 +33,7 @@ export default class OverlayContainer extends Component {
   render() {
     return (
       <OverlayProvider>
-        {(overlay) => {
+        {overlay => {
           return (
             <Modal close={overlay.close} isOpen={overlay.isOpen}>
               {this.selectMode(overlay)}

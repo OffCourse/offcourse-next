@@ -54,9 +54,9 @@ export default class InputList extends Component {
         is: "button",
         onClick: () => remove(index),
         name: "remove",
-        tabIndex: "-1"
+        tabIndex: -1
       },
-      { is: "button", name: "sort", tabIndex: "-1" }
+      { is: "button", name: "sort", tabIndex: -1 }
     ];
     return (
       <IconGroup

@@ -47,8 +47,8 @@ class CourseContainer extends Component {
           }) => {
             course.updateStatus({ courseId, checkpointId, checked });
             checked
-              ? flash.success(`you completed "${task}" of "${goal}"`)
-              : flash.info(`you unchecked "${task}" of "${goal}"`);
+              ? flash.success(`you completed: ${task}`)
+              : flash.info(`you unchecked: ${task}`);
           };
           return (
             <CourseCard

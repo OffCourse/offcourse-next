@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Viewer, Route, MasterDetail, UnderConstruction } from "../components";
-import { CourseContainer } from "../containers";
+import { CourseContainer, CourseActionContainer } from "../containers";
 import { Switch } from "react-router-dom";
 
 export default class CourseView extends Component {
@@ -9,15 +9,31 @@ export default class CourseView extends Component {
     return (
       <MasterDetail>
         <Master>
-          <Route
-            path="/curator/:curator/goal/:goal"
-            component={CourseContainer}
-          />
-          <Route path="/course/:courseId" component={CourseContainer} />
-          <Route
-            path="/course/:courseId/checkpoint/:checkpointId"
-            component={CourseContainer}
-          />
+          <Switch>
+            <Route
+              path="/curator/:curator/goal/:goal/task/:task"
+              component={CourseContainer}
+            />
+            <Route
+              path="/curator/:curator/goal/:goal"
+              component={CourseContainer}
+            />
+            <Route path="/course/:courseId" component={CourseContainer} />
+            <Route
+              path="/course/:courseId/checkpoint/:checkpointId"
+              component={CourseContainer}
+            />
+          </Switch>
+          <Switch>
+            <Route
+              path="/curator/:curator/goal/:goal"
+              component={CourseActionContainer}
+            />
+            <Route
+              path="/curator/:curator/goal/:goal/task/:task"
+              component={CourseActionContainer}
+            />
+          </Switch>
         </Master>
         <Detail>
           <Switch>
