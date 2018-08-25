@@ -1,6 +1,6 @@
+#import "../fragments/Course.graphql"
 mutation forkCourse($courseId: String!) {
   forkCourse(courseId: $courseId) {
-    curator
-    goal
+    ...CourseData
   }
 }

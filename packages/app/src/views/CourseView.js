@@ -29,11 +29,11 @@ export default class CourseView extends Component {
               path="/curator/:curator/goal/:goal"
               component={CourseActionContainer}
             />
-            <Route path="/course/:courseId" component={CourseActionContainer} />
             <Route
               path="/curator/:curator/goal/:goal/task/:task"
               component={CourseActionContainer}
             />
+            <Route path="/course/:courseId" component={CourseActionContainer} />
           </Switch>
         </Master>
         <Detail>

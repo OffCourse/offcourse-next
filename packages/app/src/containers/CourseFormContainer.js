@@ -42,8 +42,10 @@ export default class CourseFormContainer extends Component {
               <ForkCourseDialog
                 closeOverlay={closeOverlay}
                 forkCourse={async () => {
-                  await fork({ courseId });
+                  const { data } = await fork({ courseId });
+                  const { curator, goal } = data.forkCourse;
                   await overlay.close();
+                  routeHandlers.goToCourse({ curator, goal });
                 }}
               />
             );

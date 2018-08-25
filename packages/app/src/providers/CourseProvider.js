@@ -34,11 +34,6 @@ export default class CourseProvider extends Component {
             >
               {([courseResponse, updateStatus, forkCourse]) => {
                 const { course } = courseResponse.data;
-
-                if (!course) {
-                  return <div>HELLO</div>;
-                }
-
                 const userIsCurator = course && course.curator === userName;
                 const statusUpdater = ({ courseId, checkpointId, checked }) =>
                   updateStatus({
@@ -80,15 +75,17 @@ export default class CourseProvider extends Component {
                 const fork = ({ courseId }) => {
                   return forkCourse({
                     variables: { courseId },
-                    optimisticResponse: {
-                      __typename: "Mutation",
-                      forkCourse: {
-                        curator: userName,
-                        goal: course.goal,
-                        __typename: "Course"
-                      }
-                    },
-                    update: (cache, _) => {
+                    update: (cache, { data }) => {
+                      const {
+                        checkpoints,
+                        goal,
+                        curator,
+                        ...rest
+                      } = data.forkCourse;
+                      const checkpointsWithStatus = map(cp => {
+                        return { ...cp, completed: false };
+                      }, checkpoints);
+
                       cache.writeFragment({
                         id: courseId,
                         fragment: ForkFragment,
@@ -96,8 +93,27 @@ export default class CourseProvider extends Component {
                           __typename: "Course",
                           fork: {
                             __typename: "Course",
-                            curator: userName,
-                            goal: course.goal
+                            goal,
+                            curator
+                          }
+                        }
+                      });
+
+                      cache.writeQuery({
+                        query: queries.courseWithStatus,
+                        variables: {
+                          courseQuery: {
+                            curator,
+                            goal
+                          }
+                        },
+                        data: {
+                          course: {
+                            goal,
+                            curator,
+                            checkpoints: checkpointsWithStatus,
+                            fork: null,
+                            ...rest
                           }
                         }
                       });
