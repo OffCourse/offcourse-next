@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
 import Composer from "react-composer";
-import { ForkCourseDialog } from "../components";
+import { Route, ForkCourseDialog, LoadingModal } from "../components";
 import { CourseForm } from "@offcourse/organisms";
-import { CourseProvider } from "../providers";
+import { CourseProvider, OverlayProvider } from "../providers";
 
 export default class CourseFormContainer extends Component {
   static propTypes = {
@@ -19,21 +19,36 @@ export default class CourseFormContainer extends Component {
       );
     }
     return (
-      <Composer components={[<CourseProvider courseId={courseId} />]}>
-        {([{ course, userIsCurator, forkCourse }]) => {
-          return !course.fork && !userIsCurator ? (
-            <ForkCourseDialog
-              closeOverlay={closeOverlay}
-              forkCourse={forkCourse}
-            />
-          ) : (
-            <CourseForm
-              mode="edit"
-              course={course}
-              onSubmit={identity}
-              onCancel={closeOverlay}
-            />
-          );
+      <Composer
+        components={[
+          <CourseProvider courseId={courseId} />,
+          <Route />,
+          <OverlayProvider />
+        ]}
+      >
+        {([{ course, userIsCurator, fork }, { routeHandlers }, overlay]) => {
+          if (userIsCurator) {
+            return (
+              <CourseForm
+                mode="edit"
+                course={course}
+                onSubmit={identity}
+                onCancel={closeOverlay}
+              />
+            );
+          }
+          if (!course.fork) {
+            return (
+              <ForkCourseDialog
+                closeOverlay={closeOverlay}
+                forkCourse={async () => {
+                  await fork({ courseId });
+                  await overlay.close();
+                }}
+              />
+            );
+          }
+          return <LoadingModal />;
         }}
       </Composer>
     );

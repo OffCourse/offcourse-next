@@ -6,14 +6,15 @@ import { queries, mutations } from "../graphql";
 import { identity, map } from "ramda";
 import { AuthProvider } from ".";
 import CheckpointsFragment from "../graphql/fragments/Checkpoints.graphql";
+import ForkFragment from "../graphql/fragments/Fork.graphql";
 
 export default class CourseProvider extends Component {
   static propTypes = {
     children: PropTypes.func,
     courseId: PropTypes.string,
     courseQuery: PropTypes.shape({
-      goal: PropTypes.string.isRequired,
-      curator: PropTypes.string.isRequired
+      goal: PropTypes.string,
+      curator: PropTypes.string
     })
   };
   render() {
@@ -27,12 +28,18 @@ export default class CourseProvider extends Component {
             <Composer
               components={[
                 <Query query={query} variables={variables} />,
-                <Mutation mutation={mutations.updateStatus} ignoreResults />
+                <Mutation mutation={mutations.updateStatus} ignoreResults />,
+                <Mutation mutation={mutations.forkCourse} />
               ]}
             >
-              {([courseResponse, updateStatus]) => {
+              {([courseResponse, updateStatus, forkCourse]) => {
                 const { course } = courseResponse.data;
-                const userIsCurator = course.curator === userName;
+
+                if (!course) {
+                  return <div>HELLO</div>;
+                }
+
+                const userIsCurator = course && course.curator === userName;
                 const statusUpdater = ({ courseId, checkpointId, checked }) =>
                   updateStatus({
                     variables: {
@@ -70,6 +77,33 @@ export default class CourseProvider extends Component {
                       });
                     }
                   });
+                const fork = ({ courseId }) => {
+                  return forkCourse({
+                    variables: { courseId },
+                    optimisticResponse: {
+                      __typename: "Mutation",
+                      forkCourse: {
+                        curator: userName,
+                        goal: course.goal,
+                        __typename: "Course"
+                      }
+                    },
+                    update: (cache, _) => {
+                      cache.writeFragment({
+                        id: courseId,
+                        fragment: ForkFragment,
+                        data: {
+                          __typename: "Course",
+                          fork: {
+                            __typename: "Course",
+                            curator: userName,
+                            goal: course.goal
+                          }
+                        }
+                      });
+                    }
+                  });
+                };
 
                 const value = {
                   course,
@@ -77,7 +111,8 @@ export default class CourseProvider extends Component {
                   userName,
                   updateStatus: statusUpdater,
                   userIsCurator,
-                  forkCourse: () => console.log(course)
+                  fork,
+                  save: () => console.log(course)
                 };
                 return children(value);
               }}

@@ -46,7 +46,7 @@ class CourseActionContainer extends Component {
             },
             {
               condition: !!course.fork && !userIsCurator,
-              onClick: () => goToCourse({ ...courseQuery, curator: userName }),
+              onClick: () => goToCourse({ goal, curator: userName }),
               label: "Go To Fork"
             },
             {

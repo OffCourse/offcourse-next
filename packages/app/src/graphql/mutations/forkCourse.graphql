@@ -1,0 +1,6 @@
+mutation forkCourse($courseId: String!) {
+  forkCourse(courseId: $courseId) {
+    curator
+    goal
+  }
+}
