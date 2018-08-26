@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Modal } from "@offcourse/molecules";
-import { AuthContainer, CourseFormContainer } from ".";
+import {
+  ForkCourseDialogContainer,
+  AuthContainer,
+  CourseFormContainer
+} from ".";
 import { LoadingModal } from "../components";
 import { OverlayProvider } from "../providers";
 
@@ -23,8 +27,9 @@ export default class OverlayContainer extends Component {
         return <AuthContainer />;
       case EDIT_COURSE:
       case CREATE_COURSE:
+        return <CourseFormContainer courseId={courseId} />;
       case FORK_COURSE:
-        return <CourseFormContainer closeOverlay={close} courseId={courseId} />;
+        return <ForkCourseDialogContainer courseId={courseId} />;
       default:
         return <LoadingModal />;
     }

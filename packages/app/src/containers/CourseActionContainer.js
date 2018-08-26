@@ -5,7 +5,7 @@ import { find, propEq } from "ramda";
 import CourseAction from "../components/CourseAction";
 import { CourseProvider, OverlayProvider } from "../providers";
 
-const { EDIT_COURSE, FORK_COURSE } = OverlayProvider.constants;
+const { SIGNING_IN, EDIT_COURSE, FORK_COURSE } = OverlayProvider.constants;
 
 class CourseActionContainer extends Component {
   static propTypes = {
@@ -35,6 +35,14 @@ class CourseActionContainer extends Component {
       >
         {([{ userIsCurator, courseQuery, userName, course }, overlay]) => {
           const actions = [
+            {
+              condition: !userName,
+              onClick: () =>
+                overlay.open({
+                  mode: SIGNING_IN
+                }),
+              label: "Sign In To Edit"
+            },
             {
               condition: userIsCurator,
               onClick: () =>

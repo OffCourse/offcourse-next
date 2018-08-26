@@ -100,6 +100,22 @@ export default class CourseProvider extends Component {
                       });
 
                       cache.writeQuery({
+                        query: queries.course,
+                        variables: {
+                          courseId: rest.courseId
+                        },
+                        data: {
+                          course: {
+                            goal,
+                            curator,
+                            checkpoints,
+                            fork: null,
+                            ...rest
+                          }
+                        }
+                      });
+
+                      cache.writeQuery({
                         query: queries.courseWithStatus,
                         variables: {
                           courseQuery: {
