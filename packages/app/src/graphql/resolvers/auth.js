@@ -134,8 +134,7 @@ const signIn = async (_, variables, { cache }) => {
     const auth = {
       ...defaults,
       userName,
-      authStatus: SIGNED_IN,
-      userName
+      authStatus: SIGNED_IN
     };
 
     cache.writeData({ data: { auth } });

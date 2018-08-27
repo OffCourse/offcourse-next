@@ -39,11 +39,6 @@ export default class AppShellContainer extends Component {
   createUserLinks({ openOverlay, changeCardSize }) {
     return [
       {
-        onClick: () => openOverlay({ mode: SIGNING_OUT }),
-        title: "Sign Out",
-        level: 0
-      },
-      {
         onClick: () => openOverlay({ mode: CREATE_COURSE }),
         title: "Create Course",
         level: 0
@@ -52,6 +47,11 @@ export default class AppShellContainer extends Component {
         href: "https://condescending-wing-149611.netlify.com/",
         title: "Contribute",
         level: 1
+      },
+      {
+        onClick: () => openOverlay({ mode: SIGNING_OUT }),
+        title: "Sign Out",
+        level: 0
       }
     ];
   }

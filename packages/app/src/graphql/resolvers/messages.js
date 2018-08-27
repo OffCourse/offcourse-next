@@ -1,5 +1,5 @@
 import { queries } from "..";
-import { dropLast } from "ramda"
+import { dropLast } from "ramda";
 
 function timeout(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -7,8 +7,8 @@ function timeout(ms) {
 
 const addMessage = (_, { variant, message }, { cache, getCacheKey }) => {
   const previous = cache.readQuery({ query: queries.messages });
-  const newMessage = { __typename: "Message", variant, message }
-  const messages = [newMessage, ...previous.messages]
+  const newMessage = { __typename: "Message", variant, message };
+  const messages = [newMessage, ...previous.messages];
   cache.writeData({ data: { messages } });
   return newMessage;
 };

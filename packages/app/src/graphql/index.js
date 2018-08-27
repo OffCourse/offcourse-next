@@ -1,5 +1,6 @@
 import * as queries from "./queries";
 import * as mutations from "./mutations";
+import * as fragments from "./fragments";
 import * as defaults from "./defaults";
 import resolvers from "./resolvers";
 
@@ -71,4 +72,4 @@ const typeDefs = `
   }
 `;
 
-export { defaults, queries, mutations, resolvers, typeDefs };
+export { defaults, queries, fragments, mutations, resolvers, typeDefs };

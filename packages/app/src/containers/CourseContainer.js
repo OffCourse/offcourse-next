@@ -38,9 +38,6 @@ class CourseContainer extends Component {
         ]}
       >
         {([course, card, flash]) => {
-          if (!course.course) {
-            return <div>HELLO</div>;
-          }
           const updateStatus = ({
             courseId,
             task,

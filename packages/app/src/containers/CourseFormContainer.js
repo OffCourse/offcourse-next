@@ -4,7 +4,7 @@ import { identity } from "ramda";
 import Composer from "react-composer";
 import { Route } from "../components";
 import { CourseForm } from "@offcourse/organisms";
-import { CourseProvider, OverlayProvider } from "../providers";
+import { FlashProvider, CourseProvider, OverlayProvider } from "../providers";
 
 export default class CourseFormContainer extends Component {
   static propTypes = {
@@ -13,8 +13,10 @@ export default class CourseFormContainer extends Component {
   render() {
     const { courseId } = this.props;
     return (
-      <Composer components={[<OverlayProvider />, <Route />]}>
-        {([overlay, { routeHandlers }]) => {
+      <Composer
+        components={[<OverlayProvider />, <FlashProvider />, <Route />]}
+      >
+        {([overlay, flash, { routeHandlers }]) => {
           if (!courseId) {
             return (
               <CourseForm
@@ -26,12 +28,17 @@ export default class CourseFormContainer extends Component {
           }
           return (
             <CourseProvider courseId={courseId}>
-              {({ course }) => {
+              {({ course, userName, save }) => {
                 return (
                   <CourseForm
                     mode="edit"
                     course={course}
-                    onSubmit={identity}
+                    onSubmit={async course => {
+                      const { data } = await save(course);
+                      const { goal } = data.addCourse;
+                      await flash.success(`you have saved: ${goal}`);
+                      await overlay.close();
+                    }}
                     onCancel={overlay.close}
                   />
                 );

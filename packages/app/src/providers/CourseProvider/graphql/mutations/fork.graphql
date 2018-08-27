@@ -1,5 +1,5 @@
 #import "../fragments/Course.graphql"
-mutation forkCourse($courseId: String!) {
+mutation fork($courseId: String!) {
   forkCourse(courseId: $courseId) {
     ...CourseData
   }
