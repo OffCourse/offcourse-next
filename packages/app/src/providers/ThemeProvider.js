@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Composer from "react-composer";
+import { adopt } from "react-adopt";
 import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
+
+const Composed = adopt({
+  themeQuery: <Query query={queries.theme} />,
+  switchTheme: <Mutation mutation={mutations.switchTheme} />
+});
 
 export default class ThemeProvider extends Component {
   static propTypes = {
@@ -11,20 +16,15 @@ export default class ThemeProvider extends Component {
   render() {
     const { children } = this.props;
     return (
-      <Composer
-        components={[
-          <Query query={queries.theme} />,
-          <Mutation mutation={mutations.switchTheme} />
-        ]}
-      >
-        {([queryResult, switchTheme]) => {
+      <Composed>
+        {({ themeQuery, switchTheme }) => {
           const value = {
-            ...queryResult.data.theme,
+            ...themeQuery.data.theme,
             switch: switchTheme
           };
           return children(value);
         }}
-      </Composer>
+      </Composed>
     );
   }
 }
