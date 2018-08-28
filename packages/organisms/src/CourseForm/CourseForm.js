@@ -33,7 +33,12 @@ export default class CourseForm extends Component {
         onSubmit={onSubmit}
         onCancel={onCancel}
       >
-        <Form.Field title="Goal" name="goal" placeholder="Goal" />
+        <Form.Field
+          disabled={mode === "edit"}
+          title="Goal"
+          name="goal"
+          placeholder="Goal"
+        />
         <Form.FieldList
           title="Checkpoints"
           emptyItem={new Model.Checkpoint()}

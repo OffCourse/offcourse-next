@@ -14,36 +14,38 @@ export default class CourseFormContainer extends Component {
     const { courseId } = this.props;
     return (
       <Composer
-        components={[<OverlayProvider />, <FlashProvider />, <Route />]}
+        components={[
+          <OverlayProvider />,
+          <FlashProvider />,
+          <Route />,
+          <CourseProvider courseId={courseId} />
+        ]}
       >
-        {([overlay, flash, { routeHandlers }]) => {
-          if (!courseId) {
-            return (
-              <CourseForm
-                mode="create"
-                onSubmit={identity}
-                onCancel={overlay.close}
-              />
-            );
-          }
-          return (
-            <CourseProvider courseId={courseId}>
-              {({ course, userName, save }) => {
-                return (
-                  <CourseForm
-                    mode="edit"
-                    course={course}
-                    onSubmit={async course => {
-                      const { data } = await save(course);
-                      const { goal } = data.addCourse;
-                      await flash.success(`you have saved: ${goal}`);
-                      await overlay.close();
-                    }}
-                    onCancel={overlay.close}
-                  />
-                );
+        {([overlay, flash, { routeHandlers }, cp]) => {
+          return !courseId ? (
+            <CourseForm
+              mode="create"
+              onSubmit={async course => {
+                const { data } = await cp.save(course);
+                const { goal, curator } = data.addCourse;
+                await flash.success(`you have saved: ${goal}`);
+                await overlay.close();
+                routeHandlers.goToCourse({ curator, goal });
               }}
-            </CourseProvider>
+              onCancel={overlay.close}
+            />
+          ) : (
+            <CourseForm
+              mode="edit"
+              course={cp.course}
+              onSubmit={async course => {
+                const { data } = await cp.save(course);
+                const { goal } = data.addCourse;
+                await flash.success(`you have saved: ${goal}`);
+                await overlay.close();
+              }}
+              onCancel={overlay.close}
+            />
           );
         }}
       </Composer>

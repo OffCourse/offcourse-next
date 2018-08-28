@@ -21,14 +21,18 @@ export default class componentName extends Component {
           );
           return (
             <ResourceProvider resourceUrl={resourceUrl}>
-              {({ resource }) => (
-                <div>
-                  <h1>{resource.title}</h1>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: resource.content.html }}
-                  />
-                </div>
-              )}
+              {({ resource }) => {
+                return resource ? (
+                  <div>
+                    <h1>{resource.title}</h1>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: resource.content.html
+                      }}
+                    />
+                  </div>
+                ) : null;
+              }}
             </ResourceProvider>
           );
         }}

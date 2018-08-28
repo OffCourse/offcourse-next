@@ -25,13 +25,13 @@ export default class CourseProvider extends Component {
           return (
             <Composer
               components={[
-                <Query query={query} variables={variables} />,
                 <Mutation mutation={mutations.updateStatus} ignoreResults />,
                 <Mutation mutation={mutations.fork} />,
-                <Mutation mutation={mutations.save} />
+                <Mutation mutation={mutations.save} />,
+                <Query query={query} variables={variables} />
               ]}
             >
-              {([courseResponse, updateCourse, forkCourse, saveCourse]) => {
+              {([updateCourse, forkCourse, saveCourse, courseResponse]) => {
                 const { course } = courseResponse.data;
                 const userIsCurator = course && course.curator === userName;
                 const value = {
