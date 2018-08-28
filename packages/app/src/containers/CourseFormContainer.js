@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { identity } from "ramda";
 import Composer from "react-composer";
 import { Route } from "../components";
 import { CourseForm } from "@offcourse/organisms";

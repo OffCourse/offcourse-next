@@ -42,6 +42,7 @@
     "history": "^4.7.2",
     "ramda": "^0.25.0",
     "react": "^16.4.1",
+    "react-adopt": "^0.6.0",
     "react-apollo": "2.1.5",
     "react-composer": "^5.0.0",
     "react-dom": "^16.4.1",

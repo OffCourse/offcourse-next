@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Composer from "react-composer";
-import { Query, Mutation } from "../../components";
-import { queries, mutations } from "./graphql";
+import { Mutation } from "../../components";
+import { mutations } from "./graphql";
 import { AuthProvider } from "..";
 import { fork, save, updateStatus } from "./actions";
+import CourseQuery from "./CourseQuery";
 
 export default class CourseProvider extends Component {
   static propTypes = {
@@ -20,19 +21,20 @@ export default class CourseProvider extends Component {
     return (
       <AuthProvider>
         {({ userName }) => {
-          const query = userName ? queries.courseWithStatus : queries.course;
-          const variables = courseId ? { courseId } : { courseQuery };
           return (
             <Composer
               components={[
                 <Mutation mutation={mutations.updateStatus} ignoreResults />,
                 <Mutation mutation={mutations.fork} />,
                 <Mutation mutation={mutations.save} />,
-                <Query query={query} variables={variables} />
+                <CourseQuery
+                  userName={userName}
+                  courseId={courseId}
+                  courseQuery={courseQuery}
+                />
               ]}
             >
-              {([updateCourse, forkCourse, saveCourse, courseResponse]) => {
-                const { course } = courseResponse.data;
+              {([updateCourse, forkCourse, saveCourse, course]) => {
                 const userIsCurator = course && course.curator === userName;
                 const value = {
                   course,
