@@ -27,4 +27,5 @@ themes
 
 package-lock.json
 /packages/app/package-lock.json
+/packages/app/yarn.lock
 /packages/atoms/package-lock.json
