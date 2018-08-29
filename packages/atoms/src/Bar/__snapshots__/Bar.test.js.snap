@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bar matches the snapshot 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: static;
+  left: 0px;
+  right: 0px;
+  background-color: white;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding-right: 32px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 2rem;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+<div
+  alignItems="center"
+  bg="white"
+  blacklist={
+    Array [
+      "display",
+      "justifyContent",
+      "justify",
+      "position",
+      "left",
+      "right",
+      "color",
+      "bg",
+      "flexDirection",
+      "m",
+      "mt",
+      "mr",
+      "mb",
+      "ml",
+      "mx",
+      "my",
+      "p",
+      "pt",
+      "pr",
+      "pb",
+      "pl",
+      "px",
+      "py",
+      "alignItems",
+      "align",
+      "height",
+      "zIndex",
+      "top",
+      "bottom",
+      "css",
+    ]
+  }
+  className="c0"
+  display="flex"
+  docked="bottom"
+  flexDirection="row"
+  height="2rem"
+  justifyContent="space-between"
+  left={0}
+  position="static"
+  pr={4}
+  right={0}
+  zIndex={2}
+/>
+`;
