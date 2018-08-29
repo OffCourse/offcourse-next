@@ -2,12 +2,10 @@ import '../setupTests';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import system from 'system-components';
 import { create as render } from 'react-test-renderer'
 import { configure, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import 'jest-styled-components';
-import { ThemeProvider } from "styled-components";
 
 import Avatar from './Avatar';
 

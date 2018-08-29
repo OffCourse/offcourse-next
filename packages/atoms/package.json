@@ -80,8 +80,6 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "^system-components": "<rootDir>/../app/node_modules/system-components",
-      "^styled-components": "<rootDir>/../app/node_modules/styled-components"
     },
     "verbose": true
   }
