@@ -15,18 +15,6 @@ describe('Avatar', () => {
     name: 'Offcourse',
   };
 
-  it('contains img', () => {
-    const wrapper = mount(<Avatar {...props} />);
-
-    expect(wrapper.find('img').length).toEqual(1);
-  });
-
-  it('has size 3em', () => {
-    const wrapper = shallow(<Avatar {...props} />);
-
-    expect(wrapper.props().size).toEqual('3em');
-  });
-
   it('matches the snapshot', () => {
     const tree = shallow(<Avatar {...props} />);
 
