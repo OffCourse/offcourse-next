@@ -7,7 +7,7 @@ import { configure, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import 'jest-styled-components';
 
-import Bar from './BarWrapper';
+import BarWrapper from './BarWrapper';
 
 describe('Bar', () => {
   const props = {
@@ -16,13 +16,13 @@ describe('Bar', () => {
   };
 
   it ('passes props', () => {
-    const tree = shallow(<Bar {...props} />);
+    const tree = shallow(<BarWrapper {...props} />);
 
     expect(tree.props()).toMatchObject(props);
   });
 
   it('matches the snapshot', () => {
-    const tree = shallow(<Bar {...props} />);
+    const tree = shallow(<BarWrapper {...props} />);
 
     expect(toJson(tree)).toMatchSnapshot();
   });
