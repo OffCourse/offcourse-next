@@ -24,3 +24,7 @@ lerna-debug.log
 
 /packages/app/.next
 themes
+
+package-lock.json
+/packages/app/package-lock.json
+/packages/atoms/package-lock.json
