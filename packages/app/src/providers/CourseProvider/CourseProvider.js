@@ -7,8 +7,9 @@ import { fork, save, updateStatus } from "./actions";
 import CourseQuery from "./CourseQuery";
 
 const mapper = {
-  auth: <AuthProvider />,
-  userName: ({ auth, render }) => render(auth.userName),
+  userName: ({ auth, render }) => (
+    <AuthProvider>{({ userName }) => render(userName)}</AuthProvider>
+  ),
   updateStatus: <Mutation mutation={mutations.updateStatus} ignoreResults />,
   forkCourse: <Mutation mutation={mutations.fork} />,
   saveCourse: <Mutation mutation={mutations.save} />,

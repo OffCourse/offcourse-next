@@ -1,30 +1,16 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import { adopt } from "react-adopt";
 import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 
-const Composed = adopt({
+const mapper = {
   themeQuery: <Query query={queries.theme} />,
   switchTheme: <Mutation mutation={mutations.switchTheme} />
+};
+
+const mapProps = ({ themeQuery, switchTheme }) => ({
+  ...themeQuery.data.theme,
+  switch: switchTheme
 });
 
-export default class ThemeProvider extends Component {
-  static propTypes = {
-    children: PropTypes.func
-  };
-  render() {
-    const { children } = this.props;
-    return (
-      <Composed>
-        {({ themeQuery, switchTheme }) => {
-          const value = {
-            ...themeQuery.data.theme,
-            switch: switchTheme
-          };
-          return children(value);
-        }}
-      </Composed>
-    );
-  }
-}
+export default adopt(mapper, mapProps);

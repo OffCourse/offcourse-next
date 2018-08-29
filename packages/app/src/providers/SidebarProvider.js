@@ -1,31 +1,16 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import { adopt } from "react-adopt";
 import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 
-const Composed = adopt({
+const mapper = {
   sidebarQuery: <Query query={queries.sidebar} />,
   toggleSidebar: <Mutation mutation={mutations.toggleSidebar} />
+};
+
+const mapProps = ({ sidebarQuery, toggleSidebar }) => ({
+  ...sidebarQuery.data.sidebar,
+  toggle: toggleSidebar
 });
 
-export default class SidebarProvider extends Component {
-  static propTypes = {
-    children: PropTypes.func
-  };
-
-  render() {
-    const { children } = this.props;
-    return (
-      <Composed>
-        {({ sidebarQuery, toggleSidebar }) => {
-          const value = {
-            ...sidebarQuery.data.sidebar,
-            toggle: toggleSidebar
-          };
-          return children(value);
-        }}
-      </Composed>
-    );
-  }
-}
+export default adopt(mapper, mapProps);

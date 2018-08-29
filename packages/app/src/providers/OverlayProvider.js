@@ -1,38 +1,30 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Composer from "react-composer";
+import React from "react";
+import { adopt } from "react-adopt";
 import { Query, Mutation } from "../components";
 import { queries, mutations } from "../graphql";
 import { overlayModes } from "@offcourse/constants";
 
-export default class OverlayProvider extends Component {
-  static constants = overlayModes;
-  static propTypes = {
-    children: PropTypes.func
-  };
+const mapper = {
+  overlayQuery: <Query query={queries.overlay} />,
+  openOverlay: <Mutation mutation={mutations.openOverlay} />,
+  closeOverlay: <Mutation mutation={mutations.closeOverlay} />,
+  switchOverlayMode: <Mutation mutation={mutations.switchOverlayMode} />
+};
 
-  render() {
-    const { children } = this.props;
-    return (
-      <Composer
-        components={[
-          <Query query={queries.overlay} />,
-          <Mutation mutation={mutations.openOverlay} />,
-          <Mutation mutation={mutations.closeOverlay} />,
-          <Mutation mutation={mutations.switchOverlayMode} />
-        ]}
-      >
-        {([queryResult, openOverlay, closeOverlay, switchOverlayMode]) => {
-          const open = variables => openOverlay({ variables });
-          const value = {
-            ...queryResult.data.overlay,
-            open,
-            close: closeOverlay,
-            switchMode: switchOverlayMode
-          };
-          return children(value);
-        }}
-      </Composer>
-    );
-  }
-}
+const mapProps = ({
+  overlayQuery,
+  openOverlay,
+  closeOverlay,
+  switchOverlayMode
+}) => ({
+  ...overlayQuery.data.overlay,
+  open: variables => openOverlay({ variables }),
+  close: closeOverlay,
+  switchMode: switchOverlayMode
+});
+
+const OverlayProvider = adopt(mapper, mapProps);
+
+OverlayProvider.constants = overlayModes;
+
+export default OverlayProvider;
