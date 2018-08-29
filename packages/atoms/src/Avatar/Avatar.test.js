@@ -15,6 +15,13 @@ describe('Avatar', () => {
     name: 'Offcourse',
   };
 
+  it('passes props', () => {
+    const tree = shallow(<Avatar {...props} />);
+
+    expect(tree.props().src).toBe(props.url);
+    expect(tree.props().alt).toContain(props.name.toLowerCase());
+  });
+
   it('matches the snapshot', () => {
     const tree = shallow(<Avatar {...props} />);
 
