@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { map } from "ramda";
 import PropTypes from "prop-types";
-import Composer from "react-composer";
+import { Adopt } from "react-adopt";
 import { AppShell } from "@offcourse/organisms";
 import { OverlayContainer } from "../containers";
+import { Route } from "../components";
 
 import {
   SidebarProvider,
@@ -14,15 +15,18 @@ import {
 } from "../providers";
 
 const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = OverlayProvider.constants;
+const mapper = {
+  sidebar: <SidebarProvider />,
+  auth: <AuthProvider />,
+  overlay: <OverlayProvider />,
+  flash: <FlashProvider />,
+  theme: <ThemeProvider />,
+  route: <Route />
+};
 
-export default class AppShellContainer extends Component {
+export default class LayoutContainer extends Component {
   static propTypes = {
-    children: PropTypes.node.isRequired,
-    routeHandlers: PropTypes.shape({
-      goToCollection: PropTypes.func.isRequired,
-      goToCourse: PropTypes.func.isRequired,
-      goToCheckpoint: PropTypes.func.isRequired
-    }).isRequired
+    children: PropTypes.node.isRequired
   };
 
   createThemeLinks({ themeNames, currentTheme, selectTheme }) {
@@ -78,19 +82,11 @@ export default class AppShellContainer extends Component {
   }
 
   render() {
-    const { children, routeHandlers } = this.props;
-    const { goHome } = routeHandlers;
+    const { children } = this.props;
     return (
-      <Composer
-        components={[
-          <SidebarProvider />,
-          <AuthProvider />,
-          <OverlayProvider />,
-          <FlashProvider />,
-          <ThemeProvider />
-        ]}
-      >
-        {([sidebar, auth, overlay, flash, theme]) => {
+      <Adopt mapper={mapper}>
+        {({ sidebar, auth, overlay, flash, theme, route }) => {
+          const { goHome } = route.handlers;
           return (
             <AppShell
               position="fixed"
@@ -115,7 +111,7 @@ export default class AppShellContainer extends Component {
             </AppShell>
           );
         }}
-      </Composer>
+      </Adopt>
     );
   }
 }

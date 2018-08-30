@@ -1,8 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Composer from "react-composer";
+import { Adopt } from "react-adopt";
 import { CourseCardProvider, CoursesProvider } from "../providers";
 import { CourseCardLayout } from "@offcourse/organisms";
+
+const mapper = {
+  collection: ({ curator, tag, render }) => (
+    <CoursesProvider curator={curator} tag={tag}>
+      {render}
+    </CoursesProvider>
+  ),
+  courseCard: <CourseCardProvider />
+};
 
 class CoursesContainer extends Component {
   static propTypes = {
@@ -13,7 +22,7 @@ class CoursesContainer extends Component {
         goal: PropTypes.string
       }).isRequired
     }).isRequired,
-    routeHandlers: PropTypes.shape({
+    handlers: PropTypes.shape({
       goToCollection: PropTypes.func.isRequired,
       goToCourse: PropTypes.func.isRequired,
       goToCheckpoint: PropTypes.func.isRequired
@@ -21,23 +30,18 @@ class CoursesContainer extends Component {
   };
 
   render() {
-    const { match, routeHandlers } = this.props;
+    const { match, handlers } = this.props;
     const { curator, tag } = match.params;
-    const { goToCollection, goToCourse, goToCheckpoint } = routeHandlers;
+    const { goToCollection, goToCourse, goToCheckpoint } = handlers;
     return (
-      <Composer
-        components={[
-          <CoursesProvider curator={curator} tag={tag} />,
-          <CourseCardProvider />
-        ]}
-      >
-        {([collection, card]) => {
+      <Adopt curator={curator} tag={tag} mapper={mapper}>
+        {({ collection, courseCard }) => {
           return (
             <CourseCardLayout
-              initialCardLevel={card.initialLevel}
-              onResize={card.changeLevel}
-              key={card.initialLevel}
-              layout={card.layout}
+              initialCardLevel={courseCard.initialLevel}
+              onResize={courseCard.changeLevel}
+              key={courseCard.initialLevel}
+              layout={courseCard.layout}
               goToCollection={goToCollection}
               goToCourse={goToCourse}
               goToCheckpoint={goToCheckpoint}
@@ -47,7 +51,7 @@ class CoursesContainer extends Component {
             />
           );
         }}
-      </Composer>
+      </Adopt>
     );
   }
 }

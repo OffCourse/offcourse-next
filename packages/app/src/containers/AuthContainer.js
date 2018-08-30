@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Composer from "react-composer";
+import { Adopt } from "react-adopt";
 import { Auth, SignOutDialog } from "@offcourse/organisms";
 import { OverlayProvider, AuthProvider, FlashProvider } from "../providers";
 
@@ -10,13 +10,17 @@ const {
   RESETTING_PASSWORD
 } = AuthProvider.constants;
 
+const mapper = {
+  overlay: <OverlayProvider />,
+  auth: <AuthProvider />,
+  flash: <FlashProvider />
+};
+
 export default class AuthContainer extends Component {
   render() {
     return (
-      <Composer
-        components={[<OverlayProvider />, <AuthProvider />, <FlashProvider />]}
-      >
-        {([overlay, auth, flash]) => {
+      <Adopt mapper={mapper}>
+        {({ overlay, auth, flash }) => {
           switch (overlay.mode) {
             case SIGNING_UP:
             case SIGNING_IN:
@@ -84,7 +88,7 @@ export default class AuthContainer extends Component {
               return null;
           }
         }}
-      </Composer>
+      </Adopt>
     );
   }
 }

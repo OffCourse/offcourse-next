@@ -16,15 +16,15 @@ class CourseActionContainer extends Component {
         goal: PropTypes.string
       }).isRequired
     }).isRequired,
-    routeHandlers: PropTypes.shape({
+    handlers: PropTypes.shape({
       goToCourse: PropTypes.func.isRequired
     }).isRequired
   };
 
   render() {
-    const { match, routeHandlers } = this.props;
+    const { match, handlers } = this.props;
     const { courseId, curator, goal } = match.params;
-    const { goToCourse } = routeHandlers;
+    const { goToCourse } = handlers;
     const courseQuery = { curator, goal };
     return (
       <Composer

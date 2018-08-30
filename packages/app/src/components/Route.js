@@ -14,7 +14,7 @@ export default class Route extends Component {
       <RRoute
         {...rest}
         render={({ history, ...props }) => {
-          const routeHandlers = {
+          const handlers = {
             goHome() {
               history.push("/");
             },
@@ -30,9 +30,9 @@ export default class Route extends Component {
           };
 
           return children ? (
-            children({ ...props, routeHandlers })
+            children({ ...props, handlers })
           ) : (
-            <ComponentToRender {...props} routeHandlers={routeHandlers} />
+            <ComponentToRender {...props} handlers={handlers} />
           );
         }}
       />

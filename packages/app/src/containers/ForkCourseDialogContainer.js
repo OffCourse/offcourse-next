@@ -1,8 +1,25 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Composer from "react-composer";
+import { Adopt } from "react-adopt";
 import { Route, ForkCourseDialog } from "../components";
 import { CourseProvider, FlashProvider, OverlayProvider } from "../providers";
+
+const mapper = {
+  courseData: ({ courseId, render }) => (
+    <CourseProvider courseId={courseId}>{render}</CourseProvider>
+  ),
+  route: <Route />,
+  overlay: <OverlayProvider />,
+  flash: <FlashProvider />
+};
+
+const mapProps = ({ courseData: { course, fork }, route, overlay, flash }) => ({
+  course,
+  fork,
+  route,
+  overlay,
+  flash
+});
 
 export default class ForkCourseDialogContainer extends Component {
   static propTypes = {
@@ -11,15 +28,8 @@ export default class ForkCourseDialogContainer extends Component {
   render() {
     const { courseId } = this.props;
     return (
-      <Composer
-        components={[
-          <CourseProvider courseId={courseId} />,
-          <Route />,
-          <OverlayProvider />,
-          <FlashProvider />
-        ]}
-      >
-        {([{ course, fork }, { routeHandlers }, overlay, flash]) => {
+      <Adopt courseId={courseId} mapper={mapper} mapProps={mapProps}>
+        {({ course, fork, route, overlay, flash }) => {
           return (
             <ForkCourseDialog
               closeOverlay={overlay.close}
@@ -28,12 +38,12 @@ export default class ForkCourseDialogContainer extends Component {
                 const { curator, goal } = data.forkCourse;
                 await flash.success(`you have forked: ${goal}`);
                 await overlay.close();
-                routeHandlers.goToCourse({ curator, goal });
+                route.handlers.goToCourse({ curator, goal });
               }}
             />
           );
         }}
-      </Composer>
+      </Adopt>
     );
   }
 }

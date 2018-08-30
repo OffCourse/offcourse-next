@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { find } from "ramda";
 import { ResourceProvider, CourseProvider } from "../providers";
-
 export default class componentName extends Component {
   static propTypes = {
     match: PropTypes.object

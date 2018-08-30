@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader";
-import { Layout } from "./components";
 import { GraphQLProvider } from "./providers";
-import { ThemeContainer } from "./containers";
+import { LayoutContainer, ThemeContainer } from "./containers";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Loadable from "react-loadable";
 
@@ -24,11 +23,11 @@ class App extends Component {
       <GraphQLProvider>
         <ThemeContainer>
           <Router>
-            <Layout>
+            <LayoutContainer>
               <CollectionView />
               <CourseView />
               <Route path="/about" component={About} />
-            </Layout>
+            </LayoutContainer>
           </Router>
         </ThemeContainer>
       </GraphQLProvider>
