@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Query } from "../../components";
+import { Query } from "react-apollo";
 import { queries } from "./graphql";
+import { fakeCourse } from "../../fakeCourse";
 
 export default class CourseQuery extends Component {
   static propTypes = {
@@ -20,8 +21,11 @@ export default class CourseQuery extends Component {
       const variables = courseId ? { courseId } : { courseQuery };
       return (
         <Query query={query} variables={variables}>
-          {res => {
-            return children(res.data.course);
+          {({ loading, error, data }) => {
+            if (loading) {
+              return children(fakeCourse());
+            }
+            return children(data.course);
           }}
         </Query>
       );

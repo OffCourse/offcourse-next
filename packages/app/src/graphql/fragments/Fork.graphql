@@ -1,6 +1,0 @@
-fragment Fork on Course {
-  fork {
-    curator
-    goal
-  }
-}

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { curry } from "ramda";
 import { adopt } from "react-adopt";
 import { Query, Mutation } from "../components";

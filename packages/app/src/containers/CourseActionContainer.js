@@ -1,11 +1,23 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Composer from "react-composer";
+import { Adopt } from "react-adopt";
 import { find, propEq } from "ramda";
 import CourseAction from "../components/CourseAction";
 import { CourseProvider, OverlayProvider } from "../providers";
 
 const { SIGNING_IN, EDIT_COURSE, FORK_COURSE } = OverlayProvider.constants;
+
+const mapper = {
+  course: ({ courseId, curator, goal, render }) => {
+    const courseQuery = { curator, goal };
+    return (
+      <CourseProvider courseId={courseId} courseQuery={courseQuery}>
+        {render}
+      </CourseProvider>
+    );
+  },
+  overlay: <OverlayProvider />
+};
 
 class CourseActionContainer extends Component {
   static propTypes = {
@@ -25,20 +37,17 @@ class CourseActionContainer extends Component {
     const { match, handlers } = this.props;
     const { courseId, curator, goal } = match.params;
     const { goToCourse } = handlers;
-    const courseQuery = { curator, goal };
     return (
-      <Composer
-        components={[
-          <CourseProvider courseId={courseId} courseQuery={courseQuery} />,
-          <OverlayProvider />
-        ]}
-      >
-        {([{ userIsCurator, courseQuery, userName, course }, overlay]) => {
+      <Adopt courseId={courseId} curator={curator} goal={goal} mapper={mapper}>
+        {({
+          course: { userIsCurator, courseQuery, userName, course },
+          overlay: { open }
+        }) => {
           const actions = [
             {
               condition: !userName,
               onClick: () =>
-                overlay.open({
+                open({
                   mode: SIGNING_IN
                 }),
               label: "Sign In To Edit"
@@ -46,7 +55,7 @@ class CourseActionContainer extends Component {
             {
               condition: userIsCurator,
               onClick: () =>
-                overlay.open({
+                open({
                   mode: EDIT_COURSE,
                   courseId: course.courseId
                 }),
@@ -60,7 +69,7 @@ class CourseActionContainer extends Component {
             {
               condition: !course.fork && !userIsCurator,
               onClick: () =>
-                overlay.open({ mode: FORK_COURSE, courseId: course.courseId }),
+                open({ mode: FORK_COURSE, courseId: course.courseId }),
               label: "Fork This Course"
             }
           ];
@@ -69,7 +78,7 @@ class CourseActionContainer extends Component {
 
           return <CourseAction onClick={onClick} label={label} />;
         }}
-      </Composer>
+      </Adopt>
     );
   }
 }

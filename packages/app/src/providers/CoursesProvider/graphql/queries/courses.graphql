@@ -1,0 +1,27 @@
+query courses($first: Int, $curator: String, $tag: String, $after: String) {
+  courses(first: $first, curator: $curator, tag: $tag, after: $after) {
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        goal
+        avatarUrl
+        curator
+        timestamp
+        courseId
+        description
+        revision
+        tags
+        checkpoints {
+          task
+          checkpointId
+          resourceUrl
+        }
+      }
+    }
+  }
+}
