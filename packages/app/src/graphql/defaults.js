@@ -3,11 +3,6 @@ import { authModes } from "@offcourse/constants";
 
 const { SIGNED_OUT } = authModes;
 
-export const sidebar = {
-  __typename: "Sidebar",
-  isOpen: false
-};
-
 export const messages = [];
 
 export const overlay = {

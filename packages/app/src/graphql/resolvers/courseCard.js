@@ -1,11 +1,11 @@
-import { queries } from "..";
+import { courseCard } from "../queries";
 
 export const changeCardSize = async (
   _,
   { width, numberOfColumns },
   { cache }
 ) => {
-  const previous = cache.readQuery({ query: queries.courseCard });
+  const previous = cache.readQuery({ query: courseCard });
   const { __typename, initialLevel, layout } = previous.courseCard;
   let nextLevel = initialLevel;
   if (numberOfColumns) {

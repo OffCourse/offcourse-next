@@ -2,7 +2,9 @@ import React from "react";
 import { curry } from "ramda";
 import { adopt } from "react-adopt";
 import { Query, Mutation } from "../components";
-import { queries, mutations } from "../graphql";
+import initData from "../graphql";
+
+const { queries, mutations } = initData;
 
 const mapper = {
   messagesQuery: <Query query={queries.messages} />,

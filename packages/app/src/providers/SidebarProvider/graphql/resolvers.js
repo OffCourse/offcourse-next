@@ -1,4 +1,4 @@
-import { queries } from "..";
+import * as queries from "./queries";
 
 const toggleSidebar = (_, __, { cache, ___ }) => {
   const previous = cache.readQuery({ query: queries.sidebar });
@@ -8,4 +8,8 @@ const toggleSidebar = (_, __, { cache, ___ }) => {
   return null;
 };
 
-export { toggleSidebar };
+const Mutation = {
+  toggleSidebar
+};
+
+export default { Mutation };

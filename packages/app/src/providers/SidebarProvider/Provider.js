@@ -1,7 +1,7 @@
 import React from "react";
 import { adopt } from "react-adopt";
-import { Query, Mutation } from "../components";
-import { queries, mutations } from "../graphql";
+import { Query, Mutation } from "../../components";
+import { queries, mutations } from "./graphql";
 
 const mapper = {
   sidebarQuery: <Query query={queries.sidebar} />,

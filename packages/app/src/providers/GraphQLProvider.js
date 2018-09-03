@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { ApolloProvider } from "react-apollo";
 import PropTypes from "prop-types";
+import { ApolloProvider } from "react-apollo";
 import { defaultDataIdFromObject } from "apollo-boost";
 import { setContext } from "apollo-link-context";
 import { from } from "apollo-link";
 import { withClientState } from "apollo-link-state";
-import * as initData from "../graphql";
+import initData from "../graphql";
 import { ApolloClient } from "apollo-client";
 import {
   IntrospectionFragmentMatcher,

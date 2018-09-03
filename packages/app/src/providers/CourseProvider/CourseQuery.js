@@ -25,6 +25,9 @@ export default class CourseQuery extends Component {
             if (loading) {
               return children(fakeCourse());
             }
+            if (error) {
+              return children(fakeCourse("error"));
+            }
             return children(data.course);
           }}
         </Query>

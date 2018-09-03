@@ -2,6 +2,8 @@ import * as queries from "./queries";
 import * as mutations from "./mutations";
 import * as defaults from "./defaults";
 import resolvers from "./resolvers";
+import { mergeDeepRight } from "ramda";
+import * as sidebar from "../providers/SidebarProvider";
 
 const typeDefs = `
   type Sidebar {
@@ -71,4 +73,13 @@ const typeDefs = `
   }
 `;
 
-export { defaults, queries, mutations, resolvers, typeDefs };
+export default mergeDeepRight(
+  {
+    defaults,
+    queries,
+    mutations,
+    resolvers,
+    typeDefs
+  },
+  sidebar
+);

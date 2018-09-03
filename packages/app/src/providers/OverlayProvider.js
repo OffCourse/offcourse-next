@@ -1,8 +1,10 @@
 import React from "react";
 import { adopt } from "react-adopt";
 import { Query, Mutation } from "../components";
-import { queries, mutations } from "../graphql";
 import { overlayModes } from "@offcourse/constants";
+import initData from "../graphql";
+
+const { queries, mutations } = initData;
 
 const mapper = {
   overlayQuery: <Query query={queries.overlay} />,

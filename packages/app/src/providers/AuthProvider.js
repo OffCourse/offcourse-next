@@ -1,8 +1,10 @@
 import React from "react";
 import { adopt } from "react-adopt";
 import { Query, Mutation } from "../components";
-import { queries, mutations } from "../graphql";
+import initData from "../graphql";
 import { authModes } from "@offcourse/constants";
+
+const { queries, mutations } = initData;
 
 const mapper = {
   authQuery: <Query query={queries.auth} />,
