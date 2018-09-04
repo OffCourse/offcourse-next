@@ -1,4 +1,3 @@
-import * as themes from "@offcourse/themes";
 import { authModes } from "@offcourse/constants";
 
 const { SIGNED_OUT } = authModes;
@@ -19,12 +18,6 @@ export const courseCard = {
     ["header"],
     ["header", "meta", "description", "checkpoints", "tags", "social"]
   ]
-};
-
-export const theme = {
-  __typename: "Theme",
-  all: Object.keys(themes),
-  current: "offcourse"
 };
 
 export const authErrors = {

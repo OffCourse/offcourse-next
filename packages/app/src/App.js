@@ -2,20 +2,8 @@ import React, { Component } from "react";
 import { hot } from "react-hot-loader";
 import { GraphQLProvider } from "./providers";
 import { LayoutContainer, ThemeContainer } from "./containers";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Loadable from "react-loadable";
-
-const About = () => <div>About Us</div>;
-
-const CourseView = Loadable({
-  loader: () => import("./views/CourseView"),
-  loading: About
-});
-
-const CollectionView = Loadable({
-  loader: () => import("./views/CollectionView"),
-  loading: About
-});
+import { BrowserRouter as Router } from "react-router-dom";
+import { CourseView, CollectionView } from "./views";
 
 class App extends Component {
   render() {
@@ -26,7 +14,6 @@ class App extends Component {
             <LayoutContainer>
               <CollectionView />
               <CourseView />
-              <Route path="/about" component={About} />
             </LayoutContainer>
           </Router>
         </ThemeContainer>

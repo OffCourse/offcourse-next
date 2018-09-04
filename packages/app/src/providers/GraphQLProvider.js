@@ -15,6 +15,10 @@ import { HttpLink } from "apollo-link-http";
 import { onError } from "apollo-link-error";
 import introspectionQueryResultData from "../../fragmentTypes.json";
 
+console.log(initData);
+// this should not be here...
+import cognito from "../Cognito";
+
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.map(({ message, locations, path }) =>
@@ -29,9 +33,6 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 const fragmentMatcher = new IntrospectionFragmentMatcher({
   introspectionQueryResultData
 });
-
-// this should not be here...
-import cognito from "../Cognito";
 
 const httpLink = new HttpLink({
   uri: "https://api.offcourse.io/graphql"

@@ -1,4 +1,4 @@
-import { queries } from "..";
+import * as queries from "./queries";
 const __typename = "Theme";
 
 const switchTheme = (_, variables, { cache, getCacheKey }) => {
@@ -16,4 +16,9 @@ const selectTheme = (_, { themeName }, { cache, getCacheKey }) => {
   return theme;
 };
 
-export { switchTheme, selectTheme };
+const Mutation = {
+  switchTheme,
+  selectTheme
+};
+
+export default { Mutation };
