@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Query } from "../components";
-import { queries } from "../graphql";
+import { Query } from "../../components";
+import { queries } from "./graphql";
 
 export default class ResourceProvider extends Component {
   static propTypes = {

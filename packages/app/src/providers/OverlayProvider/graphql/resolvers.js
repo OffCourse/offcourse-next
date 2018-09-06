@@ -1,5 +1,5 @@
 const __typename = "Overlay";
-import { overlay as defaults } from "../defaults";
+import { overlay as defaults } from "./defaults";
 
 const openOverlay = (_, { mode, courseId = null }, { cache, getCacheKey }) => {
   const overlay = { ...defaults, mode, courseId, isOpen: true };
@@ -20,4 +20,10 @@ const closeOverlay = (_, variables, { cache, getCacheKey }) => {
   return overlay;
 };
 
-export { openOverlay, switchOverlayMode, closeOverlay };
+const Mutation = {
+  openOverlay,
+  switchOverlayMode,
+  closeOverlay
+};
+
+export default { Mutation };

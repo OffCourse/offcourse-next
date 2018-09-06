@@ -4,13 +4,6 @@ const { SIGNED_OUT } = authModes;
 
 export const messages = [];
 
-export const overlay = {
-  __typename: "Overlay",
-  isOpen: false,
-  courseId: null,
-  mode: null
-};
-
 export const courseCard = {
   __typename: "CourseCard",
   initialLevel: 1,
