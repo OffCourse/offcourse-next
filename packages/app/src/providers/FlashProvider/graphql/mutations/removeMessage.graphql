@@ -1,4 +1,3 @@
-
 mutation removeMessage {
   removeMessage @client
 }

@@ -6,6 +6,8 @@ import { reduce, mergeDeepRight } from "ramda";
 import * as sidebar from "../providers/SidebarProvider";
 import * as theme from "../providers/ThemeProvider";
 import * as overlay from "../providers/OverlayProvider";
+import * as messages from "../providers/FlashProvider";
+import * as courseCard from "../providers/CourseCardProvider";
 
 const typeDefs = `
   type Sidebar {
@@ -83,6 +85,6 @@ const temp = {
   typeDefs
 };
 
-const components = [sidebar, theme, overlay, temp];
+const components = [sidebar, theme, overlay, messages, courseCard, temp];
 
 export default reduce(mergeDeepRight, {}, components);

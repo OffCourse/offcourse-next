@@ -1,4 +1,4 @@
-import { queries } from "..";
+import { queries } from ".";
 import { dropLast } from "ramda";
 
 function timeout(ms) {
@@ -21,4 +21,6 @@ const removeMessage = async (_, __, { cache, getCacheKey }) => {
   return null;
 };
 
-export { addMessage, removeMessage };
+const Mutation = { addMessage, removeMessage };
+
+export default { Mutation };

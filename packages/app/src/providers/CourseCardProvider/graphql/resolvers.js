@@ -1,10 +1,6 @@
-import { courseCard } from "../queries";
+import { courseCard } from "./queries";
 
-export const changeCardSize = async (
-  _,
-  { width, numberOfColumns },
-  { cache }
-) => {
+const changeCardSize = async (_, { width, numberOfColumns }, { cache }) => {
   const previous = cache.readQuery({ query: courseCard });
   const { __typename, initialLevel, layout } = previous.courseCard;
   let nextLevel = initialLevel;
@@ -20,3 +16,9 @@ export const changeCardSize = async (
   cache.writeData({ data });
   return data;
 };
+
+const Mutation = {
+  changeCardSize
+};
+
+export default { Mutation };

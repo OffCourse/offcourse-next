@@ -1,0 +1,6 @@
+{
+  messages @client {
+    variant
+    message
+  }
+}
