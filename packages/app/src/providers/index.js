@@ -7,4 +7,3 @@ export { default as CourseCardProvider } from "./CourseCardProvider";
 export { default as CoursesProvider } from "./CoursesProvider";
 export { default as CourseProvider } from "./CourseProvider";
 export { default as ResourceProvider } from "./ResourceProvider";
-export { default as GraphQLProvider } from "./GraphQLProvider";

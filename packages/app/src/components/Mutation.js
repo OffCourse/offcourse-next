@@ -1,7 +1,6 @@
 import React from "react";
 import { Mutation as ApolloMutation } from "react-apollo";
 import { identity } from "ramda";
-import { Loading } from "@offcourse/atoms";
 
 export default class Mutation extends React.Component {
   render() {

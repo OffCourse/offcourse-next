@@ -6,3 +6,4 @@ export { default as MasterDetail } from "./MasterDetail";
 export { default as UnderConstruction } from "./UnderConstruction";
 export { default as Route } from "./Route";
 export { default as Viewer } from "./Viewer";
+export { default as GraphQL } from "./GraphQL";

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader";
-import { GraphQLProvider } from "./providers";
+import { GraphQL } from "./components";
 import { LayoutContainer, ThemeContainer } from "./containers";
 import { BrowserRouter as Router } from "react-router-dom";
 import { CourseView, CollectionView } from "./views";
@@ -8,7 +8,7 @@ import { CourseView, CollectionView } from "./views";
 class App extends Component {
   render() {
     return (
-      <GraphQLProvider>
+      <GraphQL>
         <ThemeContainer>
           <Router>
             <LayoutContainer>
@@ -17,7 +17,7 @@ class App extends Component {
             </LayoutContainer>
           </Router>
         </ThemeContainer>
-      </GraphQLProvider>
+      </GraphQL>
     );
   }
 }

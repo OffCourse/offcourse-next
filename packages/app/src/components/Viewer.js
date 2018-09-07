@@ -11,9 +11,13 @@ export default class componentName extends Component {
     const { match } = this.props;
     const { courseId, curator, goal, task } = match.params;
     const courseQuery = { curator, goal };
+    console.log(task);
     return (
       <CourseProvider courseId={courseId} courseQuery={courseQuery}>
         {({ course }) => {
+          if (course.goal === "loading") {
+            return null;
+          }
           const { resourceUrl } = find(
             ({ task: cpTask }) => task === cpTask,
             course.checkpoints

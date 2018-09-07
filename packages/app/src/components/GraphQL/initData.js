@@ -1,10 +1,10 @@
 import { reduce, mergeDeepRight } from "ramda";
-import * as sidebar from "../providers/SidebarProvider";
-import * as theme from "../providers/ThemeProvider";
-import * as overlay from "../providers/OverlayProvider";
-import * as messages from "../providers/FlashProvider";
-import * as courseCard from "../providers/CourseCardProvider";
-import * as auth from "../providers/AuthProvider";
+import * as sidebar from "../../providers/SidebarProvider";
+import * as theme from "../../providers/ThemeProvider";
+import * as overlay from "../../providers/OverlayProvider";
+import * as messages from "../../providers/FlashProvider";
+import * as courseCard from "../../providers/CourseCardProvider";
+import * as auth from "../../providers/AuthProvider";
 
 const typeDefs = `
   type Sidebar {
