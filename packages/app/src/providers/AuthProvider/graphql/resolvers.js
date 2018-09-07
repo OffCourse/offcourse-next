@@ -1,6 +1,6 @@
-import cognito from "../../Cognito";
-import { queries } from "..";
-import { auth as defaults } from "../defaults";
+import { cognito } from "../adapters";
+import { queries } from ".";
+import { auth as defaults } from "./defaults";
 
 import { authModes } from "@offcourse/constants";
 
@@ -156,7 +156,7 @@ const signOut = async (_, __, { cache }) => {
   return auth;
 };
 
-export {
+const Mutation = {
   initAuth,
   signIn,
   signOut,
@@ -165,3 +165,5 @@ export {
   resetPassword,
   confirmNewPassword
 };
+
+export default { Mutation };

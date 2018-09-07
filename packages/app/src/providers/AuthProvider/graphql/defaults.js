@@ -2,17 +2,6 @@ import { authModes } from "@offcourse/constants";
 
 const { SIGNED_OUT } = authModes;
 
-export const messages = [];
-
-export const courseCard = {
-  __typename: "CourseCard",
-  initialLevel: 1,
-  layout: [
-    ["header"],
-    ["header", "meta", "description", "checkpoints", "tags", "social"]
-  ]
-};
-
 export const authErrors = {
   __typename: "AuthErrors",
   userName: null,

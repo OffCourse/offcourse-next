@@ -15,9 +15,7 @@ import { HttpLink } from "apollo-link-http";
 import { onError } from "apollo-link-error";
 import introspectionQueryResultData from "../../fragmentTypes.json";
 
-console.log(initData);
-// this should not be here...
-import cognito from "../Cognito";
+import { AuthProvider } from "../providers";
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -30,10 +28,6 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData
-});
-
 const httpLink = new HttpLink({
   uri: "https://api.offcourse.io/graphql"
 });
@@ -41,7 +35,7 @@ const httpLink = new HttpLink({
 const authMiddleware = setContext(async () => {
   let authorization = "GUEST";
   if (process.browser) {
-    const { accessToken } = await cognito.currentUser();
+    const { accessToken } = await AuthProvider.currentUser();
     if (accessToken) {
       authorization = `Bearer ${accessToken}`;
     }
@@ -51,6 +45,10 @@ const authMiddleware = setContext(async () => {
       authorization
     }
   };
+});
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData
 });
 
 const cache = new InMemoryCache({

@@ -1,13 +1,10 @@
-import * as queries from "./queries";
-import * as mutations from "./mutations";
-import * as defaults from "./defaults";
-import resolvers from "./resolvers";
 import { reduce, mergeDeepRight } from "ramda";
 import * as sidebar from "../providers/SidebarProvider";
 import * as theme from "../providers/ThemeProvider";
 import * as overlay from "../providers/OverlayProvider";
 import * as messages from "../providers/FlashProvider";
 import * as courseCard from "../providers/CourseCardProvider";
+import * as auth from "../providers/AuthProvider";
 
 const typeDefs = `
   type Sidebar {
@@ -77,14 +74,6 @@ const typeDefs = `
   }
 `;
 
-const temp = {
-  defaults,
-  queries,
-  mutations,
-  resolvers,
-  typeDefs
-};
+const components = [sidebar, theme, overlay, messages, courseCard, auth];
 
-const components = [sidebar, theme, overlay, messages, courseCard, temp];
-
-export default reduce(mergeDeepRight, {}, components);
+export default reduce(mergeDeepRight, { typeDefs }, components);

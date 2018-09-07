@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Group } from "@offcourse/atoms";
 import { Mutation } from "../components";
-import initData from "../graphql";
-
-const { mutations } = initData;
+import { mutations } from "../providers/CourseCardProvider";
 
 class Detail extends Component {
   render() {

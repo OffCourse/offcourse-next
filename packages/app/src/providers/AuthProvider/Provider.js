@@ -1,10 +1,9 @@
 import React from "react";
 import { adopt } from "react-adopt";
 import { Query, Mutation } from "../../components";
+import { cognito } from "./adapters";
 import { authModes } from "@offcourse/constants";
-import initData from "../../graphql";
-
-const { queries, mutations } = initData;
+import { queries, mutations } from "./graphql";
 
 const mapper = {
   authQuery: <Query query={queries.auth} />,
@@ -37,5 +36,6 @@ const mapProps = ({
 const AuthProvider = adopt(mapper, mapProps);
 
 AuthProvider.constants = authModes;
+AuthProvider.currentUser = cognito.currentUser;
 
 export default AuthProvider;
