@@ -8,6 +8,7 @@ query resource($resourceUrl: String!) {
     content {
       ... on HTML {
         html
+        markdown
       }
       ... on Video {
         videoId

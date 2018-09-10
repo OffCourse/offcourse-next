@@ -40,6 +40,8 @@
     "apollo-link-context": "^1.0.8",
     "graphql": "0.13.2",
     "history": "^4.7.2",
+    "markdown-to-jsx": "^6.7.2",
+    "punycode": "^2.1.1",
     "ramda": "^0.25.0",
     "react": "^16.4.1",
     "react-adopt": "^0.6.0",
