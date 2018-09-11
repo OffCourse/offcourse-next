@@ -11,7 +11,6 @@ class Detail extends Component {
         style={{ overflowX: "hidden" }}
         maxWidth={["100%", "55rem", "55rem"]}
         flex="3"
-        p={6}
       >
         {children}
       </Group>
