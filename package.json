@@ -14,8 +14,8 @@
     "publish": "lerna publish --conventional-commits --yes",
     "release:docs": "lerna run release --scope @offcourse/documentation",
     "release:app": "lerna run release --scope @offcourse/app",
+    "release": "npm run release:app && npm run release:docs",
     "precommit": "pretty-quick --staged",
-    "release": "npm run release:docs",
     "postpublish": "npm run release"
   },
   "version": "0.0.0",

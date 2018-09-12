@@ -13,6 +13,7 @@
     "ramda": "^0.25.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "s3-deploy": "^1.1.1",
     "styled-components": "^3.3.0",
     "system-components": "^2.1.0"
   },
@@ -38,7 +39,7 @@
     "start": "NODE_ENV=development webpack-dev-server --open --config webpack.dev.js",
     "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "buildStats": "NODE_ENV=production webpack --config webpack.prod.js --profile --json > stats.json",
-    "release": "echo 'wip'",
+    "publish": "s3-deploy './dist/**' --cwd './dist/' --gzip AWS_REGION --bucket offcourse-contribute-next",
     "catalog-start": "catalog start",
     "catalog-build": "catalog build"
   },
