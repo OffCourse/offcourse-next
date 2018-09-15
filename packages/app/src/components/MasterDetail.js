@@ -40,6 +40,7 @@ export default class MasterDetail extends Component {
           <Group
             flexDirection={["column", "row", "row"]}
             alignItems={["center", "flex-start", "flex-start"]}
+            width={["100%", "auto", "auto"]}
             onResize={({ width }) => changeCardSize({ variables: { width } })}
           >
             {children}
