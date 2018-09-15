@@ -1,6 +1,8 @@
 CourseCard Component.
 
 ```react|span-6
+responsive: true
+---
 const course = {
   courseId: "abc",
   goal: "Learn This",
@@ -98,5 +100,4 @@ const onCuratorClick = ({name, profileUrl}) => alert(`curator is ${name}, url is
 
 const onTagClick = ({tag, href}) => alert(`curator is ${tag}, url is ${href}`);
   <CourseCard onCuratorClick={onCuratorClick} onTagClick={onTagClick} onCheckpointToggle={console.log} course={course} />
-
 ```
