@@ -1,15 +1,20 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { find } from "ramda";
 import { ResourceProvider, CourseProvider } from "../providers";
-import { HTMLViewer } from "../components";
-import { Heading, Group } from "@offcourse/atoms";
+import { HTMLViewer, VideoViewer } from "../components";
+import { Heading, Group, Text } from "@offcourse/atoms";
 
 const removeNonAscii = str => {
   if (str === null || str === "") return false;
   else str = str.toString();
 
   return str.replace(/[^\x20-\x7E]/g, "");
+};
+
+const Viewers = {
+  html: HTMLViewer,
+  video: VideoViewer
 };
 
 export default class Viewer extends Component {
@@ -34,17 +39,17 @@ export default class Viewer extends Component {
             <ResourceProvider resourceUrl={resourceUrl}>
               {({ resource }) => {
                 if (!resource) return null;
-                const { title, resourceType } = resource;
+                const { title, description, resourceType, content } = resource;
                 const cleanTitle = resource ? removeNonAscii(title) : "";
-                let viewer = null;
-                switch (resourceType) {
-                  case "html":
-                    viewer = <HTMLViewer {...resource.content} />;
-                }
+                const Viewer = Viewers[resourceType];
                 return (
                   <Group bg="white" px={["2em", "4em", "4em"]} py="2em">
-                    <Heading>{cleanTitle}</Heading>
-                    {viewer}
+                    <Group mb="1em">
+                      <Heading>{task}</Heading>
+                    </Group>
+                    <Heading size="large">{cleanTitle}</Heading>
+                    {description && <Text>{description}</Text>}
+                    <Viewer {...content} />
                   </Group>
                 );
               }}

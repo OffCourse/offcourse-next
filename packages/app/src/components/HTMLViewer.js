@@ -15,7 +15,11 @@ const Image = system({
 const Code = ({ children, style, ...rest }) => {
   return (
     <code
-      style={{ ...style, whiteSpace: "normal", overflowX: "scroll" }}
+      style={{
+        ...style,
+        wordBreak: "break-word",
+        whiteSpace: "normal"
+      }}
       {...rest}
     >
       {children}

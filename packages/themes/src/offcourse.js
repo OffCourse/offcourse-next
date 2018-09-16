@@ -64,9 +64,16 @@ const breakpoints = ["30rem", "48rem", "64rem"];
 
 const baseUnit = 16;
 
-const fontSizes = ["0.75rem", "1rem", "1.375rem", "1.75rem"];
+const fontSizes = ["0.75rem", "1rem", "1.375rem", "1.75rem", "2.5rem"];
 
-const lineHeights = ["1rem", "1.25rem", "1.375rem", "1.75rem", "1.875rem"];
+const lineHeights = [
+  "1rem",
+  "1.25rem",
+  "1.375rem",
+  "1.75rem",
+  "1.875rem",
+  "3rem"
+];
 
 const space = [
   0,
