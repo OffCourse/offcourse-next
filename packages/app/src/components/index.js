@@ -7,4 +7,7 @@ export { default as MasterDetail } from "./MasterDetail";
 export { default as UnderConstruction } from "./UnderConstruction";
 export { default as Route } from "./Route";
 export { default as GraphQL } from "./GraphQL";
+export { default as Sheet } from "./Sheet";
 export { default as VideoViewer } from "./VideoViewer";
+export { default as CheckpointItem } from "./CheckpointItem";
+export { default as ResourceItem } from "./ResourceItem";

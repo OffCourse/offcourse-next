@@ -23,7 +23,7 @@ class Master extends Component {
     const { children } = this.props;
     return (
       <Group
-        display={["none", "flex", "flex"]}
+        display={["none", "none", "flex"]}
         alignItems="center"
         width="100%"
         p={6}

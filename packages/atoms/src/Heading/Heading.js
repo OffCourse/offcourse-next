@@ -24,7 +24,7 @@ class Heading extends Component {
     /** The actual text of the header */
     children: PropTypes.string.isRequired,
     /** Field that indicates the size of the header */
-    size: PropTypes.oneOf(["small", "normal"]),
+    size: PropTypes.oneOf(["small", "normal", "large"]),
     /** Headings can optionally link to other documents, etc */
     href: PropTypes.string,
     onClick: PropTypes.func

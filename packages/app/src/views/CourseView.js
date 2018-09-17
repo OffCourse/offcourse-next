@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Viewer, Route, MasterDetail, UnderConstruction } from "../components";
+import { Route, MasterDetail, UnderConstruction } from "../components";
 import {
   CourseContainer,
   CheckpointContainer,
@@ -20,11 +20,6 @@ export default class CourseView extends Component {
             />
             <Route
               path="/curator/:curator/goal/:goal"
-              component={CourseContainer}
-            />
-            <Route path="/course/:courseId" component={CourseContainer} />
-            <Route
-              path="/course/:courseId/checkpoint/:checkpointId"
               component={CourseContainer}
             />
           </Switch>
@@ -48,10 +43,6 @@ export default class CourseView extends Component {
             />
             <Route
               path="/curator/:curator/goal/:goal"
-              component={UnderConstruction}
-            />
-            <Route
-              path="/course/:courseId/checkpoint/:checkpointId"
               component={UnderConstruction}
             />
           </Switch>
