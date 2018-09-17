@@ -8,13 +8,9 @@ import { CourseProvider, OverlayProvider } from "../providers";
 const { SIGNING_IN, EDIT_COURSE, FORK_COURSE } = OverlayProvider.constants;
 
 const mapper = {
-  course: ({ courseId, curator, goal, render }) => {
+  course: ({ curator, goal, render }) => {
     const courseQuery = { curator, goal };
-    return (
-      <CourseProvider courseId={courseId} courseQuery={courseQuery}>
-        {render}
-      </CourseProvider>
-    );
+    return <CourseProvider courseQuery={courseQuery}>{render}</CourseProvider>;
   },
   overlay: <OverlayProvider />
 };
@@ -35,12 +31,12 @@ class CourseActionContainer extends Component {
 
   render() {
     const { match, handlers } = this.props;
-    const { courseId, curator, goal } = match.params;
+    const { curator, goal } = match.params;
     const { goToCourse } = handlers;
     return (
-      <Adopt courseId={courseId} curator={curator} goal={goal} mapper={mapper}>
+      <Adopt curator={curator} goal={goal} mapper={mapper}>
         {({
-          course: { userIsCurator, courseQuery, userName, course },
+          course: { userIsCurator, userName, course },
           overlay: { open }
         }) => {
           const actions = [

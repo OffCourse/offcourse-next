@@ -1,32 +1,36 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { identity } from "ramda";
+import { identity, partial } from "ramda";
 import { Adopt } from "react-adopt";
 import { CourseCard } from "@offcourse/organisms";
-import {
-  CourseCardProvider,
-  CourseProvider,
-  FlashProvider
-} from "../providers";
+import { CourseProvider, FlashProvider } from "../providers";
+
+const toggleCheckpoint = (
+  updateStatus,
+  flash,
+  { courseId, task, checkpointId, checked }
+) => {
+  updateStatus({ courseId, checkpointId, checked });
+  checked
+    ? flash.success(`you completed: ${task}`)
+    : flash.info(`you unchecked: ${task}`);
+};
 
 const mapper = {
-  courseData: ({ courseId, curator, goal, render }) => (
-    <CourseProvider courseId={courseId} courseQuery={{ curator, goal }}>
-      {render}
-    </CourseProvider>
+  courseData: ({ curator, goal, render }) => (
+    <CourseProvider courseQuery={{ curator, goal }}>{render}</CourseProvider>
   ),
-  courseCard: <CourseCardProvider />,
   flash: <FlashProvider />
 };
 
 const mapProps = ({
   courseData: { course, userName, updateStatus },
-  courseCard,
   flash
 }) => ({
-  updateStatus: userName ? updateStatus : identity,
+  toggleCheckpoint: userName
+    ? partial(toggleCheckpoint, [updateStatus, flash])
+    : identity,
   course,
-  courseCard,
   flash
 });
 
@@ -48,30 +52,16 @@ class CourseContainer extends Component {
 
   render() {
     const { match, handlers } = this.props;
-    const { courseId, curator, goal } = match.params;
+    const { curator, goal } = match.params;
     const { goToCollection, goToCourse, goToCheckpoint } = handlers;
     return (
-      <Adopt
-        curator={curator}
-        goal={goal}
-        courseId={courseId}
-        mapper={mapper}
-        mapProps={mapProps}
-      >
-        {({ updateStatus, course, courseCard, flash }) => (
+      <Adopt curator={curator} goal={goal} mapper={mapper} mapProps={mapProps}>
+        {({ toggleCheckpoint, course }) => (
           <CourseCard
-            key={courseCard.initialLevel}
-            layout={courseCard.layout}
-            initialLevel={courseCard.initialLevel}
             onCuratorClick={goToCollection}
             onGoalClick={goToCourse}
             onCheckpointClick={goToCheckpoint}
-            onCheckpointToggle={({ courseId, task, checkpointId, checked }) => {
-              updateStatus({ courseId, checkpointId, checked });
-              checked
-                ? flash.success(`you completed: ${task}`)
-                : flash.info(`you unchecked: ${task}`);
-            }}
+            onCheckpointToggle={toggleCheckpoint}
             onTagClick={goToCollection}
             course={course}
           />

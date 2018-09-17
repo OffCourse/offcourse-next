@@ -1,8 +1,12 @@
 import React, { Component } from "react";
-import { Route, MasterDetail, UnderConstruction, Sheet } from "../components";
-import { CourseContainer, CourseActionContainer } from "../containers";
+import { Route, MasterDetail, Sheet } from "../components";
+import {
+  CourseContainer,
+  CheckpointContainer,
+  CourseActionContainer
+} from "../containers";
 
-class ViewComponent extends Component {
+class Internal extends Component {
   render() {
     const { Master, Detail } = MasterDetail;
     return (
@@ -12,22 +16,20 @@ class ViewComponent extends Component {
           <CourseActionContainer {...this.props} />
         </Master>
         <Detail>
-          <Sheet>
-            <UnderConstruction />
-          </Sheet>
+          <CheckpointContainer {...this.props} />
         </Detail>
       </MasterDetail>
     );
   }
 }
 
-export default class CourseView extends Component {
+export default class CheckpointView extends Component {
   render() {
     return (
       <Route
         exact
-        path="/curator/:curator/goal/:goal"
-        component={ViewComponent}
+        path="/curator/:curator/goal/:goal/task/:task"
+        component={Internal}
       />
     );
   }
