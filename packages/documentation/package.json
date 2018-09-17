@@ -39,7 +39,7 @@
     "start": "NODE_ENV=development webpack-dev-server --open --config webpack.dev.js",
     "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "buildStats": "NODE_ENV=production webpack --config webpack.prod.js --profile --json > stats.json",
-    "publish": "s3-deploy './dist/**' --cwd './dist/' --gzip AWS_REGION --bucket offcourse-contribute-next",
+    "release": "s3-deploy './dist/**' --cwd './dist/' --gzip AWS_REGION --bucket offcourse-contribute-next",
     "catalog-start": "catalog start",
     "catalog-build": "catalog build"
   },

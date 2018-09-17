@@ -22,7 +22,12 @@ class Master extends Component {
   render() {
     const { children } = this.props;
     return (
-      <Group alignItems="center" width="100%" p={6}>
+      <Group
+        display={["none", "flex", "flex"]}
+        alignItems="center"
+        width="100%"
+        p={6}
+      >
         {children}
       </Group>
     );
