@@ -21,6 +21,16 @@ const textColor = {
 };
 
 class Message extends Component {
+  static propTypes = {
+    children: PropTypes.string.isRequired,
+    basic: PropTypes.bool,
+    variant: PropTypes.oneOf(["default", "error", "info", "success", "warning"])
+  };
+
+  static defaultProps = {
+    variant: "default"
+  };
+
   render() {
     const { children, basic, variant } = this.props;
     const color = basic ? background[variant] : textColor[variant];
@@ -41,15 +51,5 @@ class Message extends Component {
     );
   }
 }
-
-Message.propTypes = {
-  children: PropTypes.string.isRequired,
-  basic: PropTypes.bool,
-  variant: PropTypes.oneOf(["default", "error", "info", "success", "warning"])
-};
-
-Message.defaultProps = {
-  variant: "default"
-};
 
 export default Message;

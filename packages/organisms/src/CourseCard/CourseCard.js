@@ -18,6 +18,7 @@ import {
 export default class CourseCard extends Component {
   static propTypes = {
     onCheckpointToggle: PropTypes.func,
+    onCheckpointClick: PropTypes.func,
     onCuratorClick: PropTypes.func,
     onGoalClick: PropTypes.func,
     onTagClick: PropTypes.func,
@@ -37,6 +38,7 @@ export default class CourseCard extends Component {
     shareMessage: "Checkout This Course",
     onCuratorClick: identity,
     onGoalClick: identity,
+    onCheckpointClick: identity,
     onTagClick: identity,
     layout: [
       ["header"],
@@ -46,12 +48,25 @@ export default class CourseCard extends Component {
     ]
   };
 
-  handleCheckpointToggle = ({ checkpointId, checked }) => {
+  handleCheckpointToggle = ({ checkpointId, task, checked }) => {
     const { course, onCheckpointToggle } = this.props;
     onCheckpointToggle({
       courseId: course.courseId,
       checkpointId,
+      goal: course.goal,
+      task,
       checked
+    });
+  };
+
+  handleCheckpointClick = ({ task, checkpointId }) => {
+    const { course, onCheckpointClick } = this.props;
+    onCheckpointClick({
+      courseId: course.courseId,
+      goal: course.goal,
+      curator: course.curator,
+      checkpointId,
+      task
     });
   };
 
@@ -64,6 +79,7 @@ export default class CourseCard extends Component {
       course,
       onCheckpointToggle,
       onGoalClick,
+      onCheckpointClick,
       onTagClick,
       onCuratorClick,
       shareMessage,
@@ -81,7 +97,6 @@ export default class CourseCard extends Component {
       description,
       tags
     } = course;
-
 
     return (
       <Card initialLevel={initialLevel} layout={layout}>
@@ -106,6 +121,7 @@ export default class CourseCard extends Component {
         <CheckpointList
           section="checkpoints"
           onToggle={onCheckpointToggle && this.handleCheckpointToggle}
+          onClick={onCheckpointClick && this.handleCheckpointClick}
           checkpoints={checkpoints}
         />
         {this.hasTags(tags) && (

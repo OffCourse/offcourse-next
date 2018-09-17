@@ -4,13 +4,26 @@ import { Item } from "@offcourse/atoms";
 import { CheckItem } from "..";
 
 export default class CheckpointItem extends Component {
-  static propTypes = {};
+  static propTypes = {
+    onToggle: PropTypes.func,
+    onClick: PropTypes.func,
+    checkpointId: PropTypes.string,
+    resourceUrl: PropTypes.string,
+    completed: PropTypes.bool,
+    task: PropTypes.string.isRequired,
+    is: PropTypes.string
+  };
+
+  handleClick = () => {
+    const { onClick, checkpointId, task } = this.props;
+    return onClick({ checkpointId, task });
+  };
 
   render() {
     const {
       onToggle,
-      trackable,
       checkpointId,
+      onClick,
       completed,
       task,
       is,
@@ -20,14 +33,19 @@ export default class CheckpointItem extends Component {
       <CheckItem
         is={is}
         id={checkpointId}
-        href={resourceUrl}
+        onClick={this.handleClick}
+        href={!onClick ? resourceUrl : null}
         checked={completed}
-        onToggle={({ checked }) => onToggle({ checkpointId, checked })}
+        onToggle={({ checked }) => onToggle({ checkpointId, task, checked })}
       >
         {task}
       </CheckItem>
     ) : (
-      <Item is={is} href={resourceUrl}>
+      <Item
+        is={is}
+        onClick={this.handleClick}
+        href={!onClick ? resourceUrl : null}
+      >
         {task}
       </Item>
     );

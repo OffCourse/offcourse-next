@@ -12,6 +12,11 @@ const sizes = {
 };
 
 class Logo extends Component {
+  static propTypes = {
+    size: PropTypes.string,
+    onClick: PropTypes.func
+  };
+
   static defaultProps = {
     size: "small"
   };
@@ -21,10 +26,5 @@ class Logo extends Component {
     return <LogoWrapper onClick={onClick} multiply={sizes[size]} />;
   }
 }
-
-Logo.propTypes = {
-  /** code that the logo should execute when clicked */
-  onClick: PropTypes.func
-};
 
 export default Logo;

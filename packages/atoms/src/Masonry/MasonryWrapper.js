@@ -1,20 +1,21 @@
 import styled from "styled-components";
 import system from "system-components";
 
-const MasonryWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-  width: 100%;
-`;
+const MasonryWrapper = system({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignContent: "center",
+  width: "100%"
+});
 
-const ColumnWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-content: stretch;
-`;
+const ColumnWrapper = system({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  alignContent: "stretch",
+  width: ["100%", "auto", "auto"]
+});
 
 const ItemWrapper = system({
   mb: 6,

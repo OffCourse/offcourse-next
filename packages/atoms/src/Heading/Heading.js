@@ -7,18 +7,31 @@ import HeadingWrapper from "./HeadingWrapper";
  * Heading Component for the Offcourse Project
  */
 
+const lineHeights = {
+  small: 1,
+  normal: 2,
+  large: 5
+};
+
+const fontSizes = {
+  small: 2,
+  normal: 3,
+  large: 4
+};
+
 class Heading extends Component {
   static propTypes = {
     /** The actual text of the header */
     children: PropTypes.string.isRequired,
     /** Field that indicates the size of the header */
-    size: PropTypes.oneOf(["small", "regular"]),
+    size: PropTypes.oneOf(["small", "normal"]),
     /** Headings can optionally link to other documents, etc */
-    href: PropTypes.string
+    href: PropTypes.string,
+    onClick: PropTypes.func
   };
 
   static defaultProps = {
-    size: "regular"
+    size: "normal"
   };
 
   handleClick = event => {
@@ -36,8 +49,8 @@ class Heading extends Component {
         is={href ? "a" : "h1"}
         onClick={this.handleClick}
         href={href}
-        lineHeight={size === "small" ? 1 : 2}
-        fontSize={size === "small" ? 2 : 3}
+        lineHeight={lineHeights[size]}
+        fontSize={fontSizes[size]}
       >
         {formatTitle(children)}
       </HeadingWrapper>

@@ -19,7 +19,10 @@ class Icon extends Component {
     /** Indicates if the icon should be spinning */
     spin: PropTypes.bool,
     /** Callback that the button should execute when clicked */
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    color: PropTypes.string,
+    tabIndex: PropTypes.number,
+    is: PropTypes.string
   };
 
   static defaultProps = {
@@ -39,7 +42,7 @@ class Icon extends Component {
   }
 
   render() {
-    const { size, color, spin, tabIndex, name, href, is, onClick } = this.props;
+    const { size, color, spin, tabIndex, href, is, onClick } = this.props;
     return (
       <IconWrapper
         is={is || (href && "a") || (onClick && "button")}
@@ -48,7 +51,11 @@ class Icon extends Component {
         tabIndex={tabIndex}
         onClick={onClick}
       >
-        <FontAwesomeIcon icon={this.icon()} size={Icon.sizes[size]} spin={spin} />
+        <FontAwesomeIcon
+          icon={this.icon()}
+          size={Icon.sizes[size]}
+          spin={spin}
+        />
       </IconWrapper>
     );
   }

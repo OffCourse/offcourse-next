@@ -1,14 +1,12 @@
 import React, { Children, Component } from "react";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
-import yup from "yup";
 import Shell from "./Shell";
 import { Field, FieldList } from "./sections";
 
 export default class Form extends Component {
   static Field = Field;
   static FieldList = FieldList;
-  static yup = yup;
 
   static propTypes = {
     /** model for the form */

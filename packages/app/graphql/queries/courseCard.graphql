@@ -1,6 +1,0 @@
-{
-  courseCard @client {
-    initialLevel
-    layout
-  }
-}

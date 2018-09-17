@@ -5,7 +5,9 @@ import OverlayWrapper from "./OverlayWrapper";
 export default class Overlay extends Component {
   static propTypes = {
     /** flag that decides if the overlay is open or closed */
-    isOpen: PropTypes.bool.isRequired
+    isOpen: PropTypes.bool.isRequired,
+    close: PropTypes.func,
+    children: PropTypes.node.isRequired
   };
 
   static defaultProps = {
@@ -30,7 +32,7 @@ export default class Overlay extends Component {
   }
 
   render() {
-    const { children, isOpen, close } = this.props;
+    const { children, isOpen } = this.props;
     const bg = isOpen ? "rgba(61, 61, 61, 0.9)" : "rgba(61,61,61,0)";
     return (
       <OverlayWrapper bg={bg} zIndex={isOpen ? 999 : -1}>

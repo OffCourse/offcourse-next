@@ -11,6 +11,7 @@ export default class CourseCardLayout extends Component {
     initialCardLevel: PropTypes.number,
     goToCollection: PropTypes.func,
     goToCourse: PropTypes.func,
+    goToCheckpoint: PropTypes.func,
     hasMore: PropTypes.bool,
     loadMore: PropTypes.func,
     layout: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
@@ -47,11 +48,20 @@ export default class CourseCardLayout extends Component {
 
   handlePositionChange = ({ currentPosition, ...rest }) => {
     const { loadMore } = this.props;
-    currentPosition === "inside" ? loadMore() : null;
+    return currentPosition === "inside" ? loadMore() : null;
   };
 
   render() {
-    const { courses, layout, goToCollection, goToCourse, initialCardLevel, onResize, hasMore } = this.props;
+    const {
+      courses,
+      layout,
+      goToCollection,
+      goToCourse,
+      goToCheckpoint,
+      initialCardLevel,
+      onResize,
+      hasMore
+    } = this.props;
     return (
       <CourseCardLayoutWrapper>
         <Masonry onResize={onResize} breakpoints={this.calculateBreakpoints()}>
@@ -61,6 +71,7 @@ export default class CourseCardLayout extends Component {
                 initialLevel={initialCardLevel}
                 onCuratorClick={goToCollection}
                 onGoalClick={goToCourse}
+                onCheckpointClick={goToCheckpoint}
                 onTagClick={goToCollection}
                 key={course.courseId}
                 layout={layout}

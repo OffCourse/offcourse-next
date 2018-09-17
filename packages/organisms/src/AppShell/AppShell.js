@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { isEmpty } from "ramda";
-import { Group, Bar } from "@offcourse/atoms";
-import {
-  NavBar,
-  MessageGroup,
-  Menu,
-  Sidebar as Layout
-} from "@offcourse/molecules";
+import { Group } from "@offcourse/atoms";
+import { NavBar, Menu, Sidebar as Layout } from "@offcourse/molecules";
 
 export default class AppShell extends Component {
   static propTypes = {
@@ -37,7 +32,7 @@ export default class AppShell extends Component {
     toggleSidebar: PropTypes.func,
     /** flag that determines whether the sidebar is open or closed */
     isSidebarOpen: PropTypes.bool,
-    /** determines the position of the navbar. This is mainly for debugging...*/
+    /** determines the position of the navbar. This is mainly for debugging... */
     position: PropTypes.oneOf(["fixed", "absolute"])
   };
 

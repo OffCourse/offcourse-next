@@ -1,31 +1,26 @@
-import yup from "yup";
+import { string, array, object } from "yup";
 
-const checkpoint = yup.object().shape({
-  task: yup
-    .string()
+const checkpoint = object().shape({
+  task: string()
     .min(5)
     .max(55)
     .required(),
-  resourceUrl: yup
-    .string()
+  resourceUrl: string()
     .url()
     .required()
 });
 
-const course = yup.object().shape({
-  goal: yup
-    .string()
+const course = object().shape({
+  goal: string()
     .min(5)
     .max(55)
     .required(),
-  checkpoints: yup
-    .array()
+  checkpoints: array()
     .of(checkpoint)
     .min(1)
     .max(7)
     .required(),
-  description: yup
-    .string()
+  description: string()
     .min(10)
     .max(210)
 });

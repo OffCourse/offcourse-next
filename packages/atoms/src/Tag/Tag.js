@@ -19,7 +19,7 @@ class Tag extends Component {
   };
 
   handleClick = event => {
-    const { onClick, children, href } = this.props;
+    const { onClick, children } = this.props;
     if (onClick) {
       event.preventDefault();
       onClick({ tag: children });

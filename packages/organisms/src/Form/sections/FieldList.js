@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import yup from "yup";
+import { object, string, array } from "yup";
 import { compose, clone, map, values, uniq, flatten } from "ramda";
 import { compact } from "../../helpers";
 import { FieldArray } from "formik";
@@ -18,7 +18,7 @@ export default class FieldList extends Component {
   };
 
   formatFieldError = error => {
-    return yup.object().isType(error)
+    return object().isType(error)
       ? map(error => error.split(".")[1], values(error))
       : error;
   };
@@ -40,13 +40,11 @@ export default class FieldList extends Component {
       return [];
     }
 
-    return yup.string().isType(errors)
-      ? [errors]
-      : this.formatFieldErrors(errors);
+    return string().isType(errors) ? [errors] : this.formatFieldErrors(errors);
   };
 
   listErrors = errors => {
-    return yup.array().isType(errors) ? errors : [];
+    return array().isType(errors) ? errors : [];
   };
 
   render() {

@@ -14,10 +14,11 @@ import PropTypes from "prop-types";
 
 const reduceIndexed = addIndex(reduce);
 
-export default class Masonry extends React.Component {
+export default class Masonry extends Component {
   static propTypes = {
     breakpoints: PropTypes.arrayOf(PropTypes.number),
-    onResize: PropTypes.func
+    onResize: PropTypes.func,
+    children: PropTypes.node.isRequired
   };
 
   static defaultProps = {
@@ -45,12 +46,16 @@ export default class Masonry extends React.Component {
   handleResize = () => {
     if (!this.masonry) return null;
     const { onResize } = this.props;
-    const { numberOfColumns } = this.state;
     const { offsetWidth } = this.masonry;
-    const proposal = this.getColumns(offsetWidth)
-    this.setState(() => { return { numberOfColumns: proposal } }, () => {
-      return onResize({ width: offsetWidth, numberOfColumns: proposal })
-    });
+    const proposal = this.getColumns(offsetWidth);
+    this.setState(
+      () => {
+        return { numberOfColumns: proposal };
+      },
+      () => {
+        return onResize({ width: offsetWidth, numberOfColumns: proposal });
+      }
+    );
   };
 
   prepareGrid() {

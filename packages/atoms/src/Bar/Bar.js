@@ -5,6 +5,7 @@ import BarWrapper from "./BarWrapper";
 export default class Bar extends Component {
   static propTypes = {
     docked: PropTypes.oneOf(["top", "bottom"]),
+    children: PropTypes.node.isRequired,
     position: PropTypes.oneOf(["fixed", "absolute"])
   };
 

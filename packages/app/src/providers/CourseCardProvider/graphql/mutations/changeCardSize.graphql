@@ -1,0 +1,3 @@
+mutation ChangeCardSize($numberOfColumns: Int, $width: Int) {
+  changeCardSize(numberOfColumns: $numberOfColumns, width: $width) @client
+}
