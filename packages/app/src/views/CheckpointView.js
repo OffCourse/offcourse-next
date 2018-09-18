@@ -13,7 +13,6 @@ class Internal extends Component {
       <MasterDetail>
         <Master>
           <CourseContainer {...this.props} />
-          <CourseActionContainer {...this.props} />
         </Master>
         <Detail>
           <CheckpointContainer {...this.props} />

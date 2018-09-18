@@ -8,9 +8,15 @@ export default class Sheet extends Component {
   };
 
   render() {
-    const { children } = this.props;
+    const { children, ...rest } = this.props;
     return (
-      <Group bg="white" px={["2em", "4em", "4em"]} py="2em">
+      <Group
+        width="100%"
+        bg="white"
+        px={["2em", "4em", "4em"]}
+        py="2em"
+        {...rest}
+      >
         {children}
       </Group>
     );

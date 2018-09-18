@@ -12,34 +12,18 @@ const Viewers = {
 
 export default class ResourceItem extends Component {
   static propTypes = {
-    resource: PropTypes.object,
-    handlers: PropTypes.object
+    resource: PropTypes.object
   };
+
   hasTags = tags => {
     return !isEmpty(tags) && !isNil(tags);
   };
 
   render() {
-    const { resource, handlers } = this.props;
+    const { resource } = this.props;
     if (!resource) return null;
-    const { title, description, resourceType, content, tags } = resource;
-    const { goToCollection } = handlers;
+    const { resourceType, content } = resource;
     const Viewer = Viewers[resourceType];
-    return (
-      <Group mb="1em">
-        <Heading size="large">{title}</Heading>
-        {description && <Text>{description}</Text>}
-        {this.hasTags(tags) && (
-          <TagGroup
-            onClick={goToCollection}
-            flex={1}
-            direction="both"
-            section="tags"
-            tags={tags}
-          />
-        )}
-        <Viewer {...content} />
-      </Group>
-    );
+    return <Viewer {...content} />;
   }
 }

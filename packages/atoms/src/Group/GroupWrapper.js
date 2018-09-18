@@ -11,6 +11,7 @@ export default system(
   },
   "width",
   "flexWrap",
+  "minWidth",
   "space",
   "height",
   "color"

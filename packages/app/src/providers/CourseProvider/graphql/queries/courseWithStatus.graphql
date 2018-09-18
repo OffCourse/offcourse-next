@@ -17,6 +17,11 @@ query course($courseQuery: CourseQuery, $courseId: String) {
       checkpointId
       resourceUrl
       completed
+      resource {
+        title
+        description
+        tags
+      }
     }
   }
 }

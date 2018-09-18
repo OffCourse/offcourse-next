@@ -5,12 +5,14 @@ import { mutations } from "../providers/CourseCardProvider";
 
 class Detail extends Component {
   render() {
-    const { children } = this.props;
+    const { children, ...rest } = this.props;
     return (
       <Group
         style={{ overflowX: "hidden" }}
-        maxWidth={["100%", "55rem", "55rem"]}
+        minWidth={["100%", "100%", "auto"]}
+        maxWidth={["100%", "100%", "55rem"]}
         flex="3"
+        {...rest}
       >
         {children}
       </Group>
@@ -45,7 +47,7 @@ export default class MasterDetail extends Component {
           <Group
             flexDirection={["column", "row", "row"]}
             alignItems={["center", "flex-start", "flex-start"]}
-            width={["100%", "auto", "auto"]}
+            width={["100%", "100%", "auto"]}
             onResize={({ width }) => changeCardSize({ variables: { width } })}
           >
             {children}

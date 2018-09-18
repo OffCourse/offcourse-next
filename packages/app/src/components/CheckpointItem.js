@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Heading, Group } from "@offcourse/atoms";
+import { Heading, Group, Text } from "@offcourse/atoms";
+import { TagGroup } from "@offcourse/molecules";
 
 export default class CheckpointItem extends Component {
   static propTypes = {
@@ -9,20 +10,24 @@ export default class CheckpointItem extends Component {
   };
 
   render() {
-    const { checkpoint, handlers } = this.props;
-    const { resource, task, course } = checkpoint;
-    const { goToCourse } = handlers;
-    const { goal } = course;
+    const { checkpoint, goToCheckpoint, goToCollection } = this.props;
+    const { resource, task } = checkpoint;
     return (
-      <Group>
-        <Group mb="1em">
-          <Heading>{task}</Heading>
-          <div>
-            <span onClick={() => goToCourse(course)}>{goal}</span>
-            <span> >> </span>
-            <span>{task}</span>
-          </div>
-        </Group>
+      <Group mb="1em">
+        <Heading onClick={goToCheckpoint}>{task}</Heading>
+        {resource && (
+          <Group>
+            <Heading size="large">{resource.title}</Heading>
+            <Text>{resource.description}</Text>
+            <TagGroup
+              onClick={goToCollection}
+              flex={1}
+              direction="both"
+              section="tags"
+              tags={resource.tags}
+            />
+          </Group>
+        )}
       </Group>
     );
   }

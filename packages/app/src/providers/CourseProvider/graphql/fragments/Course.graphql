@@ -11,5 +11,9 @@ fragment CourseData on Course {
     task
     checkpointId
     resourceUrl
+    resource {
+      title
+      tags
+    }
   }
 }
