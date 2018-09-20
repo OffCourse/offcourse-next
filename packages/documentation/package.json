@@ -15,7 +15,7 @@
     "react-dom": "^16.4.0",
     "s3-deploy": "^1.1.1",
     "styled-components": "^3.3.0",
-    "system-components": "^2.1.0"
+    "system-components": "^3.0.1"
   },
   "babel": {
     "presets": [

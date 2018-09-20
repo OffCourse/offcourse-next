@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Adopt } from "react-adopt";
-import { identity, partial, over } from "ramda";
+import { identity, partial } from "ramda";
 import View from "./View";
 import {
   CourseProvider,
@@ -15,9 +15,9 @@ const toggleCheckpoint = (
   { courseId, task, checkpointId, checked }
 ) => {
   updateStatus({ courseId, checkpointId, checked });
-  checked
-    ? flash.success(`you completed: ${task}`)
-    : flash.info(`you unchecked: ${task}`);
+  // checked
+  //   ? flash.success(`you completed: ${task}`)
+  //   : flash.info(`you unchecked: ${task}`);
 };
 
 const mapper = {

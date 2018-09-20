@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import { Route, MasterDetail, Sheet } from "../components";
-import {
-  CourseContainer,
-  CheckpointContainer,
-  CourseActionContainer
-} from "../containers";
+import { Route, MasterDetail } from "../components";
+import { CourseContainer, CheckpointContainer } from "../containers";
 
 class Internal extends Component {
   render() {

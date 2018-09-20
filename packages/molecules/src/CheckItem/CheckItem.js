@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Checkbox, Link, Item } from "@offcourse/atoms";
+import { Checkbox, Item } from "@offcourse/atoms";
 
 export default class CheckItem extends Component {
   static propTypes = {

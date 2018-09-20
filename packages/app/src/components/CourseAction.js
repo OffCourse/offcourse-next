@@ -6,7 +6,7 @@ import { Group, Button } from "@offcourse/atoms";
 export default class CourseAction extends Component {
   static propTypes = {
     course: PropTypes.object.isRequired,
-    userIsCurator: PropTypes.string.isRequired,
+    userIsCurator: PropTypes.bool.isRequired,
     userName: PropTypes.string,
     overlay: PropTypes.object.isRequired,
     goToCourse: PropTypes.func.isRequired

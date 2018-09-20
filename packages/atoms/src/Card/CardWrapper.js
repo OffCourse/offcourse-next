@@ -1,10 +1,14 @@
 import system from "system-components";
 
-const CardWrapper = system({
-  display: "block",
-  width: ["100%", "18rem", "18rem"],
-  bg: "grayScale.0"
-}).extend`
+const CardWrapper = system(
+  {
+    display: "block",
+    width: ["100%", "18rem", "18rem"],
+    bg: "grayScale.0"
+  },
+  "space",
+  "opacity"
+).extend`
   box-sizing: border-box;
   &:hover {
     section:last-child {

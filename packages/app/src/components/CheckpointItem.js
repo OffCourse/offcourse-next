@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Heading, Group, Text } from "@offcourse/atoms";
-import { TagGroup } from "@offcourse/molecules";
+import { Heading, Group, Text, Button } from "@offcourse/atoms";
+import { ButtonGroup } from "@offcourse/molecules";
 
 export default class CheckpointItem extends Component {
   static propTypes = {
@@ -13,19 +13,15 @@ export default class CheckpointItem extends Component {
     const { checkpoint, goToCheckpoint, goToCollection } = this.props;
     const { resource, task } = checkpoint;
     return (
-      <Group mb="1em">
+      <Group>
         <Heading onClick={goToCheckpoint}>{task}</Heading>
         {resource && (
           <Group>
             <Heading size="large">{resource.title}</Heading>
-            <Text>{resource.description}</Text>
-            <TagGroup
-              onClick={goToCollection}
-              flex={1}
-              direction="both"
-              section="tags"
-              tags={resource.tags}
-            />
+            {resource.description && <Text>{resource.description}</Text>}
+            <ButtonGroup pt={6}>
+              <Button size="large">Complete Task</Button>
+            </ButtonGroup>
           </Group>
         )}
       </Group>

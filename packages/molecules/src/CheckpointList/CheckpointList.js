@@ -21,7 +21,7 @@ export default class CheckpointList extends Component {
         <CheckpointItem
           onToggle={onToggle}
           onClick={onClick}
-          key={props.checkpointId}
+          key={`${props.checkpointId}-${props.completed}`}
           {...props}
         />
       ),

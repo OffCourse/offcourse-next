@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { map, filter } from "ramda";
-import { Group } from "@offcourse/atoms";
+import { map, sortWith, prop, ascend, sort } from "ramda";
 import { CourseCard } from "@offcourse/organisms";
 import { LinkGroup } from "@offcourse/molecules";
-import {
-  MasterDetail,
-  Sheet,
-  CheckpointItem,
-  CourseAction
-} from "../../components";
+import { MasterDetail, CheckpointCard, CourseAction } from "../../components";
 
 const Link = LinkGroup.Link;
 
@@ -35,7 +29,10 @@ export default class View extends Component {
     } = this.props;
     const { goToCheckpoint, goToCollection, goToCourse } = handlers;
     const { checkpoints } = course;
-    const upcoming = filter(cp => !cp.completed, checkpoints);
+    const sortedCheckpoints = sortWith(
+      [ascend(prop("completed"))],
+      checkpoints
+    );
 
     return (
       <MasterDetail>
@@ -44,7 +41,7 @@ export default class View extends Component {
             onCuratorClick={goToCollection}
             onGoalClick={goToCourse}
             onCheckpointClick={goToCheckpoint}
-            onCheckpointToggle={toggleCheckpoint}
+            onCheckpointToggle={userName ? toggleCheckpoint : null}
             onTagClick={goToCollection}
             course={course}
           />
@@ -56,29 +53,17 @@ export default class View extends Component {
             goToCourse={goToCourse}
           />
         </Master>
-        <Detail alignItems="flex-start" py="1.5rem" px={["1rem", "1rem", 0]}>
-          <LinkGroup py="1rem" px="1rem">
-            <Link>Open</Link>
-            <Link>Completed</Link>
-            <Link>All</Link>
-          </LinkGroup>
-          {map(cp => {
+        <Detail alignItems="flex-start" px={["1rem", "1rem", 0]}>
+          {map(checkpoint => {
             return (
-              <Sheet px={["1rem", "3rem", "4rem"]} mt={6}>
-                <CheckpointItem
-                  goToCollection={goToCollection}
-                  goToCheckpoint={() => {
-                    goToCheckpoint({
-                      curator: course.curator,
-                      goal: course.goal,
-                      task: cp.task
-                    });
-                  }}
-                  checkpoint={cp}
-                />
-              </Sheet>
+              <CheckpointCard
+                onCheckpointToggle={userName ? toggleCheckpoint : null}
+                onCheckpointClick={goToCheckpoint}
+                checkpoint={{ course, ...checkpoint }}
+                key={checkpoint.checkpointId}
+              />
             );
-          }, upcoming)}
+          }, checkpoints)}
         </Detail>
       </MasterDetail>
     );
