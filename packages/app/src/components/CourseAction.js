@@ -14,9 +14,12 @@ export default class CourseAction extends Component {
 
   render() {
     const { course, userIsCurator, userName, overlay, goToCourse } = this.props;
-    const { goal, fork } = course;
+    const { goal, fork, status } = course;
     const { constants, open } = overlay;
     const { SIGNING_IN, EDIT_COURSE, FORK_COURSE } = constants;
+    if (status === "loading") {
+      return null;
+    }
     const actions = [
       {
         condition: !userName,

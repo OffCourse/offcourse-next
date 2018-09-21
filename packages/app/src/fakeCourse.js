@@ -9,6 +9,7 @@ const fakeCheckpoint = n => ({
 });
 
 const fakeCourse = (x = "123") => ({
+  status: "loading",
   courseId: `{course-${x}`,
   goal: "loading",
   curator: "loading",

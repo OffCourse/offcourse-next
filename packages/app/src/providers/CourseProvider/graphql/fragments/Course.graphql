@@ -13,6 +13,7 @@ fragment CourseData on Course {
     resourceUrl
     resource {
       title
+      description
       tags
     }
   }

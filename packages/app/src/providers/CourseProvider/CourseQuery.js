@@ -28,6 +28,7 @@ export default class CourseQuery extends Component {
             if (error) {
               return children(fakeCourse("error"));
             }
+            // return children({ ...fakeCourse(), status: "loading" });
             return children(data.course);
           }}
         </Query>

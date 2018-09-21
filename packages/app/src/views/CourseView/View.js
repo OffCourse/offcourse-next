@@ -57,7 +57,9 @@ export default class View extends Component {
           {map(checkpoint => {
             return (
               <CheckpointCard
-                onCheckpointToggle={userName ? toggleCheckpoint : null}
+                status={course.status}
+                checkable={!!userName}
+                onCheckpointToggle={toggleCheckpoint}
                 onCheckpointClick={goToCheckpoint}
                 checkpoint={{ course, ...checkpoint }}
                 key={checkpoint.checkpointId}

@@ -3,7 +3,7 @@ import system from "system-components";
 const CardWrapper = system(
   {
     display: "block",
-    width: ["100%", "18rem", "18rem"],
+    width: "100%",
     bg: "grayScale.0"
   },
   "space",

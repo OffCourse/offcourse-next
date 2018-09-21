@@ -6,27 +6,20 @@ import CardWrapper from "./CardWrapper";
 
 export default class Card extends Component {
   static propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    inactive: PropTypes.bool
   };
 
   renderSections() {
     const { children, p, px, py, pt, pb, pl, pr } = this.props;
+    const padding = { p, px, py, pt, pb, pl, pr };
     return Children.map(children, (child, index) => {
       if (!child) {
         return null;
       }
       const { inverse } = child.props;
       return (
-        <Section
-          p={p}
-          px={px}
-          py={py}
-          pt={pt}
-          pb={pb}
-          pl={pl}
-          pr={pr}
-          bg={inverse ? "grayScale.3" : "white"}
-        >
+        <Section {...padding} bg={inverse ? "grayScale.3" : "white"}>
           {child}
         </Section>
       );
@@ -34,10 +27,15 @@ export default class Card extends Component {
   }
 
   render() {
+    const { inactive } = this.props;
     const rest = omit(
-      ["p", "px", "py", "pt", "pb", "pl", "pr", "children"],
+      ["inactive", "p", "px", "py", "pt", "pb", "pl", "pr", "children"],
       this.props
     );
-    return <CardWrapper {...rest}>{this.renderSections()}</CardWrapper>;
+    return (
+      <CardWrapper opacity={inactive ? 0.5 : 1} {...rest}>
+        {this.renderSections()}
+      </CardWrapper>
+    );
   }
 }

@@ -8,10 +8,14 @@ class Detail extends Component {
     const { children, ...rest } = this.props;
     return (
       <Group
-        style={{ overflowX: "hidden" }}
-        minWidth={["100%", "100%", "auto"]}
+        minWidth={["100%", "100%", "25rem"]}
+        width={["100%", "100%", "55rem"]}
         maxWidth={["100%", "100%", "55rem"]}
+        height="calc(100vh - 2rem)"
+        overflow={"hidden scroll"}
+        mr={[0, 0, 6]}
         flex="3"
+        pb={[6, 6, "4rem"]}
         {...rest}
       >
         {children}
@@ -27,6 +31,7 @@ class Master extends Component {
       <Group
         display={["none", "none", "flex"]}
         alignItems="center"
+        position="sticky"
         width="100%"
         p={6}
       >
@@ -49,6 +54,8 @@ export default class MasterDetail extends Component {
             alignItems={["center", "flex-start", "flex-start"]}
             width={["100%", "100%", "auto"]}
             onResize={({ width }) => changeCardSize({ variables: { width } })}
+            height="calc(100vh - 2rem)"
+            overflow="hidden"
           >
             {children}
           </Group>

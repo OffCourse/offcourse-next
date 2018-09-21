@@ -30,6 +30,7 @@ class Checkbox extends Component {
 
   handleClick = e => {
     e.preventDefault();
+    e.stopPropagation();
     const { onToggle } = this.props;
     this.setState(
       ({ checked }) => ({ checked: !checked }),
