@@ -1,7 +1,53 @@
-#import "../fragments/Course.graphql"
-
-query course($courseQuery: CourseQuery, $courseId: String) {
-  course(courseQuery: $courseQuery, courseId: $courseId) {
-    ...CourseData
+query course(
+  $courseQuery: CourseQuery
+  $courseId: String
+  $task: String
+  $isAuthenticated: Boolean!
+  $needsContent: Boolean!
+) {
+  course(courseQuery: $courseQuery, task: $task, courseId: $courseId) {
+    goal
+    avatarUrl
+    curator
+    checkpoint(task: $task) @include(if: $needsContent) {
+      task
+      checkpointId
+      resourceUrl
+      completed @include(if: $isAuthenticated)
+      resource {
+        content {
+          ... on HTML {
+            markdown
+          }
+          ... on Video {
+            videoId
+            videoProvider
+          }
+        }
+        title
+        description
+        tags
+      }
+    }
+    fork @include(if: $isAuthenticated) {
+      curator
+      goal
+    }
+    timestamp
+    courseId
+    description
+    revision
+    tags
+    checkpoints {
+      task
+      checkpointId
+      resourceUrl
+      completed @include(if: $isAuthenticated)
+      resource @skip(if: $needsContent) {
+        title
+        description
+        tags
+      }
+    }
   }
 }
