@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { identity } from "ramda";
 import { ExpandableCard as Card } from "@offcourse/molecules";
 import HeaderSection from "./HeaderSection";
-import ResourceSection from "./resourceSection";
+import ResourceSection from "./ResourceSection";
 
 export default class CheckpointCard extends Component {
   static propTypes = {
