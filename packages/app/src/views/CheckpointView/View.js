@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { MasterDetail, CourseAction, CheckpointCard } from "../../components";
 import { CourseCard } from "@offcourse/organisms";
 import PropTypes from "prop-types";
-import { check } from "graphql-anywhere";
+import { Group } from "@offcourse/atoms";
 
 export default class CheckpointView extends Component {
   static propTypes = {
@@ -26,7 +26,7 @@ export default class CheckpointView extends Component {
     } = this.props;
     const { goToCheckpoint, goToCollection, goToCourse } = handlers;
     const { checkpoint } = course;
-    console.log(course);
+    console.log(checkpoint.resourceUrl);
     return (
       <MasterDetail>
         <Master>
@@ -48,6 +48,7 @@ export default class CheckpointView extends Component {
         </Master>
         <Detail>
           <CheckpointCard
+            pt={6}
             status={course.status}
             checkable={!!userName}
             onCheckpointToggle={toggleCheckpoint}

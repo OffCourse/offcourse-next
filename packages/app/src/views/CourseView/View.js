@@ -53,7 +53,7 @@ export default class View extends Component {
             goToCourse={goToCourse}
           />
         </Master>
-        <Detail alignItems="flex-start" px={["1rem", "1rem", 0]}>
+        <Detail alignItems="flex-start" pt={6} px={["1rem", "1rem", 0]}>
           {map(checkpoint => {
             return (
               <CheckpointCard

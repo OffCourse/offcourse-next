@@ -11,8 +11,8 @@ export default class Card extends Component {
   };
 
   renderSections() {
-    const { children, p, px, py, pt, pb, pl, pr } = this.props;
-    const padding = { p, px, py, pt, pb, pl, pr };
+    const { children, px, pl, pr } = this.props;
+    const padding = { px, pl, pr };
     return Children.map(children, (child, index) => {
       if (!child) {
         return null;
@@ -27,13 +27,10 @@ export default class Card extends Component {
   }
 
   render() {
-    const { inactive } = this.props;
-    const rest = omit(
-      ["inactive", "p", "px", "py", "pt", "pb", "pl", "pr", "children"],
-      this.props
-    );
+    const { inactive, pt } = this.props;
+    const rest = omit(["inactive", "px", "pl", "pr", "children"], this.props);
     return (
-      <CardWrapper opacity={inactive ? 0.5 : 1} {...rest}>
+      <CardWrapper pt={pt} opacity={inactive ? 0.5 : 1} {...rest}>
         {this.renderSections()}
       </CardWrapper>
     );

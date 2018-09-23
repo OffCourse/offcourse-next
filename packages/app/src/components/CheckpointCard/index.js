@@ -40,7 +40,7 @@ export default class CheckpointCard extends Component {
   };
 
   render() {
-    const { status, checkable, checkpoint } = this.props;
+    const { status, checkable, checkpoint, pt } = this.props;
     const { task, resource, completed, checkpointId } = checkpoint;
 
     return (
@@ -51,8 +51,9 @@ export default class CheckpointCard extends Component {
         expandable={false}
         onClick={this.handleCheckpointClick}
         pl={8}
+        pt={pt}
         inactive={completed || status === "loading"}
-        mt={6}
+        mb={6}
       >
         <HeaderSection
           section="header"

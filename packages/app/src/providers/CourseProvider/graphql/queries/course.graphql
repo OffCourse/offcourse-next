@@ -15,6 +15,7 @@ query course(
       resourceUrl
       completed @include(if: $isAuthenticated)
       resource {
+        resourceType
         content {
           ... on HTML {
             markdown
@@ -44,6 +45,7 @@ query course(
       resourceUrl
       completed @include(if: $isAuthenticated)
       resource @skip(if: $needsContent) {
+        resourceType
         title
         description
         tags

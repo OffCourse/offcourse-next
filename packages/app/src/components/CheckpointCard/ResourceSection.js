@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { HTMLViewer, VideoViewer } from "../../components";
 import { Group, Text } from "@offcourse/atoms";
+
+const Viewers = {
+  html: HTMLViewer,
+  video: VideoViewer
+};
 
 export default class ResourceSection extends Component {
   static propTypes = {
@@ -9,13 +15,14 @@ export default class ResourceSection extends Component {
   };
 
   render() {
-    const { title, content, description } = this.props;
+    const { title, content, description, resourceType } = this.props;
+    const Viewer = Viewers[resourceType];
     return (
       <Group mr="3rem">
         <Text>{title}</Text>
         {content ? (
-          <Group mt={6}>
-            <Text>{content.markdown}</Text>
+          <Group width="100%" mt={6}>
+            <Viewer {...content} />
           </Group>
         ) : (
           <Group mt={6}>
