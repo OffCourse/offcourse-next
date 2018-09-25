@@ -8,7 +8,8 @@ export default class HeaderSection extends Component {
     task: PropTypes.string.isRequired,
     completed: PropTypes.bool,
     checkable: PropTypes.bool,
-    onToggle: PropTypes.func
+    onToggle: PropTypes.func,
+    onClick: PropTypes.func
   };
 
   static defaultProps = {
@@ -16,14 +17,14 @@ export default class HeaderSection extends Component {
   };
 
   render() {
-    const { task, completed, checkable, onToggle } = this.props;
+    const { task, completed, checkable, onClick, onToggle } = this.props;
     return (
       <Group
         flexDirection="row"
         alignItems="center"
         justifyContent="space-between"
       >
-        <Heading>{task}</Heading>
+        <Heading onClick={onClick}>{task}</Heading>
         {checkable && (
           <Group alignItems="flex-end" ml={6}>
             <Checkbox

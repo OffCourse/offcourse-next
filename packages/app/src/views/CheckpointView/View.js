@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { MasterDetail, CourseAction, CheckpointCard } from "../../components";
 import { CourseCard } from "@offcourse/organisms";
 import PropTypes from "prop-types";
-import { Group } from "@offcourse/atoms";
 
 export default class CheckpointView extends Component {
   static propTypes = {
@@ -26,7 +25,6 @@ export default class CheckpointView extends Component {
     } = this.props;
     const { goToCheckpoint, goToCollection, goToCourse } = handlers;
     const { checkpoint } = course;
-    console.log(checkpoint.resourceUrl);
     return (
       <MasterDetail>
         <Master>
@@ -49,8 +47,10 @@ export default class CheckpointView extends Component {
         <Detail>
           <CheckpointCard
             pt={6}
+            level={2}
             status={course.status}
             checkable={!!userName}
+            onCourseClick={goToCourse}
             onCheckpointToggle={toggleCheckpoint}
             onCheckpointClick={goToCheckpoint}
             checkpoint={{ course, ...checkpoint }}

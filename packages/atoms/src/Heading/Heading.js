@@ -43,11 +43,11 @@ class Heading extends Component {
   };
 
   render() {
-    const { children, href, size } = this.props;
+    const { children, onClick, href, size } = this.props;
     return (
       <HeadingWrapper
         is={href ? "a" : "h1"}
-        onClick={this.handleClick}
+        onClick={onClick && this.handleClick}
         href={href}
         lineHeight={lineHeights[size]}
         fontSize={fontSizes[size]}

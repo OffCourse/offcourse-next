@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { HTMLViewer, VideoViewer } from "../../components";
-import { Group, Text } from "@offcourse/atoms";
+import { Group, Text, Heading } from "@offcourse/atoms";
 
 const Viewers = {
   html: HTMLViewer,
@@ -19,7 +19,7 @@ export default class ResourceSection extends Component {
     const Viewer = Viewers[resourceType];
     return (
       <Group mr="3rem">
-        <Text>{title}</Text>
+        <Heading size="small">{title}</Heading>
         {content ? (
           <Group width="100%" mt={6}>
             <Viewer {...content} />

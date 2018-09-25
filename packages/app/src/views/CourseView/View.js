@@ -44,6 +44,7 @@ export default class View extends Component {
             onCheckpointToggle={userName ? toggleCheckpoint : null}
             onTagClick={goToCollection}
             course={course}
+            expandable={false}
           />
           <CourseAction
             userIsCurator={userIsCurator}
@@ -58,6 +59,7 @@ export default class View extends Component {
             return (
               <CheckpointCard
                 status={course.status}
+                level={checkpoint.completed ? 0 : 1}
                 checkable={!!userName}
                 onCheckpointToggle={toggleCheckpoint}
                 onCheckpointClick={goToCheckpoint}
