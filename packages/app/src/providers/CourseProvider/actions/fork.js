@@ -5,7 +5,13 @@ const fork = (forkCourse, { courseId }) => {
   return forkCourse({
     variables: { courseId },
     update: (cache, { data }) => {
-      const { checkpoints, goal, curator, ...rest } = data.forkCourse;
+      const {
+        checkpoints,
+        checkpoint,
+        goal,
+        curator,
+        ...rest
+      } = data.forkCourse;
       const checkpointsWithStatus = map(cp => {
         return { ...cp, completed: false };
       }, checkpoints);
@@ -22,35 +28,21 @@ const fork = (forkCourse, { courseId }) => {
           }
         }
       });
-
       cache.writeQuery({
         query: queries.course,
-        variables: {
-          courseId: rest.courseId
-        },
-        data: {
-          course: {
-            goal,
-            curator,
-            checkpoints,
-            fork: null,
-            ...rest
-          }
-        }
-      });
-
-      cache.writeQuery({
-        query: queries.courseWithStatus,
         variables: {
           courseQuery: {
             curator,
             goal
-          }
+          },
+          isAuthenticated: true,
+          needsContent: false
         },
         data: {
           course: {
             goal,
             curator,
+            checkpoint: null,
             checkpoints: checkpointsWithStatus,
             fork: null,
             ...rest

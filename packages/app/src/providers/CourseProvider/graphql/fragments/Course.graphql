@@ -12,6 +12,7 @@ fragment CourseData on Course {
     checkpointId
     resourceUrl
     resource {
+      resourceType
       title
       description
       tags
