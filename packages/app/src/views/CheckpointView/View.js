@@ -33,6 +33,7 @@ export default class CheckpointView extends Component {
             onGoalClick={goToCourse}
             onCheckpointClick={goToCheckpoint}
             onCheckpointToggle={userName ? toggleCheckpoint : null}
+            layout={[["header", "meta", "checkpoints", "social"]]}
             onTagClick={goToCollection}
             course={course}
           />
@@ -45,17 +46,19 @@ export default class CheckpointView extends Component {
           />
         </Master>
         <Detail>
-          <CheckpointCard
-            pt={6}
-            level={2}
-            status={course.status}
-            checkable={!!userName}
-            onCourseClick={goToCourse}
-            onCheckpointToggle={toggleCheckpoint}
-            onCheckpointClick={goToCheckpoint}
-            checkpoint={{ course, ...checkpoint }}
-            key={`${checkpoint.checkpointId}-${checkpoint.completed}`}
-          />
+          {checkpoint && (
+            <CheckpointCard
+              pt={6}
+              level={2}
+              status={course.status}
+              checkable={!!userName}
+              onCourseClick={goToCourse}
+              onCheckpointToggle={toggleCheckpoint}
+              onCheckpointClick={goToCheckpoint}
+              checkpoint={{ course, ...checkpoint }}
+              key={`${checkpoint.checkpointId}-${checkpoint.completed}`}
+            />
+          )}
         </Detail>
       </MasterDetail>
     );

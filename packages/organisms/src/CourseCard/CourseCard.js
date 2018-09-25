@@ -37,6 +37,7 @@ export default class CourseCard extends Component {
 
   static defaultProps = {
     shareMessage: "Checkout This Course",
+    expandable: false,
     onCuratorClick: identity,
     onGoalClick: identity,
     onCheckpointClick: identity,
@@ -85,6 +86,7 @@ export default class CourseCard extends Component {
       onCuratorClick,
       shareMessage,
       layout,
+      expandable,
       initialLevel
     } = this.props;
     const {
@@ -104,6 +106,7 @@ export default class CourseCard extends Component {
       <Card
         inactive={status === "loading"}
         width={["100%", "18rem", "18rem"]}
+        expandable={expandable}
         initialLevel={initialLevel}
         layout={layout}
       >

@@ -41,6 +41,7 @@ export default class View extends Component {
             onCuratorClick={goToCollection}
             onGoalClick={goToCourse}
             onCheckpointClick={goToCheckpoint}
+            layout={[["header", "meta", "description", "tags", "social"]]}
             onCheckpointToggle={userName ? toggleCheckpoint : null}
             onTagClick={goToCollection}
             course={course}
