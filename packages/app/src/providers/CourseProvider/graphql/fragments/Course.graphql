@@ -1,6 +1,10 @@
 fragment CourseData on Course {
   goal
   avatarUrl
+  fork {
+    goal
+    curator
+  }
   curator
   timestamp
   courseId
@@ -11,6 +15,7 @@ fragment CourseData on Course {
     task
     checkpointId
     resourceUrl
+    completed
     resource {
       resourceType
       title

@@ -1,22 +1,6 @@
+#import "../fragments/Course.graphql"
 mutation AddCourse($course: CourseInput!) {
   addCourse(course: $course) {
-    goal
-    curator
-    avatarUrl
-    timestamp
-    courseId
-    description
-    revision
-    tags
-    fork {
-      goal
-      curator
-    }
-    checkpoints {
-      completed
-      task
-      checkpointId
-      resourceUrl
-    }
+    ...CourseData
   }
 }
