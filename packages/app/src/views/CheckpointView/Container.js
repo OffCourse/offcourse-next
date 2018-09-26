@@ -26,7 +26,7 @@ const mapProps = ({
   toggleCheckpoint: userName
     ? partial(toggleCheckpoint, [updateStatus])
     : identity,
-  course,
+  course: course || { status: "Not Found" },
   userName,
   userIsCurator,
   overlay: { constants: OverlayProvider.constants, ...overlay }
@@ -37,13 +37,7 @@ export default class Container extends Component {
     const { match, handlers } = this.props;
     const { curator, goal, task } = match.params;
     return (
-      <Adopt
-        curator={curator}
-        goal={goal}
-        task={task}
-        mapper={mapper}
-        mapProps={mapProps}
-      >
+      <Adopt curator={curator} goal={goal} mapper={mapper} mapProps={mapProps}>
         {props => <View handlers={handlers} {...props} task={task} />}
       </Adopt>
     );

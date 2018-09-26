@@ -1,4 +1,7 @@
-query checkpoint($checkpointQuery: CheckpointQuery!) {
+query checkpoint(
+  $checkpointQuery: CheckpointQuery!
+  $isAuthenticated: Boolean!
+) {
   checkpoint(checkpointQuery: $checkpointQuery) {
     task
     tags
@@ -7,6 +10,7 @@ query checkpoint($checkpointQuery: CheckpointQuery!) {
       goal
       courseId
     }
+    completed @include(if: $isAuthenticated)
     resource {
       resourceType
       resourceUrl

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { MasterDetail, CourseAction, CheckpointCard } from "../../components";
+import { Loading } from "@offcourse/atoms";
 import { CourseCard } from "@offcourse/organisms";
 import PropTypes from "prop-types";
 
@@ -11,6 +12,7 @@ export default class CheckpointView extends Component {
     userName: PropTypes.string,
     handlers: PropTypes.object.isRequired,
     course: PropTypes.object.isRequired,
+    task: PropTypes.string.isRequired,
     overlay: PropTypes.object.isRequired
   };
 
@@ -27,6 +29,9 @@ export default class CheckpointView extends Component {
     } = this.props;
     const { goToCheckpoint, goToCollection, goToCourse } = handlers;
     const { curator, goal, status } = course;
+    if (status === "Not Found") {
+      return <div>NOT FOUND</div>;
+    }
     return (
       <MasterDetail>
         <Master>
@@ -48,10 +53,13 @@ export default class CheckpointView extends Component {
           />
         </Master>
         <Detail>
-          {course.status === "loading" ? (
-            <div>HELLO</div>
+          {status === "loading" ? (
+            <Loading />
           ) : (
-            <CheckpointProvider checkpointQuery={{ curator, goal, task }}>
+            <CheckpointProvider
+              userName={userName}
+              checkpointQuery={{ curator, goal, task }}
+            >
               {({ checkpoint }) => {
                 return (
                   <CheckpointCard

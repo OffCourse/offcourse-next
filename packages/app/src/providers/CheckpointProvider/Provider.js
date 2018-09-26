@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Query } from "../../components";
 import { queries } from "./graphql";
-import { check } from "graphql-anywhere";
 
 export default class CheckpointProvider extends Component {
   static propTypes = {
     children: PropTypes.func.isRequired,
+    userName: PropTypes.string,
     checkpointQuery: PropTypes.shape({
       goal: PropTypes.string.isRequired,
       curator: PropTypes.string.isRequired,
@@ -15,9 +15,13 @@ export default class CheckpointProvider extends Component {
   };
 
   render() {
-    const { children, checkpointQuery } = this.props;
+    const { children, userName, checkpointQuery } = this.props;
+    console.log(userName);
     return (
-      <Query query={queries.checkpoint} variables={{ checkpointQuery }}>
+      <Query
+        query={queries.checkpoint}
+        variables={{ checkpointQuery, isAuthenticated: !!userName }}
+      >
         {({ data }) => {
           const { checkpoint } = data;
           return children({ checkpoint });
