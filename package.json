@@ -13,8 +13,9 @@
     "build": "lerna run --scope @offcourse/* build",
     "publish": "lerna publish --conventional-commits --yes",
     "release:docs": "lerna run release --scope @offcourse/documentation",
-    "release:app": "lerna run release --scope @offcourse/app",
+    "release:app": "lerna run release --scope @offcourse/app -- offcourse-next",
     "release": "npm run release:app && npm run release:docs",
+    "release:beta": "lerna run release --scope @offcourse/app -- offcourse-beta",
     "precommit": "pretty-quick --staged",
     "postpublish": "npm run release"
   },

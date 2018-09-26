@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import system from "system-components";
 
 const MasonryWrapper = system({

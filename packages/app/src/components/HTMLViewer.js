@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Heading, Link } from "@offcourse/atoms";
+import { Heading } from "@offcourse/atoms";
 import PropTypes from "prop-types";
 import Markdown from "markdown-to-jsx";
 import system from "system-components";
@@ -27,7 +27,12 @@ const Code = ({ children, style, ...rest }) => {
   );
 };
 
-const Text = system({ is: "p", lineHeight: 3, fontSize: 2, py: "0.25rem" });
+const Link = system({
+  is: "a",
+  color: "black"
+});
+
+const Text = system({ is: "p", lineHeight: 3, fontSize: 2 });
 
 class HTMLViewer extends Component {
   static propTypes = {

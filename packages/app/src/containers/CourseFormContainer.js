@@ -46,6 +46,7 @@ export default class CourseFormContainer extends Component {
           ) : (
             <CourseForm
               mode="edit"
+              key={oldCourse.goal}
               course={oldCourse}
               onSubmit={async course => {
                 const { data } = await save({ ...course, courseId });

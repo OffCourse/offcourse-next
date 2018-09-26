@@ -15,6 +15,10 @@ const cache = new InMemoryCache({
     switch (object.__typename) {
       case "Course":
         return object.courseId;
+      case "Checkpoint":
+        return object.checkpointId;
+      case "Resource":
+        return object.resourceUrl;
       default:
         return defaultDataIdFromObject(object); // fall back to default handling
     }

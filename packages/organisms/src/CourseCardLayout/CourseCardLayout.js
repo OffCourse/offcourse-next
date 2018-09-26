@@ -70,6 +70,7 @@ export default class CourseCardLayout extends Component {
               <CourseCard
                 initialLevel={initialCardLevel}
                 onCuratorClick={goToCollection}
+                expandable={true}
                 onGoalClick={goToCourse}
                 onCheckpointClick={goToCheckpoint}
                 onTagClick={goToCollection}

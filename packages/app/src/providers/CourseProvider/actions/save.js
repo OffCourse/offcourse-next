@@ -6,28 +6,16 @@ const save = (addCourse, meta, proposal) => {
     variables: { course: { ...meta, ...proposal } },
     update: (cache, { data }) => {
       const { courseId, goal, curator, ...savedCourse } = data.addCourse;
-      cache.writeQuery({
-        query: queries.course,
-        variables: {
-          courseid: courseId
-        },
-        data: {
-          course: {
-            goal,
-            curator,
-            courseId,
-            ...savedCourse
-          }
-        }
-      });
 
       cache.writeQuery({
-        query: queries.courseWithStatus,
+        query: queries.course,
         variables: {
           courseQuery: {
             curator,
             goal
-          }
+          },
+          isAuthenticated: true,
+          needsContent: false
         },
         data: {
           course: {

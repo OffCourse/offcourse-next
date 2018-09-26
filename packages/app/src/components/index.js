@@ -8,3 +8,7 @@ export { default as UnderConstruction } from "./UnderConstruction";
 export { default as Route } from "./Route";
 export { default as GraphQL } from "./GraphQL";
 export { default as VideoViewer } from "./VideoViewer";
+export { default as CheckpointItem } from "./CheckpointItem";
+export { default as ResourceItem } from "./ResourceItem";
+export { default as CourseAction } from "./CourseAction";
+export { default as CheckpointCard } from "./CheckpointCard";

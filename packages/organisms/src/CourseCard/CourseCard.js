@@ -17,6 +17,7 @@ import {
 
 export default class CourseCard extends Component {
   static propTypes = {
+    status: PropTypes.string,
     onCheckpointToggle: PropTypes.func,
     onCheckpointClick: PropTypes.func,
     onCuratorClick: PropTypes.func,
@@ -36,6 +37,7 @@ export default class CourseCard extends Component {
 
   static defaultProps = {
     shareMessage: "Checkout This Course",
+    expandable: false,
     onCuratorClick: identity,
     onGoalClick: identity,
     onCheckpointClick: identity,
@@ -84,6 +86,7 @@ export default class CourseCard extends Component {
       onCuratorClick,
       shareMessage,
       layout,
+      expandable,
       initialLevel
     } = this.props;
     const {
@@ -95,11 +98,18 @@ export default class CourseCard extends Component {
       profileUrl,
       checkpoints,
       description,
-      tags
+      tags,
+      status
     } = course;
 
     return (
-      <Card initialLevel={initialLevel} layout={layout}>
+      <Card
+        inactive={status === "loading"}
+        width={["100%", "18rem", "18rem"]}
+        expandable={expandable}
+        initialLevel={initialLevel}
+        layout={layout}
+      >
         <Heading
           onClick={() => onGoalClick({ goal, curator, courseId })}
           section="header"

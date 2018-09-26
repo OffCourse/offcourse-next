@@ -1,7 +1,7 @@
 import { map, curry } from "ramda";
 import { fragments } from "../graphql";
 
-const updateStatus = (update, { courseId, checkpointId, checked }) =>
+const updateStatus = (update, { courseId, task, checkpointId, checked }) =>
   update({
     variables: {
       statusUpdate: { courseId, checkpointId }
@@ -16,6 +16,9 @@ const updateStatus = (update, { courseId, checkpointId, checked }) =>
     update: (cache, _) => {
       const { checkpoints } = cache.readFragment({
         id: courseId,
+        variables: {
+          task
+        },
         fragment: fragments.Checkpoints
       });
 

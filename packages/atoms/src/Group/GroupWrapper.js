@@ -9,9 +9,12 @@ export default system(
     maxWidth: "100vw",
     flex: 1
   },
+  "position",
   "width",
   "flexWrap",
+  "minWidth",
   "space",
+  "overflow",
   "height",
   "color"
 );

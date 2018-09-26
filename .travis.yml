@@ -15,5 +15,26 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
+  branches:
+    only:
+      - master
   script:
     - npm run publish -- --canary --npm-tag=next
+
+release-next:
+  provider: script
+  skip_cleanup: true
+  branches:
+    only:
+      - master
+  script:
+    - npm run release
+
+release-beta:
+  provider: script
+  skip_cleanup: true
+  branches:
+    only:
+      - master
+  script:
+    - npm run release:beta

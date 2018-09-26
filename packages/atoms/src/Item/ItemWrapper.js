@@ -12,10 +12,6 @@ const ItemWrapper = system(
     alignItems: "center",
     justifyContent: "space-between",
     color: "black",
-    hover: {
-      backgroundColor: "primary",
-      color: "white"
-    },
     gridTemplateColumns: "1fr"
   },
   props => ({
@@ -25,9 +21,12 @@ const ItemWrapper = system(
     userSelect: "none"
   })
 ).extend`
-  &:hover > a {
-    color: white;
+  &:hover {
+    background: ${({ theme }) => theme.colors.primary};
   }
-`
+  &:hover > a {
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;
 
 export default ItemWrapper;

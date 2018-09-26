@@ -24,7 +24,7 @@ class Heading extends Component {
     /** The actual text of the header */
     children: PropTypes.string.isRequired,
     /** Field that indicates the size of the header */
-    size: PropTypes.oneOf(["small", "normal"]),
+    size: PropTypes.oneOf(["small", "normal", "large"]),
     /** Headings can optionally link to other documents, etc */
     href: PropTypes.string,
     onClick: PropTypes.func
@@ -43,11 +43,11 @@ class Heading extends Component {
   };
 
   render() {
-    const { children, href, size } = this.props;
+    const { children, onClick, href, size } = this.props;
     return (
       <HeadingWrapper
         is={href ? "a" : "h1"}
-        onClick={this.handleClick}
+        onClick={onClick && this.handleClick}
         href={href}
         lineHeight={lineHeights[size]}
         fontSize={fontSizes[size]}

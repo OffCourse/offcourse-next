@@ -1,0 +1,27 @@
+query checkpoint($checkpointQuery: CheckpointQuery!) {
+  checkpoint(checkpointQuery: $checkpointQuery) {
+    task
+    tags
+    course {
+      curator
+      goal
+      courseId
+    }
+    resource {
+      resourceType
+      resourceUrl
+      title
+      tags
+      description
+      content {
+        ... on HTML {
+          markdown
+        }
+        ... on Video {
+          videoId
+          videoProvider
+        }
+      }
+    }
+  }
+}

@@ -14,7 +14,9 @@ class Checkbox extends Component {
     /**  allows the user to directly decide if the value is checked or not */
     checked: PropTypes.bool,
     /** an optional callback that triggers when the checkbox changes its value */
-    onToggle: PropTypes.func
+    onToggle: PropTypes.func,
+    bg: PropTypes.string,
+    size: PropTypes.string
   };
 
   static defaultProps = {
@@ -28,6 +30,7 @@ class Checkbox extends Component {
 
   handleClick = e => {
     e.preventDefault();
+    e.stopPropagation();
     const { onToggle } = this.props;
     this.setState(
       ({ checked }) => ({ checked: !checked }),
@@ -37,11 +40,17 @@ class Checkbox extends Component {
 
   render() {
     const { checked } = this.state;
+    const { bg, size } = this.props;
+    const boxSize = size === "large" ? "1.66666rem" : "1.25rem";
+    const labelSize = size === "large" ? "1.33333rem" : "1rem";
     return (
-      <CheckboxWrapper onClick={this.handleClick}>
+      <CheckboxWrapper size={boxSize} bg={bg} onClick={this.handleClick}>
         <input type="checkbox" readOnly checked={checked} />
-        <LabelWrapper>
-          <FontAwesomeIcon icon={faCheck} />
+        <LabelWrapper bg={bg} size={labelSize}>
+          <FontAwesomeIcon
+            size={size === "large" ? "lg" : "1x"}
+            icon={faCheck}
+          />
         </LabelWrapper>
       </CheckboxWrapper>
     );

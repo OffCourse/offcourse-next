@@ -13,15 +13,18 @@ const mapper = {
   updateStatus: <Mutation mutation={mutations.updateStatus} ignoreResults />,
   forkCourse: <Mutation mutation={mutations.fork} />,
   saveCourse: <Mutation mutation={mutations.save} />,
-  course: ({ userName, courseId, courseQuery, render }) => (
-    <CourseQuery
-      userName={userName}
-      courseId={courseId}
-      courseQuery={courseQuery}
-    >
-      {render}
-    </CourseQuery>
-  )
+  course: ({ userName, courseId, task, courseQuery, render }) => {
+    return (
+      <CourseQuery
+        userName={userName}
+        courseId={courseId}
+        courseQuery={courseQuery}
+        task={task}
+      >
+        {render}
+      </CourseQuery>
+    );
+  }
 };
 
 const mapProps = ({

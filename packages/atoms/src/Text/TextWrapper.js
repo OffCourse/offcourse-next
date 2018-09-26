@@ -6,6 +6,8 @@ const TextWrapper = system({
   p: 0,
   fontSize: 1,
   lineHeight: 1
-});
+}).extend` 
+  word-break: break-word;
+`;
 
 export default TextWrapper;
