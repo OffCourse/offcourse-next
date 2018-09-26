@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Query } from "../../components";
 import { queries } from "./graphql";
+import { check } from "graphql-anywhere";
 
 export default class CheckpointProvider extends Component {
   static propTypes = {

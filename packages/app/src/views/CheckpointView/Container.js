@@ -3,45 +3,32 @@ import PropTypes from "prop-types";
 import { Adopt } from "react-adopt";
 import { identity, partial } from "ramda";
 import View from "./View";
-import {
-  CourseProvider,
-  FlashProvider,
-  OverlayProvider
-} from "../../providers";
+import { CourseProvider, OverlayProvider } from "../../providers";
 
 const toggleCheckpoint = (
   updateStatus,
-  flash,
-  { courseId, task, checkpointId, checked }
+  { courseId, checkpointId, checked }
 ) => {
   updateStatus({ courseId, checkpointId, checked });
-  // checked
-  //   ? flash.success(`you completed: ${task}`)
-  //   : flash.info(`you unchecked: ${task}`);
 };
 
 const mapper = {
-  courseData: ({ curator, goal, task, render }) => (
-    <CourseProvider task={task} courseQuery={{ curator, goal }}>
-      {render}
-    </CourseProvider>
+  courseData: ({ curator, goal, render }) => (
+    <CourseProvider courseQuery={{ curator, goal }}>{render}</CourseProvider>
   ),
-  overlay: <OverlayProvider />,
-  flash: <FlashProvider />
+  overlay: <OverlayProvider />
 };
 
 const mapProps = ({
   courseData: { course, userName, userIsCurator, updateStatus },
-  flash,
   overlay
 }) => ({
   toggleCheckpoint: userName
-    ? partial(toggleCheckpoint, [updateStatus, flash])
+    ? partial(toggleCheckpoint, [updateStatus])
     : identity,
   course,
   userName,
   userIsCurator,
-  flash,
   overlay: { constants: OverlayProvider.constants, ...overlay }
 });
 
@@ -57,7 +44,7 @@ export default class Container extends Component {
         mapper={mapper}
         mapProps={mapProps}
       >
-        {props => <View handlers={handlers} {...props} />}
+        {props => <View handlers={handlers} {...props} task={task} />}
       </Adopt>
     );
   }

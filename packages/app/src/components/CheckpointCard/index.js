@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
-import { Group, Heading, Text } from "@offcourse/atoms";
+import { Group } from "@offcourse/atoms";
 import { ExpandableCard as Card } from "@offcourse/molecules";
 import HeaderSection from "./HeaderSection";
 import ResourceSection from "./ResourceSection";
@@ -12,8 +12,8 @@ const BCText = system({
   is: "a",
   m: 0,
   mb: 3,
-  lineHeight: 2,
-  fontSize: 2
+  lineHeight: 1,
+  fontSize: 1
 }).extend`
 &:hover {
   color: ${props => props.theme.colors.primary}

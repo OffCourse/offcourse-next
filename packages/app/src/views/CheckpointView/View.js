@@ -3,6 +3,7 @@ import { MasterDetail, CourseAction, CheckpointCard } from "../../components";
 import { CourseCard } from "@offcourse/organisms";
 import PropTypes from "prop-types";
 
+import { CheckpointProvider } from "../../providers";
 export default class CheckpointView extends Component {
   static propTypes = {
     toggleCheckpoint: PropTypes.func.isRequired,
@@ -21,10 +22,11 @@ export default class CheckpointView extends Component {
       userName,
       handlers,
       course,
-      overlay
+      overlay,
+      task
     } = this.props;
     const { goToCheckpoint, goToCollection, goToCourse } = handlers;
-    const { checkpoint } = course;
+    const { curator, goal, status } = course;
     return (
       <MasterDetail>
         <Master>
@@ -46,18 +48,26 @@ export default class CheckpointView extends Component {
           />
         </Master>
         <Detail>
-          {checkpoint && (
-            <CheckpointCard
-              pt={6}
-              level={2}
-              status={course.status}
-              checkable={!!userName}
-              onCourseClick={goToCourse}
-              onCheckpointToggle={toggleCheckpoint}
-              onCheckpointClick={goToCheckpoint}
-              checkpoint={{ course, ...checkpoint }}
-              key={`${checkpoint.checkpointId}-${checkpoint.completed}`}
-            />
+          {course.status === "loading" ? (
+            <div>HELLO</div>
+          ) : (
+            <CheckpointProvider checkpointQuery={{ curator, goal, task }}>
+              {({ checkpoint }) => {
+                return (
+                  <CheckpointCard
+                    pt={6}
+                    level={2}
+                    status={status}
+                    checkable={!!userName}
+                    onCourseClick={goToCourse}
+                    onCheckpointToggle={toggleCheckpoint}
+                    onCheckpointClick={goToCheckpoint}
+                    checkpoint={checkpoint}
+                    key={`${checkpoint.checkpointId}-${checkpoint.completed}`}
+                  />
+                );
+              }}
+            </CheckpointProvider>
           )}
         </Detail>
       </MasterDetail>
