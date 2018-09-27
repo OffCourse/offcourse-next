@@ -32,7 +32,6 @@ export default class View extends Component {
     if (status === "Not Found") {
       return <div>NOT FOUND</div>;
     }
-    const { checkpoints } = course;
 
     return (
       <MasterDetail>
