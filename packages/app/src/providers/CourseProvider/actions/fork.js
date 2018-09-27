@@ -8,7 +8,6 @@ const fork = (forkCourse, { courseId }) => {
     variables: { courseId },
     update: (cache, { data }) => {
       const { checkpoints, goal, curator, ...rest } = data.forkCourse;
-
       cache.writeFragment({
         id: courseId,
         fragment: fragments.Fork,

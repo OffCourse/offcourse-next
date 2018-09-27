@@ -21,7 +21,7 @@ export default class CheckpointProvider extends Component {
         query={queries.checkpoint}
         variables={{ checkpointQuery, isAuthenticated: !!userName }}
       >
-        {({ data }) => {
+      {({ data }) => {
           const { checkpoint } = data;
           return children({ checkpoint });
         }}

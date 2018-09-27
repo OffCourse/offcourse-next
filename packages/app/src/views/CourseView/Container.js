@@ -10,6 +10,7 @@ const toggleCheckpoint = (
   { courseId, checkpointId, checked }
 ) => {
   updateStatus({ courseId, checkpointId, checked });
+
 };
 
 const mapper = {
@@ -17,6 +18,7 @@ const mapper = {
     <CourseProvider courseQuery={{ curator, goal }}>{render}</CourseProvider>
   ),
   overlay: <OverlayProvider />
+
 };
 
 const mapProps = ({
@@ -29,6 +31,7 @@ const mapProps = ({
   course: course || { status: "Not Found" },
   userName,
   userIsCurator,
+
   overlay: { constants: OverlayProvider.constants, ...overlay }
 });
 

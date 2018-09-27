@@ -3,8 +3,8 @@ import { MasterDetail, CourseAction, CheckpointCard } from "../../components";
 import { Loading } from "@offcourse/atoms";
 import { CourseCard } from "@offcourse/organisms";
 import PropTypes from "prop-types";
-
 import { CheckpointProvider } from "../../providers";
+
 export default class CheckpointView extends Component {
   static propTypes = {
     toggleCheckpoint: PropTypes.func.isRequired,
@@ -32,6 +32,7 @@ export default class CheckpointView extends Component {
     if (status === "Not Found") {
       return <div>NOT FOUND</div>;
     }
+
     return (
       <MasterDetail>
         <Master>
@@ -76,6 +77,7 @@ export default class CheckpointView extends Component {
                 );
               }}
             </CheckpointProvider>
+
           )}
         </Detail>
       </MasterDetail>
