@@ -1,21 +1,13 @@
 import { map, curry } from "ramda";
 import { queries, fragments } from "../graphql";
 
+const checkpointsWithStatus = map(cp => ({ ...cp, completed: false }));
+
 const fork = (forkCourse, { courseId }) => {
   return forkCourse({
     variables: { courseId },
     update: (cache, { data }) => {
-      const {
-        checkpoints,
-        checkpoint,
-        goal,
-        curator,
-        ...rest
-      } = data.forkCourse;
-      const checkpointsWithStatus = map(cp => {
-        return { ...cp, completed: false };
-      }, checkpoints);
-
+      const { checkpoints, goal, curator, ...rest } = data.forkCourse;
       cache.writeFragment({
         id: courseId,
         fragment: fragments.Fork,
@@ -43,7 +35,7 @@ const fork = (forkCourse, { courseId }) => {
             goal,
             curator,
             checkpoint: null,
-            checkpoints: checkpointsWithStatus,
+            checkpoints: checkpointsWithStatus(checkpoints),
             fork: null,
             ...rest
           }

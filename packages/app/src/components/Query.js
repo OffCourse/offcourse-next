@@ -11,7 +11,7 @@ export default class Query extends Component {
         {({ loading, error, ...rest }) => {
           if (loading) return <Loading size="large" />;
           if (error) {
-            console.log(error);
+            console.log(query, error);
             return <Loading size="large" />;
           }
           return children({ ...rest });

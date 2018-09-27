@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { MasterDetail, CourseAction, CheckpointCard } from "../../components";
+import { Loading } from "@offcourse/atoms";
 import { CourseCard } from "@offcourse/organisms";
 import PropTypes from "prop-types";
+import { CheckpointProvider } from "../../providers";
 
 export default class CheckpointView extends Component {
   static propTypes = {
@@ -10,6 +12,7 @@ export default class CheckpointView extends Component {
     userName: PropTypes.string,
     handlers: PropTypes.object.isRequired,
     course: PropTypes.object.isRequired,
+    task: PropTypes.string.isRequired,
     overlay: PropTypes.object.isRequired
   };
 
@@ -21,10 +24,15 @@ export default class CheckpointView extends Component {
       userName,
       handlers,
       course,
-      overlay
+      overlay,
+      task
     } = this.props;
     const { goToCheckpoint, goToCollection, goToCourse } = handlers;
-    const { checkpoint } = course;
+    const { curator, goal, status } = course;
+    if (status === "Not Found") {
+      return <div>NOT FOUND</div>;
+    }
+
     return (
       <MasterDetail>
         <Master>
@@ -46,18 +54,30 @@ export default class CheckpointView extends Component {
           />
         </Master>
         <Detail>
-          {checkpoint && (
-            <CheckpointCard
-              pt={6}
-              level={2}
-              status={course.status}
-              checkable={!!userName}
-              onCourseClick={goToCourse}
-              onCheckpointToggle={toggleCheckpoint}
-              onCheckpointClick={goToCheckpoint}
-              checkpoint={{ course, ...checkpoint }}
-              key={`${checkpoint.checkpointId}-${checkpoint.completed}`}
-            />
+          {status === "loading" ? (
+            <Loading />
+          ) : (
+            <CheckpointProvider
+              userName={userName}
+              checkpointQuery={{ curator, goal, task }}
+            >
+              {({ checkpoint }) => {
+                return (
+                  <CheckpointCard
+                    pt={6}
+                    level={2}
+                    status={status}
+                    checkable={!!userName}
+                    onCourseClick={goToCourse}
+                    onCheckpointToggle={toggleCheckpoint}
+                    onCheckpointClick={goToCheckpoint}
+                    checkpoint={checkpoint}
+                    key={`${checkpoint.checkpointId}-${checkpoint.completed}`}
+                  />
+                );
+              }}
+            </CheckpointProvider>
+
           )}
         </Detail>
       </MasterDetail>

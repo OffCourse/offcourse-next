@@ -10,7 +10,7 @@ const Link = LinkGroup.Link;
 export default class View extends Component {
   static propTypes = {
     toggleCheckpoint: PropTypes.func.isRequired,
-    userIsCurator: PropTypes.bool.isRequired,
+    userIsCurator: PropTypes.bool,
     userName: PropTypes.string,
     handlers: PropTypes.object.isRequired,
     course: PropTypes.object.isRequired,
@@ -28,11 +28,11 @@ export default class View extends Component {
       overlay
     } = this.props;
     const { goToCheckpoint, goToCollection, goToCourse } = handlers;
+    const { checkpoints, status } = course;
+    if (status === "Not Found") {
+      return <div>NOT FOUND</div>;
+    }
     const { checkpoints } = course;
-    const sortedCheckpoints = sortWith(
-      [ascend(prop("completed"))],
-      checkpoints
-    );
 
     return (
       <MasterDetail>

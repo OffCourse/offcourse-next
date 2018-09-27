@@ -31,32 +31,39 @@ export default class CourseFormContainer extends Component {
     return (
       <Adopt courseId={courseId} mapper={mapper} mapProps={mapProps}>
         {({ overlay, flash, route, oldCourse, save }) => {
-          return !courseId ? (
-            <CourseForm
-              mode="create"
-              onSubmit={async course => {
-                const { data } = await save(course);
-                const { goal, curator } = data.addCourse;
-                await flash.success(`you have saved: ${goal}`);
-                await overlay.close();
-                route.handlers.goToCourse({ curator, goal });
-              }}
-              onCancel={overlay.close}
-            />
-          ) : (
-            <CourseForm
-              mode="edit"
-              key={oldCourse.goal}
-              course={oldCourse}
-              onSubmit={async course => {
-                const { data } = await save({ ...course, courseId });
-                const { goal } = data.addCourse;
-                await flash.success(`you have saved: ${goal}`);
-                await overlay.close();
-              }}
-              onCancel={overlay.close}
-            />
-          );
+          if (!courseId) {
+            return (
+              <CourseForm
+                mode="create"
+                onSubmit={async course => {
+                  const { data } = await save(course);
+                  const { goal, curator } = data.addCourse;
+                  await flash.success(`you have saved: ${goal}`);
+                  await overlay.close();
+                  route.handlers.goToCourse({ curator, goal });
+                }}
+                onCancel={overlay.close}
+              />
+            );
+          }
+          if (courseId && oldCourse) {
+            return (
+              <CourseForm
+                mode="edit"
+                key={oldCourse.goal}
+                course={oldCourse}
+                onSubmit={async course => {
+                  const { data } = await save({ ...course, courseId });
+                  const { goal } = data.addCourse;
+                  await flash.success(`you have saved: ${goal}`);
+                  await overlay.close();
+                }}
+                onCancel={overlay.close}
+              />
+            );
+          }
+          return null;
+
         }}
       </Adopt>
     );
