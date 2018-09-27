@@ -3,6 +3,7 @@ query checkpoint(
   $isAuthenticated: Boolean!
 ) {
   checkpoint(checkpointQuery: $checkpointQuery) {
+    checkpointId
     task
     tags
     course {

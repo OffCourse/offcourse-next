@@ -16,7 +16,6 @@ export default class CheckpointProvider extends Component {
 
   render() {
     const { children, userName, checkpointQuery } = this.props;
-    console.log(userName);
     return (
       <Query
         query={queries.checkpoint}
