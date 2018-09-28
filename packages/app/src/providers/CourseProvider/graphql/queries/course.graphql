@@ -6,7 +6,6 @@ query course(
 ) {
   course(courseQuery: $courseQuery, courseId: $courseId) {
     goal
-    avatarUrl
     curator
     fork @include(if: $isAuthenticated) {
       curator
@@ -23,6 +22,7 @@ query course(
       resourceUrl
       completed @include(if: $isAuthenticated)
       resource @skip(if: $needsContent) {
+        resourceUrl
         resourceType
         title
         description

@@ -9,7 +9,6 @@ query courses($first: Int, $curator: String, $tag: String, $after: String) {
       cursor
       node {
         goal
-        avatarUrl
         curator
         timestamp
         courseId

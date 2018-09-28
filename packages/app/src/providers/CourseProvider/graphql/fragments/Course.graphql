@@ -1,6 +1,5 @@
 fragment CourseData on Course {
   goal
-  avatarUrl
   fork {
     goal
     curator
