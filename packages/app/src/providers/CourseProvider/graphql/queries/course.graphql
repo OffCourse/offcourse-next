@@ -2,7 +2,6 @@ query course(
   $courseQuery: CourseQuery
   $courseId: String
   $isAuthenticated: Boolean!
-  $needsContent: Boolean!
 ) {
   course(courseQuery: $courseQuery, courseId: $courseId) {
     goal
@@ -21,8 +20,7 @@ query course(
       checkpointId
       resourceUrl
       completed @include(if: $isAuthenticated)
-      resource @skip(if: $needsContent) {
-        resourceUrl
+      resource {
         resourceType
         title
         description

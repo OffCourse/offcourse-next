@@ -14,8 +14,7 @@ const save = (addCourse, meta, proposal) => {
             curator,
             goal
           },
-          isAuthenticated: true,
-          needsContent: false
+          isAuthenticated: true
         },
         data: {
           course: {

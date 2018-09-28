@@ -27,8 +27,7 @@ const fork = (forkCourse, { courseId }) => {
             curator,
             goal
           },
-          isAuthenticated: true,
-          needsContent: false
+          isAuthenticated: true
         },
         data: {
           course: {
