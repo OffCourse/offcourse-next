@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { HTMLViewer, VideoViewer } from "../../components";
-import { Link, Group, Text, Heading } from "@offcourse/atoms";
+import { Group, Text, Heading } from "@offcourse/atoms";
 import system from "system-components";
 
 const Viewers = {
@@ -13,7 +13,7 @@ const BCText = system({
   is: "a",
   fontFamily: "base",
   m: 0,
-  mb: 3,
+  mt: 3,
   color: "black",
   lineHeight: 1,
   fontSize: 1
@@ -44,20 +44,21 @@ export default class ResourceSection extends Component {
     return (
       <Group mr="3rem">
         <Heading size="small">{title}</Heading>
-        <Group mt={4} alignItems="flex-start">
-          <BCText
-            target="_blank"
-            href={resourceUrl}
-          >{`Source: ${resourceUrl}`}</BCText>
+        <Group alignItems="flex-start">
+          <BCText target="_blank" href={resourceUrl}>
+            {content && `Source: ${resourceUrl}`}
+          </BCText>
         </Group>
         {content ? (
           <Group width="100%">
             <Viewer {...content} />
           </Group>
         ) : (
-          <Group mt={4}>
-            <Text>{description}</Text>
-          </Group>
+          description !== "false" && (
+            <Group mt={3}>
+              <Text>{description}</Text>
+            </Group>
+          )
         )}
       </Group>
     );
