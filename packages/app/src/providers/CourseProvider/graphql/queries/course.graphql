@@ -23,6 +23,7 @@ query course(
       resourceUrl
       completed @include(if: $isAuthenticated)
       resource @skip(if: $needsContent) {
+        resourceUrl
         resourceType
         title
         description
