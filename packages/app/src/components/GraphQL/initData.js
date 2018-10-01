@@ -1,5 +1,6 @@
 import { reduce, mergeDeepRight } from "ramda";
 import * as sidebar from "../../providers/SidebarProvider";
+import * as searchbar from "../../providers/SearchbarProvider";
 import * as theme from "../../providers/ThemeProvider";
 import * as overlay from "../../providers/OverlayProvider";
 import * as messages from "../../providers/FlashProvider";
@@ -74,6 +75,14 @@ const typeDefs = `
   }
 `;
 
-const components = [sidebar, theme, overlay, messages, courseCard, auth];
+const components = [
+  sidebar,
+  searchbar,
+  theme,
+  overlay,
+  messages,
+  courseCard,
+  auth
+];
 
 export default reduce(mergeDeepRight, { typeDefs }, components);

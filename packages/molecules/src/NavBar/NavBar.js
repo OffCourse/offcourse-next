@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Bar, Logo, Group, Icon, Input } from "@offcourse/atoms";
-import { Menu, MessageGroup, SearchInput } from "..";
+import { Bar, Logo, Group } from "@offcourse/atoms";
+import { Menu, MessageGroup, SearchBar } from "..";
 
 export default class NavBar extends Component {
   static Logo = Logo;
@@ -11,6 +11,8 @@ export default class NavBar extends Component {
     onLogoClick: PropTypes.func,
     /** function that is invoked when the menu button is clicked */
     onMenuButtonClick: PropTypes.func,
+    onSearchButtonClick: PropTypes.func,
+    isSearchbarOpen: PropTypes.bool,
     /** array of objects that define the links in the menu */
     links: PropTypes.arrayOf(
       PropTypes.shape({
@@ -47,7 +49,10 @@ export default class NavBar extends Component {
       links,
       onLogoClick,
       messages,
+      isSearchbarOpen,
       onMenuButtonClick,
+      onSearch,
+      onSearchButtonClick,
       position
     } = this.props;
     return (
@@ -70,11 +75,15 @@ export default class NavBar extends Component {
             links={links}
           />
           <div style={{ display: "flex" }}>
-            <SearchInput.Button onClick={() => console.log("HI")} />
+            <SearchBar.Button onClick={onSearchButtonClick} />
             <Menu.Button onClick={onMenuButtonClick} />
           </div>
         </Group>
-        <SearchInput />
+        <SearchBar
+          key={isSearchbarOpen}
+          onSearch={onSearch}
+          isOpen={isSearchbarOpen}
+        />
         <MessageGroup messages={messages} />
       </Bar>
     );
