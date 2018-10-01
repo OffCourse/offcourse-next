@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Bar, Logo, Group } from "@offcourse/atoms";
-import { Menu, MessageGroup } from "..";
+import { Bar, Logo, Group, Icon, Input } from "@offcourse/atoms";
+import { Menu, MessageGroup, SearchInput } from "..";
 
 export default class NavBar extends Component {
   static Logo = Logo;
@@ -33,13 +33,13 @@ export default class NavBar extends Component {
         ])
       })
     ),
-    /** determines the position of the navbar. This is mainly for debugging...*/
+    /** determines the position of the navbar. This is mainly for debugging... */
     position: PropTypes.oneOf(["fixed", "absolute"])
   };
 
   static defaultProps = {
-    onLogoClick: () => { },
-    onMenuClick: () => { }
+    onLogoClick: () => {},
+    onMenuClick: () => {}
   };
 
   render() {
@@ -51,7 +51,6 @@ export default class NavBar extends Component {
       position
     } = this.props;
     return (
-
       <Bar position={position}>
         <Group
           flexDirection="row"
@@ -70,8 +69,12 @@ export default class NavBar extends Component {
             direction="horizontal"
             links={links}
           />
-          <Menu.Button onClick={onMenuButtonClick} />
+          <div style={{ display: "flex" }}>
+            <SearchInput.Button onClick={() => console.log("HI")} />
+            <Menu.Button onClick={onMenuButtonClick} />
+          </div>
         </Group>
+        <SearchInput />
         <MessageGroup messages={messages} />
       </Bar>
     );

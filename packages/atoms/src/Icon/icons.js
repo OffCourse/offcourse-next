@@ -10,16 +10,17 @@ import {
   faEye as eye,
   faClock as clock,
   faRocket as rocket,
+  faSearch as search,
   faThermometerEmpty as beginner,
   faThermometerHalf as advanced,
   faThermometerFull as expert,
-  faCalendarAlt as calendar,
-} from '@fortawesome/free-solid-svg-icons'
+  faCalendarAlt as calendar
+} from "@fortawesome/free-solid-svg-icons";
 
 import {
   faFacebook as facebook,
   faTwitter as twitter
-} from '@fortawesome/free-brands-svg-icons'
+} from "@fortawesome/free-brands-svg-icons";
 
 export {
   arrowDown,
@@ -38,5 +39,6 @@ export {
   asterisk,
   calendar,
   facebook,
+  search,
   twitter
-}
+};
