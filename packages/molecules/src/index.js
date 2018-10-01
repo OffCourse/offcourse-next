@@ -16,6 +16,7 @@ export { default as Menu } from "./Menu";
 export { default as Modal } from "./Modal";
 export { default as NavBar } from "./NavBar";
 export { default as PasswordInput } from "./PasswordInput";
+export { default as SearchBar } from "./SearchBar";
 export { default as Share } from "./Share";
 export { default as Sidebar } from "./Sidebar";
 export { default as SortableList } from "./SortableList";

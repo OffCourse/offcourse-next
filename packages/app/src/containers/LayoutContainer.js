@@ -7,6 +7,7 @@ import { OverlayContainer } from "../containers";
 import { Route } from "../components";
 
 import {
+  SearchbarProvider,
   SidebarProvider,
   OverlayProvider,
   AuthProvider,
@@ -16,6 +17,7 @@ import {
 
 const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = OverlayProvider.constants;
 const mapper = {
+  searchbar: <SearchbarProvider />,
   sidebar: <SidebarProvider />,
   auth: <AuthProvider />,
   overlay: <OverlayProvider />,
@@ -85,14 +87,17 @@ export default class LayoutContainer extends Component {
     const { children } = this.props;
     return (
       <Adopt mapper={mapper}>
-        {({ sidebar, auth, overlay, flash, theme, route }) => {
-          const { goHome } = route.handlers;
+        {({ sidebar, searchbar, auth, overlay, flash, theme, route }) => {
+          const { goHome, goToCollection } = route.handlers;
           return (
             <AppShell
               position="fixed"
               messages={flash.messages}
-              onLogoClick={goHome}
+              onLogoClick={() => searchbar.close() && goHome()}
               toggleSidebar={sidebar.toggle}
+              toggleSearchbar={searchbar.toggle}
+              isSearchbarOpen={searchbar.isOpen}
+              onSearch={({ searchTerm }) => goToCollection({ tag: searchTerm })}
               isSidebarOpen={sidebar.isOpen}
               links={[
                 ...this.createLinks({

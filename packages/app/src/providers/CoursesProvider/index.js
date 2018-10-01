@@ -21,6 +21,9 @@ export default class CoursesProvider extends Component {
           if (loading) {
             return children({ courses: fakeCourses(7, 15) });
           }
+          if (!data.courses) {
+            return [];
+          }
           const { edges, pageInfo } = data.courses;
           const courses = map(prop("node"), edges);
           const hasMore = pageInfo.hasNextPage;

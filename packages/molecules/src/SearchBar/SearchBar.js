@@ -1,0 +1,79 @@
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { identity } from "ramda";
+import { Group, Icon, Input } from "@offcourse/atoms";
+import system from "system-components";
+
+const SearchInputWrapper = system({
+  is: "form",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  justifyContent: "flex-start",
+  maxWidth: "100vw",
+  flex: 1
+}).extend`
+  border-bottom: ${props => props.theme.borders[2]};
+  border-color: ${props => props.theme.colors.grayScale[2]};
+  &:hover {
+      border-color: ${({ theme }) => theme.colors.primary};
+  }
+`;
+
+export default class SearchInput extends Component {
+  state = {
+    searchTerm: null
+  };
+
+  handleChange = e => {
+    const { onSearch } = this.props;
+    e.preventDefault();
+    this.setState({ searchTerm: e.target.value }, () =>
+      onSearch({ searchTerm: this.state.searchTerm })
+    );
+  };
+
+  handleSubmit = e => {
+    const { onSearch } = this.props;
+    e.preventDefault();
+    onSearch({ searchTerm: this.state.searchTerm });
+  };
+
+  static propTypes = {
+    isOpen: PropTypes.bool,
+    onSearch: PropTypes.func,
+    searchTerm: PropTypes.string
+  };
+
+  static defaultProps = {
+    isOpen: false,
+    onSearch: identity
+  };
+
+  static Button = ({ onClick }) => {
+    return (
+      <div style={{ marginRight: "1rem" }}>
+        <Icon name="search" onClick={onClick} />
+      </div>
+    );
+  };
+
+  render() {
+    const { isOpen } = this.props;
+    return isOpen ? (
+      <SearchInputWrapper
+        onSubmit={this.handleSubmit}
+        justifyContent="stretch"
+        alignItems="stretch"
+      >
+        <Input
+          name="search"
+          variant="small"
+          onChange={this.handleChange}
+          placeholder="search term"
+          value={this.state.searchTerm}
+        />
+      </SearchInputWrapper>
+    ) : null;
+  }
+}

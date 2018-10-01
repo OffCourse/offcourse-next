@@ -1,0 +1,3 @@
+mutation ToggleSearchbar {
+  toggleSearchbar @client
+}

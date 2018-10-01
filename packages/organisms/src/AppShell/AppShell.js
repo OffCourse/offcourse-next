@@ -28,24 +28,31 @@ export default class AppShell extends Component {
         ])
       })
     ),
-    /** function that triggers the sidebar to open or close */
+    onLogoClick: PropTypes.func,
     toggleSidebar: PropTypes.func,
+    /** function that triggers the sidebar to open or close */
+    toggleSearchbar: PropTypes.func,
     /** flag that determines whether the sidebar is open or closed */
     isSidebarOpen: PropTypes.bool,
+    isSearchbarOpen: PropTypes.bool,
     /** determines the position of the navbar. This is mainly for debugging... */
     position: PropTypes.oneOf(["fixed", "absolute"])
   };
 
   static defaultProps = {
-    isSidebarOpen: false
+    isSidebarOpen: false,
+    isSearchbarOpen: true
   };
 
   renderNavBar = () => {
     const {
       links,
       onLogoClick,
+      onSearch,
       messages,
       toggleSidebar,
+      toggleSearchbar,
+      isSearchbarOpen,
       position
     } = this.props;
     return (
@@ -53,6 +60,9 @@ export default class AppShell extends Component {
         onLogoClick={onLogoClick}
         messages={messages}
         onMenuButtonClick={toggleSidebar}
+        onSearchButtonClick={toggleSearchbar}
+        isSearchbarOpen={isSearchbarOpen}
+        onSearch={onSearch}
         links={links}
         position={position}
       />

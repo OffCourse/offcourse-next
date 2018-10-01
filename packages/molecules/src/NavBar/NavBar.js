@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Bar, Logo, Group } from "@offcourse/atoms";
-import { Menu, MessageGroup } from "..";
+import { Menu, MessageGroup, SearchBar } from "..";
 
 export default class NavBar extends Component {
   static Logo = Logo;
@@ -11,6 +11,8 @@ export default class NavBar extends Component {
     onLogoClick: PropTypes.func,
     /** function that is invoked when the menu button is clicked */
     onMenuButtonClick: PropTypes.func,
+    onSearchButtonClick: PropTypes.func,
+    isSearchbarOpen: PropTypes.bool,
     /** array of objects that define the links in the menu */
     links: PropTypes.arrayOf(
       PropTypes.shape({
@@ -33,13 +35,13 @@ export default class NavBar extends Component {
         ])
       })
     ),
-    /** determines the position of the navbar. This is mainly for debugging...*/
+    /** determines the position of the navbar. This is mainly for debugging... */
     position: PropTypes.oneOf(["fixed", "absolute"])
   };
 
   static defaultProps = {
-    onLogoClick: () => { },
-    onMenuClick: () => { }
+    onLogoClick: () => {},
+    onMenuClick: () => {}
   };
 
   render() {
@@ -47,11 +49,13 @@ export default class NavBar extends Component {
       links,
       onLogoClick,
       messages,
+      isSearchbarOpen,
       onMenuButtonClick,
+      onSearch,
+      onSearchButtonClick,
       position
     } = this.props;
     return (
-
       <Bar position={position}>
         <Group
           flexDirection="row"
@@ -70,8 +74,16 @@ export default class NavBar extends Component {
             direction="horizontal"
             links={links}
           />
-          <Menu.Button onClick={onMenuButtonClick} />
+          <div style={{ display: "flex" }}>
+            <SearchBar.Button onClick={onSearchButtonClick} />
+            <Menu.Button onClick={onMenuButtonClick} />
+          </div>
         </Group>
+        <SearchBar
+          key={isSearchbarOpen}
+          onSearch={onSearch}
+          isOpen={isSearchbarOpen}
+        />
         <MessageGroup messages={messages} />
       </Bar>
     );
