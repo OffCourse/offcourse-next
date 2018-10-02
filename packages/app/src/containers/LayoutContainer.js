@@ -97,7 +97,12 @@ export default class LayoutContainer extends Component {
               toggleSidebar={sidebar.toggle}
               toggleSearchbar={searchbar.toggle}
               isSearchbarOpen={searchbar.isOpen}
-              onSearch={({ searchTerm }) => goToCollection({ tag: searchTerm })}
+              onSearchChange={({ searchTerm }) =>
+                goToCollection({ searchTerm })
+              }
+              onSearchSubmit={({ searchTerm }) =>
+                searchbar.close() && goToCollection({ searchTerm })
+              }
               isSidebarOpen={sidebar.isOpen}
               links={[
                 ...this.createLinks({

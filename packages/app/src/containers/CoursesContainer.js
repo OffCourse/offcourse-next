@@ -5,8 +5,8 @@ import { CourseCardProvider, CoursesProvider } from "../providers";
 import { CourseCardLayout } from "@offcourse/organisms";
 
 const mapper = {
-  collection: ({ curator, tag, render }) => (
-    <CoursesProvider curator={curator} tag={tag}>
+  collection: ({ searchTerm, curator, tag, render }) => (
+    <CoursesProvider curator={curator} tag={tag || searchTerm}>
       {render}
     </CoursesProvider>
   ),
@@ -31,10 +31,15 @@ class CoursesContainer extends Component {
 
   render() {
     const { match, handlers } = this.props;
-    const { curator, tag } = match.params;
+    const { curator, tag, searchTerm } = match.params;
     const { goToCollection, goToCourse, goToCheckpoint } = handlers;
     return (
-      <Adopt curator={curator} tag={tag} mapper={mapper}>
+      <Adopt
+        curator={curator}
+        tag={tag}
+        searchTerm={searchTerm}
+        mapper={mapper}
+      >
         {({ collection, courseCard }) => {
           return (
             <CourseCardLayout

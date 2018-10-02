@@ -26,17 +26,17 @@ export default class SearchInput extends Component {
   };
 
   handleChange = e => {
-    const { onSearch } = this.props;
+    const { onSearchChange } = this.props;
     e.preventDefault();
     this.setState({ searchTerm: e.target.value }, () =>
-      onSearch({ searchTerm: this.state.searchTerm })
+      onSearchChange({ searchTerm: this.state.searchTerm })
     );
   };
 
   handleSubmit = e => {
-    const { onSearch } = this.props;
+    const { onSearchSubmit } = this.props;
     e.preventDefault();
-    onSearch({ searchTerm: this.state.searchTerm });
+    onSearchSubmit({ searchTerm: this.state.searchTerm });
   };
 
   static propTypes = {
@@ -68,6 +68,8 @@ export default class SearchInput extends Component {
       >
         <Input
           name="search"
+          autocomplete={false}
+          autofocus={true}
           variant="small"
           onChange={this.handleChange}
           placeholder="search term"
