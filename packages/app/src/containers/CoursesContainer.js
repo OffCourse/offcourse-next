@@ -6,7 +6,7 @@ import { CourseCardLayout } from "@offcourse/organisms";
 
 const mapper = {
   collection: ({ searchTerm, curator, tag, render }) => (
-    <CoursesProvider curator={curator} tag={tag || searchTerm}>
+    <CoursesProvider searchTerm={searchTerm} curator={curator} tag={tag}>
       {render}
     </CoursesProvider>
   ),

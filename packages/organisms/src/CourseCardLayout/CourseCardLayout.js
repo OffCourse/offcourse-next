@@ -46,9 +46,9 @@ export default class CourseCardLayout extends Component {
     });
   }
 
-  handlePositionChange = ({ currentPosition, ...rest }) => {
+  handlePositionChange = ({ ...rest }) => {
     const { loadMore } = this.props;
-    return currentPosition === "inside" ? loadMore() : null;
+    console.log(rest);
   };
 
   render() {
@@ -85,6 +85,7 @@ export default class CourseCardLayout extends Component {
         <Waypoint
           key={courses.length}
           onPositionChange={this.handlePositionChange}
+          onLeave={console.log}
           onEnter={this.handlePositionChange}
         >
           <Group alignItems="center">

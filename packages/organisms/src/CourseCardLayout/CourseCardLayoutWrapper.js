@@ -5,6 +5,7 @@ export default system({
   pr: [6, 0, 0],
   bg: "grayScale.1",
   width: "100%",
+  height: "100%",
   flexDirection: "column",
   overflow: "auto",
   display: "flex"

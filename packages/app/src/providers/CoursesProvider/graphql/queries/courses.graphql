@@ -1,5 +1,17 @@
-query courses($first: Int, $curator: String, $tag: String, $after: String) {
-  courses(first: $first, curator: $curator, tag: $tag, after: $after) {
+query courses(
+  $first: Int
+  $curator: String
+  $tag: String
+  $searchTerm: String
+  $after: String
+) {
+  courses(
+    first: $first
+    curator: $curator
+    tag: $tag
+    searchTerm: $searchTerm
+    after: $after
+  ) {
     pageInfo {
       startCursor
       endCursor

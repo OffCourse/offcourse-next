@@ -28,7 +28,7 @@ export default class Route extends Component {
               if (searchTerm) {
                 history.push(`/search/${searchTerm}`);
               }
-              if (curator || tag | searchTerm) {
+              if (!curator && !tag && !searchTerm) {
                 history.push("/");
               }
             },
