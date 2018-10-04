@@ -5,10 +5,9 @@ export default system({
   pr: [6, 0, 0],
   bg: "grayScale.1",
   width: "100%",
-  height: "100%",
+  height: "100vh",
   flexDirection: "column",
-  overflow: "auto",
-  display: "flex"
+  overflow: "auto"
 }).extend`
   box-sizing: border-box
 `;
