@@ -29,8 +29,8 @@ export default class Masonry extends Component {
   state = { numberOfColumns: 1 };
 
   componentDidMount() {
-    this.handleResize();
     window.addEventListener("resize", this.handleResize);
+    this.handleResize();
   }
 
   getColumns(containerWidth) {

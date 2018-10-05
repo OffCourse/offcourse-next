@@ -63,8 +63,8 @@ class Input extends Component {
         {variant === "textarea" ? (
           <TextAreaWrapper
             is="textarea"
-            autocomplete={autocomplete}
-            autofocus={autofocus}
+            autoComplete={`${autocomplete}`}
+            autoFocus={autofocus}
             rows="4"
             name={name}
             disabled={disabled}
