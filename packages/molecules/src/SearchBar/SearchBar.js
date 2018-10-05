@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
-import { Group, Icon, Input } from "@offcourse/atoms";
+import { Icon, Input } from "@offcourse/atoms";
 import system from "system-components";
 
 const SearchInputWrapper = system({
