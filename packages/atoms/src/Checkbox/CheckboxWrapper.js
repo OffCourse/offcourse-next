@@ -10,6 +10,8 @@ const OuterWrapper = system({
 });
 
 export default styled(OuterWrapper)`
+  user-select: none;
+
   grid-template-areas: "checkbox";
 
   > input[type="checkbox"] {

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { formatTitle } from "../helpers";
-import { Label } from "..";
 import MessageWrapper from "./MessageWrapper";
 
 const background = {
@@ -41,11 +40,6 @@ class Message extends Component {
         bg={basic ? null : background[variant]}
         color={color}
       >
-        {variant !== "default" && (
-          <Label color={color} is="span">
-            {variant}
-          </Label>
-        )}
         {formatTitle(children)}
       </MessageWrapper>
     );

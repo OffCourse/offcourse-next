@@ -21,14 +21,14 @@ const breakpoints = [624, 928];
 
 <Masonry breakpoints={breakpoints}>
 { fragments.map((fragment, index) => (
-  <Card key={index}>
-    <Heading size="small" section="title">
+  <Card width="18rem" key={index}>
+    <Heading size={ Heading.sizes.SMALL } section="title">
       {`Masonry Example ${index + 1}`}
     </Heading>
     <Group section="body">
-      <Text size="small">{fragment}</Text>
+      <Text size={ Text.sizes.SMALL }>{fragment}</Text>
     </Group>
-    <Button size="large" variant="warning" onClick={
+    <Button size={ Button.sizes.LARGE } variant="warning" onClick={
       () => {
         const items = [...state.items];
         items.push(1);

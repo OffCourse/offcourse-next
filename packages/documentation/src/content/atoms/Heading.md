@@ -4,10 +4,18 @@ Heading can have a normal size
 <Heading>Regular Heading</Heading>
 ```
 
-They can be small
+They can be small...
 
 ```react
-<Heading size="small">Small Heading</Heading>
+const { SMALL } = Heading.sizes;
+<Heading size={ SMALL }>Small Heading</Heading>
+```
+
+...or large
+
+```react
+const { LARGE } = Heading.sizes;
+<Heading size={ LARGE }>Large Heading</Heading>
 ```
 
 They can link to another reference

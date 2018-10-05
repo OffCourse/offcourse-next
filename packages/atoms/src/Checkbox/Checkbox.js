@@ -1,25 +1,34 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { Icon } from "..";
 import CheckboxWrapper from "./CheckboxWrapper";
 import LabelWrapper from "./LabelWrapper";
+import { sizes } from "@offcourse/constants";
+
+const { NORMAL, LARGE } = sizes;
+
+const boxProps = {
+  NORMAL: { boxSize: "1.25rem", labelSize: "1rem" },
+  LARGE: { boxSize: "1.66666667rem", labelSize: "1.333333rem" }
+};
 
 /**
  * Checkbox component for the offcourse project
  */
 
 class Checkbox extends Component {
+  static sizes = sizes;
   static propTypes = {
     /**  allows the user to directly decide if the value is checked or not */
     checked: PropTypes.bool,
     /** an optional callback that triggers when the checkbox changes its value */
     onToggle: PropTypes.func,
     bg: PropTypes.string,
-    size: PropTypes.string
+    size: PropTypes.oneOf([NORMAL, LARGE])
   };
 
   static defaultProps = {
+    size: NORMAL,
     checked: false,
     onToggle: () => null
   };
@@ -41,16 +50,12 @@ class Checkbox extends Component {
   render() {
     const { checked } = this.state;
     const { bg, size } = this.props;
-    const boxSize = size === "large" ? "1.66666rem" : "1.25rem";
-    const labelSize = size === "large" ? "1.33333rem" : "1rem";
+    const { boxSize, labelSize } = boxProps[size];
     return (
       <CheckboxWrapper size={boxSize} bg={bg} onClick={this.handleClick}>
         <input type="checkbox" readOnly checked={checked} />
         <LabelWrapper bg={bg} size={labelSize}>
-          <FontAwesomeIcon
-            size={size === "large" ? "lg" : "1x"}
-            icon={faCheck}
-          />
+          <Icon size={size} name="checkmark" />
         </LabelWrapper>
       </CheckboxWrapper>
     );

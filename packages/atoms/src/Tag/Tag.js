@@ -30,7 +30,7 @@ class Tag extends Component {
     const { children, href } = this.props;
     return (
       <TagWrapper onClick={this.handleClick} href={href}>
-        <Text size="small">{formatTitle(children)}</Text>
+        <Text size={Text.sizes.SMALL}>{formatTitle(children)}</Text>
       </TagWrapper>
     );
   }

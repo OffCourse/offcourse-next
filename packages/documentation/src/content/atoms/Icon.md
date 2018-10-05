@@ -1,55 +1,63 @@
 These are all the icons that we use
 
 ```react|span-2
-  <Icon name="asterisk" />
+<Icon name="asterisk" />
 ```
 
 ```react|span-2
-  <Icon name="hamburger" />
+<Icon name="hamburger" />
 ```
 
 ```react|span-2
-  <Icon name="checkmark" />
+<Icon name="checkmark" />
 ```
 
 ```react|span-2
-  <Icon name="clock" />
+<Icon name="clock" />
 ```
 
 ```react|span-2
-  <Icon name="calendar" />
+<Icon name="calendar" />
 ```
 
 ```react|span-2
-  <Icon name="eye" />
+<Icon name="eye" />
 ```
 
 ```react|span-2
-  <Icon name="remove" />
+<Icon name="remove" />
 ```
 
 ```react|span-2
-  <Icon name="sort" />
+<Icon name="sort" />
 ```
 
 ```react|span-2
-  <Icon name="facebook" />
+<Icon name="facebook" />
 ```
 
 ```react|span-2
-  <Icon name="twitter" />
+<Icon name="twitter" />
 ```
 
 The icons can be deployed in three different sizes
 
-```react|span-2
-  <Icon size="small" name="twitter" />
+```react|span-1
+const { SMALL } = Icon.sizes;
+<Icon size={ SMALL } name="twitter" />
 ```
 
-```react|span-2
-  <Icon size="medium" name="twitter" />
+```react|span-1
+const { NORMAL } = Icon.sizes;
+<Icon size={ NORMAL } name="twitter" />
 ```
 
-```react|span-2
-  <Icon size="large" name="twitter" />
+```react|span-1
+const { LARGE } = Icon.sizes;
+<Icon size={ LARGE } name="twitter" />
+```
+
+```react|span-1
+const { EXTRA_LARGE } = Icon.sizes;
+<Icon size={ EXTRA_LARGE } name="twitter" />
 ```

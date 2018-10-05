@@ -14,46 +14,63 @@ const clickHandler = () => alert("ALERT");
 
 Moreover, the buttons can have meaningful variants
 
-```react|span-2
+```react|span-1
 const clickHandler = () => alert("ALERT");
-  <Button variant="primary" href="/">
-    Click Now!
-  </Button>
+const { INFO } = Button.variants;
+<Button variant={INFO} href="/">
+  Click Now!
+</Button>
 ```
 
-```react|span-2
+```react|span-1
 const clickHandler = () => alert("ALERT");
-  <Button variant="positive" onClick={clickHandler}>
-    Please Click
-  </Button>
+const { POSITIVE } = Button.variants;
+<Button variant={ POSITIVE } onClick={clickHandler}>
+  Please Click
+</Button>
 ```
 
-```react|span-2
+```react|span-1
 const clickHandler = () => alert("ALERT");
-  <Button variant="negative" onClick={clickHandler}>
-    Don't Click
-  </Button>
+const { WARNING } = Button.variants;
+<Button variant={ WARNING } onClick={clickHandler}>
+  Don't Click
+</Button>
+```
+
+```react|span-1
+const clickHandler = () => alert("ALERT");
+const { NEGATIVE } = Button.variants;
+<Button variant={ NEGATIVE } onClick={clickHandler}>
+  Don't Click
+</Button>
 ```
 
 Buttons can have three different sizes
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
-  <Button size="small" variant="primary" href="/">
-    Click!
-  </Button>
+const { INFO } = Button.variants;
+const { SMALL } = Button.sizes;
+<Button size={ SMALL } href="/">
+  Click!
+</Button>
 ```
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
-  <Button size="medium" variant="positive" onClick={clickHandler}>
-    Please Click
-  </Button>
+const { MEDIUM } = Button.sizes;
+const { INFO } = Button.variants;
+<Button size={ MEDIUM } variant={ INFO } onClick={clickHandler}>
+  Please Click
+</Button>
 ```
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
-  <Button size="large" variant="negative" onClick={clickHandler}>
-    Click Click Click Click Click
-  </Button>
+const { LARGE } = Button.sizes;
+const { INFO } = Button.variants;
+<Button size={ LARGE } variant={ INFO } onClick={clickHandler}>
+  Click Click Click Click Click
+</Button>
 ```

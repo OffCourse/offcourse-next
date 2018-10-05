@@ -7,6 +7,14 @@ The checkbox atom can be checked or not
 ```react|span-3,dark
 <Checkbox checked={false} />
 ```
+
+They also come in large
+
+```react|dark
+const { LARGE } = Checkbox.sizes;
+<Checkbox size={ LARGE} checked={true} />
+```
+
 Checkbox atoms can (and probably should…) have a callback that’s triggered on toggle
 
 ```react|dark

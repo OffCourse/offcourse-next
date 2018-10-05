@@ -11,10 +11,24 @@ Text can be displayed in the default size
   </Text>
 ```
 
-Alternatively, text can be displayed in a smaller size
+Alternatively, text can be displayed in a larger...
 
 ```react
-  <Text size="small">
+const { LARGE } = Text.sizes;
+  <Text size={LARGE}>
+    We'll lay all these little funky little things in there. That's crazy.
+    Water's like me. It's laaazy ... Boy, it always looks for the easiest way to
+    do things We're not trying to teach you a thing to copy. We're just here to
+    teach you a technique, then let you loose into the world. The man who does
+    the best job is the one who is happy at his job.
+  </Text>
+```
+
+... or a smaller size
+
+```react
+const { SMALL } = Text.sizes;
+  <Text size={SMALL}>
     We'll lay all these little funky little things in there. That's crazy.
     Water's like me. It's laaazy ... Boy, it always looks for the easiest way to
     do things We're not trying to teach you a thing to copy. We're just here to

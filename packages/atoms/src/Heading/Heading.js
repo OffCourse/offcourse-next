@@ -2,36 +2,34 @@ import React, { Component } from "react";
 import { formatTitle } from "../helpers";
 import PropTypes from "prop-types";
 import HeadingWrapper from "./HeadingWrapper";
+import { sizes } from "@offcourse/constants";
+
+const { SMALL, NORMAL, LARGE } = sizes;
+
+const textProps = {
+  SMALL: { fontSize: 2, lineHeight: 1 },
+  NORMAL: { fontSize: 3, lineHeight: 2 },
+  LARGE: { fontSize: 4, lineHeight: 5 }
+};
 
 /**
  * Heading Component for the Offcourse Project
  */
 
-const lineHeights = {
-  small: 1,
-  normal: 2,
-  large: 5
-};
-
-const fontSizes = {
-  small: 2,
-  normal: 3,
-  large: 4
-};
-
 class Heading extends Component {
+  static sizes = sizes;
   static propTypes = {
     /** The actual text of the header */
     children: PropTypes.string.isRequired,
     /** Field that indicates the size of the header */
-    size: PropTypes.oneOf(["small", "normal", "large"]),
+    size: PropTypes.oneOf([SMALL, NORMAL, LARGE]),
     /** Headings can optionally link to other documents, etc */
     href: PropTypes.string,
     onClick: PropTypes.func
   };
 
   static defaultProps = {
-    size: "normal"
+    size: NORMAL
   };
 
   handleClick = event => {
@@ -44,13 +42,14 @@ class Heading extends Component {
 
   render() {
     const { children, onClick, href, size } = this.props;
+    const { fontSize, lineHeight } = textProps[size];
     return (
       <HeadingWrapper
         is={href ? "a" : "h1"}
         onClick={onClick && this.handleClick}
         href={href}
-        lineHeight={lineHeights[size]}
-        fontSize={fontSizes[size]}
+        lineHeight={lineHeight}
+        fontSize={fontSize}
       >
         {formatTitle(children)}
       </HeadingWrapper>

@@ -23,6 +23,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.1.0-11",
     "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
     "@fortawesome/react-fontawesome": "0.1.0-11",
+    "@offcourse/constants": "^1.4.0",
     "prettier": "^1.14.2",
     "ramda": "^0.25.0",
     "styled-system": "^2.3.1",

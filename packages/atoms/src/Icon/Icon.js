@@ -3,17 +3,29 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as icons from "./icons";
 import IconWrapper from "./IconWrapper";
+import { sizes } from "@offcourse/constants";
 
 /**
  * Icon Component for the Offcourse Project
  */
 
+const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = sizes;
+
+const iconProps = {
+  SMALL: { iconSize: "xs" },
+  NORMAL: { iconSize: "1x" },
+  LARGE: { iconSize: "lg" },
+  EXTRA_LARGE: { iconSize: "2x" }
+};
+
 class Icon extends Component {
+  static sizes = sizes;
+
   static propTypes = {
     /** Name name of the icon */
     name: PropTypes.oneOf(Object.keys(icons)),
     /** Size of the icon */
-    size: PropTypes.oneOf(["small", "medium", "large"]),
+    size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE]),
     /** Url that the button should link to */
     href: PropTypes.string,
     /** Indicates if the icon should be spinning */
@@ -26,14 +38,8 @@ class Icon extends Component {
   };
 
   static defaultProps = {
-    size: "medium",
+    size: LARGE,
     spin: false
-  };
-
-  static sizes = {
-    small: "xs",
-    medium: "lg",
-    large: "2x"
   };
 
   icon() {
@@ -43,6 +49,7 @@ class Icon extends Component {
 
   render() {
     const { size, color, spin, tabIndex, href, is, onClick } = this.props;
+    const { iconSize } = iconProps[size];
     return (
       <IconWrapper
         is={is || (href && "a") || (onClick && "button")}
@@ -51,11 +58,7 @@ class Icon extends Component {
         tabIndex={tabIndex}
         onClick={onClick}
       >
-        <FontAwesomeIcon
-          icon={this.icon()}
-          size={Icon.sizes[size]}
-          spin={spin}
-        />
+        <FontAwesomeIcon icon={this.icon()} size={iconSize} spin={spin} />
       </IconWrapper>
     );
   }

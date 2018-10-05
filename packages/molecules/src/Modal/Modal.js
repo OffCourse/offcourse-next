@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Section, Heading, Container, Overlay } from "@offcourse/atoms";
+import { Section, Heading, Overlay } from "@offcourse/atoms";
+import Container from "./Container";
 
 class Modal extends Component {
   static Heading = props => (
