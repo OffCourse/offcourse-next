@@ -1,4 +1,4 @@
-Basic Form
+This organism creates a basic form
 
 ```react|span-4
 const onSubmit = (values, actions) => {
@@ -37,7 +37,7 @@ const Field = Form.Field;
 </Form>
 ```
 
-Pimped Out Form
+The Form organism can also be used to create more extensive forms by including more options and functionalities
 
 ```react|span-4
 state: { errors: {}}
