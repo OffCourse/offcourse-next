@@ -1,3 +1,5 @@
+Multiple tags can be combined into a group
+
 ```react
 const Tag = TagGroup.Tag;
 <TagGroup>
@@ -27,10 +29,12 @@ const Tag = TagGroup.Tag;
   <Tag>Fatback</Tag>
 </TagGroup>
 ```
+Alternatively, tags can be structured as multiple variables in a single array
 
 ```react
 <TagGroup tags={["Prosciutto", "Short Ribs", "Pork", "Spicy", "Jalapeno", "Tri-Tip", "Jowl"]} />
 ```
+Tags can also become clickable
 
 ```react
 <TagGroup onClick={({tag}) => alert(tag) } tags={["Prosciutto", "Short Ribs", "Pork", "Spicy", "Jalapeno", "Tri-Tip", "Jowl"]} />
