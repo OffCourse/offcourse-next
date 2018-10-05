@@ -1,4 +1,4 @@
-All Icons that we use...
+These are all the icons that we use
 
 ```react|span-2
   <Icon name="asterisk" />
@@ -40,7 +40,7 @@ All Icons that we use...
   <Icon name="twitter" />
 ```
 
-In three different sizes
+The icons can be deployed in three different sizes
 
 ```react|span-2
   <Icon size="small" name="twitter" />
