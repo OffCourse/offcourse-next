@@ -1,4 +1,6 @@
-without messages
+The AppShell organism forms the main structure of the platform
+
+Feature without messages
 
 ```react|dark
 state: { isOpen: false }
@@ -18,7 +20,7 @@ const links = [
 </div>
 ```
 
-with messages
+Feature with messages
 
 ```react|dark
 state: { isOpen: false }
