@@ -1,4 +1,4 @@
-MessageGroup can explicity declare messages
+The MessageGroup molecule can explicitly declare messages
 
 ```react
 const Message = MessageGroup.Message;
