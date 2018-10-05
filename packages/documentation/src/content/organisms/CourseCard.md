@@ -1,4 +1,4 @@
-CourseCard Component.
+This organism structures several elements into the CourseCard component
 
 ```react|span-6
 responsive: true
@@ -33,7 +33,7 @@ const course = {
   <CourseCard course={course} />
 ```
 
-Pass an onCheckpointToggle callback to make it trackable
+An onCheckpointToggle callback can be added to make the progress trackable
 
 ```react|span-6
 const course = {
@@ -66,7 +66,7 @@ const course = {
   <CourseCard onCheckpointToggle={console.log} course={course} />
 ```
 
-Pass an onCuratorClick mainly for client side routing
+An onCuratorClick can be added to make the name clickable, which can be a useful functionality for users navigating through the available content
 
 ```react|span-6
 const course = {
