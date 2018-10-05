@@ -51,7 +51,8 @@ export default class NavBar extends Component {
       messages,
       isSearchbarOpen,
       onMenuButtonClick,
-      onSearch,
+      onSearchChange,
+      onSearchSubmit,
       onSearchButtonClick,
       position
     } = this.props;
@@ -81,7 +82,8 @@ export default class NavBar extends Component {
         </Group>
         <SearchBar
           key={isSearchbarOpen}
-          onSearch={onSearch}
+          onSearchSubmit={onSearchSubmit}
+          onSearchChange={onSearchChange}
           isOpen={isSearchbarOpen}
         />
         <MessageGroup messages={messages} />

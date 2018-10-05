@@ -18,8 +18,19 @@ export default class Route extends Component {
             goHome() {
               history.push("/");
             },
-            goToCollection({ curator, tag }) {
-              history.push(tag ? `/tag/${tag}` : `/curator/${curator}`);
+            goToCollection({ curator, tag, searchTerm }) {
+              if (tag) {
+                history.push(`/tag/${tag}`);
+              }
+              if (curator) {
+                history.push(`/curator/${curator}`);
+              }
+              if (searchTerm) {
+                history.push(`/search/${searchTerm}`);
+              }
+              if (!curator && !tag && !searchTerm) {
+                history.push("/");
+              }
             },
             goToCourse({ curator, goal }) {
               history.push(`/curator/${curator}/goal/${goal}`);

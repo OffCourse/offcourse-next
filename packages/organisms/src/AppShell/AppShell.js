@@ -29,6 +29,9 @@ export default class AppShell extends Component {
       })
     ),
     onLogoClick: PropTypes.func,
+    onSearchChange: PropTypes.func,
+    onSearchSubmit: PropTypes.func,
+    onLogoClick: PropTypes.func,
     toggleSidebar: PropTypes.func,
     /** function that triggers the sidebar to open or close */
     toggleSearchbar: PropTypes.func,
@@ -48,7 +51,8 @@ export default class AppShell extends Component {
     const {
       links,
       onLogoClick,
-      onSearch,
+      onSearchChange,
+      onSearchSubmit,
       messages,
       toggleSidebar,
       toggleSearchbar,
@@ -62,7 +66,8 @@ export default class AppShell extends Component {
         onMenuButtonClick={toggleSidebar}
         onSearchButtonClick={toggleSearchbar}
         isSearchbarOpen={isSearchbarOpen}
-        onSearch={onSearch}
+        onSearchSubmit={onSearchSubmit}
+        onSearchChange={onSearchChange}
         links={links}
         position={position}
       />

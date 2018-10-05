@@ -10,13 +10,14 @@ export default class CoursesProvider extends Component {
   static propTypes = {
     children: PropTypes.func,
     curator: PropTypes.string,
-    tag: PropTypes.string
+    tag: PropTypes.string,
+    searchTerm: PropTypes.string
   };
 
   render() {
-    const { children, curator, tag } = this.props;
+    const { children, curator, tag, searchTerm } = this.props;
     return (
-      <Query query={queries.courses} variables={{ curator, tag }}>
+      <Query query={queries.courses} variables={{ searchTerm, curator, tag }}>
         {({ data, loading, fetchMore }) => {
           if (loading) {
             return children({ courses: fakeCourses(7, 15) });
@@ -31,7 +32,12 @@ export default class CoursesProvider extends Component {
           const loadMore = () => {
             fetchMore({
               query: queries.courses,
-              variables: { curator, tag, after: pageInfo.endCursor },
+              variables: {
+                curator,
+                tag,
+                searchTerm,
+                after: pageInfo.endCursor
+              },
               updateQuery
             });
           };

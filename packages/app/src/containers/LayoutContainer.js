@@ -5,6 +5,7 @@ import { Adopt } from "react-adopt";
 import { AppShell } from "@offcourse/organisms";
 import { OverlayContainer } from "../containers";
 import { Route } from "../components";
+import { debounce } from "debounce";
 
 import {
   SearchbarProvider,
@@ -97,7 +98,13 @@ export default class LayoutContainer extends Component {
               toggleSidebar={sidebar.toggle}
               toggleSearchbar={searchbar.toggle}
               isSearchbarOpen={searchbar.isOpen}
-              onSearch={({ searchTerm }) => goToCollection({ tag: searchTerm })}
+              onSearchChange={debounce(
+                ({ searchTerm }) => goToCollection({ searchTerm }),
+                300
+              )}
+              onSearchSubmit={({ searchTerm }) =>
+                searchbar.close() && goToCollection({ searchTerm })
+              }
               isSidebarOpen={sidebar.isOpen}
               links={[
                 ...this.createLinks({

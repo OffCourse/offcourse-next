@@ -7,6 +7,7 @@ export default class CollectionView extends Component {
     return (
       <Fragment>
         <Route exact path="/" component={CoursesContainer} />
+        <Route exact path="/search/:searchTerm" component={CoursesContainer} />
         <Route exact path="/curator/:curator" component={CoursesContainer} />
         <Route exact path="/tag/:tag" component={CoursesContainer} />
       </Fragment>
