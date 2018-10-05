@@ -1,10 +1,10 @@
-Inputs mostly behave like their html counterparts
+Inputs mostly behave like their HTML counterparts
 
 ```react|plain
 <Input name="test" placeholder="Test" />
 ```
 
-Setting an input's value directly makes them controlled. In that case you also need an onChange callback
+Setting an input’s value directly makes them controlled; in this you also need an onChange callback
 
 ```react|plain
 state: {
@@ -44,13 +44,13 @@ Input fields also come in a smaller size
 <Input name="test" variant="small" placeholder="Test" />
 ```
 
-You can indicate if the field has errors
+Furthermore, you can indicate if the field has errors
 
 ```react|plain
 <Input name="test" hasErrors placeholder="Test" />
 ```
 
-Inputs can also cover multiple lines
+Lastly, inputs can also cover multiple lines
 
 ```react|plain
 <Input name="test" variant="textarea" placeholder="Test" />
