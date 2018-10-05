@@ -1,4 +1,4 @@
-Stats combine an Icon with a Label
+The Stat molecule is used to combine an icon with a label
 
 ```react|span-3
   <Stat iconName="calendar" label="Jan, 19"/>
