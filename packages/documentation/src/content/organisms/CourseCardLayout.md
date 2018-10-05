@@ -1,3 +1,5 @@
+The CourseCardLayout organism structures the cards when scrolling down
+
 ```react
 state: {items: [1,2]}
 
