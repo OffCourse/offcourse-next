@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const CardWrapper = system(
   {
@@ -8,20 +9,19 @@ const CardWrapper = system(
   },
   "space",
   "opacity"
-).extend`
+);
+export default styled(CardWrapper)`
   box-sizing: border-box;
-  &:hover {
-    section:last-child {
-      border-color: ${({ theme }) => theme.colors.primary};
+    &:hover {
+      section:last-child {
+        border-color: ${({ theme }) => theme.colors.primary};
+      }
+    }
+    section {
+      &:last-child {
+        border-bottom: ${({ theme }) => theme.borders[2]};
+        border-color: ${({ theme }) => theme.colors.grayScale[2]};
+      }
     }
   }
-  section {
-    &:last-child {
-      border-bottom: ${({ theme }) => theme.borders[2]};
-      border-color: ${({ theme }) => theme.colors.grayScale[2]};
-    }
-  }
-}
 `;
-
-export default CardWrapper;

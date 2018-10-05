@@ -16,9 +16,8 @@ const Container = system({
   py: 0,
   mx: 6,
   my: 6,
-  opactity: 1
-}).extend`
-  overflow-y: auto;
-`;
+  opactity: 1,
+  overflow: ["auto", "auto"]
+});
 
 export default Container;

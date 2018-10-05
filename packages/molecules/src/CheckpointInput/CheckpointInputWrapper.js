@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const CheckpointSectionWrapper = system(
   {
@@ -12,7 +13,8 @@ const CheckpointSectionWrapper = system(
     fontFamily: props.theme.fonts.bold,
     boxSizing: "border-box"
   })
-).extend`
+);
+export default styled(CheckpointSectionWrapper)`
   .inputs {
     flex: 50;
   }
@@ -20,5 +22,3 @@ const CheckpointSectionWrapper = system(
     flex: 1;
   }
 `;
-
-export default CheckpointSectionWrapper;

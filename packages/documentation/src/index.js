@@ -1,16 +1,19 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import registerServiceWorker from "./registerServiceWorker";
-import { ThemeProvider, injectGlobal } from "styled-components";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { offcourse as theme } from "@offcourse/themes";
 import App from "./App";
 
-injectGlobal(theme);
+const GlobalStyle = createGlobalStyle(theme);
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <App />
-  </ThemeProvider>,
+  <Fragment>
+    <GlobalStyle />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  </Fragment>,
   document.getElementById("root")
 );
 registerServiceWorker();

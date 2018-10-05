@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const TextWrapper = system({
   is: "p",
@@ -6,8 +7,8 @@ const TextWrapper = system({
   p: 0,
   fontSize: 1,
   lineHeight: 1
-}).extend` 
+});
+
+export default styled(TextWrapper)`
   word-break: break-word;
 `;
-
-export default TextWrapper;

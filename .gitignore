@@ -23,4 +23,5 @@ yarn-error.log*
 lerna-debug.log
 
 /packages/app/.next
-/packages/app/debug.log
+**/debug.log
+/packages/**/package-lock.json

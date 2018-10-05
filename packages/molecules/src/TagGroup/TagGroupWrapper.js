@@ -1,6 +1,7 @@
 import system from "system-components";
+import styled from "styled-components";
 
-export default system(
+const TagGroupWrapper = system(
   {
     display: "flex",
     flex: 1,
@@ -11,16 +12,16 @@ export default system(
     pt: 0
   },
   "justifyContent"
-).extend`
-  
+);
+
+export default styled(TagGroupWrapper)`
   margin-bottom: ${({ theme }) => `-${theme.space[3]}}`};
   div {
     margin-right: ${({ theme }) => theme.space[3]};
     margin-bottom: ${({ theme }) => theme.space[3]};
 
-
-  &:last-child {
-    margin-right: 0;
+    &:last-child {
+      margin-right: 0;
     }
   }
 `;

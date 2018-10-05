@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const BaseWrapper = system(
   {
@@ -20,7 +21,9 @@ const BaseWrapper = system(
     boxSizing: "border-box",
     color: `${props.disabled ? props.theme.colors.grayScale[2] : "black"}`
   })
-).extend`
+);
+
+export default styled(BaseWrapper)`
   ::placeholder {
     color: ${({ theme }) => theme.colors.grayScale[0]};
   }
@@ -34,5 +37,3 @@ const BaseWrapper = system(
     outline: none;
   }
 `;
-
-export default BaseWrapper;

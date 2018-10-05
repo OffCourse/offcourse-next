@@ -1,6 +1,7 @@
 import system from "system-components";
+import styled from "styled-components";
 
-export default system(
+const BarWrapper = system(
   {
     display: "flex",
     position: "fixed",
@@ -12,6 +13,8 @@ export default system(
   },
   "top",
   "bottom"
-).extend`
-  box-sizing: border-box
+);
+
+export default styled(BarWrapper)`
+  box-sizing: border-box;
 `;

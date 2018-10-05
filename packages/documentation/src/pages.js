@@ -1,8 +1,8 @@
 import React from "react";
 import { offcourse } from "@offcourse/themes";
 import * as atoms from "@offcourse/atoms";
-import * as molecules from "@offcourse/molecules";
-import * as organisms from "@offcourse/organisms";
+// import * as molecules from "@offcourse/molecules";
+// import * as organisms from "@offcourse/organisms";
 import RoadmapPage from "./roadmapPage";
 
 import widget from "./features/embeddable-widget.yaml";
@@ -10,7 +10,8 @@ import themeCard from "./features/themeable-card.yaml";
 import search from "./features/courses-search.yaml";
 import checkpoint from "./features/extended-checkpoint.yaml";
 
-const baseUrl = `https://github.com/OffCourse/offcourse-next/tree/master/packages/atoms/src/`;
+const baseUrl =
+  "https://github.com/OffCourse/offcourse-next/tree/master/packages/atoms/src/";
 
 const createPages = ({ name: collectionName, blocks, helpers }) => {
   const pageNames = Object.keys(blocks);
@@ -85,20 +86,20 @@ const pages = [
       blocks: atoms
     })
   },
-  {
-    title: "Molecules",
-    pages: createPages({
-      name: "molecules",
-      blocks: molecules
-    })
-  },
-  {
-    title: "Organisms",
-    pages: createPages({
-      name: "organisms",
-      blocks: organisms
-    })
-  },
+  // {
+  //   title: "Molecules",
+  //   pages: createPages({
+  //     name: "molecules",
+  //     blocks: molecules
+  //   })
+  // },
+  // {
+  //   title: "Organisms",
+  //   pages: createPages({
+  //     name: "organisms",
+  //     blocks: organisms
+  //   })
+  // },
   {
     path: "/contact",
     title: "Contact",

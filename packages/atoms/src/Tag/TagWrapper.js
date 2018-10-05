@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const TagWrapper = system({
   display: "inline-block",
@@ -10,12 +11,12 @@ const TagWrapper = system({
     backgroundColor: "primary",
     color: "white"
   }
-}).extend`
+});
+
+export default styled(TagWrapper)`
   cursor: pointer;
   user-select: none;
   box-sizing: border-box;
   font-family: ${({ theme }) => theme.fonts.bold};
   text-decoration: inherit;
 `;
-
-export default TagWrapper;

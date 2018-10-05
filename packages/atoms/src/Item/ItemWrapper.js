@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const ItemWrapper = system(
   {
@@ -20,7 +21,9 @@ const ItemWrapper = system(
     fontFamily: props.theme.fonts.bold,
     userSelect: "none"
   })
-).extend`
+);
+
+export default styled(ItemWrapper)`
   &:hover {
     background: ${({ theme }) => theme.colors.primary};
   }
@@ -28,5 +31,3 @@ const ItemWrapper = system(
     color: ${({ theme }) => theme.colors.white};
   }
 `;
-
-export default ItemWrapper;

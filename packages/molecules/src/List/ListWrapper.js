@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const itemSpacing = (spacing, theme) => {
   const spaceTable = {
@@ -29,7 +30,9 @@ const ListWrapper = system(
         ? `-${itemSpacing(props.spacing, props.theme)}`
         : 0
   })
-).extend`
+);
+
+export default styled(ListWrapper)`
   li {
     margin-right: ${({ theme, direction, spacing }) =>
       direction === "horizontal" || direction === "both"
@@ -40,5 +43,3 @@ const ListWrapper = system(
         ? itemSpacing(spacing, theme)
         : 0}
 `;
-
-export default ListWrapper;

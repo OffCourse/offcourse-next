@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const IconWrapper = system({
   is: "i",
@@ -16,8 +17,8 @@ const IconWrapper = system({
     outline: "none",
     color: "primary"
   }
-}).extend`
+});
+
+export default styled(IconWrapper)`
   box-sizing: border-box;
 `;
-
-export default IconWrapper;

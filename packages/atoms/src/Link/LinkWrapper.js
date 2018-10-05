@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 import { theme as t } from "styled-system";
 
 const LinkWrapper = system(
@@ -31,11 +32,11 @@ const LinkWrapper = system(
         : t("colors.primary")(props)
     }
   })
-).extend`
+);
+
+export default styled(LinkWrapper)`
   user-select: none;
   font-family: ${({ theme }) => theme.fonts.bold};
   box-sizing: border-box;
   text-decoration: inherit;
 `;
-
-export default LinkWrapper;

@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const OuterWrapper = system({
   size: "1.25rem",
@@ -6,7 +7,9 @@ const OuterWrapper = system({
   bg: "white",
   justifyContent: "center",
   alignItems: "center"
-}).extend`
+});
+
+export default styled(OuterWrapper)`
   grid-template-areas: "checkbox";
 
   > input[type="checkbox"] {
@@ -17,5 +20,3 @@ const OuterWrapper = system({
     display: block;
   }
 `;
-
-export default OuterWrapper;

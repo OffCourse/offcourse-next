@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
 import { Icon, Input } from "@offcourse/atoms";
+import styled from "styled-components";
 import system from "system-components";
 
-const SearchInputWrapper = system({
+const _SearchInputWrapper = system({
   is: "form",
   display: "flex",
   flexDirection: "column",
@@ -12,11 +13,13 @@ const SearchInputWrapper = system({
   justifyContent: "flex-start",
   maxWidth: "100vw",
   flex: 1
-}).extend`
+});
+
+const SearchInputWrapper = styled(_SearchInputWrapper)`
   border-bottom: ${props => props.theme.borders[2]};
   border-color: ${props => props.theme.colors.grayScale[2]};
   &:hover {
-      border-color: ${({ theme }) => theme.colors.primary};
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 

@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const MessageWrapper = system(
   {
@@ -12,11 +13,11 @@ const MessageWrapper = system(
     fontFamily: props.theme.fonts.base,
     userSelect: "none"
   })
-).extend`
+);
+
+export default styled(MessageWrapper)`
   span::after {
     content: ": ";
     white-space: pre;
   }
 `;
-
-export default MessageWrapper;

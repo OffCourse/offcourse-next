@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const OuterWrapper = system({
   display: "flex",
@@ -10,10 +11,13 @@ const OuterWrapper = system({
   border: 0,
   borderColor: "negative",
   bg: "grayScale.1"
-}).extend`
+});
+
+export default styled(OuterWrapper)`
   box-sizing: "border-box";
   grid-template-areas: "input";
-  .icons, button {
+  .icons,
+  button {
     padding: 0;
     background-color: rgba(255, 255, 255, 0);
     color: ${({ theme }) => theme.colors.grayScale[2]};
@@ -22,5 +26,3 @@ const OuterWrapper = system({
     z-index: 1;
   }
 `;
-
-export default OuterWrapper;

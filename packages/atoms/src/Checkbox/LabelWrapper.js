@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const LabelWrapper = system(
   {
@@ -12,9 +13,8 @@ const LabelWrapper = system(
     }
   },
   "space"
-).extend`
+);
+export default styled(LabelWrapper)`
   grid-area: checkbox;
   box-sizing: border-box;
 `;
-
-export default LabelWrapper;
