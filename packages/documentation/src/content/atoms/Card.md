@@ -1,3 +1,5 @@
+A card has a title, some text and a button
+
 ```react
 responsive: true
 ---
