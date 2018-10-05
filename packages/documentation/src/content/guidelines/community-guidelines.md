@@ -1,4 +1,4 @@
-To be able to work together on an open source project requires some guidelines as to how wo act, work and communicate with each other. Together this forms our ethos. A common ethos is the rationale of every active community. At Offcourse we believe in accelerating learning, which is why we named this our ethos. 
+To be able to work together on an open source project requires some guidelines as to how to act, work and communicate with each other. Together this forms our ethos. A common ethos is the rationale of every active community. At Offcourse we believe in accelerating learning, which is why we named this our ethos. 
 
 ## Accelerating learning
 
@@ -8,9 +8,9 @@ Offcourse thinks about how to optimize the concept of learning, using the princi
 
 ## Guidelines
 
-What does this have to do with you contributing to this open source project, you might wonder. Contrbuting to an open source project is often a learning process in itself; working with someoneelse's material, people you don't know yet. And you should practice what you preach, right? We therefore defined a set of guidelines for us as a community for our learning journey:
+What does this have to do with you contributing to this open source project, you might wonder. Contributing to an open source project is often a learning process in itself; working with someoneelse's material, people you don't know yet. And you should practice what you preach, right? We therefore defined a set of guidelines for us as a community for our learning journey:
 * Openness - We work on an open source project together and feel that it's important to be open as a community as well. This means we are open about our contribution to one another
-* Ownership - Alle community members are encouraged to take responsibility/ ownership for the technical development of the Offcourse product, it’s an important skill in your working life as well
+* Ownership - All community members are encouraged to take responsibility/ ownership for the technical development of the Offcourse product, it’s an important skill in your working life as well
 * Collaboration - We are a community who work together, not in isolation
 * Developing together - We actively seek for help from others within the community whenever we need and help each other grow our coding, design or writing skills
 * Make use of knowledge that is already out there - This is linked to the former guideline, but also means we make use of external sources like blog posts or podcasts that can help our development
