@@ -73,7 +73,7 @@ export default class Masonry extends Component {
   render() {
     return (
       <MasonryWrapper
-        innerRef={el => {
+        ref={el => {
           this.masonry = el;
         }}
       >

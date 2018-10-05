@@ -31,7 +31,7 @@ export default class extends Component {
     const { children, onResize, ...rest } = this.props;
     return (
       <GroupWrapper
-        innerRef={el => {
+        ref={el => {
           this.group = el;
         }}
         {...rest}

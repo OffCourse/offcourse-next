@@ -32,6 +32,15 @@ class Input extends Component {
   static defaultProps = {
     variant: "default"
   };
+
+  formatValue() {
+    const { value, unformatted } = this.props;
+    if (!value) {
+      return value;
+    }
+    return unformatted ? value : formatTitle(value);
+  }
+
   handleChange = e => {
     const { onChange } = this.props;
     const value = lowerCase(e.target.value);
@@ -80,7 +89,7 @@ class Input extends Component {
             autoComplete={`${autocomplete}`}
             autoFocus={autofocus}
             disabled={disabled}
-            value={value && unformatted ? value : formatTitle(value)}
+            value={this.formatValue()}
             placeholder={formatTitle(placeholder)}
             onChange={onChange && !unformatted ? this.handleChange : onChange}
             onBlur={onBlur}

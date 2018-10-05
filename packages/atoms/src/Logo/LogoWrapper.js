@@ -1,4 +1,5 @@
 import system from "system-components";
+import styled from "styled-components";
 
 const LogoWrapper = system(
   {
@@ -16,4 +17,8 @@ const LogoWrapper = system(
   })
 );
 
-export default LogoWrapper;
+export default styled(LogoWrapper)`
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary};
+  }
+`;

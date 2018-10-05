@@ -1,7 +1,6 @@
 This atom defines the brick-like structure of multiple cards
 
 ```react|span-6
-responsive: true
 state: {items: [1,2,3,4]}
 ---
 const text = `
