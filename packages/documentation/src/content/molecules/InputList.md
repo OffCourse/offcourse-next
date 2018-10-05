@@ -1,4 +1,4 @@
-Static InputList
+The InputList molecule creates a static list of multiple form fields
 
 ```react|span-4
 state: { items: ["", ""], errors: [null, "something went wrong"] }
@@ -33,7 +33,7 @@ const onBlur = (e) => {
 />
 ```
 
-Arrangeable InputList
+Furthermore, the molecule can be used to create an arrangeable list with buttons that can be used be for specific user input such as removing and sorting form fields
 
 ```react|span-4
 state: { items: ["", ""], errors: [null, "something went wrong"] }
@@ -89,7 +89,7 @@ const onSort = ({oldIndex, newIndex}) => {
 />
 ```
 
-Arrangeable InputList with custom component
+In addition, the molecule can also create a list from custom components
 
 ```react|span-4
 state: { items: [{task: "Visit Us", resourceUrl: "http://offcourse.io"},{task: "", resourceUrl: ""}], errors: [null, "something went wrong"] }
