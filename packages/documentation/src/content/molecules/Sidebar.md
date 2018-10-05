@@ -1,3 +1,5 @@
+This molecule creates the structure for a sidebar that can be either open or closed, depending on the state of the menu toggle
+
 ```react
 state: { isOpen: false }
 ---
