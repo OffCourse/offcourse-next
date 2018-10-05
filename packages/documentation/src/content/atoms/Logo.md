@@ -1,4 +1,4 @@
-Default logo in 3 sizes
+The default Offcourse logo can be used in three sizes
 
 ```react|span-6
 const clickHandler = () => alert("ALERT");
