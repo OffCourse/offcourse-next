@@ -19,7 +19,7 @@ const onSort = ({oldIndex, newIndex}) => {
 </SortableList>
 ```
 
-or they can be horizontal
+Also, they can be horizontal
 
 ```react
 state: {items: ["Aaa aaaa", "Bbb bbbb", "Ccc ccccc"]}
@@ -40,7 +40,7 @@ const onSort = ({oldIndex, newIndex}) => {
 </SortableList>
 ```
 
-or they can consist of custom item components
+Futhermore, they can consist of custom item components
 
 ```react
 state: {items: ["Aaa aaaa", "Bbb bbbb", "Ccc ccccc"]}
