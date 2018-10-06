@@ -6,7 +6,8 @@ const TextWrapper = system({
   m: 0,
   p: 0,
   fontSize: 1,
-  lineHeight: 1
+  lineHeight: 1,
+  fontFamily: "base"
 });
 
 export default styled(TextWrapper)`

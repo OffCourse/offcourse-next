@@ -6,10 +6,10 @@ const HeadingWrapper = system(
     m: 0,
     color: "inherit",
     lineHeight: 2,
-    fontSize: 3
+    fontSize: 3,
+    fontFamily: "bold"
   },
   props => ({
-    fontFamily: props.theme.fonts.bold,
     userSelect: "none",
     textDecoration: "inherit",
     cursor: props.href ? "pointer" : "cursor",

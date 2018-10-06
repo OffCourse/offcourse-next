@@ -13,11 +13,11 @@ const LinkWrapper = system(
     m: 0,
     mr: 0,
     mb: 0,
+    fontFamily: "bold",
     focus: {
       outline: "none"
     }
   },
-
   props => ({
     borderColor: props.disabled
       ? t("colors.disabled")(props)
@@ -36,7 +36,6 @@ const LinkWrapper = system(
 
 export default styled(LinkWrapper)`
   user-select: none;
-  font-family: ${({ theme }) => theme.fonts.bold};
   box-sizing: border-box;
   text-decoration: inherit;
 `;

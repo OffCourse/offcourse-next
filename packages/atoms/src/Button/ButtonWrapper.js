@@ -22,10 +22,10 @@ const ButtonWrapper = system(
     maxWidth: "16rem",
     px: 6,
     py: 4,
-    borderBottom: 2
+    borderBottom: 2,
+    fontFamily: "bold"
   },
   props => ({
-    fontFamily: props.theme.fonts.bold,
     "&:focus": { outline: "none" },
     "&:disabled": { cursor: "default" },
     "> a": {

@@ -13,12 +13,12 @@ const ItemWrapper = system(
     alignItems: "center",
     justifyContent: "space-between",
     color: "black",
-    gridTemplateColumns: "1fr"
+    gridTemplateColumns: "1fr",
+    fontFamily: "bold"
   },
   props => ({
     boxSizing: "border-box",
     textDecoration: "inherit",
-    fontFamily: props.theme.fonts.bold,
     userSelect: "none"
   })
 );

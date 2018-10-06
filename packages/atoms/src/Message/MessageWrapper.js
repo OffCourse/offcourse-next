@@ -8,15 +8,16 @@ const messageStyle = variant({
 const basicMessageStyle = variant({
   key: "signalColors"
 });
+
 const MessageWrapper = system(
   {
     display: "flex",
     flex: 1,
     px: 0,
-    py: 0
+    py: 0,
+    fontFamily: "base"
   },
   props => ({
-    fontFamily: props.theme.fonts.base,
     userSelect: "none"
   })
 );
