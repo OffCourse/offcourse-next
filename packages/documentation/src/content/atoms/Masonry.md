@@ -28,7 +28,7 @@ const breakpoints = [624, 928];
     <Group section="body">
       <Text size={ Text.sizes.SMALL }>{fragment}</Text>
     </Group>
-    <Button size={ Button.sizes.LARGE } variant="warning" onClick={
+    <Button size={ Button.sizes.LARGE } variant={ Button.variants.WARNING } onClick={
       () => {
         const items = [...state.items];
         items.push(1);

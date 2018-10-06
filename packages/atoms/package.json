@@ -26,7 +26,7 @@
     "@offcourse/constants": "^1.4.0",
     "prettier": "^1.14.2",
     "ramda": "^0.25.0",
-    "styled-system": "^2.3.1",
+    "styled-system": "^3.1.6",
     "voca": "^1.4.0"
   },
   "peerDependencies": {

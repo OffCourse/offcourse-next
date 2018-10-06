@@ -1,6 +1,6 @@
 A card has a title, some text and a button
 
-```react|span-2
+```react|span-3
 ---
   <Card>
     <Heading section="title">Hello</Heading>

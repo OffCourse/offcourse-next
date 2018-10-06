@@ -11,51 +11,6 @@ import { sizes, variants } from "@offcourse/constants";
 const { SMALL, NORMAL, LARGE } = sizes;
 const { DEFAULT, DISABLED, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
-const textProps = {
-  SMALL: { textSize: 0, lineHeight: 0 },
-  NORMAL: { textSize: 1, lineHeight: 2 },
-  LARGE: { textSize: 2, lineHeight: 3 }
-};
-
-const colorProps = {
-  DEFAULT: {
-    background: "grayScale.3",
-    inverseBackground: "primary",
-    text: "white",
-    inverseText: "white"
-  },
-  DISABLED: {
-    background: "disabled",
-    inverseBackground: "disabled",
-    text: "grayScale.1",
-    inverseText: "white"
-  },
-  INFO: {
-    background: "primary",
-    inverseBackground: "grayScale.3",
-    text: "black",
-    inverseText: "white"
-  },
-  POSITIVE: {
-    background: "positive",
-    inverseBackground: "grayScale.3",
-    text: "black",
-    inverseText: "white"
-  },
-  WARNING: {
-    background: "warning",
-    inverseBackground: "grayScale.3",
-    text: "black",
-    inverseText: "white"
-  },
-  NEGATIVE: {
-    background: "negative",
-    inverseBackground: "grayScale.3",
-    text: "white",
-    inverseText: "white"
-  }
-};
-
 const widths = {
   SMALL: "5.33333rem",
   MEDIUM: "8rem",
@@ -112,18 +67,11 @@ class Button extends Component {
 
     const buttonType = type || "button";
     const label = formatTitle(children);
-    const { background, text, inverseBackground, inverseText } = colorProps[
-      disabled ? DISABLED : variant
-    ];
 
     return (
       <ButtonWrapper
         mt={mt}
-        bg={background}
-        borderColor={inverseBackground}
-        inverseBg={inverseBackground}
-        color={text}
-        inverseColor={inverseText}
+        variant={disabled ? DISABLED : variant}
         type={buttonType}
         disabled={disabled}
         onClick={onClick}

@@ -1,5 +1,5 @@
 import system from "system-components";
-import { theme } from "styled-system";
+import { themeGet as t } from "styled-system";
 
 const HeadingWrapper = system(
   {
@@ -14,9 +14,10 @@ const HeadingWrapper = system(
     textDecoration: "inherit",
     cursor: props.href ? "pointer" : "cursor",
     "&:hover": {
-      color: (props.href || props.onClick)
-        ? theme("colors.primary")(props)
-        : theme("colors.black")(props)
+      color:
+        props.href || props.onClick
+          ? t("colors.primary")(props)
+          : t("colors.black")(props)
     }
   })
 );

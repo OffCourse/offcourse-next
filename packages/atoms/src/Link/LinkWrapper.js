@@ -1,6 +1,6 @@
 import system from "system-components";
 import styled from "styled-components";
-import { theme as t } from "styled-system";
+import { themeGet as t } from "styled-system";
 
 const LinkWrapper = system(
   {

@@ -14,7 +14,7 @@ const clickHandler = () => alert("ALERT");
 
 Moreover, the buttons can have meaningful variants
 
-```react|span-1
+```react|span-2
 const clickHandler = () => alert("ALERT");
 const { INFO } = Button.variants;
 <Button variant={INFO} href="/">
@@ -22,7 +22,7 @@ const { INFO } = Button.variants;
 </Button>
 ```
 
-```react|span-1
+```react|span-2
 const clickHandler = () => alert("ALERT");
 const { POSITIVE } = Button.variants;
 <Button variant={ POSITIVE } onClick={clickHandler}>
@@ -30,7 +30,7 @@ const { POSITIVE } = Button.variants;
 </Button>
 ```
 
-```react|span-1
+```react|span-2
 const clickHandler = () => alert("ALERT");
 const { WARNING } = Button.variants;
 <Button variant={ WARNING } onClick={clickHandler}>
@@ -38,7 +38,7 @@ const { WARNING } = Button.variants;
 </Button>
 ```
 
-```react|span-1
+```react|span-2
 const clickHandler = () => alert("ALERT");
 const { NEGATIVE } = Button.variants;
 <Button variant={ NEGATIVE } onClick={clickHandler}>

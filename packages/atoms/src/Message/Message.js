@@ -1,45 +1,32 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { formatTitle } from "../helpers";
-import MessageWrapper from "./MessageWrapper";
+import MessageWrapper, { BasicMessageWrapper } from "./MessageWrapper";
+import { variants } from "@offcourse/constants";
 
-const background = {
-  default: "grayScale.3",
-  info: "primary",
-  warning: "warning",
-  success: "positive",
-  error: "negative"
-};
-
-const textColor = {
-  default: "white",
-  error: "white",
-  info: "white",
-  warning: "text",
-  success: "text"
-};
+const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
 class Message extends Component {
+  static variants = variants;
+
   static propTypes = {
     children: PropTypes.string.isRequired,
     basic: PropTypes.bool,
-    variant: PropTypes.oneOf(["default", "error", "info", "success", "warning"])
+    variant: PropTypes.oneOf([DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE])
   };
 
   static defaultProps = {
-    variant: "default"
+    variant: DEFAULT
   };
 
   render() {
     const { children, basic, variant } = this.props;
-    const color = basic ? background[variant] : textColor[variant];
-    return (
-      <MessageWrapper
-        px={basic ? 0 : 5}
-        py={basic ? 0 : 4}
-        bg={basic ? null : background[variant]}
-        color={color}
-      >
+    return basic ? (
+      <BasicMessageWrapper variant={variant}>
+        {formatTitle(children)}
+      </BasicMessageWrapper>
+    ) : (
+      <MessageWrapper px={5} py={4} variant={variant}>
         {formatTitle(children)}
       </MessageWrapper>
     );

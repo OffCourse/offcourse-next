@@ -23,22 +23,22 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 export {
+  add,
+  advanced,
   arrowDown,
   arrowUp,
-  hamburger,
-  checkmark,
-  remove,
-  add,
-  sort,
-  eye,
-  clock,
-  rocket,
-  beginner,
-  advanced,
-  expert,
   asterisk,
+  beginner,
   calendar,
+  checkmark,
+  clock,
+  expert,
+  eye,
   facebook,
+  hamburger,
+  remove,
+  rocket,
   search,
+  sort,
   twitter
 };

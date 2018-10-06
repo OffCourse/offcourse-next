@@ -30,18 +30,6 @@ const grayScale = [
   baseColors.black
 ];
 
-const namedGrayScale = grayScale.map((value, index) => {
-  let name;
-  if (index === 0) {
-    name = "white";
-  } else if (index === grayScale.length - 1) {
-    name = "black";
-  } else {
-    name = `gray[${index}]`;
-  }
-  return { name, value };
-});
-
 const colors = {
   grayScale,
   primary: baseColors.blue,
@@ -104,6 +92,77 @@ const units = {
   titleHeight: "1.875rem"
 };
 
+const signalColors = {
+  DEFAULT: { color: grayScale[3] },
+  INFO: { color: colors.primary },
+  WARNING: { color: colors.warning },
+  POSITIVE: { color: colors.positive },
+  NEGATIVE: { color: colors.negative }
+};
+
+const signalColorCombos = {
+  DEFAULT: {
+    backgroundColor: grayScale[3],
+    borderColor: colors.primary,
+    color: colors.white,
+    "&:hover": {
+      backgroundColor: colors.primary,
+      color: colors.white,
+      borderColor: grayScale[3]
+    }
+  },
+  DISABLED: {
+    backgroundColor: colors.disabled,
+    borderColor: colors.disabled,
+    color: grayScale[1],
+    "&:hover": {
+      backgroundColor: colors.disabled,
+      color: colors.white,
+      borderColor: colors.disabled
+    }
+  },
+  INFO: {
+    backgroundColor: colors.primary,
+    borderColor: grayScale[3],
+    color: colors.black,
+    "&:hover": {
+      backgroundColor: grayScale[3],
+      color: colors.white,
+      borderColor: colors.primary
+    }
+  },
+  POSITIVE: {
+    backgroundColor: colors.positive,
+    borderColor: grayScale[3],
+    color: colors.black,
+    "&:hover": {
+      backgroundColor: grayScale[3],
+      color: colors.white,
+      borderColor: colors.positive
+    }
+  },
+  WARNING: {
+    backgroundColor: colors.warning,
+    borderColor: grayScale[3],
+    color: colors.black,
+    "&:hover": {
+      backgroundColor: grayScale[3],
+      color: colors.white,
+      borderColor: colors.warning
+    }
+  },
+  NEGATIVE: {
+    backgroundColor: colors.negative,
+    borderColor: grayScale[3],
+    color: colors.white,
+    "&:hover": {
+      backgroundColor: grayScale[3],
+      color: colors.white,
+      borderColor: colors.negative
+    }
+  }
+};
+
 const globals = `
   body {
     margin: 0;
@@ -149,7 +208,6 @@ const globals = `
 `;
 
 const theme = {
-  mode: "default",
   breakpoints,
   fontSizes,
   lineHeights,
@@ -161,7 +219,8 @@ const theme = {
   fonts,
   grayScale,
   globals,
-  namedGrayScale
+  signalColorCombos,
+  signalColors
 };
 
 export default theme;

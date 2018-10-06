@@ -1,4 +1,10 @@
+import styled from "styled-components";
 import system from "system-components";
+import { variant } from "styled-system";
+
+const buttonStyle = variant({
+  key: "signalColorCombos"
+});
 
 const ButtonWrapper = system(
   {
@@ -18,8 +24,6 @@ const ButtonWrapper = system(
     py: 4,
     borderBottom: 2
   },
-  "color",
-  "borderColor",
   props => ({
     fontFamily: props.theme.fonts.bold,
     "&:focus": { outline: "none" },
@@ -28,14 +32,11 @@ const ButtonWrapper = system(
       color: "inherit",
       textDecoration: "inherit"
     },
-    "&:hover": {
-      borderColor: props.theme.colors[props.bg],
-      color: props.theme.colors[props.inverseColor],
-      backgroundColor: props.theme.colors[props.inversBg]
-    },
     boxSizing: "border-box",
     userSelect: "none"
   })
 );
 
-export default ButtonWrapper;
+export default styled(ButtonWrapper)`
+  ${buttonStyle};
+`;
