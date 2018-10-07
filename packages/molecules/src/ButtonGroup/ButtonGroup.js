@@ -5,12 +5,15 @@ import { isEmpty } from "ramda";
 import { Button } from "@offcourse/atoms";
 import ButtonGroupWrapper from "./ButtonGroupWrapper";
 
+const { SMALL, MEDIUM, LARGE } = Button.sizes;
+
 export default class ButtonGroup extends Component {
   static Button = Button;
+  static variants = Button.variants;
+  static sizes = Button.sizes;
 
   static propTypes = {
-    direction: PropTypes.oneOf(["horizontal", "vertical"]),
-    size: PropTypes.oneOf(["small", "medium", "large"]),
+    size: PropTypes.oneOf([SMALL, MEDIUM, LARGE]),
     buttons: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
@@ -28,8 +31,7 @@ export default class ButtonGroup extends Component {
   };
 
   static defaultProps = {
-    buttons: [],
-    direction: "horizontal"
+    buttons: []
   };
 
   renderButtons = () => {
@@ -45,7 +47,7 @@ export default class ButtonGroup extends Component {
   };
 
   render() {
-    const { buttons, pt, justifyContent, children, direction } = this.props;
+    const { buttons, pt, justifyContent, children } = this.props;
     return (
       <ButtonGroupWrapper
         flexDirection="row"

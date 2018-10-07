@@ -48,7 +48,7 @@ class Share extends Component {
       name => (
         <Icon
           onClick={() => this.handlers[name](text, url)}
-          size="medium"
+          size={Icon.sizes.NORMAL}
           key={name}
           name={name}
         />

@@ -1,4 +1,4 @@
-The CheckpointInput molecule adds buttons for specific user input, which in this case either removing or sorting the checkpoints 
+The CheckpointInput molecule adds buttons for specific user input, which in this case either removing or sorting the checkpoints
 
 ```react|span-3
 state: {
@@ -23,11 +23,13 @@ const onBlur = () => {
 };
 
 const icons = [
-  {is: "button", name: "remove", tabIndex: "-1"},
-  {is: "button", name: "sort", tabIndex: "-1"},
+  {is: "button", name: "remove", tabIndex: -1},
+  {is: "button", name: "sort", tabIndex: -1},
 ];
 
+const { SMALL } = IconGroup.sizes;
+
 <CheckpointInput hasErrors={state.hasErrors} onBlur={onBlur} onChange={onChange} name="checkpoint" value={state.checkpoint}>
-  <IconGroup icons={icons} color="grayScale.2" direction="vertical" size="small"/>
+  <IconGroup icons={icons} color="grayScale.2" direction="vertical" size={ SMALL }/>
 </CheckpointInput>
 ```

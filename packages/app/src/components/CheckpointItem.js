@@ -17,10 +17,10 @@ export default class CheckpointItem extends Component {
         <Heading onClick={goToCheckpoint}>{task}</Heading>
         {resource && (
           <Group>
-            <Heading size="large">{resource.title}</Heading>
+            <Heading size={Heading.sizes.LARGE}>{resource.title}</Heading>
             {resource.description && <Text>{resource.description}</Text>}
             <ButtonGroup pt={6}>
-              <Button size="large">Complete Task</Button>
+              <Button size={Button.sizes.LARGE}>Complete Task</Button>
             </ButtonGroup>
           </Group>
         )}

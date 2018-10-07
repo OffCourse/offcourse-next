@@ -63,7 +63,7 @@ export default class InputList extends Component {
         icons={icons}
         color="grayScale.2"
         direction="vertical"
-        size="small"
+        size={IconGroup.sizes.SMALL}
       />
     );
   }

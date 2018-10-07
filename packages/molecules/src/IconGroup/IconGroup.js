@@ -5,10 +5,16 @@ import { isEmpty } from "ramda";
 import IconGroupWrapper from "./IconGroupWrapper";
 import { Group, Icon } from "@offcourse/atoms";
 
+const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = Icon.sizes;
+const { HORIZONTAL, VERTICAL } = Group.directions;
+
 export default class IconGroup extends Component {
   static Icon = Icon;
+  static sizes = Icon.sizes;
+  static directions = Group.directions;
 
   static propTypes = {
+    directions: PropTypes.oneOf([HORIZONTAL, VERTICAL]),
     icons: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
@@ -20,11 +26,11 @@ export default class IconGroup extends Component {
       PropTypes.arrayOf(PropTypes.element)
     ]),
     /** Size of the icons */
-    size: PropTypes.oneOf(["small", "medium", "large"])
+    size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE])
   };
 
   static defaultProps = {
-    direction: "horizontal",
+    direction: HORIZONTAL,
     icons: []
   };
 
@@ -54,7 +60,7 @@ export default class IconGroup extends Component {
   };
 
   render() {
-    const { icons, direction, children } = this.props;
+    const { icons, direction } = this.props;
     return (
       <IconGroupWrapper {...IconGroupWrapper.styleProps[direction]}>
         {isEmpty(icons) ? this.renderChildren() : this.renderIcons()}

@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Bar, Logo, Group } from "@offcourse/atoms";
 import { Menu, MessageGroup, SearchBar } from "..";
+const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = MessageGroup.variants;
 
 export default class NavBar extends Component {
   static Logo = Logo;
+  static variants = MessageGroup.variants;
 
   static propTypes = {
     /** function that is invoked when the logo is clicked */
@@ -12,7 +14,7 @@ export default class NavBar extends Component {
     /** function that is invoked when the menu button is clicked */
     onMenuButtonClick: PropTypes.func,
     onSearchButtonClick: PropTypes.func,
-    isSearchbarOpen: PropTypes.bool,
+    isSearchBarOpen: PropTypes.bool,
     /** array of objects that define the links in the menu */
     links: PropTypes.arrayOf(
       PropTypes.shape({
@@ -26,13 +28,7 @@ export default class NavBar extends Component {
     messages: PropTypes.arrayOf(
       PropTypes.shape({
         message: PropTypes.string.isRequired,
-        variant: PropTypes.oneOf([
-          "default",
-          "error",
-          "info",
-          "success",
-          "warning"
-        ])
+        variant: PropTypes.oneOf([DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE])
       })
     ),
     /** determines the position of the navbar. This is mainly for debugging... */
@@ -49,13 +45,14 @@ export default class NavBar extends Component {
       links,
       onLogoClick,
       messages,
-      isSearchbarOpen,
+      isSearchBarOpen,
       onMenuButtonClick,
       onSearchChange,
       onSearchSubmit,
       onSearchButtonClick,
       position
     } = this.props;
+    console.log(isSearchBarOpen);
     return (
       <Bar position={position}>
         <Group
@@ -81,10 +78,10 @@ export default class NavBar extends Component {
           </div>
         </Group>
         <SearchBar
-          key={isSearchbarOpen}
+          key={isSearchBarOpen}
           onSearchSubmit={onSearchSubmit}
           onSearchChange={onSearchChange}
-          isOpen={isSearchbarOpen}
+          isOpen={isSearchBarOpen}
         />
         <MessageGroup messages={messages} />
       </Bar>

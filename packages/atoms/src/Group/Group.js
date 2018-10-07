@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import GroupWrapper from "./GroupWrapper";
+import { directions } from "@offcourse/constants";
+
+const { HORIZONTAL, VERTICAL } = directions;
 
 export default class extends Component {
   static Wrapper = GroupWrapper;
+  static directions = directions;
 
   static propTypes = {
     children: PropTypes.node.isRequired,
@@ -28,7 +32,7 @@ export default class extends Component {
   };
 
   render() {
-    const { children, onResize, ...rest } = this.props;
+    const { children, direction, onResize, ...rest } = this.props;
     return (
       <GroupWrapper
         ref={el => {

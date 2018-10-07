@@ -1,4 +1,7 @@
 import logoSvg from "./offcourse-logo.svg";
+import { variants } from "@offcourse/constants";
+
+const { DEFAULT, DISABLED, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
 /**
  * @name Offcourse Theme
@@ -93,15 +96,16 @@ const units = {
 };
 
 const signalColors = {
-  DEFAULT: { color: grayScale[3] },
-  INFO: { color: colors.primary },
-  WARNING: { color: colors.warning },
-  POSITIVE: { color: colors.positive },
-  NEGATIVE: { color: colors.negative }
+  [DEFAULT]: { color: grayScale[3] },
+  [DISABLED]: { color: colors.disabled },
+  [INFO]: { color: colors.primary },
+  [WARNING]: { color: colors.warning },
+  [POSITIVE]: { color: colors.positive },
+  [NEGATIVE]: { color: colors.negative }
 };
 
 const signalColorCombos = {
-  DEFAULT: {
+  [DEFAULT]: {
     backgroundColor: grayScale[3],
     borderColor: colors.primary,
     color: colors.white,
@@ -111,7 +115,7 @@ const signalColorCombos = {
       borderColor: grayScale[3]
     }
   },
-  DISABLED: {
+  [DISABLED]: {
     backgroundColor: colors.disabled,
     borderColor: colors.disabled,
     color: grayScale[1],
@@ -121,7 +125,7 @@ const signalColorCombos = {
       borderColor: colors.disabled
     }
   },
-  INFO: {
+  [INFO]: {
     backgroundColor: colors.primary,
     borderColor: grayScale[3],
     color: colors.black,
@@ -131,7 +135,7 @@ const signalColorCombos = {
       borderColor: colors.primary
     }
   },
-  POSITIVE: {
+  [POSITIVE]: {
     backgroundColor: colors.positive,
     borderColor: grayScale[3],
     color: colors.black,
@@ -141,7 +145,7 @@ const signalColorCombos = {
       borderColor: colors.positive
     }
   },
-  WARNING: {
+  [WARNING]: {
     backgroundColor: colors.warning,
     borderColor: grayScale[3],
     color: colors.black,
@@ -151,7 +155,7 @@ const signalColorCombos = {
       borderColor: colors.warning
     }
   },
-  NEGATIVE: {
+  [NEGATIVE]: {
     backgroundColor: colors.negative,
     borderColor: grayScale[3],
     color: colors.white,
@@ -181,16 +185,19 @@ const globals = `
 
   @font-face {
     font-family: 'Nitti Grotesk';
+    font-display: 'auto';
     src: url('https://app.offcourse.io/fonts/NGN.woff') format('woff');
   }
 
   @font-face {
     font-family: 'Nitti Grotesk Bold';
+    font-display: 'auto';
     src: url('https://app.offcourse.io/fonts/NGB.woff') format('woff');
   }
 
   @font-face {
     font-family: 'Nitti Bold'; 
+    font-display: 'auto';
     src: url('https://app.offcourse.io/fonts/NB.woff') format('woff');
   }
 

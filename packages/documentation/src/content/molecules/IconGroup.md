@@ -28,46 +28,52 @@ It can have different sizes
 
 ```react|span-3
 const handleClick = () => alert("clicked");
+const  { SMALL } = IconGroup.sizes;
 const icons = [
   {name: "eye", onClick: handleClick},
   {name: "remove", onClick: handleClick},
   {name: "add", onClick: handleClick},
 ];
 
-<IconGroup size="small" icons={icons}/>
+<IconGroup size={ SMALL } icons={icons}/>
 ```
 
 ```react|span-3
 const handleClick = () => alert("clicked");
+const  { NORMAL } = IconGroup.sizes;
 const icons = [
   {name: "eye", onClick: handleClick},
   {name: "remove", onClick: handleClick},
   {name: "add", onClick: handleClick},
 ];
 
-<IconGroup size="medium" icons={icons}/>
+<IconGroup size={ NORMAL } icons={icons}/>
 ```
 
 Lastly, icons can be vertically displayed as well
 
 ```react|span-6
 const handleClick = () => alert("clicked");
+const  { LARGE } = IconGroup.sizes;
 const icons = [
   {name: "eye", onClick: handleClick},
   {name: "remove", onClick: handleClick},
   {name: "add", onClick: handleClick},
 ];
 
-<IconGroup size="large" icons={icons}/>
+<IconGroup size={ LARGE } icons={icons}/>
 ```
 
 ```react|span-6
 const handleClick = () => alert("clicked");
+const { LARGE } = IconGroup.sizes;
+const { VERTICAL } = IconGroup.directions;
+
 const icons = [
   {name: "eye", onClick: handleClick},
   {name: "remove", onClick: handleClick},
   {name: "add", onClick: handleClick},
 ];
 
-<IconGroup direction="vertical" size="large" icons={icons}/>
+<IconGroup direction= { VERTICAL } size={ LARGE } icons={icons}/>
 ```

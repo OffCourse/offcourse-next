@@ -63,7 +63,7 @@ export default class ExpendableCard extends Component {
               onClick={this.handleResize}
               name={iconName}
               color="grayScale.2"
-              size="medium"
+              size={Icon.sizes.NORMAL}
             />
           </Group>
         </Group>

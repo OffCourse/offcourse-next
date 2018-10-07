@@ -1,7 +1,7 @@
 import React from "react";
 import { offcourse } from "@offcourse/themes";
 import * as atoms from "@offcourse/atoms";
-// import * as molecules from "@offcourse/molecules";
+import * as molecules from "@offcourse/molecules";
 // import * as organisms from "@offcourse/organisms";
 import RoadmapPage from "./roadmapPage";
 
@@ -86,13 +86,13 @@ const pages = [
       blocks: atoms
     })
   },
-  // {
-  //   title: "Molecules",
-  //   pages: createPages({
-  //     name: "molecules",
-  //     blocks: molecules
-  //   })
-  // },
+  {
+    title: "Molecules",
+    pages: createPages({
+      name: "molecules",
+      blocks: molecules
+    })
+  },
   // {
   //   title: "Organisms",
   //   pages: createPages({

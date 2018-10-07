@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@offcourse/atoms": "^1.4.0",
+    "@offcourse/constants": "^1.4.0",
     "clean-webpack-plugin": "^0.1.19",
     "prettier": "^1.14.2",
     "ramda": "^0.25.0",

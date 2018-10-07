@@ -1,5 +1,6 @@
 import { Group } from "@offcourse/atoms";
 import styled from "styled-components";
+const { HORIZONTAL, VERTICAL } = Group.directions;
 
 const IconGroupWrapper = styled(Group.Wrapper)`
   > a,
@@ -17,12 +18,12 @@ const IconGroupWrapper = styled(Group.Wrapper)`
 `;
 
 IconGroupWrapper.styleProps = {
-  horizontal: {
+  [HORIZONTAL]: {
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center"
   },
-  vertical: {
+  [VERTICAL]: {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center"

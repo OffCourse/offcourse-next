@@ -5,10 +5,13 @@ import { compact, mapIndexed } from "../helpers";
 import { Message } from "@offcourse/atoms";
 import MessageGroupWrapper from "./MessageGroupWrapper";
 
+const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = Message.variants;
+
 export default class MessageGroup extends Component {
   static Message = Message;
+  static variants = Message.variants;
 
-  static formatMessages = (errors = [], { variant = "error", px } = {}) => {
+  static formatMessages = (errors = [], { variant = NEGATIVE, px } = {}) => {
     return map(message => {
       return { message, variant, px };
     }, errors);
@@ -18,13 +21,7 @@ export default class MessageGroup extends Component {
     messages: PropTypes.arrayOf(
       PropTypes.shape({
         message: PropTypes.string.isRequired,
-        variant: PropTypes.oneOf([
-          "default",
-          "error",
-          "info",
-          "success",
-          "warning"
-        ])
+        variant: PropTypes.oneOf([DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE])
       })
     ),
     children: PropTypes.oneOfType([

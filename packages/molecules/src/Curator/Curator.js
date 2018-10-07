@@ -7,30 +7,30 @@ import CuratorWrapper from "./CuratorWrapper";
 
 class Curator extends Component {
   static propTypes = {
-    curator: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     avatarUrl: PropTypes.string
   };
 
   renderHeading() {
-    const { curator, onClick, profileUrl } = this.props;
+    const { name, onClick, profileUrl } = this.props;
     return (
       <Heading
-        onClick={onClick && partial(onClick, [{ curator }])}
-        size="small"
+        onClick={onClick && partial(onClick, [{ curator: name }])}
+        size={Heading.sizes.SMALL}
         href={profileUrl}
       >
-        {formatTitle(curator)}
+        {formatTitle(name)}
       </Heading>
     );
   }
 
   render() {
-    const { curator, avatarUrl } = this.props;
+    const { name, avatarUrl } = this.props;
     return (
       <CuratorWrapper>
-        <Avatar url={avatarUrl} name={curator} />
+        <Avatar url={avatarUrl} name={name} />
         <Group>
-          <Text small>Curated by</Text>
+          <Text size={Text.sizes.SMALL}>Curated by</Text>
           {this.renderHeading()}
         </Group>
       </CuratorWrapper>
