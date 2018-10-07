@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import BarWrapper from "./BarWrapper";
 
 export default class Bar extends Component {
+  static Wrapper = Bar.Wrapper;
   static propTypes = {
     docked: PropTypes.oneOf(["top", "bottom"]),
     children: PropTypes.node.isRequired,

@@ -6,14 +6,14 @@ const TagWrapper = system({
   color: "black",
   bg: "grayScale.1",
   py: 0,
-  px: 4,
-  hover: {
-    backgroundColor: "primary",
-    color: "white"
-  }
+  px: 4
 });
 
 export default styled(TagWrapper)`
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.white};
+  }
   cursor: pointer;
   user-select: none;
   box-sizing: border-box;

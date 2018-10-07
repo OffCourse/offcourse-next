@@ -5,7 +5,7 @@ const BaseWrapper = system(
   {
     is: "input",
     bg: "grayScale.1",
-    color: "text",
+    color: "black",
     p: 0,
     px: 6,
     m: 0,
@@ -19,7 +19,9 @@ const BaseWrapper = system(
   },
   props => ({
     boxSizing: "border-box",
-    color: `${props.disabled ? props.theme.colors.disabled : "black"}`
+    color: `${
+      props.disabled ? props.theme.colors.disabled : props.theme.colors.black
+    }`
   })
 );
 

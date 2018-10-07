@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Bar, Logo, Group } from "@offcourse/atoms";
-import { Menu, MessageGroup, SearchBar } from "..";
+import { Menu, MessageGroup, SearchBar, IconGroup } from "..";
+import { identity } from "ramda";
+import NavBarWrapper from "./NavBarWrapper";
 const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = MessageGroup.variants;
 
 export default class NavBar extends Component {
@@ -36,8 +38,9 @@ export default class NavBar extends Component {
   };
 
   static defaultProps = {
-    onLogoClick: () => {},
-    onMenuClick: () => {}
+    onLogoClick: identity,
+    onMenuClick: identity,
+    onSearchButtonClick: identity
   };
 
   render() {
@@ -52,9 +55,8 @@ export default class NavBar extends Component {
       onSearchButtonClick,
       position
     } = this.props;
-    console.log(isSearchBarOpen);
     return (
-      <Bar position={position}>
+      <NavBarWrapper isSearchBarOpen={isSearchBarOpen} position={position}>
         <Group
           flexDirection="row"
           alignItems="center"
@@ -72,10 +74,10 @@ export default class NavBar extends Component {
             direction="horizontal"
             links={links}
           />
-          <div style={{ display: "flex" }}>
+          <IconGroup>
             <SearchBar.Button onClick={onSearchButtonClick} />
             <Menu.Button onClick={onMenuButtonClick} />
-          </div>
+          </IconGroup>
         </Group>
         <SearchBar
           key={isSearchBarOpen}
@@ -84,7 +86,7 @@ export default class NavBar extends Component {
           isOpen={isSearchBarOpen}
         />
         <MessageGroup messages={messages} />
-      </Bar>
+      </NavBarWrapper>
     );
   }
 }

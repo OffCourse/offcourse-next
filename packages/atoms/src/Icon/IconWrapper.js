@@ -9,16 +9,17 @@ const IconWrapper = system({
   fontSize: 1,
   lineHeight: 1,
   color: "black",
-  bg: "transparent",
-  hover: {
-    color: "primary"
-  },
-  focus: {
-    outline: "none",
-    color: "primary"
-  }
+  bg: "transparent"
 });
 
 export default styled(IconWrapper)`
   box-sizing: border-box;
+  &:hover {
+    color: ${({ onClick, theme }) =>
+      onClick ? theme.colors.primary : theme.colors.black};
+  }
+  &:focus {
+    outline: none,
+    color: ${({ theme }) => theme.colors.primary};
+  }
 `;

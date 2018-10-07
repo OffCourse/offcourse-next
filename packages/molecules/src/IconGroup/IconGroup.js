@@ -60,9 +60,12 @@ export default class IconGroup extends Component {
   };
 
   render() {
-    const { icons, direction } = this.props;
+    const { icons, direction, justifyContent } = this.props;
     return (
-      <IconGroupWrapper {...IconGroupWrapper.styleProps[direction]}>
+      <IconGroupWrapper
+        {...IconGroupWrapper.styleProps[direction]}
+        justifyContent="flex-end"
+      >
         {isEmpty(icons) ? this.renderChildren() : this.renderIcons()}
       </IconGroupWrapper>
     );
