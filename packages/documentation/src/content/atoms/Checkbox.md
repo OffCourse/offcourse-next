@@ -11,8 +11,8 @@ The checkbox atom can be checked or not
 They also come in large
 
 ```react|dark
-const { LARGE } = Checkbox.sizes;
-<Checkbox size={ LARGE} checked={true} />
+const { LARGE } = sizes;
+<Checkbox size={ LARGE } checked={true} />
 ```
 
 Checkbox atoms can (and probably should…) have a callback that’s triggered on toggle

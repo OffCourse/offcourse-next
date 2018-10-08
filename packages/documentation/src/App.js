@@ -6,7 +6,6 @@ import { offcourse } from "@offcourse/themes";
 import pages from "./pages";
 const GlobalStyle = createGlobalStyle(theme);
 
-console.log(offcourse);
 const { fonts, grayScale } = offcourse;
 
 const catalogTheme = {

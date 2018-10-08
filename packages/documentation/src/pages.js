@@ -1,5 +1,6 @@
 import React from "react";
 import { offcourse } from "@offcourse/themes";
+import * as constants from "@offcourse/constants";
 import * as atoms from "@offcourse/atoms";
 import * as molecules from "@offcourse/molecules";
 // import * as organisms from "@offcourse/organisms";
@@ -18,6 +19,7 @@ const createPages = ({ name: collectionName, blocks, helpers }) => {
   return pageNames.map(blockName => ({
     imports: {
       ...blocks,
+      ...constants,
       ...helpers,
       meta: {
         blockName,

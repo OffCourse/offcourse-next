@@ -7,8 +7,6 @@ import { variants } from "@offcourse/constants";
 const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
 class Message extends Component {
-  static variants = variants;
-
   static propTypes = {
     children: PropTypes.string.isRequired,
     basic: PropTypes.bool,

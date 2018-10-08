@@ -1,22 +1,22 @@
 The icons can be displayed in three different sizes
 
 ```react|span-1
-const { SMALL } = Icon.sizes;
+const { SMALL } = sizes;
 <Icon size={ SMALL } name="clock" />
 ```
 
 ```react|span-1
-const { NORMAL } = Icon.sizes;
+const { NORMAL } = sizes;
 <Icon size={ NORMAL } name="clock" />
 ```
 
 ```react|span-1
-const { LARGE } = Icon.sizes;
+const { LARGE } = sizes;
 <Icon size={ LARGE } name="clock" />
 ```
 
 ```react|span-1
-const { EXTRA_LARGE } = Icon.sizes;
+const { EXTRA_LARGE } = sizes;
 <Icon size={ EXTRA_LARGE } name="clock" />
 ```
 

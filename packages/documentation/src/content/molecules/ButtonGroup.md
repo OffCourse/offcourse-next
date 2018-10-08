@@ -3,7 +3,8 @@ The ButtonGroup molecule can explicitly declare icons
 ```react
 const onClick = () => alert("click");
 const Button = ButtonGroup.Button;
-const { POSITIVE, INFO, NEGATIVE } = ButtonGroup.variants;
+console.log(constants)
+const { POSITIVE, INFO, NEGATIVE } = constants.variants;
 
 <ButtonGroup>
   <Button variant={ POSITIVE } onClick={onClick}>
@@ -22,7 +23,7 @@ Or it can pass the button data as a prop
 
 ```react
 const onClick = () => alert("click");
-const { WARNING, NEGATIVE } = ButtonGroup.variants;
+const { WARNING, NEGATIVE } = constants.variants;
 const buttons = [
   { onClick, title: "Create Course" },
   { onClick, title: "Profile", variant: WARNING },
@@ -49,8 +50,8 @@ Or to a bigger size
 
 ```react
 const onClick = () => alert("click");
-const { WARNING, NEGATIVE } = ButtonGroup.variants;
-const { LARGE } = ButtonGroup.sizes;
+const { WARNING, NEGATIVE } = constants.variants;
+const { LARGE } = constants.sizes;
 const buttons = [
   { onClick, title: "huge", variant: WARNING},
   { onClick, title: "gargantuan", variant: NEGATIVE }

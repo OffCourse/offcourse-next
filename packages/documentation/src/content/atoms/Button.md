@@ -16,7 +16,7 @@ Moreover, the buttons can have meaningful variants
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
-const { INFO } = Button.variants;
+const { INFO } = variants;
 <Button variant={INFO} href="/">
   Click Now!
 </Button>
@@ -24,7 +24,7 @@ const { INFO } = Button.variants;
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
-const { POSITIVE } = Button.variants;
+const { POSITIVE } = variants;
 <Button variant={ POSITIVE } onClick={clickHandler}>
   Please Click
 </Button>
@@ -32,7 +32,7 @@ const { POSITIVE } = Button.variants;
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
-const { WARNING } = Button.variants;
+const { WARNING } = variants;
 <Button variant={ WARNING } onClick={clickHandler}>
   Don't Click
 </Button>
@@ -40,7 +40,7 @@ const { WARNING } = Button.variants;
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
-const { NEGATIVE } = Button.variants;
+const { NEGATIVE } = variants;
 <Button variant={ NEGATIVE } onClick={clickHandler}>
   Don't Click
 </Button>
@@ -50,8 +50,8 @@ Buttons can have three different sizes
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
-const { INFO } = Button.variants;
-const { SMALL } = Button.sizes;
+const { INFO } = variants;
+const { SMALL } = sizes;
 <Button size={ SMALL } href="/">
   Click!
 </Button>
@@ -59,8 +59,8 @@ const { SMALL } = Button.sizes;
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
-const { MEDIUM } = Button.sizes;
-const { INFO } = Button.variants;
+const { MEDIUM } = sizes;
+const { INFO } = variants;
 <Button size={ MEDIUM } variant={ INFO } onClick={clickHandler}>
   Please Click
 </Button>
@@ -68,8 +68,8 @@ const { INFO } = Button.variants;
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
-const { LARGE } = Button.sizes;
-const { INFO } = Button.variants;
+const { LARGE } = sizes;
+const { INFO } = variants;
 <Button size={ LARGE } variant={ INFO } onClick={clickHandler}>
   Click Click Click Click Click
 </Button>

@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Bar, Logo, Group } from "@offcourse/atoms";
+import { Logo, Group } from "@offcourse/atoms";
 import { Menu, MessageGroup, SearchBar, IconGroup } from "..";
 import { identity } from "ramda";
 import NavBarWrapper from "./NavBarWrapper";
-const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = MessageGroup.variants;
+import { variants } from "@offcourse/constants";
+
+const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
 export default class NavBar extends Component {
   static Logo = Logo;
-  static variants = MessageGroup.variants;
 
   static propTypes = {
     /** function that is invoked when the logo is clicked */

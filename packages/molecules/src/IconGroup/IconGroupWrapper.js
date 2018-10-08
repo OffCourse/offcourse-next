@@ -1,6 +1,7 @@
 import { Group } from "@offcourse/atoms";
 import styled from "styled-components";
-const { HORIZONTAL, VERTICAL } = Group.directions;
+import { directions } from "@offcourse/constants";
+const { HORIZONTAL, VERTICAL } = directions;
 
 const IconGroupWrapper = styled(Group.Wrapper)`
   > a,

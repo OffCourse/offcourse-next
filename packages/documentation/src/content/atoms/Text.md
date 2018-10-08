@@ -14,7 +14,7 @@ Text can be displayed in the default size
 Alternatively, text can be displayed in a larger...
 
 ```react
-const { LARGE } = Text.sizes;
+const { LARGE } = sizes;
   <Text size={LARGE}>
     We'll lay all these little funky little things in there. That's crazy.
     Water's like me. It's laaazy ... Boy, it always looks for the easiest way to
@@ -27,7 +27,7 @@ const { LARGE } = Text.sizes;
 ... or a smaller size
 
 ```react
-const { SMALL } = Text.sizes;
+const { SMALL } = sizes;
   <Text size={SMALL}>
     We'll lay all these little funky little things in there. That's crazy.
     Water's like me. It's laaazy ... Boy, it always looks for the easiest way to

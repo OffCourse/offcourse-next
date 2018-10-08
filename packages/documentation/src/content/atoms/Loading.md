@@ -1,21 +1,21 @@
 The loading indicator can be used in different sizes
 
 ```react|span-1
-const { SMALL } = Loading.sizes;
+const { SMALL } = sizes;
 <Loading size={ SMALL } />
 ```
 
 ```react|span-1
-const { NORMAL } = Loading.sizes;
+const { NORMAL } = sizes;
 <Loading size={ NORMAL} />
 ```
 
 ```react|span-1
-const { LARGE } = Loading.sizes;
+const { LARGE } = sizes;
 <Loading size={ LARGE } />
 ```
 
 ```react|span-1
-const { EXTRA_LARGE } = Loading.sizes;
+const { EXTRA_LARGE } = sizes;
 <Loading size={ EXTRA_LARGE } />
 ```

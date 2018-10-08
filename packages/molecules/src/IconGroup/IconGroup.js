@@ -3,16 +3,14 @@ import PropTypes from "prop-types";
 import { mapIndexed } from "../helpers";
 import { isEmpty } from "ramda";
 import IconGroupWrapper from "./IconGroupWrapper";
-import { Group, Icon } from "@offcourse/atoms";
+import { Icon } from "@offcourse/atoms";
+import { sizes, directions } from "@offcourse/constants";
 
-const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = Icon.sizes;
-const { HORIZONTAL, VERTICAL } = Group.directions;
+const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = sizes;
+const { HORIZONTAL, VERTICAL } = directions;
 
 export default class IconGroup extends Component {
   static Icon = Icon;
-  static sizes = Icon.sizes;
-  static directions = Group.directions;
-
   static propTypes = {
     directions: PropTypes.oneOf([HORIZONTAL, VERTICAL]),
     icons: PropTypes.arrayOf(

@@ -10,7 +10,6 @@ import { sizes } from "@offcourse/constants";
 const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = sizes;
 
 class Loading extends Component {
-  static sizes = sizes;
   static propTypes = {
     size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE])
   };

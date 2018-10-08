@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { isEmpty, map } from "ramda";
-import { compact, mapIndexed } from "../helpers";
+import { mapIndexed } from "../helpers";
 import { Message } from "@offcourse/atoms";
 import MessageGroupWrapper from "./MessageGroupWrapper";
+import { variants } from "@offcourse/constants";
 
-const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = Message.variants;
+const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
 export default class MessageGroup extends Component {
   static Message = Message;
@@ -18,6 +19,7 @@ export default class MessageGroup extends Component {
   };
 
   static propTypes = {
+    basic: PropTypes.bool,
     messages: PropTypes.arrayOf(
       PropTypes.shape({
         message: PropTypes.string.isRequired,
@@ -48,7 +50,7 @@ export default class MessageGroup extends Component {
   };
 
   render() {
-    const { messages, errors, px, pb, children } = this.props;
+    const { messages, px, pb, children } = this.props;
     return (
       <MessageGroupWrapper px={px} pb={pb} alignItems="stretch">
         {!isEmpty(messages) && this.renderMessages()}

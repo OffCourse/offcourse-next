@@ -7,14 +7,14 @@ Heading can have a normal size
 They can be small...
 
 ```react
-const { SMALL } = Heading.sizes;
+const { SMALL } = sizes;
 <Heading size={ SMALL }>Small Heading</Heading>
 ```
 
 ...or large
 
 ```react
-const { LARGE } = Heading.sizes;
+const { LARGE } = sizes;
 <Heading size={ LARGE }>Large Heading</Heading>
 ```
 

@@ -28,7 +28,7 @@ const MenuButton = NavBar.MenuButton;
 const onSearchClick = () => setState({ isSearchBarOpen: !state.isSearchBarOpen});
 const onClick = () => alert("click");
 
-const { NEGATIVE, WARNING, POSITIVE } = NavBar.variants;
+const { NEGATIVE, WARNING, POSITIVE } = variants;
 
 const links = [
 { onClick, title: "Create Course", level: 2 },
@@ -46,7 +46,8 @@ With Messages
 const Logo = NavBar.Logo;
 const MenuButton = NavBar.MenuButton;
 const onClick = () => alert("click");
-const { NEGATIVE, WARNING, POSITIVE } = NavBar.variants;
+
+const { NEGATIVE, WARNING, POSITIVE } = variants;
 
 const messages = [
   { variant: NEGATIVE, message: "HELLO" },

@@ -17,7 +17,6 @@ const textProps = {
  */
 
 class Heading extends Component {
-  static sizes = sizes;
   static propTypes = {
     /** The actual text of the header */
     children: PropTypes.string.isRequired,

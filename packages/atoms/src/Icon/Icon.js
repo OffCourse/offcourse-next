@@ -19,8 +19,6 @@ const iconProps = {
 };
 
 class Icon extends Component {
-  static sizes = sizes;
-
   static propTypes = {
     /** Name name of the icon */
     name: PropTypes.oneOf(Object.keys(icons)),

@@ -18,8 +18,6 @@ const widths = {
 };
 
 class Button extends Component {
-  static sizes = sizes;
-  static variants = { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE };
   static propTypes = {
     /** determines if the button should be disabled */
     disabled: PropTypes.bool,
