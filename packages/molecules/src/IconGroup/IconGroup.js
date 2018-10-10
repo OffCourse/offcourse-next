@@ -9,6 +9,19 @@ import { sizes, directions } from "@offcourse/constants";
 const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = sizes;
 const { HORIZONTAL, VERTICAL } = directions;
 
+const styleProps = {
+  [HORIZONTAL]: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center"
+  },
+  [VERTICAL]: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+  }
+};
+
 export default class IconGroup extends Component {
   static Icon = Icon;
   static propTypes = {
@@ -59,10 +72,11 @@ export default class IconGroup extends Component {
 
   render() {
     const { icons, direction, justifyContent } = this.props;
+    const groupProps = styleProps[direction];
     return (
       <IconGroupWrapper
-        {...IconGroupWrapper.styleProps[direction]}
-        justifyContent="flex-end"
+        {...groupProps}
+        justifyContent={justifyContent || groupProps.justifyContent}
       >
         {isEmpty(icons) ? this.renderChildren() : this.renderIcons()}
       </IconGroupWrapper>

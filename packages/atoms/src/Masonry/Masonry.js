@@ -48,14 +48,16 @@ export default class Masonry extends Component {
     const { onResize } = this.props;
     const { offsetWidth } = this.masonry;
     const proposal = this.getColumns(offsetWidth);
-    this.setState(
-      () => {
-        return { numberOfColumns: proposal };
-      },
-      () => {
-        return onResize({ width: offsetWidth, numberOfColumns: proposal });
-      }
-    );
+    window.requestAnimationFrame(() => {
+      this.setState(
+        () => {
+          return { numberOfColumns: proposal };
+        },
+        () => {
+          return onResize({ width: offsetWidth, numberOfColumns: proposal });
+        }
+      );
+    });
   };
 
   prepareGrid() {

@@ -19,7 +19,7 @@ export default styled(IconWrapper)`
       onClick ? theme.colors.primary : theme.colors.black};
   }
   &:focus {
-    outline: none,
+    outline: none;
     color: ${({ theme }) => theme.colors.primary};
   }
 `;

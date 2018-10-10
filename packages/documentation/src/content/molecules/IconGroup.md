@@ -28,7 +28,7 @@ It can have different sizes
 
 ```react|span-3
 const handleClick = () => alert("clicked");
-const  { SMALL } = IconGroup.sizes;
+const  { SMALL } = sizes;
 const icons = [
   {name: "eye", onClick: handleClick},
   {name: "remove", onClick: handleClick},
@@ -40,7 +40,7 @@ const icons = [
 
 ```react|span-3
 const handleClick = () => alert("clicked");
-const  { NORMAL } = IconGroup.sizes;
+const  { NORMAL } = sizes;
 const icons = [
   {name: "eye", onClick: handleClick},
   {name: "remove", onClick: handleClick},
@@ -50,11 +50,9 @@ const icons = [
 <IconGroup size={ NORMAL } icons={icons}/>
 ```
 
-Lastly, icons can be vertically displayed as well
-
 ```react|span-6
 const handleClick = () => alert("clicked");
-const  { LARGE } = IconGroup.sizes;
+const  { LARGE } = sizes;
 const icons = [
   {name: "eye", onClick: handleClick},
   {name: "remove", onClick: handleClick},
@@ -66,8 +64,7 @@ const icons = [
 
 ```react|span-6
 const handleClick = () => alert("clicked");
-const { LARGE } = IconGroup.sizes;
-const { VERTICAL } = IconGroup.directions;
+const { EXTRA_LARGE } = sizes;
 
 const icons = [
   {name: "eye", onClick: handleClick},
@@ -75,5 +72,21 @@ const icons = [
   {name: "add", onClick: handleClick},
 ];
 
-<IconGroup direction= { VERTICAL } size={ LARGE } icons={icons}/>
+<IconGroup size={ EXTRA_LARGE } icons={icons}/>
+```
+
+Lastly, icons can be vertically displayed as well
+
+```react|span-6
+const handleClick = () => alert("clicked");
+const { EXTRA_LARGE } = sizes;
+const { VERTICAL } = directions;
+
+const icons = [
+  {name: "eye", onClick: handleClick},
+  {name: "remove", onClick: handleClick},
+  {name: "add", onClick: handleClick},
+];
+
+<IconGroup direction= { VERTICAL } size={ EXTRA_LARGE } icons={icons}/>
 ```

@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 import { mapIndexed, move } from "../helpers";
 import { Input } from "@offcourse/atoms";
 import { SortableList, IconGroup, LinkGroup } from "..";
+import { sizes, directions } from "@offcourse/constants";
+import { identity } from "ramda";
+
+const { NORMAL } = sizes;
+const { VERTICAL } = directions;
 
 export default class InputList extends Component {
   static Input = Input;
@@ -48,7 +53,7 @@ export default class InputList extends Component {
   };
 
   renderHandles(index) {
-    const { arrangeable, remove, move } = this.props;
+    const { remove } = this.props;
     const icons = [
       {
         is: "button",
@@ -56,14 +61,14 @@ export default class InputList extends Component {
         name: "remove",
         tabIndex: -1
       },
-      { is: "button", name: "sort", tabIndex: -1 }
+      { is: "button", name: "sort", tabIndex: -1, onClick: identity }
     ];
     return (
       <IconGroup
         icons={icons}
         color="grayScale.2"
-        direction="vertical"
-        size={IconGroup.sizes.SMALL}
+        direction={VERTICAL}
+        size={NORMAL}
       />
     );
   }

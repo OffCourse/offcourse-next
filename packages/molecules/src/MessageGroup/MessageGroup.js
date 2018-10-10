@@ -10,7 +10,6 @@ const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
 export default class MessageGroup extends Component {
   static Message = Message;
-  static variants = Message.variants;
 
   static formatMessages = (errors = [], { variant = NEGATIVE, px } = {}) => {
     return map(message => {

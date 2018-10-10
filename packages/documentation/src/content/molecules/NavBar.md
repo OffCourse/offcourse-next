@@ -14,7 +14,7 @@ const links = [
   { href: "/bla", title: "Profile", level: 1 }
 ];
 
-<NavBar position="absolute" onLogoClick={onClick} onMenuButtonClick={onClick} links={links} />
+<NavBar isDocked={false} onLogoClick={onClick} onMenuButtonClick={onClick} links={links} />
 ```
 
 With SearchBar
@@ -37,7 +37,7 @@ const links = [
 { href: "/bla", title: "Profile", level: 1 }
 ];
 
-<NavBar onSearchButtonClick={onSearchClick} isSearchBarOpen={state.isSearchBarOpen} position="absolute" onLogoClick={onClick} onMenuButtonClick={onClick} links={links} />
+<NavBar isDocked={false} onSearchButtonClick={onSearchClick} isSearchBarOpen={state.isSearchBarOpen} onLogoClick={onClick} onMenuButtonClick={onClick} links={links} />
 ```
 
 With Messages
@@ -61,5 +61,5 @@ const links = [
   { href: "/bla", title: "Profile", level: 1 }
 ];
 
-<NavBar messages={messages} position="absolute" onLogoClick={onClick} onMenuButtonClick={onClick} links={links} />
+<NavBar isDocked={false} messages={messages} onLogoClick={onClick} onMenuButtonClick={onClick} links={links} />
 ```

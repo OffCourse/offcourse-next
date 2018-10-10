@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Input, Icon } from "@offcourse/atoms";
+import { sizes } from "@offcourse/constants";
+
+const { LARGE } = sizes;
 
 export default class PasswordInput extends Component {
   state = {
@@ -19,7 +21,12 @@ export default class PasswordInput extends Component {
     const { inputType } = this.state;
     return (
       <Input unformatted type={inputType} {...this.props}>
-        <Icon onClick={this.toggleInputType} color="grayScale.2" name="eye" />
+        <Icon
+          size={LARGE}
+          onClick={this.toggleInputType}
+          color="grayScale.2"
+          name="eye"
+        />
       </Input>
     );
   }

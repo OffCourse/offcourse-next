@@ -1,13 +1,14 @@
 Bars can be docked at the top
 
 ```react
+const { TOP  } = positions;
 <div>
   <Heading>Hello World</Heading>
   <Heading>Hello World</Heading>
   <Heading>Hello World</Heading>
   <Heading>Hello World</Heading>
   <Heading>Hello World</Heading>
-  <Bar position="absolute" docked="top">
+  <Bar isDocked={false} position={ TOP }>
     <Heading>Hello World</Heading>
     <Heading>Hello World</Heading>
     <Heading>Hello World</Heading>
@@ -18,13 +19,14 @@ Bars can be docked at the top
 Bars can also be docked at the bottom of the window
 
 ```react
+const { BOTTOM } = positions;
 <div>
   <Heading>Hello World</Heading>
   <Heading>Hello World</Heading>
   <Heading>Hello World</Heading>
   <Heading>Hello World</Heading>
   <Heading>Hello World</Heading>
-  <Bar position="absolute" docked="bottom">
+  <Bar isDocked={false} position={ BOTTOM }>
     <Heading>Hello World</Heading>
     <Heading>Hello World</Heading>
     <Heading>Hello World</Heading>
@@ -32,4 +34,4 @@ Bars can also be docked at the bottom of the window
 </div>
 ```
 
-They are fixed by default, but this behaviour can be overridden with the position ‘prop’
+They are fixed by default, but this behaviour can be overridden with the 'isDocked' prop

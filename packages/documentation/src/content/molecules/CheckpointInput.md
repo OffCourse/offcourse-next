@@ -27,9 +27,10 @@ const icons = [
   {is: "button", name: "sort", tabIndex: -1},
 ];
 
-const { SMALL } = IconGroup.sizes;
+const { SMALL } = sizes;
+const { VERTICAL } = directions;
 
 <CheckpointInput hasErrors={state.hasErrors} onBlur={onBlur} onChange={onChange} name="checkpoint" value={state.checkpoint}>
-  <IconGroup icons={icons} color="grayScale.2" direction="vertical" size={ SMALL }/>
+  <IconGroup icons={icons} color="grayScale.2" direction={ VERTICAL } size={ SMALL }/>
 </CheckpointInput>
 ```

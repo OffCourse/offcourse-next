@@ -2,6 +2,9 @@ import React, { Children, Component } from "react";
 import { Card, Group, Icon } from "@offcourse/atoms";
 import { identity, contains, isNil, omit } from "ramda";
 import PropTypes from "prop-types";
+import { sizes } from "@offcourse/constants";
+
+const { NORMAL } = sizes;
 
 export default class ExpendableCard extends Component {
   static propTypes = {
@@ -25,7 +28,7 @@ export default class ExpendableCard extends Component {
   };
 
   handleResize = () => {
-    const { onResize, layout } = this.props;
+    const { onResize } = this.props;
     this.setState(
       ({ level }, { layout }) => {
         const nextLevel = (level + 1) % layout.length;
@@ -41,7 +44,7 @@ export default class ExpendableCard extends Component {
     if (layout.length === 0) return children;
 
     const { level } = this.state;
-    const iconName = level === layout.length - 1 ? "arrowUp" : "arrowDown";
+    const iconName = level === layout.length - 1 ? "minus" : "plus";
 
     return Children.map(children, (child, index) => {
       if (!child) return null;
@@ -63,7 +66,7 @@ export default class ExpendableCard extends Component {
               onClick={this.handleResize}
               name={iconName}
               color="grayScale.2"
-              size={Icon.sizes.NORMAL}
+              size={NORMAL}
             />
           </Group>
         </Group>

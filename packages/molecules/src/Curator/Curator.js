@@ -1,14 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { partial } from "ramda";
+import { identity, partial } from "ramda";
 import { formatTitle } from "../helpers";
 import { Group, Text, Avatar, Heading } from "@offcourse/atoms";
 import CuratorWrapper from "./CuratorWrapper";
+import { sizes } from "@offcourse/constants";
 
+const { SMALL } = sizes;
 class Curator extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    avatarUrl: PropTypes.string
+    onClick: PropTypes.func,
+    avatarUrl: PropTypes.string,
+    profileUrl: PropTypes.string
+  };
+
+  static defaultProps = {
+    onClick: identity
   };
 
   renderHeading() {
@@ -16,7 +24,7 @@ class Curator extends Component {
     return (
       <Heading
         onClick={onClick && partial(onClick, [{ curator: name }])}
-        size={Heading.sizes.SMALL}
+        size={SMALL}
         href={profileUrl}
       >
         {formatTitle(name)}
@@ -30,7 +38,7 @@ class Curator extends Component {
       <CuratorWrapper>
         <Avatar url={avatarUrl} name={name} />
         <Group>
-          <Text size={Text.sizes.SMALL}>Curated by</Text>
+          <Text size={SMALL}>Curated by</Text>
           {this.renderHeading()}
         </Group>
       </CuratorWrapper>

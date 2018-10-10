@@ -1,27 +1,30 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import BarWrapper from "./BarWrapper";
+import { positions } from "@offcourse/constants";
+
+const { BOTTOM, TOP } = positions;
 
 export default class Bar extends Component {
   static Wrapper = Bar.Wrapper;
   static propTypes = {
-    docked: PropTypes.oneOf(["top", "bottom"]),
+    position: PropTypes.oneOf([TOP, BOTTOM]),
     children: PropTypes.node.isRequired,
-    position: PropTypes.oneOf(["fixed", "absolute"])
+    isDocked: PropTypes.bool
   };
 
   static defaultProps = {
-    docked: "top",
-    position: "fixed"
+    isDocked: true,
+    position: TOP
   };
 
   render() {
-    const { docked, children, position } = this.props;
+    const { position, children, isDocked } = this.props;
     return (
       <BarWrapper
-        top={docked === "top" ? 0 : null}
-        bottom={docked === "bottom" ? 0 : null}
-        position={position}
+        top={position === TOP ? 0 : null}
+        bottom={position === BOTTOM ? 0 : null}
+        position={isDocked ? "fixed" : "absolute"}
       >
         {children}
       </BarWrapper>

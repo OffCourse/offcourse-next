@@ -6,14 +6,14 @@ import { Button } from "@offcourse/atoms";
 import ButtonGroupWrapper from "./ButtonGroupWrapper";
 import { sizes, variants } from "@offcourse/constants";
 
-const { SMALL, MEDIUM, LARGE } = sizes;
+const { SMALL, NORMAL, LARGE } = sizes;
 const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
 export default class ButtonGroup extends Component {
   static Button = Button;
 
   static propTypes = {
-    size: PropTypes.oneOf([SMALL, MEDIUM, LARGE]),
+    size: PropTypes.oneOf([SMALL, NORMAL, LARGE]),
     buttons: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,

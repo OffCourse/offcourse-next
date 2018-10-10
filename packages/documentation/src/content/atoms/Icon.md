@@ -75,6 +75,14 @@ These are all the icons that we use
 ```
 
 ```react|span-2
+<Icon name="plus" />
+```
+
+```react|span-2
+<Icon name="minus" />
+```
+
+```react|span-2
 <Icon name="remove" />
 ```
 

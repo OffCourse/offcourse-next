@@ -35,7 +35,7 @@ export default class NavBar extends Component {
       })
     ),
     /** determines the position of the navbar. This is mainly for debugging... */
-    position: PropTypes.oneOf(["fixed", "absolute"])
+    isDocked: PropTypes.bool
   };
 
   static defaultProps = {
@@ -54,10 +54,10 @@ export default class NavBar extends Component {
       onSearchChange,
       onSearchSubmit,
       onSearchButtonClick,
-      position
+      isDocked
     } = this.props;
     return (
-      <NavBarWrapper isSearchBarOpen={isSearchBarOpen} position={position}>
+      <NavBarWrapper isSearchBarOpen={isSearchBarOpen} isDocked={isDocked}>
         <Group
           flexDirection="row"
           alignItems="center"
@@ -75,7 +75,7 @@ export default class NavBar extends Component {
             direction="horizontal"
             links={links}
           />
-          <IconGroup>
+          <IconGroup justifyContent="flex-end">
             <SearchBar.Button onClick={onSearchButtonClick} />
             <Menu.Button onClick={onMenuButtonClick} />
           </IconGroup>

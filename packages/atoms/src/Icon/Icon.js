@@ -36,7 +36,7 @@ class Icon extends Component {
   };
 
   static defaultProps = {
-    size: LARGE,
+    size: NORMAL,
     spin: false
   };
 

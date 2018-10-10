@@ -2,7 +2,7 @@ The MessageGroup molecule can explicitly declare messages
 
 ```react
 const Message = MessageGroup.Message;
-const { INFO, POSITIVE, WARNING, NEGATIVE } = MessageGroup.variants;
+const { INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 <MessageGroup>
   <Message>This is a message</Message>
   <Message variant={ NEGATIVE }>This is an error</Message>
@@ -15,7 +15,7 @@ const { INFO, POSITIVE, WARNING, NEGATIVE } = MessageGroup.variants;
 Or it can pass the messages data as a prop
 
 ```react
-const { INFO, POSITIVE, WARNING, NEGATIVE } = MessageGroup.variants;
+const { INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 const messages = [
   { variant: NEGATIVE, message: "error" },
   { variant: INFO, message: "info" },
@@ -28,7 +28,7 @@ const messages = [
 Messages can be basic
 
 ```react
-const { INFO, POSITIVE, WARNING, NEGATIVE } = MessageGroup.variants;
+const { INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 const messages = [
   { variant: NEGATIVE, message: "error" },
   { variant: INFO, message: "info" },
