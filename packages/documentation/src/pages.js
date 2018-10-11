@@ -3,7 +3,7 @@ import { offcourse } from "@offcourse/themes";
 import * as constants from "@offcourse/constants";
 import * as atoms from "@offcourse/atoms";
 import * as molecules from "@offcourse/molecules";
-// import * as organisms from "@offcourse/organisms";
+import * as organisms from "@offcourse/organisms";
 import RoadmapPage from "./roadmapPage";
 
 import widget from "./features/embeddable-widget.yaml";
@@ -95,13 +95,13 @@ const pages = [
       blocks: molecules
     })
   },
-  // {
-  //   title: "Organisms",
-  //   pages: createPages({
-  //     name: "organisms",
-  //     blocks: organisms
-  //   })
-  // },
+  {
+    title: "Organisms",
+    pages: createPages({
+      name: "organisms",
+      blocks: organisms
+    })
+  },
   {
     path: "/contact",
     title: "Contact",

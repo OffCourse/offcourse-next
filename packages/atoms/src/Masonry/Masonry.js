@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { debounce } from "debounce";
+import fastdom from "fastdom";
 import {
   append,
   adjust,
@@ -28,11 +30,6 @@ export default class Masonry extends Component {
 
   state = { numberOfColumns: 1 };
 
-  componentDidMount() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  }
-
   getColumns(containerWidth) {
     const { breakpoints } = this.props;
     return reduceWhile(
@@ -46,17 +43,19 @@ export default class Masonry extends Component {
   handleResize = () => {
     if (!this.masonry) return null;
     const { onResize } = this.props;
-    const { offsetWidth } = this.masonry;
-    const proposal = this.getColumns(offsetWidth);
-    window.requestAnimationFrame(() => {
-      this.setState(
-        () => {
-          return { numberOfColumns: proposal };
-        },
-        () => {
-          return onResize({ width: offsetWidth, numberOfColumns: proposal });
-        }
-      );
+    fastdom.measure(() => {
+      const { offsetWidth } = this.masonry;
+      const proposal = this.getColumns(offsetWidth);
+      fastdom.mutate(() => {
+        this.setState(
+          () => {
+            return { numberOfColumns: proposal };
+          },
+          () => {
+            return onResize({ width: offsetWidth, numberOfColumns: proposal });
+          }
+        );
+      });
     });
   };
 
@@ -70,6 +69,12 @@ export default class Masonry extends Component {
       repeat([], numberOfColumns),
       children
     );
+  }
+
+  componentDidMount() {
+    const handleResize = debounce(this.handleResize.bind(this), 200);
+    window.addEventListener("resize", handleResize);
+    handleResize();
   }
 
   render() {

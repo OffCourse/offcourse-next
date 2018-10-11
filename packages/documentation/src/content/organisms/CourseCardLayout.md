@@ -1,8 +1,7 @@
 The CourseCardLayout organism structures the cards when scrolling down
 
 ```react
-state: {items: [1,2]}
-
+state: {items: [1,2], i: 0, hasMore: true}
 ---
 
 const text = `
@@ -50,10 +49,15 @@ const createFragment = () => {
 const courses = state.items.map(()=> createCourse(createFragment()));
 
 <CourseCardLayout
-  hasMore={true}
+  hasMore={state.hasMore}
   loadMore={() => {
     const items = [...state.items, ...[1,1,1]];
-    setState({items});
+    setState({ i: state.i + 1})
+    if (state.i < 4) {
+      setState({items});
+    } else {
+      setState({hasMore: false});
+    }
   }}
   courses={courses}
 />

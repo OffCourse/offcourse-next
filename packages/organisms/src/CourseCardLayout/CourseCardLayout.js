@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { times, map, identity } from "ramda";
-import { Masonry, Group, Loading } from "@offcourse/atoms";
+import { Masonry, Loading } from "@offcourse/atoms";
 import { CourseCard } from "..";
 import CourseCardLayoutWrapper from "./CourseCardLayoutWrapper";
 import PropTypes from "prop-types";
 import Waypoint from "react-waypoint";
+import { sizes } from "@offcourse/constants";
+
+const { LARGE } = sizes;
 
 export default class CourseCardLayout extends Component {
   static propTypes = {
@@ -46,10 +49,16 @@ export default class CourseCardLayout extends Component {
     });
   }
 
-  handlePositionChange = ({ currentPosition, ...rest }, message) => {
+  breakpoints = this.calculateBreakpoints();
+
+  handlePositionChange = ({ currentPosition }) => {
     const { loadMore } = this.props;
-    return currentPosition === "inside" ? loadMore() : null;
+    if (currentPosition !== "outside") {
+      loadMore();
+    }
   };
+
+  containerRef = React.createRef();
 
   render() {
     const {
@@ -64,7 +73,7 @@ export default class CourseCardLayout extends Component {
     } = this.props;
     return (
       <CourseCardLayoutWrapper>
-        <Masonry onResize={onResize} breakpoints={this.calculateBreakpoints()}>
+        <Masonry onResize={onResize} breakpoints={this.breakpoints}>
           {map(
             course => (
               <CourseCard
@@ -82,13 +91,8 @@ export default class CourseCardLayout extends Component {
             courses
           )}
         </Masonry>
-        <Waypoint
-          key={courses.length}
-          onEnter={e => this.handlePositionChange(e, "enter")}
-        >
-          <Group alignItems="center">
-            {hasMore && <Loading size="large" />}
-          </Group>
+        <Waypoint onPositionChange={this.handlePositionChange}>
+          <div>{hasMore && <Loading size={LARGE} />}</div>
         </Waypoint>
       </CourseCardLayoutWrapper>
     );

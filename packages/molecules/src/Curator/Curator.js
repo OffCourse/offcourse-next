@@ -9,7 +9,7 @@ import { sizes } from "@offcourse/constants";
 const { SMALL } = sizes;
 class Curator extends Component {
   static propTypes = {
-    name: PropTypes.string.isRequired,
+    curator: PropTypes.string.isRequired,
     onClick: PropTypes.func,
     avatarUrl: PropTypes.string,
     profileUrl: PropTypes.string
@@ -20,23 +20,23 @@ class Curator extends Component {
   };
 
   renderHeading() {
-    const { name, onClick, profileUrl } = this.props;
+    const { curator, onClick, profileUrl } = this.props;
     return (
       <Heading
-        onClick={onClick && partial(onClick, [{ curator: name }])}
+        onClick={onClick && partial(onClick, [{ curator }])}
         size={SMALL}
         href={profileUrl}
       >
-        {formatTitle(name)}
+        {formatTitle(curator)}
       </Heading>
     );
   }
 
   render() {
-    const { name, avatarUrl } = this.props;
+    const { curator, avatarUrl } = this.props;
     return (
       <CuratorWrapper>
-        <Avatar url={avatarUrl} name={name} />
+        <Avatar url={avatarUrl} name={curator} />
         <Group>
           <Text size={SMALL}>Curated by</Text>
           {this.renderHeading()}

@@ -1,6 +1,7 @@
 import system from "system-components";
+import styled from "styled-components";
 
-export default system({
+const CourseCardLayoutWrapper = system({
   p: 6,
   pr: [6, 0, 0],
   bg: "grayScale.1",
@@ -8,6 +9,8 @@ export default system({
   height: "100vh",
   flexDirection: "column",
   overflow: "auto"
-}).extend`
-  box-sizing: border-box
+});
+
+export default styled(CourseCardLayoutWrapper)`
+  box-sizing: border-box;
 `;
