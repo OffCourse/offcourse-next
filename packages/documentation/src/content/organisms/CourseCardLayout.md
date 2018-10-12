@@ -1,7 +1,38 @@
 The CourseCardLayout organism structures the cards when scrolling down
 
 ```react
-state: {items: [1,2], i: 0, hasMore: true}
+state: {
+  items: [{
+    courseId: "course",
+    goal: "Learn Something",
+    curator: "Offcourse",
+    courseUrl: "/yeehaa",
+    profileUrl: "/curator/yeehaa",
+    checkpoints: [
+      {
+        checkpointId: "a",
+        task: "Gentrify adipisicing fanny pack pabst, health goth excepteur ut sunt swag quo",
+        resourceUrl: "/"
+      },
+      {
+        checkpointId: "b",
+        task: "Do That",
+        completed: true,
+        resourceUrl: "/"
+      },
+      {
+        checkpointId: "c",
+        task: "Do More",
+        resourceUrl: "/"
+      }
+    ],
+    tags: ["tic", "tac", "toe"],
+    description: "Lorem ipsum dolor amet small batch heirloom thundercats sartorial irony crucifix."
+   }],
+  i: 0,
+  isLoading: false,
+  hasMore: true
+}
 ---
 
 const text = `
@@ -12,9 +43,14 @@ const randInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const createCourse = (fragment) => {
+const createFragment = () => {
+  return text.slice(randInt(0, 200), randInt(300,600)).trim();
+};
+
+
+const createCourse = (fragment, index) => {
   return {
-    courseId: "abc",
+    courseId: `course-${index + state.items.length}`,
     goal: "Learn Something",
     curator: "Offcourse",
     courseUrl: "/yeehaa",
@@ -38,27 +74,21 @@ const createCourse = (fragment) => {
       }
     ],
     tags: ["tic", "tac", "toe"],
-    description: fragment
+    description: createFragment()
   }
 };
 
-const createFragment = () => {
-  return text.slice(randInt(0, 200), randInt(300,600)).trim();
-};
+const createCourses = () => { return [0,1,2,3,4,5].map(createCourse) };
 
-const courses = state.items.map(()=> createCourse(createFragment()));
+
+const loadMore = () => {
+  setState({items: [...state.items, ...createCourses()]})
+};
 
 <CourseCardLayout
   hasMore={state.hasMore}
-  loadMore={() => {
-    const items = [...state.items, ...[1,1,1]];
-    setState({ i: state.i + 1})
-    if (state.i < 4) {
-      setState({items});
-    } else {
-      setState({hasMore: false});
-    }
-  }}
-  courses={courses}
+  loadMore={loadMore}
+  isLoading={state.isLoading}
+  courses={state.items}
 />
 ```

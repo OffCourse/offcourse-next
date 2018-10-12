@@ -7,6 +7,7 @@ export { default as Curator } from "./Curator";
 export { default as Description } from "./Description";
 export { default as ExpandableCard } from "./ExpandableCard";
 export { default as IconGroup } from "./IconGroup";
+export { default as InfiniteScroll } from "./InfiniteScroll";
 export { default as InputField } from "./InputField";
 export { default as InputList } from "./InputList";
 export { default as LinkGroup } from "./LinkGroup";

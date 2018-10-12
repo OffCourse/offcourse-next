@@ -14,7 +14,7 @@ const links = [
 ];
 
 <div style={{height: "200px"}}>
-  <AppShell position="absolute" onLogoClick={toggle} toggleSidebar={toggle} isSidebarOpen={state.isOpen} links={links}>
+  <AppShell isDocked={false} onLogoClick={toggle} toggleSidebar={toggle} isSidebarOpen={state.isOpen} links={links}>
     <h1 style={{color: "white", paddingLeft: "1rem"}}>This is the area where the content is rendered...</h1>
   </AppShell>
 </div>
@@ -33,14 +33,16 @@ const links = [
   { onClick: toggle, title: "Sign Out", level: 2 }
 ];
 
+const { NEGATIVE, WARNING, POSITIVE } = variants;
+
 const messages = [
-  { variant: "error", message: "HELLO" },
-  { variant: "warning", message: "HELLO" },
-  { variant: "success", message: "Hello"}
+  { variant: NEGATIVE, message: "HELLO" },
+  { variant: WARNING, message: "HELLO" },
+  { variant: POSITIVE, message: "Hello"}
 ];
 
 <div style={{height: "200px"}}>
-  <AppShell messages={messages} position="absolute" onLogoClick={toggle} toggleSidebar={toggle} isSidebarOpen={state.isOpen} links={links}>
+  <AppShell messages={messages} isDocked={false} onLogoClick={toggle} toggleSidebar={toggle} isSidebarOpen={state.isOpen} links={links}>
     <h1 style={{color: "white", paddingLeft: "1rem"}}>This is the area where the content is rendered...</h1>
   </AppShell>
 </div>

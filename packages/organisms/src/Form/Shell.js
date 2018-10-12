@@ -4,8 +4,10 @@ import FormWrapper from "./FormWrapper";
 import { map, mapObjIndexed, values } from "ramda";
 import { Section, Heading } from "@offcourse/atoms";
 import { MessageGroup, ButtonGroup, LinkGroup } from "@offcourse/molecules";
+import { variants } from "@offcourse/constants";
 
-const Button = ButtonGroup.Button;
+const { POSITIVE } = variants;
+
 const formatMessages = MessageGroup.formatMessages;
 
 class Shell extends Component {
@@ -61,7 +63,7 @@ class Shell extends Component {
       },
       submit: {
         title: "Submit",
-        variant: "positive",
+        variant: POSITIVE,
         type: "submit",
         disabled: !isValid || isSubmitting,
         ...submit

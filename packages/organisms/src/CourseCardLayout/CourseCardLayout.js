@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import { times, map, identity } from "ramda";
 import { Masonry, Loading } from "@offcourse/atoms";
+import { InfiniteScroll } from "@offcourse/molecules";
 import { CourseCard } from "..";
-import CourseCardLayoutWrapper from "./CourseCardLayoutWrapper";
 import PropTypes from "prop-types";
-import Waypoint from "react-waypoint";
-import { sizes } from "@offcourse/constants";
-
-const { LARGE } = sizes;
 
 export default class CourseCardLayout extends Component {
   static propTypes = {
@@ -51,15 +47,6 @@ export default class CourseCardLayout extends Component {
 
   breakpoints = this.calculateBreakpoints();
 
-  handlePositionChange = ({ currentPosition }) => {
-    const { loadMore } = this.props;
-    if (currentPosition !== "outside") {
-      loadMore();
-    }
-  };
-
-  containerRef = React.createRef();
-
   render() {
     const {
       courses,
@@ -69,10 +56,11 @@ export default class CourseCardLayout extends Component {
       goToCheckpoint,
       initialCardLevel,
       onResize,
+      loadMore,
       hasMore
     } = this.props;
     return (
-      <CourseCardLayoutWrapper>
+      <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>
         <Masonry onResize={onResize} breakpoints={this.breakpoints}>
           {map(
             course => (
@@ -91,10 +79,7 @@ export default class CourseCardLayout extends Component {
             courses
           )}
         </Masonry>
-        <Waypoint onPositionChange={this.handlePositionChange}>
-          <div>{hasMore && <Loading size={LARGE} />}</div>
-        </Waypoint>
-      </CourseCardLayoutWrapper>
+      </InfiniteScroll>
     );
   }
 }

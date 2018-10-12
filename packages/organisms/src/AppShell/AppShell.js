@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import { isEmpty } from "ramda";
 import { Group } from "@offcourse/atoms";
 import { NavBar, Menu, Sidebar as Layout } from "@offcourse/molecules";
+import { variants } from "@offcourse/constants";
 
+const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 export default class AppShell extends Component {
   static propTypes = {
     /** array of objects that define the links in the menu */
@@ -19,19 +21,12 @@ export default class AppShell extends Component {
     messages: PropTypes.arrayOf(
       PropTypes.shape({
         message: PropTypes.string.isRequired,
-        variant: PropTypes.oneOf([
-          "default",
-          "error",
-          "info",
-          "success",
-          "warning"
-        ])
+        variant: PropTypes.oneOf([DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE])
       })
     ),
     onLogoClick: PropTypes.func,
     onSearchChange: PropTypes.func,
     onSearchSubmit: PropTypes.func,
-    onLogoClick: PropTypes.func,
     toggleSidebar: PropTypes.func,
     /** function that triggers the sidebar to open or close */
     toggleSearchbar: PropTypes.func,
@@ -39,7 +34,7 @@ export default class AppShell extends Component {
     isSidebarOpen: PropTypes.bool,
     isSearchbarOpen: PropTypes.bool,
     /** determines the position of the navbar. This is mainly for debugging... */
-    position: PropTypes.oneOf(["fixed", "absolute"])
+    isDocked: PropTypes.bool
   };
 
   static defaultProps = {
@@ -57,7 +52,7 @@ export default class AppShell extends Component {
       toggleSidebar,
       toggleSearchbar,
       isSearchbarOpen,
-      position
+      isDocked
     } = this.props;
     return (
       <NavBar
@@ -69,7 +64,7 @@ export default class AppShell extends Component {
         onSearchSubmit={onSearchSubmit}
         onSearchChange={onSearchChange}
         links={links}
-        position={position}
+        isDocked={isDocked}
       />
     );
   };

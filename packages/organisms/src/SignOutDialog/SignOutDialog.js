@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Group } from "@offcourse/atoms";
 import { ButtonGroup, Modal } from "@offcourse/molecules";
 import PropTypes from "prop-types";
+import { variants } from "@offcourse/constants";
+
+const { WARNING } = variants;
 
 export default class SignOutDialog extends Component {
   static propTypes = {
@@ -17,7 +20,7 @@ export default class SignOutDialog extends Component {
         <Modal.Section>
           <ButtonGroup>
             <ButtonGroup.Button onClick={onCancel}>Wait...</ButtonGroup.Button>
-            <ButtonGroup.Button onClick={onConfirm} variant="warning">
+            <ButtonGroup.Button onClick={onConfirm} variant={WARNING}>
               Yes!
             </ButtonGroup.Button>
           </ButtonGroup>

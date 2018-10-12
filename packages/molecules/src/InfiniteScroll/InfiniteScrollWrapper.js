@@ -1,7 +1,7 @@
 import system from "system-components";
 import styled from "styled-components";
 
-const CourseCardLayoutWrapper = system({
+const InfiniteScrollWrapper = system({
   p: 6,
   pr: [6, 0, 0],
   bg: "grayScale.1",
@@ -11,9 +11,10 @@ const CourseCardLayoutWrapper = system({
   overflow: "auto"
 });
 
-export default styled(CourseCardLayoutWrapper)`
+export default styled(InfiniteScrollWrapper)`
   &:hover {
     will-change: transform;
   }
+
   box-sizing: border-box;
 `;

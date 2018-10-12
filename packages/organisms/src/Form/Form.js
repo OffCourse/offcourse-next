@@ -3,10 +3,16 @@ import PropTypes from "prop-types";
 import { Formik } from "formik";
 import Shell from "./Shell";
 import { Field, FieldList } from "./sections";
+import { sizes, variants } from "@offcourse/constants";
+import * as yup from "yup";
+
+const { SMALL, NORMAL, LARGE } = sizes;
+const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
 export default class Form extends Component {
   static Field = Field;
   static FieldList = FieldList;
+  static yup = yup;
 
   static propTypes = {
     /** model for the form */
@@ -28,16 +34,10 @@ export default class Form extends Component {
       PropTypes.shape({
         href: PropTypes.string,
         type: PropTypes.string,
-        size: PropTypes.oneOf(["small", "medium", "large"]),
+        size: PropTypes.oneOf([SMALL, NORMAL, LARGE]),
         onClick: PropTypes.func,
         title: PropTypes.string,
-        variant: PropTypes.oneOf([
-          "default",
-          "primary",
-          "positive",
-          "warning",
-          "negative"
-        ])
+        variant: PropTypes.oneOf([DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE])
       })
     ),
     mode: PropTypes.string,

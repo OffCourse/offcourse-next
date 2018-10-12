@@ -59,21 +59,23 @@ const values = {
   testField: "ab",
   testItems: testItems2
 };
+const { SMALL, NORMAL } = sizes;
+const { WARNING } = variants;
 
 const buttons = {
   warning: {
     title: "Maybe...",
-    variant: "warning",
+    variant: WARNING,
     onClick: () => confirm("are you sure"),
-    size: "small"
+    size: SMALL
   },
   cancel: {
     title: "HELL NO",
-    size: "medium"
+    size: NORMAL
   },
   submit: {
     title: "Okay",
-    size: "small"
+    size: SMALL
   }
 };
 

@@ -88,7 +88,11 @@ export default class Masonry extends Component {
           return (
             <ColumnWrapper key={ci}>
               {col.map((child, i) => {
-                return <ItemWrapper key={i}>{child}</ItemWrapper>;
+                return (
+                  <ItemWrapper key={child.key || `${ci}-${i}`}>
+                    {child}
+                  </ItemWrapper>
+                );
               })}
             </ColumnWrapper>
           );

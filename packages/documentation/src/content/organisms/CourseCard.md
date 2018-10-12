@@ -1,7 +1,6 @@
 This organism structures several elements into the CourseCard component
 
 ```react|span-6
-responsive: true
 ---
 const course = {
   courseId: "abc",
