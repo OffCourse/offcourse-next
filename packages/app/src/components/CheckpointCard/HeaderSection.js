@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
 import { Checkbox, Heading, Group } from "@offcourse/atoms";
+import { sizes } from "@offcourse/constants";
+
+const { LARGE } = sizes;
 
 export default class HeaderSection extends Component {
   static propTypes = {
@@ -28,7 +31,7 @@ export default class HeaderSection extends Component {
         {checkable && (
           <Group alignItems="flex-end" ml={6}>
             <Checkbox
-              size="large"
+              size={LARGE}
               bg={!completed ? "grayScale.1" : "white"}
               checked={completed}
               onToggle={onToggle}

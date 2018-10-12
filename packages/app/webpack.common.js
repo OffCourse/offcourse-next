@@ -46,6 +46,8 @@ module.exports = {
       title: "Offcourse",
       baseHref: "/",
       filename: "index.html",
+      headHTMLSnippet:
+        "<link rel=“preload” href=“https://app.offcourse.io/fonts/NGB.woff” as=“font”><link rel=“preload” href=“https://app.offcourse.io/fonts/NGN.woff” as=“font”>",
       inject: false,
       mobile: true,
       template: require("html-webpack-template"),

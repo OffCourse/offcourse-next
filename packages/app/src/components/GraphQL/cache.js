@@ -1,8 +1,8 @@
 import {
   IntrospectionFragmentMatcher,
+  defaultDataIdFromObject,
   InMemoryCache
 } from "apollo-cache-inmemory";
-import { defaultDataIdFromObject } from "apollo-boost";
 import introspectionQueryResultData from "../../../fragmentTypes.json";
 
 const fragmentMatcher = new IntrospectionFragmentMatcher({

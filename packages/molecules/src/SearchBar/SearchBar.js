@@ -38,8 +38,10 @@ export default class SearchInput extends Component {
   };
 
   render() {
+    const { isOpen } = this.props;
     return (
       <SearchBarWrapper
+        display={isOpen ? "flex" : "none"}
         onSubmit={this.handleSubmit}
         justifyContent="stretch"
         alignItems="stretch"

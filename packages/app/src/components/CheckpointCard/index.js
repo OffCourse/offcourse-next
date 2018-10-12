@@ -7,17 +7,20 @@ import HeaderSection from "./HeaderSection";
 import ResourceSection from "./ResourceSection";
 import titleCase from "voca/title_case";
 import system from "system-components";
+import styled from "styled-components";
 
-const BCText = system({
+const _BCText = system({
   is: "a",
   m: 0,
   mb: 3,
   lineHeight: 1,
   fontSize: 1
-}).extend`
-&:hover {
-  color: ${props => props.theme.colors.primary}
-}
+});
+
+const BCText = styled(_BCText)`
+  &:hover {
+    color: ${props => props.theme.colors.primary};
+  }
 `;
 
 export default class CheckpointCard extends Component {

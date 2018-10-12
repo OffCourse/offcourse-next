@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { find, propEq } from "ramda";
 import { Group, Button } from "@offcourse/atoms";
+import { sizes } from "@offcourse/constants";
+
+const { LARGE } = sizes;
 
 export default class CourseAction extends Component {
   static propTypes = {
@@ -53,7 +56,7 @@ export default class CourseAction extends Component {
     const { onClick, label } = find(propEq("condition", true), actions);
     return (
       <Group justifyContent="stretch" alignItems="center" mt={6}>
-        <Button onClick={onClick} size="large">
+        <Button onClick={onClick} size={LARGE}>
           {label}
         </Button>
       </Group>

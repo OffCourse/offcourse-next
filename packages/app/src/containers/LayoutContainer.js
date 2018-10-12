@@ -12,19 +12,17 @@ import {
   SidebarProvider,
   OverlayProvider,
   AuthProvider,
-  FlashProvider,
-  ThemeProvider
+  FlashProvider
 } from "../providers";
 
 const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = OverlayProvider.constants;
 const mapper = {
-  searchbar: <SearchbarProvider />,
-  sidebar: <SidebarProvider />,
-  auth: <AuthProvider />,
-  overlay: <OverlayProvider />,
   flash: <FlashProvider />,
-  theme: <ThemeProvider />,
-  route: <Route />
+  overlay: <OverlayProvider />,
+  auth: <AuthProvider />,
+  route: <Route />,
+  sidebar: <SidebarProvider />,
+  searchbar: <SearchbarProvider />
 };
 
 export default class LayoutContainer extends Component {
@@ -32,23 +30,12 @@ export default class LayoutContainer extends Component {
     children: PropTypes.node.isRequired
   };
 
-  createThemeLinks({ themeNames, currentTheme, selectTheme }) {
-    return map(themeName => {
-      return {
-        onClick: () => selectTheme({ variables: { themeName } }),
-        disabled: themeName === currentTheme,
-        title: themeName,
-        level: 3
-      };
-    }, themeNames);
-  }
-
   createUserLinks({ openOverlay, changeCardSize }) {
     return [
       {
         onClick: () => openOverlay({ mode: CREATE_COURSE }),
         title: "Create Course",
-        level: 0
+        level: 1
       },
       {
         href: "https://condescending-wing-149611.netlify.com/",
@@ -58,7 +45,7 @@ export default class LayoutContainer extends Component {
       {
         onClick: () => openOverlay({ mode: SIGNING_OUT }),
         title: "Sign Out",
-        level: 0
+        level: 1
       }
     ];
   }
@@ -68,7 +55,7 @@ export default class LayoutContainer extends Component {
       {
         onClick: () => openOverlay({ mode: SIGNING_IN }),
         title: "Sign In",
-        level: 0
+        level: 1
       },
       {
         href: "https://condescending-wing-149611.netlify.com/",
@@ -96,8 +83,8 @@ export default class LayoutContainer extends Component {
               messages={flash.messages}
               onLogoClick={() => searchbar.close() && goHome()}
               toggleSidebar={sidebar.toggle}
-              toggleSearchbar={searchbar.toggle}
-              isSearchbarOpen={searchbar.isOpen}
+              toggleSearchBar={searchbar.toggle}
+              isSearchBarOpen={searchbar.isOpen}
               onSearchChange={debounce(
                 ({ searchTerm }) => goToCollection({ searchTerm }),
                 300
@@ -110,11 +97,6 @@ export default class LayoutContainer extends Component {
                 ...this.createLinks({
                   openOverlay: overlay.open,
                   userName: auth.userName
-                }),
-                ...this.createThemeLinks({
-                  themeNames: theme.all,
-                  selectTheme: theme.switch,
-                  currentTheme: theme.current
                 })
               ]}
             >

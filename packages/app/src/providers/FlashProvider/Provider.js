@@ -4,6 +4,10 @@ import { adopt } from "react-adopt";
 import { Query, Mutation } from "../../components";
 import { queries, mutations } from "./graphql";
 
+import { variants } from "@offcourse/constants";
+
+const { INFO, POSITIVE, WARNING, NEGATIVE } = variants;
+
 const mapper = {
   messagesQuery: <Query query={queries.messages} />,
   addMessage: <Mutation mutation={mutations.addMessage} />,
@@ -20,10 +24,10 @@ const mapProps = ({ messagesQuery, addMessage, removeMessage }) => {
   const push = curry(_push);
   return {
     messages,
-    success: push("success"),
-    warning: push("warning"),
-    info: push("info"),
-    error: push("error")
+    success: push(POSITIVE),
+    warning: push(WARNING),
+    info: push(INFO),
+    error: push(NEGATIVE)
   };
 };
 

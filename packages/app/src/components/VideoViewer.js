@@ -3,14 +3,17 @@ import PropTypes from "prop-types";
 import ReactPlayer from "react-player";
 import Provider from "../providers/ThemeProvider";
 import system from "system-components";
+import styled from "styled-components";
 
-const VideoWrapper = system({
+const _VideoWrapper = system({
   width: "100%",
   height: "100%",
   position: "relative",
   my: 6,
   pt: "56.25%"
-}).extend`
+});
+
+const VideoWrapper = styled(_VideoWrapper)`
   .react-player {
     position: absolute;
     top: 0;

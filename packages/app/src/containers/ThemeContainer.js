@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import {
   ThemeProvider as StyledThemeProvider,
-  injectGlobal
+  createGlobalStyle
 } from "styled-components";
 import * as themes from "@offcourse/themes";
 import { ThemeProvider } from "../providers";
@@ -18,9 +18,14 @@ export default class ThemeContainer extends Component {
       <ThemeProvider>
         {({ current }) => {
           const theme = themes[current];
-          injectGlobal(theme);
+          const GlobalStyle = createGlobalStyle(theme);
           return (
-            <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
+            <Fragment>
+              <GlobalStyle />
+              <StyledThemeProvider theme={theme}>
+                {children}
+              </StyledThemeProvider>
+            </Fragment>
           );
         }}
       </ThemeProvider>

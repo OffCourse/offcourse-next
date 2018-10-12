@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { map, sortWith, prop, ascend, sort } from "ramda";
+import { map } from "ramda";
 import { CourseCard } from "@offcourse/organisms";
 import { LinkGroup } from "@offcourse/molecules";
 import { MasterDetail, CheckpointCard, CourseAction } from "../../components";

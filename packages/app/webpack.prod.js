@@ -20,7 +20,7 @@ module.exports = merge(common, {
       skipWaiting: true
     })
     // new CompressionPlugin({
-    //   deleteOriginalAssets: true
+    //   filename: "[path]"
     // })
   ]
 });
