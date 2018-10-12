@@ -45,10 +45,8 @@
     "markdown-to-jsx": "^6.7.2",
     "punycode": "^2.1.1",
     "ramda": "^0.25.0",
-    "react": "^16.4.1",
     "react-adopt": "^0.6.0",
     "react-apollo": "2.1.5",
-    "react-dom": "^16.4.1",
     "react-hot-loader": "^4.3.4",
     "react-loadable": "^5.5.0",
     "react-player": "^1.6.4",
@@ -57,7 +55,11 @@
     "react-syntax-highlighter": "^8.0.1",
     "react-video": "^1.5.3",
     "s3-deploy": "^1.1.1",
-    "styled-components": "^3.3.0",
+    "prop-types": "^15.5.4",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "styled-components": "^4.0.0-beta.10",
+    "styled-system": "^3.1.6",
     "system-components": "^3.0.1"
   },
   "devDependencies": {

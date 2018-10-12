@@ -18,20 +18,20 @@
     "clean": "rm -rf ./dist",
     "start": "npm run build -- --watch"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@offcourse/atoms": "^1.4.0",
+    "@offcourse/constants": "^1.4.0",
+    "ramda": "^0.25.0",
+    "react-copy-to-clipboard": "^5.0.1",
+    "react-waypoint": "^8.0.1",
+    "react-sidebar": "^2.3.2",
+    "react-sortable-hoc": "^0.8.3",
+    "voca": "^1.4.0"
+  },
   "peerDependencies": {
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
-    "@offcourse/atoms": "^1.4.0",
-    "@offcourse/constants": "^1.4.0",
-    "clean-webpack-plugin": "^0.1.19",
-    "prettier": "^1.14.2",
-    "ramda": "^0.25.0",
-    "react-copy-to-clipboard": "^5.0.1",
-    "react-sidebar": "^2.3.2",
-    "react-sortable-hoc": "^0.8.3",
-    "voca": "^1.4.0",
     "system-components": "^3.0.1"
   },
   "devDependencies": {

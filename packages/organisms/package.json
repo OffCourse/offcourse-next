@@ -18,24 +18,23 @@
     "clean": "rm -rf ./dist",
     "start": "npm run build -- --watch"
   },
-  "dependencies": {},
-  "peerDependencies": {
+  "dependencies": {
     "@offcourse/atoms": "^1.4.0",
     "@offcourse/constants": "^1.4.0",
     "@offcourse/molecules": "^1.4.0",
     "@offcourse/themes": "^1.4.0",
+    "debounce": "^1.2.0",
+    "fastdom": "^1.0.8",
     "formik": "^0.11.11",
-    "prettier": "^1.14.2",
     "ramda": "^0.25.0",
-    "react-waypoint": "^8.0.1",
     "voca": "^1.4.0",
-    "yup": "^0.26.2",
+    "yup": "^0.26.2"
+  },
+  "peerDependencies": {
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
-    "system-components": "^3.0.1",
-    "debounce": "^1.2.0",
-    "fastdom": "^1.0.8"
+    "system-components": "^3.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { times, map, identity } from "ramda";
-import { Masonry, Loading } from "@offcourse/atoms";
+import { Masonry } from "@offcourse/atoms";
 import { InfiniteScroll } from "@offcourse/molecules";
 import { CourseCard } from "..";
 import PropTypes from "prop-types";
