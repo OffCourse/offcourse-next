@@ -17,10 +17,10 @@ import {
 
 const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = OverlayProvider.constants;
 const mapper = {
-  flash: <FlashProvider />,
-  overlay: <OverlayProvider />,
   auth: <AuthProvider />,
+  flash: <FlashProvider />,
   route: <Route />,
+  overlay: <OverlayProvider />,
   sidebar: <SidebarProvider />,
   searchbar: <SearchbarProvider />
 };

@@ -49,8 +49,8 @@ class Input extends Component {
   };
   render() {
     const {
-      autocomplete,
-      autofocus,
+      autoComplete,
+      autoFocus,
       mb,
       pt,
       pb,
@@ -72,8 +72,8 @@ class Input extends Component {
         {variant === "textarea" ? (
           <TextAreaWrapper
             is="textarea"
-            autoComplete={`${autocomplete}`}
-            autoFocus={autofocus}
+            autoComplete={`${autoComplete}`}
+            autoFocus={autoFocus}
             rows="4"
             name={name}
             disabled={disabled}
@@ -86,8 +86,8 @@ class Input extends Component {
           <InputWrapper
             name={name}
             type={type}
-            autoComplete={`${autocomplete}`}
-            autoFocus={autofocus}
+            autoComplete={`${autoComplete}`}
+            autoFocus={autoFocus}
             disabled={disabled}
             value={this.formatValue()}
             placeholder={formatTitle(placeholder)}

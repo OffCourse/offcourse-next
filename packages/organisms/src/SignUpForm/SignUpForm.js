@@ -45,7 +45,6 @@ class SignUpForm extends Component {
         setSubmitting={mode !== "confirm"}
       >
         <Form.Field
-          unformatted
           title="User Name"
           disabled={mode === "confirm"}
           name="userName"

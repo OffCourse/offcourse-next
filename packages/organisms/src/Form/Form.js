@@ -53,7 +53,13 @@ export default class Form extends Component {
 
   renderElements(props) {
     const { children, title, ...rest } = this.props;
-    return Children.map(children, child => {
+    return Children.map(children, (child, i) => {
+      if (i === 0) {
+        return (
+          child &&
+          React.cloneElement(child, { ...rest, ...props, autoFocus: true })
+        );
+      }
       return child && React.cloneElement(child, { ...rest, ...props });
     });
   }

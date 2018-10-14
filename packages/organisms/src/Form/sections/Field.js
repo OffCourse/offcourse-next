@@ -16,6 +16,8 @@ class FormField extends Component {
     const {
       name,
       FieldComponent,
+      autoFocus,
+      autoComplete,
       unformatted,
       disabled,
       variant,
@@ -32,6 +34,8 @@ class FormField extends Component {
               <InputField
                 {...field}
                 unformatted={unformatted}
+                autoComplete={autoComplete}
+                autoFocus={autoFocus}
                 disabled={disabled}
                 FieldComponent={FieldComponent}
                 variant={variant}

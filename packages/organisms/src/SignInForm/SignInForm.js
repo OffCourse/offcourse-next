@@ -39,12 +39,7 @@ class SignInForm extends Component {
         onSubmit={onSubmit}
         onCancel={onCancel}
       >
-        <Form.Field
-          unformatted
-          title="User Name"
-          name="userName"
-          placeholder="User Name"
-        />
+        <Form.Field title="User Name" name="userName" placeholder="User Name" />
         <Form.Field
           unformatted
           title="Password"

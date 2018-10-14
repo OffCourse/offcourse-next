@@ -1,11 +1,75 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { object, string, array } from "yup";
-import { compose, clone, map, values, uniq, flatten } from "ramda";
+import {
+  zipWith,
+  merge,
+  compose,
+  clone,
+  map,
+  values,
+  uniq,
+  flatten
+} from "ramda";
 import { compact } from "../../helpers";
 import { FieldArray } from "formik";
 import { Section } from "@offcourse/atoms";
 import { CheckpointInput, InputField, InputList } from "@offcourse/molecules";
+
+const formatFieldError = ({ touched, error }) => {
+  return touched && error && error.split(".")[1];
+};
+
+const formatFieldsError = errorData => {
+  return object().isType(errorData)
+    ? map(formatFieldError, values(errorData))
+    : error;
+};
+
+const handleFieldErrors = errors => {
+  const filteredErrors = compose(
+    compact,
+    flatten
+  )(errors);
+  const formattedErrors = map(
+    compose(
+      compact,
+      formatFieldsError
+    ),
+    filteredErrors
+  );
+  return compose(
+    uniq,
+    flatten
+  )(formattedErrors);
+};
+
+const test = (touched, errors) => {
+  if (!touched || !errors) {
+    return null;
+  }
+  const { task: tt, resourceUrl: tr } = touched;
+  const { task: et, resourceUrl: er } = errors;
+  return {
+    task: { error: et, touched: tt },
+    resourceUrl: { error: er, touched: tr }
+  };
+};
+
+const createFieldErrors = (errors, touched) => {
+  if (!errors || !touched) {
+    return [];
+  }
+  const touchedErrors = zipWith(test, touched, errors);
+  return string().isType(errors) ? [errors] : handleFieldErrors(touchedErrors);
+};
+
+const createListFeedback = (errors, touched) => {
+  return {
+    errors: array().isType(errors) ? errors : [],
+    touched: array().isType(touched) ? touched : []
+  };
+};
 
 export default class FieldList extends Component {
   static propTypes = {
@@ -15,36 +79,6 @@ export default class FieldList extends Component {
 
   static defaultProps = {
     emptyItem: ""
-  };
-
-  formatFieldError = error => {
-    return object().isType(error)
-      ? map(error => error.split(".")[1], values(error))
-      : error;
-  };
-
-  formatFieldErrors = errors => {
-    const filteredErrors = compose(
-      compact,
-      flatten
-    )(errors);
-    const formattedErrors = map(this.formatFieldError, filteredErrors);
-    return compose(
-      uniq,
-      flatten
-    )(formattedErrors);
-  };
-
-  fieldErrors = errors => {
-    if (!errors) {
-      return [];
-    }
-
-    return string().isType(errors) ? [errors] : this.formatFieldErrors(errors);
-  };
-
-  listErrors = errors => {
-    return array().isType(errors) ? errors : [];
   };
 
   render() {
@@ -61,10 +95,19 @@ export default class FieldList extends Component {
       <Section>
         <FieldArray name={name}>
           {({ form, push, remove, move }) => {
-            const { dirty, handleChange, values, touched, errors } = form;
+            const {
+              setFieldTouched,
+              handleChange,
+              values,
+              touched,
+              errors
+            } = form;
             const items = values[name];
-            const fieldErrors = this.fieldErrors(errors[name]);
-            const listErrors = this.listErrors(errors[name]);
+            const fieldErrors = createFieldErrors(errors[name], touched[name]);
+            const {
+              errors: listErrors,
+              touched: listTouched
+            } = createListFeedback(errors[name], touched[name]);
             return (
               <InputField errors={fieldErrors} name={name} title={title}>
                 <InputList
@@ -77,9 +120,10 @@ export default class FieldList extends Component {
                   move={({ oldIndex, newIndex }) => move(oldIndex, newIndex)}
                   remove={remove}
                   errors={listErrors}
+                  touched={listTouched}
                   onChange={handleChange}
                   FieldComponent={FieldComponent}
-                  onBlur={() => {}}
+                  onBlur={setFieldTouched}
                 />
               </InputField>
             );

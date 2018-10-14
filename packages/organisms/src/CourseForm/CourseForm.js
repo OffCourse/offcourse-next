@@ -39,17 +39,17 @@ export default class CourseForm extends Component {
           name="goal"
           placeholder="Goal"
         />
-        <Form.FieldList
-          title="Checkpoints"
-          emptyItem={new Model.Checkpoint()}
-          name="checkpoints"
-          FieldComponent={CheckpointInput}
-        />
         <Form.Field
           variant="textarea"
           title="Description"
           name="description"
           placeholder="Course Description"
+        />
+        <Form.FieldList
+          title="Checkpoints"
+          emptyItem={new Model.Checkpoint()}
+          name="checkpoints"
+          FieldComponent={CheckpointInput}
         />
       </Form>
     );

@@ -22,6 +22,10 @@ export default class InputList extends Component {
     errors: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ),
+    /** list of errors corresponding to these items */
+    touched: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    ),
     /** field that indicates if the form itself is arrangeable (add, remove, move, etc...) */
     arrangeable: PropTypes.bool,
     /** title of the field (i.e. label) */
@@ -78,6 +82,7 @@ export default class InputList extends Component {
       arrangeable,
       items,
       errors,
+      touched,
       placeholder,
       name,
       onChange,
@@ -90,7 +95,7 @@ export default class InputList extends Component {
           value={item}
           onChange={onChange}
           onBlur={onBlur}
-          hasErrors={!!errors[index]}
+          hasErrors={touched[index] && !!errors[index]}
           mb={3}
           placeholder={placeholder}
           key={index}

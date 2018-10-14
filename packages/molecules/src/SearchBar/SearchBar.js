@@ -48,8 +48,8 @@ export default class SearchInput extends Component {
       >
         <Input
           name="search"
-          autocomplete={false}
-          autofocus={true}
+          autoComplete={false}
+          autoFocus={true}
           variant="small"
           onChange={this.handleChange}
           placeholder="search term"

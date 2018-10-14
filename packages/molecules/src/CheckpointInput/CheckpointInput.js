@@ -7,6 +7,11 @@ import { IconGroup } from "..";
 export default class CheckpointInput extends Component {
   static propTypes = {};
 
+  handleBlur = e => {
+    const { onBlur } = this.props;
+    return onBlur(e.target.name);
+  };
+
   render() {
     const {
       name,
@@ -22,7 +27,7 @@ export default class CheckpointInput extends Component {
         <Group alignItems="stretch" className="inputs">
           <Input
             onChange={onChange}
-            onBlur={onBlur}
+            onBlur={this.handleBlur}
             pb={2}
             mb={0}
             name={`${name}.task`}
@@ -31,7 +36,7 @@ export default class CheckpointInput extends Component {
           />
           <Input
             onChange={onChange}
-            onBlur={onBlur}
+            onBlur={this.handleBlur}
             unformatted
             pt={0}
             mt={0}

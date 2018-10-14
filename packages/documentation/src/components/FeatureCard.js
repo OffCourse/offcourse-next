@@ -9,6 +9,10 @@ import {
   StatGroup,
   TagGroup
 } from "@offcourse/molecules";
+import { sizes, variants } from "@offcourse/constants";
+
+const { LARGE } = sizes;
+const { DEFAULT, DISABLED } = variants;
 
 const COMPLETE = "COMPLETE";
 
@@ -76,11 +80,16 @@ export default class FeatureCard extends Component {
 
         <Group pt={6}>
           <Label>Feature Team</Label>
-          {map(member => <Text key={member}>{member}</Text>, who.team)}
+          {map(
+            member => (
+              <Text key={member}>{member}</Text>
+            ),
+            who.team
+          )}
           <Button
-            variant={status !== COMPLETE ? "default" : "disabled"}
+            variant={status !== COMPLETE ? DEFAULT : DISABLED}
             mt={6}
-            size="large"
+            size={LARGE}
           >
             {status !== COMPLETE
               ? "Build This With Us"
@@ -100,7 +109,7 @@ export default class FeatureCard extends Component {
   render() {
     const { name } = this.props;
     return (
-      <Card>
+      <Card width={["100%", "18rem", "18rem"]}>
         <Heading section="header">{name}</Heading>
         {this.renderPlanning()}
         {this.renderWhatSection()}

@@ -45,7 +45,6 @@ class PasswordRetrievalForm extends Component {
         <Form.Field
           title="User Name"
           disabled={mode === "confirm"}
-          unformatted
           name="userName"
           placeholder="User Name"
         />

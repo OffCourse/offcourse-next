@@ -62,6 +62,8 @@ export default class InputField extends Component {
     const {
       name,
       placeholder,
+      autoFocus,
+      autoComplete,
       disabled,
       value,
       onChange,
@@ -72,21 +74,23 @@ export default class InputField extends Component {
       variant
     } = this.props;
 
-    return children ? (
-      children
-    ) : (
-      <FieldComponent
-        name={name}
-        value={value}
-        disabled={disabled}
-        placeholder={placeholder}
-        onChange={onChange}
-        onBlur={onBlur}
-        unformatted={unformatted}
-        mb={3}
-        hasErrors={this.hasErrors()}
-        variant={variant}
-      />
+    return (
+      children || (
+        <FieldComponent
+          name={name}
+          autoComplete={autoComplete}
+          autoFocus={autoFocus}
+          value={value}
+          disabled={disabled}
+          placeholder={placeholder}
+          onChange={onChange}
+          onBlur={onBlur}
+          unformatted={unformatted}
+          mb={3}
+          hasErrors={this.hasErrors()}
+          variant={variant}
+        />
+      )
     );
   }
 
