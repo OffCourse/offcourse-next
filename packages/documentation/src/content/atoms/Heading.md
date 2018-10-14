@@ -11,6 +11,14 @@ const { SMALL } = sizes;
 <Heading size={ SMALL }>Small Heading</Heading>
 ```
 
+```react
+<Heading>Regular Heading</Heading>
+```
+
+```react
+<Heading>introduction to goldman sach’s symphony</Heading>
+```
+
 ...or large
 
 ```react

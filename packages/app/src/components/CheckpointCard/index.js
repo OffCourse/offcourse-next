@@ -4,10 +4,16 @@ import { identity } from "ramda";
 import { Group } from "@offcourse/atoms";
 import { ExpandableCard as Card } from "@offcourse/molecules";
 import HeaderSection from "./HeaderSection";
-import ResourceSection from "./ResourceSection";
 import titleCase from "voca/title_case";
 import system from "system-components";
 import styled from "styled-components";
+
+import Loadable from "react-loadable";
+
+const ResourceSection = Loadable({
+  loader: () => import("./ResourceSection"),
+  loading: () => <div>HELLO</div>
+});
 
 const _BCText = system({
   is: "a",

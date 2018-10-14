@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ReactPlayer from "react-player";
-import Provider from "../providers/ThemeProvider";
 import system from "system-components";
 import styled from "styled-components";
+import { Loading } from "@offcourse/atoms";
+
+import Loadable from "react-loadable";
+
+const ReactPlayer = Loadable({
+  loader: () => import("react-player"),
+  loading: () => Loading
+});
 
 const _VideoWrapper = system({
   width: "100%",

@@ -14,6 +14,10 @@ class Loading extends Component {
     size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE])
   };
 
+  static defaultProps = {
+    size: LARGE
+  };
+
   render() {
     const { size } = this.props;
     return <Icon name="asterisk" size={size} spin />;

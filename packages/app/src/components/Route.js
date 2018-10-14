@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { map } from "ramda";
 import { Route as RRoute } from "react-router-dom";
 
 export default class Route extends Component {
@@ -13,12 +14,16 @@ export default class Route extends Component {
     return (
       <RRoute
         {...rest}
-        render={({ history, ...props }) => {
+        render={({ history, match: rawMatch, ...props }) => {
+          const params = map(decodeURIComponent, rawMatch.params);
+          const match = { ...rawMatch, params };
+
           const handlers = {
             goHome() {
               history.push("/");
             },
-            goToCollection({ curator, tag, searchTerm }) {
+            goToCollection(qs) {
+              const { curator, tag, searchTerm } = map(encodeURIComponent, qs);
               if (tag) {
                 history.push(`/tag/${tag}`);
               }
@@ -32,18 +37,20 @@ export default class Route extends Component {
                 history.push("/");
               }
             },
-            goToCourse({ curator, goal }) {
+            goToCourse(qs) {
+              const { curator, goal } = map(encodeURIComponent, qs);
               history.push(`/curator/${curator}/goal/${goal}`);
             },
-            goToCheckpoint({ curator, goal, task }) {
+            goToCheckpoint(qs) {
+              const { curator, goal, task } = map(encodeURIComponent, qs);
               history.push(`/curator/${curator}/goal/${goal}/task/${task}`);
             }
           };
 
           return children ? (
-            children({ ...props, handlers })
+            children({ ...props, match, handlers })
           ) : (
-            <ComponentToRender {...props} handlers={handlers} />
+            <ComponentToRender {...props} match={match} handlers={handlers} />
           );
         }}
       />

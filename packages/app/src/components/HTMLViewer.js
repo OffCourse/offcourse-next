@@ -1,10 +1,18 @@
 import React, { Component } from "react";
-import { Heading } from "@offcourse/atoms";
+import { Heading, Loading } from "@offcourse/atoms";
 import PropTypes from "prop-types";
-import Markdown from "markdown-to-jsx";
 import system from "system-components";
-import SyntaxHighlighter from "react-syntax-highlighter/prism-light";
-import { duotoneDark } from "react-syntax-highlighter/styles/prism";
+
+import Loadable from "react-loadable";
+
+const SyntaxHighlighter = Loadable({
+  loader: () => import("react-syntax-highlighter/prism-light"),
+  loading: Loading
+});
+const Markdown = Loadable({
+  loader: () => import("markdown-to-jsx"),
+  loading: Loading
+});
 
 const Image = system({
   is: "img",
@@ -39,8 +47,16 @@ class HTMLViewer extends Component {
     markdown: PropTypes.string.isRequired
   };
 
+  async componentWillMount() {
+    const {
+      duotoneDark
+    } = await import(/* webpackChunkName: "highlighters" */ "react-syntax-highlighter/styles/prism");
+    this.theme = duotoneDark;
+  }
+
   render() {
     const { markdown } = this.props;
+
     return (
       <Markdown
         options={{
@@ -52,7 +68,7 @@ class HTMLViewer extends Component {
             pre: { component: null },
             code: {
               props: {
-                style: duotoneDark,
+                style: this.theme,
                 CodeTag: Code
               },
               component: SyntaxHighlighter
