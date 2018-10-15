@@ -11,13 +11,17 @@ const TagGroupWrapper = system(
     pb: 0,
     pt: 0
   },
+  "alignSelf",
   "justifyContent"
 );
 
 export default styled(TagGroupWrapper)`
   margin-bottom: ${({ theme }) => `-${theme.space[3]}}`};
   div {
-    margin-right: ${({ theme }) => theme.space[3]};
+    margin-left: ${({ theme, justifyContent }) =>
+      justifyContent === "flex-end" ? theme.space[3] : 0};
+    margin-right: ${({ theme, justifyContent }) =>
+      justifyContent === "flex-end" ? 0 : theme.space[3]};
     margin-bottom: ${({ theme }) => theme.space[3]};
 
     &:last-child {

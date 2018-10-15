@@ -95,6 +95,10 @@ These are all the icons that we use
 ```
 
 ```react|span-2
+<Icon name="question" />
+```
+
+```react|span-2
 <Icon name="remove" />
 ```
 

@@ -20,7 +20,8 @@ export default class TagGroup extends Component {
   };
 
   static defaultProps = {
-    tags: []
+    tags: [],
+    justifyContent: "flex-start"
   };
 
   renderTags = () => {
@@ -36,9 +37,9 @@ export default class TagGroup extends Component {
   };
 
   render() {
-    const { tags, pt, pb, children } = this.props;
+    const { tags, pt, pb, children, alignSelf } = this.props;
     return (
-      <TagGroupWrapper pb={pb} pt={pt}>
+      <TagGroupWrapper alignSelf={alignSelf} pb={pb} pt={pt}>
         {isEmpty(tags) ? children : this.renderTags()}
       </TagGroupWrapper>
     );

@@ -17,6 +17,7 @@ query course(
     tags
     checkpoints {
       task
+      tags
       checkpointId
       resourceUrl
       completed @include(if: $isAuthenticated)

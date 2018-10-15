@@ -91,19 +91,6 @@ export default class CheckpointCard extends Component {
         inactive={level === 0 || status === "loading"}
         mb={6}
       >
-        <Group alignItems="stretch" section="breadcrumbs-header">
-          <Group mb={4} alignItems="flex-start">
-            <BCText onClick={this.handleCourseClick}>{`<< ${titleCase(
-              course.goal
-            )}`}</BCText>
-          </Group>
-          <Header
-            task={task}
-            completed={completed}
-            checkable={checkable}
-            onToggle={this.handleCheckpointToggle}
-          />
-        </Group>
         <Header
           section="header"
           task={task}
@@ -112,7 +99,11 @@ export default class CheckpointCard extends Component {
           onClick={this.handleCheckpointClick}
           onToggle={this.handleCheckpointToggle}
         />
-        <Meta section="meta" tags={tags} />
+        <Meta
+          section="meta"
+          resourceType={resource ? resource.resourceType : "unknown"}
+          tags={tags}
+        />
       </Card>
     );
   }

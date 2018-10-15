@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { map } from "ramda";
-import { CourseCard } from "@offcourse/organisms";
+import { CheckpointCard, CourseCard } from "@offcourse/organisms";
 import { LinkGroup } from "@offcourse/molecules";
-import { MasterDetail, CheckpointCard, CourseAction } from "../../components";
+import {
+  MasterDetail,
+  CheckpointCard as CC,
+  CourseAction
+} from "../../components";
 
 const Link = LinkGroup.Link;
 
@@ -40,7 +44,7 @@ export default class View extends Component {
             onCuratorClick={goToCollection}
             onGoalClick={goToCourse}
             onCheckpointClick={goToCheckpoint}
-            layout={[["header", "meta", "description", "tags", "social"]]}
+            layout={[["header", "meta", "description", "social"]]}
             onCheckpointToggle={userName ? toggleCheckpoint : null}
             onTagClick={goToCollection}
             course={course}

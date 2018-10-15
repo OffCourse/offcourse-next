@@ -6,27 +6,41 @@ import { TagGroup } from "@offcourse/molecules";
 import { sizes } from "@offcourse/constants";
 
 const { LARGE, SMALL } = sizes;
+const resource = {
+  video: {
+    iconName: "video",
+    text: "Video"
+  },
+  html: {
+    iconName: "document",
+    text: "Web Article"
+  },
+  unknown: {
+    iconName: "question",
+    text: "Unknown"
+  }
+};
 
 export default class Meta extends Component {
-  static propTypes = {};
+  static propTypes = {
+    tags: PropTypes.arrayOf(PropTypes.string)
+  };
 
   static defaultProps = {};
 
   render() {
-    const { task, tags, completed, checkable, onClick, onToggle } = this.props;
+    const { tags, resourceType } = this.props;
+    const { iconName, text } = resource[resourceType];
     return (
       <Group
         flexDirection="row"
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent={["flex-start", "space-between", "space-between"]}
       >
-        <Group flexDirection="row" justifyContent="flex-start">
-          <Icon size={LARGE} name="document" />
-          <Group flexDirection="row" ml="1rem">
-            <Heading size={SMALL}>Web Article</Heading>
-          </Group>
+        <Icon size={LARGE} name={iconName} />
+        <Group ml={6} flexDirection="row" alignItems="center">
+          <TagGroup tags={tags} />
         </Group>
-        <TagGroup tags={tags} />
       </Group>
     );
   }
