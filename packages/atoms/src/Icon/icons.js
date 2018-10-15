@@ -1,7 +1,10 @@
 import {
   faAsterisk as asterisk,
-  faCaretDown as arrowDown,
-  faCaretUp as arrowUp,
+  faCalendarAlt as calendar,
+  faChevronDown as arrowDown,
+  faChevronUp as arrowUp,
+  faChevronLeft as arrowLeft,
+  faChevronRight as arrowRight,
   faBars as hamburger,
   faCheck as checkmark,
   faTimes as remove,
@@ -11,12 +14,13 @@ import {
   faMinus as minus,
   faEye as eye,
   faClock as clock,
+  faFileAlt as document,
   faRocket as rocket,
   faSearch as search,
   faThermometerEmpty as beginner,
   faThermometerHalf as advanced,
   faThermometerFull as expert,
-  faCalendarAlt as calendar
+  faVideo as video
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -28,12 +32,15 @@ export {
   add,
   advanced,
   arrowDown,
+  arrowLeft,
+  arrowRight,
   arrowUp,
   asterisk,
   beginner,
   calendar,
   checkmark,
   clock,
+  document,
   expert,
   eye,
   facebook,
@@ -44,5 +51,6 @@ export {
   rocket,
   search,
   sort,
-  twitter
+  twitter,
+  video
 };

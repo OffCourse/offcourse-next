@@ -35,6 +35,14 @@ These are all the icons that we use
 ```
 
 ```react|span-2
+<Icon name="arrowLeft" />
+```
+
+```react|span-2
+<Icon name="arrowRight" />
+```
+
+```react|span-2
 <Icon name="arrowUp" />
 ```
 
@@ -52,6 +60,10 @@ These are all the icons that we use
 
 ```react|span-2
 <Icon name="checkmark" />
+```
+
+```react|span-2
+<Icon name="document" />
 ```
 
 ```react|span-2
@@ -100,4 +112,8 @@ These are all the icons that we use
 
 ```react|span-2
 <Icon name="twitter" />
+```
+
+```react|span-2
+<Icon name="video" />
 ```

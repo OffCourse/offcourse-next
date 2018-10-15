@@ -46,7 +46,7 @@ module.exports = {
       title: "Offcourse",
       baseHref: "/",
       filename: "index.html",
-      headHTMLSnippet:
+      headHtmlSnippet:
         "<link rel=“preload” href=“https://app.offcourse.io/fonts/NGB.woff” as=“font”><link rel=“preload” href=“https://app.offcourse.io/fonts/NGN.woff” as=“font”>",
       inject: false,
       mobile: true,

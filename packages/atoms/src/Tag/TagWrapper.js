@@ -18,5 +18,6 @@ export default styled(TagWrapper)`
   user-select: none;
   box-sizing: border-box;
   font-family: ${({ theme }) => theme.fonts.bold};
+  font-weight: 700;
   text-decoration: inherit;
 `;
