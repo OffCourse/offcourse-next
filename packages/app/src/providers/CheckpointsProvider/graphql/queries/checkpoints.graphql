@@ -1,0 +1,6 @@
+#import "../fragments/Checkpoints.graphql"
+query checkpoints($courseId: String, $isAuthenticated: Boolean!) {
+  course(courseId: $courseId) {
+    ...Checkpoints
+  }
+}

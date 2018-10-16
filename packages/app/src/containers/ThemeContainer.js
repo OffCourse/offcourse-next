@@ -7,6 +7,8 @@ import {
 import * as themes from "@offcourse/themes";
 import { ThemeProvider } from "../providers";
 
+const GlobalStyle = createGlobalStyle(themes.offcourse);
+
 export default class ThemeContainer extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired
@@ -18,7 +20,6 @@ export default class ThemeContainer extends Component {
       <ThemeProvider>
         {({ current }) => {
           const theme = themes[current];
-          const GlobalStyle = createGlobalStyle(theme);
           return (
             <Fragment>
               <GlobalStyle />

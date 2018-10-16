@@ -1,32 +1,10 @@
+#import "../fragments/Course.graphql"
 query course(
   $courseQuery: CourseQuery
   $courseId: String
   $isAuthenticated: Boolean!
 ) {
   course(courseQuery: $courseQuery, courseId: $courseId) {
-    goal
-    curator
-    fork @include(if: $isAuthenticated) {
-      curator
-      goal
-    }
-    timestamp
-    courseId
-    description
-    revision
-    tags
-    checkpoints {
-      task
-      tags
-      checkpointId
-      resourceUrl
-      completed @include(if: $isAuthenticated)
-      resource {
-        resourceType
-        title
-        description
-        tags
-      }
-    }
+    ...CourseData
   }
 }

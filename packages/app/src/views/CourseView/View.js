@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { map } from "ramda";
 import { CheckpointCard, CourseCard } from "@offcourse/organisms";
+import { CheckpointsProvider } from "../../providers";
 import { LinkGroup } from "@offcourse/molecules";
 import {
   MasterDetail,
@@ -59,7 +60,11 @@ export default class View extends Component {
           />
         </Master>
         <Detail alignItems="flex-start" pt={6} px={["1rem", "1rem", 0]}>
-          {map(checkpoint => {
+          <CheckpointsProvider courseId={course.courseId}>
+            {checkpoints => {
+              return JSON.stringify(checkpoints, null, 2);
+            }}
+            {/* {map(checkpoint => {
             return (
               <CheckpointCard
                 status={course.status}
@@ -71,7 +76,8 @@ export default class View extends Component {
                 key={checkpoint.checkpointId}
               />
             );
-          }, checkpoints)}
+          }, checkpoints)} */}
+          </CheckpointsProvider>
         </Detail>
       </MasterDetail>
     );

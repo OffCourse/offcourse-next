@@ -1,10 +1,10 @@
 fragment CourseData on Course {
   goal
-  fork {
-    goal
-    curator
-  }
   curator
+  fork @include(if: $isAuthenticated) {
+    curator
+    goal
+  }
   timestamp
   courseId
   description
@@ -12,15 +12,8 @@ fragment CourseData on Course {
   tags
   checkpoints {
     task
-    tags
     checkpointId
     resourceUrl
-    completed
-    resource {
-      resourceType
-      title
-      description
-      tags
-    }
+    completed @include(if: $isAuthenticated)
   }
 }

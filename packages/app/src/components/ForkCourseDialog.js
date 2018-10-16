@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Group } from "@offcourse/atoms";
 import { ButtonGroup, Modal } from "@offcourse/molecules";
+import { variants } from "@offcourse/constants";
 
+const { POSITIVE } = variants;
 export default class ForkCourseDialog extends Component {
   static propTypes = {
     closeOverlay: PropTypes.func.isRequired,
@@ -19,7 +21,7 @@ export default class ForkCourseDialog extends Component {
             <ButtonGroup.Button onClick={closeOverlay}>
               Nah...
             </ButtonGroup.Button>
-            <ButtonGroup.Button onClick={forkCourse} variant="positive">
+            <ButtonGroup.Button onClick={forkCourse} variant={POSITIVE}>
               Fork!
             </ButtonGroup.Button>
           </ButtonGroup>

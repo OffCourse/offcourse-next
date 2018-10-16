@@ -5,7 +5,7 @@ const checkpointsWithStatus = map(cp => ({ ...cp, completed: false }));
 
 const fork = (forkCourse, { courseId }) => {
   return forkCourse({
-    variables: { courseId },
+    variables: { courseId, isAuthenticated: true },
     update: (cache, { data }) => {
       const { checkpoints, goal, curator, ...rest } = data.forkCourse;
       cache.writeFragment({

@@ -42,7 +42,10 @@ const mapProps = ({
   userIsCurator: course && course.curator === userName,
   updateStatus: updateStatus(update),
   fork: fork(forkCourse),
-  save: save(saveCourse, { courseId, curator: userName })
+  save: save(saveCourse, {
+    courseId,
+    curator: userName
+  })
 });
 
 export default adopt(mapper, mapProps);

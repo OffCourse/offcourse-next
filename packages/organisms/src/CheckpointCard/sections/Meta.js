@@ -26,7 +26,10 @@ export default class Meta extends Component {
     tags: PropTypes.arrayOf(PropTypes.string)
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    resourceType: "unknown",
+    tags: []
+  };
 
   render() {
     const { tags, resourceType } = this.props;
@@ -38,7 +41,7 @@ export default class Meta extends Component {
         justifyContent={["flex-start", "space-between", "space-between"]}
       >
         <Icon size={LARGE} name={iconName} />
-        <Group ml={6} flexDirection="row" alignItems="center">
+        <Group ml={7} flexDirection="row" alignItems="center">
           <TagGroup tags={tags} />
         </Group>
       </Group>

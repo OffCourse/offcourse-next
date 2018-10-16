@@ -3,9 +3,15 @@ import { queries } from "../graphql";
 
 const save = (addCourse, meta, proposal) => {
   return addCourse({
-    variables: { course: { ...meta, ...proposal } },
+    variables: { course: { ...meta, ...proposal }, isAuthenticated: true },
     update: (cache, { data }) => {
-      const { courseId, goal, curator, ...savedCourse } = data.addCourse;
+      const {
+        courseId,
+        goal,
+        curator,
+        isAuthenticated,
+        ...savedCourse
+      } = data.addCourse;
 
       cache.writeQuery({
         query: queries.course,

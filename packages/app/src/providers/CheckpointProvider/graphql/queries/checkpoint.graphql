@@ -4,7 +4,6 @@ query checkpoint(
 ) {
   checkpoint(checkpointQuery: $checkpointQuery) {
     checkpointId
-
     task
     tags
     course {

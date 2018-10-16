@@ -77,7 +77,6 @@ export default class CheckpointView extends Component {
                 );
               }}
             </CheckpointProvider>
-
           )}
         </Detail>
       </MasterDetail>

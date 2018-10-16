@@ -102,7 +102,7 @@ export default class CheckpointCard extends Component {
         <Meta
           section="meta"
           resourceType={resource ? resource.resourceType : "unknown"}
-          tags={tags}
+          tags={tags || []}
         />
       </Card>
     );

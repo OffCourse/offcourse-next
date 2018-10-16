@@ -10,16 +10,16 @@ const toggleCheckpoint = (
   { courseId, checkpointId, checked }
 ) => {
   updateStatus({ courseId, checkpointId, checked });
-
 };
 
+/* eslint: disable */
 const mapper = {
   courseData: ({ curator, goal, render }) => (
     <CourseProvider courseQuery={{ curator, goal }}>{render}</CourseProvider>
   ),
   overlay: <OverlayProvider />
-
 };
+/* eslint: enable */
 
 const mapProps = ({
   courseData: { course, userName, userIsCurator, updateStatus },
