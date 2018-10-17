@@ -3,13 +3,13 @@ import { queries, fragments } from "../graphql";
 
 const checkpointsWithStatus = map(cp => ({ ...cp, completed: false }));
 
-const fork = (forkCourse, { courseId }) => {
+const fork = (forkCourse, { courseId: oldId }) => {
   return forkCourse({
-    variables: { courseId, isAuthenticated: true },
+    variables: { courseId: oldId, isAuthenticated: true },
     update: (cache, { data }) => {
-      const { checkpoints, goal, curator, ...rest } = data.forkCourse;
+      const { courseId, checkpoints, goal, curator, ...rest } = data.forkCourse;
       cache.writeFragment({
-        id: courseId,
+        id: oldId,
         fragment: fragments.Fork,
         data: {
           __typename: "Course",
@@ -20,6 +20,26 @@ const fork = (forkCourse, { courseId }) => {
           }
         }
       });
+
+      cache.writeQuery({
+        query: queries.course,
+        variables: {
+          courseId,
+          isAuthenticated: true
+        },
+        data: {
+          course: {
+            courseId,
+            goal,
+            curator,
+            checkpoint: null,
+            checkpoints: checkpointsWithStatus(checkpoints),
+            fork: null,
+            ...rest
+          }
+        }
+      });
+
       cache.writeQuery({
         query: queries.course,
         variables: {
@@ -31,6 +51,7 @@ const fork = (forkCourse, { courseId }) => {
         },
         data: {
           course: {
+            courseId,
             goal,
             curator,
             checkpoint: null,

@@ -22,13 +22,16 @@ export default class CheckpointsQuery extends Component {
       >
         {({ loading, error, data }) => {
           if (loading) {
-            return children(fakeCourse());
+            return <div>loading</div>;
           }
           if (error) {
-            return children(fakeCourse("error"));
+            return <div>error</div>;
           }
           // return children({ ...fakeCourse(), status: "loading" });
-          return children(data);
+          if (data.course) {
+            return children(data.course.checkpoints);
+          }
+          return [];
         }}
       </Query>
     );

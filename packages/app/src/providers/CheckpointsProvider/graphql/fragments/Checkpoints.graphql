@@ -2,5 +2,10 @@ fragment Checkpoints on Course {
   checkpoints {
     checkpointId
     completed @include(if: $isAuthenticated)
+    task
+    resourceUrl
+    resource {
+      resourceType
+    }
   }
 }

@@ -4,11 +4,7 @@ import { map } from "ramda";
 import { CheckpointCard, CourseCard } from "@offcourse/organisms";
 import { CheckpointsProvider } from "../../providers";
 import { LinkGroup } from "@offcourse/molecules";
-import {
-  MasterDetail,
-  CheckpointCard as CC,
-  CourseAction
-} from "../../components";
+import { MasterDetail, CourseAction } from "../../components";
 
 const Link = LinkGroup.Link;
 
@@ -60,11 +56,7 @@ export default class View extends Component {
           />
         </Master>
         <Detail alignItems="flex-start" pt={6} px={["1rem", "1rem", 0]}>
-          <CheckpointsProvider courseId={course.courseId}>
-            {checkpoints => {
-              return JSON.stringify(checkpoints, null, 2);
-            }}
-            {/* {map(checkpoint => {
+          {map(checkpoint => {
             return (
               <CheckpointCard
                 status={course.status}
@@ -76,8 +68,7 @@ export default class View extends Component {
                 key={checkpoint.checkpointId}
               />
             );
-          }, checkpoints)} */}
-          </CheckpointsProvider>
+          }, course.checkpoints)}
         </Detail>
       </MasterDetail>
     );
