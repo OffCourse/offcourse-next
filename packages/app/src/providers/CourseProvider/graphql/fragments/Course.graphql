@@ -1,6 +1,7 @@
 fragment CourseData on Course {
   goal
   curator
+  courseUrl
   fork @include(if: $isAuthenticated) {
     curator
     goal

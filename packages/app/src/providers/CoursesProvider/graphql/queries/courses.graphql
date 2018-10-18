@@ -21,6 +21,7 @@ query courses(
       cursor
       node {
         goal
+        courseUrl
         curator
         timestamp
         courseId

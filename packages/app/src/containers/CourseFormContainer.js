@@ -63,7 +63,6 @@ export default class CourseFormContainer extends Component {
             );
           }
           return null;
-
         }}
       </Adopt>
     );
