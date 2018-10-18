@@ -16,7 +16,12 @@ const handleChange = (e) => {
   setState({text: text.toLowerCase()})
 };
 
-<Input value={state.text} onChange={handleChange} name="test" placeholder="Test" />
+const handleSubmit = (e) => {
+  alert(e.target.value());
+};
+
+
+<Input onSubmit={handleSubmit} value={state.text} onChange={handleChange} name="test" placeholder="Test" />
 ```
 
 An input can also take an optional onBlur callback
@@ -51,6 +56,10 @@ Furthermore, you can indicate if the field has errors
 ```
 
 Lastly, inputs can also cover multiple lines
+
+```react|plain
+<Input name="test" variant="textarea" placeholder="Test" />
+```
 
 ```react|plain
 <Input name="test" variant="textarea" placeholder="Test" />

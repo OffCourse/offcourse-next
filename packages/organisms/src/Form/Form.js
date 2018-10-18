@@ -5,6 +5,8 @@ import Shell from "./Shell";
 import { Field, FieldList } from "./sections";
 import { sizes, variants } from "@offcourse/constants";
 import * as yup from "yup";
+import trim from "voca/trim";
+import { map } from "ramda";
 
 const { SMALL, NORMAL, LARGE } = sizes;
 const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
@@ -63,6 +65,10 @@ export default class Form extends Component {
       return child && React.cloneElement(child, { ...rest, ...props });
     });
   }
+  handleSubmit = e => {
+    const { onSubmit } = this.props;
+    return onSubmit(map(trim, e));
+  };
 
   render() {
     const {
@@ -81,7 +87,7 @@ export default class Form extends Component {
       <Formik
         validationSchema={Model.schemata[mode]}
         initialValues={new Model(values)}
-        onSubmit={onSubmit}
+        onSubmit={this.handleSubmit}
       >
         {props => {
           return (
