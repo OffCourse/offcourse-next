@@ -1,42 +1,48 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { map } from "ramda";
-import { CheckpointCard, CourseCard } from "@offcourse/organisms";
-import { CheckpointsProvider } from "../../providers";
-import { LinkGroup } from "@offcourse/molecules";
-import { MasterDetail, CourseAction } from "../../components";
+import { Card, Icon, Group } from "@offcourse/atoms";
+import { CheckpointCard } from "@offcourse/organisms";
+import { Curator, Description } from "@offcourse/molecules";
+import { MasterDetail, Header, CourseAction } from "../../components";
+import { sizes } from "@offcourse/constants";
 
-const Link = LinkGroup.Link;
+const { LARGE } = sizes;
 
 export default class View extends Component {
   static propTypes = {
     toggleCheckpoint: PropTypes.func.isRequired,
-    userIsCurator: PropTypes.bool,
     userName: PropTypes.string,
     handlers: PropTypes.object.isRequired,
-    course: PropTypes.object.isRequired,
-    overlay: PropTypes.object.isRequired
+    course: PropTypes.object.isRequired
   };
 
   render() {
-    const { Master, Detail } = MasterDetail;
+    const { Detail } = MasterDetail;
     const {
       toggleCheckpoint,
-      userIsCurator,
       userName,
       handlers,
-      course,
-      overlay
+      userIsCurator,
+      overlay,
+      course
     } = this.props;
     const { goToCheckpoint, goToCollection, goToCourse } = handlers;
-    const { checkpoints, status } = course;
+    const {
+      description,
+      profileUrl,
+      avatarUrl,
+      status,
+      goal,
+      curator
+    } = course;
     if (status === "Not Found") {
       return <div>NOT FOUND</div>;
     }
 
     return (
       <MasterDetail>
-        <Master>
+        {/* <Master>
           <CourseCard
             onCuratorClick={goToCollection}
             onGoalClick={goToCourse}
@@ -54,21 +60,62 @@ export default class View extends Component {
             overlay={overlay}
             goToCourse={goToCourse}
           />
-        </Master>
-        <Detail alignItems="flex-start" pt={6} px={["1rem", "1rem", 0]}>
-          {map(checkpoint => {
-            return (
-              <CheckpointCard
-                status={course.status}
-                level={checkpoint.completed ? 0 : 1}
-                checkable={!!userName}
-                onCheckpointToggle={toggleCheckpoint}
-                onCheckpointClick={goToCheckpoint}
-                checkpoint={{ course, ...checkpoint }}
-                key={checkpoint.checkpointId}
+        </Master> */}
+        <Detail>
+          <Card pt={6} px={8}>
+            <Header
+              section="header"
+              icon={
+                <Icon color="grayScale.2" size={LARGE} name="remove">
+                  {goal}
+                </Icon>
+              }
+            >
+              {goal}
+            </Header>
+            <Curator
+              section="meta"
+              curator={curator}
+              onClick={goToCollection}
+              profileUrl={profileUrl}
+              avatarUrl={avatarUrl}
+            />
+
+            {description && (
+              <Description label="Course Description" section="description">
+                {description}
+              </Description>
+            )}
+            <Group
+              flexDirection="row"
+              justifyContent="center"
+              alignItems="center"
+              section="action"
+            >
+              <CourseAction
+                userIsCurator={userIsCurator}
+                userName={userName}
+                course={course}
+                overlay={overlay}
+                goToCourse={goToCourse}
               />
-            );
-          }, course.checkpoints)}
+            </Group>
+            <Group px={6}>
+              {map(checkpoint => {
+                return (
+                  <CheckpointCard
+                    status={course.status}
+                    level={checkpoint.completed ? 0 : 1}
+                    checkable={!!userName}
+                    onCheckpointToggle={toggleCheckpoint}
+                    onCheckpointClick={goToCheckpoint}
+                    checkpoint={{ course, ...checkpoint }}
+                    key={checkpoint.checkpointId}
+                  />
+                );
+              }, course.checkpoints)}
+            </Group>
+          </Card>
         </Detail>
       </MasterDetail>
     );

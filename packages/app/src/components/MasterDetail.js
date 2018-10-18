@@ -14,6 +14,7 @@ class Detail extends Component {
         height="calc(100vh - 2rem)"
         overflow={"hidden scroll"}
         mr={[0, 0, 6]}
+        bg="white"
         flex="3"
         pb={[6, 6, "4rem"]}
         {...rest}

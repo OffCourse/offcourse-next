@@ -38,6 +38,7 @@ export default class Meta extends Component {
       <Group
         flexDirection="row"
         alignItems="center"
+        px={6}
         justifyContent={["flex-start", "space-between", "space-between"]}
       >
         <Icon size={LARGE} name={iconName} />

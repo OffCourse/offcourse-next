@@ -20,10 +20,10 @@ export default class CheckpointView extends Component {
     const { Master, Detail } = MasterDetail;
     const {
       toggleCheckpoint,
-      userIsCurator,
       userName,
       handlers,
       course,
+      userIsCurator,
       overlay,
       task
     } = this.props;

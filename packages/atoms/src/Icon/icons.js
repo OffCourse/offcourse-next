@@ -1,4 +1,5 @@
 import {
+  faAngleDoubleLeft as back,
   faAsterisk as asterisk,
   faCalendarAlt as calendar,
   faChevronDown as arrowDown,
@@ -37,6 +38,7 @@ export {
   arrowRight,
   arrowUp,
   asterisk,
+  back,
   beginner,
   calendar,
   checkmark,

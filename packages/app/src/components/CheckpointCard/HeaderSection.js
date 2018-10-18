@@ -25,19 +25,23 @@ export default class HeaderSection extends Component {
       <Group
         flexDirection="row"
         alignItems="center"
+        bg="grayScale.2"
+        px={0}
         justifyContent="space-between"
       >
-        <Heading onClick={onClick}>{task}</Heading>
-        {checkable && (
-          <Group alignItems="flex-end" ml={6}>
-            <Checkbox
-              size={LARGE}
-              bg={!completed ? "grayScale.1" : "white"}
-              checked={completed}
-              onToggle={onToggle}
-            />
-          </Group>
-        )}
+        <Group bg="grayScale.2" px={6}>
+          <Heading onClick={onClick}>{task}</Heading>
+          {checkable && (
+            <Group alignItems="flex-end" ml={6}>
+              <Checkbox
+                size={LARGE}
+                bg={!completed ? "grayScale.1" : "white"}
+                checked={completed}
+                onToggle={onToggle}
+              />
+            </Group>
+          )}
+        </Group>
       </Group>
     );
   }

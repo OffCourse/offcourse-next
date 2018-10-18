@@ -17,10 +17,16 @@ export default class Card extends Component {
       if (!child) {
         return null;
       }
-      const { inverse } = child.props;
+      const { inverse, pb, px, ...rest } = child.props;
+      const el = React.cloneElement(child, { ...rest, px: 0 });
       return (
-        <Section {...padding} bg={inverse ? "grayScale.3" : "white"}>
-          {child}
+        <Section
+          pb={pb}
+          pr={px || px === 0 || padding.px}
+          pl={px || px === 0 || padding.px}
+          bg={inverse ? "grayScale.3" : "white"}
+        >
+          {el}
         </Section>
       );
     });
