@@ -24,14 +24,14 @@ export default class HeaderSection extends Component {
     return (
       <Group
         flexDirection="row"
-        alignItems="flex-start"
+        alignItems="center"
         bg="grayScale.1"
         p={6}
         justifyContent="space-between"
       >
         <Heading onClick={onClick}>{task}</Heading>
         {checkable && (
-          <Group alignItems="flex-end" ml={6}>
+          <Group alignItems="flex-end" pt={2} ml={6}>
             <Checkbox size={LARGE} checked={completed} onToggle={onToggle} />
           </Group>
         )}

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity, isEmpty, isNil } from "ramda";
-import { Heading } from "@offcourse/atoms";
 import {
   ExpandableCard as Card,
+  Header,
   Description,
   TagGroup,
   Share,
@@ -86,6 +86,7 @@ export default class CourseCard extends Component {
       onCuratorClick,
       shareMessage,
       layout,
+      headerIcon,
       borderBottom,
       expandable,
       width,
@@ -113,12 +114,13 @@ export default class CourseCard extends Component {
         initialLevel={initialLevel}
         layout={layout}
       >
-        <Heading
+        <Header
           onClick={() => onGoalClick({ goal, curator, courseId })}
           section="header"
+          icon={headerIcon}
         >
           {goal}
-        </Heading>
+        </Header>
         <Curator
           section="meta"
           curator={curator}

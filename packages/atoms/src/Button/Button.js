@@ -14,7 +14,7 @@ const { DEFAULT, DISABLED, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 const widths = {
   SMALL: "5.33333rem",
   MEDIUM: "8rem",
-  LARGE: "16rem"
+  LARGE: ["100%", "16rem", "16rem"]
 };
 
 class Button extends Component {
@@ -74,8 +74,7 @@ class Button extends Component {
         disabled={disabled}
         onClick={onClick}
         tabIndex={tabindex || 1}
-        minWidth={widths[size]}
-        maxWidth={widths[size]}
+        width={widths[size]}
       >
         {href ? <a href={!disabled ? href : undefined}>{label}</a> : label}
       </ButtonWrapper>

@@ -8,7 +8,7 @@ import Loadable from "react-loadable";
 
 const ReactPlayer = Loadable({
   loader: () => import("react-player"),
-  loading: () => Loading
+  loading: Loading
 });
 
 const _VideoWrapper = system({

@@ -14,7 +14,9 @@ export default class View extends Component {
     toggleCheckpoint: PropTypes.func.isRequired,
     userName: PropTypes.string,
     handlers: PropTypes.object.isRequired,
-    course: PropTypes.object.isRequired
+    course: PropTypes.object.isRequired,
+    userIsCurator: PropTypes.bool,
+    overlay: PropTypes.object
   };
 
   render() {
@@ -27,15 +29,8 @@ export default class View extends Component {
       overlay,
       course
     } = this.props;
-    const { goToCheckpoint, goToCollection, goToCourse } = handlers;
-    const {
-      description,
-      profileUrl,
-      avatarUrl,
-      status,
-      goal,
-      curator
-    } = course;
+    const { goHome, goToCheckpoint, goToCollection, goToCourse } = handlers;
+    const { status } = course;
     if (status === "Not Found") {
       return <div>NOT FOUND</div>;
     }
@@ -65,6 +60,7 @@ export default class View extends Component {
           <Group
             flex="none"
             alignItems="flex"
+            p={6}
             display={["flex", "none", "none"]}
           >
             <CourseCard
@@ -73,19 +69,21 @@ export default class View extends Component {
               onCheckpointClick={goToCheckpoint}
               width="100%"
               borderBottom="none"
+              headerIcon={
+                <Icon
+                  onClick={goHome}
+                  size={LARGE}
+                  color="grayScale.2"
+                  name="remove"
+                />
+              }
               layout={[["header", "meta", "description"]]}
               onCheckpointToggle={userName ? toggleCheckpoint : null}
               onTagClick={goToCollection}
               course={course}
               expandable={false}
             />
-            <Group
-              alignItems="stretch"
-              justifyContent="center"
-              px={6}
-              pt={0}
-              mb={6}
-            >
+            <Group alignItems="stretch" justifyContent="center" px={6} pt={0}>
               <CourseAction
                 userIsCurator={userIsCurator}
                 userName={userName}
@@ -99,7 +97,7 @@ export default class View extends Component {
             {map(checkpoint => {
               return (
                 <CheckpointCard
-                  status={course.status}
+                  status={status}
                   level={checkpoint.completed ? 0 : 1}
                   checkable={!!userName}
                   width="100%"

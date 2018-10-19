@@ -55,7 +55,7 @@ export default class CourseAction extends Component {
 
     const { onClick, label } = find(propEq("condition", true), actions);
     return (
-      <Group justifyContent="stretch" alignItems="center" mt={6}>
+      <Group justifyContent="stretch" alignItems="center" px={6} mt={6}>
         <Button onClick={onClick} size={LARGE}>
           {label}
         </Button>

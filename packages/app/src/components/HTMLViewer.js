@@ -5,6 +5,9 @@ import system from "system-components";
 
 import Loadable from "react-loadable";
 
+import { sizes } from "@offcourse/constants";
+
+const { SMALL } = sizes;
 const SyntaxHighlighter = Loadable({
   loader: () => import("react-syntax-highlighter/prism-light"),
   loading: Loading
@@ -62,7 +65,7 @@ class HTMLViewer extends Component {
         options={{
           overrides: {
             h1: {
-              props: { size: "small" },
+              props: { size: SMALL },
               component: Heading
             },
             pre: { component: null },

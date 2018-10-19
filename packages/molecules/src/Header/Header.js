@@ -22,7 +22,11 @@ export default class Header extends Component {
         justifyContent="space-between"
       >
         <Heading onClick={onClick}>{children}</Heading>
-        {icon}
+        {icon && (
+          <Group alignItems="flex-end" ml={6}>
+            {icon}
+          </Group>
+        )}
       </Group>
     );
   }

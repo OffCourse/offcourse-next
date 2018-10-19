@@ -23,7 +23,7 @@ class Checkbox extends Component {
     checked: PropTypes.bool,
     /** an optional callback that triggers when the checkbox changes its value */
     onToggle: PropTypes.func,
-    bg: PropTypes.string,
+    bg: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     size: PropTypes.oneOf([NORMAL, LARGE])
   };
 

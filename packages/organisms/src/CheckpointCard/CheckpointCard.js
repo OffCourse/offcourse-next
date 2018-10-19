@@ -81,6 +81,7 @@ export default class CheckpointCard extends Component {
             checkable && (
               <Checkbox
                 size={LARGE}
+                bg={["white", "grayScale.1", "grayScale.1"]}
                 checked={completed}
                 onToggle={this.handleCheckpointToggle}
               />

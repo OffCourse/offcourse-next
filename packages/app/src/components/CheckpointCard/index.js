@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
-import { Group } from "@offcourse/atoms";
-import { ExpandableCard as Card } from "@offcourse/molecules";
-import HeaderSection from "./HeaderSection";
+import { Checkbox, Group, Icon, Link } from "@offcourse/atoms";
+import { Header, ExpandableCard as Card } from "@offcourse/molecules";
 import titleCase from "voca/title_case";
 import system from "system-components";
 import styled from "styled-components";
 
 import Loadable from "react-loadable";
+
+import { sizes } from "@offcourse/constants";
+
+const { LARGE } = sizes;
 
 const ResourceSection = Loadable({
   loader: () => import("./ResourceSection"),
@@ -86,32 +89,49 @@ export default class CheckpointCard extends Component {
         initialLevel={level}
         expandable={false}
         pt={pt}
-        pl={8}
+        px={8}
         inactive={level === 0 || status === "loading"}
         mb={6}
       >
         <Group alignItems="stretch" section="breadcrumbs-header">
-          <Group mb={4} alignItems="flex-start">
-            <BCText onClick={this.handleCourseClick}>{`<< ${titleCase(
-              course.goal
-            )}`}</BCText>
-          </Group>
-          <HeaderSection
-            task={task}
+          <Header
             completed={completed}
             checkable={checkable}
-            onToggle={this.handleCheckpointToggle}
-          />
+            icon={
+              checkable && (
+                <Checkbox
+                  size={LARGE}
+                  bg="grayScale.1"
+                  checked={completed}
+                  onToggle={this.handleCheckpointToggle}
+                />
+              )
+            }
+          >
+            {task}
+          </Header>
+          <Group
+            mt={6}
+            display={["flex", "none", "none"]}
+            alignItems="flex-start"
+          >
+            <Link onClick={this.handleCourseClick}>
+              {`<< ${titleCase(course.goal)}`}
+            </Link>
+            {/* <BCText onClick={this.handleCourseClick}>
+              {`<< ${titleCase(course.goal)}`}
+            </BCText> */}
+          </Group>
         </Group>
-        <div section="breadcrumbs">HELLO</div>
-        <HeaderSection
+        <Header
           section="header"
-          task={task}
           completed={completed}
           checkable={checkable}
           onClick={this.handleCheckpointClick}
           onToggle={this.handleCheckpointToggle}
-        />
+        >
+          {task}
+        </Header>
         {resource && <ResourceSection section="resource" {...resource} />}
       </Card>
     );
