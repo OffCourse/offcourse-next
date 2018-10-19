@@ -72,6 +72,7 @@ export default class View extends Component {
               onGoalClick={goToCourse}
               onCheckpointClick={goToCheckpoint}
               width="100%"
+              borderBottom="none"
               layout={[["header", "meta", "description"]]}
               onCheckpointToggle={userName ? toggleCheckpoint : null}
               onTagClick={goToCollection}

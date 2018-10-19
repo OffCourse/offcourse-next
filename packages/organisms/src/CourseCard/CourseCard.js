@@ -86,6 +86,7 @@ export default class CourseCard extends Component {
       onCuratorClick,
       shareMessage,
       layout,
+      borderBottom,
       expandable,
       width,
       initialLevel
@@ -107,6 +108,7 @@ export default class CourseCard extends Component {
       <Card
         inactive={status === "loading"}
         width={width || ["100%", "18rem", "18rem"]}
+        borderBottom={borderBottom}
         expandable={expandable}
         initialLevel={initialLevel}
         layout={layout}

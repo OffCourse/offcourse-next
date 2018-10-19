@@ -72,7 +72,7 @@ export default class CheckpointCard extends Component {
       >
         <Header
           section="header"
-          bg="grayScale.1"
+          bg={["grayScale.1", "white", "white"]}
           onClick={this.handleCheckpointClick}
           pt={0}
           pb={0}
