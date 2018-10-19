@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
-import { ExpandableCard as Card } from "@offcourse/molecules";
-import { Header, Meta } from "./sections";
+import { Header, ExpandableCard as Card } from "@offcourse/molecules";
+import { Checkbox } from "@offcourse/atoms";
+import { Meta } from "./sections";
+import { sizes } from "@offcourse/constants";
+
+const { LARGE } = sizes;
 export default class CheckpointCard extends Component {
   static propTypes = {
     checkpoint: PropTypes.object,
     onCheckpointClick: PropTypes.func,
+    onCourseClick: PropTypes.func,
     onCheckpointToggle: PropTypes.func,
     checkable: PropTypes.bool,
     status: PropTypes.string
@@ -60,26 +65,34 @@ export default class CheckpointCard extends Component {
         layout={layout}
         initialLevel={level}
         expandable={false}
-        pt={pt}
-        inactive={level === 0 || status === "loading"}
+        pt={0}
         px={0}
+        inactive={level === 0 || status === "loading"}
         mb={6}
       >
         <Header
           section="header"
-          task={task}
-          completed={completed}
-          checkable={checkable}
+          bg="grayScale.1"
           onClick={this.handleCheckpointClick}
-          onToggle={this.handleCheckpointToggle}
-          px={0}
+          pt={0}
           pb={0}
-        />
+          p={6}
+          icon={
+            checkable && (
+              <Checkbox
+                size={LARGE}
+                checked={completed}
+                onToggle={this.handleCheckpointToggle}
+              />
+            )
+          }
+        >
+          {task}
+        </Header>
         <Meta
           section="meta"
           resourceType={resource ? resource.resourceType : "unknown"}
           tags={tags || []}
-          px={0}
         />
       </Card>
     );

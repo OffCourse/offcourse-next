@@ -1,9 +1,8 @@
 This organism structures several elements into the CheckpointCard component
 
-```react|span-6
+```react|span-6,dark
 const checkpoint = {
   task: "Do something",
-  tags: ["Designer", "Service", "Platform"],
   course: {
     goal: "Do More"
   }
@@ -11,9 +10,26 @@ const checkpoint = {
 <CheckpointCard checkpoint={checkpoint}/>
 ```
 
-```react|span-6
+```react|span-6,dark
 const checkpoint = {
   task: "Do something",
+  resource: {
+    resourceType: "video",
+  },
+  tags: ["Designer", "Service", "Platform"],
+  course: {
+    goal: "Do More"
+  }
+};
+<CheckpointCard checkable checkpoint={checkpoint}/>
+```
+
+```react|span-6,dark
+const checkpoint = {
+  task: "Do something",
+  resource: {
+    resourceType: "html",
+  },
   tags: ["Designer", "Service", "Platform"],
   course: {
     goal: "Do More"

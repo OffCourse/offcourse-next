@@ -87,6 +87,7 @@ export default class CourseCard extends Component {
       shareMessage,
       layout,
       expandable,
+      width,
       initialLevel
     } = this.props;
     const {
@@ -105,7 +106,7 @@ export default class CourseCard extends Component {
     return (
       <Card
         inactive={status === "loading"}
-        width={["100%", "18rem", "18rem"]}
+        width={width || ["100%", "18rem", "18rem"]}
         expandable={expandable}
         initialLevel={initialLevel}
         layout={layout}

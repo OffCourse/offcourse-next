@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Heading, Group } from "@offcourse/atoms";
+import { Heading, Group, Icon } from "@offcourse/atoms";
 
 export default class HeaderSection extends Component {
+  static Icon = Icon;
   static propTypes = {
     children: PropTypes.string.isRequired,
     icon: PropTypes.node,

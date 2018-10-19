@@ -11,8 +11,8 @@ export default class Card extends Component {
   };
 
   renderSections() {
-    const { children, px, pl, pr } = this.props;
-    const padding = { px, pl, pr };
+    const { children, px, pl, pr, pt } = this.props;
+    const padding = { px, pl, pr, pt };
     return Children.map(children, (child, index) => {
       if (!child) {
         return null;
@@ -22,6 +22,7 @@ export default class Card extends Component {
       return (
         <Section
           pb={pb}
+          pt={pt}
           pr={px || px === 0 || padding.px}
           pl={px || px === 0 || padding.px}
           bg={inverse ? "grayScale.3" : "white"}
