@@ -24,7 +24,7 @@ export default class InputList extends Component {
     ),
     /** list of errors corresponding to these items */
     touched: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+      PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
     ),
     /** field that indicates if the form itself is arrangeable (add, remove, move, etc...) */
     arrangeable: PropTypes.bool,
@@ -52,6 +52,7 @@ export default class InputList extends Component {
     arrangeable: false,
     placeholder: "edit this",
     errors: [],
+    touched: [],
     items: [],
     FieldComponent: Input
   };

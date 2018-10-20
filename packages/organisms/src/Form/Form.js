@@ -11,6 +11,14 @@ import { map } from "ramda";
 const { SMALL, NORMAL, LARGE } = sizes;
 const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
+const formatValues = values => {
+  return map(value => {
+    return yup.array().isType(value) || yup.object().isType(value)
+      ? formatValues(value)
+      : trim(value);
+  }, values);
+};
+
 export default class Form extends Component {
   static Field = Field;
   static FieldList = FieldList;
@@ -65,9 +73,9 @@ export default class Form extends Component {
       return child && React.cloneElement(child, { ...rest, ...props });
     });
   }
-  handleSubmit = e => {
+  handleSubmit = (values, formikBag) => {
     const { onSubmit } = this.props;
-    return onSubmit(map(trim, e));
+    return onSubmit(formatValues(values), formikBag);
   };
 
   render() {
@@ -79,8 +87,7 @@ export default class Form extends Component {
       links,
       mode,
       buttons,
-      onCancel,
-      onSubmit
+      onCancel
     } = this.props;
 
     return (

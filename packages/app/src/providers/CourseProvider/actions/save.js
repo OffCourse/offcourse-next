@@ -1,5 +1,15 @@
-import { curry } from "ramda";
+import { pick, map, curry } from "ramda";
 import { queries } from "../graphql";
+
+const createInput = ({ courseId, goal, curator, description, checkpoints }) => {
+  return {
+    courseId,
+    goal,
+    curator,
+    description,
+    checkpoints
+  };
+};
 
 const save = (addCourse, meta, proposal) => {
   return addCourse({
