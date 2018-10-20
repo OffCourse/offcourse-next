@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { MasterDetail, CourseAction, CheckpointCard } from "../../components";
+import {
+  MasterDetail,
+  CourseAction,
+  CheckpointCard,
+  NotFound
+} from "../../components";
 import { Loading } from "@offcourse/atoms";
 import { CourseCard } from "@offcourse/organisms";
 import PropTypes from "prop-types";
@@ -8,7 +13,7 @@ import { CheckpointProvider } from "../../providers";
 export default class CheckpointView extends Component {
   static propTypes = {
     toggleCheckpoint: PropTypes.func.isRequired,
-    userIsCurator: PropTypes.bool.isRequired,
+    userIsCurator: PropTypes.bool,
     userName: PropTypes.string,
     handlers: PropTypes.object.isRequired,
     course: PropTypes.object.isRequired,
@@ -27,10 +32,10 @@ export default class CheckpointView extends Component {
       overlay,
       task
     } = this.props;
-    const { goToCheckpoint, goToCollection, goToCourse } = handlers;
+    const { goHome, goToCheckpoint, goToCollection, goToCourse } = handlers;
     const { curator, goal, status } = course;
     if (status === "Not Found") {
-      return <div>NOT FOUND</div>;
+      return <NotFound goHome={goHome} />;
     }
 
     return (

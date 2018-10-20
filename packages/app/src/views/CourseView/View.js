@@ -4,7 +4,7 @@ import { map } from "ramda";
 import { Card, Icon, Group } from "@offcourse/atoms";
 import { CourseCard, CheckpointCard } from "@offcourse/organisms";
 import { Curator, Description } from "@offcourse/molecules";
-import { MasterDetail, Header, CourseAction } from "../../components";
+import { MasterDetail, NotFound, CourseAction } from "../../components";
 import { sizes } from "@offcourse/constants";
 
 const { LARGE } = sizes;
@@ -32,7 +32,7 @@ export default class View extends Component {
     const { goHome, goToCheckpoint, goToCollection, goToCourse } = handlers;
     const { status } = course;
     if (status === "Not Found") {
-      return <div>NOT FOUND</div>;
+      return <NotFound goHome={goHome} />;
     }
 
     return (

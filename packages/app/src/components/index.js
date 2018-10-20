@@ -1,10 +1,12 @@
 export { default as Query } from "./Query";
+export { default as ErrorBoundary } from "./ErrorBoundary";
 export { default as Mutation } from "./Mutation";
 export { default as Header } from "./Header";
 export { default as HTMLViewer } from "./HTMLViewer";
 export { default as LoadingModal } from "./LoadingModal";
 export { default as ForkCourseDialog } from "./ForkCourseDialog";
 export { default as MasterDetail } from "./MasterDetail";
+export { default as NotFound } from "./NotFound";
 export { default as UnderConstruction } from "./UnderConstruction";
 export { default as Route } from "./Route";
 export { default as GraphQL } from "./GraphQL";
