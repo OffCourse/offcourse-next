@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ErrorScreen from "./ErrorScreen";
+import TotalPanic from "./TotalPanic";
 
 export default class ErrorBoundary extends Component {
   state = {
@@ -19,7 +19,7 @@ export default class ErrorBoundary extends Component {
     const { hasError } = this.state;
     const { children } = this.props;
     if (hasError) {
-      return <ErrorScreen />;
+      return <TotalPanic />;
     }
     return children;
   }

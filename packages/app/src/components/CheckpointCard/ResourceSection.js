@@ -5,6 +5,7 @@ import { Group, Text, Heading } from "@offcourse/atoms";
 import system from "system-components";
 import styled from "styled-components";
 import { sizes } from "@offcourse/constants";
+import { NotFound } from "..";
 
 const { SMALL } = sizes;
 
@@ -39,14 +40,9 @@ export default class ResourceSection extends Component {
   };
 
   render() {
-    const {
-      title,
-      content,
-      description,
-      resourceType,
-      resourceUrl
-    } = this.props;
+    const { title, content, resourceType, resourceUrl } = this.props;
     const Viewer = Viewers[resourceType];
+    console.log(this.props);
     return (
       <Group mr="3rem">
         <Heading size={SMALL}>{title}</Heading>
@@ -60,11 +56,7 @@ export default class ResourceSection extends Component {
             <Viewer {...content} />
           </Group>
         ) : (
-          description !== "false" && (
-            <Group mt={3}>
-              <Text>{description}</Text>
-            </Group>
-          )
+          <NotFound />
         )}
       </Group>
     );

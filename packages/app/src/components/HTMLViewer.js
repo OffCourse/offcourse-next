@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Heading, Loading } from "@offcourse/atoms";
 import PropTypes from "prop-types";
 import system from "system-components";
+import { NotFound } from ".";
 
 import Loadable from "react-loadable";
 
@@ -59,6 +60,10 @@ class HTMLViewer extends Component {
 
   render() {
     const { markdown } = this.props;
+
+    if (!markdown) {
+      return <NotFound />;
+    }
 
     return (
       <Markdown
