@@ -1,19 +1,8 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { identity } from "ramda";
 import Layout from "./ErrorLayout";
 
 export default class NotFound extends Component {
-  static propTypes = {
-    goHome: PropTypes.func
-  };
-
-  static defaultProps = {
-    goHome: identity
-  };
-
   render() {
-    const { goHome } = this.props;
     const error = {
       message: "Oops!",
       explanation:
@@ -21,7 +10,7 @@ export default class NotFound extends Component {
     };
     const action = {
       message: "Take Me Home",
-      onClick: goHome
+      onClick: () => location.assign("/")
     };
     const animation = [
       {
@@ -33,13 +22,6 @@ export default class NotFound extends Component {
         to: { transform: "translateY(0) rotate(15deg)" }
       }
     ];
-    return (
-      <Layout
-        animation={animation}
-        action={action}
-        error={error}
-        goHome={goHome}
-      />
-    );
+    return <Layout animation={animation} action={action} error={error} />;
   }
 }

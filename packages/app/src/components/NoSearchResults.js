@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Layout from "./ErrorLayout";
+import { Adopt } from "react-adopt";
+
+import { OverlayProvider, AuthProvider } from "../providers";
+
+const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = OverlayProvider.constants;
+
+const mapper = {
+  auth: <AuthProvider />,
+  overlay: <OverlayProvider />
+};
 
 export default class NotFound extends Component {
   static propTypes = {
@@ -16,8 +26,7 @@ export default class NotFound extends Component {
         "We've searched far and wide, but unfortunately couldn't find what you are looking for. Please, give it another go. If you still can't find your topic on our site, why don't you create a card about it yourself."
     };
     const action = {
-      message: "Create A Card",
-      onClick: goHome
+      message: "Create A Card"
     };
     const animation = [
       {
@@ -38,12 +47,24 @@ export default class NotFound extends Component {
       }
     ];
     return (
-      <Layout
-        animation={animation}
-        action={action}
-        error={error}
-        goHome={goHome}
-      />
+      <Adopt mapper={mapper}>
+        {({ auth, overlay }) => {
+          const createCourse = () => overlay.open({ mode: CREATE_COURSE });
+          const signIn = () => overlay.open({ mode: SIGNING_IN });
+          const action = {
+            message: auth.userName ? "Create A Card" : "Sign In",
+            onClick: auth.userName ? createCourse : signIn
+          };
+          return (
+            <Layout
+              animation={animation}
+              action={action}
+              error={error}
+              goHome={goHome}
+            />
+          );
+        }}
+      </Adopt>
     );
   }
 }

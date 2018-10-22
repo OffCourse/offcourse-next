@@ -30,7 +30,7 @@ export default class LayoutContainer extends Component {
     children: PropTypes.node.isRequired
   };
 
-  createUserLinks({ openOverlay, changeCardSize }) {
+  createUserLinks({ openOverlay, handlers }) {
     return [
       {
         onClick: () => openOverlay({ mode: CREATE_COURSE }),
@@ -43,6 +43,11 @@ export default class LayoutContainer extends Component {
         level: 1
       },
       {
+        onClick: handlers.goToAbout,
+        title: "About",
+        level: 1
+      },
+      {
         onClick: () => openOverlay({ mode: SIGNING_OUT }),
         title: "Sign Out",
         level: 1
@@ -50,7 +55,7 @@ export default class LayoutContainer extends Component {
     ];
   }
 
-  createGuestLinks({ openOverlay }) {
+  createGuestLinks({ openOverlay, handlers }) {
     return [
       {
         onClick: () => openOverlay({ mode: SIGNING_IN }),
@@ -61,14 +66,19 @@ export default class LayoutContainer extends Component {
         href: "https://condescending-wing-149611.netlify.com/",
         title: "Contribute",
         level: 1
+      },
+      {
+        onClick: handlers.goToAbout,
+        title: "About",
+        level: 1
       }
     ];
   }
 
-  createLinks({ userName, openOverlay, changeCardSize }) {
+  createLinks({ userName, openOverlay, changeCardSize, handlers }) {
     return userName
-      ? this.createUserLinks({ openOverlay, changeCardSize })
-      : this.createGuestLinks({ openOverlay, changeCardSize });
+      ? this.createUserLinks({ openOverlay, changeCardSize, handlers })
+      : this.createGuestLinks({ openOverlay, changeCardSize, handlers });
   }
 
   render() {
@@ -96,7 +106,8 @@ export default class LayoutContainer extends Component {
               links={[
                 ...this.createLinks({
                   openOverlay: overlay.open,
-                  userName: auth.userName
+                  userName: auth.userName,
+                  handlers: route.handlers
                 })
               ]}
             >

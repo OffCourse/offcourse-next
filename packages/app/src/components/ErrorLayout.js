@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { identity } from "ramda";
 import { Group, Button, Heading, Text } from "@offcourse/atoms";
 import { sizes } from "@offcourse/constants";
 import Avatar from "../assets/offcourse-avatar.svg";
 import { Keyframes, animated } from "react-spring";
 
 const { LARGE } = sizes;
+const animation = [
+  {
+    from: { opacity: 0, transform: "translateY(-100vh) rotate(0deg)" },
+    to: { opacity: 1, transform: "translateY(0) rotate(360deg)" }
+  },
+  {
+    from: { transform: "translateY(0) rotate(360deg)" },
+    to: { transform: "translateY(0) rotate(15deg)" }
+  }
+];
 
 export default class NotFound extends Component {
   static propTypes = {
@@ -22,7 +31,7 @@ export default class NotFound extends Component {
   };
 
   static defaultProps = {
-    goHome: identity
+    animation
   };
 
   render() {
@@ -54,14 +63,11 @@ export default class NotFound extends Component {
         </Group>
         <Group flexDirection={["column", "row", "row"]} justifyContent="center">
           <Animation>
-            {styles => {
-              console.log(styles);
-              return (
-                <animated.div style={{ ...styles }}>
-                  <Avatar width="12rem" height="12rem" />
-                </animated.div>
-              );
-            }}
+            {styles => (
+              <animated.div style={{ ...styles }}>
+                <Avatar width="12rem" height="12rem" />
+              </animated.div>
+            )}
           </Animation>
         </Group>
       </Group>

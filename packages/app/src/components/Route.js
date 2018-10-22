@@ -22,6 +22,9 @@ export default class Route extends Component {
             goHome() {
               history.push("/");
             },
+            goToAbout() {
+              history.push("/about");
+            },
             goToCollection(qs) {
               const { curator, tag, searchTerm } = map(encodeURIComponent, qs);
               if (tag) {
