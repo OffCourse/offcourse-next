@@ -3,7 +3,7 @@ import {
   MasterDetail,
   CourseAction,
   CheckpointCard,
-  NotFound
+  NotFoundScreen
 } from "../../components";
 import { Loading } from "@offcourse/atoms";
 import { CourseCard } from "@offcourse/organisms";
@@ -35,7 +35,7 @@ export default class CheckpointView extends Component {
     const { goHome, goToCheckpoint, goToCollection, goToCourse } = handlers;
     const { curator, goal, status } = course;
     if (status === "Not Found") {
-      return <NotFound goHome={goHome} />;
+      return <NotFoundScreen goHome={goHome} />;
     }
 
     return (

@@ -4,12 +4,21 @@ import { identity } from "ramda";
 import { Group, Button, Heading, Text } from "@offcourse/atoms";
 import { sizes } from "@offcourse/constants";
 import Avatar from "../assets/offcourse-avatar.svg";
+import { Keyframes, animated } from "react-spring";
 
 const { LARGE } = sizes;
 
 export default class NotFound extends Component {
   static propTypes = {
-    goHome: PropTypes.func
+    error: PropTypes.shape({
+      message: PropTypes.string.isRequired,
+      explanation: PropTypes.string.isRequired
+    }).isRequired,
+    action: PropTypes.shape({
+      message: PropTypes.string.isRequired,
+      onClick: PropTypes.func.isRequired
+    }).isRequired,
+    animation: PropTypes.arrayOf(PropTypes.object)
   };
 
   static defaultProps = {
@@ -17,41 +26,40 @@ export default class NotFound extends Component {
   };
 
   render() {
-    const { goHome } = this.props;
-    console.log(Avatar);
+    const { error, animation, action } = this.props;
+    const Animation = Keyframes.Spring(animation);
     return (
       <Group
         flexDirection={["column-reverse", "row", "row"]}
         height={["calc(100vh - 2rem)", "70vh", "70vh"]}
         alignItems="center"
         alignSelf="stretch"
+        maxWidth="100rem"
         justifyContent="space-between"
-        p={8}
+        pt="4rem"
+        px={[8, "6rem", "6rem"]}
       >
         <Group alignItems="flex-start" minWidth="20rem" maxWidth="40rem">
           <Group flex="none">
-            <Heading size={LARGE}>Woops! You've Outsmarted Us...</Heading>
+            <Heading size={LARGE}>{error.message}</Heading>
           </Group>
           <Group flex="none" mb={[7, 6, 6]}>
-            <Text size={LARGE}>
-              Currently, this page doesn't seem to exist (yet). Please check
-              whether you have entered the correct URL in the text field of your
-              browser. If that doesn't work, you can use the button below to go
-              back to the home page.
-            </Text>
+            <Text size={LARGE}>{error.explanation}</Text>
           </Group>
           <Group flex="none" alignSelf="stretch">
-            <Button size={LARGE} onClick={goHome}>
-              Take Me Back
+            <Button size={LARGE} onClick={action.onClick}>
+              {action.message}
             </Button>
           </Group>
         </Group>
         <Group flexDirection={["column", "row", "row"]} justifyContent="center">
-          <Avatar
-            style={{ transform: "rotate(15deg)" }}
-            width="12rem"
-            height="12rem"
-          />
+          <Animation>
+            {styles => (
+              <animated.div style={{ ...styles }}>
+                <Avatar width="12rem" height="12rem" />
+              </animated.div>
+            )}
+          </Animation>
         </Group>
       </Group>
     );

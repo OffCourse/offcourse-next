@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import ErrorScreen from "./ErrorScreen";
 
 export default class ErrorBoundary extends Component {
   state = {
@@ -18,7 +19,7 @@ export default class ErrorBoundary extends Component {
     const { hasError } = this.state;
     const { children } = this.props;
     if (hasError) {
-      return <div>Ooops</div>;
+      return <ErrorScreen />;
     }
     return children;
   }

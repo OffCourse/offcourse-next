@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { map } from "ramda";
-import { Card, Icon, Group } from "@offcourse/atoms";
+import { Icon, Group } from "@offcourse/atoms";
 import { CourseCard, CheckpointCard } from "@offcourse/organisms";
-import { Curator, Description } from "@offcourse/molecules";
-import { MasterDetail, NotFound, CourseAction } from "../../components";
+import { MasterDetail, NotFoundScreen, CourseAction } from "../../components";
 import { sizes } from "@offcourse/constants";
 
 const { LARGE } = sizes;
@@ -32,7 +31,7 @@ export default class View extends Component {
     const { goHome, goToCheckpoint, goToCollection, goToCourse } = handlers;
     const { status } = course;
     if (status === "Not Found") {
-      return <NotFound goHome={goHome} />;
+      return <NotFoundScreen goHome={goHome} />;
     }
 
     return (
