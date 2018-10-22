@@ -36,7 +36,7 @@ export default class NotFound extends Component {
         alignSelf="stretch"
         maxWidth="100rem"
         justifyContent="space-between"
-        pt="4rem"
+        pt={[0, 0, "6rem"]}
         px={[8, "6rem", "6rem"]}
       >
         <Group alignItems="flex-start" minWidth="20rem" maxWidth="40rem">
@@ -54,11 +54,14 @@ export default class NotFound extends Component {
         </Group>
         <Group flexDirection={["column", "row", "row"]} justifyContent="center">
           <Animation>
-            {styles => (
-              <animated.div style={{ ...styles }}>
-                <Avatar width="12rem" height="12rem" />
-              </animated.div>
-            )}
+            {styles => {
+              console.log(styles);
+              return (
+                <animated.div style={{ ...styles }}>
+                  <Avatar width="12rem" height="12rem" />
+                </animated.div>
+              );
+            }}
           </Animation>
         </Group>
       </Group>

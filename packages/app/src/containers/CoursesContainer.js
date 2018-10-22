@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Adopt } from "react-adopt";
+import { isEmpty } from "ramda";
 import { CourseCardProvider, CoursesProvider } from "../providers";
+import { NoSearchResults } from "../components";
 import { CourseCardLayout } from "@offcourse/organisms";
 
 const mapper = {
@@ -32,7 +34,7 @@ class CoursesContainer extends Component {
   render() {
     const { match, handlers } = this.props;
     const { curator, tag, searchTerm } = match.params;
-    const { goToCollection, goToCourse, goToCheckpoint } = handlers;
+    const { goHome, goToCollection, goToCourse, goToCheckpoint } = handlers;
     return (
       <Adopt
         curator={curator}
@@ -41,6 +43,9 @@ class CoursesContainer extends Component {
         mapper={mapper}
       >
         {({ collection, courseCard }) => {
+          if (isEmpty(collection.courses)) {
+            return <NoSearchResults searchTerm={searchTerm} goHome={goHome} />;
+          }
           return (
             <CourseCardLayout
               initialCardLevel={courseCard.initialLevel}

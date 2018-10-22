@@ -7,6 +7,7 @@ export { default as LoadingModal } from "./LoadingModal";
 export { default as ForkCourseDialog } from "./ForkCourseDialog";
 export { default as MasterDetail } from "./MasterDetail";
 export { default as NotFoundScreen } from "./NotFoundScreen";
+export { default as NoSearchResults } from "./NoSearchResults";
 export { default as UnderConstruction } from "./UnderConstruction";
 export { default as Route } from "./Route";
 export { default as GraphQL } from "./GraphQL";
