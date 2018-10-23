@@ -27,8 +27,9 @@
     "debounce": "^1.2.0",
     "fastdom": "^1.0.8",
     "ramda": "^0.25.0",
-    "voca": "^1.4.0",
-    "system-components": "^3.0.1"
+    "react-spring": "^5.9.2",
+    "system-components": "^3.0.1",
+    "voca": "^1.4.0"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",

@@ -38,41 +38,40 @@ export default class ExpendableCard extends Component {
     );
   };
 
+  renderElem = (child, index) => {
+    const { expandable, layout } = this.props;
+    const { level } = this.state;
+    const iconName = level === layout.length - 1 ? "arrowUp" : "arrowDown";
+    return expandable && index === 0 ? (
+      <Group
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Group flex={7}>{child}</Group>
+        <Group flex={1} flexDirection="row" justifyContent="flex-end">
+          <Icon
+            onClick={this.handleResize}
+            name={iconName}
+            color="grayScale.2"
+            size={NORMAL}
+          />
+        </Group>
+      </Group>
+    ) : (
+      child
+    );
+  };
+
   augmentSections = () => {
     const { children, layout, expandable } = this.props;
-
-    if (layout.length === 0) return children;
-
-    const { level } = this.state;
-    const iconName = level === layout.length - 1 ? "minus" : "plus";
-
     return Children.map(children, (child, index) => {
       if (!child) return null;
-
+      if (!expandable) return child;
       const { section } = child.props;
-      const isVisible = contains(section, layout[level]);
-
-      if (!isVisible) return null;
-
-      return expandable && index === 0 ? (
-        <Group
-          flexDirection="row"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Group flex={7}>{child}</Group>
-          <Group flex={1} flexDirection="row" justifyContent="flex-end">
-            <Icon
-              onClick={this.handleResize}
-              name={iconName}
-              color="grayScale.2"
-              size={NORMAL}
-            />
-          </Group>
-        </Group>
-      ) : (
-        child
-      );
+      const { level } = this.state;
+      const isVisible = layout[level] && contains(section, layout[level]);
+      return isVisible && this.renderElem(child, index);
     });
   };
 

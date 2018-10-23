@@ -4,10 +4,12 @@ import { values, prop, gte, propSatisfies, filter, groupBy } from "ramda";
 import { mapIndexed } from "../helpers";
 import { Section, Group, Icon } from "@offcourse/atoms";
 import { LinkGroup } from "..";
+import { sizes } from "@offcourse/constants";
+const { LARGE } = sizes;
 
 export default class Menu extends Component {
   static Button = ({ onClick }) => {
-    return <Icon name="hamburger" onClick={onClick} />;
+    return <Icon size={LARGE} name="hamburger" onClick={onClick} />;
   };
 
   static propTypes = {

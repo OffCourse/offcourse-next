@@ -11,7 +11,7 @@ class Detail extends Component {
         minWidth={["100%", "100%", "25rem"]}
         width={["100%", "100%", "55rem"]}
         maxWidth={["100%", "100%", "55rem"]}
-        height="calc(100vh - 2rem)"
+        height="calc(100vh - 2.25rem)"
         overflow={"hidden scroll"}
         mr={[0, 0, 6]}
         bg={["white", "grayScale.1", "grayScale.1"]}
@@ -55,7 +55,7 @@ export default class MasterDetail extends Component {
             alignItems={["center", "flex-start", "flex-start"]}
             width={["100%", "100%", "auto"]}
             onResize={({ width }) => changeCardSize({ variables: { width } })}
-            height="calc(100vh - 2rem)"
+            height="calc(100vh - 2.25rem)"
             overflow="hidden"
           >
             {children}

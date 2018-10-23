@@ -6,7 +6,7 @@ const CourseCardLayoutWrapper = system({
   pr: [6, 0, 0],
   bg: "grayScale.1",
   width: "100%",
-  height: "100vh",
+  height: "calc(100vh - 2.25rem)",
   flexDirection: "column",
   overflow: "auto"
 });

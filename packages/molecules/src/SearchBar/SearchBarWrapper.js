@@ -12,6 +12,7 @@ const SearchInputWrapper = system({
 });
 
 export default styled(SearchInputWrapper)`
+  pointer-events: auto;
   border-bottom: ${props => props.theme.borders[2]};
   border-color: ${props => props.theme.colors.grayScale[2]};
   &:hover {

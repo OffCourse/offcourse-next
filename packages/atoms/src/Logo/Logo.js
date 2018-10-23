@@ -8,7 +8,7 @@ const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = sizes;
  * The logo component for the Offcourse project
  */
 const multiplier = {
-  [SMALL]: 2,
+  [SMALL]: 2.25,
   [NORMAL]: 4,
   [LARGE]: 6,
   [EXTRA_LARGE]: 8

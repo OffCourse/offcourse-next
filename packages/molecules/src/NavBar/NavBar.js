@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Logo, Group } from "@offcourse/atoms";
 import { Menu, MessageGroup, SearchBar, IconGroup } from "..";
@@ -51,43 +51,36 @@ export default class NavBar extends Component {
       messages,
       isSearchBarOpen,
       onMenuButtonClick,
-      onSearchChange,
-      onSearchSubmit,
       onSearchButtonClick,
       isDocked
     } = this.props;
     return (
-      <NavBarWrapper isSearchBarOpen={isSearchBarOpen} isDocked={isDocked}>
-        <Group
-          flexDirection="row"
-          alignItems="center"
-          justifyContent="space-between"
-          pr={4}
-          height="2rem"
-        >
-          <Logo onClick={onLogoClick} />
-          <Menu
-            display={["none", "flex", "flex"]}
-            justifyContent="flex-end"
-            px={6}
-            pb={2}
-            maxLevel={0}
-            direction="horizontal"
-            links={links}
-          />
-          <IconGroup justifyContent="flex-end">
-            <SearchBar.Button onClick={onSearchButtonClick} />
-            <Menu.Button onClick={onMenuButtonClick} />
-          </IconGroup>
-        </Group>
-        <SearchBar
-          key={isSearchBarOpen}
-          onSearchSubmit={onSearchSubmit}
-          onSearchChange={onSearchChange}
-          isOpen={isSearchBarOpen}
-        />
-        <MessageGroup messages={messages} />
-      </NavBarWrapper>
+      <Fragment>
+        <NavBarWrapper isSearchBarOpen={isSearchBarOpen} isDocked={isDocked}>
+          <Group
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="space-between"
+            pr={4}
+            height="2.25rem"
+          >
+            <Logo onClick={onLogoClick} />
+            <Menu
+              display={["none", "flex", "flex"]}
+              justifyContent="flex-end"
+              px={6}
+              pb={2}
+              maxLevel={0}
+              direction="horizontal"
+              links={links}
+            />
+            <IconGroup justifyContent="flex-end">
+              <SearchBar.Button onClick={onSearchButtonClick} />
+              <Menu.Button onClick={onMenuButtonClick} />
+            </IconGroup>
+          </Group>
+        </NavBarWrapper>
+      </Fragment>
     );
   }
 }

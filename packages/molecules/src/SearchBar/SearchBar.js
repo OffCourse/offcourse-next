@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { identity } from "ramda";
 import { Icon, Input } from "@offcourse/atoms";
 import SearchBarWrapper from "./SearchBarWrapper";
-
+import { sizes } from "@offcourse/constants";
+const { LARGE } = sizes;
 export default class SearchInput extends Component {
   static Wrapper = SearchBarWrapper;
   state = {
@@ -20,7 +21,7 @@ export default class SearchInput extends Component {
   };
 
   static Button = ({ onClick }) => {
-    return <Icon name="search" onClick={onClick} />;
+    return <Icon size={LARGE} name="search" onClick={onClick} />;
   };
 
   handleChange = e => {
@@ -38,10 +39,10 @@ export default class SearchInput extends Component {
   };
 
   render() {
-    const { isOpen } = this.props;
     return (
       <SearchBarWrapper
-        display={isOpen ? "flex" : "none"}
+        style={this.props.styles}
+        display="flex"
         onSubmit={this.handleSubmit}
         justifyContent="stretch"
         alignItems="stretch"

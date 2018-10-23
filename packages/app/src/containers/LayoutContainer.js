@@ -26,9 +26,7 @@ const mapper = {
 };
 
 export default class LayoutContainer extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired
-  };
+  static propTypes = {};
 
   createUserLinks({ openOverlay, handlers }) {
     return [
@@ -82,7 +80,6 @@ export default class LayoutContainer extends Component {
   }
 
   render() {
-    const { children } = this.props;
     return (
       <Adopt mapper={mapper}>
         {({ sidebar, searchbar, auth, overlay, flash, theme, route }) => {
@@ -110,10 +107,7 @@ export default class LayoutContainer extends Component {
                   handlers: route.handlers
                 })
               ]}
-            >
-              <OverlayContainer />
-              {children}
-            </AppShell>
+            />
           );
         }}
       </Adopt>

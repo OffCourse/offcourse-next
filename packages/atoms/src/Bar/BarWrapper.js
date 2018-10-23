@@ -8,8 +8,7 @@ const BarWrapper = system(
     left: 0,
     right: 0,
     bg: "white",
-    flexDirection: "column",
-    zIndex: 2
+    flexDirection: "column"
   },
   "top",
   "bottom"
@@ -17,4 +16,5 @@ const BarWrapper = system(
 
 export default styled(BarWrapper)`
   box-sizing: border-box;
+  pointer-events: auto;
 `;

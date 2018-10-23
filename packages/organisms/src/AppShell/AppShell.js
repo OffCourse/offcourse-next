@@ -2,8 +2,15 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { isEmpty } from "ramda";
 import { Group } from "@offcourse/atoms";
-import { NavBar, Menu, Sidebar as Layout } from "@offcourse/molecules";
+import {
+  SearchBar,
+  MessageGroup,
+  NavBar,
+  Menu,
+  Sidebar as Layout
+} from "@offcourse/molecules";
 import { variants } from "@offcourse/constants";
+import { Transition } from "react-spring";
 
 const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 export default class AppShell extends Component {
@@ -34,7 +41,8 @@ export default class AppShell extends Component {
     isSidebarOpen: PropTypes.bool,
     isSearchBarOpen: PropTypes.bool,
     /** determines the position of the navbar. This is mainly for debugging... */
-    isDocked: PropTypes.bool
+    isDocked: PropTypes.bool,
+    children: PropTypes.node
   };
 
   static defaultProps = {
@@ -74,28 +82,54 @@ export default class AppShell extends Component {
     return <Menu links={links} />;
   };
 
-  renderMain = () => {
-    const { children, messages } = this.props;
-    const hasMessages = messages && !isEmpty(messages);
+  renderSearchBar = styles => {
+    const { isSearchBarOpen, onSearchSubmit, onSearchChange } = this.props;
     return (
-      <Group mt={hasMessages ? `${messages.length * 2 + 2}rem` : 8}>
-        {children}
-      </Group>
+      <SearchBar
+        styles={styles}
+        key={isSearchBarOpen}
+        onSearchSubmit={onSearchSubmit}
+        onSearchChange={onSearchChange}
+        isOpen={isSearchBarOpen}
+      />
     );
   };
 
-  render() {
-    const { isSidebarOpen, toggleSidebar } = this.props;
+  renderMessages = styles => {
+    const { messages } = this.props;
+    return <MessageGroup messages={messages} />;
+  };
 
+  render() {
+    const {
+      isSidebarOpen,
+      messages,
+      isSearchBarOpen,
+      toggleSidebar
+    } = this.props;
+    const searchBarHeight = 2.25;
+    const hasMessages = messages && !isEmpty(messages);
     return (
-      <Layout
-        content={this.renderSidebar()}
-        toggle={toggleSidebar}
-        isOpen={isSidebarOpen}
+      <div
+        style={{
+          pointerEvents: "none",
+          zIndex: 100,
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0
+        }}
       >
         {this.renderNavBar()}
-        {this.renderMain()}
-      </Layout>
+        <Transition
+          from={{ opacity: 0, transform: "translateZ(0)" }}
+          enter={{ opacity: 1, transform: "translateZ(1)" }}
+          leave={{ opacity: 0, transform: "translateZ(0)" }}
+        >
+          {isSearchBarOpen && this.renderSearchBar}
+        </Transition>
+      </div>
     );
   }
 }

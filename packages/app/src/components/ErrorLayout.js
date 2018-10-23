@@ -40,7 +40,7 @@ export default class NotFound extends Component {
     return (
       <Group
         flexDirection={["column-reverse", "row", "row"]}
-        height={["calc(100vh - 2rem)", "70vh", "70vh"]}
+        height={["calc(100vh - 2.25rem)", "70vh", "70vh"]}
         alignItems="center"
         alignSelf="stretch"
         maxWidth="100rem"
