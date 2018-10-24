@@ -1,3 +1,6 @@
 import { Bar } from "@offcourse/atoms";
+import styled from "styled-components";
 
-export default Bar;
+export default styled(Bar)`
+  z-index: 2;
+`;

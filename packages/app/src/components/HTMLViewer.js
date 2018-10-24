@@ -9,6 +9,7 @@ import Loadable from "react-loadable";
 import { sizes } from "@offcourse/constants";
 
 const { SMALL } = sizes;
+
 const SyntaxHighlighter = Loadable({
   loader: () => import("react-syntax-highlighter/prism-light"),
   loading: Loading

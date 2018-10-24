@@ -19,9 +19,10 @@ export default class Bar extends Component {
   };
 
   render() {
-    const { position, children, isDocked } = this.props;
+    const { position, className, children, isDocked } = this.props;
     return (
       <BarWrapper
+        className={className}
         top={position === TOP ? 0 : null}
         bottom={position === BOTTOM ? 0 : null}
         position={isDocked ? "fixed" : "absolute"}

@@ -47,7 +47,7 @@
     "downshift": "^2.2.3",
     "graphql": "^14.0.2",
     "history": "^4.7.2",
-    "markdown-to-jsx": "^6.7.2",
+    "markdown-to-jsx": "6.7.2",
     "prop-types": "^15.5.4",
     "punycode": "^2.1.1",
     "ramda": "^0.25.0",

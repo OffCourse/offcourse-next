@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { isEmpty } from "ramda";
+import { isEmpty, has } from "ramda";
 import { Group } from "@offcourse/atoms";
 import {
   SearchBar,
@@ -10,7 +10,7 @@ import {
   Sidebar as Layout
 } from "@offcourse/molecules";
 import { variants } from "@offcourse/constants";
-import { Transition } from "react-spring";
+import { Transition, animated, interpolate } from "react-spring";
 
 const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 export default class AppShell extends Component {
@@ -64,6 +64,7 @@ export default class AppShell extends Component {
     } = this.props;
     return (
       <NavBar
+        style={{ zIndex: 2 }}
         onLogoClick={onLogoClick}
         messages={messages}
         onMenuButtonClick={toggleSidebar}
@@ -77,21 +78,62 @@ export default class AppShell extends Component {
     );
   };
 
-  renderSidebar = () => {
+  renderSidebar = ({ opacity, x }) => {
     const { links } = this.props;
-    return <Menu links={links} />;
+    return (
+      <Fragment>
+        <animated.div
+          style={{
+            pointerEvents: "auto",
+            width: "10rem",
+            height: "100vh",
+            background: "white",
+            position: "fixed",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            zIndex: 5,
+            transform: interpolate([x], x => {
+              return `translate3d(${x}rem, 0, 0)`;
+            })
+          }}
+        >
+          <Menu links={links} />
+        </animated.div>
+        <animated.div
+          style={{
+            zIndex: 3,
+            position: "fixed",
+            background: "#3d3d3d",
+            opacity,
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0
+          }}
+        />
+      </Fragment>
+    );
   };
 
-  renderSearchBar = styles => {
-    const { isSearchBarOpen, onSearchSubmit, onSearchChange } = this.props;
+  renderSearchBar = ({ opacity, y, z }) => {
+    const { onSearchSubmit, onSearchChange } = this.props;
     return (
-      <SearchBar
-        styles={styles}
-        key={isSearchBarOpen}
-        onSearchSubmit={onSearchSubmit}
-        onSearchChange={onSearchChange}
-        isOpen={isSearchBarOpen}
-      />
+      <animated.div
+        style={{
+          zIndex: -1,
+          height: "2.25rem",
+          opacity,
+          transform: interpolate([y], y => {
+            return `translate3d(0, ${y}rem, 0)`;
+          })
+        }}
+      >
+        <SearchBar
+          onSearchChange={onSearchChange}
+          onSearchSubmit={onSearchSubmit}
+        />
+      </animated.div>
     );
   };
 
@@ -100,20 +142,31 @@ export default class AppShell extends Component {
     return <MessageGroup messages={messages} />;
   };
 
+  handleKeyPress = e => {
+    const { keyCode } = e;
+    const { close } = this.props;
+    if (keyCode === 27) {
+      console.log("OOOH SHIIIT");
+    }
+  };
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyPress);
+  }
+
   render() {
-    const {
-      isSidebarOpen,
-      messages,
-      isSearchBarOpen,
-      toggleSidebar
-    } = this.props;
+    const { isSidebarOpen, messages, isSearchBarOpen } = this.props;
     const searchBarHeight = 2.25;
     const hasMessages = messages && !isEmpty(messages);
     return (
       <div
         style={{
-          pointerEvents: "none",
           zIndex: 100,
+          pointerEvents: "none",
           position: "fixed",
           top: 0,
           left: 0,
@@ -123,12 +176,23 @@ export default class AppShell extends Component {
       >
         {this.renderNavBar()}
         <Transition
-          from={{ opacity: 0, transform: "translateZ(0)" }}
-          enter={{ opacity: 1, transform: "translateZ(1)" }}
-          leave={{ opacity: 0, transform: "translateZ(0)" }}
+          native
+          from={{ opacity: 0, x: -10 }}
+          enter={{ opacity: 0.7, x: 0 }}
+          leave={{ opacity: 0, x: -10 }}
+        >
+          {isSidebarOpen && this.renderSidebar}
+        </Transition>
+
+        <Transition
+          native
+          from={{ opacity: 0, y: 0 }}
+          enter={{ opacity: 1, y: searchBarHeight }}
+          leave={{ opacity: 0, y: 0 }}
         >
           {isSearchBarOpen && this.renderSearchBar}
         </Transition>
+        {hasMessages && this.renderMessages()}
       </div>
     );
   }

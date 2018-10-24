@@ -39,8 +39,10 @@ export default class SearchInput extends Component {
   };
 
   render() {
+    const { is } = this.props;
     return (
       <SearchBarWrapper
+        is={is}
         style={this.props.styles}
         display="flex"
         onSubmit={this.handleSubmit}

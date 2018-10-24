@@ -42,7 +42,6 @@ export default class ResourceSection extends Component {
   render() {
     const { title, content, resourceType, resourceUrl } = this.props;
     const Viewer = Viewers[resourceType];
-    console.log(this.props);
     return (
       <Group mr="3rem">
         <Heading size={SMALL}>{title}</Heading>
