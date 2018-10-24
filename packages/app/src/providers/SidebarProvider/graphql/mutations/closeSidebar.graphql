@@ -1,0 +1,3 @@
+mutation CloseSidebar {
+  closeSidebar @client
+}

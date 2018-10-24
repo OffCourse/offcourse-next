@@ -1,14 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { isEmpty, has } from "ramda";
-import { Group } from "@offcourse/atoms";
-import {
-  SearchBar,
-  MessageGroup,
-  NavBar,
-  Menu,
-  Sidebar as Layout
-} from "@offcourse/molecules";
+import { isEmpty } from "ramda";
+import { SearchBar, MessageGroup, NavBar, Menu } from "@offcourse/molecules";
 import { variants } from "@offcourse/constants";
 import { Transition, animated, interpolate } from "react-spring";
 
@@ -35,14 +28,12 @@ export default class AppShell extends Component {
     onSearchChange: PropTypes.func,
     onSearchSubmit: PropTypes.func,
     toggleSidebar: PropTypes.func,
-    /** function that triggers the sidebar to open or close */
     toggleSearchBar: PropTypes.func,
-    /** flag that determines whether the sidebar is open or closed */
+    closeSidebar: PropTypes.func,
+    closeSearchBar: PropTypes.func,
     isSidebarOpen: PropTypes.bool,
     isSearchBarOpen: PropTypes.bool,
-    /** determines the position of the navbar. This is mainly for debugging... */
-    isDocked: PropTypes.bool,
-    children: PropTypes.node
+    isDocked: PropTypes.bool
   };
 
   static defaultProps = {
@@ -57,6 +48,7 @@ export default class AppShell extends Component {
       onSearchChange,
       onSearchSubmit,
       messages,
+      closeSearchBar,
       toggleSidebar,
       toggleSearchBar,
       isSearchBarOpen,
@@ -67,7 +59,7 @@ export default class AppShell extends Component {
         style={{ zIndex: 2 }}
         onLogoClick={onLogoClick}
         messages={messages}
-        onMenuButtonClick={toggleSidebar}
+        onMenuButtonClick={() => closeSearchBar() && toggleSidebar()}
         onSearchButtonClick={toggleSearchBar}
         isSearchBarOpen={isSearchBarOpen}
         onSearchSubmit={onSearchSubmit}
@@ -79,7 +71,7 @@ export default class AppShell extends Component {
   };
 
   renderSidebar = ({ opacity, x }) => {
-    const { links } = this.props;
+    const { links, closeSidebar } = this.props;
     return (
       <Fragment>
         <animated.div
@@ -101,7 +93,9 @@ export default class AppShell extends Component {
           <Menu links={links} />
         </animated.div>
         <animated.div
+          onClick={closeSidebar}
           style={{
+            pointerEvents: "auto",
             zIndex: 3,
             position: "fixed",
             background: "#3d3d3d",
@@ -137,16 +131,31 @@ export default class AppShell extends Component {
     );
   };
 
-  renderMessages = styles => {
+  renderMessages = ({ opacity, y }) => {
     const { messages } = this.props;
-    return <MessageGroup messages={messages} />;
+    return (
+      <animated.div
+        style={{
+          zIndex: -1,
+          opacity,
+          transform: interpolate([y], y => {
+            return `translate3d(0, ${y}rem, 0)`;
+          })
+        }}
+      >
+        <MessageGroup messages={messages} />
+      </animated.div>
+    );
   };
 
   handleKeyPress = e => {
-    const { keyCode } = e;
-    const { close } = this.props;
+    const { keyCode, ctrlKey } = e;
+    const { closeSidebar, toggleSearchBar, closeSearchBar } = this.props;
     if (keyCode === 27) {
-      console.log("OOOH SHIIIT");
+      closeSidebar() && closeSearchBar();
+    }
+    if (keyCode === 191 && ctrlKey) {
+      toggleSearchBar();
     }
   };
 
@@ -192,7 +201,15 @@ export default class AppShell extends Component {
         >
           {isSearchBarOpen && this.renderSearchBar}
         </Transition>
-        {hasMessages && this.renderMessages()}
+
+        <Transition
+          native
+          from={{ opacity: 0, y: 0 }}
+          enter={{ opacity: 1, y: searchBarHeight }}
+          leave={{ opacity: 0, y: 0 }}
+        >
+          {hasMessages && this.renderMessages}
+        </Transition>
       </div>
     );
   }

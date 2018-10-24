@@ -15,6 +15,7 @@ const MessageWrapper = system(
     flex: 1,
     px: 0,
     py: 0,
+    minHeight: "2.25rem",
     fontFamily: "base"
   },
   props => ({

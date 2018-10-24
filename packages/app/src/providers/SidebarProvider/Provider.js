@@ -5,12 +5,14 @@ import { queries, mutations } from "./graphql";
 
 const mapper = {
   sidebarQuery: <Query query={queries.sidebar} />,
-  toggleSidebar: <Mutation mutation={mutations.toggleSidebar} />
+  toggleSidebar: <Mutation mutation={mutations.toggleSidebar} />,
+  closeSidebar: <Mutation mutation={mutations.closeSidebar} />
 };
 
-const mapProps = ({ sidebarQuery, toggleSidebar }) => ({
+const mapProps = ({ sidebarQuery, toggleSidebar, closeSidebar }) => ({
   ...sidebarQuery.data.sidebar,
-  toggle: toggleSidebar
+  toggle: toggleSidebar,
+  close: closeSidebar
 });
 
 export default adopt(mapper, mapProps);

@@ -8,8 +8,15 @@ const toggleSidebar = (_, __, { cache, ___ }) => {
   return null;
 };
 
+const closeSidebar = (_, __, { cache, ___ }) => {
+  const data = { sidebar: { __typename: "Sidebar", isOpen: false } };
+  cache.writeData({ data });
+  return null;
+};
+
 const Mutation = {
-  toggleSidebar
+  toggleSidebar,
+  closeSidebar
 };
 
 export default { Mutation };

@@ -21,10 +21,13 @@ class App extends Component {
               <div
                 style={{
                   zIndex: -1,
+                  display: "flex",
                   position: "fixed",
+                  background: "#f4f6f4",
                   left: 0,
                   right: 0,
                   top: 0,
+                  bottom: 0,
                   marginTop: "2.25rem"
                 }}
               >

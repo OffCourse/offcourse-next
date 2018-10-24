@@ -90,7 +90,9 @@ export default class LayoutContainer extends Component {
               messages={flash.messages}
               onLogoClick={() => searchbar.close() && goHome()}
               toggleSidebar={sidebar.toggle}
+              closeSidebar={sidebar.close}
               toggleSearchBar={searchbar.toggle}
+              closeSearchBar={searchbar.close}
               isSearchBarOpen={searchbar.isOpen}
               onSearchChange={debounce(
                 ({ searchTerm }) => goToCollection({ searchTerm }),

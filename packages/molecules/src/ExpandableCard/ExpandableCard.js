@@ -67,7 +67,6 @@ export default class ExpendableCard extends Component {
     const { children, layout, expandable } = this.props;
     return Children.map(children, (child, index) => {
       if (!child) return null;
-      if (!expandable) return child;
       const { section } = child.props;
       const { level } = this.state;
       const isVisible = layout[level] && contains(section, layout[level]);

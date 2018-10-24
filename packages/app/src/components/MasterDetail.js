@@ -33,7 +33,6 @@ class Master extends Component {
         display={["none", "none", "flex"]}
         alignItems="center"
         position="sticky"
-        width="100%"
         p={6}
       >
         {children}
