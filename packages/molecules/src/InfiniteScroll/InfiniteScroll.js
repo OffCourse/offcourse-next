@@ -5,7 +5,7 @@ import InfiniteScrollWrapper from "./InfiniteScrollWrapper";
 import Waypoint from "react-waypoint";
 import { sizes } from "@offcourse/constants";
 
-const { LARGE } = sizes;
+const { NORMAL } = sizes;
 
 export default class InfiniteScroll extends Component {
   static propTypes = {
@@ -28,7 +28,7 @@ export default class InfiniteScroll extends Component {
         {hasMore && (
           <Waypoint key={children} onPositionChange={this.handlePositionChange}>
             <div>
-              <Loading size={LARGE} />
+              <Loading size={NORMAL} />
             </div>
           </Waypoint>
         )}

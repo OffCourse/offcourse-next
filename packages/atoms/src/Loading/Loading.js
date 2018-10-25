@@ -55,6 +55,7 @@ class Loading extends Component {
         {styles => (
           <div
             style={{
+              margin: "1rem",
               display: "flex",
               flexDirection: "row",
               justifyContent: "center"
