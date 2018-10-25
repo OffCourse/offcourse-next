@@ -148,25 +148,6 @@ export default class AppShell extends Component {
     );
   };
 
-  handleKeyPress = e => {
-    const { keyCode, ctrlKey } = e;
-    const { closeSidebar, toggleSearchBar, closeSearchBar } = this.props;
-    if (keyCode === 27) {
-      closeSidebar() && closeSearchBar();
-    }
-    if (keyCode === 191 && ctrlKey) {
-      toggleSearchBar();
-    }
-  };
-
-  componentDidMount() {
-    document.addEventListener("keydown", this.handleKeyPress);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeyPress);
-  }
-
   render() {
     const { isSidebarOpen, messages, isSearchBarOpen } = this.props;
     const searchBarHeight = 2.25;

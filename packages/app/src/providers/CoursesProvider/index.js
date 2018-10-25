@@ -4,6 +4,7 @@ import { map, prop } from "ramda";
 import { Query } from "react-apollo";
 import { queries } from "./graphql";
 import { updateQuery } from "./actions";
+import { Loading } from "../../components";
 import { fakeCourses } from "../../fakeCourse";
 
 export default class CoursesProvider extends Component {
@@ -20,7 +21,7 @@ export default class CoursesProvider extends Component {
       <Query query={queries.courses} variables={{ searchTerm, curator, tag }}>
         {({ data, loading, fetchMore }) => {
           if (loading) {
-            return children({ courses: fakeCourses(7, 15) });
+            return <Loading />;
           }
           if (!data.courses) {
             return [];

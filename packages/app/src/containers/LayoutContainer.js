@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { map } from "ramda";
 import PropTypes from "prop-types";
 import { Adopt } from "react-adopt";
 import { AppShell } from "@offcourse/organisms";
 import { OverlayContainer } from "../containers";
-import { Route } from "../components";
+import { Route, GlobalEvents } from "../components";
+
 import { debounce } from "debounce";
 
 import {
@@ -85,31 +86,40 @@ export default class LayoutContainer extends Component {
         {({ sidebar, searchbar, auth, overlay, flash, theme, route }) => {
           const { goHome, goToCollection } = route.handlers;
           return (
-            <AppShell
-              position="fixed"
-              messages={flash.messages}
-              onLogoClick={() => searchbar.close() && goHome()}
-              toggleSidebar={sidebar.toggle}
-              closeSidebar={sidebar.close}
-              toggleSearchBar={searchbar.toggle}
-              closeSearchBar={searchbar.close}
-              isSearchBarOpen={searchbar.isOpen}
-              onSearchChange={debounce(
-                ({ searchTerm }) => goToCollection({ searchTerm }),
-                300
-              )}
-              onSearchSubmit={({ searchTerm }) =>
-                searchbar.close() && goToCollection({ searchTerm })
-              }
-              isSidebarOpen={sidebar.isOpen}
-              links={[
-                ...this.createLinks({
-                  openOverlay: overlay.open,
-                  userName: auth.userName,
-                  handlers: route.handlers
-                })
-              ]}
-            />
+            <Fragment>
+              <GlobalEvents
+                closeSidebar={sidebar.close}
+                toggleSearchBar={searchbar.toggle}
+                toggleSidebar={sidebar.toggle}
+                closeSearchBar={searchbar.close}
+                closeOverlay={overlay.close}
+              />
+              <AppShell
+                position="fixed"
+                messages={flash.messages}
+                onLogoClick={() => searchbar.close() && goHome()}
+                toggleSidebar={sidebar.toggle}
+                closeSidebar={sidebar.close}
+                toggleSearchBar={searchbar.toggle}
+                closeSearchBar={searchbar.close}
+                isSearchBarOpen={searchbar.isOpen}
+                onSearchChange={debounce(
+                  ({ searchTerm }) => goToCollection({ searchTerm }),
+                  300
+                )}
+                onSearchSubmit={({ searchTerm }) =>
+                  searchbar.close() && goToCollection({ searchTerm })
+                }
+                isSidebarOpen={sidebar.isOpen}
+                links={[
+                  ...this.createLinks({
+                    openOverlay: overlay.open,
+                    userName: auth.userName,
+                    handlers: route.handlers
+                  })
+                ]}
+              />
+            </Fragment>
           );
         }}
       </Adopt>

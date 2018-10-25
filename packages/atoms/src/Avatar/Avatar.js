@@ -2,27 +2,33 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { lowerCase } from "../helpers";
 import AvatarWrapper from "./AvatarWrapper";
+import { sizes } from "@offcourse/constants";
 
+const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = sizes;
 /**
  * A Component for the Offcourse Project that shows the avatar image of a
  * given user
  */
+const multiplier = {
+  [SMALL]: 3,
+  [NORMAL]: 6,
+  [LARGE]: 10,
+  [EXTRA_LARGE]: 15
+};
 
 class Avatar extends Component {
   static propTypes = {
-    /**  url that refers to an avatar image */
-    url: PropTypes.string,
-    /** name of the person corresponding to this avatar */
-    name: PropTypes.string.isRequired
+    size: PropTypes.string,
+    onClick: PropTypes.func
   };
 
   static defaultProps = {
-    url: "https://assets.offcourse.io/portraits/offcourse_2.jpg"
+    size: SMALL
   };
 
   render() {
-    const { url, name } = this.props;
-    return <AvatarWrapper src={url} alt={`avatar of ${lowerCase(name)}`} />;
+    const { size, onClick } = this.props;
+    return <AvatarWrapper onClick={onClick} multiply={multiplier[size]} />;
   }
 }
 

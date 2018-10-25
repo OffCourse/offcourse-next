@@ -1,5 +1,6 @@
 import logoSvg from "./offcourse-logo.svg";
 import { variants } from "@offcourse/constants";
+import avatarSVG from "./offcourse-avatar.svg";
 
 const { DEFAULT, DISABLED, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
@@ -11,6 +12,11 @@ const logo = {
   svg: logoSvg,
   dimensions: { height: 1, width: 4.66666 },
   background: "black"
+};
+const avatar = {
+  svg: avatarSVG,
+  dimensions: { height: 1, width: 1 },
+  background: "white"
 };
 
 const baseColors = {
@@ -219,6 +225,7 @@ const theme = {
   fontSizes,
   lineHeights,
   logo,
+  avatar,
   space,
   colors,
   borders,
