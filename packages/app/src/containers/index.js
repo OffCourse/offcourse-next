@@ -1,4 +1,3 @@
-export { default as OverlayContainer } from "./OverlayContainer";
 export { default as CoursesContainer } from "./CoursesContainer";
 export { default as CourseContainer } from "./CourseContainer";
 export { default as CheckpointContainer } from "./CheckpointContainer";

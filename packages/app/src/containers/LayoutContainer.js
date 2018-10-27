@@ -1,12 +1,16 @@
 import React, { Component, Fragment } from "react";
 import { map } from "ramda";
+import { debounce } from "debounce";
 import PropTypes from "prop-types";
 import { Adopt } from "react-adopt";
+import { Modal } from "@offcourse/molecules";
 import { AppShell } from "@offcourse/organisms";
-import { OverlayContainer } from "../containers";
-import { Route, GlobalEvents } from "../components";
-
-import { debounce } from "debounce";
+import { LoadingModal, Route, GlobalEvents } from "../components";
+import {
+  ForkCourseDialogContainer,
+  AuthContainer,
+  CourseFormContainer
+} from ".";
 
 import {
   SearchbarProvider,
@@ -16,7 +20,16 @@ import {
   FlashProvider
 } from "../providers";
 
-const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = OverlayProvider.constants;
+const {
+  SIGNING_IN,
+  SIGNING_UP,
+  SIGNING_OUT,
+  RESETTING_PASSWORD,
+  CREATE_COURSE,
+  EDIT_COURSE,
+  FORK_COURSE
+} = OverlayProvider.constants;
+
 const mapper = {
   auth: <AuthProvider />,
   flash: <FlashProvider />,
@@ -29,6 +42,22 @@ const mapper = {
 export default class LayoutContainer extends Component {
   static propTypes = {};
 
+  selectMode({ mode, courseId, close }) {
+    switch (mode) {
+      case SIGNING_UP:
+      case SIGNING_IN:
+      case SIGNING_OUT:
+      case RESETTING_PASSWORD:
+        return <AuthContainer />;
+      case EDIT_COURSE:
+      case CREATE_COURSE:
+        return <CourseFormContainer courseId={courseId} />;
+      case FORK_COURSE:
+        return <ForkCourseDialogContainer courseId={courseId} />;
+      default:
+        return <LoadingModal />;
+    }
+  }
   createUserLinks({ openOverlay, handlers }) {
     return [
       {
@@ -119,6 +148,9 @@ export default class LayoutContainer extends Component {
                   })
                 ]}
               />
+              <Modal close={overlay.close} isOpen={overlay.isOpen}>
+                {this.selectMode(overlay)}
+              </Modal>
             </Fragment>
           );
         }}

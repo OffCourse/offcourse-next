@@ -14,6 +14,8 @@ export default class CheckpointCard extends Component {
     onCourseClick: PropTypes.func,
     onCheckpointToggle: PropTypes.func,
     checkable: PropTypes.bool,
+    layout: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+    level: PropTypes.number,
     status: PropTypes.string
   };
 
@@ -56,7 +58,7 @@ export default class CheckpointCard extends Component {
   };
 
   render() {
-    const { status, checkable, checkpoint, pt, level, layout } = this.props;
+    const { status, checkable, checkpoint, level, layout } = this.props;
     const { tags, task, resource, completed, checkpointId } = checkpoint;
 
     return (

@@ -84,19 +84,20 @@ export default class Masonry extends Component {
           this.masonry = el;
         }}
       >
-        {this.prepareGrid().map((col, ci) => {
-          return (
-            <ColumnWrapper key={ci}>
-              {col.map((child, i) => {
-                return (
-                  <ItemWrapper key={child.key || `${ci}-${i}`}>
-                    {child}
-                  </ItemWrapper>
-                );
-              })}
-            </ColumnWrapper>
-          );
-        })}
+        {this.masonry &&
+          this.prepareGrid().map((col, ci) => {
+            return (
+              <ColumnWrapper key={ci}>
+                {col.map((child, i) => {
+                  return (
+                    <ItemWrapper key={child.key || `${ci}-${i}`}>
+                      {child}
+                    </ItemWrapper>
+                  );
+                })}
+              </ColumnWrapper>
+            );
+          })}
       </MasonryWrapper>
     );
   }

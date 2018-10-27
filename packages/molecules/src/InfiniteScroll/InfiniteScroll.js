@@ -10,6 +10,8 @@ const { NORMAL } = sizes;
 export default class InfiniteScroll extends Component {
   static propTypes = {
     loadMore: PropTypes.func,
+    hasMore: PropTypes.bool,
+    height: PropTypes.number,
     children: PropTypes.node.isRequired
   };
 

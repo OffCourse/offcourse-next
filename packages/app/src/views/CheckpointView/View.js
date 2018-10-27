@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import {
   MasterDetail,
+  ErrorBoundary,
   CourseAction,
+  Loading,
   CheckpointCard,
   NotFound
 } from "../../components";
-import { Loading } from "@offcourse/atoms";
 import { CourseCard } from "@offcourse/organisms";
 import PropTypes from "prop-types";
 import { CheckpointProvider } from "../../providers";
@@ -59,30 +60,32 @@ export default class CheckpointView extends Component {
           />
         </Master>
         <Detail>
-          {status === "loading" ? (
-            <Loading />
-          ) : (
-            <CheckpointProvider
-              userName={userName}
-              checkpointQuery={{ curator, goal, task }}
-            >
-              {({ checkpoint }) => {
-                return (
-                  <CheckpointCard
-                    pt={6}
-                    level={2}
-                    status={status}
-                    checkable={!!userName}
-                    onCourseClick={goToCourse}
-                    onCheckpointToggle={toggleCheckpoint}
-                    onCheckpointClick={goToCheckpoint}
-                    checkpoint={checkpoint}
-                    key={`${checkpoint.checkpointId}-${checkpoint.completed}`}
-                  />
-                );
-              }}
-            </CheckpointProvider>
-          )}
+          <ErrorBoundary>
+            {status === "loading" ? (
+              <Loading />
+            ) : (
+              <CheckpointProvider
+                userName={userName}
+                checkpointQuery={{ curator, goal, task }}
+              >
+                {({ checkpoint }) => {
+                  return (
+                    <CheckpointCard
+                      pt={6}
+                      level={2}
+                      status={status}
+                      checkable={!!userName}
+                      onCourseClick={goToCourse}
+                      onCheckpointToggle={toggleCheckpoint}
+                      onCheckpointClick={goToCheckpoint}
+                      checkpoint={checkpoint}
+                      key={`${checkpoint.checkpointId}-${checkpoint.completed}`}
+                    />
+                  );
+                }}
+              </CheckpointProvider>
+            )}
+          </ErrorBoundary>
         </Detail>
       </MasterDetail>
     );

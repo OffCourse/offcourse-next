@@ -16,6 +16,8 @@ class Detail extends Component {
         mr={[0, 0, 6]}
         bg={["white", "grayScale.1", "grayScale.1"]}
         flex="3"
+        flexDirection={["column", "column", "row"]}
+        justifyContent={["flex-start", "flex-start", "center"]}
         pb={[6, 6, "4rem"]}
         {...rest}
       >
@@ -33,6 +35,7 @@ class Master extends Component {
         display={["none", "none", "flex"]}
         alignItems="center"
         position="sticky"
+        flex="none"
         p={6}
       >
         {children}
