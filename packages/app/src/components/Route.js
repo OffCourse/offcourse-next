@@ -49,7 +49,6 @@ export default class Route extends Component {
               history.push(`/curator/${curator}/goal/${goal}/task/${task}`);
             }
           };
-
           return children ? (
             children({ ...props, match, handlers })
           ) : (

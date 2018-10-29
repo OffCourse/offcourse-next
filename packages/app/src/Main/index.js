@@ -3,7 +3,8 @@ import {
   AboutView,
   CourseView,
   CollectionView,
-  CheckpointView
+  CheckpointView,
+  FAQView
 } from "../views";
 import MainWrapper from "./MainWrapper";
 
@@ -15,6 +16,7 @@ export default class Main extends Component {
         <CourseView />
         <CheckpointView />
         <AboutView />
+        <FAQView />
       </MainWrapper>
     );
   }

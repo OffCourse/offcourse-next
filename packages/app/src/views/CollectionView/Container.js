@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Adopt } from "react-adopt";
 import { isEmpty } from "ramda";
-import { CourseCardProvider, CoursesProvider } from "../providers";
-import { NoSearchResults } from "../components";
-import { CourseCardLayout } from "@offcourse/organisms";
+import { CourseCardProvider, CoursesProvider } from "../../providers";
+import { NoSearchResults } from "../../components";
+import View from "./View";
 
 const mapper = {
   collection: ({ searchTerm, curator, tag, render }) => (
@@ -34,7 +34,7 @@ class CoursesContainer extends Component {
   render() {
     const { match, handlers } = this.props;
     const { curator, tag, searchTerm } = match.params;
-    const { goHome, goToCollection, goToCourse, goToCheckpoint } = handlers;
+    const { goHome } = handlers;
     return (
       <Adopt
         curator={curator}
@@ -47,17 +47,10 @@ class CoursesContainer extends Component {
             return <NoSearchResults searchTerm={searchTerm} goHome={goHome} />;
           }
           return (
-            <CourseCardLayout
-              initialCardLevel={courseCard.initialLevel}
-              onResize={courseCard.changeLevel}
-              key={courseCard.initialLevel}
-              layout={courseCard.layout}
-              goToCollection={goToCollection}
-              goToCourse={goToCourse}
-              goToCheckpoint={goToCheckpoint}
-              hasMore={collection.hasMore}
-              courses={collection.courses}
-              loadMore={collection.loadMore}
+            <View
+              handlers={handlers}
+              collection={collection}
+              courseCard={courseCard}
             />
           );
         }}

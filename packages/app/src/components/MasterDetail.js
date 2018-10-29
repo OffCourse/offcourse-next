@@ -17,7 +17,8 @@ class Detail extends Component {
         bg={["white", "grayScale.1", "grayScale.1"]}
         flex="3"
         flexDirection={["column", "column", "row"]}
-        justifyContent={["flex-start", "flex-start", "center"]}
+        justifyContent="stretch"
+        alignItems="stretch"
         pb={[6, 6, "4rem"]}
         {...rest}
       >
