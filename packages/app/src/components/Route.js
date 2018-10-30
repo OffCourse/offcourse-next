@@ -10,7 +10,12 @@ export default class Route extends Component {
   };
 
   render() {
-    const { component: ComponentToRender, children, ...rest } = this.props;
+    const {
+      component: ComponentToRender,
+      children,
+      componentProps,
+      ...rest
+    } = this.props;
     return (
       <RRoute
         {...rest}
@@ -52,7 +57,12 @@ export default class Route extends Component {
           return children ? (
             children({ ...props, match, handlers })
           ) : (
-            <ComponentToRender {...props} match={match} handlers={handlers} />
+            <ComponentToRender
+              {...componentProps}
+              {...props}
+              match={match}
+              handlers={handlers}
+            />
           );
         }}
       />

@@ -31,13 +31,16 @@ class Detail extends Component {
 
 class Master extends Component {
   static propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node.isRequired,
+    isAlwaysVisible: PropTypes.bool
   };
   render() {
-    const { children, visible } = this.props;
+    const { children, isAlwaysVisible } = this.props;
     return (
       <Group
-        display={visible ? ["flex", "flex", "flex"] : ["none", "none", "flex"]}
+        display={
+          isAlwaysVisible ? ["flex", "flex", "flex"] : ["none", "none", "flex"]
+        }
         alignItems="stretch"
         position="sticky"
         flex="none"

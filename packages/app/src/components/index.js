@@ -8,7 +8,6 @@ export { default as LoadingModal } from "./LoadingModal";
 export { default as ForkCourseDialog } from "./ForkCourseDialog";
 export { default as Loading } from "./Loading";
 export { default as MasterDetail } from "./MasterDetail";
-export { default as CourseDetailLayout } from "./CourseDetailLayout";
 export { default as NotFound } from "./NotFound";
 export { default as NoSearchResults } from "./NoSearchResults";
 export { default as UnderConstruction } from "./UnderConstruction";

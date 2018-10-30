@@ -4,7 +4,8 @@ import { map } from "ramda";
 import { Group } from "@offcourse/atoms";
 import { CheckpointCard } from "@offcourse/organisms";
 
-const CheckpointsSection = ({ course, toggleCheckpoint, goToCheckpoint }) => {
+const CheckpointsSection = ({ course, toggleCheckpoint, handlers }) => {
+  const { goToCheckpoint } = handlers;
   return (
     <Group mt={6}>
       {map(checkpoint => {
@@ -27,7 +28,7 @@ const CheckpointsSection = ({ course, toggleCheckpoint, goToCheckpoint }) => {
 CheckpointsSection.propTypes = {
   course: PropTypes.object.isRequired,
   toggleCheckpoint: PropTypes.func,
-  goToCheckpoint: PropTypes.func.isRequired
+  handlers: PropTypes.object.isRequired
 };
 
 export default CheckpointsSection;

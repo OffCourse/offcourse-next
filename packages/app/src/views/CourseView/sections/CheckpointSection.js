@@ -6,11 +6,12 @@ import { CheckpointProvider } from "../../../providers";
 const CheckpointSection = ({
   curator,
   goal,
-  task,
-  goToCheckpoint,
-  goToCourse,
+  handlers,
+  match,
   toggleCheckpoint
 }) => {
+  const { task } = match.params;
+  const { goToCheckpoint, goToCourse } = handlers;
   return (
     <CheckpointProvider checkpointQuery={{ curator, goal, task }}>
       {({ checkpoint }) => {
@@ -32,10 +33,9 @@ const CheckpointSection = ({
 CheckpointSection.propTypes = {
   curator: PropTypes.string.isRequired,
   goal: PropTypes.string.isRequired,
-  task: PropTypes.string.isRequired,
   toggleCheckpoint: PropTypes.func,
-  goToCourse: PropTypes.func.isRequired,
-  goToCheckpoint: PropTypes.func.isRequired
+  handlers: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default CheckpointSection;
