@@ -1,31 +1,30 @@
 import React, { Component } from "react";
+import { adopt } from "react-adopt";
 import PropTypes from "prop-types";
+import { AuthProvider } from "..";
 import { Query } from "../../components";
 import { queries } from "./graphql";
 
-export default class CheckpointProvider extends Component {
-  static propTypes = {
-    children: PropTypes.func.isRequired,
-    userName: PropTypes.string,
-    checkpointQuery: PropTypes.shape({
-      goal: PropTypes.string.isRequired,
-      curator: PropTypes.string.isRequired,
-      task: PropTypes.string.isRequired
-    }).isRequired
-  };
-
-  render() {
-    const { children, userName, checkpointQuery } = this.props;
+const mapper = {
+  userName: ({ auth, render }) => (
+    <AuthProvider>{({ userName }) => render(userName)}</AuthProvider>
+  ),
+  checkpoint: ({ userName, checkpointQuery, render }) => {
     return (
       <Query
         query={queries.checkpoint}
         variables={{ checkpointQuery, isAuthenticated: !!userName }}
       >
-      {({ data }) => {
-          const { checkpoint } = data;
-          return children({ checkpoint });
+        {({ data }) => {
+          return render(data.checkpoint);
         }}
       </Query>
     );
   }
-}
+};
+
+const mapProps = ({ userName, checkpoint }) => ({
+  checkpoint
+});
+
+export default adopt(mapper, mapProps);

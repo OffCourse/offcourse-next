@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  AboutView,
-  CourseView,
-  CollectionView,
-  CheckpointView,
-  FAQView
-} from "../views";
+import { AboutView, CourseView, CollectionView, FAQView } from "../views";
 import MainWrapper from "./MainWrapper";
 
 export default class Main extends Component {
@@ -14,7 +8,6 @@ export default class Main extends Component {
       <MainWrapper>
         <CollectionView />
         <CourseView />
-        <CheckpointView />
         <AboutView />
         <FAQView />
       </MainWrapper>

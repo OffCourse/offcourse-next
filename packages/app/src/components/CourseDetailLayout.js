@@ -1,51 +1,59 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Icon } from "@offcourse/atoms";
 import { CourseCard } from "@offcourse/organisms";
 import { MasterDetail, CourseAction } from ".";
+import { sizes } from "@offcourse/constants";
 
+const { LARGE } = sizes;
 export default class CourseDetailLayout extends Component {
   static propTypes = {
-    toggleCheckpoint: PropTypes.func.isRequired,
-    userName: PropTypes.string,
+    toggleCheckpoint: PropTypes.func,
     handlers: PropTypes.object.isRequired,
     course: PropTypes.object.isRequired,
-    userIsCurator: PropTypes.bool,
-    overlay: PropTypes.object,
+    action: PropTypes.object,
     children: PropTypes.node
+  };
+
+  static defaultProps = {
+    layout: [["header", "meta", "description"]]
   };
 
   render() {
     const { Master, Detail } = MasterDetail;
     const {
       toggleCheckpoint,
-      userName,
+      isMasterVisible,
       handlers,
-      userIsCurator,
-      overlay,
       course,
-      children
+      action,
+      children,
+      layout
     } = this.props;
-    const { goToCheckpoint, goToCollection, goToCourse } = handlers;
+    const { goHome, goToCheckpoint, goToCollection, goToCourse } = handlers;
     return (
       <MasterDetail>
-        <Master>
+        <Master visible={isMasterVisible}>
           <CourseCard
             onCuratorClick={goToCollection}
             onGoalClick={goToCourse}
             onCheckpointClick={goToCheckpoint}
-            layout={[["header", "meta", "description"]]}
-            onCheckpointToggle={userName ? toggleCheckpoint : null}
+            layout={layout}
+            onCheckpointToggle={toggleCheckpoint}
             onTagClick={goToCollection}
             course={course}
+            borderBottom="none"
+            headerIcon={
+              <Icon
+                onClick={goHome}
+                size={LARGE}
+                color="grayScale.2"
+                name="remove"
+              />
+            }
             expandable={false}
           />
-          <CourseAction
-            userIsCurator={userIsCurator}
-            userName={userName}
-            course={course}
-            overlay={overlay}
-            goToCourse={goToCourse}
-          />
+          <CourseAction {...action} />
         </Master>
         <Detail>{children}</Detail>
       </MasterDetail>

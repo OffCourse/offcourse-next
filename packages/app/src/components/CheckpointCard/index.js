@@ -74,8 +74,8 @@ export default class CheckpointCard extends Component {
         layout={layout}
         initialLevel={level}
         expandable={false}
-        pt={pt}
-        px={8}
+        pt={6}
+        px={[6, 6, 8]}
         inactive={level === 0 || status === "loading"}
         mb={6}
       >

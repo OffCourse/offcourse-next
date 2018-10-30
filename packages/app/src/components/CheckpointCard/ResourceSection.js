@@ -43,7 +43,7 @@ export default class ResourceSection extends Component {
     const { title, content, resourceType, resourceUrl } = this.props;
     const Viewer = Viewers[resourceType];
     return (
-      <Group mr="3rem">
+      <Group>
         <Heading size={SMALL}>{title}</Heading>
         <Group alignItems="flex-start">
           <BCText target="_blank" href={resourceUrl}>

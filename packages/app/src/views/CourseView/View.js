@@ -1,94 +1,96 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { map } from "ramda";
-import { Icon, Group } from "@offcourse/atoms";
-import { CourseCard, CheckpointCard } from "@offcourse/organisms";
-import { CourseDetailLayout, CourseAction } from "../../components";
-import { sizes } from "@offcourse/constants";
+import { Group } from "@offcourse/atoms";
+import { CheckpointCard } from "@offcourse/organisms";
+import { CheckpointCard as CPC, CourseDetailLayout } from "../../components";
+import { CheckpointProvider } from "../../providers";
 
-const { LARGE } = sizes;
-
-export default class View extends Component {
-  static propTypes = {
-    toggleCheckpoint: PropTypes.func.isRequired,
-    userName: PropTypes.string,
-    handlers: PropTypes.object.isRequired,
-    course: PropTypes.object.isRequired,
-    userIsCurator: PropTypes.bool,
-    overlay: PropTypes.object
-  };
-
-  render() {
-    const {
-      toggleCheckpoint,
-      userName,
-      handlers,
-      userIsCurator,
-      overlay,
-      course
-    } = this.props;
-    const { goHome, goToCheckpoint, goToCollection, goToCourse } = handlers;
-    return (
-      <CourseDetailLayout
-        toggleCheckpoint={toggleCheckpoint}
-        userName={userName}
-        handlers={handlers}
-        userIsCurator={userIsCurator}
-        overlay={overlay}
-        course={course}
-      >
-        <Group
-          flex="none"
-          alignItems="flex"
-          p={6}
-          display={["flex", "none", "none"]}
-        >
-          <CourseCard
-            onCuratorClick={goToCollection}
-            onGoalClick={goToCourse}
+const CheckpointsSection = ({ course, toggleCheckpoint, goToCheckpoint }) => {
+  return (
+    <Group mt={6}>
+      {map(checkpoint => {
+        const { completed, checkpointId } = checkpoint;
+        return (
+          <CheckpointCard
+            level={completed ? 0 : 1}
+            checkable={!!toggleCheckpoint}
+            onCheckpointToggle={toggleCheckpoint}
             onCheckpointClick={goToCheckpoint}
-            width="100%"
-            borderBottom="none"
-            headerIcon={
-              <Icon
-                onClick={goHome}
-                size={LARGE}
-                color="grayScale.2"
-                name="remove"
-              />
-            }
-            layout={[["header", "meta", "description"]]}
-            onCheckpointToggle={userName ? toggleCheckpoint : null}
-            onTagClick={goToCollection}
-            course={course}
-            expandable={false}
+            checkpoint={{ course, ...checkpoint }}
+            key={checkpointId}
           />
-          <Group alignItems="stretch" justifyContent="center" px={6} pt={0}>
-            <CourseAction
-              userIsCurator={userIsCurator}
-              userName={userName}
-              course={course}
-              overlay={overlay}
-              goToCourse={goToCourse}
-            />
-          </Group>
-        </Group>
-        <Group my={6} px={6}>
-          {map(checkpoint => {
-            return (
-              <CheckpointCard
-                level={checkpoint.completed ? 0 : 1}
-                checkable={!!userName}
-                width="100%"
-                onCheckpointToggle={toggleCheckpoint}
-                onCheckpointClick={goToCheckpoint}
-                checkpoint={{ course, ...checkpoint }}
-                key={checkpoint.checkpointId}
-              />
-            );
-          }, course.checkpoints)}
-        </Group>
-      </CourseDetailLayout>
-    );
-  }
-}
+        );
+      }, course.checkpoints)}
+    </Group>
+  );
+};
+
+const CheckpointSection = ({
+  curator,
+  goal,
+  task,
+  goToCheckpoint,
+  goToCourse,
+  toggleCheckpoint
+}) => {
+  return (
+    <CheckpointProvider checkpointQuery={{ curator, goal, task }}>
+      {({ checkpoint }) => {
+        return (
+          <CPC
+            level={2}
+            onCourseClick={goToCourse}
+            onCheckpointToggle={toggleCheckpoint}
+            onCheckpointClick={goToCheckpoint}
+            checkpoint={checkpoint}
+            key={`${checkpoint.checkpointId}-${checkpoint.completed}`}
+          />
+        );
+      }}
+    </CheckpointProvider>
+  );
+};
+
+const View = ({ toggleCheckpoint, match, handlers, course, action }) => {
+  const { goToCheckpoint } = handlers;
+  const cardSections = ["header", "meta"];
+  const { task } = match.params;
+  return (
+    <CourseDetailLayout
+      action={action}
+      isMasterVisible={!task}
+      handlers={handlers}
+      course={course}
+      layout={
+        task
+          ? [[...cardSections, "checkpoints"]]
+          : [[...cardSections, "description"]]
+      }
+      {...action}
+    >
+      {task ? (
+        <CheckpointSection
+          {...match.params}
+          {...handlers}
+          toggleCheckpoint={toggleCheckpoint}
+        />
+      ) : (
+        <CheckpointsSection
+          course={course}
+          toggleCheckpoint={toggleCheckpoint}
+          goToCheckpoint={goToCheckpoint}
+        />
+      )}
+    </CourseDetailLayout>
+  );
+};
+
+View.propTypes = {
+  toggleCheckpoint: PropTypes.func,
+  action: PropTypes.object.isRequired,
+  handlers: PropTypes.object.isRequired,
+  course: PropTypes.object.isRequired
+};
+
+export default View;
