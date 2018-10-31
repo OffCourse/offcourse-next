@@ -31,8 +31,8 @@
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
     "system-components": "^3.0.1"
   },
   "devDependencies": {
@@ -54,8 +54,8 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "prettier": "^1.14.2",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
     "semantic-release": "^15.5.0",
     "semantic-release-monorepo": "^6.0.3"
   },

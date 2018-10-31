@@ -19,7 +19,7 @@ class Text extends Component {
   };
 
   static defaultProps = {
-    size: "NORMAL"
+    size: NORMAL
   };
 
   render() {

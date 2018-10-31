@@ -34,29 +34,23 @@ const BCText = styled(_BCText)`
 `;
 
 export default class ResourceSection extends Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string
-  };
+  static propTypes = {};
 
   render() {
-    const { title, content, resourceType, resourceUrl } = this.props;
+    const { resource } = this.props;
+    const { title, content, resourceType, resourceUrl } = resource;
     const Viewer = Viewers[resourceType];
     return (
-      <Group>
+      <Group px={6}>
         <Heading size={SMALL}>{title}</Heading>
         <Group alignItems="flex-start">
           <BCText target="_blank" href={resourceUrl}>
             {content && `Source: ${resourceUrl}`}
           </BCText>
         </Group>
-        {content ? (
-          <Group width="100%">
-            <Viewer {...content} />
-          </Group>
-        ) : (
-          <NotFound />
-        )}
+        <Group width="100%">
+          <Viewer {...content} />
+        </Group>
       </Group>
     );
   }

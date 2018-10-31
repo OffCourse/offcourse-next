@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
-import { Checkbox, Group, Icon, Link } from "@offcourse/atoms";
+import { Checkbox, Group, Link } from "@offcourse/atoms";
 import { Header, ExpandableCard as Card } from "@offcourse/molecules";
 import titleCase from "voca/title_case";
-import system from "system-components";
-import styled from "styled-components";
 
 import Loadable from "react-loadable";
 

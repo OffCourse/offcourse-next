@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { formatTitle } from "../helpers";
 import LinkWrapper from "./LinkWrapper";
+import { sizes } from "@offcourse/constants";
+
+const { SMALL, NORMAL, LARGE } = sizes;
+
+const textProps = {
+  SMALL: { textSize: 0, lineHeight: 0 },
+  NORMAL: { textSize: 1, lineHeight: 2 },
+  LARGE: { textSize: 2, lineHeight: 3 }
+};
 
 /**
  * The link component for the Offcourse project
@@ -21,12 +30,14 @@ class Link extends Component {
     onClick: PropTypes.func,
     /** a url that the link should link to, automatically turns the link into the basic type */
     href: PropTypes.string,
-    color: PropTypes.string
+    color: PropTypes.string,
+    size: PropTypes.oneOf([SMALL, NORMAL, LARGE])
   };
 
   static defaultProps = {
     disabled: false,
-    type: "link"
+    type: "link",
+    size: NORMAL
   };
 
   color() {
@@ -41,12 +52,24 @@ class Link extends Component {
   }
 
   render() {
-    const { basic, href, children, onClick, disabled } = this.props;
+    const {
+      size,
+      basic,
+      href,
+      fontFamily,
+      children,
+      onClick,
+      disabled
+    } = this.props;
+    const { textSize, lineHeight } = textProps[size];
     return (
       <LinkWrapper
         color={this.color()}
         borderBottom={basic ? 0 : 2}
+        fontFamily={fontFamily}
         onClick={!disabled ? onClick : () => {}}
+        fontSize={textSize}
+        lineHeight={lineHeight}
         href={!disabled ? href : undefined}
         disabled={disabled}
       >

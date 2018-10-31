@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Heading, Group, Text } from "@offcourse/atoms";
 import { isEmpty, isNil } from "ramda";
 import { HTMLViewer, VideoViewer } from "../components";
-import { TagGroup } from "@offcourse/molecules";
 
 const Viewers = {
   html: HTMLViewer,

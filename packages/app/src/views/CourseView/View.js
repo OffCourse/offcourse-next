@@ -11,7 +11,7 @@ import { Switch } from "react-router-dom";
 const { Detail } = MasterDetail;
 
 const View = ({ match, ...rest }) => {
-  const { url, params } = match;
+  const { url } = match;
   const checkpointPath = `${url}/task/:task`;
 
   return (
@@ -40,7 +40,7 @@ const View = ({ match, ...rest }) => {
         <Switch>
           <Route
             path={checkpointPath}
-            componentProps={{ ...rest, ...params }}
+            componentProps={{ ...rest }}
             component={CheckpointSection}
           />
           <Route componentProps={{ ...rest }} component={CheckpointsSection} />
