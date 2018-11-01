@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { find, propEq } from "ramda";
 import { Loading, Group } from "@offcourse/atoms";
@@ -16,13 +16,24 @@ const CheckpointSection = ({ course, handlers, match, toggleCheckpoint }) => {
     return <Loading />;
   }
   return (
-    <ResourceCard
-      course={course}
-      checkpoint={checkpoint}
-      goToCheckpoint={goToCheckpoint}
-      toggleCheckpoint={toggleCheckpoint}
-      goToCourse={goToCourse}
-    />
+    <Fragment>
+      <CheckpointCard
+        border="none"
+        checkable={!!toggleCheckpoint}
+        level={2}
+        checkpoint={{ course, ...checkpoint }}
+        onCheckpointToggle={toggleCheckpoint}
+        onCheckpointClick={goToCheckpoint}
+        goToCourse={goToCourse}
+      />
+      <ErrorBoundary>
+        <ResourceProvider resourceUrl={checkpoint.resourceUrl}>
+          {({ resource }) => {
+            return <ResourceCard resource={resource} />;
+          }}
+        </ResourceProvider>
+      </ErrorBoundary>
+    </Fragment>
   );
 };
 

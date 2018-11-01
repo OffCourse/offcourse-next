@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
 import { Header, ExpandableCard as Card } from "@offcourse/molecules";
-import { Checkbox } from "@offcourse/atoms";
+import { Link, Group, Checkbox } from "@offcourse/atoms";
 import { Meta } from "./sections";
 import { sizes } from "@offcourse/constants";
 
@@ -23,12 +23,7 @@ export default class CheckpointCard extends Component {
     level: 1,
     onCheckpointClick: identity,
     onCheckpointToggle: identity,
-    layout: [
-      ["header"],
-      ["header", "meta"],
-      ["header", "resource"],
-      ["breadcrumbs-header", "resource"]
-    ]
+    layout: [["header"], ["header", "meta"], ["breadcrumbs", "meta"]]
   };
 
   handleCourseClick = () => {
@@ -59,7 +54,14 @@ export default class CheckpointCard extends Component {
 
   render() {
     const { status, checkable, checkpoint, level, layout } = this.props;
-    const { tags, task, resource, completed, checkpointId } = checkpoint;
+    const {
+      course,
+      tags,
+      task,
+      resource,
+      completed,
+      checkpointId
+    } = checkpoint;
 
     return (
       <Card
@@ -72,6 +74,35 @@ export default class CheckpointCard extends Component {
         inactive={level === 0 || status === "loading"}
         mb={6}
       >
+        <Group pb={0} section="breadcrumbs" alignItems="stretch">
+          <Group pb="0.5rem" display={["flex", "none", "none"]} px={6}>
+            <Link
+              onClick={this.handleCourseClick}
+              fontFamily="base"
+              basic
+            >{`<< ${course.goal}`}</Link>
+          </Group>
+          <Header
+            section="header"
+            bg={["grayScale.1", "white", "white"]}
+            onClick={this.handleCheckpointClick}
+            pt={0}
+            pb={0}
+            p={6}
+            icon={
+              checkable && (
+                <Checkbox
+                  size={LARGE}
+                  bg={["white", "grayScale.1", "grayScale.1"]}
+                  checked={completed}
+                  onToggle={this.handleCheckpointToggle}
+                />
+              )
+            }
+          >
+            {task}
+          </Header>
+        </Group>
         <Header
           section="header"
           bg={["grayScale.1", "white", "white"]}
