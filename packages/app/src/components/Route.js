@@ -30,6 +30,9 @@ export default class Route extends Component {
             goToAbout() {
               history.push("/about");
             },
+            goToFAQ() {
+              history.push("/faq");
+            },
             goToCollection(qs) {
               const { curator, tag, searchTerm } = map(encodeURIComponent, qs);
               if (tag) {

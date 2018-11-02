@@ -28,7 +28,7 @@ module.exports = {
       },
       {
         test: /\.yaml$/,
-        loader: "yaml"
+        use: [{ loader: "json-loader" }, { loader: "yaml-loader" }]
       },
       {
         test: /\.html$/,

@@ -76,6 +76,11 @@ export default class LayoutContainer extends Component {
         level: 1
       },
       {
+        onClick: handlers.goToFAQ,
+        title: "FAQ",
+        level: 1
+      },
+      {
         onClick: () => openOverlay({ mode: SIGNING_OUT }),
         title: "Sign Out",
         level: 1
@@ -98,6 +103,11 @@ export default class LayoutContainer extends Component {
       {
         onClick: handlers.goToAbout,
         title: "About",
+        level: 1
+      },
+      {
+        onClick: handlers.goToFAQ,
+        title: "FAQ",
         level: 1
       }
     ];

@@ -8,6 +8,7 @@ import {
   faChevronRight as arrowRight,
   faBars as hamburger,
   faCheck as checkmark,
+  faEnvelope as email,
   faTimes as remove,
   faPlus as add,
   faSort as sort,
@@ -28,7 +29,8 @@ import {
 
 import {
   faFacebook as facebook,
-  faTwitter as twitter
+  faTwitter as twitter,
+  faMedium as medium
 } from "@fortawesome/free-brands-svg-icons";
 
 export {
@@ -51,6 +53,8 @@ export {
   hamburger,
   link,
   plus,
+  email,
+  medium,
   minus,
   question,
   remove,

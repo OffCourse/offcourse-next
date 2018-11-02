@@ -4,12 +4,13 @@ import PropTypes from "prop-types";
 import HeadingWrapper from "./HeadingWrapper";
 import { sizes } from "@offcourse/constants";
 
-const { SMALL, NORMAL, LARGE } = sizes;
+const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = sizes;
 
 const textProps = {
   SMALL: { fontSize: 2, lineHeight: 1 },
   NORMAL: { fontSize: 3, lineHeight: 2 },
-  LARGE: { fontSize: 4, lineHeight: 5 }
+  LARGE: { fontSize: 4, lineHeight: 5 },
+  EXTRA_LARGE: { fontSize: "4rem", lineHeight: "6rem" }
 };
 
 /**
