@@ -27,6 +27,7 @@ const MasterSection = ({
         onCheckpointToggle={toggleCheckpoint}
         onTagClick={goToCollection}
         course={course}
+        borderBottom={0}
         expandable={false}
         headerIcon={
           <Icon

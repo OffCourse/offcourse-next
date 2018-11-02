@@ -53,7 +53,15 @@ export default class CheckpointCard extends Component {
   };
 
   render() {
-    const { status, checkable, checkpoint, level, layout } = this.props;
+    const {
+      borderBottom,
+      status,
+      checkable,
+      checkpoint,
+      level,
+      mb,
+      layout
+    } = this.props;
     const {
       course,
       tags,
@@ -69,26 +77,61 @@ export default class CheckpointCard extends Component {
         layout={layout}
         initialLevel={level}
         expandable={false}
-        pt={0}
-        px={0}
+        borderBottom={borderBottom}
         inactive={level === 0 || status === "loading"}
-        mb={6}
+        px={0}
+        pt={0}
+        mb={mb}
       >
-        <Group pb={0} section="breadcrumbs" alignItems="stretch">
-          <Group pb="0.5rem" display={["flex", "none", "none"]} px={6}>
+        <Group
+          bg={["grayScale.1", "white", "white"]}
+          py={6}
+          pb={0}
+          section="breadcrumbs"
+          alignItems="stretch"
+        >
+          <Header
+            p={0}
+            px={[6, 8, 8]}
+            py={0}
+            bg={["grayScale.1", "white", "white"]}
+            onClick={this.handleCheckpointClick}
+            icon={
+              checkable && (
+                <Checkbox
+                  size={LARGE}
+                  bg={["white", "grayScale.1", "grayScale.1"]}
+                  checked={completed}
+                  onToggle={this.handleCheckpointToggle}
+                />
+              )
+            }
+          >
+            {task}
+          </Header>
+          <Group
+            pt={[3, 0, 0]}
+            pb={0}
+            px={6}
+            display={["flex", "none", "none"]}
+          >
             <Link
               onClick={this.handleCourseClick}
               fontFamily="base"
               basic
             >{`<< ${course.goal}`}</Link>
           </Group>
+        </Group>
+        <Group
+          alignItems="stretch"
+          py={6}
+          pb={0}
+          bg={["grayScale.1", "white", "white"]}
+          section="header"
+        >
           <Header
-            section="header"
-            bg={["grayScale.1", "white", "white"]}
+            px={[6, 8, 8]}
             onClick={this.handleCheckpointClick}
-            pt={0}
-            pb={0}
-            p={6}
             icon={
               checkable && (
                 <Checkbox
@@ -103,26 +146,6 @@ export default class CheckpointCard extends Component {
             {task}
           </Header>
         </Group>
-        <Header
-          section="header"
-          bg={["grayScale.1", "white", "white"]}
-          onClick={this.handleCheckpointClick}
-          pt={0}
-          pb={0}
-          p={6}
-          icon={
-            checkable && (
-              <Checkbox
-                size={LARGE}
-                bg={["white", "grayScale.1", "grayScale.1"]}
-                checked={completed}
-                onToggle={this.handleCheckpointToggle}
-              />
-            )
-          }
-        >
-          {task}
-        </Header>
         <Meta
           section="meta"
           resourceType={resource ? resource.resourceType : "unknown"}

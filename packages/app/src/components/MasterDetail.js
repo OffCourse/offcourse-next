@@ -13,14 +13,13 @@ class Detail extends Component {
         width={["100%", "100%", "55rem"]}
         maxWidth={["100%", "100%", "55rem"]}
         height="calc(100vh - 2.25rem)"
-        overflow={["hidden visible", "hidden visible", "hidden scroll"]}
         mr={0}
+        mt={6}
         flex="3"
         flexDirection="column"
         justifyContent="stretch"
         alignItems="stretch"
         px={6}
-        mt={6}
         pb={[6, 6, "4rem"]}
         pl={[6, 6, 0]}
         {...rest}
@@ -68,7 +67,7 @@ export default class MasterDetail extends Component {
         bg={["white", "grayScale.1", "grayScale.1"]}
         width={["100%", "100%", "auto"]}
         height="calc(100vh - 2.25rem)"
-        overflow={["hidden visible", "hidden visible", "hidden hidden"]}
+        overflow={["hidden scroll", "hidden visible", "hidden hidden"]}
       >
         {children}
       </Group>

@@ -16,15 +16,16 @@ const CheckpointSection = ({ course, handlers, match, toggleCheckpoint }) => {
     return <Loading />;
   }
   return (
-    <Fragment>
+    <Group overflow="hidden scroll">
       <CheckpointCard
         border="none"
         checkable={!!toggleCheckpoint}
         level={2}
+        mb={[0, 6, 6]}
         checkpoint={{ course, ...checkpoint }}
         onCheckpointToggle={toggleCheckpoint}
         onCheckpointClick={goToCheckpoint}
-        goToCourse={goToCourse}
+        onCourseClick={goToCourse}
       />
       <ErrorBoundary>
         <ResourceProvider resourceUrl={checkpoint.resourceUrl}>
@@ -33,7 +34,7 @@ const CheckpointSection = ({ course, handlers, match, toggleCheckpoint }) => {
           }}
         </ResourceProvider>
       </ErrorBoundary>
-    </Fragment>
+    </Group>
   );
 };
 

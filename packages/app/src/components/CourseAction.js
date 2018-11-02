@@ -14,7 +14,7 @@ export default class CourseAction extends Component {
   render() {
     const { onClick, label } = this.props;
     return (
-      <Group justifyContent="stretch" alignItems="center" px={6} mt={6}>
+      <Group justifyContent="stretch" alignItems="center" px={[8, 8, 6]} mt={6}>
         <Button onClick={onClick} size={LARGE}>
           {label}
         </Button>

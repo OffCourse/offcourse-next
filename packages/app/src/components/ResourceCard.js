@@ -14,7 +14,7 @@ const ResourceCard = ({ resource }) => {
   const Viewer = Viewers[resourceType];
 
   return (
-    <Card border="none" bg="white" pt={6} px={[6, 6, 8]}>
+    <Card border="none" bg="white" px={[6, 6, 8]}>
       <Header>{title}</Header>
       <Viewer {...content} />
     </Card>

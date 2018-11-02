@@ -12,11 +12,13 @@ export default class Header extends Component {
   static Icon = Icon;
 
   render() {
-    const { icon, children, onClick, bg, p } = this.props;
+    const { icon, children, onClick, bg, py, px, p } = this.props;
     return (
       <Group
         bg={bg}
         p={p}
+        px={px}
+        py={py}
         flexDirection="row"
         alignItems="flex-start"
         justifyContent="space-between"

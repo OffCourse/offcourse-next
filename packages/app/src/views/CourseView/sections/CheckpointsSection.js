@@ -10,6 +10,7 @@ const CheckpointsSection = ({ course, toggleCheckpoint, handlers }) => {
     const { completed, checkpointId } = checkpoint;
     return (
       <CheckpointCard
+        mb={6}
         level={completed ? 0 : 1}
         checkable={!!toggleCheckpoint}
         onCheckpointToggle={toggleCheckpoint}
