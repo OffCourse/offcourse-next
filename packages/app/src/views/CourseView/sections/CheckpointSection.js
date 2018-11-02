@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { find, propEq } from "ramda";
 import { Loading, Group } from "@offcourse/atoms";
@@ -21,6 +21,7 @@ const CheckpointSection = ({ course, handlers, match, toggleCheckpoint }) => {
         border="none"
         checkable={!!toggleCheckpoint}
         level={2}
+        borderBottom={[1, 0, 0]}
         mb={[0, 6, 6]}
         checkpoint={{ course, ...checkpoint }}
         onCheckpointToggle={toggleCheckpoint}

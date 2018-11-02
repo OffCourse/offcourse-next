@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
 import { Header, ExpandableCard as Card } from "@offcourse/molecules";
-import { Link, Group, Checkbox } from "@offcourse/atoms";
+import { Link, Group, Checkbox, Text } from "@offcourse/atoms";
 import { Meta } from "./sections";
 import { sizes } from "@offcourse/constants";
 
@@ -23,7 +23,7 @@ export default class CheckpointCard extends Component {
     level: 1,
     onCheckpointClick: identity,
     onCheckpointToggle: identity,
-    layout: [["header"], ["header", "meta"], ["breadcrumbs", "meta"]]
+    layout: [["header"], ["header", "meta"], ["breadcrumbs", "meta", "source"]]
   };
 
   handleCourseClick = () => {
@@ -60,6 +60,7 @@ export default class CheckpointCard extends Component {
       checkpoint,
       level,
       mb,
+      mx,
       layout
     } = this.props;
     const {
@@ -81,18 +82,31 @@ export default class CheckpointCard extends Component {
         inactive={level === 0 || status === "loading"}
         px={0}
         pt={0}
+        mx={mx}
         mb={mb}
       >
         <Group
           bg={["grayScale.1", "white", "white"]}
-          py={6}
+          py={[7]}
           pb={0}
           section="breadcrumbs"
           alignItems="stretch"
         >
+          <Group
+            pb={[3, 0, 0]}
+            pt={0}
+            px={8}
+            display={["flex", "none", "none"]}
+          >
+            <Link
+              onClick={this.handleCourseClick}
+              fontFamily="base"
+              basic
+            >{`<< ${course.goal}`}</Link>
+          </Group>
           <Header
             p={0}
-            px={[6, 8, 8]}
+            px={[8, 8, 8]}
             py={0}
             bg={["grayScale.1", "white", "white"]}
             onClick={this.handleCheckpointClick}
@@ -109,18 +123,6 @@ export default class CheckpointCard extends Component {
           >
             {task}
           </Header>
-          <Group
-            pt={[3, 0, 0]}
-            pb={0}
-            px={6}
-            display={["flex", "none", "none"]}
-          >
-            <Link
-              onClick={this.handleCourseClick}
-              fontFamily="base"
-              basic
-            >{`<< ${course.goal}`}</Link>
-          </Group>
         </Group>
         <Group
           alignItems="stretch"
@@ -146,11 +148,20 @@ export default class CheckpointCard extends Component {
             {task}
           </Header>
         </Group>
-        <Meta
-          section="meta"
-          resourceType={resource ? resource.resourceType : "unknown"}
-          tags={tags || []}
-        />
+        <Group section="meta">
+          <Meta
+            section="meta"
+            resourceType={resource ? resource.resourceType : "unknown"}
+            tags={tags || []}
+          />
+        </Group>
+        <Group section="source">
+          <Group pt={6} px={8}>
+            <Text size={LARGE}>
+              View the content below or on the original source
+            </Text>
+          </Group>
+        </Group>
       </Card>
     );
   }

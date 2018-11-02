@@ -6,20 +6,24 @@ import { CheckpointCard } from "@offcourse/organisms";
 
 const CheckpointsSection = ({ course, toggleCheckpoint, handlers }) => {
   const { goToCheckpoint } = handlers;
-  return map(checkpoint => {
-    const { completed, checkpointId } = checkpoint;
-    return (
-      <CheckpointCard
-        mb={6}
-        level={completed ? 0 : 1}
-        checkable={!!toggleCheckpoint}
-        onCheckpointToggle={toggleCheckpoint}
-        onCheckpointClick={goToCheckpoint}
-        checkpoint={{ course, ...checkpoint }}
-        key={checkpointId}
-      />
-    );
-  }, course.checkpoints);
+  return (
+    <Group m={[6, 0, 0]}>
+      {map(checkpoint => {
+        const { completed, checkpointId } = checkpoint;
+        return (
+          <CheckpointCard
+            mb={6}
+            level={completed ? 0 : 1}
+            checkable={!!toggleCheckpoint}
+            onCheckpointToggle={toggleCheckpoint}
+            onCheckpointClick={goToCheckpoint}
+            checkpoint={{ course, ...checkpoint }}
+            key={checkpointId}
+          />
+        );
+      }, course.checkpoints)}
+    </Group>
+  );
 };
 
 CheckpointsSection.propTypes = {

@@ -13,15 +13,12 @@ class Detail extends Component {
         width={["100%", "100%", "55rem"]}
         maxWidth={["100%", "100%", "55rem"]}
         height="calc(100vh - 2.25rem)"
-        mr={0}
-        mt={6}
+        mt={[0, 0, 6]}
         flex="3"
         flexDirection="column"
         justifyContent="stretch"
         alignItems="stretch"
-        px={6}
         pb={[6, 6, "4rem"]}
-        pl={[6, 6, 0]}
         {...rest}
       >
         {children}

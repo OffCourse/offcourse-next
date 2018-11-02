@@ -39,7 +39,7 @@ export default class Meta extends Component {
         flexDirection="row"
         alignItems="center"
         p={6}
-        px={[6, 6, 8]}
+        px={[6, 8, 8]}
         pb={0}
         justifyContent={["flex-start", "space-between", "space-between"]}
       >
