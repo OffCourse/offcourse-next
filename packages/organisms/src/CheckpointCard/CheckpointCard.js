@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
 import { Header, ExpandableCard as Card } from "@offcourse/molecules";
-import { Link, Group, Checkbox, Text } from "@offcourse/atoms";
+import { Link, Text, Group, Checkbox, Icon } from "@offcourse/atoms";
 import { Meta } from "./sections";
 import { sizes } from "@offcourse/constants";
 
@@ -21,9 +21,10 @@ export default class CheckpointCard extends Component {
 
   static defaultProps = {
     level: 1,
+    borderColor: "grayScale.2",
     onCheckpointClick: identity,
     onCheckpointToggle: identity,
-    layout: [["header"], ["header", "meta"], ["breadcrumbs", "meta", "source"]]
+    layout: [["header"], ["header", "meta"], ["breadcrumbs", "meta2", "source"]]
   };
 
   handleCourseClick = () => {
@@ -55,6 +56,7 @@ export default class CheckpointCard extends Component {
   render() {
     const {
       borderBottom,
+      borderColor,
       status,
       checkable,
       checkpoint,
@@ -67,6 +69,7 @@ export default class CheckpointCard extends Component {
       course,
       tags,
       task,
+      resourceUrl,
       resource,
       completed,
       checkpointId
@@ -77,8 +80,9 @@ export default class CheckpointCard extends Component {
         key={`${checkpointId}-${completed}`}
         layout={layout}
         initialLevel={level}
-        expandable={false}
         borderBottom={borderBottom}
+        borderColor={borderColor}
+        expandable={false}
         inactive={level === 0 || status === "loading"}
         px={0}
         pt={0}
@@ -87,7 +91,7 @@ export default class CheckpointCard extends Component {
       >
         <Group
           bg={["grayScale.1", "white", "white"]}
-          py={[7]}
+          py={[7, 6, 6]}
           pb={0}
           section="breadcrumbs"
           alignItems="stretch"
@@ -102,7 +106,7 @@ export default class CheckpointCard extends Component {
               onClick={this.handleCourseClick}
               fontFamily="base"
               basic
-            >{`<< ${course.goal}`}</Link>
+            >{`< ${course.goal}`}</Link>
           </Group>
           <Header
             p={0}
@@ -150,7 +154,12 @@ export default class CheckpointCard extends Component {
         </Group>
         <Group section="meta">
           <Meta
-            section="meta"
+            resourceType={resource ? resource.resourceType : "unknown"}
+            tags={tags || []}
+          />
+        </Group>
+        <Group px={[6, 0, 0]} section="meta2">
+          <Meta
             resourceType={resource ? resource.resourceType : "unknown"}
             tags={tags || []}
           />
@@ -158,7 +167,12 @@ export default class CheckpointCard extends Component {
         <Group section="source">
           <Group pt={6} px={8}>
             <Text size={LARGE}>
-              View the content below or on the original source
+              View the Content below or on the original source
+              <Icon
+                mx={4}
+                name="link"
+                onClick={() => window.open(resourceUrl)}
+              />
             </Text>
           </Group>
         </Group>

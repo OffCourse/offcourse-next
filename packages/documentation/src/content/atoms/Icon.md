@@ -91,6 +91,10 @@ These are all the icons that we use
 ```
 
 ```react|span-2
+<Icon name="link" />
+```
+
+```react|span-2
 <Icon name="plus" />
 ```
 

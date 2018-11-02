@@ -16,7 +16,7 @@ const ResourceCard = ({ resource }) => {
   return (
     <Card border="none" bg="white" px={8}>
       <Group>
-        <Header py={6}>{title}</Header>
+        <Header py={0}>{title}</Header>
         <Viewer {...content} />
       </Group>
     </Card>

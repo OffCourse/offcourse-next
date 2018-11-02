@@ -22,7 +22,8 @@ import {
   faThermometerEmpty as beginner,
   faThermometerHalf as advanced,
   faThermometerFull as expert,
-  faVideo as video
+  faVideo as video,
+  faExternalLinkAlt as link
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -48,6 +49,7 @@ export {
   eye,
   facebook,
   hamburger,
+  link,
   plus,
   minus,
   question,

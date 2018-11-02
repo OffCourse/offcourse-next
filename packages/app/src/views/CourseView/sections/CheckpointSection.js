@@ -21,7 +21,8 @@ const CheckpointSection = ({ course, handlers, match, toggleCheckpoint }) => {
         border="none"
         checkable={!!toggleCheckpoint}
         level={2}
-        borderBottom={[1, 0, 0]}
+        borderBottom={[1, 2, 2]}
+        borderColor={["grayScale.1", "grayScale.2", "grayScale.2"]}
         mb={[0, 6, 6]}
         checkpoint={{ course, ...checkpoint }}
         onCheckpointToggle={toggleCheckpoint}

@@ -27,7 +27,8 @@ const MasterSection = ({
         onCheckpointToggle={toggleCheckpoint}
         onTagClick={goToCollection}
         course={course}
-        borderBottom={0}
+        borderBottom={[0, 2, 2]}
+        borderColor={["grayScale.1", "grayScale.2", "grayScale.2"]}
         expandable={false}
         headerIcon={
           <Icon

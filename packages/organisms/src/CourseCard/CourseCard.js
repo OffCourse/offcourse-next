@@ -88,6 +88,7 @@ export default class CourseCard extends Component {
       layout,
       headerIcon,
       borderBottom,
+      borderColor,
       expandable,
       width,
       initialLevel
@@ -110,6 +111,7 @@ export default class CourseCard extends Component {
         inactive={status === "loading"}
         width={width || ["100%", "18rem", "18rem"]}
         borderBottom={borderBottom}
+        borderColor={borderColor}
         expandable={expandable}
         initialLevel={initialLevel}
         layout={layout}
