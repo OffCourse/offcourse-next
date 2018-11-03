@@ -14,6 +14,7 @@ class Detail extends Component {
         maxWidth={["100%", "100%", "55rem"]}
         height="calc(100vh - 2.25rem)"
         mt={[0, 0, 6]}
+        mr={[0, 6, 6]}
         flex="3"
         flexDirection="column"
         justifyContent="stretch"

@@ -8,21 +8,16 @@ import system from "system-components";
 
 const Temp = system({
   display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
-  justifyContent: "flex-start",
   p: 8,
-  overflow: "hidden scroll",
-  maxHeight: "40rem",
+  flexDirection: "column",
   maxWidth: "65rem"
 });
 const Grid = system({
   mt: 6,
   display: "grid",
-  gridRowGap: "1rem",
   justifyItems: "start",
   alignItems: "start",
-  gridColumnGap: "2rem",
+  gridColumnGap: "3rem",
   gridTemplateColumns: ["1fr", "1fr 1fr", "1fr 1fr"]
 });
 
@@ -54,9 +49,13 @@ export default class FAQView extends Component {
     const sortedSections = toPairs(sections);
     const [platform, ...rest] = sortedSections;
     const pQuestions = platform[1];
-    console.log(rest);
     return (
-      <Group flexDirection="row" justifyContent="center" alignItems="center">
+      <Group
+        flexDirection="row"
+        justifyContent={["flex-start", "center", "center"]}
+        overflow={["hidden scroll", "hidden scroll", "hidden scroll"]}
+        alignItems={["flex-start", "flex-start", "flex-start"]}
+      >
         <Temp>
           <Heading size={LARGE}>{title}</Heading>
           <Grid>

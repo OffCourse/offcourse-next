@@ -89,6 +89,9 @@ export default class Container extends Component {
         mapProps={mapProps}
       >
         {({ course, toggleCheckpoint, userIsCurator, userName, overlay }) => {
+          if (!course) {
+            return <NotFound goHome={handlers.goHome} />;
+          }
           const action = mapActions({
             course,
             userIsCurator,
@@ -96,9 +99,6 @@ export default class Container extends Component {
             handlers,
             overlay
           });
-          if (!course) {
-            return <NotFound goHome={handlers.goHome} />;
-          }
           return (
             <View
               match={match}

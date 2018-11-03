@@ -23,23 +23,6 @@ export default class NotFound extends Component {
       message: "Take Me Home",
       onClick: goHome
     };
-    const animation = [
-      {
-        from: { opacity: 0, transform: "translateY(-100vh) rotate(0deg)" },
-        to: { opacity: 1, transform: "translateY(0) rotate(360deg)" }
-      },
-      {
-        from: { transform: "translateY(0) rotate(360deg)" },
-        to: { transform: "translateY(0) rotate(15deg)" }
-      }
-    ];
-    return (
-      <Layout
-        animation={animation}
-        action={action}
-        error={error}
-        goHome={goHome}
-      />
-    );
+    return <Layout action={action} error={error} goHome={goHome} />;
   }
 }
