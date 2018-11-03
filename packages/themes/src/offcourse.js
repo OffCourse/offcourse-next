@@ -1,6 +1,10 @@
 import logoSvg from "./offcourse-logo.svg";
 import { variants } from "@offcourse/constants";
 import avatarSVG from "./offcourse-avatar.svg";
+import contentError from "./offcourse-content-error.svg";
+import noSearchResults from "./offcourse-no-search-results.svg";
+import notFound from "./offcourse-not-found.svg";
+import genericError from "./offcourse-generic-error.svg";
 
 const { DEFAULT, DISABLED, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
@@ -13,10 +17,32 @@ const logo = {
   dimensions: { height: 1, width: 4.66666 },
   background: "black"
 };
-const avatar = {
-  svg: avatarSVG,
-  dimensions: { height: 1, width: 1 },
-  background: "white"
+const avatars = {
+  default: {
+    svg: avatarSVG,
+    dimensions: { height: 1, width: 1 },
+    background: "white"
+  },
+  contentError: {
+    svg: contentError,
+    dimensions: { height: 1, width: 1.9 },
+    background: "red"
+  },
+  noSearchResults: {
+    svg: noSearchResults,
+    dimensions: { height: 27 / 15, width: 1 },
+    background: "none"
+  },
+  notFound: {
+    svg: notFound,
+    dimensions: { height: 1.44, width: 1.1 },
+    background: "none"
+  },
+  genericError: {
+    svg: genericError,
+    dimensions: { height: 1, width: 1.5 },
+    background: "none"
+  }
 };
 
 const baseColors = {
@@ -225,7 +251,7 @@ const theme = {
   fontSizes,
   lineHeights,
   logo,
-  avatar,
+  avatars,
   space,
   colors,
   borders,

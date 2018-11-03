@@ -11,16 +11,14 @@ const Dummy = ({ children }) => {
 };
 /* eslint: disable */
 const mapper = {
-  about: <Dummy />
+  faq: <Dummy />
 };
 /* eslint: enable */
 
-const mapProps = ({ about }) => ({ about });
+const mapProps = ({ faq }) => ({ faq });
 
 export default class Container extends Component {
   render() {
-    console.log(questions);
-
     const { handlers } = this.props;
     return (
       <Adopt mapper={mapper} mapProps={mapProps}>

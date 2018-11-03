@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { lowerCase } from "../helpers";
 import AvatarWrapper from "./AvatarWrapper";
 import { sizes } from "@offcourse/constants";
 
@@ -19,16 +18,24 @@ const multiplier = {
 class Avatar extends Component {
   static propTypes = {
     size: PropTypes.string,
+    variant: PropTypes.string,
     onClick: PropTypes.func
   };
 
   static defaultProps = {
+    variant: "default",
     size: SMALL
   };
 
   render() {
-    const { size, onClick } = this.props;
-    return <AvatarWrapper onClick={onClick} multiply={multiplier[size]} />;
+    const { size, onClick, variant } = this.props;
+    return (
+      <AvatarWrapper
+        variant={variant}
+        onClick={onClick}
+        multiply={multiplier[size]}
+      />
+    );
   }
 }
 

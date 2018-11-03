@@ -10,7 +10,7 @@ const MainWrapper = system({
   right: 0,
   top: 0,
   bottom: 0,
-  mt: "2.25rem"
+  pt: "2.25rem"
 });
 
 export default MainWrapper;

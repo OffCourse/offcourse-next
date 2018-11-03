@@ -63,7 +63,6 @@ export default class MasterDetail extends Component {
         flexDirection={["column", "row", "row"]}
         alignItems={["center", "flex-start", "flex-start"]}
         bg={["white", "grayScale.1", "grayScale.1"]}
-        width={["100%", "100%", "auto"]}
         height="calc(100vh - 2.25rem)"
         overflow={["hidden scroll", "hidden visible", "hidden hidden"]}
       >

@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Group, Button, Heading, Text } from "@offcourse/atoms";
+import { Avatar, Group, Button, Heading, Text } from "@offcourse/atoms";
 import { sizes } from "@offcourse/constants";
-import Avatar from "../assets/offcourse-avatar.svg";
 
-const { NORMAL, LARGE } = sizes;
+const { LARGE, EXTRA_LARGE } = sizes;
 
 export default class NotFound extends Component {
   static propTypes = {
@@ -21,24 +20,20 @@ export default class NotFound extends Component {
   render() {
     const { error, action } = this.props;
     return (
-      <Group
-        alignItems={["center", "center", "center"]}
-        mb={8}
-        overflow="hidden scroll"
-      >
+      <Group overflow="hidden scroll">
         <Group
           flexDirection={["column-reverse", "row", "row"]}
-          height={["calc(100vh - 2.25rem)", "70vh", "70vh"]}
-          maxWidth="100rem"
+          alignSelf="center"
+          flex={["none", 1, 1]}
           alignItems={["center", "center", "center"]}
           justifyContent={["flex-start", "center", "center"]}
-          p={6}
+          p={[8, 6, 6]}
         >
-          <Group minWidth="20rem" maxWidth="40rem">
-            <Group mb={4} flex="none">
-              <Heading size={LARGE}>{error.message}</Heading>
+          <Group maxWidth="40rem">
+            <Group mb={6} flex="none">
+              <Heading>{error.message}</Heading>
             </Group>
-            <Group flex="none" mb={[7, 6, 6]}>
+            <Group flex="none" mb={[6, 6, 6]}>
               <Text size={LARGE}>{error.explanation}</Text>
             </Group>
             {action && (
@@ -49,8 +44,8 @@ export default class NotFound extends Component {
               </Group>
             )}
           </Group>
-          <Group justifyContent="center" alignItems="center">
-            <Avatar width="12rem" height="12rem" />
+          <Group mb={8} justifyContent="center" alignItems="center">
+            <Avatar variant={error.errorType} size={EXTRA_LARGE} />
           </Group>
         </Group>
       </Group>

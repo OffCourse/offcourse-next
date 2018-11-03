@@ -9,8 +9,8 @@ const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = sizes;
 const textProps = {
   SMALL: { fontSize: 2, lineHeight: 1 },
   NORMAL: { fontSize: 3, lineHeight: 2 },
-  LARGE: { fontSize: 4, lineHeight: 5 },
-  EXTRA_LARGE: { fontSize: "4rem", lineHeight: "6rem" }
+  LARGE: { fontSize: 4, lineHeight: 4 },
+  EXTRA_LARGE: { fontSize: "4rem", lineHeight: "4rem" }
 };
 
 /**
@@ -22,7 +22,7 @@ class Heading extends Component {
     /** The actual text of the header */
     children: PropTypes.string.isRequired,
     /** Field that indicates the size of the header */
-    size: PropTypes.oneOf([SMALL, NORMAL, LARGE]),
+    size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE]),
     /** Headings can optionally link to other documents, etc */
     href: PropTypes.string,
     onClick: PropTypes.func

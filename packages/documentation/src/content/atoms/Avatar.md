@@ -7,7 +7,21 @@ const name = "Yeehaa";
 ```
 
 ```react|span-2
-const url = "https://assets.offcourse.io/portraits/offcourse_1.jpg";
 const name = "Yeehaa";
-<Avatar url={url} name={name} />;
+<Avatar variant="contentError" name={name} />;
+```
+
+```react|span-2
+const name = "Yeehaa";
+<Avatar variant="noSearchResults" name={name} />;
+```
+
+```react|span-2
+const name = "Yeehaa";
+<Avatar variant="notFound" name={name} />;
+```
+
+```react|span-2
+const name = "Yeehaa";
+<Avatar variant="genericError" name={name} />;
 ```

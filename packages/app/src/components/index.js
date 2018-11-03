@@ -20,3 +20,4 @@ export { default as CourseAction } from "./CourseAction";
 export { default as CheckpointCard } from "./CheckpointCard";
 export { default as ResourceCard } from "./ResourceCard";
 export { default as GlobalEvents } from "./GlobalEvents";
+export { default as Paragraph } from "./Paragraph";

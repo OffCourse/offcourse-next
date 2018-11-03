@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import Layout from "./ErrorLayout";
+import { Group } from "@offcourse/atoms";
+import MainWrapper from "../Main/MainWrapper";
 
 export default class NotFound extends Component {
   render() {
     const error = {
+      errorType: "genericError",
       message: "Oops!",
       explanation:
         "Currently, this page doesn't seem to exist (yet). Please check whether you have entered the correct URL in the text field of your browser. If that doesn't work, you can use the button below to go back to the home page."
@@ -12,16 +15,17 @@ export default class NotFound extends Component {
       message: "Take Me Home",
       onClick: () => location.assign("/")
     };
-    const animation = [
-      {
-        from: { opacity: 0, transform: "translateY(-100vh) rotate(0deg)" },
-        to: { opacity: 1, transform: "translateY(0) rotate(360deg)" }
-      },
-      {
-        from: { transform: "translateY(0) rotate(360deg)" },
-        to: { transform: "translateY(0) rotate(15deg)" }
-      }
-    ];
-    return <Layout animation={animation} action={action} error={error} />;
+    return (
+      <MainWrapper pt={0}>
+        <Group
+          flexDirection={["column", "row", "row"]}
+          alignSelf="center"
+          overflow={["hidden scroll", "hidden visible", "hidden hidden"]}
+          bg="grayScale.1"
+        >
+          <Layout action={action} error={error} />
+        </Group>
+      </MainWrapper>
+    );
   }
 }
