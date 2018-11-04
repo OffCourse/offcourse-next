@@ -13,7 +13,7 @@ const { DEFAULT, DISABLED, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
 const widths = {
   SMALL: "5.33333rem",
-  MEDIUM: "8rem",
+  NORMAL: "8rem",
   LARGE: ["100%", "16rem", "16rem"]
 };
 

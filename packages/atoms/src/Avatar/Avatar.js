@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AvatarWrapper from "./AvatarWrapper";
-import { sizes } from "@offcourse/constants";
+import { variants, sizes, errors } from "@offcourse/constants";
 
+const { DEFAULT } = variants;
 const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = sizes;
+const {
+  RESOURCE_NOT_LOADING,
+  TOTAL_PANIC,
+  NO_SEARCH_RESULTS,
+  COURSE_NOT_FOUND,
+  CHECKPOINT_NOT_FOUND
+} = errors;
 /**
  * A Component for the Offcourse Project that shows the avatar image of a
  * given user
@@ -17,13 +25,20 @@ const multiplier = {
 
 class Avatar extends Component {
   static propTypes = {
-    size: PropTypes.string,
-    variant: PropTypes.string,
+    size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE]),
+    variant: PropTypes.oneOf([
+      DEFAULT,
+      RESOURCE_NOT_LOADING,
+      TOTAL_PANIC,
+      NO_SEARCH_RESULTS,
+      COURSE_NOT_FOUND,
+      CHECKPOINT_NOT_FOUND
+    ]),
     onClick: PropTypes.func
   };
 
   static defaultProps = {
-    variant: "default",
+    variant: DEFAULT,
     size: SMALL
   };
 

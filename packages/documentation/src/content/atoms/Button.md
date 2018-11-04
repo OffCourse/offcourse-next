@@ -59,9 +59,9 @@ const { SMALL } = sizes;
 
 ```react|span-2
 const clickHandler = () => alert("ALERT");
-const { MEDIUM } = sizes;
+const { NORMAL } = sizes;
 const { INFO } = variants;
-<Button size={ MEDIUM } variant={ INFO } onClick={clickHandler}>
+<Button size={ NORMAL } variant={ INFO } onClick={clickHandler}>
   Please Click
 </Button>
 ```

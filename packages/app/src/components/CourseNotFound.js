@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
 import Layout from "./ErrorLayout";
+import { errors } from "@offcourse/constants";
+const { COURSE_NOT_FOUND } = errors;
 
 export default class NotFound extends Component {
   static propTypes = {
@@ -15,7 +17,7 @@ export default class NotFound extends Component {
   render() {
     const { goHome } = this.props;
     const error = {
-      errorType: "notFound",
+      errorType: COURSE_NOT_FOUND,
       message: "Oops! You've Outsmarted Us...",
       explanation:
         "Currently, this page doesn't seem to exist (yet). Please check whether you have entered the correct URL in the text field of your browser. If that doesn't work, you can use the button below to go back to the home page."

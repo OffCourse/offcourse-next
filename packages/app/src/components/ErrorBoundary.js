@@ -8,7 +8,12 @@ export default class ErrorBoundary extends Component {
   };
 
   static propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    componentToRender: PropTypes.func
+  };
+
+  static defaultProps = {
+    componentToRender: TotalPanic
   };
 
   componentDidCatch(e, i) {
@@ -17,9 +22,9 @@ export default class ErrorBoundary extends Component {
 
   render() {
     const { hasError } = this.state;
-    const { children } = this.props;
+    const { children, componentToRender: ErrorComponent } = this.props;
     if (hasError) {
-      return <TotalPanic />;
+      return <ErrorComponent />;
     }
     return children;
   }
