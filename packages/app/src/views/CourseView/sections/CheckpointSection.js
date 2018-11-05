@@ -5,48 +5,25 @@ import { Text, Heading, Avatar, Card, Loading, Group } from "@offcourse/atoms";
 import { CheckpointCard } from "@offcourse/organisms";
 import { ResourceCard, ErrorBoundary } from "../../../components";
 import { ResourceProvider } from "../../../providers";
-import { errors, sizes } from "@offcourse/constants";
+import { errors as errorTypes, sizes } from "@offcourse/constants";
+import { errors } from "../../../content";
 
-const { RESOURCE_NOT_LOADING, CHECKPOINT_NOT_FOUND } = errors;
+const { RESOURCE_NOT_LOADING, CHECKPOINT_NOT_FOUND } = errorTypes;
 
 const { LARGE } = sizes;
 
-const ContentError = () => {
+const ErrorCard = ({ errorType }) => {
+  const { message, explanation } = errors[errorType];
   return (
     <Card p={8}>
       <Group alignItems="center">
         <Group mb={6}>
-          <Avatar size={LARGE} variant={RESOURCE_NOT_LOADING} />
+          <Avatar size={LARGE} variant={errorType} />
         </Group>
         <Group mb={6}>
-          <Heading>That Didn’t Go The Way We Planned...</Heading>
+          <Heading>{message}</Heading>
         </Group>
-        <Text size={LARGE}>
-          Sometimes technology seems to have its own way of doing things.
-          Currently, this source doesn’t allow us to easily import its content.
-          For now, why don’t you check out the content on the original webpage
-          instead?
-        </Text>
-      </Group>
-    </Card>
-  );
-};
-const NotFoundError = () => {
-  return (
-    <Card p={8}>
-      <Group alignItems="center">
-        <Group mb={6}>
-          <Avatar size={LARGE} variant={CHECKPOINT_NOT_FOUND} />
-        </Group>
-        <Group mb={6}>
-          <Heading>That Didn’t Go The Way We Planned...</Heading>
-        </Group>
-        <Text size={LARGE}>
-          Sometimes technology seems to have its own way of doing things.
-          Currently, this source doesn’t allow us to easily import its content.
-          For now, why don’t you check out the content on the original webpage
-          instead?
-        </Text>
+        <Text size={LARGE}>{explanation}</Text>
       </Group>
     </Card>
   );
@@ -58,12 +35,12 @@ const CheckpointSection = ({ course, handlers, match, toggleCheckpoint }) => {
   const { goToCheckpoint, goToCourse } = handlers;
   const checkpoint = find(propEq("task", task), checkpoints);
 
-  if (!course) {
+  if (!course || course.status === "loading") {
     return <Loading />;
   }
 
   if (!checkpoint) {
-    return <NotFoundError />;
+    return <ErrorCard errorType={CHECKPOINT_NOT_FOUND} />;
   }
   return (
     <Group overflow="hidden scroll">
@@ -79,7 +56,9 @@ const CheckpointSection = ({ course, handlers, match, toggleCheckpoint }) => {
         onCheckpointClick={goToCheckpoint}
         onCourseClick={goToCourse}
       />
-      <ErrorBoundary componentToRender={ContentError}>
+      <ErrorBoundary
+        componentToRender={() => <ErrorCard errorType={RESOURCE_NOT_LOADING} />}
+      >
         <ResourceProvider resourceUrl={checkpoint.resourceUrl}>
           {({ resource }) => {
             return <ResourceCard resource={resource} />;

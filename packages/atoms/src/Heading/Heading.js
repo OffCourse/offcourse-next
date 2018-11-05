@@ -10,7 +10,7 @@ const textProps = {
   SMALL: { fontSize: 2, lineHeight: 1 },
   NORMAL: { fontSize: 3, lineHeight: 2 },
   LARGE: { fontSize: 4, lineHeight: 4 },
-  EXTRA_LARGE: { fontSize: "4rem", lineHeight: "4rem" }
+  EXTRA_LARGE: { fontSize: "4rem", lineHeight: "4.5rem" }
 };
 
 /**

@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { Adopt } from "react-adopt";
 import View from "./View";
-import questions from "./questions.yaml";
+import { faq } from "../../content";
 
 const Dummy = ({ children }) => {
-  return children({
-    title: "Frequently Asked Questions",
-    questions
-  });
+  return children(faq);
 };
 /* eslint: disable */
 const mapper = {

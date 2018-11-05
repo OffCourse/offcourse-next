@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import Layout from "./ErrorLayout";
-import { errors } from "@offcourse/constants";
 import { Group } from "@offcourse/atoms";
 import MainWrapper from "../Main/MainWrapper";
-const { TOTAL_PANIC } = errors;
+import { errors as errorTypes } from "@offcourse/constants";
+
+import { errors } from "../content";
+const { TOTAL_PANIC } = errorTypes;
 
 export default class NotFound extends Component {
   render() {
+    const errorType = TOTAL_PANIC;
     const error = {
-      errorType: TOTAL_PANIC,
-      message: "Oops!",
-      explanation:
-        "Currently, this page doesn't seem to exist (yet). Please check whether you have entered the correct URL in the text field of your browser. If that doesn't work, you can use the button below to go back to the home page."
+      errorType,
+      ...errors[errorType]
     };
     const action = {
       message: "Take Me Home",

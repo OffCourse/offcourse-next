@@ -34,7 +34,7 @@ const Section = ({ data }) => {
   return (
     <Group mb={7} flex="none">
       <Group mb={7}>
-        <Heading size={SMALL}>{title}</Heading>
+        <Heading>{title}</Heading>
       </Group>
       {map(
         ({ question, answer }) => (
@@ -46,6 +46,7 @@ const Section = ({ data }) => {
               options={{
                 overrides: {
                   p: { component: Paragraph },
+                  span: { component: Paragraph },
                   a: {
                     component: "a",
                     props: { style: { color: "black" } }
@@ -76,7 +77,9 @@ const FAQView = ({ faq }) => {
       alignItems={["flex-start", "flex-start", "flex-start"]}
     >
       <Temp>
-        <Heading size={LARGE}>{title}</Heading>
+        <Group mt={8} mb={6}>
+          <Heading size={LARGE}>{title}</Heading>
+        </Group>
         <Grid>
           <Group>
             <Section data={platform} />

@@ -63,10 +63,10 @@ const baseColors = {
   darkGray: "#3d3d3d",
   mediumGray: "#c0c4c1",
   lightGray: "#f4f6f4",
-  yellow: "#E5CF39",
-  blue: "#75C7B3",
-  green: "#A5CC45",
-  red: "#E34D2F"
+  yellow: "#fdbe68",
+  red: "#f48067",
+  green: "#658f7b",
+  blue: "#b5decb"
 };
 
 const grayScale = [
@@ -79,9 +79,9 @@ const grayScale = [
 
 const colors = {
   grayScale,
-  primary: baseColors.blue,
+  primary: baseColors.green,
   disabled: grayScale[2],
-  positive: baseColors.green,
+  positive: baseColors.blue,
   warning: baseColors.yellow,
   info: baseColors.blue,
   negative: baseColors.red,

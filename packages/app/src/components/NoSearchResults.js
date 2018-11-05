@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Layout from "./ErrorLayout";
 import { Adopt } from "react-adopt";
-import { errors } from "@offcourse/constants";
+import { errors as errorTypes } from "@offcourse/constants";
+import { errors } from "../content";
 import { OverlayProvider, AuthProvider } from "../providers";
 
-const { NO_SEARCH_RESULTS } = errors;
-const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = OverlayProvider.constants;
+const { NO_SEARCH_RESULTS } = errorTypes;
+const { CREATE_COURSE } = OverlayProvider.constants;
 
 const mapper = {
   auth: <AuthProvider />,
@@ -21,11 +22,13 @@ export default class NotFound extends Component {
 
   render() {
     const { goHome, searchTerm } = this.props;
+    const errorType = NO_SEARCH_RESULTS;
+    console.log(errorType);
+    const { message, explanation } = errors[errorType];
     const error = {
-      errorType: NO_SEARCH_RESULTS,
-      message: `Oh No, there are no search results for "${searchTerm}"`,
-      explanation:
-        "We've searched far and wide, but unfortunately couldn't find what you are looking for. Please, give it another go. If you still can't find your topic on our site, why don't you create a card about it yourself."
+      errorType,
+      message: `${message} "${searchTerm}"`,
+      explanation
     };
     return (
       <Adopt mapper={mapper}>
