@@ -2,40 +2,80 @@ title: Frequently Asked Questions
 questions:
   - category: Platform
     question: What can I do on Offcourse?
-    answer: You can collect and save links to the web's best learning resources as courses for personal learning. However, you can also learn from others using the courses they have already created and shared on the platform. Following a course you like but know of an alternative resource? Forking courses allows you to tweak existing courses and make them your own. Moreover, you can share your knowledge with others through other social platforms.
+    answer: |
+      You can collect and save links to the web's best learning resources as 
+      courses for personal learning. However, you can also learn from others 
+      using the courses they have already created and shared on the platform. 
+      Following a course you like but know of an alternative resource? 
+      Forking courses allows you to tweak existing courses and make them your 
+      own. Moreover, you can share your knowledge with others through other 
+      social platforms.
   - category: Platform
     question: How can I create my own course?
-    answer: To create a card, sign in and click on “Create Course” in the side menu to get started!
+    answer: |
+      To create a card, sign in and click on “Create Course” in the side menu 
+      to get started!
   - category: Platform
     question: How can I fork existing courses?
-    answer: To fork a course, go to the particular course and click on “Fork This Course” below the course. Whenever you create or fork a course, make sure to keep our guidelines for creating a course in mind.
+    answer: |
+      To fork a course, go to the particular course and click on “Fork This 
+      Course” below the course. Whenever you create or fork a course, make 
+      sure to keep our guidelines for creating a course in mind.
   - category: Platform
     question: Do I have to log in to view, add and/or edit courses?
-    answer: You can view courses without signing in. For adding new courses or editing existing ones signing in is required.
+    answer: |
+      You can view courses without signing in. For adding new courses or 
+      editing existing ones signing in is required.
   - category: Platform
     question: How do I find topics I am interested in?
-    answer: You can use the search bar to search for topics you’re interested in. Alternatively, you can also use the automated course tags to navigate through courses.
+    answer: |
+      You can use the search bar to search for topics you’re interested in. 
+      Alternatively, you can also use the automated course tags to navigate 
+      through courses.
   - category: Platform
     question: Can I keep track of the progress I have made in courses?
-    answer: Yes, you can by using the checkpoints on the course. When you are done with a task, you can check it to indicate that you have finalised it. Keep in mind that the progress is linked to your personal account, so logging in is required.
+    answer: |
+      Yes, you can by using the checkpoints on the course. When you are done 
+      with a task, you can check it to indicate that you have finalised it. 
+      Keep in mind that the progress is linked to your personal account, so 
+      logging in is required.
   - category: Platform
     question: How can I share courses with someone else?
-    answer: Use “Get URL” at the bottom of the course to copy the course’s URL for sharing. Alternatively, you can share the course directly on Twitter and Facebook using the designated icons at the bottom of the course.
+    answer: |
+      Use “Get URL” at the bottom of the course to copy the course’s URL for 
+      sharing. Alternatively, you can share the course directly on Twitter and 
+      Facebook using the designated icons at the bottom of the course.
   - category: Your Account
     question: Can I communicate with other users?
-    answer: This is a possible feature in the future. Sign-up for the newsletter to keep you updated or get in touch with us to share your thoughts.
+    answer: |
+      This is a possible feature in the future. Sign-up for the newsletter to 
+      keep you updated or get in touch with us to share your thoughts.
   - category: Your Account
     question: How do I delete my account?
-    answer: If you want us to delete your account, send an email to [contact@offcourse.io](contact@offcourse.io])
+    answer: |
+      If you want us to delete your account, send an email to 
+      [contact@offcourse.io](mailto:contact@offcourse.io]).
   - category: Bugs
     question: I added content but it is not visible yet.
-    answer: Sometimes it takes a while for the platform to gather and display the content. Sit back, relax and reload the page.
+    answer: |
+      Sometimes it takes a while for the platform to gather and display the 
+      content. Sit back, relax and reload the page.
   - category: Bugs
     question: What if I find a bug on the platform?
-    answer: We are constantly developing the platform, but it could happen that you stumble upon a bug. In that case, we would love to receive any feedback you have through this form.
+    answer: |
+      We are constantly developing the platform, but it could happen that you 
+      stumble upon a bug. In that case, we would love to receive any feedback 
+      you have through this form.
   - category: Business
     question: What can Offcourse mean for my company?
-    answer: There are several standard possibilities that Offcourse can offer your company, such as theming of courses to your brand identity or embedding courses on your company’s website. However, there are also more tailor-made possibilities available. To explore these possibilities, please contact us at business@offcourse.io.
+    answer: |
+      There are several standard possibilities that Offcourse can offer your 
+      company, such as theming of courses to your brand identity or embedding 
+      courses on your company’s website. However, there are also more 
+      tailor-made offerings available. To explore these possibilities, 
+      please contact us at [business@offcourse.io](mailto:business@offcourse.io).
   - category: User support
     question: I need support, my question is not answered here!
-    answer: Contact us through this form or send an email to [contact@offcourse.io](contact@offcourse.io])
+    answer: |
+      Contact us through this form or send an email to 
+      [contact@offcourse.io](mailto:contact@offcourse.io]).

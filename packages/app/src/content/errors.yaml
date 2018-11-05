@@ -1,20 +1,30 @@
 COURSE_NOT_FOUND:
   message: Oops! You've Outsmarted Us...
   explanation: |
-    Currently, this page doesn't seem to exist (yet). Please check whether you have entered the correct URL in the text field of your browser. If that doesn't work, you can use the button below to go back to the home page.
+    Currently, this page doesn't seem to exist (yet). Please check whether you 
+    have entered the correct URL in the text field of your browser. If that 
+    doesn't work, you can use the button below to go back to the home page.
 CHECKPOINT_NOT_FOUND:
   message: Oops! You've Outsmarted Us...
   explanation: |
-    Currently, this page doesn't seem to exist (yet). Please check whether you have entered the correct URL in the text field of your browser. If that doesn't work, you can use the button below to go back to the home page.
+    Currently, this page doesn't seem to exist (yet). Please check whether you 
+    have entered the correct URL in the text field of your browser. If that 
+    doesn't work, you can use the button below to go back to the home page.
 NO_SEARCH_RESULTS:
   message: Oh No, there are no search results for
   explanation: |
-    We've searched far and wide, but unfortunately couldn't find what you are looking for. Please, give it another go. If you still can't find your topic on our site, why don't you create a card about it yourself.
+    We've searched far and wide, but unfortunately couldn't find what you are 
+    looking for. Please, give it another go. If you still can't find your 
+    topic on our site, why don't you create a card about it yourself.
 TOTAL_PANIC:
   message: I Think Something Has Gone Wrong Here…
   explanation: |
-    Clearly, something has not been going the way that it was supposed to go here. Whilst we keep on developing the platform to prevent these moments from happening, perhaps we can guide you back to the platform for now?
+    Clearly, something has not been going the way that it was supposed to go 
+    here. Whilst we keep on developing the platform to prevent these moments 
+    from happening, perhaps we can guide you back to the platform for now?
 RESOURCE_NOT_LOADING:
   message: That Didn’t Go The Way We Planned....
   explanation: |
-    Sometimes technology seems to have its own way of doing things. Currently, this source doesn’t allow us to easily import its content. For now, why don’t you check out the content on the original webpage instead?
+    Sometimes technology seems to have its own way of doing things. Currently, 
+    this source doesn’t allow us to easily import its content. For now, why 
+    don’t you check out the content on the original webpage instead?
