@@ -72,7 +72,7 @@ module.exports = {
       short_name: "Offcourse",
       display: "fullscreen",
       description: "Open Source Platform for Crowdlearning",
-      background_color: "#75C7B3",
+      background_color: "#658f7b",
       icons: [
         {
           src: path.resolve("src/assets/logo.png"),

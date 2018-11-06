@@ -5,7 +5,7 @@ import { Heading, Group } from "@offcourse/atoms";
 import { sizes } from "@offcourse/constants";
 import Loadable from "react-loadable";
 import system from "system-components";
-import { Paragraph } from "../../components";
+import { Text } from "@offcourse/atoms";
 
 const { SMALL, LARGE } = sizes;
 
@@ -33,9 +33,7 @@ const Section = ({ data }) => {
   const [title, questions] = data;
   return (
     <Group mb={7} flex="none">
-      <Group mb={7}>
-        <Heading>{title}</Heading>
-      </Group>
+      <Heading mb={7}>{title}</Heading>
       {map(
         ({ question, answer }) => (
           <Group flex="none" mb={6} key={question}>
@@ -45,8 +43,8 @@ const Section = ({ data }) => {
             <Markdown
               options={{
                 overrides: {
-                  p: { component: Paragraph },
-                  span: { component: Paragraph },
+                  p: { component: Text, props: { size: LARGE, mb: 6 } },
+                  span: { component: Text, props: { size: LARGE, mb: 6 } },
                   a: {
                     component: "a",
                     props: { style: { color: "black" } }
@@ -77,9 +75,9 @@ const FAQView = ({ faq }) => {
       alignItems={["flex-start", "flex-start", "flex-start"]}
     >
       <Temp>
-        <Group mt={8} mb={6}>
-          <Heading size={LARGE}>{title}</Heading>
-        </Group>
+        <Heading mb={6} mt={8} size={LARGE}>
+          {title}
+        </Heading>
         <Grid>
           <Group>
             <Section data={platform} />

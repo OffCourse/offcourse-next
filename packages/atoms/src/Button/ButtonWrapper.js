@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styled from "styled-components";
 import system from "system-components";
 import { variant } from "styled-system";
@@ -36,6 +37,6 @@ const ButtonWrapper = system(
   })
 );
 
-export default styled(ButtonWrapper)`
+export default memo(styled(ButtonWrapper)`
   ${buttonStyle};
-`;
+`);

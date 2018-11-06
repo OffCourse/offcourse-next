@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { map } from "ramda";
 import { debounce } from "debounce";
-import PropTypes from "prop-types";
 import { Adopt } from "react-adopt";
 import { Modal } from "@offcourse/molecules";
 import { AppShell } from "@offcourse/organisms";

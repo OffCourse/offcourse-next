@@ -1,49 +1,38 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import ItemWrapper from "./ItemWrapper";
-import { Link, Label } from "..";
+import ItemLink from "./ItemLink";
+import ItemContent from "./ItemContent";
 
-export default class Item extends Component {
-  static propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.element,
-      PropTypes.arrayOf(
-        PropTypes.oneOfType([PropTypes.string, PropTypes.element])
-      )
-    ]).isRequired,
-    is: PropTypes.string,
-    href: PropTypes.string,
-    onClick: PropTypes.func,
-    gridTemplateColumns: PropTypes.string
-  };
-
-  static Link = ({ href, onClick, children }) => (
-    <Link basic onClick={onClick} href={href}>
-      {children}
-    </Link>
+const Item = ({ href, onClick, children, is, gridTemplateColumns }) => {
+  return (
+    <ItemWrapper is={is} gridTemplateColumns={gridTemplateColumns}>
+      {href || onClick ? (
+        <Item.Link onClick={onClick} href={href}>
+          {children}
+        </Item.Link>
+      ) : (
+        children
+      )}
+    </ItemWrapper>
   );
+};
 
-  static Content = ({ children }) => <Label>{children}</Label>;
+Item.Content = ItemContent;
+Item.Link = ItemLink;
 
-  renderChildren() {
-    const { href, onClick, children } = this.props;
+Item.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    )
+  ]).isRequired,
+  is: PropTypes.string,
+  href: PropTypes.string,
+  onClick: PropTypes.func,
+  gridTemplateColumns: PropTypes.string
+};
 
-    return href || onClick ? (
-      <Item.Link onClick={onClick} href={href}>
-        {children}
-      </Item.Link>
-    ) : (
-      children
-    );
-  }
-
-  render() {
-    const { is, gridTemplateColumns } = this.props;
-    return (
-      <ItemWrapper is={is} gridTemplateColumns={gridTemplateColumns}>
-        {this.renderChildren()}
-      </ItemWrapper>
-    );
-  }
-}
+export default Item;

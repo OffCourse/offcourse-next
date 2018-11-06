@@ -4,7 +4,7 @@ import { Adopt } from "react-adopt";
 import { find, propEq, partial } from "ramda";
 import View from "./View";
 import { CourseProvider, OverlayProvider } from "../../providers";
-import { CourseNotFound } from "../../components";
+import { CourseNotFoundView } from "..";
 
 const { SIGNING_IN, EDIT_COURSE, FORK_COURSE } = OverlayProvider.constants;
 
@@ -90,7 +90,7 @@ export default class Container extends Component {
       >
         {({ course, toggleCheckpoint, userIsCurator, userName, overlay }) => {
           if (!course) {
-            return <CourseNotFound goHome={handlers.goHome} />;
+            return <CourseNotFoundView goHome={handlers.goHome} />;
           }
           const action = mapActions({
             course,

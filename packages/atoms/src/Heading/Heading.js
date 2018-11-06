@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { memo } from "react";
 import { formatTitle } from "../helpers";
 import PropTypes from "prop-types";
 import HeadingWrapper from "./HeadingWrapper";
@@ -13,48 +13,41 @@ const textProps = {
   EXTRA_LARGE: { fontSize: "4rem", lineHeight: "4.5rem" }
 };
 
-/**
- * Heading Component for the Offcourse Project
- */
-
-class Heading extends Component {
-  static propTypes = {
-    /** The actual text of the header */
-    children: PropTypes.string.isRequired,
-    /** Field that indicates the size of the header */
-    size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE]),
-    /** Headings can optionally link to other documents, etc */
-    href: PropTypes.string,
-    onClick: PropTypes.func
-  };
-
-  static defaultProps = {
-    size: NORMAL
-  };
-
-  handleClick = event => {
-    const { onClick, href } = this.props;
+const Heading = ({ children, onClick, href, size, mb, mt }) => {
+  const handleClick = event => {
     if (onClick) {
       event.preventDefault();
       onClick({ href });
     }
   };
 
-  render() {
-    const { children, onClick, href, size } = this.props;
-    const { fontSize, lineHeight } = textProps[size];
-    return (
-      <HeadingWrapper
-        is={href ? "a" : "h1"}
-        onClick={onClick && this.handleClick}
-        href={href}
-        lineHeight={lineHeight}
-        fontSize={fontSize}
-      >
-        {formatTitle(children)}
-      </HeadingWrapper>
-    );
-  }
-}
+  const { fontSize, lineHeight } = textProps[size];
+  return (
+    <HeadingWrapper
+      mb={mb}
+      mt={mt}
+      is={href ? "a" : "h1"}
+      onClick={onClick && handleClick}
+      href={href}
+      lineHeight={lineHeight}
+      fontSize={fontSize}
+    >
+      {formatTitle(children)}
+    </HeadingWrapper>
+  );
+};
 
-export default Heading;
+Heading.propTypes = {
+  children: PropTypes.string.isRequired,
+  size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE]),
+  href: PropTypes.string,
+  onClick: PropTypes.func,
+  mb: PropTypes.number,
+  mt: PropTypes.number
+};
+
+Heading.defaultProps = {
+  size: NORMAL
+};
+
+export default memo(Heading);

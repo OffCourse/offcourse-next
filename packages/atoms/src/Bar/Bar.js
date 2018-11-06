@@ -1,23 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import BarWrapper from "./BarWrapper";
 import { positions } from "@offcourse/constants";
 
 const { BOTTOM, TOP } = positions;
 
-export default class Bar extends Component {
-  static Wrapper = Bar.Wrapper;
-  static propTypes = {
-    position: PropTypes.oneOf([TOP, BOTTOM]),
-    children: PropTypes.node.isRequired,
-    isDocked: PropTypes.bool
-  };
-
-  static defaultProps = {
-    isDocked: true,
-    position: TOP
-  };
-
+class Bar extends PureComponent {
   render() {
     const { position, className, children, isDocked } = this.props;
     return (
@@ -32,3 +20,17 @@ export default class Bar extends Component {
     );
   }
 }
+
+Bar.propTypes = {
+  position: PropTypes.oneOf([TOP, BOTTOM]),
+  children: PropTypes.node.isRequired,
+  isDocked: PropTypes.bool,
+  className: PropTypes.string
+};
+
+Bar.defaultProps = {
+  isDocked: true,
+  position: TOP
+};
+
+export default Bar;

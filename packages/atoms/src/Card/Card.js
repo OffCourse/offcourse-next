@@ -1,15 +1,10 @@
-import React, { Component, Children } from "react";
+import React, { PureComponent, Children } from "react";
 import PropTypes from "prop-types";
 import { omit } from "ramda";
 import { Section } from "..";
 import CardWrapper from "./CardWrapper";
 
-export default class Card extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    inactive: PropTypes.bool
-  };
-
+class Card extends PureComponent {
   renderSections() {
     const { children, px, pl, pr, pt } = this.props;
     const padding = { px, pl, pr, pt };
@@ -43,3 +38,10 @@ export default class Card extends Component {
     );
   }
 }
+
+Card.propTypes = {
+  children: PropTypes.node.isRequired,
+  inactive: PropTypes.bool
+};
+
+export default Card;

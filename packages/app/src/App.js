@@ -4,6 +4,7 @@ import { GraphQL, ErrorBoundary } from "./components";
 import Main from "./Main";
 import { LayoutContainer, ThemeContainer } from "./containers";
 import { BrowserRouter as Router } from "react-router-dom";
+import { TotalPanicView } from "./views";
 
 class App extends Component {
   render() {
@@ -11,7 +12,7 @@ class App extends Component {
       <GraphQL>
         <ThemeContainer>
           <Router>
-            <ErrorBoundary>
+            <ErrorBoundary componentToRender={TotalPanicView}>
               <LayoutContainer />
               <Main />
             </ErrorBoundary>

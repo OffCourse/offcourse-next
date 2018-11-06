@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
-import { Card, Group, Text } from "@offcourse/atoms";
+import { Card, Group } from "@offcourse/atoms";
 import { Header } from "@offcourse/molecules";
 import { HTMLViewer, VideoViewer } from ".";
 
@@ -23,4 +23,12 @@ const ResourceCard = ({ resource }) => {
   );
 };
 
-export default ResourceCard;
+ResourceCard.propTypes = {
+  resource: PropTypes.shape({
+    resourceType: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    content: PropTypes.string
+  })
+};
+
+export default memo(ResourceCard);

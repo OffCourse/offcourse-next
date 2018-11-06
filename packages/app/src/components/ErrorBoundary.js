@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import TotalPanic from "./TotalPanic";
 
 export default class ErrorBoundary extends Component {
   state = {
@@ -13,7 +12,7 @@ export default class ErrorBoundary extends Component {
   };
 
   static defaultProps = {
-    componentToRender: TotalPanic
+    componentToRender: () => <div>Oops...</div>
   };
 
   componentDidCatch(e, i) {

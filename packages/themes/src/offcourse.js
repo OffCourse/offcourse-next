@@ -60,11 +60,11 @@ const avatars = {
 const baseColors = {
   black: "#000000",
   white: "#FFFFFF",
-  darkGray: "#3d3d3d",
-  mediumGray: "#c0c4c1",
+  darkGray: "#797B7A",
+  mediumGray: "#C8CAC9",
   lightGray: "#f4f6f4",
   yellow: "#fdbe68",
-  red: "#f48067",
+  red: "#E2625E",
   green: "#658f7b",
   blue: "#b5decb"
 };

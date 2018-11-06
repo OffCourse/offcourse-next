@@ -1,9 +1,9 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
-import Layout from "./ErrorLayout";
 import { errors as errorTypes } from "@offcourse/constants";
 import { errors } from "../content";
+import { ErrorLayout } from "../layouts";
 
 const { COURSE_NOT_FOUND } = errorTypes;
 
@@ -17,7 +17,7 @@ const NotFound = ({ goHome }) => {
     message: "Take Me Home",
     onClick: goHome
   };
-  return <Layout action={action} error={error} goHome={goHome} />;
+  return <ErrorLayout action={action} error={error} goHome={goHome} />;
 };
 
 NotFound.propTypes = {

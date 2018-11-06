@@ -15,7 +15,8 @@ class Text extends Component {
   static propTypes = {
     /** Field that indicates the size of the text */
     size: PropTypes.oneOf([SMALL, NORMAL, LARGE]),
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    mb: PropTypes.number
   };
 
   static defaultProps = {
@@ -23,10 +24,10 @@ class Text extends Component {
   };
 
   render() {
-    const { size, children } = this.props;
+    const { size, children, mb } = this.props;
     const { textSize, lineHeight } = textProps[size];
     return (
-      <TextWrapper fontSize={textSize} lineHeight={lineHeight}>
+      <TextWrapper mb={mb} fontSize={textSize} lineHeight={lineHeight}>
         {children}
       </TextWrapper>
     );

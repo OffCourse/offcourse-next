@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Layout from "./ErrorLayout";
+import { ErrorLayout } from "../layouts";
 import { Group } from "@offcourse/atoms";
 import MainWrapper from "../Main/MainWrapper";
 import { errors as errorTypes } from "@offcourse/constants";
@@ -26,7 +26,7 @@ export default class NotFound extends Component {
           overflow={["hidden scroll", "hidden visible", "hidden hidden"]}
           bg="grayScale.1"
         >
-          <Layout action={action} error={error} />
+          <ErrorLayout action={action} error={error} />
         </Group>
       </MainWrapper>
     );

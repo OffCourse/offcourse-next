@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Layout from "./ErrorLayout";
+import { ErrorLayout } from "../layouts";
 import { Adopt } from "react-adopt";
 import { errors as errorTypes, overlayModes } from "@offcourse/constants";
 import { errors } from "../content";
@@ -31,7 +31,7 @@ const NotFound = ({ goHome, searchTerm }) => {
           onClick: createCourse
         };
         return (
-          <Layout
+          <ErrorLayout
             action={auth.userName ? action : null}
             error={error}
             goHome={goHome}

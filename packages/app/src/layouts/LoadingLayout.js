@@ -1,10 +1,10 @@
 import React, { memo } from "react";
-import { Group, Loading as L } from "@offcourse/atoms";
+import { Group, Loading } from "@offcourse/atoms";
 import { sizes } from "@offcourse/constants";
 
 const { EXTRA_LARGE } = sizes;
 
-const Loading = () => {
+const LoadingLayout = () => {
   return (
     <Group
       flexDirection={["column-reverse", "row", "row"]}
@@ -13,11 +13,11 @@ const Loading = () => {
       width="100vh"
       justifyContent="center"
     >
-      <L size={EXTRA_LARGE} />
+      <Loading size={EXTRA_LARGE} />
     </Group>
   );
 };
 
-Loading.propTypes = {};
+LoadingLayout.propTypes = {};
 
-export default memo(Loading);
+export default memo(LoadingLayout);

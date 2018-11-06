@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Adopt } from "react-adopt";
 import { isEmpty } from "ramda";
 import { CourseCardProvider, CoursesProvider } from "../../providers";
-import { NoSearchResults } from "../../components";
+import { NoSearchResultsView } from "..";
 import View from "./View";
 
 const mapper = {
@@ -44,7 +44,9 @@ class CoursesContainer extends Component {
       >
         {({ collection, courseCard }) => {
           if (isEmpty(collection.courses)) {
-            return <NoSearchResults searchTerm={searchTerm} goHome={goHome} />;
+            return (
+              <NoSearchResultsView searchTerm={searchTerm} goHome={goHome} />
+            );
           }
           return (
             <View

@@ -27,7 +27,7 @@ const BaseWrapper = system(
 
 export default styled(BaseWrapper)`
   ::placeholder {
-    color: ${({ theme }) => theme.colors.grayScale[2]};
+    color: ${({ theme }) => theme.colors.grayScale[3]};
   }
 
   ::selection {

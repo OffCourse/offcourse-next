@@ -3,7 +3,6 @@ import { Text, Heading, Group, Loading, Icon } from "@offcourse/atoms";
 import { IconGroup } from "@offcourse/molecules";
 import PropTypes from "prop-types";
 import { sizes } from "@offcourse/constants";
-import { Paragraph } from "../../components";
 
 const { LARGE, EXTRA_LARGE } = sizes;
 
@@ -24,11 +23,13 @@ const AboutView = ({ about }) => {
         overflow="hidden scroll"
         maxWidth="50rem"
       >
-        <Heading size={EXTRA_LARGE}>{title}</Heading>
+        <Heading mt={8} mb={6} size={LARGE}>
+          {title}
+        </Heading>
         <Markdown
           options={{
             overrides: {
-              p: { component: Paragraph },
+              p: { component: Text, props: { size: LARGE, mb: 7 } },
               a: { component: "a", props: { style: { color: "black" } } }
             }
           }}

@@ -2,16 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import GroupWrapper from "./GroupWrapper";
 
-export default class extends Component {
-  static Wrapper = GroupWrapper;
-
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    onResize: PropTypes.func
-  };
-
-  static defaultProps = {};
-
+class Group extends Component {
   componentDidMount() {
     const { onResize } = this.props;
     if (onResize) {
@@ -41,3 +32,12 @@ export default class extends Component {
     );
   }
 }
+
+Group.Wrapper = GroupWrapper;
+
+Group.propTypes = {
+  children: PropTypes.node.isRequired,
+  onResize: PropTypes.func
+};
+
+export default Group;
