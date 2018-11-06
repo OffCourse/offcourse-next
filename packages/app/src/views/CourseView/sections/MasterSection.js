@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { sizes } from "@offcourse/constants";
 import { Icon } from "@offcourse/atoms";
 import { CourseCard } from "@offcourse/organisms";
-import { MasterDetail, CourseAction } from "../../../components";
+import { CourseAction } from "../../../components";
+import { MasterDetailLayout } from "../../../layouts";
 
 const { LARGE } = sizes;
-const { Master } = MasterDetail;
+const { Master } = MasterDetailLayout;
 
 const MasterSection = ({
   isAlwaysVisible,

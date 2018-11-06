@@ -1,33 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { find, propEq } from "ramda";
-import { Text, Heading, Avatar, Card, Loading, Group } from "@offcourse/atoms";
+import { Loading, Group } from "@offcourse/atoms";
 import { CheckpointCard } from "@offcourse/organisms";
-import { ResourceCard, ErrorBoundary } from "../../../components";
+import { ErrorCard, ResourceCard, ErrorBoundary } from "../../../components";
 import { ResourceProvider } from "../../../providers";
-import { errors as errorTypes, sizes } from "@offcourse/constants";
-import { errors } from "../../../content";
+import { errors as errorTypes } from "@offcourse/constants";
 
 const { RESOURCE_NOT_LOADING, CHECKPOINT_NOT_FOUND } = errorTypes;
-
-const { LARGE } = sizes;
-
-const ErrorCard = ({ errorType }) => {
-  const { message, explanation } = errors[errorType];
-  return (
-    <Card p={8}>
-      <Group alignItems="center">
-        <Group mb={6}>
-          <Avatar size={LARGE} variant={errorType} />
-        </Group>
-        <Group mb={6}>
-          <Heading>{message}</Heading>
-        </Group>
-        <Text size={LARGE}>{explanation}</Text>
-      </Group>
-    </Card>
-  );
-};
 
 const CheckpointSection = ({ course, handlers, match, toggleCheckpoint }) => {
   const { task } = match.params;

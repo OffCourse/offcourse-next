@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Route, MasterDetail } from "../../components";
+import { Route } from "../../components";
+import { MasterDetailLayout } from "../../layouts";
 import {
   CheckpointSection,
   MasterSection,
@@ -8,14 +9,14 @@ import {
 } from "./sections";
 import { Switch } from "react-router-dom";
 
-const { Detail } = MasterDetail;
+const { Detail } = MasterDetailLayout;
 
 const View = ({ match, ...rest }) => {
   const { url } = match;
   const checkpointPath = `${url}/task/:task`;
 
   return (
-    <MasterDetail>
+    <MasterDetailLayout>
       <Switch>
         <Route
           path={checkpointPath}
@@ -46,7 +47,7 @@ const View = ({ match, ...rest }) => {
           <Route componentProps={{ ...rest }} component={CheckpointsSection} />
         </Switch>
       </Detail>
-    </MasterDetail>
+    </MasterDetailLayout>
   );
 };
 

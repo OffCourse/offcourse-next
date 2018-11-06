@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Heading, Loading } from "@offcourse/atoms";
 import PropTypes from "prop-types";
-import system from "system-components";
-import { NotFound } from ".";
+import { Code, Link, Text, Image } from "./elements";
 
 import Loadable from "react-loadable";
 
@@ -14,38 +13,11 @@ const SyntaxHighlighter = Loadable({
   loader: () => import("react-syntax-highlighter/prism-light"),
   loading: Loading
 });
+
 const Markdown = Loadable({
   loader: () => import("markdown-to-jsx"),
   loading: Loading
 });
-
-const Image = system({
-  is: "img",
-  maxWidth: "100%",
-  maxHeight: "100%"
-});
-
-const Code = ({ children, style, ...rest }) => {
-  return (
-    <code
-      style={{
-        ...style,
-        wordBreak: "break-word",
-        whiteSpace: "normal"
-      }}
-      {...rest}
-    >
-      {children}
-    </code>
-  );
-};
-
-const Link = system({
-  is: "a",
-  color: "black"
-});
-
-const Text = system({ is: "p", lineHeight: 3, fontSize: 2 });
 
 class HTMLViewer extends Component {
   static propTypes = {
@@ -61,11 +33,6 @@ class HTMLViewer extends Component {
 
   render() {
     const { markdown } = this.props;
-
-    if (!markdown) {
-      return <NotFound />;
-    }
-
     return (
       <Markdown
         options={{
