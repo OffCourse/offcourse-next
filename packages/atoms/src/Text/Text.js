@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import TextWrapper from "./TextWrapper";
 import { sizes } from "@offcourse/constants";
@@ -10,28 +10,24 @@ const textProps = {
   NORMAL: { textSize: 1, lineHeight: 2 },
   LARGE: { textSize: 2, lineHeight: 3 }
 };
-class Text extends Component {
-  static sizes = sizes;
-  static propTypes = {
-    /** Field that indicates the size of the text */
-    size: PropTypes.oneOf([SMALL, NORMAL, LARGE]),
-    children: PropTypes.node.isRequired,
-    mb: PropTypes.number
-  };
 
-  static defaultProps = {
-    size: NORMAL
-  };
+const Text = ({ size, children, mb }) => {
+  const { textSize, lineHeight } = textProps[size];
+  return (
+    <TextWrapper mb={mb} fontSize={textSize} lineHeight={lineHeight}>
+      {children}
+    </TextWrapper>
+  );
+};
 
-  render() {
-    const { size, children, mb } = this.props;
-    const { textSize, lineHeight } = textProps[size];
-    return (
-      <TextWrapper mb={mb} fontSize={textSize} lineHeight={lineHeight}>
-        {children}
-      </TextWrapper>
-    );
-  }
-}
+Text.propTypes = {
+  size: PropTypes.oneOf([SMALL, NORMAL, LARGE]),
+  children: PropTypes.node.isRequired,
+  mb: PropTypes.number
+};
 
-export default Text;
+Text.defaultProps = {
+  size: NORMAL
+};
+
+export default memo(Text);

@@ -1,51 +1,21 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import { debounce } from "debounce";
 import fastdom from "fastdom";
-import {
-  append,
-  adjust,
-  repeat,
-  reduce,
-  identity,
-  addIndex,
-  reduceWhile,
-  inc
-} from "ramda";
-import { MasonryWrapper, ColumnWrapper, ItemWrapper } from "./MasonryWrapper";
-import PropTypes from "prop-types";
+import { identity } from "ramda";
+import { MasonryWrapper } from "./MasonryWrapper";
+import { getColumns, prepareGrid } from "./helpers";
+import Grid from "./Grid";
 
-const reduceIndexed = addIndex(reduce);
-
-export default class Masonry extends Component {
-  static propTypes = {
-    breakpoints: PropTypes.arrayOf(PropTypes.number),
-    onResize: PropTypes.func,
-    children: PropTypes.node.isRequired
-  };
-
-  static defaultProps = {
-    breakpoints: [],
-    onResize: identity
-  };
-
+class Masonry extends PureComponent {
   state = { numberOfColumns: 1 };
-
-  getColumns(containerWidth) {
-    const { breakpoints } = this.props;
-    return reduceWhile(
-      (_, breakpoint) => breakpoint < containerWidth,
-      inc,
-      1,
-      breakpoints
-    );
-  }
 
   handleResize = () => {
     if (!this.masonry) return null;
-    const { onResize } = this.props;
+    const { onResize, breakpoints } = this.props;
     fastdom.measure(() => {
       const { offsetWidth } = this.masonry;
-      const proposal = this.getColumns(offsetWidth);
+      const proposal = getColumns(offsetWidth, breakpoints);
       fastdom.mutate(() => {
         this.setState(
           () => {
@@ -59,22 +29,22 @@ export default class Masonry extends Component {
     });
   };
 
-  prepareGrid() {
+  componentDidMount() {
+    const handleResize = debounce(this.handleResize.bind(this), 200);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+  }
+
+  renderGrid() {
+    if (!this.masonry) {
+      return null;
+    }
+
     const { children } = this.props;
     const { numberOfColumns } = this.state;
 
-    return reduceIndexed(
-      (acc, child, index) =>
-        adjust(append(child), index % numberOfColumns, acc),
-      repeat([], numberOfColumns),
-      children
-    );
-  }
-
-  componentDidMount() {
-    const handleResize = debounce(this.handleResize.bind(this), 200);
-    window.addEventListener("resize", handleResize);
-    handleResize();
+    const grid = prepareGrid(children, numberOfColumns);
+    return <Grid grid={grid} />;
   }
 
   render() {
@@ -84,21 +54,21 @@ export default class Masonry extends Component {
           this.masonry = el;
         }}
       >
-        {this.masonry &&
-          this.prepareGrid().map((col, ci) => {
-            return (
-              <ColumnWrapper key={ci}>
-                {col.map((child, i) => {
-                  return (
-                    <ItemWrapper key={child.key || `${ci}-${i}`}>
-                      {child}
-                    </ItemWrapper>
-                  );
-                })}
-              </ColumnWrapper>
-            );
-          })}
+        {this.renderGrid()}
       </MasonryWrapper>
     );
   }
 }
+
+Masonry.propTypes = {
+  breakpoints: PropTypes.arrayOf(PropTypes.number),
+  onResize: PropTypes.func,
+  children: PropTypes.node.isRequired
+};
+
+Masonry.defaultProps = {
+  breakpoints: [],
+  onResize: identity
+};
+
+export default Masonry;

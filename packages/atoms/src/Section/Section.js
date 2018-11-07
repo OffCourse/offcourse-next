@@ -1,20 +1,13 @@
-import React, { Component } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import SectionWrapper from "./SectionWrapper";
 
-/**
- * Generic Section component for the Offcourse project
- */
+const Section = ({ children, ...rest }) => {
+  return <SectionWrapper {...rest}>{children}</SectionWrapper>;
+};
 
-class Section extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired
-  };
-  render() {
-    const { children, ...rest } = this.props;
-    return <SectionWrapper {...rest}>{children}</SectionWrapper>;
-  }
-}
+Section.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
-/** @component */
-export default Section;
+export default memo(Section);

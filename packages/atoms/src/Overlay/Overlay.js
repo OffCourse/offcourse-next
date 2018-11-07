@@ -1,20 +1,9 @@
 import React, { Component } from "react";
+import { identity } from "ramda";
 import PropTypes from "prop-types";
 import OverlayWrapper from "./OverlayWrapper";
 
-export default class Overlay extends Component {
-  static propTypes = {
-    /** flag that decides if the overlay is open or closed */
-    isOpen: PropTypes.bool.isRequired,
-    close: PropTypes.func,
-    children: PropTypes.node.isRequired
-  };
-
-  static defaultProps = {
-    isOpen: true,
-    close: () => null
-  };
-
+class Overlay extends Component {
   handleKeyPress = e => {
     const { keyCode } = e;
     const { close } = this.props;
@@ -41,3 +30,16 @@ export default class Overlay extends Component {
     );
   }
 }
+
+Overlay.defaultProps = {
+  isOpen: true,
+  close: identity
+};
+
+Overlay.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  close: PropTypes.func,
+  children: PropTypes.node.isRequired
+};
+
+export default Overlay;

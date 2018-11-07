@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Avatar, Icon } from "..";
+import { Avatar } from "..";
 import { sizes } from "@offcourse/constants";
-import { Spring, animated, interpolate } from "react-spring";
-
-/**
- * Icon Component for the Offcourse Project
- */
+import { Spring, animated } from "react-spring";
 
 const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = sizes;
 
@@ -31,15 +27,6 @@ class Loading extends Component {
   state = {
     reverse: false
   };
-  static propTypes = {
-    size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE])
-  };
-
-  static defaultProps = {
-    effect: "pulse",
-    size: LARGE
-  };
-
   render() {
     const { size, effect } = this.props;
     const { reverse } = this.state;
@@ -70,5 +57,15 @@ class Loading extends Component {
     );
   }
 }
+
+Loading.propTypes = {
+  size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE]),
+  effect: PropTypes.string
+};
+
+Loading.defaultProps = {
+  effect: "pulse",
+  size: LARGE
+};
 
 export default Loading;

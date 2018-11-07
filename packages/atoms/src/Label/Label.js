@@ -11,6 +11,7 @@ const Label = ({ color, children, px, pt, pb, is }) => {
     </LabelWrapper>
   );
 };
+
 Label.propTypes = {
   color: PropTypes.string,
   children: PropTypes.node.isRequired,

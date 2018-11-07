@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { formatTitle } from "../helpers";
 import MessageWrapper, { BasicMessageWrapper } from "./MessageWrapper";
@@ -6,29 +6,20 @@ import { variants } from "@offcourse/constants";
 
 const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
-class Message extends Component {
-  static propTypes = {
-    children: PropTypes.string.isRequired,
-    basic: PropTypes.bool,
-    variant: PropTypes.oneOf([DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE])
-  };
+const Message = ({ children, basic, variant }) => {
+  const Wrapper = basic ? BasicMessageWrapper : MessageWrapper;
+  const padding = basic ? { px: 0, py: 0 } : { px: 5, py: 4 };
+  return <Wrapper {...padding}>{formatTitle(children)}</Wrapper>;
+};
 
-  static defaultProps = {
-    variant: DEFAULT
-  };
+Message.propTypes = {
+  children: PropTypes.string.isRequired,
+  basic: PropTypes.bool,
+  variant: PropTypes.oneOf([DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE])
+};
 
-  render() {
-    const { children, basic, variant } = this.props;
-    return basic ? (
-      <BasicMessageWrapper variant={variant}>
-        {formatTitle(children)}
-      </BasicMessageWrapper>
-    ) : (
-      <MessageWrapper px={5} py={4} variant={variant}>
-        {formatTitle(children)}
-      </MessageWrapper>
-    );
-  }
-}
+Message.defaultProps = {
+  variant: DEFAULT
+};
 
-export default Message;
+export default memo(Message);
