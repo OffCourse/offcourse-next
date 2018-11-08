@@ -9,7 +9,11 @@ const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 const Message = ({ children, basic, variant }) => {
   const Wrapper = basic ? BasicMessageWrapper : MessageWrapper;
   const padding = basic ? { px: 0, py: 0 } : { px: 5, py: 4 };
-  return <Wrapper {...padding}>{formatTitle(children)}</Wrapper>;
+  return (
+    <Wrapper variant={variant} {...padding}>
+      {formatTitle(children)}
+    </Wrapper>
+  );
 };
 
 Message.propTypes = {

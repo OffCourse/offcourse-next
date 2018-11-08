@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 const CardWrapper = system(
   {
-    display: "block",
+    display: "flex",
     width: "100%",
+    flexDirection: "column",
+    alignItems: "stretch",
     bg: "grayScale.0",
     borderBottom: 2,
     borderColor: "grayScale.2"

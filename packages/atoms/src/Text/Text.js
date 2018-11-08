@@ -5,13 +5,12 @@ import { sizes } from "@offcourse/constants";
 
 const { SMALL, NORMAL, LARGE } = sizes;
 
-const textProps = {
-  SMALL: { textSize: 0, lineHeight: 0 },
-  NORMAL: { textSize: 1, lineHeight: 2 },
-  LARGE: { textSize: 2, lineHeight: 3 }
-};
-
 const Text = ({ size, children, mb }) => {
+  const textProps = {
+    SMALL: { textSize: 0, lineHeight: 0 },
+    NORMAL: { textSize: 1, lineHeight: 2 },
+    LARGE: { textSize: 2, lineHeight: 3 }
+  };
   const { textSize, lineHeight } = textProps[size];
   return (
     <TextWrapper mb={mb} fontSize={textSize} lineHeight={lineHeight}>

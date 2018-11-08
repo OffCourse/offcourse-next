@@ -1,13 +1,17 @@
-import React, { memo } from "react";
-import PropTypes from "prop-types";
-import SectionWrapper from "./SectionWrapper";
+import system from "system-components";
 
-const Section = ({ children, ...rest }) => {
-  return <SectionWrapper {...rest}>{children}</SectionWrapper>;
-};
+const SectionWrapper = system(
+  {
+    is: "section",
+    display: "flex",
+    p: 6,
+    borderBottom: 1,
+    justifyContent: "center",
+    alignItems: "flex-start",
+    flexDirection: "column",
+    borderColor: "grayScale.1"
+  },
+  "color"
+);
 
-Section.propTypes = {
-  children: PropTypes.node.isRequired
-};
-
-export default memo(Section);
+export default SectionWrapper;

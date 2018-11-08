@@ -4,7 +4,7 @@ This molecule combines the avatar with a click handler
 const onClick = () => console.log("X");
 const url = "https://assets.offcourse.io/portraits/offcourse_1.jpg";
 const name = "Yeehaa";
-<Curator profileUrl={`/${name}`} onClick={onClick} section="meta" name={name} avatarUrl={url} />;
+<Curator profileUrl={`/${name}`} onClick={onClick} section="meta" curator={name} avatarUrl={url} />;
 ```
 
 An avatar can also be combined with a link
@@ -13,5 +13,5 @@ An avatar can also be combined with a link
 const url = "https://assets.offcourse.io/portraits/offcourse_1.jpg";
 const name = "Yeehaa";
 
-<Curator profileUrl="/" name={name} avatarUrl={url} />;
+<Curator profileUrl="/" curator={name} avatarUrl={url} />;
 ```

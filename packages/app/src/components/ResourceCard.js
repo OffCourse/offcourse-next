@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
-import { Card, Group } from "@offcourse/atoms";
+import { Section, Card, Group } from "@offcourse/atoms";
 import { Header } from "@offcourse/molecules";
 import { HTMLViewer, VideoViewer } from ".";
 
@@ -14,11 +14,11 @@ const ResourceCard = ({ resource }) => {
   const Viewer = Viewers[resourceType];
 
   return (
-    <Card border="none" bg="white" px={8}>
-      <Group>
+    <Card border="none" bg="white">
+      <Section px={8}>
         <Header py={[0, 6, 6]}>{title}</Header>
         <Viewer {...content} />
-      </Group>
+      </Section>
     </Card>
   );
 };

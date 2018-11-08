@@ -22,31 +22,15 @@ const styleProps = {
   }
 };
 
-export default class IconGroup extends Component {
-  static Icon = Icon;
-  static propTypes = {
-    directions: PropTypes.oneOf([HORIZONTAL, VERTICAL]),
-    icons: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        onClick: PropTypes.func
-      })
-    ),
-    children: PropTypes.oneOfType([
-      PropTypes.element,
-      PropTypes.arrayOf(PropTypes.element)
-    ]),
-    /** Size of the icons */
-    size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE])
-  };
-
-  static defaultProps = {
-    direction: HORIZONTAL,
-    icons: []
-  };
-
-  renderIcons = () => {
-    const { icons, size: groupSize, color: groupColor } = this.props;
+const IconGroup = ({
+  icons,
+  direction,
+  children,
+  justifyContent,
+  size: groupSize,
+  color: groupColor
+}) => {
+  const renderIcons = () => {
     return mapIndexed(
       ({ name, size, tabIndex, is, color, onClick }, index) => (
         <Icon
@@ -63,23 +47,46 @@ export default class IconGroup extends Component {
     );
   };
 
-  renderChildren = () => {
-    const { children, size, color } = this.props;
+  const renderChildren = () => {
     return Children.map(children, child => {
-      return React.cloneElement(child, { size, color, ...child.props });
+      return React.cloneElement(child, {
+        size: groupSize,
+        color: groupColor,
+        ...child.props
+      });
     });
   };
 
-  render() {
-    const { icons, direction, justifyContent } = this.props;
-    const groupProps = styleProps[direction];
-    return (
-      <IconGroupWrapper
-        {...groupProps}
-        justifyContent={justifyContent || groupProps.justifyContent}
-      >
-        {isEmpty(icons) ? this.renderChildren() : this.renderIcons()}
-      </IconGroupWrapper>
-    );
-  }
-}
+  const groupProps = styleProps[direction];
+  return (
+    <IconGroupWrapper
+      {...groupProps}
+      justifyContent={justifyContent || groupProps.justifyContent}
+    >
+      {isEmpty(icons) ? renderChildren() : renderIcons()}
+    </IconGroupWrapper>
+  );
+};
+
+IconGroup.Icon = Icon;
+
+IconGroup.propTypes = {
+  directions: PropTypes.oneOf([HORIZONTAL, VERTICAL]),
+  icons: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      onClick: PropTypes.func
+    })
+  ),
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]),
+  size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE])
+};
+
+IconGroup.defaultProps = {
+  direction: HORIZONTAL,
+  icons: []
+};
+export default IconGroup;

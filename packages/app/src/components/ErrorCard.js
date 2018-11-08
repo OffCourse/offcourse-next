@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Text, Heading, Avatar, Card, Group } from "@offcourse/atoms";
+import { Section, Text, Heading, Avatar, Card } from "@offcourse/atoms";
 import { errors as errorTypes, sizes } from "@offcourse/constants";
 import { errors } from "../content";
 
@@ -11,15 +11,13 @@ const ErrorCard = ({ errorType }) => {
   const { message, explanation } = errors[errorType];
   return (
     <Card p={8}>
-      <Group alignItems="center">
-        <Group mb={6}>
-          <Avatar size={LARGE} variant={errorType} />
-        </Group>
-        <Group mb={6}>
-          <Heading>{message}</Heading>
-        </Group>
+      <Section justifyContent="center" alignItems="center">
+        <Avatar size={LARGE} variant={errorType} />
+        <Heading mt={8} mb={6}>
+          {message}
+        </Heading>
         <Text size={LARGE}>{explanation}</Text>
-      </Group>
+      </Section>
     </Card>
   );
 };

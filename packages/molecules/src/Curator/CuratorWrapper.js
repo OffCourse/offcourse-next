@@ -1,15 +1,16 @@
-import system from "system-components";
 import styled from "styled-components";
+import { Section } from "@offcourse/atoms";
 
-const CuratorWrapper = system({
+const CuratorWrapper = styled(Section).attrs({
   display: "grid",
-  color: "black"
-});
-
-export default styled(CuratorWrapper)`
+  p: 0
+})`
+  color: "black";
   grid-template-columns: 4rem 1fr;
   p {
     user-select: none;
     line-height: 1rem;
   }
 `;
+
+export default CuratorWrapper;

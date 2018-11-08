@@ -7,10 +7,12 @@ const layout = [
   ["title", "body", "actions"]
 ];
 
+const Section = ExpandableCard.Section;
+
 <ExpandableCard layout={layout}>
-  <div section="title">Hello</div>
-  <div section="body">Hi</div>
-  <div section="actions">Bye</div>
+  <Header section="title">Hello</Header>
+  <Section section="body">Hi</Section>
+  <Section section="actions">Bye</Section>
 </ExpandableCard>
 ```
 
@@ -23,12 +25,13 @@ const layout = [
   ["title", "body", "actions"]
 ];
 
+const Section = ExpandableCard.Section;
 const logJSON = obj => console.log(JSON.stringify(obj, null, 2));
 
 <ExpandableCard layout={layout} onResize={logJSON}>
-  <div section="title">Hello</div>
-  <div section="body">Hi</div>
-  <div section="actions">Bye</div>
+  <Header section="title">Hello</Header>
+  <Section section="body">Hi</Section>
+  <Section section="actions">Bye</Section>
 </ExpandableCard>
 ```
 
@@ -41,21 +44,23 @@ const layout = [
   ["title", "body", "actions"]
 ];
 
+const Section = ExpandableCard.Section;
 const logJSON = obj => console.log(JSON.stringify(obj, null, 2));
 
 <ExpandableCard initialLevel={0} layout={layout} onResize={logJSON}>
-  <div section="title">Hello</div>
-  <div section="body">Hi</div>
-  <div section="actions">Bye</div>
+  <Header section="title">Hello</Header>
+  <Section section="body">Hi</Section>
+  <Section section="actions">Bye</Section>
 </ExpandableCard>
 ```
 
 without any props, it behaves like any other card
 
 ```react
-<ExpandableCard>
-  <div section="title">Hello</div>
-  <div section="body">Hi</div>
-  <div section="actions">Bye</div>
+const Section = ExpandableCard.Section;
+<ExpandableCard expandable={false}>
+  <Header section="title">Hello</Header>
+  <Section section="body">Hi</Section>
+  <Section section="actions">Bye</Section>
 </ExpandableCard>
 ```

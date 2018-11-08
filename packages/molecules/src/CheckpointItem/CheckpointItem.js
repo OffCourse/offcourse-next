@@ -1,53 +1,46 @@
-import React, { Component } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { Item } from "@offcourse/atoms";
 import { CheckItem } from "..";
 
-export default class CheckpointItem extends Component {
-  static propTypes = {
-    onToggle: PropTypes.func,
-    onClick: PropTypes.func,
-    checkpointId: PropTypes.string,
-    resourceUrl: PropTypes.string,
-    completed: PropTypes.bool,
-    task: PropTypes.string.isRequired,
-    is: PropTypes.string
-  };
+const CheckpointItem = ({
+  onToggle,
+  checkpointId,
+  onClick,
+  completed,
+  task,
+  is,
+  resourceUrl
+}) => {
+  const handleClick = () => onClick({ checkpointId, task });
+  const handleToggle = ({ checked }) =>
+    onToggle({ checkpointId, task, checked });
+  return onToggle ? (
+    <CheckItem
+      is={is}
+      id={checkpointId}
+      onClick={handleClick}
+      href={!onClick ? resourceUrl : null}
+      checked={completed}
+      onToggle={handleToggle}
+    >
+      {task}
+    </CheckItem>
+  ) : (
+    <Item is={is} onClick={handleClick} href={!onClick ? resourceUrl : null}>
+      {task}
+    </Item>
+  );
+};
 
-  handleClick = () => {
-    const { onClick, checkpointId, task } = this.props;
-    return onClick({ checkpointId, task });
-  };
+CheckpointItem.propTypes = {
+  onToggle: PropTypes.func,
+  onClick: PropTypes.func,
+  checkpointId: PropTypes.string,
+  resourceUrl: PropTypes.string,
+  completed: PropTypes.bool,
+  task: PropTypes.string.isRequired,
+  is: PropTypes.string
+};
 
-  render() {
-    const {
-      onToggle,
-      checkpointId,
-      onClick,
-      completed,
-      task,
-      is,
-      resourceUrl
-    } = this.props;
-    return onToggle ? (
-      <CheckItem
-        is={is}
-        id={checkpointId}
-        onClick={this.handleClick}
-        href={!onClick ? resourceUrl : null}
-        checked={completed}
-        onToggle={({ checked }) => onToggle({ checkpointId, task, checked })}
-      >
-        {task}
-      </CheckItem>
-    ) : (
-      <Item
-        is={is}
-        onClick={this.handleClick}
-        href={!onClick ? resourceUrl : null}
-      >
-        {task}
-      </Item>
-    );
-  }
-}
+export default memo(CheckpointItem);

@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import { formatTitle } from "../helpers";
 import { Text } from "..";
 import TagWrapper from "./TagWrapper";
+import { sizes } from "@offcourse/constants";
+
+const { SMALL } = sizes;
 
 const Tag = ({ onClick, children, href }) => {
   const handleClick = event => {
@@ -14,7 +17,7 @@ const Tag = ({ onClick, children, href }) => {
 
   return (
     <TagWrapper onClick={handleClick} href={href}>
-      <Text size={Text.sizes.SMALL}>{formatTitle(children)}</Text>
+      <Text size={SMALL}>{formatTitle(children)}</Text>
     </TagWrapper>
   );
 };

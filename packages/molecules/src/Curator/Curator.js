@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { identity, partial } from "ramda";
 import { formatTitle } from "../helpers";
@@ -7,21 +7,12 @@ import CuratorWrapper from "./CuratorWrapper";
 import { sizes } from "@offcourse/constants";
 
 const { SMALL } = sizes;
-class Curator extends Component {
-  static propTypes = {
-    curator: PropTypes.string.isRequired,
-    onClick: PropTypes.func,
-    avatarUrl: PropTypes.string,
-    profileUrl: PropTypes.string
-  };
 
-  static defaultProps = {
-    onClick: identity
-  };
-
-  renderHeading() {
-    const { curator, onClick, profileUrl } = this.props;
-    return (
+const Curator = ({ curator, onClick, profileUrl, avatarUrl }) => (
+  <CuratorWrapper>
+    <Avatar url={avatarUrl} name={curator} />
+    <Group>
+      <Text size={SMALL}>Curated by</Text>
       <Heading
         onClick={onClick && partial(onClick, [{ curator }])}
         size={SMALL}
@@ -29,21 +20,19 @@ class Curator extends Component {
       >
         {formatTitle(curator)}
       </Heading>
-    );
-  }
+    </Group>
+  </CuratorWrapper>
+);
 
-  render() {
-    const { curator, avatarUrl } = this.props;
-    return (
-      <CuratorWrapper>
-        <Avatar url={avatarUrl} name={curator} />
-        <Group>
-          <Text size={SMALL}>Curated by</Text>
-          {this.renderHeading()}
-        </Group>
-      </CuratorWrapper>
-    );
-  }
-}
+Curator.propTypes = {
+  curator: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  avatarUrl: PropTypes.string,
+  profileUrl: PropTypes.string
+};
 
-export default Curator;
+Curator.defaultProps = {
+  onClick: identity
+};
+
+export default memo(Curator);
