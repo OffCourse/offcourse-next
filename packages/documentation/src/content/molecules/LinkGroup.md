@@ -3,8 +3,7 @@ The LinkGroup molecule can be used to explicitly declare links
 ```react
 const clickHandler = () => alert("ALERT");
 const Link = LinkGroup.Link;
-
-<LinkGroup spacing="none" direction="vertical">
+<LinkGroup spacing="none">
   <Link onClick={clickHandler}>Click Me</Link>
 
   <Link disabled onClick={clickHandler}>
@@ -23,10 +22,11 @@ Or it can pass the link data as a prop
 
 ```react
 const onClick = () => alert("click");
+const { VERTICAL } = directions;
 const links = [
   { onClick, title: "Create Course" },
   { href: "/bla", active: true, title: "Profile" },
   { onClick, title: "Sign Out" }
 ];
-<LinkGroup links={links} />;
+<LinkGroup direction={VERTICAL} links={links} />;
 ```

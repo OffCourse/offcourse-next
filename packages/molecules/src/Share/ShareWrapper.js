@@ -1,8 +1,7 @@
-import system from "system-components";
+import { Section } from "@offcourse/atoms";
+import styled from "styled-components";
 
-const ShareWrapper = system({
-  display: "flex",
+export default styled(Section).attrs({
+  flexDirection: "row",
   justifyContent: "space-between"
-});
-
-export default ShareWrapper;
+})``;

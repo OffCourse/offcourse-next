@@ -5,34 +5,6 @@ import { Group } from "..";
 import { InputWrapper, OuterWrapper, TextAreaWrapper } from "./wrappers";
 
 class Input extends Component {
-  static propTypes = {
-    /** name of the input */
-    name: PropTypes.string.isRequired,
-    /** value of the input, if you set this, onChange is required */
-    value: PropTypes.string,
-    /** callback that is triggered when the field changes its value */
-    onChange: PropTypes.func,
-    /** placeholder for absent value */
-    placeholder: PropTypes.string,
-    /** callback that is triggered when the field loses focus */
-    onBlur: PropTypes.func,
-    /** property that indicates if the field has erors */
-    hasErrors: PropTypes.bool,
-    /** property that changes the visual representation of the field */
-    variant: PropTypes.oneOf(["default", "textarea", "small"]),
-    mb: PropTypes.number,
-    pt: PropTypes.number,
-    pb: PropTypes.number,
-    disabled: PropTypes.bool,
-    children: PropTypes.node,
-    unformatted: PropTypes.bool,
-    type: PropTypes.string
-  };
-
-  static defaultProps = {
-    variant: "default"
-  };
-
   formatValue() {
     const { value, unformatted } = this.props;
     if (!value) {
@@ -47,6 +19,7 @@ class Input extends Component {
     e.target.value = value;
     onChange(e);
   };
+
   render() {
     const {
       autoComplete,
@@ -107,5 +80,28 @@ class Input extends Component {
     );
   }
 }
+
+Input.propTypes = {
+  autoComplete: PropTypes.bool,
+  autoFocus: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  onBlur: PropTypes.func,
+  hasErrors: PropTypes.bool,
+  variant: PropTypes.oneOf(["default", "textarea", "small"]),
+  mb: PropTypes.number,
+  pt: PropTypes.number,
+  pb: PropTypes.number,
+  disabled: PropTypes.bool,
+  children: PropTypes.node,
+  unformatted: PropTypes.bool,
+  type: PropTypes.string
+};
+
+Input.defaultProps = {
+  variant: "default"
+};
 
 export default Input;

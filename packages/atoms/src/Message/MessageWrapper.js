@@ -15,7 +15,6 @@ const MessageWrapper = system(
     flex: 1,
     px: 0,
     py: 0,
-    minHeight: "2.25rem",
     fontFamily: "base"
   },
   props => ({
@@ -33,6 +32,7 @@ export const BasicMessageWrapper = styled(MessageWrapper)`
 
 export default styled(MessageWrapper)`
   ${messageStyle};
+  min-height: "2.25rem";
   span::after {
     content: ": ";
     white-space: pre;

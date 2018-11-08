@@ -1,27 +1,12 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
-import { Icon, Input } from "@offcourse/atoms";
+import { Input } from "@offcourse/atoms";
 import SearchBarWrapper from "./SearchBarWrapper";
-import { sizes } from "@offcourse/constants";
-const { LARGE } = sizes;
-export default class SearchInput extends Component {
-  static Wrapper = SearchBarWrapper;
+import SearchButton from "./SearchButton";
+class SearchBar extends PureComponent {
   state = {
     searchTerm: ""
-  };
-
-  static propTypes = {
-    onSearchChange: PropTypes.func,
-    onSearchSubmit: PropTypes.func
-  };
-  static defaultProps = {
-    onSearchChange: identity,
-    onSearchSubmit: identity
-  };
-
-  static Button = ({ onClick }) => {
-    return <Icon size={LARGE} name="search" onClick={onClick} />;
   };
 
   handleChange = e => {
@@ -39,16 +24,8 @@ export default class SearchInput extends Component {
   };
 
   render() {
-    const { is } = this.props;
     return (
-      <SearchBarWrapper
-        is={is}
-        style={this.props.styles}
-        display="flex"
-        onSubmit={this.handleSubmit}
-        justifyContent="stretch"
-        alignItems="stretch"
-      >
+      <SearchBarWrapper onSubmit={this.handleSubmit}>
         <Input
           name="search"
           autoComplete={false}
@@ -62,3 +39,16 @@ export default class SearchInput extends Component {
     );
   }
 }
+
+SearchBar.Button = SearchButton;
+SearchBar.propTypes = {
+  onSearchChange: PropTypes.func,
+  onSearchSubmit: PropTypes.func
+};
+
+SearchBar.defaultProps = {
+  onSearchChange: identity,
+  onSearchSubmit: identity
+};
+
+export default SearchBar;

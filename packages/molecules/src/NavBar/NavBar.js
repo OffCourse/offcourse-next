@@ -1,86 +1,41 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment, memo } from "react";
 import PropTypes from "prop-types";
-import { Logo, Group } from "@offcourse/atoms";
-import { Menu, MessageGroup, SearchBar, IconGroup } from "..";
+import { Logo } from "@offcourse/atoms";
+import { Menu, SearchBar, IconGroup } from "..";
 import { identity } from "ramda";
 import NavBarWrapper from "./NavBarWrapper";
-import { variants } from "@offcourse/constants";
 
-const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
+const Icons = ({ onMenuButtonClick, onSearchButtonClick }) => {
+  return (
+    <Fragment>
+      <SearchBar.Button onClick={onSearchButtonClick} />
+      <Menu.Button onClick={onMenuButtonClick} />
+    </Fragment>
+  );
+};
 
-export default class NavBar extends Component {
-  static Logo = Logo;
+const NavBar = ({ onLogoClick, onMenuButtonClick, onSearchButtonClick }) => (
+  <NavBarWrapper>
+    <Logo onClick={onLogoClick} />
+    <IconGroup justifyContent="flex-end">
+      <Icons
+        onMenuButtonClick={onMenuButtonClick}
+        onSearchButtonClick={onSearchButtonClick}
+      />
+    </IconGroup>
+  </NavBarWrapper>
+);
 
-  static propTypes = {
-    /** function that is invoked when the logo is clicked */
-    onLogoClick: PropTypes.func,
-    /** function that is invoked when the menu button is clicked */
-    onMenuButtonClick: PropTypes.func,
-    onSearchButtonClick: PropTypes.func,
-    isSearchBarOpen: PropTypes.bool,
-    /** array of objects that define the links in the menu */
-    links: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        level: PropTypes.number.isRequired,
-        onClick: PropTypes.func,
-        href: PropTypes.string
-      })
-    ),
-    /** array of objects that the messages in the bar */
-    messages: PropTypes.arrayOf(
-      PropTypes.shape({
-        message: PropTypes.string.isRequired,
-        variant: PropTypes.oneOf([DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE])
-      })
-    ),
-    /** determines the position of the navbar. This is mainly for debugging... */
-    isDocked: PropTypes.bool
-  };
+NavBar.propTypes = {
+  onLogoClick: PropTypes.func,
+  onMenuButtonClick: PropTypes.func,
+  onSearchButtonClick: PropTypes.func
+};
 
-  static defaultProps = {
-    onLogoClick: identity,
-    onMenuClick: identity,
-    onSearchButtonClick: identity
-  };
+NavBar.defaultProps = {
+  onLogoClick: identity,
+  onMenuClick: identity,
+  onSearchButtonClick: identity
+};
 
-  render() {
-    const {
-      links,
-      onLogoClick,
-      messages,
-      isSearchBarOpen,
-      onMenuButtonClick,
-      onSearchButtonClick,
-      isDocked
-    } = this.props;
-    return (
-      <Fragment>
-        <NavBarWrapper isSearchBarOpen={isSearchBarOpen} isDocked={isDocked}>
-          <Group
-            flexDirection="row"
-            alignItems="center"
-            justifyContent="space-between"
-            pr={4}
-            height="2.25rem"
-          >
-            <Logo onClick={onLogoClick} />
-            <Menu
-              display={["none", "flex", "flex"]}
-              justifyContent="flex-end"
-              px={6}
-              pb={2}
-              maxLevel={0}
-              direction="horizontal"
-              links={links}
-            />
-            <IconGroup justifyContent="flex-end">
-              <SearchBar.Button onClick={onSearchButtonClick} />
-              <Menu.Button onClick={onMenuButtonClick} />
-            </IconGroup>
-          </Group>
-        </NavBarWrapper>
-      </Fragment>
-    );
-  }
-}
+export default memo(NavBar);

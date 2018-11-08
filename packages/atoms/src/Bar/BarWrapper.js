@@ -7,11 +7,13 @@ const BarWrapper = system(
     position: "fixed",
     left: 0,
     right: 0,
+    borderColor: "grayScale.2",
     bg: "white",
+    flex: 1,
     flexDirection: "column"
   },
-  "top",
-  "bottom"
+  "borders",
+  "is"
 );
 
 export default styled(BarWrapper)`

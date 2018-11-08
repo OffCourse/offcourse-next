@@ -8,34 +8,13 @@ import { variants } from "@offcourse/constants";
 
 const { DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE } = variants;
 
-export default class MessageGroup extends Component {
-  static Message = Message;
+const formatMessages = (errors = [], { variant = NEGATIVE, px } = {}) => {
+  return map(message => {
+    return { message, variant, px };
+  }, errors);
+};
 
-  static formatMessages = (errors = [], { variant = NEGATIVE, px } = {}) => {
-    return map(message => {
-      return { message, variant, px };
-    }, errors);
-  };
-
-  static propTypes = {
-    basic: PropTypes.bool,
-    messages: PropTypes.arrayOf(
-      PropTypes.shape({
-        message: PropTypes.string.isRequired,
-        variant: PropTypes.oneOf([DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE])
-      })
-    ),
-    children: PropTypes.oneOfType([
-      PropTypes.element,
-      PropTypes.arrayOf(PropTypes.element)
-    ])
-  };
-
-  static defaultProps = {
-    messages: [],
-    errors: []
-  };
-
+class MessageGroup extends Component {
   renderMessages = () => {
     const { messages, basic } = this.props;
     return mapIndexed(
@@ -58,3 +37,27 @@ export default class MessageGroup extends Component {
     );
   }
 }
+
+MessageGroup.Message = Message;
+MessageGroup.formatMessages = formatMessages;
+
+MessageGroup.propTypes = {
+  basic: PropTypes.bool,
+  messages: PropTypes.arrayOf(
+    PropTypes.shape({
+      message: PropTypes.string.isRequired,
+      variant: PropTypes.oneOf([DEFAULT, INFO, POSITIVE, WARNING, NEGATIVE])
+    })
+  ),
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ])
+};
+
+MessageGroup.defaultProps = {
+  messages: [],
+  errors: []
+};
+
+export default MessageGroup;

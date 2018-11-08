@@ -1,31 +1,12 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { isEmpty } from "ramda";
-import { compact, formatTitle } from "../helpers";
+import { compact } from "../helpers";
 import { Label, Input } from "@offcourse/atoms";
 import { MessageGroup } from "..";
 import InputFieldWrapper from "./InputFieldWrapper";
 
-export default class InputField extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    title: PropTypes.string,
-    placeholder: PropTypes.string,
-    value: PropTypes.string,
-    onBlur: PropTypes.func,
-    onChange: PropTypes.func,
-    touched: PropTypes.array,
-    errors: PropTypes.array,
-    variant: PropTypes.oneOf(["default", "textarea", "small"]),
-    FieldComponent: PropTypes.func
-  };
-
-  static defaultProps = {
-    FieldComponent: Input,
-    errors: [],
-    touched: []
-  };
-
+class InputField extends PureComponent {
   renderLabel() {
     const { title, disabled, name } = this.props;
     return title ? (
@@ -40,15 +21,11 @@ export default class InputField extends Component {
     ) : null;
   }
 
-  hasErrors() {
-    const { errors } = this.props;
-    return errors && !isEmpty(compact(errors));
-  }
-
   renderErrors() {
     const { errors } = this.props;
+    const hasErrors = errors && !isEmpty(compact(errors));
 
-    return this.hasErrors() ? (
+    return hasErrors ? (
       <MessageGroup
         px={6}
         pb={6}
@@ -69,10 +46,12 @@ export default class InputField extends Component {
       onChange,
       onBlur,
       children,
+      errors,
       FieldComponent,
       unformatted,
       variant
     } = this.props;
+    const hasErrors = errors && !isEmpty(compact(errors));
 
     return (
       children || (
@@ -87,7 +66,7 @@ export default class InputField extends Component {
           onBlur={onBlur}
           unformatted={unformatted}
           mb={3}
-          hasErrors={this.hasErrors()}
+          hasErrors={hasErrors}
           variant={variant}
         />
       )
@@ -104,3 +83,27 @@ export default class InputField extends Component {
     );
   }
 }
+
+InputField.propTypes = {
+  disabled: PropTypes.bool,
+  unformatted: PropTypes.bool,
+  autoComplete: PropTypes.bool,
+  autoFocus: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  errors: PropTypes.array,
+  variant: PropTypes.oneOf(["default", "textarea", "small"]),
+  FieldComponent: PropTypes.func,
+  children: PropTypes.node
+};
+
+InputField.defaultProps = {
+  FieldComponent: Input,
+  errors: []
+};
+
+export default InputField;

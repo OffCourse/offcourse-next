@@ -3,15 +3,7 @@ import PropTypes from "prop-types";
 import { Item } from "@offcourse/atoms";
 import ListWrapper from "./ListWrapper";
 
-export default class List extends Component {
-  static Item = Item;
-  static propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.element,
-      PropTypes.arrayOf(PropTypes.element)
-    ]).isRequired
-  };
-
+class List extends Component {
   renderChildren() {
     const { children } = this.props;
     return Children.map(children, child => {
@@ -33,3 +25,13 @@ export default class List extends Component {
     );
   }
 }
+
+List.Item = Item;
+List.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]).isRequired
+};
+
+export default List;

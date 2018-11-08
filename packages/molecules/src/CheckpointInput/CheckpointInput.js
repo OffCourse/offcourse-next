@@ -11,13 +11,12 @@ const CheckpointInput = ({
   onChange,
   onBlur
 }) => {
-  const handleBlur = e => onBlur(e.target.name);
   return (
     <CheckpointInputWrapper border={hasErrors ? 2 : 0}>
       <Group alignItems="stretch" className="inputs">
         <Input
           onChange={onChange}
-          onBlur={handleBlur}
+          onBlur={onBlur}
           pb={2}
           mb={0}
           name={`${name}.task`}
@@ -26,7 +25,7 @@ const CheckpointInput = ({
         />
         <Input
           onChange={onChange}
-          onBlur={handleBlur}
+          onBlur={onBlur}
           unformatted
           pt={0}
           mt={0}
