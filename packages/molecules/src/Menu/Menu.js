@@ -4,8 +4,10 @@ import { values, prop, gte, propSatisfies, filter, groupBy } from "ramda";
 import { mapIndexed } from "../helpers";
 import { Section, Group, Icon } from "@offcourse/atoms";
 import { LinkGroup } from "..";
-import { sizes } from "@offcourse/constants";
+import { sizes, directions } from "@offcourse/constants";
+
 const { LARGE } = sizes;
+const { HORIZONTAL, VERTICAL } = directions;
 
 export default class Menu extends Component {
   static Button = ({ onClick }) => {
@@ -13,14 +15,14 @@ export default class Menu extends Component {
   };
 
   static propTypes = {
-    direction: PropTypes.oneOf(["horizontal", "vertical"]),
+    direction: PropTypes.oneOf([HORIZONTAL, VERTICAL]),
     links: PropTypes.arrayOf(PropTypes.shape),
     maxLevel: PropTypes.oneOf([0, 1, 2, 3])
   };
 
   static defaultProps = {
     alignItems: "stretch",
-    direction: "vertical",
+    direction: VERTICAL,
     maxLevel: 3
   };
 

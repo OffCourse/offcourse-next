@@ -19,7 +19,8 @@ The StatGroup molecules combine multiple Stat components into groups
 They can also be oriented horizontally
 
 ```react|span-3
-<StatGroup direction="horizontal" section="planning">
+const { HORIZONTAL } = directions;
+<StatGroup direction={ HORIZONTAL } section="planning">
   <Stat iconName="calendar" label="July, 30" />
   <Stat iconName="clock" label="40 Hours" />
   <Stat iconName="expert" label="expert" />
@@ -27,7 +28,8 @@ They can also be oriented horizontally
 ```
 
 ```react|span-3,dark
-<StatGroup direction="horizontal" inverse section="planning">
+const { HORIZONTAL } = directions;
+<StatGroup direction={ HORIZONTAL } inverse section="planning">
   <Stat iconName="calendar" label="July, 30" />
   <Stat iconName="clock" label="40 Hours" />
   <Stat iconName="expert" label="expert" />

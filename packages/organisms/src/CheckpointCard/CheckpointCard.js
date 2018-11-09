@@ -132,12 +132,6 @@ class CheckpointCard extends Component {
           resourceType={resource ? resource.resourceType : "unknown"}
           tags={tags || []}
         />
-        <Group px={[6, 0, 0]} section="meta2">
-          <Meta
-            resourceType={resource ? resource.resourceType : "unknown"}
-            tags={tags || []}
-          />
-        </Group>
         <Group section="source">
           <Group pt={6} px={8}>
             <Text size={LARGE}>
@@ -171,7 +165,7 @@ CheckpointCard.defaultProps = {
   borderColor: "grayScale.2",
   onCheckpointClick: identity,
   onCheckpointToggle: identity,
-  layout: [["header"], ["header", "meta"], ["breadcrumbs", "meta2", "source"]]
+  layout: [["header"], ["header", "meta"], ["breadcrumbs", "meta", "source"]]
 };
 
 export default CheckpointCard;

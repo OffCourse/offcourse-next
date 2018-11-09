@@ -7,7 +7,7 @@ const checkpoint = {
     goal: "Do More"
   }
 };
-<CheckpointCard checkpoint={checkpoint}/>
+<CheckpointCard level={0} checkpoint={checkpoint}/>
 ```
 
 ```react|span-6,dark
@@ -21,7 +21,7 @@ const checkpoint = {
     goal: "Do More"
   }
 };
-<CheckpointCard checkable checkpoint={checkpoint}/>
+<CheckpointCard checkable level={1} checkpoint={checkpoint}/>
 ```
 
 ```react|span-6,dark
@@ -35,5 +35,5 @@ const checkpoint = {
     goal: "Do More"
   }
 };
-<CheckpointCard checkable checkpoint={checkpoint}/>
+<CheckpointCard checkable level={2} checkpoint={checkpoint}/>
 ```

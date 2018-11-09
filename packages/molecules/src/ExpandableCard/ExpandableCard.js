@@ -1,10 +1,11 @@
 import React, { Children, cloneElement, Component } from "react";
-import { Card, Section, Icon } from "@offcourse/atoms";
+import { Card, Section } from "@offcourse/atoms";
 import { identity, isEmpty, contains, isNil, omit } from "ramda";
 import PropTypes from "prop-types";
-import { sizes } from "@offcourse/constants";
+import { variants, affordances } from "@offcourse/constants";
 
-const { NORMAL } = sizes;
+const { ACTIVE, INACTIVE } = variants;
+const { NONE, CHECKABLE, CLOSEABLE, EXPANDABLE, SHRINKABLE } = affordances;
 
 class ExpendableCard extends Component {
   state = {
@@ -25,30 +26,37 @@ class ExpendableCard extends Component {
   };
 
   renderElem = (child, index) => {
-    const { layout, expandable } = this.props;
+    const { layout, onIconClick, affordance, variant } = this.props;
     const { level } = this.state;
-    const iconName = level === layout.length - 1 ? "arrowUp" : "arrowDown";
 
-    const icon = (
-      <Icon
-        onClick={this.handleResize}
-        name={iconName}
-        color="grayScale.2"
-        size={NORMAL}
-      />
-    );
+    if (index === 0 && affordance === EXPANDABLE) {
+      return cloneElement(child, {
+        ...child.props,
+        variant,
+        onIconClick: this.handleResize,
+        affordance: level === layout.length - 1 ? SHRINKABLE : EXPANDABLE
+      });
+    }
 
-    return cloneElement(child, {
-      icon: index === 0 && expandable ? icon : null,
-      ...child.props
-    });
+    if (index === 0) {
+      return cloneElement(child, {
+        ...child.props,
+        variant,
+        onIconClick,
+        affordance
+      });
+    }
+    return child;
   };
 
   augmentSections = () => {
-    const { children, layout } = this.props;
+    const { variant, children, layout } = this.props;
 
-    if (isEmpty(layout)) {
-      return children;
+    if (variant === INACTIVE) {
+      return Children.map(children, (child, index) => {
+        if (!child || index !== 0) return null;
+        return this.renderElem(child, index);
+      });
     }
 
     return Children.map(children, (child, index) => {
@@ -56,13 +64,13 @@ class ExpendableCard extends Component {
       const { section } = child.props;
       const { level } = this.state;
       const isVisible = layout[level] && contains(section, layout[level]);
-      return isVisible && this.renderElem(child, index);
+      return (isEmpty(layout) || isVisible) && this.renderElem(child, index);
     });
   };
 
   render() {
     const rest = omit(
-      ["initialLevel", "layout", "children", "onResize", "expandable"],
+      ["initialLevel", "layout", "children", "onResize", "onIconClick"],
       this.props
     );
     return <Card {...rest}>{this.augmentSections()}</Card>;
@@ -75,13 +83,19 @@ ExpendableCard.propTypes = {
   onResize: PropTypes.func,
   initialLevel: PropTypes.number,
   layout: PropTypes.array,
-  expandable: PropTypes.bool
+  variant: PropTypes.oneOf([ACTIVE, INACTIVE]),
+  affordance: PropTypes.oneOf([
+    NONE,
+    CHECKABLE,
+    CLOSEABLE,
+    EXPANDABLE,
+    SHRINKABLE
+  ])
 };
 
 ExpendableCard.defaultProps = {
   onResize: identity,
-  expandable: true,
-  inactive: false,
+  affordance: EXPANDABLE,
   layout: []
 };
 

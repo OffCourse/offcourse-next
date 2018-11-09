@@ -2,8 +2,9 @@ import React, { memo } from "react";
 import { formatTitle } from "../helpers";
 import PropTypes from "prop-types";
 import HeadingWrapper from "./HeadingWrapper";
-import { sizes } from "@offcourse/constants";
+import { variants, sizes } from "@offcourse/constants";
 
+const { ACTIVE, INACTIVE } = variants;
 const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = sizes;
 
 const textProps = {
@@ -13,7 +14,7 @@ const textProps = {
   EXTRA_LARGE: { fontSize: "4rem", lineHeight: "4.5rem" }
 };
 
-const Heading = ({ children, onClick, href, size, mb, mt }) => {
+const Heading = ({ variant, children, onClick, href, size, mb, mt }) => {
   const handleClick = event => {
     if (onClick) {
       event.preventDefault();
@@ -27,6 +28,7 @@ const Heading = ({ children, onClick, href, size, mb, mt }) => {
       mb={mb}
       mt={mt}
       is={href ? "a" : "h1"}
+      color={variant === ACTIVE ? "black" : "grayScale.2"}
       onClick={onClick && handleClick}
       href={href}
       lineHeight={lineHeight}
@@ -39,6 +41,7 @@ const Heading = ({ children, onClick, href, size, mb, mt }) => {
 
 Heading.propTypes = {
   children: PropTypes.string.isRequired,
+  variant: PropTypes.oneOf([ACTIVE, INACTIVE]),
   size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE]),
   href: PropTypes.string,
   onClick: PropTypes.func,
@@ -47,7 +50,8 @@ Heading.propTypes = {
 };
 
 Heading.defaultProps = {
-  size: NORMAL
+  size: NORMAL,
+  variant: ACTIVE
 };
 
 export default memo(Heading);

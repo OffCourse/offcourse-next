@@ -32,6 +32,13 @@ They can link to another reference
 <Heading href="/">Reference Heading</Heading>
 ```
 
+They can be Inactive
+
+```react
+const {INACTIVE} = variants;
+<Heading variant={INACTIVE}>Inactive Heading</Heading>
+```
+
 Or they can have a custom click handler
 
 ```react

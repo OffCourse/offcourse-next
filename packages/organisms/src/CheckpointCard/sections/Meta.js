@@ -22,6 +22,7 @@ const resource = {
 
 export default class Meta extends Component {
   static propTypes = {
+    resourceType: PropTypes.oneOf(["video", "html", "unknown"]),
     tags: PropTypes.arrayOf(PropTypes.string)
   };
 
@@ -32,7 +33,7 @@ export default class Meta extends Component {
 
   render() {
     const { tags, resourceType } = this.props;
-    const { iconName, text } = resource[resourceType];
+    const { iconName } = resource[resourceType];
     return (
       <Section
         flexDirection="row"
