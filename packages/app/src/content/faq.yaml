@@ -1,81 +1,66 @@
-title: Frequently Asked Questions
+title: Ask Us Anything
 questions:
   - category: Platform
     question: What can I do on Offcourse?
     answer: |
-      You can collect and save links to the web's best learning resources as 
-      courses for personal learning. However, you can also learn from others 
-      using the courses they have already created and shared on the platform. 
-      Following a course you like but know of an alternative resource? 
-      Forking courses allows you to tweak existing courses and make them your 
-      own. Moreover, you can share your knowledge with others through other 
-      social platforms.
+      On Offcourse, you can collect and save links of the web's best resources in form of courses for personal learning. However, you can also learn from others using the courses they have already created and shared on the platform. Following a course you like but know of an alternative resource? Forking courses allows you to tweak existing courses and make them your own. Moreover, you can share your knowledge with others through other social platforms.
   - category: Platform
     question: How can I create my own course?
     answer: |
-      To create a card, sign in and click on “Create Course” in the side menu 
-      to get started!
+      To create a course, sign in and click on “Create Course” in the side menu to get started!
   - category: Platform
     question: How can I fork existing courses?
     answer: |
-      To fork a course, go to the particular course and click on “Fork This 
-      Course” below the course. Whenever you create or fork a course, make 
-      sure to keep our guidelines for creating a course in mind.
+      To fork a course, go to the particular course and click on “Fork This Course” which is indicated below the course. Whenever you create or fork a course, make sure to keep our guidelines for creating a course in mind.
   - category: Platform
-    question: Do I have to log in to view, add and/or edit courses?
+    question: Do I have to sign in to view, add and/or edit courses?
     answer: |
-      You can view courses without signing in. For adding new courses or 
-      editing existing ones signing in is required.
+      You can view courses without signing in. However, to add new courses or to edit existing ones, signing in is required.
   - category: Platform
     question: How do I find topics I am interested in?
     answer: |
-      You can use the search bar to search for topics you’re interested in. 
-      Alternatively, you can also use the automated course tags to navigate 
-      through courses.
+      You can use the search bar to search for topics you’re interested in. Alternatively, you can also use the course tags to navigate through courses.
   - category: Platform
     question: Can I keep track of the progress I have made in courses?
     answer: |
-      Yes, you can by using the checkpoints on the course. When you are done 
-      with a task, you can check it to indicate that you have finalised it. 
-      Keep in mind that the progress is linked to your personal account, so 
-      logging in is required.
+      Yes, you can do this by using the course checkpoints. When you are done with a task, you can check it to indicate that you have finished that particular checkpoint. Keep in mind that the progress is linked to your personal account, so signing in is required.
   - category: Platform
     question: How can I share courses with someone else?
     answer: |
-      Use “Get URL” at the bottom of the course to copy the course’s URL for 
-      sharing. Alternatively, you can share the course directly on Twitter and 
-      Facebook using the designated icons at the bottom of the course.
+     Use “Get URL” at the bottom of the course to copy the course’s URL for sharing. Alternatively, you can share the course directly on Twitter and Facebook using the designated icons at the bottom of the course.
+  - category: Platform
+    question: Can I change the goal of a course once I have published it?
+    answer: |
+      You can’t. We think it is very important for the courses to have a unique URL. When creating a course, the goal of the course is used to generate this URL. Therefore, it’s best to take another look at the goal before you publish it to make sure you have got it right the first time!
+  - category: Platform
+    question: What happens if I want to delete my course?
+    answer: |
+      At this point, you can’t delete a course yourself. If you would like to have a course deleted, then please send an email to [contact@offcourse.io](mailto:contact@offcourse.io]) stating which of your courses you would like to have removed.
+ - category: Platform
+    question: Is the platform supported by all web browsers?
+    answer: |
+      At this moment only Google Chrome is fully supported. Fortunately, this doesn’t mean that the platform will not work on browsers such as Firefox and Safari. These browsers are just not fully supported, so that means you could eventually discover difficulties that are not experienced on Google Chrome.
   - category: Your Account
     question: Can I communicate with other users?
     answer: |
-      This is a possible feature in the future. Sign-up for the newsletter to 
-      keep you updated or get in touch with us to share your thoughts.
+      This is a possible feature in the future. Sign up for the newsletter to keep you updated or get in touch with us to share your thoughts.
   - category: Your Account
     question: How do I delete my account?
     answer: |
-      If you want us to delete your account, send an email to 
-      [contact@offcourse.io](mailto:contact@offcourse.io]).
+      If you want us to delete your account, send an email to [contact@offcourse.io](mailto:contact@offcourse.io]).
   - category: Bugs
     question: I added content but it is not visible yet.
     answer: |
-      Sometimes it takes a while for the platform to gather and display the 
-      content. Sit back, relax and reload the page.
+      Sometimes it takes a while for the platform to gather, process and display the content. Sit back, relax and reload the page.
   - category: Bugs
     question: What if I find a bug on the platform?
     answer: |
-      We are constantly developing the platform, but it could happen that you 
-      stumble upon a bug. In that case, we would love to receive any feedback 
-      you have through this form.
+      We are constantly developing the platform, but it could happen that you stumble upon a bug. In that case, we would love to receive any feedback you have through this form.
   - category: Business
     question: What can Offcourse mean for my company?
     answer: |
-      There are several standard possibilities that Offcourse can offer your 
-      company, such as theming of courses to your brand identity or embedding 
-      courses on your company’s website. However, there are also more 
-      tailor-made offerings available. To explore these possibilities, 
-      please contact us at [business@offcourse.io](mailto:business@offcourse.io).
+      There are several standard possibilities that Offcourse can offer your company, such as theming courses to your brand identity or embedding courses on your company’s website. However, there are also more tailor-made offerings available. To explore these possibilities, please contact us at [business@offcourse.io](mailto:business@offcourse.io).
   - category: User support
     question: I need support, my question is not answered here!
     answer: |
-      Contact us through this form or send an email to 
-      [contact@offcourse.io](mailto:contact@offcourse.io]).
+      Contact us through this form or send an email to [contact@offcourse.io](mailto:contact@offcourse.io]).
