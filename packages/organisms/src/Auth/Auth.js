@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { curry } from "ramda";
 import SignInForm from "../SignInForm";
@@ -14,25 +14,7 @@ const formComponents = {
   SIGNING_UP: SignUpForm
 };
 
-class Auth extends Component {
-  static propTypes = {
-    defaultMode: PropTypes.oneOf([SIGNING_IN, SIGNING_UP, RESETTING_PASSWORD]),
-    needsConfirmation: PropTypes.bool,
-    errors: PropTypes.object,
-    onModeSwitch: PropTypes.func,
-    onCancel: PropTypes.func,
-    signUp: PropTypes.func.isRequired,
-    signIn: PropTypes.func.isRequired,
-    resetPassword: PropTypes.func.isRequired
-  };
-
-  static defaultProps = {
-    defaultMode: SIGNING_IN,
-    onModeSwitch: () => null,
-    needsConfirmation: false,
-    onCancel: () => null
-  };
-
+class Auth extends PureComponent {
   state = {
     mode: this.props.defaultMode
   };
@@ -103,5 +85,23 @@ class Auth extends Component {
     );
   }
 }
+Auth.propTypes = {
+  defaultMode: PropTypes.oneOf([SIGNING_IN, SIGNING_UP, RESETTING_PASSWORD]),
+  needsConfirmation: PropTypes.bool,
+  errors: PropTypes.object,
+  onModeSwitch: PropTypes.func,
+  onCancel: PropTypes.func,
+  signUp: PropTypes.func.isRequired,
+  signIn: PropTypes.func.isRequired,
+  userName: PropTypes.string,
+  resetPassword: PropTypes.func.isRequired
+};
+
+Auth.defaultProps = {
+  defaultMode: SIGNING_IN,
+  onModeSwitch: () => null,
+  needsConfirmation: false,
+  onCancel: () => null
+};
 
 export default Auth;

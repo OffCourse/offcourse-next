@@ -1,47 +1,43 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { isEmpty } from "ramda";
+import { isEmpty, identity } from "ramda";
 import { mapIndexed } from "../helpers";
 import { Tag } from "@offcourse/atoms";
 import TagGroupWrapper from "./TagGroupWrapper";
 
-export default class TagGroup extends Component {
-  static Tag = Tag;
+const TagGroup = ({ tags, onClick, children }) => {
+  const augmentedTags = mapIndexed(
+    (text, index) => (
+      <Tag onClick={onClick} key={index}>
+        {text}
+      </Tag>
+    ),
+    tags
+  );
+  return (
+    <TagGroupWrapper>
+      {isEmpty(tags) ? children : augmentedTags}
+    </TagGroupWrapper>
+  );
+};
 
-  static propTypes = {
-    tags: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.string),
-      PropTypes.object
-    ]).isRequired,
-    children: PropTypes.oneOfType([
-      PropTypes.element,
-      PropTypes.arrayOf(PropTypes.element)
-    ])
-  };
+TagGroup.Tag = Tag;
 
-  static defaultProps = {
-    tags: [],
-    justifyContent: "flex-start"
-  };
+TagGroup.propTypes = {
+  tags: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.object
+  ]).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]),
+  onClick: PropTypes.func
+};
 
-  renderTags = () => {
-    const { tags, onClick } = this.props;
-    return mapIndexed(
-      (text, index) => (
-        <Tag onClick={onClick} key={index}>
-          {text}
-        </Tag>
-      ),
-      tags
-    );
-  };
+TagGroup.defaultProps = {
+  tags: [],
+  onClick: identity
+};
 
-  render() {
-    const { tags, pt, pb, children, alignSelf } = this.props;
-    return (
-      <TagGroupWrapper alignSelf={alignSelf} pb={pb} pt={pt}>
-        {isEmpty(tags) ? children : this.renderTags()}
-      </TagGroupWrapper>
-    );
-  }
-}
+export default TagGroup;

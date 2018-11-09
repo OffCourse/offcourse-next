@@ -1,6 +1,6 @@
 import React, { Children, cloneElement, Component } from "react";
 import { Card, Section, Icon } from "@offcourse/atoms";
-import { identity, contains, isNil, omit } from "ramda";
+import { identity, isEmpty, contains, isNil, omit } from "ramda";
 import PropTypes from "prop-types";
 import { sizes } from "@offcourse/constants";
 
@@ -25,7 +25,7 @@ class ExpendableCard extends Component {
   };
 
   renderElem = (child, index) => {
-    const { layout } = this.props;
+    const { layout, expandable } = this.props;
     const { level } = this.state;
     const iconName = level === layout.length - 1 ? "arrowUp" : "arrowDown";
 
@@ -39,17 +39,18 @@ class ExpendableCard extends Component {
     );
 
     return cloneElement(child, {
-      icon: index === 0 ? icon : null,
+      icon: index === 0 && expandable ? icon : null,
       ...child.props
     });
   };
 
   augmentSections = () => {
-    const { expandable, children, layout } = this.props;
+    const { children, layout } = this.props;
 
-    if (!expandable) {
+    if (isEmpty(layout)) {
       return children;
     }
+
     return Children.map(children, (child, index) => {
       if (!child) return null;
       const { section } = child.props;

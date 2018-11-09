@@ -3,25 +3,11 @@ import { map } from "ramda";
 import PropTypes from "prop-types";
 import { Group } from "@offcourse/atoms";
 import { Stat } from "..";
+import { directions } from "@offcourse/constants";
 
-export default class StatGroup extends Component {
-  static Stat = Stat;
-  static propTypes = {
-    inverse: PropTypes.bool,
-    direction: PropTypes.oneOf(["horizontal", "vertical"]),
-    stats: PropTypes.arrayOf(
-      PropTypes.shape({
-        iconName: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired
-      })
-    )
-  };
+const { HORIZONTAL, VERTICAL } = directions;
 
-  static defaultProps = {
-    inverse: false,
-    direction: "vertical"
-  };
-
+class StatGroup extends Component {
   renderStats() {
     const { inverse, direction, stats } = this.props;
     return map(
@@ -54,3 +40,22 @@ export default class StatGroup extends Component {
     );
   }
 }
+
+StatGroup.Stat = Stat;
+StatGroup.propTypes = {
+  inverse: PropTypes.bool,
+  direction: PropTypes.oneOf([HORIZONTAL, VERTICAL]),
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      iconName: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired
+    })
+  )
+};
+
+StatGroup.defaultProps = {
+  inverse: false,
+  direction: VERTICAL
+};
+
+export default StatGroup;

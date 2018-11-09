@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { identity } from "ramda";
-import { Icon, Checkbox, Heading, Group } from "@offcourse/atoms";
+import { Icon, Section, Group } from "@offcourse/atoms";
 import { TagGroup } from "@offcourse/molecules";
 import { sizes } from "@offcourse/constants";
 
-const { LARGE, SMALL } = sizes;
+const { LARGE } = sizes;
 const resource = {
   video: {
     iconName: "video",
@@ -35,7 +34,7 @@ export default class Meta extends Component {
     const { tags, resourceType } = this.props;
     const { iconName, text } = resource[resourceType];
     return (
-      <Group
+      <Section
         flexDirection="row"
         alignItems="center"
         p={6}
@@ -47,7 +46,7 @@ export default class Meta extends Component {
         <Group ml={7} flexDirection="row" alignItems="center">
           <TagGroup tags={tags} />
         </Group>
-      </Group>
+      </Section>
     );
   }
 }

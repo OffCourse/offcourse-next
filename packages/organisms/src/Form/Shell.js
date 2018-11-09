@@ -1,25 +1,21 @@
-import React, { Children, Fragment, Component } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import FormWrapper from "./FormWrapper";
 import { map, mapObjIndexed, values } from "ramda";
 import { Section, Heading } from "@offcourse/atoms";
 import { MessageGroup, ButtonGroup, LinkGroup } from "@offcourse/molecules";
-import { variants } from "@offcourse/constants";
+import { directions, variants } from "@offcourse/constants";
 
 const { POSITIVE } = variants;
+const { VERTICAL } = directions;
 
 const formatMessages = MessageGroup.formatMessages;
 
 class Shell extends Component {
   state = {};
-  static defaultProps = {
-    onCancel: () => null,
-    mode: "normal",
-    buttons: {}
-  };
 
   static getDerivedStateFromProps(
-    { setErrors, mode, setSubmitting, errors, externalErrors },
+    { setErrors, mode, setSubmitting, externalErrors },
     { previousErrors, previousMode }
   ) {
     if (externalErrors !== previousErrors) {
@@ -44,7 +40,7 @@ class Shell extends Component {
   };
 
   buttonData() {
-    const { dirty, isSubmitting, isValid, buttons } = this.props;
+    const { isSubmitting, isValid, buttons } = this.props;
     const { cancel, submit, ...rest } = buttons;
 
     const others = mapObjIndexed((obj, key) => {
@@ -98,7 +94,7 @@ class Shell extends Component {
 
   renderLinks() {
     return (
-      <LinkGroup px={8} pt={6} direction="vertical" links={this.linkData()} />
+      <LinkGroup px={8} pt={6} direction={VERTICAL} links={this.linkData()} />
     );
   }
 
@@ -129,4 +125,29 @@ class Shell extends Component {
   }
 }
 
+Shell.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node,
+  errors: PropTypes.shape({
+    general: PropTypes.oneOfType([PropTypes.array, PropTypes.string])
+  }),
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      onClick: PropTypes.func.isRequired
+    })
+  ),
+  isSubmitting: PropTypes.bool,
+  isValid: PropTypes.bool,
+  buttons: PropTypes.object,
+  handleSubmit: PropTypes.func,
+  resetForm: PropTypes.func,
+  onCancel: PropTypes.func
+};
+
+Shell.defaultProps = {
+  onCancel: () => null,
+  mode: "normal",
+  buttons: {}
+};
 export default Shell;

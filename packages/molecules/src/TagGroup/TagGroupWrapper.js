@@ -9,10 +9,10 @@ const TagGroupWrapper = system(
     flexDirection: "row",
     px: 0,
     pb: 0,
-    pt: 0
+    pt: 0,
+    justifyContent: "flex-start"
   },
-  "alignSelf",
-  "justifyContent"
+  "alignSelf"
 );
 
 export default styled(TagGroupWrapper)`
