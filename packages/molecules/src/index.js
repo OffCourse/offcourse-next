@@ -15,6 +15,7 @@ export { default as InputField } from "./InputField";
 export { default as InputList } from "./InputList";
 export { default as LinkGroup } from "./LinkGroup";
 export { default as List } from "./List";
+export { default as Loading } from "./Loading";
 export { default as MessageGroup } from "./MessageGroup";
 export { default as Menu } from "./Menu";
 export { default as Modal } from "./Modal";

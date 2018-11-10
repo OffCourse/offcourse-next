@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
-import { Loading } from "@offcourse/atoms";
+import { Loading } from "..";
 import InfiniteScrollWrapper from "./InfiniteScrollWrapper";
 import Waypoint from "react-waypoint";
 import { sizes } from "@offcourse/constants";
