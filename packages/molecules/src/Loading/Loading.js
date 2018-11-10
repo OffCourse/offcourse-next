@@ -17,7 +17,7 @@ class Loading extends Component {
 }
 
 Loading.propTypes = {
-  size: PropTypes.oneOf({ SMALL, NORMAL, LARGE, EXTRA_LARGE })
+  size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE])
 };
 
 export default Loading;

@@ -1,6 +1,6 @@
 ```react
 const { EXTRA_LARGE} = sizes;
 <Pulse>
-  <Heading>HELLO THERE!!!!</Heading>
+  <Heading size={EXTRA_LARGE}>HELLO THERE!!!!</Heading>
 </Pulse>
 ```
