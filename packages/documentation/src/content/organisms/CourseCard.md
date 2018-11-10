@@ -29,7 +29,8 @@ const course = {
   tags: ["tic", "tac", "toe"],
   description: `Gentrify adipisicing fanny pack pabst, health goth excepteur ut sunt swag qui plaid tumeric letterpress. Wolf gentrify live-edge 8-bit. Af ut thundercats locavore williamsburg, blue bottle man braid viral`
 };
-  <CourseCard course={course} />
+const { CLOSEABLE } = affordances;
+<CourseCard affordance={CLOSEABLE} course={course} />
 ```
 
 An onCheckpointToggle callback can be added to make the progress trackable

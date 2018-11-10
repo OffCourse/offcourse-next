@@ -8,15 +8,18 @@ class Description extends Component {
 
   render() {
     const { children, label } = this.props;
+    if (!children) {
+      return null;
+    }
     if (label) {
       return (
-        <Section p={0}>
+        <Section>
           <Label>{label}</Label>
           <Text>{children}</Text>
         </Section>
       );
     }
-    return <Section p={0}>{children} </Section>;
+    return <Section>{children} </Section>;
   }
 }
 
@@ -24,7 +27,7 @@ Description.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.element)
-  ]).isRequired,
+  ]),
   label: PropTypes.string
 };
 

@@ -3,7 +3,7 @@ import { Section } from "@offcourse/atoms";
 
 const CuratorWrapper = styled(Section).attrs({
   display: "grid",
-  p: 0
+  p: 6
 })`
   color: "black";
   grid-template-columns: 4rem 1fr;

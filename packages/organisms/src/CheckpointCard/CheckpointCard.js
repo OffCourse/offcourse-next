@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { identity } from "ramda";
-import { Header, ExpandableCard as Card } from "@offcourse/molecules";
-import { Link, Text, Group, Checkbox, Icon, Section } from "@offcourse/atoms";
-import { Meta } from "./sections";
-import { sizes } from "@offcourse/constants";
+import {
+  Header,
+  CheckpointMetaSection,
+  ExpandableCard as Card
+} from "@offcourse/molecules";
+import { Text, Checkbox, Icon, Section } from "@offcourse/atoms";
+import { affordances, sizes } from "@offcourse/constants";
+
+const { CHECKABLE, NONE } = affordances;
 
 const { LARGE } = sizes;
 class CheckpointCard extends Component {
@@ -35,19 +40,8 @@ class CheckpointCard extends Component {
   };
 
   render() {
+    const { breadcrumbs, checkpoint, level, layout } = this.props;
     const {
-      borderBottom,
-      borderColor,
-      status,
-      checkable,
-      checkpoint,
-      level,
-      mb,
-      mx,
-      layout
-    } = this.props;
-    const {
-      course,
       tags,
       task,
       resourceUrl,
@@ -61,89 +55,27 @@ class CheckpointCard extends Component {
         key={`${checkpointId}-${completed}`}
         layout={layout}
         initialLevel={level}
-        borderBottom={borderBottom}
-        borderColor={borderColor}
-        expandable={true}
-        inactive={level === 0 || status === "loading"}
-        px={0}
-        pt={0}
-        mx={mx}
-        mb={mb}
+        affordance={CHECKABLE}
       >
-        <Group
-          bg={["grayScale.1", "white", "white"]}
-          py={[7, 6, 6]}
-          pb={0}
-          section="breadcrumbs"
-          alignItems="stretch"
-        >
-          <Group
-            pb={[3, 0, 0]}
-            pt={0}
-            px={8}
-            display={["flex", "none", "none"]}
-          >
-            <Link
-              onClick={this.handleCourseClick}
-              fontFamily="base"
-              basic
-            >{`< ${course.goal}`}</Link>
-          </Group>
-          <Header
-            p={0}
-            px={[8, 8, 8]}
-            py={0}
-            bg={["grayScale.1", "white", "white"]}
-            onClick={this.handleCheckpointClick}
-            icon={
-              checkable && (
-                <Checkbox
-                  size={LARGE}
-                  bg={["white", "grayScale.1", "grayScale.1"]}
-                  checked={completed}
-                  onToggle={this.handleCheckpointToggle}
-                />
-              )
-            }
-          >
-            {task}
-          </Header>
-        </Group>
         <Header
           bg={["grayScale.1", "white", "white"]}
           section="header"
-          px={[6, 8, 8]}
+          breadcrumbs={breadcrumbs}
           onClick={this.handleCheckpointClick}
-          icon={
-            checkable && (
-              <Checkbox
-                size={LARGE}
-                bg={["white", "grayScale.1", "grayScale.1"]}
-                checked={completed}
-                onToggle={this.handleCheckpointToggle}
-              />
-            )
-          }
         >
           {task}
         </Header>
-        <Meta
+        <CheckpointMetaSection
           section="meta"
-          resourceType={resource ? resource.resourceType : "unknown"}
-          tags={tags || []}
+          resourceType={resource && resource.resourceType}
+          tags={tags}
         />
-        <Group section="source">
-          <Group pt={6} px={8}>
-            <Text size={LARGE}>
-              View the Content below or on the original source
-              <Icon
-                mx={4}
-                name="link"
-                onClick={() => window.open(resourceUrl)}
-              />
-            </Text>
-          </Group>
-        </Group>
+        <Section section="source">
+          <Text size={LARGE}>
+            View the content below or on the original source
+            <Icon mx={4} name="link" onClick={() => window.open(resourceUrl)} />
+          </Text>
+        </Section>
       </Card>
     );
   }
@@ -156,16 +88,14 @@ CheckpointCard.propTypes = {
   onCheckpointToggle: PropTypes.func,
   checkable: PropTypes.bool,
   layout: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
-  level: PropTypes.number,
-  status: PropTypes.string
+  level: PropTypes.number
 };
 
 CheckpointCard.defaultProps = {
   level: 1,
-  borderColor: "grayScale.2",
   onCheckpointClick: identity,
   onCheckpointToggle: identity,
-  layout: [["header"], ["header", "meta"], ["breadcrumbs", "meta", "source"]]
+  layout: [["header"], ["header", "meta"], ["header", "meta", "source"]]
 };
 
 export default CheckpointCard;

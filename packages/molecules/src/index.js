@@ -1,5 +1,7 @@
+export { default as Breadcrumbs } from "./Breadcrumbs";
 export { default as ButtonGroup } from "./ButtonGroup";
 export { default as CheckItem } from "./CheckItem";
+export { default as CheckpointMetaSection } from "./CheckpointMetaSection";
 export { default as CheckpointInput } from "./CheckpointInput";
 export { default as CheckpointItem } from "./CheckpointItem";
 export { default as CheckpointList } from "./CheckpointList";

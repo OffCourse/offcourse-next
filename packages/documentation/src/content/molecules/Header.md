@@ -30,12 +30,37 @@ const { SHRINKABLE } = affordances;
 <Header affordance={SHRINKABLE}>Hello</Header>
 ```
 
-```react|span-3
+```react|span-3,dark
 const { CHECKABLE } = affordances;
 const breadcrumbs = [
     { text: "Go Here",
       onClick: () => console.log("x")
     }
 ];
-<Header breadcrumbs={breadcrumbs} affordance={CHECKABLE}>This is a long header to test it out with long lines</Header>
+<Header bg="white" breadcrumbs={breadcrumbs} affordance={CHECKABLE}>This is a long header to test it out with long lines</Header>
+```
+
+```react|span-3,dark
+const { CHECKABLE } = affordances;
+const breadcrumbs = [
+    { text: "Go Here",
+      onClick: () => console.log("x")
+    }
+];
+<Header bg="grayScale.1" breadcrumbs={breadcrumbs} affordance={CHECKABLE}>This is a long header to test it out with long lines</Header>
+```
+
+```react|span-3,dark
+const { CHECKABLE } = affordances;
+<Header bg="white" p={8} affordance={CHECKABLE}>This is a long header to test it out with long lines</Header>
+```
+
+```react|span-3,dark
+const { CHECKABLE } = affordances;
+const breadcrumbs = [
+    { text: "Go Here",
+      onClick: () => console.log("x")
+    }
+];
+<Header bg="grayScale.1" p={8} breadcrumbs={breadcrumbs} affordance={CHECKABLE}>This is a long header to test it out with long lines</Header>
 ```

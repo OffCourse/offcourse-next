@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
+import { Section } from "@offcourse/atoms";
 import { identity, isEmpty, isNil } from "ramda";
 import {
   ExpandableCard as Card,
@@ -10,48 +11,39 @@ import {
   Curator,
   CheckpointList
 } from "@offcourse/molecules";
+import { affordances } from "@offcourse/constants";
+const { SELECTABLE, CLOSEABLE, EXPANDABLE } = affordances;
 
-/**
- * The course card component for the Offcourse project
- */
+const hasTags = tags => {
+  return !isEmpty(tags) && !isNil(tags);
+};
 
-export default class CourseCard extends Component {
-  static propTypes = {
-    status: PropTypes.string,
-    onCheckpointToggle: PropTypes.func,
-    onCheckpointClick: PropTypes.func,
-    onCuratorClick: PropTypes.func,
-    onGoalClick: PropTypes.func,
-    onTagClick: PropTypes.func,
-    shareMessage: PropTypes.string,
-    course: PropTypes.shape({
-      courseId: PropTypes.string.isRequired,
-      goal: PropTypes.string.isRequired,
-      curator: PropTypes.string.isRequired,
-      avatarUrl: PropTypes.string,
-      courseUrl: PropTypes.string
-    }),
-    initialLevel: PropTypes.number,
-    layout: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
-  };
+const CourseCard = ({
+  course,
+  onCheckpointToggle,
+  onGoalClick,
+  onCheckpointClick,
+  onTagClick,
+  onCuratorClick,
+  shareMessage,
+  layout,
+  affordance,
+  initialLevel
+}) => {
+  const {
+    courseId,
+    goal,
+    curator,
+    courseUrl,
+    avatarUrl,
+    profileUrl,
+    checkpoints,
+    description,
+    width,
+    tags
+  } = course;
 
-  static defaultProps = {
-    shareMessage: "Checkout This Course",
-    expandable: false,
-    onCuratorClick: identity,
-    onGoalClick: identity,
-    onCheckpointClick: identity,
-    onTagClick: identity,
-    layout: [
-      ["header"],
-      ["header", "meta"],
-      ["header", "meta", "description", "social"],
-      ["header", "meta", "description", "checkpoints", "tags", "social"]
-    ]
-  };
-
-  handleCheckpointToggle = ({ checkpointId, task, checked }) => {
-    const { course, onCheckpointToggle } = this.props;
+  const handleCheckpointToggle = ({ checkpointId, task, checked }) => {
     onCheckpointToggle({
       courseId: course.courseId,
       checkpointId,
@@ -61,8 +53,7 @@ export default class CourseCard extends Component {
     });
   };
 
-  handleCheckpointClick = ({ task, checkpointId }) => {
-    const { course, onCheckpointClick } = this.props;
+  const handleCheckpointClick = ({ task, checkpointId }) => {
     onCheckpointClick({
       courseId: course.courseId,
       goal: course.goal,
@@ -72,91 +63,88 @@ export default class CourseCard extends Component {
     });
   };
 
-  hasTags = tags => {
-    return !isEmpty(tags) && !isNil(tags);
-  };
-
-  render() {
-    const {
-      course,
-      onCheckpointToggle,
-      onGoalClick,
-      onCheckpointClick,
-      onTagClick,
-      onCuratorClick,
-      shareMessage,
-      layout,
-      headerIcon,
-      borderBottom,
-      borderColor,
-      expandable,
-      width,
-      initialLevel
-    } = this.props;
-    const {
-      courseId,
-      goal,
-      curator,
-      courseUrl,
-      avatarUrl,
-      profileUrl,
-      checkpoints,
-      description,
-      tags,
-      status
-    } = course;
-
-    return (
-      <Card
-        inactive={status === "loading"}
-        width={width || ["100%", "18rem", "18rem"]}
-        borderBottom={borderBottom}
-        borderColor={borderColor}
-        expandable={expandable}
-        initialLevel={initialLevel}
-        layout={layout}
+  return (
+    <Card
+      affordance={affordance}
+      width={width || ["100%", "18rem", "18rem"]}
+      initialLevel={initialLevel}
+      layout={layout}
+    >
+      <Header
+        onClick={() => onGoalClick({ goal, curator, courseId })}
+        section="header"
       >
-        <Header
-          onClick={() => onGoalClick({ goal, curator, courseId })}
-          section="header"
-          icon={headerIcon}
-        >
-          {goal}
-        </Header>
-        <Curator
-          section="meta"
-          curator={curator}
-          onClick={onCuratorClick}
-          profileUrl={profileUrl}
-          avatarUrl={avatarUrl}
-        />
-        {description && (
-          <Description label="Course Description" section="description">
-            {description}
-          </Description>
-        )}
+        {goal}
+      </Header>
+      <Curator
+        section="meta"
+        curator={curator}
+        onClick={onCuratorClick}
+        profileUrl={profileUrl}
+        avatarUrl={avatarUrl}
+      />
+      <Description label="Course Description" section="description">
+        {description}
+      </Description>
+      <Section section="checkpoints">
         <CheckpointList
-          section="checkpoints"
-          onToggle={onCheckpointToggle && this.handleCheckpointToggle}
-          onClick={onCheckpointClick && this.handleCheckpointClick}
+          onToggle={onCheckpointToggle && handleCheckpointToggle}
+          onClick={onCheckpointClick && handleCheckpointClick}
           checkpoints={checkpoints}
         />
-        {this.hasTags(tags) && (
+      </Section>
+      {hasTags(tags) && (
+        <Section section="tags">
           <TagGroup
             onClick={onTagClick}
             flex={1}
             direction="both"
-            section="tags"
             tags={tags}
           />
-        )}
-        <Share
-          section="social"
-          url={courseUrl || "loading..."}
-          text={shareMessage}
-          providers={["twitter", "facebook", "url"]}
-        />
-      </Card>
-    );
-  }
-}
+        </Section>
+      )}
+      <Share
+        section="social"
+        url={courseUrl || "loading..."}
+        text={shareMessage}
+        providers={["twitter", "facebook", "url"]}
+      />
+    </Card>
+  );
+};
+
+CourseCard.propTypes = {
+  onCheckpointToggle: PropTypes.func,
+  onCheckpointClick: PropTypes.func,
+  onCuratorClick: PropTypes.func,
+  onGoalClick: PropTypes.func,
+  onTagClick: PropTypes.func,
+  shareMessage: PropTypes.string,
+  course: PropTypes.shape({
+    courseId: PropTypes.string.isRequired,
+    goal: PropTypes.string.isRequired,
+    curator: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string,
+    courseUrl: PropTypes.string
+  }),
+  initialLevel: PropTypes.number,
+  affordance: PropTypes.oneOf([EXPANDABLE, SELECTABLE, CLOSEABLE]),
+  layout: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
+};
+
+CourseCard.defaultProps = {
+  shareMessage: "Checkout This Course",
+  affordance: EXPANDABLE,
+  onCuratorClick: identity,
+  onGoalClick: identity,
+  onCheckpointClick: identity,
+  onTagClick: identity,
+  layout: [
+    ["header"],
+    ["header", "meta"],
+    ["header", "meta", "description", "social"],
+    ["header", "meta", "description", "checkpoints", "tags", "social"]
+  ]
+};
+
+export default memo(CourseCard);

@@ -35,5 +35,10 @@ const checkpoint = {
     goal: "Do More"
   }
 };
-<CheckpointCard checkable level={2} checkpoint={checkpoint}/>
+const breadcrumbs = [
+    { text: "Go Here",
+      onClick: () => console.log("x")
+    }
+];
+<CheckpointCard breadcrumbs={breadcrumbs} checkable level={2} checkpoint={checkpoint}/>
 ```

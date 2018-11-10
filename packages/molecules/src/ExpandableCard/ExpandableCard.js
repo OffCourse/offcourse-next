@@ -5,7 +5,14 @@ import PropTypes from "prop-types";
 import { variants, affordances } from "@offcourse/constants";
 
 const { ACTIVE, INACTIVE } = variants;
-const { NONE, CHECKABLE, CLOSEABLE, EXPANDABLE, SHRINKABLE } = affordances;
+const {
+  NONE,
+  SELECTABLE,
+  CHECKABLE,
+  CLOSEABLE,
+  EXPANDABLE,
+  SHRINKABLE
+} = affordances;
 
 class ExpendableCard extends Component {
   state = {
@@ -69,11 +76,19 @@ class ExpendableCard extends Component {
   };
 
   render() {
+    const { affordance } = this.props;
     const rest = omit(
       ["initialLevel", "layout", "children", "onResize", "onIconClick"],
       this.props
     );
-    return <Card {...rest}>{this.augmentSections()}</Card>;
+    return (
+      <Card
+        {...rest}
+        affordance={affordance === EXPANDABLE ? SELECTABLE : affordance}
+      >
+        {this.augmentSections()}
+      </Card>
+    );
   }
 }
 
@@ -88,6 +103,7 @@ ExpendableCard.propTypes = {
     NONE,
     CHECKABLE,
     CLOSEABLE,
+    SELECTABLE,
     EXPANDABLE,
     SHRINKABLE
   ])

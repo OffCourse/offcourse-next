@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { map } from "ramda";
+import { Section } from "@offcourse/atoms";
 import { List, CheckpointItem } from "..";
 
 const CheckpointList = ({ checkpoints, onClick, onToggle }) => {

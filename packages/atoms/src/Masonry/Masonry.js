@@ -10,7 +10,7 @@ import Grid from "./Grid";
 class Masonry extends PureComponent {
   state = { numberOfColumns: 1 };
 
-  handleResize = () => {
+  handleResize = debounce(() => {
     if (!this.masonry) return null;
     const { onResize, breakpoints } = this.props;
     fastdom.measure(() => {
@@ -27,12 +27,14 @@ class Masonry extends PureComponent {
         );
       });
     });
-  };
+  }, 200);
 
   componentDidMount() {
-    const handleResize = debounce(this.handleResize.bind(this), 200);
-    handleResize();
-    window.addEventListener("resize", handleResize);
+    this.handleResize();
+    window.addEventListener("resize", this.handleResize);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
   }
 
   renderGrid() {

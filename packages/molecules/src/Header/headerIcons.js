@@ -1,19 +1,21 @@
 import React from "react";
+import { identity, flatten, map } from "ramda";
 import { Checkbox, Icon } from "@offcourse/atoms";
 import { affordances, sizes } from "@offcourse/constants";
 
 const { LARGE } = sizes;
 const { NONE, CLOSEABLE, CHECKABLE, EXPANDABLE, SHRINKABLE } = affordances;
 
-const Checkable = ({ checked, onClick }) => {
-  return (
-    <Checkbox
-      size={LARGE}
-      bg={["white", "grayScale.1", "grayScale.1"]}
-      checked={true}
-      onToggle={onClick}
-    />
-  );
+const iconBg = rbg => {
+  if (!rbg) {
+    return "grayScale.1";
+  }
+  return map(bg => (bg === "white" ? "grayScale.1" : "white"), flatten([rbg]));
+};
+
+const Checkable = ({ checked, onClick, parentBg }) => {
+  const bg = iconBg(parentBg);
+  return <Checkbox bg={bg} size={LARGE} checked={true} onToggle={onClick} />;
 };
 
 const Expandable = ({ onClick }) => {
