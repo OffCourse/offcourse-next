@@ -20,11 +20,15 @@ class Pulse extends Component {
   };
 
   componentDidMount() {
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.setState({
         reverse: !this.state.reverse
       });
     }, 800);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
