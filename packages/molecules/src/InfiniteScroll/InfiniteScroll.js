@@ -35,4 +35,4 @@ InfiniteScroll.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-export default memo(InfiniteScroll);
+export default InfiniteScroll;

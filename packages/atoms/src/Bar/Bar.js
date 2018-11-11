@@ -12,6 +12,7 @@ const BarWrapper = system(
     zIndex: 0
   },
   "top",
+  "width",
   "bottom",
   "left",
   "right",

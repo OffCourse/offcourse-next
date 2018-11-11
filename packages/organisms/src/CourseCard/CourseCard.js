@@ -147,4 +147,4 @@ CourseCard.defaultProps = {
   ]
 };
 
-export default memo(CourseCard);
+export default CourseCard;

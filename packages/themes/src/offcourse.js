@@ -213,13 +213,10 @@ const signalColorCombos = {
 
 const globals = `
   body {
-    margin: 0;
-    padding: 0;
     top: 0;
     left: 0;
     right: 0;
     background: ${grayScale[1]};
-    overflow-x: hidden;
   }
 
   ::-webkit-scrollbar {
@@ -255,6 +252,9 @@ const globals = `
     font-family: Nitti Grotesk;
     font-size: 16px;
     line-height: 20px;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
 `;
 

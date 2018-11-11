@@ -5,6 +5,17 @@ import { InfiniteScroll } from "@offcourse/molecules";
 import { CourseCard } from "..";
 import PropTypes from "prop-types";
 
+const calculateBreakpoints = () => {
+  return times(identity, 100).map(columns => {
+    const gutter = 16;
+    const columnWidth = 288;
+    const offset = columnWidth + gutter;
+    const colSpace = (columns + 1) * columnWidth;
+    const gutterSpace = columns * gutter;
+    return colSpace + offset + gutterSpace;
+  });
+};
+const breakpoints = calculateBreakpoints();
 export default class CourseCardLayout extends Component {
   static propTypes = {
     initialCardLevel: PropTypes.number,
@@ -34,19 +45,6 @@ export default class CourseCardLayout extends Component {
     loadMore: identity
   };
 
-  calculateBreakpoints() {
-    return times(identity, 100).map(columns => {
-      const gutter = 16;
-      const columnWidth = 288;
-      const offset = columnWidth + gutter;
-      const colSpace = (columns + 1) * columnWidth;
-      const gutterSpace = columns * gutter;
-      return colSpace + offset + gutterSpace;
-    });
-  }
-
-  breakpoints = this.calculateBreakpoints();
-
   render() {
     const {
       courses,
@@ -61,7 +59,7 @@ export default class CourseCardLayout extends Component {
     } = this.props;
     return (
       <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>
-        <Masonry onResize={onResize} breakpoints={this.breakpoints}>
+        <Masonry onResize={onResize} breakpoints={breakpoints}>
           {map(
             course => (
               <CourseCard
@@ -71,7 +69,7 @@ export default class CourseCardLayout extends Component {
                 onGoalClick={goToCourse}
                 onCheckpointClick={goToCheckpoint}
                 onTagClick={goToCollection}
-                key={course.courseId}
+                key={`${course.courseId}-${initialCardLevel}`}
                 layout={layout}
                 course={course}
               />

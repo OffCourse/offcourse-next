@@ -1,7 +1,5 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { debounce } from "debounce";
-import fastdom from "fastdom";
 import { identity } from "ramda";
 import { MasonryWrapper } from "./MasonryWrapper";
 import { getColumns, prepareGrid } from "./helpers";
@@ -10,24 +8,20 @@ import Grid from "./Grid";
 class Masonry extends PureComponent {
   state = { numberOfColumns: 1 };
 
-  handleResize = debounce(() => {
+  handleResize = () => {
     if (!this.masonry) return null;
     const { onResize, breakpoints } = this.props;
-    fastdom.measure(() => {
-      const { offsetWidth } = this.masonry;
-      const proposal = getColumns(offsetWidth, breakpoints);
-      fastdom.mutate(() => {
-        this.setState(
-          () => {
-            return { numberOfColumns: proposal };
-          },
-          () => {
-            return onResize({ width: offsetWidth, numberOfColumns: proposal });
-          }
-        );
-      });
-    });
-  }, 200);
+    const { offsetWidth } = this.masonry;
+    const proposal = getColumns(offsetWidth, breakpoints);
+    this.setState(
+      () => {
+        return { numberOfColumns: proposal };
+      },
+      () => {
+        return onResize({ width: offsetWidth, numberOfColumns: proposal });
+      }
+    );
+  };
 
   componentDidMount() {
     this.handleResize();

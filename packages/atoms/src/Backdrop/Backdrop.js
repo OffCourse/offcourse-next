@@ -1,4 +1,5 @@
 import system from "system-components";
+import React from "react";
 import styled from "styled-components";
 
 const Backdrop = system({
@@ -12,6 +13,8 @@ const Backdrop = system({
   right: 0
 });
 
-export default styled(Backdrop)`
+export default styled(({ isVisible, children, ...rest }) => (
+  <Backdrop {...rest}>{children}</Backdrop>
+))`
   pointer-events: ${({ isVisible }) => (isVisible ? "auto" : "none")};
 `;

@@ -20,8 +20,15 @@ const LeftAnimation = posed.div({
 });
 
 const RightAnimation = posed.div({
-  close: { x: getDistance, opacity: 0 },
-  open: { x: 0, opacity: 1 }
+  close: {
+    x: getDistance,
+    opacity: 1
+  },
+  open: {
+    x: 0,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 200, damping: 100 }
+  }
 });
 
 const animations = {
