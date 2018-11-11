@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import system from "system-components";
 import styled from "styled-components";
-import { Loading } from "@offcourse/atoms";
+import { Loading } from "@offcourse/molecules";
 
 import Loadable from "react-loadable";
 

@@ -52,7 +52,7 @@ module.exports = {
       mobile: true,
       inject: false,
       template: require("html-webpack-template"),
-      appMountId: "root"
+      appMountIds: ["root", "portal"]
     })
   ]
 };

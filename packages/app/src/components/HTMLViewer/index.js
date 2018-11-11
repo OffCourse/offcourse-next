@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Heading, Loading } from "@offcourse/atoms";
+import { Heading } from "@offcourse/atoms";
+import { Loading } from "@offcourse/molecules";
 import PropTypes from "prop-types";
 import { Code, Link, Text, Image } from "./elements";
 

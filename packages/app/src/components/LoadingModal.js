@@ -1,6 +1,6 @@
 import React, { memo } from "react";
-import { Group, Loading } from "@offcourse/atoms";
-import { Modal } from "@offcourse/molecules";
+import { Group } from "@offcourse/atoms";
+import { Modal, Loading } from "@offcourse/molecules";
 import { sizes } from "@offcourse/constants";
 
 const { LARGE } = sizes;

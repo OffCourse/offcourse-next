@@ -1,6 +1,6 @@
 import React from "react";
-import { Text, Heading, Group, Loading, Icon } from "@offcourse/atoms";
-import { IconGroup } from "@offcourse/molecules";
+import { Text, Heading, Group, Icon } from "@offcourse/atoms";
+import { IconGroup, Loading } from "@offcourse/molecules";
 import PropTypes from "prop-types";
 import { sizes } from "@offcourse/constants";
 

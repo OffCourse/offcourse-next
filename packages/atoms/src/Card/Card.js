@@ -2,7 +2,8 @@ import system from "system-components";
 import styled from "styled-components";
 import { affordances } from "@offcourse/constants";
 
-const { EXPANDABLE, SELECTABLE } = affordances;
+const { SELECTABLE } = affordances;
+
 const CardWrapper = system(
   {
     display: "flex",

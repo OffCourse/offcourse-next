@@ -1,23 +1,26 @@
 import React from "react";
 import posed from "react-pose";
 
+const getDistance = ({ distance }) => `${distance}`;
+const getNegativeDistance = ({ distance }) => `-${distance}`;
+
 const TopAnimation = posed.div({
-  close: { y: "-100%", opacity: 0 },
+  close: { y: getNegativeDistance, opacity: 1 },
   open: { y: 0, opacity: 1 }
 });
 
 const BottomAnimation = posed.div({
-  close: { y: "200%", opacity: 0 },
+  close: { y: getDistance, opacity: 0 },
   open: { y: 0, opacity: 1 }
 });
 
 const LeftAnimation = posed.div({
-  close: { x: "-100%", opacity: 0 },
+  close: { x: getNegativeDistance, opacity: 0 },
   open: { x: 0, opacity: 1 }
 });
 
 const RightAnimation = posed.div({
-  close: { x: "200%", opacity: 0 },
+  close: { x: getDistance, opacity: 0 },
   open: { x: 0, opacity: 1 }
 });
 
@@ -33,7 +36,8 @@ const SlideAnimation = ({ direction, ...props }) => {
 };
 
 SlideAnimation.defaultProps = {
-  direction: "top"
+  direction: "top",
+  distance: "100%"
 };
 
 export default SlideAnimation;

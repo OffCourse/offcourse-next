@@ -4,6 +4,7 @@ const MainWrapper = system({
   is: "div",
   zIndex: -1,
   display: "flex",
+  flexDirection: "column",
   position: "fixed",
   bg: "grayScale.1",
   left: 0,

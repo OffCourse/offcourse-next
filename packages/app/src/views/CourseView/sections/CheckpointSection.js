@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { find, propEq } from "ramda";
-import { Loading, Group } from "@offcourse/atoms";
+import { Group } from "@offcourse/atoms";
+import { Loading } from "@offcourse/molecules";
 import { CheckpointCard } from "@offcourse/organisms";
 import { ErrorCard, ResourceCard, ErrorBoundary } from "../../../components";
 import { ResourceProvider } from "../../../providers";

@@ -25,7 +25,7 @@ class FormField extends Component {
       placeholder
     } = this.props;
     return (
-      <Section alignItems="stretch">
+      <Section justifyContent="stretch">
         <Field
           name={name}
           render={({ field, form }) => {

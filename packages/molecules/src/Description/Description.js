@@ -13,13 +13,17 @@ class Description extends Component {
     }
     if (label) {
       return (
-        <Section>
+        <Section alignItems="flex-start" flexDirection="column">
           <Label>{label}</Label>
           <Text>{children}</Text>
         </Section>
       );
     }
-    return <Section>{children} </Section>;
+    return (
+      <Section alignItems="flex-start" flexDirection="column">
+        {children}
+      </Section>
+    );
   }
 }
 

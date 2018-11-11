@@ -11,6 +11,11 @@ const BarWrapper = system(
     justifyContent: "space-between",
     zIndex: 0
   },
+  "top",
+  "bottom",
+  "left",
+  "right",
+  "position",
   "borders",
   "borderColor",
   "space"

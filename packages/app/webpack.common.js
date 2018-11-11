@@ -65,7 +65,7 @@ module.exports = {
       inject: false,
       mobile: true,
       template: require("html-webpack-template"),
-      appMountId: "root"
+      appMountIds: ["main", "navbar", "backdrop", "sidebar", "overlay"]
     }),
     new WebpackPwaManifest({
       name: "Offcourse",

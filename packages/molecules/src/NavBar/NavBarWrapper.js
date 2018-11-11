@@ -3,5 +3,8 @@ import styled from "styled-components";
 
 export default styled(Bar).attrs({
   pr: 4,
-  zIndex: 2
+  top: 0,
+  left: 0,
+  right: 0,
+  position: "absolute"
 })``;

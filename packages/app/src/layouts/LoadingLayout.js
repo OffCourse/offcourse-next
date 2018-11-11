@@ -1,5 +1,6 @@
 import React, { memo } from "react";
-import { Group, Loading } from "@offcourse/atoms";
+import { Group } from "@offcourse/atoms";
+import { Loading } from "@offcourse/molecules";
 import { sizes } from "@offcourse/constants";
 
 const { EXTRA_LARGE } = sizes;

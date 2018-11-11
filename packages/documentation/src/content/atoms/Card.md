@@ -4,9 +4,11 @@ A card has a title, some text and a button
 ---
 const { LARGE } = sizes;
 <Card>
-  <Heading section="title">Hello</Heading>
-  <Group section="body">Hello</Group>
-  <Group section="actions"><Button size={ LARGE }>Bye</Button></Group>
+  <Section>
+    <Heading>Hello</Heading>
+  </Section>
+  <Section>Hello</Section>
+  <Section justifyContent="center"><Button size={ LARGE }>Bye</Button></Section>
 </Card>
 ```
 
@@ -17,8 +19,10 @@ A card has a title, some text and a button
 const { LARGE } = sizes;
 const { SELECTABLE } = affordances;
 <Card affordance={SELECTABLE}>
-  <Heading section="title">Hello</Heading>
-  <Group section="body">Hello</Group>
-  <Group section="actions"><Button size={ LARGE }>Bye</Button></Group>
+  <Section>
+    <Heading>Hello</Heading>
+  </Section>
+  <Section>Hello</Section>
+  <Section justifyContent="center"><Button size={ LARGE }>Bye</Button></Section>
 </Card>
 ```

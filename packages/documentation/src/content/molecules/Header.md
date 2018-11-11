@@ -57,7 +57,7 @@ const { CHECKABLE } = affordances;
 
 ```react|span-3,dark
 const { CHECKABLE } = affordances;
-cConst breadcrumbs = [
+const breadcrumbs = [
     { text: "Go Here",
       onClick: () => console.log("x")
     }

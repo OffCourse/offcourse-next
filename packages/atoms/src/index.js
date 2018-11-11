@@ -16,6 +16,7 @@ export { default as Logo } from "./Logo";
 export { default as Masonry } from "./Masonry";
 export { default as Message } from "./Message";
 export { default as Overlay } from "./Overlay";
+export { default as Portal } from "./Portal";
 export { default as Pulse } from "./Pulse";
 export { default as Slide } from "./Slide";
 export { default as Section } from "./Section";
