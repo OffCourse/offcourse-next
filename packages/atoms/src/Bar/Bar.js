@@ -6,6 +6,7 @@ const BarWrapper = system(
     display: "flex",
     height: "2.25rem",
     bg: "white",
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

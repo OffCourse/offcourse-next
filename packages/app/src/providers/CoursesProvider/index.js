@@ -22,6 +22,9 @@ export default class CoursesProvider extends Component {
           if (loading) {
             return <LoadingLayout />;
           }
+          if (!data.courses) {
+            return <LoadingLayout />;
+          }
 
           const { edges, pageInfo } = data.courses;
           const courses = map(prop("node"), edges);

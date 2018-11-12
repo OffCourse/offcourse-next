@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { sizes } from "@offcourse/constants";
-import { Icon } from "@offcourse/atoms";
+import { affordances } from "@offcourse/constants";
 import { CourseCard } from "@offcourse/organisms";
 import { CourseAction } from "../../../components";
 import { MasterDetailLayout } from "../../../layouts";
 
-const { LARGE } = sizes;
+const { CLOSEABLE } = affordances;
 const { Master } = MasterDetailLayout;
 
 const MasterSection = ({
@@ -23,22 +22,13 @@ const MasterSection = ({
       <CourseCard
         onCuratorClick={goToCollection}
         layout={layout}
+        onIconClick={goHome}
         onGoalClick={goToCourse}
         onCheckpointClick={goToCheckpoint}
         onCheckpointToggle={toggleCheckpoint}
         onTagClick={goToCollection}
         course={course}
-        borderBottom={[0, 2, 2]}
-        borderColor={["grayScale.1", "grayScale.2", "grayScale.2"]}
-        expandable={false}
-        headerIcon={
-          <Icon
-            onClick={goHome}
-            size={LARGE}
-            color="grayScale.2"
-            name="remove"
-          />
-        }
+        affordance={CLOSEABLE}
       />
       <CourseAction {...action} />
     </Master>

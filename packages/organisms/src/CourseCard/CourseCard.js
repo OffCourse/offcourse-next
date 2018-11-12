@@ -27,6 +27,7 @@ const CourseCard = ({
   onCuratorClick,
   shareMessage,
   layout,
+  onIconClick,
   affordance,
   initialLevel
 }) => {
@@ -67,6 +68,7 @@ const CourseCard = ({
     <Card
       affordance={affordance}
       width={width || ["100%", "18rem", "18rem"]}
+      onIconClick={onIconClick}
       initialLevel={initialLevel}
       layout={layout}
     >
@@ -127,6 +129,7 @@ CourseCard.propTypes = {
     avatarUrl: PropTypes.string,
     courseUrl: PropTypes.string
   }),
+  onIconClick: PropTypes.func,
   initialLevel: PropTypes.number,
   affordance: PropTypes.oneOf([EXPANDABLE, SELECTABLE, CLOSEABLE]),
   layout: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))

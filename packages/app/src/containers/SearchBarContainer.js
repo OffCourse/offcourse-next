@@ -1,34 +1,70 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
-import { Slide } from "@offcourse/atoms";
-import { SearchBar } from "@offcourse/molecules";
+import { debounce } from "debounce";
+import { Adopt } from "react-adopt";
+import { isEmpty } from "ramda";
+import { Slide, Bar } from "@offcourse/atoms";
+import { SearchBar, MessageGroup } from "@offcourse/molecules";
+import { SearchbarProvider, FlashProvider } from "../providers";
+import { Route } from "../components";
 
-import { SearchbarProvider } from "../providers";
-
-const Veil = memo(({ isActive, children, onClick }) => (
+const Veil = ({ isActive, children, onClick }) => (
   <div onClick={onClick}>
     <div style={{ pointerEvents: isActive ? "none" : "auto" }}>{children}</div>
   </div>
-));
+);
+
+const mapper = {
+  searchbar: <SearchbarProvider />,
+  flash: <FlashProvider />,
+  route: <Route />
+};
+
+const navBarHeight = 2.25;
 
 const SearchBarContainer = ({ children }) => {
   return (
-    <SearchbarProvider>
-      {({ close, isOpen }) => {
+    <Adopt mapper={mapper}>
+      {({ searchbar, flash, route }) => {
+        const { messages } = flash;
+        const sliderHeight = `${navBarHeight * (messages.length || 1)}rem`;
+        const isOpen = searchbar.isOpen || !isEmpty(messages);
+        const { goToCollection } = route.handlers;
+
+        const onSearchChange = debounce(
+          ({ searchTerm }) => goToCollection({ searchTerm }),
+          300
+        );
+        const onSearchSubmit = ({ searchTerm }) =>
+          searchbar.close() && goToCollection({ searchTerm });
+
         return (
           <Slide
-            distance="2.25rem"
+            distance={sliderHeight}
             direction="top"
             pose={isOpen ? "open" : "close"}
           >
-            <SearchBar />
-            <Veil onClick={isOpen ? close : null} isActive={isOpen}>
+            <Bar
+              height={sliderHeight}
+              alignItems="stretch"
+              justifyContent="stretch"
+            >
+              {searchbar.isOpen ? (
+                <SearchBar
+                  onSearchChange={onSearchChange}
+                  onSearchSubmit={onSearchSubmit}
+                />
+              ) : (
+                <MessageGroup messages={messages} />
+              )}
+            </Bar>
+            <Veil onClick={searchbar.close} isActive={isOpen}>
               {children}
             </Veil>
           </Slide>
         );
       }}
-    </SearchbarProvider>
+    </Adopt>
   );
 };
 

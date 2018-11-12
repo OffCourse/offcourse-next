@@ -42,26 +42,32 @@ const createGuestLinks = ({ openOverlay }) => {
   ];
 };
 
-const createGeneralLinks = ({ handlers }) => {
+const createGeneralLinks = ({ handlers, closeSidebar }) => {
   return [
     {
-      onClick: handlers.goToFAQ,
+      onClick: () => {
+        handlers.goToFAQ();
+        closeSidebar();
+      },
       title: "Support",
       level: 0
     },
     {
-      onClick: handlers.goToAbout,
+      onClick: () => {
+        handlers.goToAbout();
+        closeSidebar();
+      },
       title: "About",
       level: 0
     }
   ];
 };
-const createLinks = ({ userName, handlers, openOverlay }) => {
+const createLinks = ({ userName, handlers, openOverlay, closeSidebar }) => {
   return flatten([
     userName
       ? createUserLinks({ openOverlay })
       : createGuestLinks({ openOverlay }),
-    createGeneralLinks({ handlers })
+    createGeneralLinks({ handlers, closeSidebar })
   ]);
 };
 
@@ -77,7 +83,8 @@ const SideBarContainer = () => {
           const links = createLinks({
             userName: auth.userName,
             openOverlay,
-            handlers: route.handlers
+            handlers: route.handlers,
+            closeSidebar: sidebar.close
           });
 
           const barWidth = "12rem";
