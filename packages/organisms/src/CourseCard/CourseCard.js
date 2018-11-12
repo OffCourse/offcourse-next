@@ -86,7 +86,7 @@ const CourseCard = ({
       <Description label="Course Description" section="description">
         {description}
       </Description>
-      <Section section="checkpoints">
+      <Section justifyContent="stretch" section="checkpoints">
         <CheckpointList
           onToggle={onCheckpointToggle && handleCheckpointToggle}
           onClick={onCheckpointClick && handleCheckpointClick}

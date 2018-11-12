@@ -216,7 +216,6 @@ const globals = `
     top: 0;
     left: 0;
     right: 0;
-    background: ${grayScale[1]};
   }
 
   ::-webkit-scrollbar {
@@ -255,6 +254,7 @@ const globals = `
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background: ${grayScale[1]};
   }
 `;
 

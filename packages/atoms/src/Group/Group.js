@@ -36,7 +36,7 @@ class Group extends Component {
 Group.Wrapper = GroupWrapper;
 
 Group.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   onResize: PropTypes.func
 };
 

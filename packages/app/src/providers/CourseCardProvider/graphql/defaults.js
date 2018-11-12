@@ -2,7 +2,7 @@ const courseCard = {
   __typename: "CourseCard",
   initialLevel: 1,
   layout: [
-    ["header", "description"],
+    ["header"],
     ["header", "meta", "description", "checkpoints", "tags", "social"]
   ]
 };

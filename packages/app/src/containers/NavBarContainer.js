@@ -16,11 +16,15 @@ const NavBarContainer = () => (
   <Adopt mapper={mapper}>
     {({ searchbar, sidebar, route }) => {
       const { goHome } = route.handlers;
+      const toggleSidebar = () => {
+        searchbar.close();
+        sidebar.toggle();
+      };
       return (
         <Portal rootEl="navbar">
           <NavBar
             onLogoClick={goHome}
-            onMenuButtonClick={sidebar.toggle}
+            onMenuButtonClick={toggleSidebar}
             onSearchButtonClick={searchbar.toggle}
           />
         </Portal>

@@ -16,6 +16,7 @@ const ListWrapper = system(
     is: "ul",
     display: "flex",
     flexDirection: "row",
+    flex: 1,
     alignContent: "stretch",
     m: 0,
     p: 0

@@ -1,30 +1,50 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Section, Heading, Overlay } from "@offcourse/atoms";
+import { Section, Heading } from "@offcourse/atoms";
 import Container from "./Container";
 
+const ModalWrapper = ({ children }) => {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        background: "rgba(0, 0, 0, 0)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        overflow: "hidden hidden",
+        pointerEvents: "auto"
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
 class Modal extends Component {
+  static Section = Section;
+
   static Heading = props => (
     <Section py={6} px={6}>
       <Heading {...props} />
     </Section>
   );
-
-  static Section = Section;
-
   static propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    close: PropTypes.func
+    isOpen: PropTypes.bool
   };
 
   render() {
-    const { isOpen, px, py, children, close } = this.props;
+    const { px, py, children } = this.props;
     return (
-      <Overlay close={close} isOpen={isOpen}>
+      <ModalWrapper>
         <Container px={px} py={py}>
           {children}
         </Container>
-      </Overlay>
+      </ModalWrapper>
     );
   }
 }
