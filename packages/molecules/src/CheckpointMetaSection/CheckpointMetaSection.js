@@ -20,10 +20,11 @@ const resource = {
   }
 };
 
-const CheckpointMetaSection = ({ tags, resourceType }) => {
+const CheckpointMetaSection = ({ tags, px, resourceType }) => {
   const { iconName } = resource[resourceType];
   return (
     <Section
+      px={px}
       flexDirection="row"
       alignItems="center"
       justifyContent={["flex-start", "space-between", "space-between"]}
@@ -38,7 +39,11 @@ const CheckpointMetaSection = ({ tags, resourceType }) => {
 
 CheckpointMetaSection.propTypes = {
   resourceType: PropTypes.oneOf(["video", "html", "unknown"]),
-  tags: PropTypes.arrayOf(PropTypes.string)
+  tags: PropTypes.arrayOf(PropTypes.string),
+  px: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.number),
+    PropTypes.number
+  ])
 };
 
 CheckpointMetaSection.defaultProps = {

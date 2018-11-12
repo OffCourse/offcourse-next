@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Query as ApolloQuery } from "react-apollo";
 import { identity } from "ramda";
-import { Loading } from "@offcourse/atoms";
+import { Loading } from "@offcourse/molecules";
 
 export default class Query extends Component {
   render() {

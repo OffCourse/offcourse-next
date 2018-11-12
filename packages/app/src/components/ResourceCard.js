@@ -14,9 +14,11 @@ const ResourceCard = ({ resource }) => {
   const Viewer = Viewers[resourceType];
 
   return (
-    <Card border="none" bg="white">
-      <Section px={8}>
-        <Header py={[0, 6, 6]}>{title}</Header>
+    <Card>
+      <Section flexDirection="column" alignItems="flex-start" px={8}>
+        <Header px={0} py={[0, 6, 6]}>
+          {title}
+        </Header>
         <Viewer {...content} />
       </Section>
     </Card>

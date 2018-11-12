@@ -11,7 +11,11 @@ const ErrorCard = ({ errorType }) => {
   const { message, explanation } = errors[errorType];
   return (
     <Card p={8}>
-      <Section justifyContent="center" alignItems="center">
+      <Section
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+      >
         <Avatar size={LARGE} variant={errorType} />
         <Heading mt={8} mb={6}>
           {message}

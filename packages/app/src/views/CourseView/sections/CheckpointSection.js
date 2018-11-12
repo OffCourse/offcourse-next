@@ -23,14 +23,19 @@ const CheckpointSection = ({ course, handlers, match, toggleCheckpoint }) => {
   if (!checkpoint) {
     return <ErrorCard errorType={CHECKPOINT_NOT_FOUND} />;
   }
+  const breadcrumbs = [
+    {
+      text: course.goal,
+      onClick: () => goToCourse(course)
+    }
+  ];
   return (
     <Group overflow="hidden scroll">
       <CheckpointCard
         border="none"
         checkable={!!toggleCheckpoint}
         level={2}
-        borderBottom={[1, 2, 2]}
-        borderColor={["grayScale.1", "grayScale.2", "grayScale.2"]}
+        breadcrumbs={breadcrumbs}
         mb={[0, 6, 6]}
         checkpoint={{ course, ...checkpoint }}
         onCheckpointToggle={toggleCheckpoint}
@@ -38,6 +43,7 @@ const CheckpointSection = ({ course, handlers, match, toggleCheckpoint }) => {
         onCourseClick={goToCourse}
       />
       <ErrorBoundary
+        key={task}
         componentToRender={() => <ErrorCard errorType={RESOURCE_NOT_LOADING} />}
       >
         <ResourceProvider resourceUrl={checkpoint.resourceUrl}>

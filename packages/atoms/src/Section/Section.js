@@ -4,7 +4,8 @@ const SectionWrapper = system(
   {
     is: "section",
     display: "flex",
-    p: 6,
+    px: 6,
+    py: 6,
     borderBottom: 1,
     alignItems: "center",
     justifyContent: "flex-start",

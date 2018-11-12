@@ -17,12 +17,19 @@ const Header = ({
   breadcrumbs,
   onClick,
   onIconClick,
-  p,
+  px,
+  py,
   bg
 }) => {
   const HeaderIcon = headerIcons[affordance];
   return (
-    <Section p={p} flexDirection="column" alignItems="stretch" bg={bg}>
+    <Section
+      px={px}
+      py={py}
+      flexDirection="column"
+      alignItems="stretch"
+      bg={bg}
+    >
       <Breadcrumbs
         display={["flex", "none", "none"]}
         pb={[3, 0, 0]}
@@ -49,7 +56,11 @@ Header.propTypes = {
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.string
   ]),
-  p: PropTypes.oneOfType([
+  px: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.number),
+    PropTypes.number
+  ]),
+  py: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.number),
     PropTypes.number
   ]),

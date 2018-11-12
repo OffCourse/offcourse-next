@@ -7,7 +7,8 @@ import Master from "./Master";
 const MasterDetailLayout = ({ children }) => {
   return (
     <Group
-      flexDirection={["column", "row", "row"]}
+      display={["block", "flex", "flex"]}
+      flexDirection={["none", "row", "row"]}
       alignItems={["center", "flex-start", "flex-start"]}
       bg={["white", "grayScale.1", "grayScale.1"]}
       height="calc(100vh - 2.25rem)"

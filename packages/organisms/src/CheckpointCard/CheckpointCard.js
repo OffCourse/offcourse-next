@@ -6,10 +6,10 @@ import {
   CheckpointMetaSection,
   ExpandableCard as Card
 } from "@offcourse/molecules";
-import { Text, Checkbox, Icon, Section } from "@offcourse/atoms";
+import { Text, Icon, Section } from "@offcourse/atoms";
 import { affordances, sizes } from "@offcourse/constants";
 
-const { CHECKABLE, NONE } = affordances;
+const { NONE, CHECKABLE } = affordances;
 
 const { LARGE } = sizes;
 class CheckpointCard extends Component {
@@ -19,6 +19,7 @@ class CheckpointCard extends Component {
     const { goal, curator } = course;
     onCourseClick({ goal, curator });
   };
+
   handleCheckpointClick = () => {
     const { onCheckpointClick, checkpoint } = this.props;
     const { task, course } = checkpoint;
@@ -40,25 +41,21 @@ class CheckpointCard extends Component {
   };
 
   render() {
-    const { breadcrumbs, checkpoint, level, layout } = this.props;
-    const {
-      tags,
-      task,
-      resourceUrl,
-      resource,
-      completed,
-      checkpointId
-    } = checkpoint;
+    const { breadcrumbs, mb, checkpoint, level, layout } = this.props;
+    const { tags, task, resourceUrl, resource, completed } = checkpoint;
 
     return (
       <Card
-        key={`${checkpointId}-${completed}`}
+        mb={mb}
         layout={layout}
         initialLevel={level}
-        affordance={CHECKABLE}
+        onIconClick={this.handleCheckpointToggle}
+        affordance={completed ? CHECKABLE : NONE}
       >
         <Header
           bg={["grayScale.1", "white", "white"]}
+          px={[breadcrumbs ? 8 : 6, 8, 8]}
+          py={breadcrumbs ? 8 : 6}
           section="header"
           breadcrumbs={breadcrumbs}
           onClick={this.handleCheckpointClick}
@@ -67,10 +64,11 @@ class CheckpointCard extends Component {
         </Header>
         <CheckpointMetaSection
           section="meta"
+          px={[breadcrumbs ? 8 : 6, 8, 8]}
           resourceType={resource && resource.resourceType}
           tags={tags}
         />
-        <Section section="source">
+        <Section px={8} section="source">
           <Text size={LARGE}>
             View the content below or on the original source
             <Icon mx={4} name="link" onClick={() => window.open(resourceUrl)} />
@@ -86,7 +84,13 @@ CheckpointCard.propTypes = {
   onCheckpointClick: PropTypes.func,
   onCourseClick: PropTypes.func,
   onCheckpointToggle: PropTypes.func,
-  checkable: PropTypes.bool,
+  breadcrumbs: PropTypes.arrayOf(
+    PropTypes.shape({ text: PropTypes.string, onClick: PropTypes.func })
+  ),
+  mb: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.number),
+    PropTypes.number
+  ]),
   layout: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   level: PropTypes.number
 };

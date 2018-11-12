@@ -18,7 +18,7 @@ const CheckpointsSection = ({ course, toggleCheckpoint, handlers }) => {
             onCheckpointToggle={toggleCheckpoint}
             onCheckpointClick={goToCheckpoint}
             checkpoint={{ course, ...checkpoint }}
-            key={checkpointId}
+            key={`${checkpointId}-${completed}`}
           />
         );
       }, course.checkpoints)}
