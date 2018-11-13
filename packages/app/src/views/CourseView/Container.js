@@ -1,19 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Adopt } from "react-adopt";
-import { find, propEq, partial } from "ramda";
+import { find, propEq } from "ramda";
 import View from "./View";
 import { CourseProvider, OverlayProvider } from "../../providers";
 import { CourseNotFoundView } from "..";
 
 const { SIGNING_IN, EDIT_COURSE, FORK_COURSE } = OverlayProvider.constants;
-
-const toggleCheckpoint = (
-  updateStatus,
-  { courseId, checkpointId, checked }
-) => {
-  updateStatus({ courseId, checkpointId, checked });
-};
 
 const mapActions = ({ userName, userIsCurator, course, overlay, handlers }) => {
   const { goToCourse } = handlers;
@@ -61,10 +54,10 @@ const mapper = {
 };
 
 const mapProps = ({
-  courseData: { course, userName, userIsCurator, updateStatus },
+  courseData: { course, userName, userIsCurator, toggleCheckpoint },
   overlay
 }) => ({
-  toggleCheckpoint: userName ? partial(toggleCheckpoint, [updateStatus]) : null,
+  toggleCheckpoint,
   course,
   userIsCurator,
   userName,
@@ -102,6 +95,7 @@ export default class Container extends Component {
           return (
             <View
               match={match}
+              isLoggedIn={!!userName}
               handlers={handlers}
               action={action}
               course={course}

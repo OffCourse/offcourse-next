@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import { queries } from "./graphql";
+import { LoadingCard } from "@offcourse/organisms";
 import { fakeCourse } from "../../fakeCourse";
 
 export default class CourseQuery extends Component {
@@ -31,7 +32,7 @@ export default class CourseQuery extends Component {
         >
           {({ loading, error, data }) => {
             if (loading) {
-              return children(fakeCourse());
+              return children({ loading });
             }
             if (error) {
               return children(fakeCourse("error"));

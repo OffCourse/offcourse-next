@@ -40,7 +40,7 @@ const mapProps = ({
   courseQuery,
   userName,
   userIsCurator: course && course.curator === userName,
-  updateStatus: updateStatus(update),
+  toggleCheckpoint: updateStatus(update),
   fork: fork(forkCourse),
   save: save(saveCourse, {
     courseId,

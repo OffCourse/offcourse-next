@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { affordances } from "@offcourse/constants";
-import { CourseCard } from "@offcourse/organisms";
+import { CourseCard, LoadingCard } from "@offcourse/organisms";
 import { CourseAction } from "../../../components";
 import { MasterDetailLayout } from "../../../layouts";
 
@@ -17,20 +17,28 @@ const MasterSection = ({
   course
 }) => {
   const { goHome, goToCheckpoint, goToCollection, goToCourse } = handlers;
+  const { loading } = course;
+
   return (
     <Master isAlwaysVisible={isAlwaysVisible}>
-      <CourseCard
-        onCuratorClick={goToCollection}
-        layout={layout}
-        onIconClick={goHome}
-        onGoalClick={goToCourse}
-        onCheckpointClick={goToCheckpoint}
-        onCheckpointToggle={toggleCheckpoint}
-        onTagClick={goToCollection}
-        course={course}
-        affordance={CLOSEABLE}
-      />
-      <CourseAction {...action} />
+      {loading ? (
+        <LoadingCard />
+      ) : (
+        <Fragment>
+          <CourseCard
+            onCuratorClick={goToCollection}
+            layout={layout}
+            onIconClick={goHome}
+            onGoalClick={goToCourse}
+            onCheckpointClick={goToCheckpoint}
+            onCheckpointToggle={toggleCheckpoint}
+            onTagClick={goToCollection}
+            course={course}
+            affordance={CLOSEABLE}
+          />
+          <CourseAction {...action} />
+        </Fragment>
+      )}
     </Master>
   );
 };

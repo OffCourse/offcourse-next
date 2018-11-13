@@ -1,6 +1,5 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
-import { debounce } from "debounce";
 import { Adopt } from "react-adopt";
 import { isEmpty } from "ramda";
 import { Slide, Bar } from "@offcourse/atoms";
@@ -31,10 +30,8 @@ const SearchBarContainer = ({ children }) => {
         const isOpen = searchbar.isOpen || !isEmpty(messages);
         const { goToCollection } = route.handlers;
 
-        const onSearchChange = debounce(
-          ({ searchTerm }) => goToCollection({ searchTerm }),
-          300
-        );
+        const onSearchChange = ({ searchTerm }) =>
+          goToCollection({ searchTerm });
         const onSearchSubmit = ({ searchTerm }) =>
           searchbar.close() && goToCollection({ searchTerm });
 
@@ -72,4 +69,4 @@ SearchBarContainer.propTypes = {
   children: PropTypes.node
 };
 
-export default memo(SearchBarContainer);
+export default SearchBarContainer;

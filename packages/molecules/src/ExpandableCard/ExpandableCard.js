@@ -9,6 +9,7 @@ const {
   NONE,
   SELECTABLE,
   CHECKABLE,
+  UNCHECKABLE,
   CLOSEABLE,
   EXPANDABLE,
   SHRINKABLE
@@ -102,6 +103,7 @@ ExpendableCard.propTypes = {
   affordance: PropTypes.oneOf([
     NONE,
     CHECKABLE,
+    UNCHECKABLE,
     CLOSEABLE,
     SELECTABLE,
     EXPANDABLE,
@@ -112,7 +114,8 @@ ExpendableCard.propTypes = {
 ExpendableCard.defaultProps = {
   onResize: identity,
   affordance: EXPANDABLE,
-  layout: []
+  layout: [],
+  onIconClick: identity
 };
 
 export default ExpendableCard;

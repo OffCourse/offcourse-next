@@ -24,4 +24,4 @@ Detail.propTypes = {
   children: PropTypes.node
 };
 
-export default memo(Detail);
+export default Detail;

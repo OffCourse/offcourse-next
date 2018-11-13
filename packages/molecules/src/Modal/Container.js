@@ -17,7 +17,7 @@ const Container = system({
   mx: 6,
   my: 6,
   opactity: 1,
-  overflow: ["auto", "auto"]
+  overflow: "hidden auto"
 });
 
 export default Container;

@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     filename: "[name].bundle.js",
-    chunkFilename: "[name].[hash].js",
+    chunkFilename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist")
   },
   module: {
@@ -60,6 +60,10 @@ module.exports = {
       title: "Offcourse",
       baseHref: "/",
       filename: "index.html",
+      googleAnalytics: {
+        trackingId: "UA-113174828-1",
+        pageViewOnLoad: true
+      },
       headHtmlSnippet:
         "<link rel=“preload” href=“https://app.offcourse.io/fonts/NGB.woff” as=“font”><link rel=“preload” href=“https://app.offcourse.io/fonts/NGN.woff” as=“font”>",
       inject: false,

@@ -22,6 +22,7 @@ export default class CoursesProvider extends Component {
           if (loading) {
             return <LoadingLayout />;
           }
+
           if (!data.courses) {
             return <LoadingLayout />;
           }

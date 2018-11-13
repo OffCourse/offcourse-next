@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Section, Heading } from "@offcourse/atoms";
-import Container from "./Container";
+import ModalWrapper from "./Container";
 
-const ModalWrapper = ({ children }) => {
+const Container = ({ children }) => {
   return (
     <div
       style={{
@@ -40,11 +40,11 @@ class Modal extends Component {
   render() {
     const { px, py, children } = this.props;
     return (
-      <ModalWrapper>
-        <Container px={px} py={py}>
+      <Container>
+        <ModalWrapper px={px} py={py}>
           {children}
-        </Container>
-      </ModalWrapper>
+        </ModalWrapper>
+      </Container>
     );
   }
 }

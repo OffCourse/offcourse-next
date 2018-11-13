@@ -13,7 +13,10 @@ export default class ResourceProvider extends Component {
     const { children, resourceUrl } = this.props;
     return (
       <Query query={queries.resource} variables={{ resourceUrl }}>
-        {({ data }) => {
+        {({ data, loading }) => {
+          if (loading) {
+            return children({ resource: { loading } });
+          }
           const { resource } = data;
           return children({ resource });
         }}

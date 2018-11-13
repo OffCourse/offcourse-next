@@ -3,20 +3,33 @@ import PropTypes from "prop-types";
 import { map } from "ramda";
 import { Group } from "@offcourse/atoms";
 import { CheckpointCard } from "@offcourse/organisms";
+import { affordances } from "@offcourse/constants";
 
-const CheckpointsSection = ({ course, toggleCheckpoint, handlers }) => {
-  const { goToCheckpoint } = handlers;
-  return (
+const { NONE, CHECKABLE } = affordances;
+
+const CheckpointsSection = ({
+  course,
+  isLoggedIn,
+  toggleCheckpoint,
+  handlers
+}) => {
+  const { goToCollection, goToCheckpoint } = handlers;
+  const { courseId, curator, goal, loading } = course;
+  return loading ? null : (
     <Group m={[6, 0, 0]}>
       {map(checkpoint => {
-        const { completed, checkpointId } = checkpoint;
+        const { completed, checkpointId, task } = checkpoint;
+        const affordance = isLoggedIn ? CHECKABLE : NONE;
         return (
           <CheckpointCard
             mb={6}
             level={completed ? 0 : 1}
-            checkable={!!toggleCheckpoint}
-            onCheckpointToggle={toggleCheckpoint}
-            onCheckpointClick={goToCheckpoint}
+            affordance={affordance}
+            onTagClick={goToCollection}
+            onCheckpointToggle={({ checked }) =>
+              toggleCheckpoint({ checked, goal, courseId, task, checkpointId })
+            }
+            onCheckpointClick={() => goToCheckpoint({ goal, task, curator })}
             checkpoint={{ course, ...checkpoint }}
             key={`${checkpointId}-${completed}`}
           />
@@ -28,6 +41,7 @@ const CheckpointsSection = ({ course, toggleCheckpoint, handlers }) => {
 
 CheckpointsSection.propTypes = {
   course: PropTypes.object.isRequired,
+  isLoggedIn: PropTypes.bool,
   toggleCheckpoint: PropTypes.func,
   handlers: PropTypes.object.isRequired
 };

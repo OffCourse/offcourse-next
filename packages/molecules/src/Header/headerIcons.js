@@ -1,10 +1,17 @@
 import React from "react";
-import { identity, flatten, map } from "ramda";
+import { flatten, map } from "ramda";
 import { Checkbox, Icon } from "@offcourse/atoms";
 import { affordances, sizes } from "@offcourse/constants";
 
 const { LARGE } = sizes;
-const { NONE, CLOSEABLE, CHECKABLE, EXPANDABLE, SHRINKABLE } = affordances;
+const {
+  NONE,
+  CLOSEABLE,
+  CHECKABLE,
+  UNCHECKABLE,
+  EXPANDABLE,
+  SHRINKABLE
+} = affordances;
 
 const iconBg = rbg => {
   if (!rbg) {
@@ -13,7 +20,12 @@ const iconBg = rbg => {
   return map(bg => (bg === "white" ? "grayScale.1" : "white"), flatten([rbg]));
 };
 
-const Checkable = ({ checked, onClick, parentBg }) => {
+const Checkable = ({ onClick, parentBg }) => {
+  const bg = iconBg(parentBg);
+  return <Checkbox bg={bg} size={LARGE} checked={false} onToggle={onClick} />;
+};
+
+const Uncheckable = ({ onClick, parentBg }) => {
   const bg = iconBg(parentBg);
   return <Checkbox bg={bg} size={LARGE} checked={true} onToggle={onClick} />;
 };
@@ -40,6 +52,7 @@ export default {
   [NONE]: null,
   [CLOSEABLE]: Closeable,
   [CHECKABLE]: Checkable,
+  [UNCHECKABLE]: Uncheckable,
   [EXPANDABLE]: Expandable,
   [SHRINKABLE]: Shrinkable
 };

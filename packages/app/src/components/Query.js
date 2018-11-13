@@ -9,7 +9,9 @@ export default class Query extends Component {
     return (
       <ApolloQuery query={query} variables={variables}>
         {({ loading, error, ...rest }) => {
-          if (loading) return <Loading />;
+          if (loading) {
+            return children({ loading });
+          }
           if (error) {
             console.log(query, error);
             return <Loading />;

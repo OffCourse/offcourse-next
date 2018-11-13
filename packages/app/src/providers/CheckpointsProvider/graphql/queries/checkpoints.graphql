@@ -1,6 +1,13 @@
-#import "../fragments/Checkpoints.graphql"
 query checkpoints($courseId: String, $isAuthenticated: Boolean!) {
   course(courseId: $courseId) {
-    ...Checkpoints
+    checkpoints {
+      checkpointId
+      completed @include(if: $isAuthenticated)
+      task
+      resourceUrl
+      resource {
+        resourceType
+      }
+    }
   }
 }

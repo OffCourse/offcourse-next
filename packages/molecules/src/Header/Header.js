@@ -8,7 +8,14 @@ import headerIcons from "./headerIcons";
 import HeadingWrapper from "./HeadingWrapper";
 
 const { ACTIVE, INACTIVE } = variants;
-const { NONE, CLOSEABLE, CHECKABLE, EXPANDABLE, SHRINKABLE } = affordances;
+const {
+  NONE,
+  CLOSEABLE,
+  CHECKABLE,
+  UNCHECKABLE,
+  EXPANDABLE,
+  SHRINKABLE
+} = affordances;
 
 const Header = ({
   children,
@@ -41,7 +48,7 @@ const Header = ({
         </Heading>
         {HeaderIcon && (
           <Group alignItems="flex-end">
-            <HeaderIcon parentBg={bg} checked={true} onClick={onIconClick} />
+            <HeaderIcon parentBg={bg} onClick={onIconClick} />
           </Group>
         )}
       </HeadingWrapper>
@@ -69,6 +76,7 @@ Header.propTypes = {
     NONE,
     CLOSEABLE,
     CHECKABLE,
+    UNCHECKABLE,
     EXPANDABLE,
     SHRINKABLE
   ]),
@@ -86,9 +94,8 @@ Header.propTypes = {
 Header.defaultProps = {
   variant: ACTIVE,
   affordance: NONE,
-  onClick: identity,
   onIconClick: identity,
   breadcrumbs: []
 };
 
-export default memo(Header);
+export default Header;

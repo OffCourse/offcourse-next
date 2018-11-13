@@ -5,6 +5,7 @@ export { default as CheckpointCard } from "./CheckpointCard";
 export { default as CourseCardLayout } from "./CourseCardLayout";
 export { default as CourseForm } from "./CourseForm";
 export { default as Form } from "./Form";
+export { default as LoadingCard } from "./LoadingCard";
 export { default as SignInForm } from "./SignInForm";
 export { default as SignUpForm } from "./SignUpForm";
 export { default as SignOutDialog } from "./SignOutDialog";

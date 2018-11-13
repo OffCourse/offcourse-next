@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
-import { Section, Card, Group } from "@offcourse/atoms";
+import { Section, Card } from "@offcourse/atoms";
 import { Header } from "@offcourse/molecules";
 import { HTMLViewer, VideoViewer } from ".";
 

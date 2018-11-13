@@ -20,7 +20,7 @@ const resource = {
   }
 };
 
-const CheckpointMetaSection = ({ tags, px, resourceType }) => {
+const CheckpointMetaSection = ({ tags, px, resourceType, onTagClick }) => {
   const { iconName } = resource[resourceType];
   return (
     <Section
@@ -31,7 +31,7 @@ const CheckpointMetaSection = ({ tags, px, resourceType }) => {
     >
       <Icon size={LARGE} name={iconName} />
       <Group ml={7} flexDirection="row" alignItems="center">
-        <TagGroup tags={tags} />
+        <TagGroup onClick={onTagClick} tags={tags || []} />
       </Group>
     </Section>
   );
@@ -40,6 +40,7 @@ const CheckpointMetaSection = ({ tags, px, resourceType }) => {
 CheckpointMetaSection.propTypes = {
   resourceType: PropTypes.oneOf(["video", "html", "unknown"]),
   tags: PropTypes.arrayOf(PropTypes.string),
+  onTagClick: PropTypes.func,
   px: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.number),
     PropTypes.number

@@ -1,8 +1,24 @@
 import React, { Component } from "react";
+import { debounce } from "debounce";
 import PropTypes from "prop-types";
 import { map } from "ramda";
 import { Route as RRoute } from "react-router-dom";
 
+const goToCollection = debounce((history, qs) => {
+  const { curator, tag, searchTerm } = map(encodeURIComponent, qs);
+  if (tag) {
+    history.push(`/tag/${tag}`);
+  }
+  if (curator) {
+    history.push(`/curator/${curator}`);
+  }
+  if (searchTerm) {
+    history.push(`/search/${searchTerm}`);
+  }
+  if (!curator && !tag && !searchTerm) {
+    history.push("/");
+  }
+}, 300);
 export default class Route extends Component {
   static propTypes = {
     component: PropTypes.func,
@@ -34,19 +50,7 @@ export default class Route extends Component {
               history.push("/faq");
             },
             goToCollection(qs) {
-              const { curator, tag, searchTerm } = map(encodeURIComponent, qs);
-              if (tag) {
-                history.push(`/tag/${tag}`);
-              }
-              if (curator) {
-                history.push(`/curator/${curator}`);
-              }
-              if (searchTerm) {
-                history.push(`/search/${searchTerm}`);
-              }
-              if (!curator && !tag && !searchTerm) {
-                history.push("/");
-              }
+              goToCollection(history, qs);
             },
             goToCourse(qs) {
               const { curator, goal } = map(encodeURIComponent, qs);
