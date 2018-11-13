@@ -11,7 +11,7 @@ questions:
   - category: Platform
     question: How can I fork existing courses?
     answer: |
-      To fork a course, go to the particular course and click on “Fork This Course” which is indicated below the course. Whenever you create or fork a course, make sure to keep our guidelines for creating a course in mind.
+      To fork a course, go to the particular course and click on “Fork This Course” which is indicated below the course. Whenever you create or fork a course, make sure to keep [our guidelines for creating courses](https://gist.github.com/offcoursedotio/a2cc63d76fad02770954d0667a1693a3) in mind.
   - category: Platform
     question: Do I have to sign in to view, add and/or edit courses?
     answer: |
