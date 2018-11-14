@@ -16,7 +16,12 @@ const CheckpointsSection = ({
   const { goToCollection, goToCheckpoint } = handlers;
   const { courseId, curator, goal, loading } = course;
   return loading ? null : (
-    <Group m={[6, 0, 0]}>
+    <Group
+      m={[6, 0, 0]}
+      justifyContent="stretch"
+      minWidth={["auto", "auto", "25rem"]}
+      maxWidth={["auto", "auto", "55rem"]}
+    >
       {map(checkpoint => {
         const { completed, checkpointId, task } = checkpoint;
         const affordance = isLoggedIn ? CHECKABLE : NONE;

@@ -113,7 +113,6 @@ ExpendableCard.propTypes = {
 
 ExpendableCard.defaultProps = {
   onResize: identity,
-  affordance: EXPANDABLE,
   layout: [],
   onIconClick: identity
 };

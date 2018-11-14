@@ -10,6 +10,7 @@ export default system(
     flex: 1
   },
   "alignSelf",
+  "gridArea",
   "position",
   "width",
   "flexWrap",

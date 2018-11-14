@@ -9,23 +9,25 @@ const { CLOSEABLE } = affordances;
 const { Master } = MasterDetailLayout;
 
 const MasterSection = ({
-  isAlwaysVisible,
   handlers,
   action,
   layout,
+  isLoggedIn,
   toggleCheckpoint,
+  display,
   course
 }) => {
   const { goHome, goToCheckpoint, goToCollection, goToCourse } = handlers;
   const { loading } = course;
 
   return (
-    <Master isAlwaysVisible={isAlwaysVisible}>
+    <Master display={loading ? ["flex", "flex", "flex"] : display}>
       {loading ? (
         <LoadingCard />
       ) : (
         <Fragment>
           <CourseCard
+            isLoggedIn={isLoggedIn}
             onCuratorClick={goToCollection}
             layout={layout}
             onIconClick={goHome}

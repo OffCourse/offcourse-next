@@ -10,7 +10,8 @@ const MainWrapper = system({
   top: 0,
   bottom: 0,
   pt: "2.25rem",
-  overflow: "hidden auto"
+  height: "100vh",
+  overflow: "hidden hidden"
 });
 
 export default MainWrapper;

@@ -22,6 +22,7 @@ const View = ({ match, ...rest }) => {
           path={checkpointPath}
           componentProps={{
             ...rest,
+            display: ["none", "none", "flex"],
             layout: [["header", "meta", "checkpoints"]]
           }}
           component={MasterSection}
@@ -30,7 +31,6 @@ const View = ({ match, ...rest }) => {
         <Route
           componentProps={{
             ...rest,
-            isAlwaysVisible: true,
             layout: [["header", "meta", "description"]]
           }}
           component={MasterSection}

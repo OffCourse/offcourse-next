@@ -8,9 +8,9 @@ const Master = ({ children, isAlwaysVisible }) => {
       display={
         isAlwaysVisible ? ["flex", "flex", "flex"] : ["none", "none", "flex"]
       }
-      alignItems="stretch"
-      flex="none"
-      p={6}
+      alignItems={["stretch", "center", "center"]}
+      p={[6, 0, 0]}
+      top="2.25rem"
     >
       {children}
     </Group>

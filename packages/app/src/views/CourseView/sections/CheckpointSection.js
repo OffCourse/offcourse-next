@@ -5,11 +5,18 @@ import { Group } from "@offcourse/atoms";
 import { CheckpointCard, LoadingCard } from "@offcourse/organisms";
 import { ErrorCard, ResourceCard, ErrorBoundary } from "../../../components";
 import { ResourceProvider } from "../../../providers";
-import { errors as errorTypes } from "@offcourse/constants";
+import { affordances, errors as errorTypes } from "@offcourse/constants";
 
+const { UNCHECKABLE, NONE, CHECKABLE } = affordances;
 const { RESOURCE_NOT_LOADING, CHECKPOINT_NOT_FOUND } = errorTypes;
 
-const CheckpointSection = ({ course, handlers, match, toggleCheckpoint }) => {
+const CheckpointSection = ({
+  isLoggedIn,
+  course,
+  handlers,
+  match,
+  toggleCheckpoint
+}) => {
   const { task } = match.params;
   const { checkpoints, goal, courseId, loading } = course;
   const { goToCollection, goToCourse } = handlers;
@@ -31,12 +38,17 @@ const CheckpointSection = ({ course, handlers, match, toggleCheckpoint }) => {
     }
   ];
   return (
-    <Group overflow="hidden scroll">
+    <Group
+      justifyItems="stretch"
+      minWidth={["100%", "100%", "25rem"]}
+      maxWidth={["100%", "100%", "55rem"]}
+    >
       <CheckpointCard
         border="none"
         level={2}
         breadcrumbs={breadcrumbs}
         onTagClick={goToCollection}
+        affordance={isLoggedIn ? CHECKABLE : NONE}
         mb={[0, 6, 6]}
         checkpoint={{ course, ...checkpoint }}
         onCheckpointToggle={({ checked }) =>

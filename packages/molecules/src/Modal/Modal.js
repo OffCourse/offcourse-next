@@ -1,29 +1,39 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Section, Heading } from "@offcourse/atoms";
-import ModalWrapper from "./Container";
+import system from "system-components";
 
-const Container = ({ children }) => {
-  return (
-    <div
-      style={{
-        position: "fixed",
-        background: "rgba(0, 0, 0, 0)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        overflow: "hidden hidden",
-        pointerEvents: "auto"
-      }}
-    >
-      {children}
-    </div>
-  );
-};
+const ModalWrapper = system({
+  display: "flex",
+  flexDirection: "column",
+  bg: "white",
+  alignItems: "stretch",
+  justifyContent: "flex-start",
+  fontSize: 1,
+  minWidth: "18rem",
+  maxWidth: "40rem",
+  width: "40rem",
+  flex: 1,
+  px: 0,
+  py: 0,
+  mx: 6,
+  my: 6,
+  opacity: 1,
+  overflow: ["hidden scroll", "hidden scroll", "hidden scroll"]
+});
+
+const Container = system({
+  position: "fixed",
+  background: "rgba(0, 0, 0, 0)",
+  display: "flex",
+  alignItems: ["flex-start", "center", "center"],
+  justifyContent: "center",
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  overflow: ["hidden scroll", "hidden scroll", "hidden scroll"]
+});
 
 class Modal extends Component {
   static Section = Section;
@@ -40,7 +50,7 @@ class Modal extends Component {
   render() {
     const { px, py, children } = this.props;
     return (
-      <Container>
+      <Container css={{ pointerEvents: "auto" }}>
         <ModalWrapper px={px} py={py}>
           {children}
         </ModalWrapper>

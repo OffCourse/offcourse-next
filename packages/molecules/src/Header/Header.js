@@ -38,7 +38,7 @@ const Header = ({
       bg={bg}
     >
       <Breadcrumbs
-        display={["flex", "none", "none"]}
+        display={["flex", "flex", "none"]}
         pb={[3, 0, 0]}
         breadcrumbs={breadcrumbs}
       />

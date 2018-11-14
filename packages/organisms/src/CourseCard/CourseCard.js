@@ -28,6 +28,7 @@ const CourseCard = ({
   shareMessage,
   layout,
   onIconClick,
+  isLoggedIn,
   affordance,
   initialLevel
 }) => {
@@ -90,7 +91,7 @@ const CourseCard = ({
       </Description>
       <Section justifyContent="stretch" section="checkpoints">
         <CheckpointList
-          onToggle={onCheckpointToggle && handleCheckpointToggle}
+          onToggle={isLoggedIn && handleCheckpointToggle}
           onClick={onCheckpointClick && handleCheckpointClick}
           checkpoints={checkpoints}
         />
@@ -130,6 +131,7 @@ CourseCard.propTypes = {
     courseUrl: PropTypes.string
   }),
   onIconClick: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
   initialLevel: PropTypes.number,
   affordance: PropTypes.oneOf([EXPANDABLE, SELECTABLE, CLOSEABLE]),
   layout: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))

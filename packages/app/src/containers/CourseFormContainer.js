@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Adopt } from "react-adopt";
-import { Route } from "../components";
+import { Route, LoadingModal } from "../components";
 import { CourseForm } from "@offcourse/organisms";
 import { FlashProvider, CourseProvider, OverlayProvider } from "../providers";
 
@@ -31,6 +31,9 @@ export default class CourseFormContainer extends Component {
     return (
       <Adopt courseId={courseId} mapper={mapper} mapProps={mapProps}>
         {({ overlay, flash, route, oldCourse, save }) => {
+          if (oldCourse.loading) {
+            return <LoadingModal />;
+          }
           if (!courseId) {
             return (
               <CourseForm
