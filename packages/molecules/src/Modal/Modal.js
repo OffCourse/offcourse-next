@@ -4,11 +4,8 @@ import { Section, Heading } from "@offcourse/atoms";
 import system from "system-components";
 
 const ModalWrapper = system({
-  display: "flex",
-  flexDirection: "column",
+  display: "block",
   bg: "white",
-  alignItems: "stretch",
-  justifyContent: "flex-start",
   fontSize: 1,
   minWidth: "18rem",
   maxWidth: "40rem",
@@ -17,16 +14,17 @@ const ModalWrapper = system({
   px: 0,
   py: 0,
   mx: 6,
-  my: 6,
+  mt: 8,
+  mb: 0,
   opacity: 1,
   overflow: ["hidden scroll", "hidden scroll", "hidden scroll"]
 });
 
 const Container = system({
-  position: "fixed",
+  position: "absolute",
   background: "rgba(0, 0, 0, 0)",
   display: "flex",
-  alignItems: ["flex-start", "center", "center"],
+  alignItems: ["center", "center", "center"],
   justifyContent: "center",
   top: 0,
   left: 0,

@@ -11,7 +11,7 @@ const Backdrop = system({
   bottom: 0,
   left: 0,
   right: 0,
-  overflow: "hidden hidden"
+  overflow: "hidden auto"
 });
 
 export default styled(({ isVisible, children, ...rest }) => (

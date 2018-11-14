@@ -172,7 +172,7 @@ const signalColorCombos = {
   [INFO]: {
     backgroundColor: colors.primary,
     borderColor: grayScale[3],
-    color: colors.black,
+    color: colors.white,
     "&:hover": {
       backgroundColor: grayScale[3],
       color: colors.white,

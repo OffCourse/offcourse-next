@@ -28,7 +28,7 @@ const BackdropContainer = () => {
                 pose={isOpen ? "visible" : "hidden"}
               >
                 <Backdrop isVisible={isOpen} onClick={closeAll} />
-                {isOpen ? <ScrollLock /> : null}
+                {sidebar.isOpen ? <ScrollLock /> : null}
               </Fade>
             </Fragment>
           );

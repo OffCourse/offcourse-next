@@ -5,7 +5,7 @@ const LogoWrapper = system(
   {
     is: "div",
     bg: "black",
-    hover: { backgroundColor: "primary" }
+    hover: { backgroundColor: "red" }
   },
   props => ({
     height: `${props.theme.logo.dimensions.height * props.multiply}rem`,
