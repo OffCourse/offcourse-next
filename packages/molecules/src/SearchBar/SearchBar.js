@@ -32,7 +32,7 @@ class SearchBar extends PureComponent {
           autoFocus={true}
           variant="small"
           onChange={this.handleChange}
-          placeholder="search term"
+          placeholder="What Do You Want To Learn Today?"
           value={this.state.searchTerm}
         />
       </SearchBarWrapper>

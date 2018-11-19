@@ -138,7 +138,7 @@ CourseCard.propTypes = {
 };
 
 CourseCard.defaultProps = {
-  shareMessage: "Checkout This Course",
+  shareMessage: "Check Out This Course On Offcourse",
   affordance: EXPANDABLE,
   onCuratorClick: identity,
   onGoalClick: identity,

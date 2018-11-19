@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -56,6 +57,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(["dist"]),
+    new CopyWebpackPlugin([{ from: "src/assets/fonts", to: "fonts/" }]),
     new HtmlWebPackPlugin({
       title: "Offcourse",
       baseHref: "/",
@@ -64,9 +66,21 @@ module.exports = {
         trackingId: "UA-113174828-1",
         pageViewOnLoad: true
       },
-      headHtmlSnippet:
-        "<link rel=“preload” href=“https://app.offcourse.io/fonts/NGB.woff” as=“font”><link rel=“preload” href=“https://app.offcourse.io/fonts/NGN.woff” as=“font”>",
       inject: false,
+      links: [
+        {
+          rel: "preload",
+          as: "font",
+          crossorigin: true,
+          href: "fonts/NGB.woff"
+        },
+        {
+          rel: "preload",
+          as: "font",
+          crossorigin: true,
+          href: "fonts/NGN.woff"
+        }
+      ],
       mobile: true,
       template: require("html-webpack-template"),
       appMountIds: ["main", "navbar", "backdrop", "sidebar", "overlay"]

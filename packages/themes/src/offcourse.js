@@ -90,9 +90,9 @@ const colors = {
 };
 
 const fonts = {
-  base: "Nitti Grotesk",
-  bold: "Nitti Grotesk Bold",
-  accent: "Nitti Bold"
+  base: "Nitti Grotesk, Helvetica, sans-serif",
+  bold: "Nitti Grotesk Bold, Helvetica Bold, sans-serif",
+  accent: "Nitti Grotesk Bold, Helvetica Bold, sans-serif"
 };
 
 const breakpoints = ["30rem", "48rem", "64rem"];
@@ -225,20 +225,29 @@ const globals = `
 
   @font-face {
     font-family: 'Nitti Grotesk';
-    font-display: 'auto';
-    src: url('https://app.offcourse.io/fonts/NGN.woff') format('woff');
+    font-weight: 300;
+    font-display: fallback;
+    src: local('Nitti Grotesk'), 
+         url('fonts/NGN.woff') format('woff'),
+         url('https://offcourse.io/fonts/NGN.woff') format('woff');
   }
 
   @font-face {
     font-family: 'Nitti Grotesk Bold';
-    font-display: 'auto';
-    src: url('https://app.offcourse.io/fonts/NGB.woff') format('woff');
+    font-weight: 700;
+    font-display: fallback;
+    src: local('Nitti Grotesk Bold'), 
+         url('fonts/NGB.woff') format('woff'),
+         url('https://offcourse.io/fonts/NGB.woff') format('woff');
   }
 
   @font-face {
     font-family: 'Nitti Bold'; 
-    font-display: 'auto';
-    src: url('https://app.offcourse.io/fonts/NB.woff') format('woff');
+    font-weight: 700;
+    font-display: fallback;
+    src: local('Nitti Bold'), 
+         url('fonts/NB.woff') format('woff'),
+         url('https://offcourse.io/fonts/NB.woff') format('woff');
   }
 
   * {
@@ -248,7 +257,7 @@ const globals = `
   }
 
   body {
-    font-family: Nitti Grotesk;
+    font-family: Nitti Grotesk, Helvetica, sans-serif;
     font-size: 16px;
     line-height: 20px;
     margin: 0;

@@ -11,7 +11,7 @@ const LoadingLayout = () => {
       flexDirection={["column-reverse", "row", "row"]}
       height="calc(100vh - 2.25rem)"
       alignItems="center"
-      width="100vh"
+      width="100vw"
       justifyContent="center"
     >
       <Loading size={EXTRA_LARGE} />
