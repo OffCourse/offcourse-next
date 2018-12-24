@@ -30,11 +30,11 @@ release-next:
   script:
     - npm run release
 
-release-beta:
+deploy:beta:
   provider: script
   skip_cleanup: true
   branches:
     only:
-      - master
+      - beta
   script:
     - npm run release:beta
