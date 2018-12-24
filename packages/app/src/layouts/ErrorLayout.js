@@ -7,24 +7,25 @@ const { LARGE, EXTRA_LARGE } = sizes;
 
 const ErrorLayout = ({ error, action }) => {
   return (
-    <Group overflow="hidden scroll">
+    <Group justifyContent="stretch" overflow="hidden scroll">
       <Group
-        flexDirection={["column-reverse", "row", "row"]}
+        flexDirection={["column-reverse", "column-reverse", "row"]}
         alignSelf="center"
         flex={["none", 1, 1]}
         alignItems={["center", "center", "center"]}
         justifyContent={["flex-start", "center", "center"]}
+        height={["100vh", "80vh", "80vh"]}
         p={[8, 6, 6]}
       >
         <Group maxWidth="40rem">
           <Group mb={6} flex="none">
             <Heading>{error.message}</Heading>
           </Group>
-          <Group flex="none" mb={[6, 6, 6]}>
+          <Group flex="none" mb={[6, 8, 6]}>
             <Text size={LARGE}>{error.explanation}</Text>
           </Group>
           {action && (
-            <Group flex="none" alignSelf="stretch">
+            <Group flex="none" alignSelf={["stretch", "center", "flex-start"]}>
               <Button size={LARGE} onClick={action.onClick}>
                 {action.message}
               </Button>

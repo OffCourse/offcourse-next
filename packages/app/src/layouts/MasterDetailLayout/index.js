@@ -22,10 +22,11 @@ MasterDetailLayout.Master = styled(Group).attrs({
   pb: [6, 8, 0]
 })``;
 
-MasterDetailLayout.Detail = styled(Group).attrs({
+MasterDetailLayout.Detail = system({
   display: "grid",
+  gridTemplateColumns: "1fr",
   overflow: ["hidden auto", "hidden scroll", "hidden scroll"]
-})``;
+});
 
 MasterDetailLayout.propTypes = {
   children: PropTypes.node

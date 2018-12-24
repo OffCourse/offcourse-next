@@ -9,6 +9,7 @@ export default system(
     maxWidth: "100vw",
     flex: 1
   },
+  "gridTemplateColumns",
   "alignSelf",
   "gridArea",
   "position",
