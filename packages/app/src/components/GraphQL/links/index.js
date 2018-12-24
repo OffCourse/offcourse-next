@@ -23,6 +23,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const httpLink = new HttpLink({
   uri: "https://api.offcourse.io/graphql"
+  // uri: "https://hc08s499q4.execute-api.us-east-1.amazonaws.com/v1/canary"
 });
 
 const authLink = setContext(async () => {

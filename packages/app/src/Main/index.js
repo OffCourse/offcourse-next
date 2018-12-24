@@ -10,6 +10,7 @@ import {
 } from "../containers";
 import {
   AboutView,
+  ContributeView,
   CourseView,
   CourseNotFoundView,
   CollectionView,
@@ -36,6 +37,7 @@ export default class Main extends Component {
             <Route path="/curator/:curator/goal/:goal" component={CourseView} />
             <Route exact path="/about" component={AboutView} />
             <Route exact path="/faq" component={FAQView} />
+            <Route exact path="/introduction" component={ContributeView} />
             <Route
               component={({ handlers }) => (
                 <CourseNotFoundView goHome={handlers.goHome} />
