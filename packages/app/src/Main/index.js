@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Switch } from "react-router-dom";
+import { Route } from "../components";
 import {
   BackdropContainer,
   SideBarContainer,
@@ -6,7 +8,13 @@ import {
   NavBarContainer,
   OverlayContainer
 } from "../containers";
-import { AboutView, CourseView, CollectionView, FAQView } from "../views";
+import {
+  AboutView,
+  CourseView,
+  CourseNotFoundView,
+  CollectionView,
+  FAQView
+} from "../views";
 import MainWrapper from "./MainWrapper";
 
 export default class Main extends Component {
@@ -16,10 +24,24 @@ export default class Main extends Component {
         <NavBarContainer />
         <SideBarContainer />
         <SearchBarContainer>
-          <CollectionView />
-          <CourseView />
-          <AboutView />
-          <FAQView />
+          <Switch>
+            <Route exact path="/" component={CollectionView} />
+            <Route
+              exact
+              path="/search/:searchTerm"
+              component={CollectionView}
+            />
+            <Route exact path="/curator/:curator" component={CollectionView} />
+            <Route exact path="/tag/:tag" component={CollectionView} />
+            <Route path="/curator/:curator/goal/:goal" component={CourseView} />
+            <Route exact path="/about" component={AboutView} />
+            <Route exact path="/faq" component={FAQView} />
+            <Route
+              component={({ handlers }) => (
+                <CourseNotFoundView goHome={handlers.goHome} />
+              )}
+            />
+          </Switch>
         </SearchBarContainer>
         <BackdropContainer />
         <OverlayContainer />

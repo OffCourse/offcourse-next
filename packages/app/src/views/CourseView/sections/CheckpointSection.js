@@ -7,7 +7,7 @@ import { ErrorCard, ResourceCard, ErrorBoundary } from "../../../components";
 import { ResourceProvider } from "../../../providers";
 import { affordances, errors as errorTypes } from "@offcourse/constants";
 
-const { UNCHECKABLE, NONE, CHECKABLE } = affordances;
+const { NONE, CHECKABLE } = affordances;
 const { RESOURCE_NOT_LOADING, CHECKPOINT_NOT_FOUND } = errorTypes;
 
 const CheckpointSection = ({
@@ -39,7 +39,6 @@ const CheckpointSection = ({
   ];
   return (
     <Group
-      justifyItems="stretch"
       minWidth={["100%", "100%", "25rem"]}
       maxWidth={["100%", "100%", "55rem"]}
     >
@@ -74,6 +73,7 @@ const CheckpointSection = ({
 };
 
 CheckpointSection.propTypes = {
+  isLoggedIn: PropTypes.bool,
   course: PropTypes.object.isRequired,
   toggleCheckpoint: PropTypes.func,
   handlers: PropTypes.object.isRequired,
