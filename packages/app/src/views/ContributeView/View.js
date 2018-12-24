@@ -13,8 +13,8 @@ const Markdown = Loadable({
   loading: Loading
 });
 
-const AboutView = ({ about }) => {
-  const { title, text, address } = about;
+const AboutView = ({ contribute }) => {
+  const { title, text, address } = contribute;
   return (
     <Group justifyContent="center" alignItems="center">
       <Group
@@ -24,7 +24,7 @@ const AboutView = ({ about }) => {
         maxWidth="50rem"
       >
         <Heading mt={8} mb={6} size={LARGE}>
-          {"CONTRIBUTE"}
+          {title}
         </Heading>
         <Markdown
           options={{
@@ -36,25 +36,18 @@ const AboutView = ({ about }) => {
         >
           {text}
         </Markdown>
-        <Group flex="none" mb={6}>
-          <Text size={LARGE}>{address.name}</Text>
-          <Text size={LARGE}>{`${address.street} ${address.houseNumber}`}</Text>
-          <Text size={LARGE}>{`${address.zipCode} ${address.city}`}</Text>
-        </Group>
-        <Group flex="none">
-          <IconGroup>
-            <Icon size={EXTRA_LARGE} name="email" />
-            <Icon size={EXTRA_LARGE} mx={4} name="twitter" />
-            <Icon size={EXTRA_LARGE} name="medium" />
-          </IconGroup>
-        </Group>
+        <IconGroup>
+          <Icon size={EXTRA_LARGE} name="email" />
+          <Icon size={EXTRA_LARGE} mx={4} name="twitter" />
+          <Icon size={EXTRA_LARGE} name="medium" />
+        </IconGroup>
       </Group>
     </Group>
   );
 };
 
 AboutView.propTypes = {
-  about: PropTypes.object
+  contribute: PropTypes.object
 };
 
 export default AboutView;

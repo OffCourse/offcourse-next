@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import { Adopt } from "react-adopt";
 import View from "./View";
-import { contribute } from "../../content";
-console.log(contribute);
+import { introduction } from "../../content";
 
 const Dummy = ({ children }) => {
-  return children(contribute);
+  return children(introduction);
 };
 /* eslint: disable */
 const mapper = {
-  contribute: <Dummy />
+  introduction: <Dummy />
 };
 /* eslint: enable */
 
-const mapProps = ({ contribute }) => ({ contribute });
+const mapProps = ({ introduction }) => ({ introduction });
 
 export default class Container extends Component {
   render() {
