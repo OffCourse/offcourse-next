@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import { Adopt } from "react-adopt";
 import View from "./View";
-import { faq } from "../../content";
+import { ContentContainer } from "../../containers";
 
-const Dummy = ({ children }) => {
-  return children(faq);
-};
 /* eslint: disable */
 const mapper = {
-  faq: <Dummy />
+  faq: <ContentContainer term="faq" />
 };
 /* eslint: enable */
 

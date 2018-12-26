@@ -1,4 +1,5 @@
 export { default as NavBarContainer } from "./NavBarContainer";
+export { default as ContentContainer } from "./ContentContainer";
 export { default as ThemeContainer } from "./ThemeContainer";
 export { default as AuthContainer } from "./AuthContainer";
 export { default as CourseFormContainer } from "./CourseFormContainer";

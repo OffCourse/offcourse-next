@@ -1,18 +1,52 @@
 import React, { Component } from "react";
+import { none } from "ramda";
 import { Adopt } from "react-adopt";
 import View from "./View";
-import { introduction } from "../../content";
+import { CourseProvider } from "../../providers";
+import { ContentContainer } from "../../containers";
 
-const Dummy = ({ children }) => {
-  return children(introduction);
-};
 /* eslint: disable */
 const mapper = {
-  introduction: <Dummy />
+  courseLeft: ({ render }) => (
+    <CourseProvider
+      courseQuery={{
+        curator: "jameshands",
+        goal: "learn about biosensors"
+      }}
+    >
+      {render}
+    </CourseProvider>
+  ),
+  courseCenter: ({ render }) => (
+    <CourseProvider
+      courseQuery={{ curator: "offcourse", goal: "get started with offcourse" }}
+    >
+      {render}
+    </CourseProvider>
+  ),
+  courseRight: ({ render }) => (
+    <CourseProvider
+      courseQuery={{
+        curator: "jameshands",
+        goal: "learn about biosensors"
+      }}
+    >
+      {render}
+    </CourseProvider>
+  ),
+  content: <ContentContainer term="introduction" />
 };
 /* eslint: enable */
 
-const mapProps = ({ introduction }) => ({ introduction });
+const mapProps = ({ content, courseLeft, courseCenter, courseRight }) => {
+  const isLoading = course => course.loading;
+  const _courses = [courseLeft.course, courseCenter.course, courseRight.course];
+  const courses = none(isLoading, _courses) ? _courses : [];
+  return {
+    content,
+    courses
+  };
+};
 
 export default class Container extends Component {
   render() {

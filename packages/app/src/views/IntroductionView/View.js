@@ -1,4 +1,5 @@
 import React from "react";
+import { map, isEmpty, addIndex } from "ramda";
 import { Text, Heading, Group, Icon, Button } from "@offcourse/atoms";
 import { Loading } from "@offcourse/molecules";
 import { CourseCard } from "@offcourse/organisms";
@@ -7,7 +8,8 @@ import { variants, sizes } from "@offcourse/constants";
 import system from "system-components";
 
 const { INFO } = variants;
-const { LARGE, EXTRA_LARGE } = sizes;
+const { NORMAL, LARGE, EXTRA_LARGE } = sizes;
+const mapIndexed = addIndex(map);
 
 import Loadable from "react-loadable";
 
@@ -16,97 +18,71 @@ const Markdown = Loadable({
   loading: Loading
 });
 
-const Temp = system({
-  display: "flex",
-  p: 8,
-  flexDirection: "column"
-});
 const Grid = system({
-  mt: 6,
+  m: 8,
+  flex: 1,
+  height: "calc(80vh)",
   display: "grid",
-  justifyItems: "start",
-  alignItems: "start",
+  justifyItems: "center",
+  alignItems: "center",
   gridColumnGap: "3rem",
   gridTemplateColumns: ["1fr", "1fr 2fr", "1fr 3fr"]
 });
 
-const course = {
-  courseId: "abc",
-  goal: "Learn This",
-  curator: "Offcourse",
-  courseUrl: "/yeehaa",
-  profileUrl: `/curator/yeehaa`,
-  checkpoints: [
-    {
-      checkpointId: "a",
-      task: `Gentrify adipisicing fanny pack pabst, health goth excepteur ut sunt swag quo`,
-      resourceUrl: "/"
-    },
-    {
-      checkpointId: "b",
-      task: "Do That",
-      completed: true,
-      resourceUrl: "/"
-    },
-    {
-      checkpointId: "c",
-      task: "Do More",
-      resourceUrl: "/"
-    }
-  ],
-  tags: ["tic", "tac", "toe"],
-  description: `Gentrify adipisicing fanny pack pabst, health goth excepteur ut sunt swag qui plaid tumeric letterpress. Wolf gentrify live-edge 8-bit. Af ut thundercats locavore williamsburg, blue bottle man braid viral`
+const DisplayCard = ({ course, size }) => {
+  const scale = size === LARGE ? 1.1 : 0.9;
+  return (
+    <div style={{ transform: `scale(${scale})` }}>
+      <CourseCard course={course} />
+    </div>
+  );
 };
 
-const AboutView = ({ introduction }) => {
-  const { title, text } = introduction;
+const AboutView = ({ content, courses, handlers }) => {
+  const { title, text } = content;
+  const { goHome, goToCourse } = handlers;
   return (
-    <Temp>
-      <Grid>
-        <Group p={8} justifyContent="flex-start" overflow="hidden scroll">
-          <Heading mt={8} mb={6} size={EXTRA_LARGE}>
-            {title}
-          </Heading>
-          <Markdown
-            options={{
-              overrides: {
-                p: { component: Text, props: { size: LARGE, mb: 7 } },
-                a: { component: "a", props: { style: { color: "black" } } }
-              }
-            }}
-          >
-            {text}
-          </Markdown>
-          <Group mt={6} alignSelf="stretch">
-            <Button variant={INFO} size={LARGE}>
-              Start Learning!
-            </Button>
-          </Group>
-        </Group>
-        <Group
-          display={["none", "none", "flex"]}
-          p={8}
-          flexDirection="row"
-          justifyContent="flex-start"
-          overflow="hidden scroll"
+    <Grid>
+      <Group p={8} justifyContent="flex-start" overflow="hidden scroll">
+        <Heading mt={8} mb={6} size={EXTRA_LARGE}>
+          {title}
+        </Heading>
+        <Markdown
+          options={{
+            overrides: {
+              p: { component: Text, props: { size: LARGE, mb: 7 } },
+              a: { component: "a", props: { style: { color: "black" } } }
+            }
+          }}
         >
-          <div style={{ transform: "scale(0.9)" }}>
-            <CourseCard course={course} />
-          </div>
-          <div style={{ margin: "0 1rem", transform: "scale(1.1)" }}>
-            <CourseCard course={course} />
-          </div>
-          <div style={{ transform: "scale(0.9)" }}>
-            <CourseCard course={course} />
-          </div>
+          {text}
+        </Markdown>
+        <Group mt={6} alignSelf="stretch">
+          <Button onClick={goHome} variant={INFO} size={LARGE}>
+            Start Learning!
+          </Button>
         </Group>
+      </Group>
+      <Grid
+        gridColumnGap="1rem"
+        gridTemplateColumns={["1fr", "1fr 2fr", "1fr 1fr 1fr"]}
+      >
+        {isEmpty(courses) ? (
+          <Loading />
+        ) : (
+          mapIndexed((course, index) => {
+            const size = index === 1 ? LARGE : NORMAL;
+            return <DisplayCard size={size} key={index} course={course} />;
+          }, courses)
+        )}
       </Grid>
-    </Temp>
+    </Grid>
   );
 };
 
 AboutView.propTypes = {
-  introduction: PropTypes.object
+  content: PropTypes.object,
+  courses: PropTypes.array
 };
 
 export default AboutView;

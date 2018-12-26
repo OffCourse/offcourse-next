@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import { Adopt } from "react-adopt";
 import View from "./View";
-import { contribute } from "../../content";
-console.log(contribute);
+import { ContentContainer } from "../../containers";
 
-const Dummy = ({ children }) => {
-  return children(contribute);
-};
 /* eslint: disable */
 const mapper = {
-  contribute: <Dummy />
+  contribute: <ContentContainer term="contribute" />
 };
 /* eslint: enable */
 
