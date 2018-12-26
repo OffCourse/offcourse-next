@@ -29,18 +29,22 @@ const Grid = system({
   gridTemplateColumns: ["1fr", "1fr 2fr", "1fr 3fr"]
 });
 
-const DisplayCard = ({ course, size }) => {
+const DisplayCard = ({ course, size, goToCourse, goToCheckpoint }) => {
   const scale = size === LARGE ? 1.1 : 0.9;
   return (
     <div style={{ transform: `scale(${scale})` }}>
-      <CourseCard course={course} />
+      <CourseCard
+        onGoalClick={goToCourse}
+        onCheckpointClick={goToCheckpoint}
+        course={course}
+      />
     </div>
   );
 };
 
 const AboutView = ({ content, courses, handlers }) => {
   const { title, text } = content;
-  const { goHome, goToCourse } = handlers;
+  const { goHome, goToCheckpoint, goToCourse } = handlers;
   return (
     <Grid>
       <Group p={8} justifyContent="flex-start" overflow="hidden scroll">
@@ -72,7 +76,15 @@ const AboutView = ({ content, courses, handlers }) => {
         ) : (
           mapIndexed((course, index) => {
             const size = index === 1 ? LARGE : NORMAL;
-            return <DisplayCard size={size} key={index} course={course} />;
+            return (
+              <DisplayCard
+                goToCheckpoint={goToCheckpoint}
+                goToCourse={goToCourse}
+                size={size}
+                key={index}
+                course={course}
+              />
+            );
           }, courses)
         )}
       </Grid>
