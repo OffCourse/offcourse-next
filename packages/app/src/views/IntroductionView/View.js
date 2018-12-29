@@ -1,100 +1,39 @@
 import React from "react";
-import { map, isEmpty, addIndex } from "ramda";
-import { Text, Heading, Group, Icon, Button } from "@offcourse/atoms";
-import { Loading } from "@offcourse/molecules";
-import { CourseCard } from "@offcourse/organisms";
 import PropTypes from "prop-types";
+import { isEmpty } from "ramda";
+import { Loading } from "@offcourse/molecules";
+import { Group, Button } from "@offcourse/atoms";
 import { variants, sizes } from "@offcourse/constants";
-import system from "system-components";
+import { ContentLayout } from "../../layouts";
+import DisplayCards from "./DisplayCards";
 
 const { INFO } = variants;
-const { NORMAL, LARGE, EXTRA_LARGE } = sizes;
-const mapIndexed = addIndex(map);
+const { LARGE, EXTRA_LARGE } = sizes;
 
-import Loadable from "react-loadable";
-
-const Markdown = Loadable({
-  loader: () => import("markdown-to-jsx"),
-  loading: Loading
-});
-
-const Grid = system({
-  m: 8,
-  flex: 1,
-  height: "calc(80vh)",
-  display: "grid",
-  justifyItems: "center",
-  alignItems: "center",
-  gridColumnGap: "3rem",
-  gridTemplateColumns: ["1fr", "1fr 2fr", "1fr 3fr"]
-});
-
-const DisplayCard = ({ course, size, goToCourse, goToCheckpoint }) => {
-  const scale = size === LARGE ? 1.1 : 0.9;
-  return (
-    <div style={{ transform: `scale(${scale})` }}>
-      <CourseCard
-        onGoalClick={goToCourse}
-        onCheckpointClick={goToCheckpoint}
-        course={course}
-      />
-    </div>
-  );
-};
-
-const AboutView = ({ content, courses, handlers }) => {
+const IntroductionView = ({ content, courses, handlers }) => {
+  const { Content, Display } = ContentLayout;
   const { title, text } = content;
-  const { goHome, goToCheckpoint, goToCourse } = handlers;
+  const { goHome } = handlers;
   return (
-    <Grid>
-      <Group p={8} justifyContent="flex-start" overflow="hidden scroll">
-        <Heading mt={8} mb={6} size={EXTRA_LARGE}>
-          {title}
-        </Heading>
-        <Markdown
-          options={{
-            overrides: {
-              p: { component: Text, props: { size: LARGE, mb: 7 } },
-              a: { component: "a", props: { style: { color: "black" } } }
-            }
-          }}
-        >
-          {text}
-        </Markdown>
+    <ContentLayout>
+      <Content title={title} text={text}>
         <Group mt={6} alignSelf="stretch">
           <Button onClick={goHome} variant={INFO} size={LARGE}>
             Start Learning!
           </Button>
         </Group>
-      </Group>
-      <Grid
-        gridColumnGap="1rem"
-        gridTemplateColumns={["1fr", "1fr 2fr", "1fr 1fr 1fr"]}
-      >
-        {isEmpty(courses) ? (
-          <Loading />
-        ) : (
-          mapIndexed((course, index) => {
-            const size = index === 1 ? LARGE : NORMAL;
-            return (
-              <DisplayCard
-                goToCheckpoint={goToCheckpoint}
-                goToCourse={goToCourse}
-                size={size}
-                key={index}
-                course={course}
-              />
-            );
-          }, courses)
-        )}
-      </Grid>
-    </Grid>
+      </Content>
+      <Display>
+        <DisplayCards courses={courses} handlers={handlers} />
+      </Display>
+    </ContentLayout>
   );
 };
 
-AboutView.propTypes = {
+IntroductionView.propTypes = {
   content: PropTypes.object,
+  handlers: PropTypes.object,
   courses: PropTypes.array
 };
 
-export default AboutView;
+export default IntroductionView;

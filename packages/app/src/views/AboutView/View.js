@@ -1,8 +1,11 @@
 import React from "react";
 import { Text, Heading, Group, Icon } from "@offcourse/atoms";
+import { isEmpty } from "ramda";
 import { IconGroup, Loading } from "@offcourse/molecules";
+import DisplayCards from "../IntroductionView/DisplayCards";
 import PropTypes from "prop-types";
 import { sizes } from "@offcourse/constants";
+import { ContentLayout } from "../../layouts";
 
 const { LARGE, EXTRA_LARGE } = sizes;
 
@@ -13,29 +16,13 @@ const Markdown = Loadable({
   loading: Loading
 });
 
-const AboutView = ({ about }) => {
-  const { title, text, address } = about;
+const AboutView = ({ content, courses, handlers }) => {
+  const { Content, Display } = ContentLayout;
+  const { title, text, address } = content;
+  const { goHome } = handlers;
   return (
-    <Group justifyContent="center" alignItems="center">
-      <Group
-        p={8}
-        justifyContent="flex-start"
-        overflow="hidden scroll"
-        maxWidth="50rem"
-      >
-        <Heading mt={8} mb={6} size={LARGE}>
-          {title}
-        </Heading>
-        <Markdown
-          options={{
-            overrides: {
-              p: { component: Text, props: { size: LARGE, mb: 7 } },
-              a: { component: "a", props: { style: { color: "black" } } }
-            }
-          }}
-        >
-          {text}
-        </Markdown>
+    <ContentLayout>
+      <Content title={title} text={text} goHome={goHome}>
         <Group flex="none" mb={6}>
           <Text size={LARGE}>{address.name}</Text>
           <Text size={LARGE}>{`${address.street} ${address.houseNumber}`}</Text>
@@ -48,13 +35,20 @@ const AboutView = ({ about }) => {
             <Icon size={EXTRA_LARGE} name="medium" />
           </IconGroup>
         </Group>
-      </Group>
-    </Group>
+      </Content>
+      <Display>
+        {isEmpty(courses) ? (
+          <Loading size={EXTRA_LARGE} />
+        ) : (
+          <DisplayCards courses={courses} handlers={handlers} />
+        )}
+      </Display>
+    </ContentLayout>
   );
 };
 
 AboutView.propTypes = {
-  about: PropTypes.object
+  content: PropTypes.object
 };
 
 export default AboutView;

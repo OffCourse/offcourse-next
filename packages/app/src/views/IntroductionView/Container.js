@@ -11,7 +11,7 @@ const mapper = {
     <CourseProvider
       courseQuery={{
         curator: "jameshands",
-        goal: "learn about biosensors"
+        goal: "get acquainted with sensors"
       }}
     >
       {render}
@@ -27,8 +27,8 @@ const mapper = {
   courseRight: ({ render }) => (
     <CourseProvider
       courseQuery={{
-        curator: "jameshands",
-        goal: "learn about biosensors"
+        curator: "luke",
+        goal: "discover digital fabrication"
       }}
     >
       {render}
@@ -49,6 +49,9 @@ const mapProps = ({ content, courseLeft, courseCenter, courseRight }) => {
 };
 
 export default class Container extends Component {
+  componentDidMount() {
+    document.cookie = `firstVisit=${Date.now()}`;
+  }
   render() {
     const { handlers } = this.props;
     return (
