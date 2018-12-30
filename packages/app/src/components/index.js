@@ -11,4 +11,6 @@ export { default as Route } from "./Route";
 export { default as VideoViewer } from "./VideoViewer";
 export { default as HTMLViewer } from "./HTMLViewer";
 export { default as ResourceCard } from "./ResourceCard";
+export { default as SocialIcons } from "./SocialIcons";
+export { default as SiteContent } from "./SiteContent";
 export { default as Grid } from "./Grid";

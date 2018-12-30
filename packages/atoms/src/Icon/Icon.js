@@ -23,6 +23,8 @@ const Icon = ({ size, name, color, spin, tabIndex, href, is, onClick, mx }) => {
       mx={mx}
       color={color}
       tabIndex={tabIndex}
+      href={href}
+      target="_blank"
       onClick={onClick}
     >
       <FontAwesomeIcon icon={icons[name]} size={iconSize} spin={spin} />

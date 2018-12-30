@@ -13,19 +13,21 @@ const mapIndexed = addIndex(map);
 const InnerGrid = styled("div")`
   flex: 1;
   display: none;
+
   -webkit-box-reflect: below 0.5rem -webkit-gradient(linear, left top, left
         bottom, from(transparent), color-stop(60%, transparent), to(rgba(255, 255, 255, 0.2)));
 
   .NORMAL-card {
     display: none;
-    opacity: 0.7;
+    opacity: 0.8;
     align-items: center;
     transform: scale(0.95);
   }
+
   @media screen and (min-width: 800px) {
-    display: grid;
     grid-column-gap: 1rem;
     grid-template-columns: 1fr;
+    display: grid;
   }
 
   @media screen and (min-width: 1600px) {
@@ -42,28 +44,28 @@ const InnerGrid = styled("div")`
 
 const DisplayCards = ({ courses, handlers }) => {
   if (isEmpty(courses)) {
-    return <Loading size={EXTRA_LARGE} />;
+    return (
+      <InnerGrid>
+        <Loading size={EXTRA_LARGE} />
+      </InnerGrid>
+    );
   }
   const { goToCheckpoint, goToCourse, goToCollection } = handlers;
   return (
     <InnerGrid>
-      {isEmpty(courses) ? (
-        <Loading size={EXTRA_LARGE} />
-      ) : (
-        mapIndexed((course, index) => {
-          const size = index === 1 ? LARGE : NORMAL;
-          return (
-            <DisplayCard
-              goToCheckpoint={goToCheckpoint}
-              goToCourse={goToCourse}
-              goToCollection={goToCollection}
-              size={size}
-              key={index}
-              course={course}
-            />
-          );
-        }, courses)
-      )}
+      {mapIndexed((course, index) => {
+        const size = index === 1 ? LARGE : NORMAL;
+        return (
+          <DisplayCard
+            goToCheckpoint={goToCheckpoint}
+            goToCourse={goToCourse}
+            goToCollection={goToCollection}
+            size={size}
+            key={index}
+            course={course}
+          />
+        );
+      }, courses)}
     </InnerGrid>
   );
 };

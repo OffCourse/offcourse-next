@@ -5,10 +5,13 @@ import ShareWrapper from "./ShareWrapper";
 import GetUrl from "./GetUrl";
 import ContactUs from "./ContactUs";
 import SocialIcons from "./SocialIcons";
+import { sizes } from "@offcourse/constants";
 
-const Share = ({ providers, url, text }) => (
+const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = sizes;
+
+const Share = ({ providers, size, url, text }) => (
   <ShareWrapper>
-    <SocialIcons providers={providers} url={url} text={text} />
+    <SocialIcons size={size} providers={providers} url={url} text={text} />
     {contains("url", providers) && <GetUrl url={url} />}
     {contains("contact", providers) && <ContactUs />}
   </ShareWrapper>
@@ -19,11 +22,13 @@ Share.propTypes = {
     PropTypes.oneOf(["facebook", "twitter", "contact", "url"])
   ).isRequired,
   url: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  size: PropTypes.oneOf([SMALL, NORMAL, LARGE, EXTRA_LARGE])
 };
 
 Share.defaultProps = {
-  providers: []
+  providers: [],
+  size: LARGE
 };
 
 export default memo(Share);

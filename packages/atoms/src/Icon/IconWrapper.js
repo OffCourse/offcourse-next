@@ -15,8 +15,8 @@ const IconWrapper = system({
 export default styled(IconWrapper)`
   box-sizing: border-box;
   &:hover {
-    color: ${({ onClick, theme }) =>
-      onClick ? theme.colors.primary : theme.colors.black};
+    color: ${({ onClick, href, theme }) =>
+      onClick || href ? theme.colors.primary : theme.colors.black};
   }
   &:focus {
     outline: none;

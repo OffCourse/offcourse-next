@@ -12,15 +12,6 @@ const Grid = styled("div")`
   @media screen and (min-width: 800px) {
     height: 80vh;
     margin: 4rem;
-    grid-column-gap: 3rem;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @media screen and (min-width: 1600px) {
-    height: 80vh;
-    margin: 4rem;
-    grid-column-gap: 3rem;
-    grid-template-columns: 1fr 3fr;
   }
 `;
 
