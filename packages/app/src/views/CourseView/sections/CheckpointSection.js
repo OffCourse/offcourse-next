@@ -4,7 +4,7 @@ import { find, propEq } from "ramda";
 import { Group } from "@offcourse/atoms";
 import { CheckpointCard, LoadingCard } from "@offcourse/organisms";
 import { ErrorCard, ResourceCard, ErrorBoundary } from "../../../components";
-import { ResourceProvider } from "../../../providers";
+import { ResourceProvider, CheckpointProvider } from "../../../providers";
 import { affordances, errors as errorTypes } from "@offcourse/constants";
 
 const { NONE, CHECKABLE } = affordances;
@@ -18,57 +18,62 @@ const CheckpointSection = ({
   toggleCheckpoint
 }) => {
   const { task } = match.params;
-  const { checkpoints, goal, courseId, loading } = course;
+  const { goal, courseId, loading, curator } = course;
   const { goToCollection, goToCourse } = handlers;
 
   if (loading) {
     return null;
   }
 
-  const checkpoint = find(propEq("task", task), checkpoints);
-  if (!checkpoint) {
-    return <ErrorCard errorType={CHECKPOINT_NOT_FOUND} />;
-  }
-
-  const { checkpointId } = checkpoint;
-  const breadcrumbs = [
-    {
-      text: course.goal,
-      onClick: () => goToCourse(course)
-    }
-  ];
   return (
-    <Group
-      minWidth={["100%", "100%", "25rem"]}
-      maxWidth={["100%", "100%", "55rem"]}
-    >
-      <CheckpointCard
-        border="none"
-        level={2}
-        breadcrumbs={breadcrumbs}
-        onTagClick={goToCollection}
-        affordance={isLoggedIn ? CHECKABLE : NONE}
-        mb={[0, 6, 6]}
-        checkpoint={{ course, ...checkpoint }}
-        onCheckpointToggle={({ checked }) =>
-          toggleCheckpoint({ checked, goal, courseId, task, checkpointId })
+    <CheckpointProvider checkpointQuery={{ curator, goal, task }}>
+      {({ checkpoint }) => {
+        if (checkpoint.loading) {
+          return "loading...";
         }
-      />
-      <ErrorBoundary
-        key={task}
-        componentToRender={() => <ErrorCard errorType={RESOURCE_NOT_LOADING} />}
-      >
-        <ResourceProvider resourceUrl={checkpoint.resourceUrl}>
-          {({ resource }) => {
-            return resource.loading ? (
-              <LoadingCard />
-            ) : (
+
+        const { checkpointId, resource } = checkpoint;
+        const breadcrumbs = [
+          {
+            text: course.goal,
+            onClick: () => goToCourse(course)
+          }
+        ];
+        return (
+          <Group
+            minWidth={["100%", "100%", "25rem"]}
+            maxWidth={["100%", "100%", "55rem"]}
+          >
+            <CheckpointCard
+              border="none"
+              level={2}
+              breadcrumbs={breadcrumbs}
+              onTagClick={goToCollection}
+              affordance={isLoggedIn ? CHECKABLE : NONE}
+              mb={[0, 6, 6]}
+              checkpoint={{ course, ...checkpoint }}
+              onCheckpointToggle={({ checked }) =>
+                toggleCheckpoint({
+                  checked,
+                  goal,
+                  courseId,
+                  task,
+                  checkpointId
+                })
+              }
+            />
+            <ErrorBoundary
+              key={task}
+              componentToRender={() => (
+                <ErrorCard errorType={RESOURCE_NOT_LOADING} />
+              )}
+            >
               <ResourceCard resource={resource} />
-            );
-          }}
-        </ResourceProvider>
-      </ErrorBoundary>
-    </Group>
+            </ErrorBoundary>
+          </Group>
+        );
+      }}
+    </CheckpointProvider>
   );
 };
 

@@ -6,11 +6,6 @@ query checkpoint(
     checkpointId
     task
     tags
-    course {
-      curator
-      goal
-      courseId
-    }
     completed @include(if: $isAuthenticated)
     resource {
       resourceType

@@ -15,8 +15,12 @@ const mapper = {
         query={queries.checkpoint}
         variables={{ checkpointQuery, isAuthenticated: !!userName }}
       >
-        {({ data }) => {
-          return render(data.checkpoint);
+        {({ data, loading }) => {
+          if (loading) {
+            return render({ loading });
+          }
+          const { checkpoint } = data;
+          return render(checkpoint);
         }}
       </Query>
     );
