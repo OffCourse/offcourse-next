@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import { adopt } from "react-adopt";
-import PropTypes from "prop-types";
 import { AuthProvider } from "..";
 import { Query } from "../../components";
 import { queries } from "./graphql";
 
 const mapper = {
-  userName: ({ auth, render }) => (
+  userName: ({ render }) => (
     <AuthProvider>{({ userName }) => render(userName)}</AuthProvider>
   ),
   checkpoint: ({ userName, checkpointQuery, render }) => {

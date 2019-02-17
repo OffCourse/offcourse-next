@@ -11,13 +11,25 @@ export default class CoursesProvider extends Component {
     children: PropTypes.func,
     curator: PropTypes.string,
     tag: PropTypes.string,
-    searchTerm: PropTypes.string
+    first: PropTypes.number,
+    searchTerm: PropTypes.string,
+    collectionName: PropTypes.string
   };
 
   render() {
-    const { children, curator, tag, searchTerm } = this.props;
+    const {
+      collectionName,
+      children,
+      curator,
+      tag,
+      first,
+      searchTerm
+    } = this.props;
     return (
-      <Query query={queries.courses} variables={{ searchTerm, curator, tag }}>
+      <Query
+        query={queries.courses}
+        variables={{ collectionName, searchTerm, first, curator, tag }}
+      >
         {({ data, loading, fetchMore }) => {
           if (loading) {
             return <LoadingLayout />;

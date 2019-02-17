@@ -1,14 +1,13 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import { find, propEq } from "ramda";
 import { Group } from "@offcourse/atoms";
 import { CheckpointCard, LoadingCard } from "@offcourse/organisms";
 import { ErrorCard, ResourceCard, ErrorBoundary } from "../../../components";
-import { ResourceProvider, CheckpointProvider } from "../../../providers";
+import { CheckpointProvider } from "../../../providers";
 import { affordances, errors as errorTypes } from "@offcourse/constants";
 
 const { NONE, CHECKABLE } = affordances;
-const { RESOURCE_NOT_LOADING, CHECKPOINT_NOT_FOUND } = errorTypes;
+const { RESOURCE_NOT_LOADING } = errorTypes;
 
 const CheckpointSection = ({
   isLoggedIn,
