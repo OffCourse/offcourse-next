@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Adopt } from "react-adopt";
 import { Route, ForkCourseDialog } from "../components";
@@ -21,29 +21,29 @@ const mapProps = ({ courseData: { course, fork }, route, overlay, flash }) => ({
   flash
 });
 
-export default class ForkCourseDialogContainer extends Component {
-  static propTypes = {
-    courseId: PropTypes.string
-  };
-  render() {
-    const { courseId } = this.props;
-    return (
-      <Adopt courseId={courseId} mapper={mapper} mapProps={mapProps}>
-        {({ course, fork, route, overlay, flash }) => {
-          return (
-            <ForkCourseDialog
-              closeOverlay={overlay.close}
-              forkCourse={async () => {
-                const { data } = await fork({ courseId });
-                const { curator, goal } = data.forkCourse;
-                await flash.success(`you have forked: ${goal}`);
-                await overlay.close();
-                route.handlers.goToCourse({ curator, goal });
-              }}
-            />
-          );
-        }}
-      </Adopt>
-    );
-  }
-}
+const ForkCourseDialogContainer = ({ courseId }) => {
+  return (
+    <Adopt courseId={courseId} mapper={mapper} mapProps={mapProps}>
+      {({ course, fork, route, overlay, flash }) => {
+        return (
+          <ForkCourseDialog
+            closeOverlay={overlay.close}
+            forkCourse={async () => {
+              const { data } = await fork({ courseId });
+              const { curator, goal } = data.forkCourse;
+              await flash.success(`you have forked: ${goal}`);
+              await overlay.close();
+              route.handlers.goToCourse({ curator, goal });
+            }}
+          />
+        );
+      }}
+    </Adopt>
+  );
+};
+
+ForkCourseDialogContainer.propTypes = {
+  courseId: PropTypes.string
+};
+
+export default ForkCourseDialogContainer;

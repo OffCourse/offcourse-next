@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import system from "system-components";
 import styled from "styled-components";
@@ -27,31 +27,30 @@ const VideoWrapper = styled(_VideoWrapper)`
   }
 `;
 
-export default class VideoViewer extends Component {
-  static propTypes = {
-    videoId: PropTypes.string.isRequired,
-    videoProvider: PropTypes.string.isRequired
-  };
+const getUrl = ({ videoId, videoProvider }) => {
+  return {
+    vimeo: `https://vimeo.com/${videoId}`,
+    youtube: `https://www.youtube.com/watch?v=${videoId}`
+  }[videoProvider];
+};
 
-  url() {
-    const { videoId, videoProvider } = this.props;
-    return {
-      vimeo: `https://vimeo.com/${videoId}`,
-      youtube: `https://www.youtube.com/watch?v=${videoId}`
-    }[videoProvider];
-  }
+const VideoViewer = ({ videoId, videoProvider }) => {
+  return (
+    <VideoWrapper>
+      <ReactPlayer
+        className="react-player"
+        width="100%"
+        height="100%"
+        controls={true}
+        url={getUrl({ videoId, videoProvider })}
+      />
+    </VideoWrapper>
+  );
+};
 
-  render() {
-    return (
-      <VideoWrapper>
-        <ReactPlayer
-          className="react-player"
-          width="100%"
-          height="100%"
-          controls={true}
-          url={this.url()}
-        />
-      </VideoWrapper>
-    );
-  }
-}
+VideoViewer.propTypes = {
+  videoId: PropTypes.string.isRequired,
+  videoProvider: PropTypes.string.isRequired
+};
+
+export default VideoViewer;

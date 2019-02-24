@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import {
   ThemeProvider as StyledThemeProvider,
@@ -9,27 +9,24 @@ import { ThemeProvider } from "../providers";
 
 const GlobalStyle = createGlobalStyle(themes.offcourse);
 
-export default class ThemeContainer extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired
-  };
+const ThemeContainer = ({ children }) => {
+  return (
+    <ThemeProvider>
+      {({ current }) => {
+        const theme = themes[current];
+        return (
+          <Fragment>
+            <GlobalStyle />
+            <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
+          </Fragment>
+        );
+      }}
+    </ThemeProvider>
+  );
+};
 
-  render() {
-    const { children } = this.props;
-    return (
-      <ThemeProvider>
-        {({ current }) => {
-          const theme = themes[current];
-          return (
-            <Fragment>
-              <GlobalStyle />
-              <StyledThemeProvider theme={theme}>
-                {children}
-              </StyledThemeProvider>
-            </Fragment>
-          );
-        }}
-      </ThemeProvider>
-    );
-  }
-}
+ThemeContainer.propTypes = {
+  children: PropTypes.node.isRequired
+};
+
+export default ThemeContainer;

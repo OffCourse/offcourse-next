@@ -1,26 +1,25 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Query } from "../../components";
 import { queries } from "./graphql";
 
-export default class ResourceProvider extends Component {
-  static propTypes = {
-    children: PropTypes.func.isRequired,
-    resourceUrl: PropTypes.string.isRequired
-  };
+const ResourceProvider = ({ children, resourceUrl }) => {
+  return (
+    <Query query={queries.resource} variables={{ resourceUrl }}>
+      {({ data, loading }) => {
+        if (loading) {
+          return children({ resource: { loading } });
+        }
+        const { resource } = data;
+        return children({ resource });
+      }}
+    </Query>
+  );
+};
 
-  render() {
-    const { children, resourceUrl } = this.props;
-    return (
-      <Query query={queries.resource} variables={{ resourceUrl }}>
-        {({ data, loading }) => {
-          if (loading) {
-            return children({ resource: { loading } });
-          }
-          const { resource } = data;
-          return children({ resource });
-        }}
-      </Query>
-    );
-  }
-}
+ResourceProvider.propTypes = {
+  children: PropTypes.func.isRequired,
+  resourceUrl: PropTypes.string.isRequired
+};
+
+export default ResourceProvider;

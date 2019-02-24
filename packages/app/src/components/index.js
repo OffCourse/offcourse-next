@@ -5,7 +5,6 @@ export { default as ErrorCard } from "./ErrorCard";
 export { default as ForkCourseDialog } from "./ForkCourseDialog";
 export { default as LoadingModal } from "./LoadingModal";
 export { default as CourseAction } from "./CourseAction";
-export { default as GlobalEvents } from "./GlobalEvents";
 export { default as GraphQL } from "./GraphQL";
 export { default as Route } from "./Route";
 export { default as VideoViewer } from "./VideoViewer";

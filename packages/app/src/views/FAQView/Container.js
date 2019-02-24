@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Adopt } from "react-adopt";
 import View from "./View";
 import { ContentContainer } from "../../containers";
@@ -11,13 +11,12 @@ const mapper = {
 
 const mapProps = ({ faq }) => ({ faq });
 
-export default class Container extends Component {
-  render() {
-    const { handlers } = this.props;
-    return (
-      <Adopt mapper={mapper} mapProps={mapProps}>
-        {props => <View handlers={handlers} {...props} />}
-      </Adopt>
-    );
-  }
-}
+const Container = ({ handlers }) => {
+  return (
+    <Adopt mapper={mapper} mapProps={mapProps}>
+      {props => <View handlers={handlers} {...props} />}
+    </Adopt>
+  );
+};
+
+export default Container;

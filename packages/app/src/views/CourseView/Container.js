@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Adopt } from "react-adopt";
 import { find, propEq } from "ramda";
@@ -64,46 +64,45 @@ const mapProps = ({
   overlay
 });
 
-export default class Container extends Component {
-  static propTypes = {
-    match: PropTypes.object,
-    handlers: PropTypes.object
-  };
+const Container = ({ match, handlers }) => {
+  const { curator, goal } = match.params;
+  return (
+    <Adopt
+      handlers={handlers}
+      curator={curator}
+      goal={goal}
+      mapper={mapper}
+      mapProps={mapProps}
+    >
+      {({ course, toggleCheckpoint, userIsCurator, userName, overlay }) => {
+        if (!course) {
+          return <CourseNotFoundView goHome={handlers.goHome} />;
+        }
+        const action = mapActions({
+          course,
+          userIsCurator,
+          userName,
+          handlers,
+          overlay
+        });
+        return (
+          <View
+            match={match}
+            isLoggedIn={!!userName}
+            handlers={handlers}
+            action={action}
+            course={course}
+            toggleCheckpoint={toggleCheckpoint}
+          />
+        );
+      }}
+    </Adopt>
+  );
+};
 
-  render() {
-    const { match, handlers } = this.props;
-    const { curator, goal } = match.params;
-    return (
-      <Adopt
-        handlers={handlers}
-        curator={curator}
-        goal={goal}
-        mapper={mapper}
-        mapProps={mapProps}
-      >
-        {({ course, toggleCheckpoint, userIsCurator, userName, overlay }) => {
-          if (!course) {
-            return <CourseNotFoundView goHome={handlers.goHome} />;
-          }
-          const action = mapActions({
-            course,
-            userIsCurator,
-            userName,
-            handlers,
-            overlay
-          });
-          return (
-            <View
-              match={match}
-              isLoggedIn={!!userName}
-              handlers={handlers}
-              action={action}
-              course={course}
-              toggleCheckpoint={toggleCheckpoint}
-            />
-          );
-        }}
-      </Adopt>
-    );
-  }
-}
+Container.propTypes = {
+  match: PropTypes.object,
+  handlers: PropTypes.object
+};
+
+export default Container;

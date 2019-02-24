@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-export default class ErrorBoundary extends Component {
+class ErrorBoundary extends Component {
   state = {
     hasError: false
-  };
-
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    componentToRender: PropTypes.func
   };
 
   static defaultProps = {
@@ -28,3 +23,10 @@ export default class ErrorBoundary extends Component {
     return children;
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.node.isRequired,
+  componentToRender: PropTypes.func
+};
+
+export default ErrorBoundary;
