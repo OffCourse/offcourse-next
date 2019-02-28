@@ -10,4 +10,3 @@ export { default as BackdropContainer } from "./BackdropContainer";
 export { default as SearchBarContainer } from "./SearchBarContainer";
 export { default as SideBarContainer } from "./SideBarContainer";
 export { default as OverlayContainer } from "./OverlayContainer";
-export { default as GlobalEventsContainer } from "./GlobalEventsContainer";

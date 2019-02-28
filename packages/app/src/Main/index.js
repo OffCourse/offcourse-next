@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch } from "react-router-dom";
 import { Route } from "../components";
+import { useGlobalEvents } from "../hooks";
 import {
   BackdropContainer,
   SideBarContainer,
@@ -20,6 +21,7 @@ import {
 import MainWrapper from "./MainWrapper";
 
 const Main = () => {
+  useGlobalEvents();
   return (
     <MainWrapper>
       <NavBarContainer />

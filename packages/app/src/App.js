@@ -2,19 +2,21 @@ import React from "react";
 import { hot } from "react-hot-loader";
 import { GraphQL, ErrorBoundary } from "./components";
 import Main from "./Main";
-import { ThemeContainer, GlobalEventsContainer } from "./containers";
+import { ThemeContainer } from "./containers";
 import { BrowserRouter as Router } from "react-router-dom";
 import { TotalPanicView } from "./views";
+import { AppStateProvider } from "./providers";
 
 const App = () => {
   return (
     <GraphQL>
       <ThemeContainer>
         <Router>
-          <ErrorBoundary componentToRender={TotalPanicView}>
-            <GlobalEventsContainer />
-            <Main />
-          </ErrorBoundary>
+          <AppStateProvider>
+            <ErrorBoundary componentToRender={TotalPanicView}>
+              <Main />
+            </ErrorBoundary>
+          </AppStateProvider>
         </Router>
       </ThemeContainer>
     </GraphQL>

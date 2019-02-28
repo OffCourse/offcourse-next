@@ -9,6 +9,7 @@ import { Route } from "../components";
 import { overlayModes } from "@offcourse/constants";
 
 const { SIGNING_IN, SIGNING_OUT, CREATE_COURSE } = overlayModes;
+
 const mapper = {
   auth: <AuthProvider />,
   sidebar: <SidebarProvider />,

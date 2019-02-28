@@ -1,6 +1,6 @@
-import React, { memo } from "react";
-import { Adopt } from "react-adopt";
+import React, { memo, useContext } from "react";
 import { Portal, Group } from "@offcourse/atoms";
+import { AppStateContext } from "../contexts";
 import { Modal } from "@offcourse/molecules";
 import { OverlayProvider } from "../providers";
 import { LoadingModal } from "../components";
@@ -21,7 +21,7 @@ const {
   FORK_COURSE
 } = OverlayProvider.constants;
 
-const selectMode = ({ mode, courseId, close }) => {
+const selectMode = ({ mode, courseId }) => {
   switch (mode) {
     case SIGNING_UP:
     case SIGNING_IN:
@@ -38,23 +38,16 @@ const selectMode = ({ mode, courseId, close }) => {
   }
 };
 
-const mapper = {
-  overlay: <OverlayProvider />
+const OverlayContainer = () => {
+  const { overlay } = useContext(AppStateContext);
+  const isOpen = overlay.isOpen;
+  return (
+    <Portal rootEl="overlay">
+      <Group justifyContent="center" alignItems="center">
+        {isOpen ? <Modal>{selectMode(overlay)}</Modal> : null}
+      </Group>
+    </Portal>
+  );
 };
-
-const OverlayContainer = () => (
-  <Portal rootEl="overlay">
-    <Adopt mapper={mapper}>
-      {({ overlay }) => {
-        const isOpen = overlay.isOpen;
-        return (
-          <Group justifyContent="center" alignItems="center">
-            {isOpen ? <Modal>{selectMode(overlay)}</Modal> : null}
-          </Group>
-        );
-      }}
-    </Adopt>
-  </Portal>
-);
 
 export default memo(OverlayContainer);
