@@ -1,30 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppStateContext } from "../contexts";
 import PropTypes from "prop-types";
-import { Adopt } from "react-adopt";
-import { Route, ForkCourseDialog } from "../components";
-import { CourseProvider, FlashProvider, OverlayProvider } from "../providers";
-
-const mapper = {
-  courseData: ({ courseId, render }) => (
-    <CourseProvider courseId={courseId}>{render}</CourseProvider>
-  ),
-  route: <Route />,
-  overlay: <OverlayProvider />,
-  flash: <FlashProvider />
-};
-
-const mapProps = ({ courseData: { course, fork }, route, overlay, flash }) => ({
-  course,
-  fork,
-  route,
-  overlay,
-  flash
-});
+import { ForkCourseDialog } from "../components";
+import { CourseProvider } from "../providers";
 
 const ForkCourseDialogContainer = ({ courseId }) => {
+  const { route, overlay, flash } = useContext(AppStateContext);
   return (
-    <Adopt courseId={courseId} mapper={mapper} mapProps={mapProps}>
-      {({ course, fork, route, overlay, flash }) => {
+    <CourseProvider courseId={courseId}>
+      {({ fork }) => {
         return (
           <ForkCourseDialog
             closeOverlay={overlay.close}
@@ -38,7 +22,7 @@ const ForkCourseDialogContainer = ({ courseId }) => {
           />
         );
       }}
-    </Adopt>
+    </CourseProvider>
   );
 };
 

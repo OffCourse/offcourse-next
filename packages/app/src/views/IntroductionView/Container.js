@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Adopt } from "react-adopt";
 import View from "./View";
 import { CoursesProvider } from "../../providers";
@@ -22,16 +22,15 @@ const mapProps = ({ content, collection }) => {
   };
 };
 
-export default class Container extends Component {
-  componentDidMount() {
+const Container = ({ handlers }) => {
+  useEffect(() => {
     document.cookie = `firstVisit=${Date.now()}`;
-  }
-  render() {
-    const { handlers } = this.props;
-    return (
-      <Adopt mapper={mapper} mapProps={mapProps}>
-        {props => <View handlers={handlers} {...props} />}
-      </Adopt>
-    );
-  }
-}
+  });
+  return (
+    <Adopt mapper={mapper} mapProps={mapProps}>
+      {props => <View handlers={handlers} {...props} />}
+    </Adopt>
+  );
+};
+
+export default Container;

@@ -3,11 +3,13 @@ import { Adopt } from "react-adopt";
 import { AppStateContext } from "../../contexts";
 import Route from "../../components/Route";
 import SearchbarProvider from "../SearchbarProvider";
+import AuthProvider from "../AuthProvider";
 import FlashProvider from "../FlashProvider";
 import SidebarProvider from "../SidebarProvider";
 import OverlayProvider from "../OverlayProvider";
 
 const mapper = {
+  auth: <AuthProvider />,
   sidebar: <SidebarProvider />,
   flash: <FlashProvider />,
   searchbar: <SearchbarProvider />,

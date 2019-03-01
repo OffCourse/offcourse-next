@@ -1,31 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppStateContext } from "../contexts";
 import PropTypes from "prop-types";
-import { Adopt } from "react-adopt";
-import { Route, LoadingModal } from "../components";
+import { LoadingModal } from "../components";
 import { CourseForm } from "@offcourse/organisms";
-import { FlashProvider, CourseProvider, OverlayProvider } from "../providers";
-
-const mapper = {
-  courseData: ({ courseId, render }) => {
-    return <CourseProvider courseId={courseId}>{render}</CourseProvider>;
-  },
-  route: <Route />,
-  overlay: <OverlayProvider />,
-  flash: <FlashProvider />
-};
-
-const mapProps = ({ courseData: { course, save }, route, overlay, flash }) => ({
-  oldCourse: course,
-  save,
-  route,
-  overlay,
-  flash
-});
+import { CourseProvider } from "../providers";
 
 const CourseFormContainer = ({ courseId }) => {
+  const { route, overlay, flash } = useContext(AppStateContext);
   return (
-    <Adopt courseId={courseId} mapper={mapper} mapProps={mapProps}>
-      {({ overlay, flash, route, oldCourse, save }) => {
+    <CourseProvider courseId={courseId}>
+      {({ course: oldCourse, save }) => {
         if (oldCourse.loading) {
           return <LoadingModal />;
         }
@@ -62,7 +46,7 @@ const CourseFormContainer = ({ courseId }) => {
         }
         return null;
       }}
-    </Adopt>
+    </CourseProvider>
   );
 };
 

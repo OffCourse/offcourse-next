@@ -12,11 +12,11 @@ const App = () => {
     <GraphQL>
       <ThemeContainer>
         <Router>
-          <AppStateProvider>
-            <ErrorBoundary componentToRender={TotalPanicView}>
+          <ErrorBoundary componentToRender={TotalPanicView}>
+            <AppStateProvider>
               <Main />
-            </ErrorBoundary>
-          </AppStateProvider>
+            </AppStateProvider>
+          </ErrorBoundary>
         </Router>
       </ThemeContainer>
     </GraphQL>
