@@ -1,3 +1,11 @@
+# Offcourse
+
+![GitHub repo size](https://img.shields.io/github/repo-size/OffCourse/offcourse-next)
+![GitHub contributors](https://img.shields.io/github/contributors/OffCourse/offcourse-next)
+![GitHub forks](https://img.shields.io/github/forks/OffCourse/offcourse-next)
+![GitHub Repo stars](https://img.shields.io/github/stars/OffCourse/offcourse-next)
+![GitHub](https://img.shields.io/github/license/OffCourse/offcourse-next)
+
 ## Table of Contents
 
 - What is it
@@ -45,6 +53,38 @@ Offcourse is a not-for-profit organization. The learning platform we build is co
 
 On our GitHub repository you will find both a **Bug Database** and our **Product Roadmap soon**. If there’s a feature you’d like to work on to grow your coding skills, please do so. It doesn’t matter if you are new to programming or advanced, we welcome all levels and backgrounds to our community. Before you start, please read our Contributing Guidelines (in progress) to make sure we can work together smoothly and pleasant.
 
+Once you have read the guidelines, here are the steps to contribute:
+1. Fork the repository
+
+2. Clone your forked copy locally
+    - Go to your cmd prompt and ```cd``` to a folder that you would like to store the copy 
+       
+       ```cd <folder-name>```
+       
+        - Then clone
+
+       ```git clone https://github.com/<your-username>/offcourse.git ```
+
+3. Create a new branch
+   
+   ```git checkcout -b <name-of-your-branch>```
+    - Make sure you are working in a new branch and not the main branch.
+
+4. Commit your changes
+
+    ```git commit -m 'Your message' ```
+
+5. Push to your branch
+
+    ```git push origin <name-of-you-branch> ```
+
+6. Open a Pull Request
+    - Make sure to add an appropriate title and description explaining the changes 
+  
+ 
+
+
 ## Authors / Maintainers
 
 Offcourse is an open source project and is a community of like-minded people. The authors and maintainers of the project, therefore, are you.
+
